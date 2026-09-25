@@ -35,13 +35,3 @@ enum class TrophyRank(val level: Int) {
         }
     }
 }
-
-/**
- * Miglior risultato che vale alla cilindrata [cc], dati i risultati registrati per ogni cilindrata
- * di un evento. Un risultato a cilindrata più alta vale anche per le inferiori, e il Mirror per
- * tutte (Kotaku, "Mario Kart World: How To Get Three-Star Gold Trophies": "Your Star Rank in a
- * higher difficulty will count as completion for all previous difficulties as well"). L'ordine
- * delle costanti di [Cc] è proprio 50 < 100 < 150 < Mirror.
- */
-fun effectiveRank(ranksByCc: Map<Cc, TrophyRank>, cc: Cc): TrophyRank? =
-    ranksByCc.filterKeys { it.ordinal >= cc.ordinal }.values.maxByOrNull { it.level }

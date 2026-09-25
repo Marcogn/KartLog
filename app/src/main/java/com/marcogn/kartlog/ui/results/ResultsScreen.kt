@@ -77,11 +77,6 @@ fun ResultsScreen(
                             )
                         }
                     }
-                    Text(
-                        stringResource(R.string.results_hint),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
                 }
             }
             resultsSection(R.string.results_section_cup, state.cups, onClick = { editingEventId = it })
@@ -93,7 +88,7 @@ fun ResultsScreen(
     if (editing != null) {
         RankPickerDialog(
             title = "${editing.eventName} · ${ccLabel(state.cc)}",
-            selected = editing.stored,
+            selected = editing.rank,
             onSelected = { rank ->
                 viewModel.onRankChanged(editing.eventId, rank)
                 editingEventId = null
@@ -119,24 +114,15 @@ private fun LazyListScope.resultsSection(
     items(rows, key = { it.eventId }) { row ->
         ListItem(
             headlineContent = { Text(row.eventName) },
-            trailingContent = { Text(rowLabel(row), color = rowColor(row)) },
+            trailingContent = {
+                Text(
+                    text = row.rank?.let { rankLabel(it) } ?: stringResource(R.string.results_no_trophy),
+                    color = if (row.rank == null) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.primary,
+                )
+            },
             modifier = Modifier.clickable { onClick(row.eventId) },
         )
     }
-}
-
-@Composable
-private fun rowLabel(row: ResultRow): String {
-    val effective = row.effective ?: return stringResource(R.string.results_no_trophy)
-    val from = row.effectiveFrom ?: return rankLabel(effective)
-    return stringResource(R.string.results_inherited_format, rankLabel(effective), ccLabel(from))
-}
-
-@Composable
-private fun rowColor(row: ResultRow) = when {
-    row.effective == null -> MaterialTheme.colorScheme.onSurfaceVariant
-    row.effectiveFrom != null -> MaterialTheme.colorScheme.onSurfaceVariant
-    else -> MaterialTheme.colorScheme.primary
 }
 
 /** Un solo valore per (evento, cilindrata): scegliere un trofeo sostituisce quello registrato (SPEC §2.6). */

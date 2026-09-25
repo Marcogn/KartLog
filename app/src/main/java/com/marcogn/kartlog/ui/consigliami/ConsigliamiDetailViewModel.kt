@@ -14,7 +14,6 @@ import com.marcogn.kartlog.domain.consigliami.ConsigliamiRule
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiUseCase
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.TrophyRank
-import com.marcogn.kartlog.domain.model.effectiveRank
 import com.marcogn.kartlog.domain.model.localizedName
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -28,7 +27,7 @@ data class ConsigliamiDetailUiState(
     val details: List<CharacterDetail> = emptyList(),
     val characterNames: Map<String, String> = emptyMap(),
     val outfitNames: Map<String, String> = emptyMap(),
-    /** Sola lettura (SPEC §2.5): trofeo che vale a ogni cilindrata, con il riporto dalle superiori. Si registra in Risultati. */
+    /** Sola lettura (SPEC §2.5): trofeo registrato per ogni cilindrata. Si registra in Risultati. */
     val bestRankByCc: Map<Cc, TrophyRank> = emptyMap(),
 )
 
@@ -66,9 +65,7 @@ class ConsigliamiDetailViewModel @Inject constructor(
             details = details,
             characterNames = characters.associate { it.id to localizedName(it.name, it.nameIt) },
             outfitNames = outfitNames.associate { it.id to localizedName(it.name, it.nameIt) },
-            bestRankByCc = results.associate { it.cc to it.rank }.let { ranksByCc ->
-                Cc.entries.mapNotNull { cc -> effectiveRank(ranksByCc, cc)?.let { cc to it } }.toMap()
-            },
+            bestRankByCc = results.associate { it.cc to it.rank },
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ConsigliamiDetailUiState())
 }

@@ -88,11 +88,9 @@
     <string name="home_results_counter_format">%1$d / %2$d eventi con un trofeo</string>
     <string name="results_title">Risultati</string>
     <string name="results_cc_label">Cilindrata</string>
-    <string name="results_hint">Un trofeo vale anche per le cilindrate inferiori, lo Specchio per tutte, come nel gioco.</string>
     <string name="results_section_cup">Gran Premi</string>
     <string name="results_section_rally">Knockout Tour</string>
     <string name="results_no_trophy">Nessun trofeo</string>
-    <string name="results_inherited_format">%1$s (da %2$s)</string>
     <string name="results_dialog_clear">Nessun trofeo (cancella)</string>
     <string name="results_dialog_cancel">Annulla</string>
     <string name="rank_bronze">Bronzo</string>

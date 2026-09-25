@@ -79,7 +79,7 @@ Vedi §6 per l'algoritmo. UI:
   - **personaggio consigliato** e numero di outfit nuovi ottenibili con lui
   - i 2 personaggi alternativi successivi con i rispettivi numeri
   - i cibi rilevanti disponibili sull'evento, ciascuno con il percorso e l'indicazione **sul percorso** / **nei dintorni** (§5.2.1)
-  - se i risultati sono attivi, il miglior trofeo che vale alla cilindrata di riferimento (§2.6)
+  - se i risultati sono attivi, il trofeo registrato alla cilindrata di riferimento (§2.6)
 - Tap sulla card apre il dettaglio: tutti i personaggi con gain > 0, outfit specifici ottenibili per ciascuno, e il miglior trofeo per ogni cilindrata **in sola lettura**. Consigliami non registra risultati: si fa solo dalla schermata Risultati (§2.6).
 - Sezione "Pesa i risultati": switch on/off più slider del peso (§6.3).
 - Switch **"Includi cibi nei dintorni"** (default off): se attivo, il calcolo usa anche la presenza `NEARBY` (§6.1).
@@ -90,7 +90,7 @@ Schermata dedicata, raggiunta dal pulsante largo in Home e dal drawer. Registra 
 - Il risultato è un **trofeo** su un'unica scala crescente: bronzo, argento, oro, oro ★, oro ★★, oro ★★★. Le stelle esistono solo con l'oro; dal 4° posto in giù non c'è trofeo, quindi equivale a "nessun risultato". Fonti: [Game Rant](https://gamerant.com/mario-kart-world-grand-prix-how-get-three-stars-rank-gold-trophy/) (scala), [TheGamer](https://www.thegamer.com/mario-kart-world-grand-prix-knockout-tour-three-star-guide-how-to/) (Knockout Tour: 1° oro, 2° argento, 3° bronzo, dal 4° nessun trofeo).
 - Un solo trofeo per coppia (evento, cilindrata): sceglierne un altro **sostituisce** il precedente, e "Nessun trofeo" lo cancella.
 - Selettore di cilindrata (50/100/150/Specchio, default 150cc) e lista di tutti gli eventi, divisi in Gran Premi e Knockout Tour, mai filtrata da Consigliami.
-- Un trofeo vale anche per le cilindrate **inferiori**, lo Specchio per tutte ([Kotaku](https://kotaku.com/mario-kart-world-three-star-gold-trophies-rewards-star-ranking-mirror-mode-2000614601): "Your Star Rank in a higher difficulty will count as completion for all previous difficulties as well"). La riga di un evento senza trofeo alla cilindrata scelta ma con uno superiore lo mostra come ereditato ("Argento (da 150cc)").
+- Un trofeo vale **solo** per la cilindrata in cui è registrato: nessun riporto automatico verso le cilindrate inferiori, perché il comportamento del gioco non è confermato con certezza (decisione dell'autore).
 
 ---
 
@@ -297,7 +297,7 @@ Il criterio primario è **sempre** il gain del miglior singolo personaggio, perc
   ```
   normGain(E)    = gain(E, best(E)) / max_E gain(E, best(E))    // 0 se max = 0
   improvement(E) = 1 - level(bestRank(E, ccSelezionata)) / 6     // bronzo=1 … oro ★★★=6; nessun trofeo → 1
-  // bestRank(E, cc) = trofeo più alto registrato a cc o a una cilindrata superiore (§2.6)
+  // bestRank(E, cc) = trofeo registrato esattamente a cc (§2.6), nessun riporto da altre cilindrate
   score(E)       = (1 - w) * normGain(E) + w * improvement(E)
   ```
   La cilindrata di riferimento si seleziona in Consigliami (default 150cc).

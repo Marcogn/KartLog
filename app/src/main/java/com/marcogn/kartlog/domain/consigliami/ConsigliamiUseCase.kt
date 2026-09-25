@@ -24,8 +24,8 @@ object ConsigliamiUseCase {
     )
 
     /**
-     * @param bestRankForEvent miglior trofeo registrato per un evento che vale alla cilindrata di
-     * riferimento scelta in Consigliami (vedi `effectiveRank`); null se nessun risultato (SPEC §6.3,
+     * @param bestRankForEvent miglior trofeo registrato per un evento alla cilindrata di
+     * riferimento scelta in Consigliami; null se nessun risultato (SPEC §6.3,
      * "nessun risultato -> improvement 1"). Ignorato se [resultsEnabled] è false.
      */
     fun compute(

@@ -17,17 +17,11 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-/**
- * Una riga della schermata Risultati alla cilindrata selezionata.
- * [stored] è il trofeo registrato proprio a quella cilindrata; [effective] quello che vale davvero,
- * che può arrivare da una cilindrata superiore ([effectiveFrom], null se è quella selezionata).
- */
+/** Una riga della schermata Risultati: [rank] è il trofeo registrato alla cilindrata selezionata. */
 data class ResultRow(
     val eventId: String,
     val eventName: String,
-    val stored: TrophyRank?,
-    val effective: TrophyRank?,
-    val effectiveFrom: Cc?,
+    val rank: TrophyRank?,
 )
 
 data class ResultsUiState(
@@ -50,24 +44,10 @@ class ResultsViewModel @Inject constructor(
         userStateDao.allBestResults(),
         cc,
     ) { events, results, selectedCc ->
-        val byEvent: Map<String, List<BestResultEntity>> = results.groupBy { it.eventId }
+        // Nessun riporto tra cilindrate: ogni trofeo vale solo dove è registrato.
+        val rankByEvent = results.filter { it.cc == selectedCc }.associate { it.eventId to it.rank }
         val rows = events.sortedBy { it.order }.map { event ->
-            val ranksByCc = byEvent[event.id].orEmpty().associate { it.cc to it.rank }
-            val stored = ranksByCc[selectedCc]
-            // Stesso criterio di effectiveRank(): cilindrate >= quella selezionata. A parità di
-            // livello vince la più bassa, così "da 150cc" compare solo se aggiunge qualcosa.
-            val source = ranksByCc
-                .filterKeys { it.ordinal >= selectedCc.ordinal }
-                .entries
-                .sortedWith(compareByDescending<Map.Entry<Cc, TrophyRank>> { it.value.level }.thenBy { it.key.ordinal })
-                .firstOrNull()
-            (event.type to ResultRow(
-                eventId = event.id,
-                eventName = event.name,
-                stored = stored,
-                effective = source?.value,
-                effectiveFrom = source?.key?.takeIf { it != selectedCc },
-            ))
+            event.type to ResultRow(event.id, event.name, rankByEvent[event.id])
         }
         ResultsUiState(
             cc = selectedCc,

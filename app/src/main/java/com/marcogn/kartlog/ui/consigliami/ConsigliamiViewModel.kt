@@ -23,7 +23,6 @@ import com.marcogn.kartlog.domain.consigliami.RecommendationGroup
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.EventType
 import com.marcogn.kartlog.domain.model.TrophyRank
-import com.marcogn.kartlog.domain.model.effectiveRank
 import com.marcogn.kartlog.domain.model.localizedName
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -43,7 +42,7 @@ data class ConsigliamiUiState(
     val resultsEnabled: Boolean = false,
     val weight: Double = 0.3,
     val referenceCc: Cc = Cc.CC_150,
-    /** Trofeo che vale alla cilindrata di riferimento (SPEC §6.3), già con il riporto dalle cilindrate superiori. */
+    /** Trofeo registrato alla cilindrata di riferimento (SPEC §6.3). */
     val bestRankByEvent: Map<String, TrophyRank> = emptyMap(),
     val characterNames: Map<String, String> = emptyMap(),
     val courseNames: Map<String, String> = emptyMap(),
@@ -103,12 +102,11 @@ class ConsigliamiViewModel @Inject constructor(
             .filter { filter == ConsigliamiEventFilter.BOTH || it.type == filter.toEventType() }
             .map { ConsigliamiEvent(it.id, it.type, it.name, it.order, eventStopsByEvent[it.id].orEmpty()) }
 
-        // bestRank(E, cc) (SPEC §6.3): il trofeo registrato alla cilindrata di riferimento o a
-        // una superiore, che nel gioco vale anche per le inferiori (vedi effectiveRank()).
+        // bestRank(E, cc) (SPEC §6.3): solo il trofeo registrato alla cilindrata di riferimento,
+        // nessun riporto da altre cilindrate (decisione dell'autore, vedi CLAUDE.md).
         val bestRankByEvent = results.bestResults
-            .groupBy { it.eventId }
-            .mapNotNull { (eventId, rows) -> effectiveRank(rows.associate { it.cc to it.rank }, results.cc)?.let { eventId to it } }
-            .toMap()
+            .filter { it.cc == results.cc }
+            .associate { it.eventId to it.rank }
 
         var groups = ConsigliamiUseCase.compute(
             characters = raw.characters.map { ConsigliamiCharacter(it.id, it.rosterOrder, it.unlocked) },

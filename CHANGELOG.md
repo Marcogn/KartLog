@@ -14,8 +14,7 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 - **Il risultato è un trofeo, non stelle e posizione separate.** Scala
   unica bronzo, argento, oro, oro ★, oro ★★, oro ★★★, come nel gioco
   (le stelle esistono solo con l'oro). Si salva solo il migliore per
-  evento e cilindrata, e un trofeo vale anche per le cilindrate
-  inferiori (lo Specchio per tutte). I risultati già registrati vengono
+  evento e cilindrata. I risultati già registrati vengono
   convertiti all'aggiornamento (1° → oro con le sue stelle, 2° →
   argento, 3° → bronzo; dal 4° posto nessun trofeo), e i backup
   precedenti restano importabili.

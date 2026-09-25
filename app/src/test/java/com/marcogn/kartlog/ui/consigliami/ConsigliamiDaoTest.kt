@@ -18,7 +18,6 @@ import com.marcogn.kartlog.domain.consigliami.ConsigliamiUseCase
 import com.marcogn.kartlog.domain.consigliami.RecommendationGroup
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.TrophyRank
-import com.marcogn.kartlog.domain.model.effectiveRank
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -64,9 +63,10 @@ class ConsigliamiDaoTest {
         val foodCourses = dao.foodCourses().first().map { ConsigliamiFoodCourse(it.foodGroupId, it.courseId, it.presence) }
         val stopsByEvent = dao.eventStops().first().groupBy({ it.eventId }, { it.courseId })
         val events = dao.events().first().map { ConsigliamiEvent(it.id, it.type, it.name, it.order, stopsByEvent[it.id].orEmpty()) }
+        // Stesso criterio di ConsigliamiViewModel: solo i trofei alla cilindrata di riferimento.
         val bestRankByEvent = db.userStateDao().allBestResults().first()
-            .groupBy { it.eventId }
-            .mapValues { (_, rows) -> effectiveRank(rows.associate { it.cc to it.rank }, referenceCc) }
+            .filter { it.cc == referenceCc }
+            .associate { it.eventId to it.rank }
         return ConsigliamiUseCase.compute(
             characters, outfits, rules, foodCourses, events, includeNearby,
             resultsEnabled = resultsEnabled, weight = weight,
@@ -127,8 +127,7 @@ class ConsigliamiDaoTest {
             .maxBy { it.score }
 
         // Oro 3 stelle sull'evento col gain più alto -> improvement 0. Nessun risultato sull'altro -> improvement 1.
-        // Registrato allo Specchio: deve valere anche a 150cc (riporto verso le cilindrate inferiori).
-        db.userStateDao().upsertBestResult(BestResultEntity(highGainEvent.event.id, Cc.MIRROR, TrophyRank.GOLD_3_STARS))
+        db.userStateDao().upsertBestResult(BestResultEntity(highGainEvent.event.id, Cc.CC_150, TrophyRank.GOLD_3_STARS))
 
         val weighted = computeGroups(dao, resultsEnabled = true, weight = 1.0, referenceCc = Cc.CC_150).flatMap { it.events }
         val positionOf = { eventId: String -> weighted.indexOfFirst { it.event.id == eventId } }
@@ -138,6 +137,20 @@ class ConsigliamiDaoTest {
                 "anche se il suo gain è più basso",
             positionOf(lowGainEvent.event.id) < positionOf(highGainEvent.event.id),
         )
+    }
+
+    @Test
+    fun `un trofeo vale solo per la cilindrata in cui e registrato`() = runBlocking {
+        val dao = db.consigliamiDao()
+        val eventId = computeGroups(dao).flatMap { it.events }.first().event.id
+
+        // Oro 3 stelle allo Specchio: nessun effetto sul calcolo a 150cc, pieno effetto allo Specchio.
+        db.userStateDao().upsertBestResult(BestResultEntity(eventId, Cc.MIRROR, TrophyRank.GOLD_3_STARS))
+        suspend fun improvementAt(cc: Cc) =
+            computeGroups(dao, resultsEnabled = true, referenceCc = cc).flatMap { it.events }.first { it.event.id == eventId }.improvement
+
+        assertEquals(1.0, improvementAt(Cc.CC_150), 1e-9)
+        assertEquals(0.0, improvementAt(Cc.MIRROR), 1e-9)
     }
 
     @Test
