@@ -130,6 +130,7 @@ Flag della build release: `-PacceptSeedChanges`, `-PofflineSeed`, `-PpythonExec=
 - 2026-09-25 · Dual localization IT/EN: nessun selettore in-app, solo `locales_config.xml` (system settings). Un selettore avrebbe richiesto `AppCompatActivity`/AppCompat (finora escluso deliberatamente, fase 1) solo per `setApplicationLocales()` — non richiesto esplicitamente, non aggiunto.
 
 - 2026-09-25 · Icona app: sostituito il monogramma "K" vettoriale con un'immagine raster fornita dall'autore (globo + "L"), in `mipmap-*/ic_launcher_foreground.png` (108dp a tutto campo, artwork al ~64% per la safe zone da 66dp, cielo esteso e sfumato al posto degli angoli neri dell'originale). Nessuna icona `monochrome` (themed icon Android 13+): non c'era neanche prima, e ricavarla da un raster richiederebbe un vector dedicato.
+- 2026-09-25 · Icona app v2: l'autore ha fornito una seconda versione dello stesso globo con la sigla "MKL" al posto della sola "L", e ha confermato esplicitamente di volerla usare dopo che gli avevo segnalato che "MKL" richiama "Mario Kart Log" (regola non negoziabile #2, "niente 'Mario Kart' nell'icona"). Sostituita con lo stesso procedimento (stesso ~64%, stesso cielo esteso); `ic_launcher_background` aggiornato al nuovo blu medio del cielo (`#139CFC`).
 
 ## Manutenzione di questo file
 - A fine sessione: aggiorna **Stato attuale** e aggiungi a **Decisioni prese** ogni scelta non ovvia fatta durante la sessione.
