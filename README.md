@@ -23,13 +23,19 @@ con chi) per avvicinarsi il più possibile alla collezione completa.
 
 ## Stato del progetto
 
-Il progetto procede per fasi (vedi [`SPEC.md`](SPEC.md) §8). Questa è la
-**fase 1 — Scaffold**: struttura Gradle, signing, tema e navigazione sono
-pronti, ma le schermate di Skin, Monete Peach, Pulsanti P e Consigliami
-sono ancora placeholder senza dati reali né stato persistente. I dati di
-gioco (`seed/`) esistono già nel repository ma non sono ancora caricati
-nell'app. Segui [`CHANGELOG.md`](CHANGELOG.md) per lo stato aggiornato
-fase per fase.
+Il progetto procede per fasi (vedi [`SPEC.md`](SPEC.md) §8 e
+[`docs/PHASES.md`](docs/PHASES.md)). Completate finora:
+
+- **fase 1 — Scaffold**: struttura Gradle, signing, tema e navigazione sono
+  pronti, ma le schermate di Skin, Monete Peach, Pulsanti P e Consigliami
+  sono ancora placeholder senza dati reali né stato persistente.
+- **fase 2 — Verifica di seedgen sulle pagine reali**: i dati in `seed/`
+  vengono ora da un'estrazione reale via API (non più da trascrizione
+  manuale), completi dei 394 Pulsanti P.
+
+I dati di gioco (`seed/`) esistono già nel repository ma non sono ancora
+caricati nell'app (fase 3). Segui [`CHANGELOG.md`](CHANGELOG.md) per lo
+stato aggiornato fase per fase.
 
 ## Funzionalità previste
 

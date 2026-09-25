@@ -10,7 +10,7 @@ page_url_prefix: "https://www.mariowiki.com/"
 
 # User-Agent inviato al wiki. Sostituire <REPO_URL> con l'URL del repository (o un contatto)
 # prima della prima estrazione reale: la policy dei wiki MediaWiki chiede un contatto riconoscibile.
-user_agent: "KartLog-seedgen/1.0 (<REPO_URL>)"
+user_agent: "KartLog-seedgen/1.0 (https://github.com/Marcogn/KartLog)"
 
 http:
   timeout_seconds: 30        # per singola richiesta

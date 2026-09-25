@@ -55,7 +55,7 @@ python -m seedgen release --seed ../../seed --work ../../app/build/seedgen/candi
 
 ## Stato
 
-- Il parser è stato testato **solo su HTML sintetici**, costruiti sulla struttura descritta delle pagine. Dall'ambiente in cui è stato scritto il wiki non era raggiungibile via script, quindi la prima verifica sulle pagine reali va fatta con il passo 2.
-- `seed/` iniziale viene dalla trascrizione manuale (`origin: manual-transcription` in `meta.json`) ed è validato con gli stessi controlli. La prima `release` con rete lo confronterà con l'estrazione via API.
-- La trascrizione manuale non contiene i 394 pulsanti P: arrivano con la prima estrazione via API.
+- Il parser è stato verificato sia su HTML sintetici (`tests/fixtures/synthetic/`) sia sulle 16 pagine reali del wiki (`tests/fixtures/real/`, committate — vedi `test_real_fixtures.py`).
+- `seed/` viene da un'estrazione reale via API (`origin: api` in `meta.json`, `seedVersion 2`). La trascrizione manuale (`tests/golden/raw_manual_2026-09-25.yaml`) resta come riferimento storico e come fixture per `test_seed.py` (esclusi i pulsanti P, che non copriva).
+- `seed/p_switches.json` esiste con le 394 voci.
 - Non implementati: stand Yoshi's sulle strade tra i percorsi (v2).

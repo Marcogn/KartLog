@@ -24,7 +24,11 @@ def test_golden_is_valid(golden_seed, cfg):
 
 
 def test_versioned_seed_matches_golden(golden_seed):
-    assert diff(read_seed(SEED_DIR), golden_seed) == []
+    # I pulsanti P non sono nella trascrizione golden (arrivano solo con l'estrazione via API,
+    # vedi SPEC §5.3 "Stato"): si escludono dal confronto, si verificano solo con validate().
+    versioned = {k: v for k, v in read_seed(SEED_DIR).items() if k != "p_switches.json"}
+    golden = {k: v for k, v in golden_seed.items() if k != "p_switches.json"}
+    assert diff(versioned, golden) == []
 
 
 def test_versioned_seed_is_valid(cfg):

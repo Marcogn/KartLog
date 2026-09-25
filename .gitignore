@@ -30,4 +30,5 @@ tools/seedgen/.venv/
 tools/seedgen/__pycache__/
 tools/seedgen/**/__pycache__/
 tools/seedgen/.pytest_cache/
-tools/seedgen/tests/fixtures/real/
+# tests/fixtures/real/ NON è ignorata: test_real_fixtures.py la richiede per non
+# essere skippato (è il test di accettazione della fase 2, SPEC §5.3 "Stato").
