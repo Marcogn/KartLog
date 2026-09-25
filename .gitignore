@@ -19,6 +19,7 @@
 *.keystore
 key.properties
 keystore.properties
+/release-secrets/
 
 # Seed generato a build time (SPEC §5.4): i JSON versionati vivono in /seed,
 # quelli copiati negli asset dell'APK sono un artefatto di build.
