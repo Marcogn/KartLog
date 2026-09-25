@@ -44,3 +44,22 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
   "Central grassland biome" sulla pagina reale). Nessun'altra
   differenza: Dash Food, Yoshi's locations, navbox e rally combaciano
   esattamente con la trascrizione manuale iniziale.
+- **L'app carica i dati reali da `seed/` (SPEC §8, fase 3).** Entità Room
+  definitive (SPEC §3, sia i dati di gioco sia lo stato utente), modelli
+  kotlinx.serialization sui JSON reali, `SeedRepository` che fa il
+  reseed a ogni cambio di `seedVersion` senza mai toccare lo stato
+  utente (test di migrazione incluso). I contatori della Home sono ora
+  collegati ai dati reali tramite `HomeViewModel` (mostrano `0 / 127`,
+  `0 / 200`, `0 / 394` a stato utente vuoto, "n/d" se una sorgente
+  manca). Test di validazione lato app sugli asset effettivamente
+  impacchettati (SPEC §5.6), con i conteggi letti da
+  `tools/seedgen/expected_counts.yaml`.
+- **Task Gradle `generateSeed` (SPEC §5.4).** Il build `release` esegue
+  seedgen (in una venv sotto `build/`, mai nel sistema) prima di
+  impacchettare gli asset: dati identici a `seed/` prosegue, dati
+  cambiati ferma la build mostrando il diff (`-PacceptSeedChanges` per
+  accettarli e aggiungere automaticamente la riga al changelog), dati
+  non validi o rete/configurazione assenti fermano sempre la build
+  (`-PofflineSeed` per validare solo `seed/` versionato senza rete). Il
+  build `debug` resta completamente offline: copia solo i JSON già
+  versionati (`copySeedAssets`).

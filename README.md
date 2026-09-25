@@ -32,10 +32,12 @@ Il progetto procede per fasi (vedi [`SPEC.md`](SPEC.md) §8 e
 - **fase 2 — Verifica di seedgen sulle pagine reali**: i dati in `seed/`
   vengono ora da un'estrazione reale via API (non più da trascrizione
   manuale), completi dei 394 Pulsanti P.
+- **fase 3 — Seed nell'app e build**: l'app carica davvero i dati da
+  `seed/` in Room, con reseed automatico e test di validazione; la Home
+  mostra i conteggi reali. Le schermate di Skin, Monete Peach, Pulsanti P
+  e Consigliami restano placeholder: la logica arriva nelle fasi 4-6.
 
-I dati di gioco (`seed/`) esistono già nel repository ma non sono ancora
-caricati nell'app (fase 3). Segui [`CHANGELOG.md`](CHANGELOG.md) per lo
-stato aggiornato fase per fase.
+Segui [`CHANGELOG.md`](CHANGELOG.md) per lo stato aggiornato fase per fase.
 
 ## Funzionalità previste
 
@@ -113,8 +115,8 @@ tools/seedgen/           script Python che genera seed/ da Super Mario Wiki
 app/src/main/java/com/marcogn/kartlog/
 ├── ui/                  schermate Compose (home, skin, medaglioni, pulsanti P,
 │                        consigliami, impostazioni) + tema + navigazione
-├── data/                (fase 3+) Room, repository, caricamento seed
-└── domain/              (fase 3+) modelli puri, algoritmo Consigliami
+├── data/                Room (entity/dao), DTO e repository del seed (fase 3)
+└── domain/              modelli puri; l'algoritmo di Consigliami arriva in fase 6
 ```
 
 ## Documentazione
