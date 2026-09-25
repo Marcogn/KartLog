@@ -6,6 +6,10 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Nuova icona dell'app.** Il monogramma "K" provvisorio è sostituito
+  da un'illustrazione originale (globo con anello e lettera "L"), adattata
+  alla forma delle adaptive icon Android: cielo esteso attorno al disegno
+  in modo che l'anello resti visibile con qualsiasi maschera del launcher.
 - **Corretta la navigazione dal drawer verso Home.** "Home" nel menu
   laterale non portava mai alla schermata Home (funzionava solo il tasto
   Indietro di sistema): il `popUpTo(Destination.Home)` combinato con la

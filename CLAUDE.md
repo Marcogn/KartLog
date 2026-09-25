@@ -123,6 +123,8 @@ Flag della build release: `-PacceptSeedChanges`, `-PofflineSeed`, `-PpythonExec=
 - 2026-09-25 · Post-0.1.1, Consigliami: il form di registrazione ora accetta **qualsiasi** evento (selettore aggiunto a `RaceResultBottomSheet`), non solo quello del dettaglio da cui si apre — altrimenti gli eventi a punteggio 0, nascosti di default da "Solo utili", non erano mai raggiungibili per registrare un risultato. `EventPickerItem` (id/nome/tipo) è il tipo condiviso tra `ConsigliamiViewModel` e `ConsigliamiDetailViewModel`.
 - 2026-09-25 · Nomi ufficiali in italiano (outfit/pulsanti P/biomi ecc., richiesti dall'autore dopo la 0.1.1): **non affrontato in questa sessione**. Tocca la regola "nessun dato inventato" (va aggiunto via `tools/seedgen`, non a mano in Kotlin) e richiede prima di identificare quali pagine di mariowiki.com coprano quali categorie — la fonte per gli outfit è nota (`List_of_Mario_Kart_World_outfit_names_in_other_languages`), le altre no. Da fare in una sessione dedicata, non insieme ai fix di navigazione/Consigliami.
 
+- 2026-09-25 · Icona app: sostituito il monogramma "K" vettoriale con un'immagine raster fornita dall'autore (globo + "L"), in `mipmap-*/ic_launcher_foreground.png` (108dp a tutto campo, artwork al ~64% per la safe zone da 66dp, cielo esteso e sfumato al posto degli angoli neri dell'originale). Nessuna icona `monochrome` (themed icon Android 13+): non c'era neanche prima, e ricavarla da un raster richiederebbe un vector dedicato.
+
 ## Manutenzione di questo file
 - A fine sessione: aggiorna **Stato attuale** e aggiungi a **Decisioni prese** ogni scelta non ovvia fatta durante la sessione.
 - Se cambia un comando, una convenzione o la struttura del repository, aggiorna la sezione corrispondente nella stessa sessione.
