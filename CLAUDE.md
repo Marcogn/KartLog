@@ -64,16 +64,16 @@ Flag della build release: `-PacceptSeedChanges`, `-PofflineSeed`, `-PpythonExec=
 - Skin: `SkinDao` incrocia dati seed e stato utente con query SQL dirette (JOIN + GROUP_CONCAT), non con più chiamate separate — un solo `Flow` per schermata. L'outfit di default è sempre in `owned_outfits` (`ensureDefaultOutfitsOwned()`, chiamata da `SeedRepository` a ogni avvio): il contatore "ottenuti/totali" non ha bisogno di trattarlo come caso speciale in UI, solo di non mostrargli la checkbox.
 - Monete Peach/Pulsanti P: stesso pattern di `SkinDao` (`MedallionsDao`/`PSwitchesDao`, una query con JOIN per schermata) e stesso componente condiviso `ui/common/RegionSection.kt` (intestazione regione + dialog di conferma "segna tutti") per le due schermate, che sono strutturalmente identiche (10 regioni collassabili).
 - Consigliami: l'algoritmo (SPEC §6) vive in `domain/consigliami/` come Kotlin puro (`ConsigliamiUseCase`, nessuna dipendenza Android/Room), testato con dati sintetici in `ConsigliamiUseCaseTest`. `ConsigliamiDao` espone solo `Flow` sulle tabelle grezze; `ConsigliamiViewModel` fa da ponte, ricombinando i `Flow` e rieseguendo l'algoritmo a ogni cambiamento — mai logica di dominio nel ViewModel o nel DAO.
+- Risultati: `bestStars(E, cc)` si calcola nel ViewModel (`ConsigliamiViewModel`) da `UserStateDao.allRaceResults()`, mai in una query SQL — il "miglior risultato" per una card è per stelle decrescenti poi posizione crescente, una decisione di prodotto non un dettaglio di persistenza.
 
 ## Stato attuale
 <!-- Aggiornare a OGNI fine sessione: fase corrente, cosa è fatto, cosa resta, problemi aperti. -->
-- **Fase corrente:** 6, Consigliami (SPEC §8/§2.5/§6, `docs/PHASES.md`), senza registrazione risultati. Completata: `ConsigliamiUseCase` con tutti i test di SPEC §6.5, lista con pari merito/raggruppamento/toggle GP-KT/switch nei dintorni-solo utili, dettaglio evento. Peso dei risultati e "Registra risultato": fase 7.
-- **Fase 5** (Monete Peach/Pulsanti P): completata — liste per regione, "segna tutti", ricerca, "Apri guida".
-- **Fase 4** (Skin): completata — griglia personaggi, dettaglio con checkbox outfit, contatore Home in tempo reale.
-- **Fase 3** (Seed nell'app): completata — entità Room definitive, `SeedRepository` con reseed, task Gradle `copySeedAssets`/`generateSeed`.
-- **Fasi 1-2** (Scaffold, verifica seedgen): completate — vedi `docs/PHASES.md` per il dettaglio.
+- **Fase corrente:** 7, Risultati (SPEC §8/§2.6/§6.3, `docs/PHASES.md`). Completata: bottom sheet di registrazione (cilindrata, stelle, posizione o eliminazione, personaggio opzionale), storico con cancellazione, sezione "Pesa i risultati" (switch, slider, cilindrata di riferimento), punteggio pesato e `worstFirst` negli spareggi solo a risultati attivi. Test "con w=1 l'ordinamento dipende solo da improvement" verificato anche sui dati reali (rimasto aperto dalla fase 6).
+- **Fase 6** (Consigliami): completata — algoritmo puro con tutti i test di SPEC §6.5, lista, dettaglio.
+- **Fasi 3-5** (Seed nell'app, Skin, Monete/Pulsanti P): completate — vedi `docs/PHASES.md` per il dettaglio.
+- **Fasi 1-2** (Scaffold, verifica seedgen): completate.
 - **Secret GitHub:** tutti e 5 presenti. La prima release reale resta rimandata a fine fasi, come richiesto dall'autore.
-- **Aperto:** il percorso di rete reale di `generateSeed` non è stato eseguito end-to-end (l'ambiente di sviluppo non ha `python3-venv`/`ensurepip` di sistema, niente sudo). Nessun emulatore/dispositivo disponibile in questo ambiente: nessuna schermata è stata verificata visivamente, solo build/lint/test JVM (Robolectric). Immagini dei personaggi: ancora nessuna alternativa originale ai render Nintendo. Test SPEC §6.5 "con w = 1 l'ordinamento dipende solo da improvement" rimandato alla fase 7 (nessun risultato registrabile finché non esiste quella UI).
+- **Aperto:** il percorso di rete reale di `generateSeed` non è stato eseguito end-to-end (l'ambiente di sviluppo non ha `python3-venv`/`ensurepip` di sistema, niente sudo). Nessun emulatore/dispositivo disponibile in questo ambiente: nessuna schermata è stata verificata visivamente, solo build/lint/test JVM (Robolectric). Immagini dei personaggi: ancora nessuna alternativa originale ai render Nintendo.
 
 ## Decisioni prese
 <!-- Una riga per decisione: data, cosa, perché. Aggiungere, non riscrivere. -->
@@ -112,6 +112,8 @@ Flag della build release: `-PacceptSeedChanges`, `-PofflineSeed`, `-PpythonExec=
 - 2026-09-25 · Fase 6: il filtro "Solo utili" (default on, §6.3) è applicato nel `ViewModel`, non nell'algoritmo puro: `ConsigliamiUseCase` restituisce sempre la classifica completa (compresi gli eventi a gain 0, già in fondo per costruzione), la UI nasconde quelli a punteggio 0 quando il filtro è attivo.
 - 2026-09-25 · Fase 6: il toggle Gran Premi/Knockout Tour/Entrambi filtra gli eventi **prima** di ricalcolare l'algoritmo (non dopo): con solo "Gran Premi" selezionato, posizioni e pari merito si ricalcolano esclusivamente tra i Gran Premi, non tra tutti gli eventi con i Rally nascosti in UI.
 - 2026-09-25 · Pulsante "Registra risultato" (SPEC §2.5, dettaglio evento) **non aggiunto**: punterebbe a una funzionalità che non esiste ancora (fase 7); un bottone che non fa nulla è peggio di nessun bottone.
+- 2026-09-25 · Fase 7: l'eliminazione (checkpoint N invece di posizione) è selezionabile solo per i Knockout Tour, mai per i Gran Premi — SPEC §2.6 la prevede solo per KO ("GP: 1–24; KO: 1–24 oppure eliminato al checkpoint N"), un GP corre sempre un giro intero.
+- 2026-09-25 · Fase 7: "miglior risultato" per una card/evento = stelle decrescenti, poi posizione crescente (non l'ultimo registrato né una media) — coerente con SPEC §6.3 che usa `bestStars`, non una media.
 
 ## Manutenzione di questo file
 - A fine sessione: aggiorna **Stato attuale** e aggiungi a **Decisioni prese** ogni scelta non ovvia fatta durante la sessione.

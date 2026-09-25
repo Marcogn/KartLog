@@ -42,10 +42,13 @@ Il progetto procede per fasi (vedi [`SPEC.md`](SPEC.md) §8 e
   tutti", ricerca sui Pulsanti P, link alla guida dei medaglioni.
 - **fase 6 — Consigliami**: classifica dei Gran Premi/Knockout Tour da
   correre in base agli outfit ancora mancanti, con personaggio
-  consigliato, alternative e cibi rilevanti. La registrazione dei
-  risultati (e il relativo peso nel punteggio) arriva nella fase 7.
+  consigliato, alternative e cibi rilevanti.
+- **fase 7 — Risultati**: registrazione di stelle e piazzamenti per
+  evento, storico consultabile, e un peso opzionale che li fa contare
+  nel punteggio di Consigliami insieme al guadagno di outfit.
 
-Segui [`CHANGELOG.md`](CHANGELOG.md) per lo stato aggiornato fase per fase.
+Manca solo l'export/import dello stato (fase 8). Segui
+[`CHANGELOG.md`](CHANGELOG.md) per lo stato aggiornato fase per fase.
 
 ## Funzionalità previste
 

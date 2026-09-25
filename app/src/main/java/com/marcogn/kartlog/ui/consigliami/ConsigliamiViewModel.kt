@@ -6,10 +6,12 @@ import com.marcogn.kartlog.data.local.dao.ConsigliamiCharacterRow
 import com.marcogn.kartlog.data.local.dao.ConsigliamiDao
 import com.marcogn.kartlog.data.local.dao.ConsigliamiOutfitRow
 import com.marcogn.kartlog.data.local.dao.IdName
+import com.marcogn.kartlog.data.local.dao.UserStateDao
 import com.marcogn.kartlog.data.local.entity.EventEntity
 import com.marcogn.kartlog.data.local.entity.EventStopEntity
 import com.marcogn.kartlog.data.local.entity.FoodGroupCourseEntity
 import com.marcogn.kartlog.data.local.entity.OutfitFoodRuleEntity
+import com.marcogn.kartlog.data.local.entity.RaceResultEntity
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiCharacter
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiEvent
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiFoodCourse
@@ -17,6 +19,7 @@ import com.marcogn.kartlog.domain.consigliami.ConsigliamiOutfit
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiRule
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiUseCase
 import com.marcogn.kartlog.domain.consigliami.RecommendationGroup
+import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.EventType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -33,6 +36,10 @@ data class ConsigliamiUiState(
     val eventFilter: ConsigliamiEventFilter = ConsigliamiEventFilter.BOTH,
     val includeNearby: Boolean = false,
     val onlyUseful: Boolean = true,
+    val resultsEnabled: Boolean = false,
+    val weight: Double = 0.3,
+    val referenceCc: Cc = Cc.CC_150,
+    val bestResultByEvent: Map<String, RaceResultEntity> = emptyMap(),
     val characterNames: Map<String, String> = emptyMap(),
     val courseNames: Map<String, String> = emptyMap(),
     val foodGroupNames: Map<String, String> = emptyMap(),
@@ -49,12 +56,20 @@ private data class RawSeedData(
     val foodGroupNames: Map<String, String>,
 )
 
+private data class ResultsSettings(val enabled: Boolean, val weight: Double, val cc: Cc, val raceResults: List<RaceResultEntity>)
+
 @HiltViewModel
-class ConsigliamiViewModel @Inject constructor(dao: ConsigliamiDao) : ViewModel() {
+class ConsigliamiViewModel @Inject constructor(
+    dao: ConsigliamiDao,
+    userStateDao: UserStateDao,
+) : ViewModel() {
 
     private val eventFilter = MutableStateFlow(ConsigliamiEventFilter.BOTH)
     private val includeNearby = MutableStateFlow(false)
     private val onlyUseful = MutableStateFlow(true)
+    private val resultsEnabled = MutableStateFlow(false)
+    private val weight = MutableStateFlow(0.3)
+    private val referenceCc = MutableStateFlow(Cc.CC_150)
 
     private val rawData = combine(
         combine(dao.characters(), dao.outfits(), dao.rules()) { c, o, r -> Triple(c, o, r) },
@@ -64,16 +79,31 @@ class ConsigliamiViewModel @Inject constructor(dao: ConsigliamiDao) : ViewModel(
         RawSeedData(characters, outfits, rules, foodCourses, events, eventStops, courseNames, foodGroupNames)
     }
 
+    private val resultsSettings = combine(
+        resultsEnabled,
+        weight,
+        referenceCc,
+        userStateDao.allRaceResults(),
+    ) { enabled, w, cc, results -> ResultsSettings(enabled, w, cc, results) }
+
     val uiState: StateFlow<ConsigliamiUiState> = combine(
         rawData,
         eventFilter,
         includeNearby,
         onlyUseful,
-    ) { raw, filter, nearby, useful ->
+        resultsSettings,
+    ) { raw, filter, nearby, useful, results ->
         val eventStopsByEvent = raw.eventStops.groupBy({ it.eventId }, { it.courseId })
         val events = raw.events
             .filter { filter == ConsigliamiEventFilter.BOTH || it.type == filter.toEventType() }
             .map { ConsigliamiEvent(it.id, it.type, it.name, it.order, eventStopsByEvent[it.id].orEmpty()) }
+
+        // bestStars(E, cc) (SPEC §6.3): solo i risultati alla cilindrata di riferimento.
+        val resultsAtCc = results.raceResults.filter { it.cc == results.cc }
+        val bestStarsByEvent = resultsAtCc.groupBy { it.eventId }.mapValues { (_, rows) -> rows.maxOf { it.stars } }
+        val bestResultByEvent = resultsAtCc.groupBy { it.eventId }.mapValues { (_, rows) ->
+            rows.sortedWith(compareByDescending<RaceResultEntity> { it.stars }.thenBy { it.placement ?: Int.MAX_VALUE }).first()
+        }
 
         var groups = ConsigliamiUseCase.compute(
             characters = raw.characters.map { ConsigliamiCharacter(it.id, it.rosterOrder, it.unlocked) },
@@ -82,10 +112,13 @@ class ConsigliamiViewModel @Inject constructor(dao: ConsigliamiDao) : ViewModel(
             foodCourses = raw.foodCourses.map { ConsigliamiFoodCourse(it.foodGroupId, it.courseId, it.presence) },
             events = events,
             includeNearby = nearby,
+            resultsEnabled = results.enabled,
+            weight = results.weight,
+            bestStarsForEvent = { eventId -> bestStarsByEvent[eventId] },
         )
 
-        // Filtro "Solo utili" (SPEC §6.3, default on): nasconde gli eventi a gain 0, mai i gruppi
-        // che restano con almeno un evento utile.
+        // Filtro "Solo utili" (SPEC §6.3, default on): nasconde gli eventi a punteggio 0, mai i
+        // gruppi che restano con almeno un evento utile.
         if (useful) {
             groups = groups.mapNotNull { group ->
                 val kept = group.events.filter { it.score > 0 }
@@ -98,6 +131,10 @@ class ConsigliamiViewModel @Inject constructor(dao: ConsigliamiDao) : ViewModel(
             eventFilter = filter,
             includeNearby = nearby,
             onlyUseful = useful,
+            resultsEnabled = results.enabled,
+            weight = results.weight,
+            referenceCc = results.cc,
+            bestResultByEvent = bestResultByEvent,
             characterNames = raw.characters.associate { it.id to it.name },
             courseNames = raw.courseNames,
             foodGroupNames = raw.foodGroupNames,
@@ -114,6 +151,18 @@ class ConsigliamiViewModel @Inject constructor(dao: ConsigliamiDao) : ViewModel(
 
     fun onOnlyUsefulChanged(value: Boolean) {
         onlyUseful.value = value
+    }
+
+    fun onResultsEnabledChanged(value: Boolean) {
+        resultsEnabled.value = value
+    }
+
+    fun onWeightChanged(value: Double) {
+        weight.value = value
+    }
+
+    fun onReferenceCcChanged(value: Cc) {
+        referenceCc.value = value
     }
 }
 
