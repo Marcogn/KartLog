@@ -28,6 +28,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 
 enum class ConsigliamiEventFilter { CUP, RALLY, BOTH }
 
@@ -43,6 +44,7 @@ data class ConsigliamiUiState(
     val characterNames: Map<String, String> = emptyMap(),
     val courseNames: Map<String, String> = emptyMap(),
     val foodGroupNames: Map<String, String> = emptyMap(),
+    val allEvents: List<EventPickerItem> = emptyList(),
 )
 
 private data class RawSeedData(
@@ -61,7 +63,7 @@ private data class ResultsSettings(val enabled: Boolean, val weight: Double, val
 @HiltViewModel
 class ConsigliamiViewModel @Inject constructor(
     dao: ConsigliamiDao,
-    userStateDao: UserStateDao,
+    private val userStateDao: UserStateDao,
 ) : ViewModel() {
 
     private val eventFilter = MutableStateFlow(ConsigliamiEventFilter.BOTH)
@@ -138,6 +140,9 @@ class ConsigliamiViewModel @Inject constructor(
             characterNames = raw.characters.associate { it.id to it.name },
             courseNames = raw.courseNames,
             foodGroupNames = raw.foodGroupNames,
+            // Non filtrata da eventFilter/"Solo utili": la registrazione risultato deve poter
+            // raggiungere qualunque evento, anche quelli nascosti al momento dalla lista.
+            allEvents = raw.events.sortedBy { it.order }.map { EventPickerItem(it.id, it.name, it.type) },
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ConsigliamiUiState())
 
@@ -163,6 +168,23 @@ class ConsigliamiViewModel @Inject constructor(
 
     fun onReferenceCcChanged(value: Cc) {
         referenceCc.value = value
+    }
+
+    /** Punto di ingresso globale (SPEC §2.6): registra un risultato per un evento a scelta, non solo quello sotto una card visibile. */
+    fun onResultSaved(eventId: String, cc: Cc, stars: Int, placement: Int?, eliminatedAt: Int?, characterId: String?) {
+        viewModelScope.launch {
+            userStateDao.insertRaceResult(
+                RaceResultEntity(
+                    eventId = eventId,
+                    cc = cc,
+                    stars = stars,
+                    placement = placement,
+                    eliminatedAt = eliminatedAt,
+                    characterId = characterId,
+                    timestamp = System.currentTimeMillis(),
+                )
+            )
+        }
     }
 }
 

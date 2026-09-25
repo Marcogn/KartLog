@@ -6,6 +6,27 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Corretta la navigazione dal drawer verso Home.** "Home" nel menu
+  laterale non portava mai alla schermata Home (funzionava solo il tasto
+  Indietro di sistema): il `popUpTo(Destination.Home)` combinato con la
+  navigazione verso lo stesso Home non ripristinava in modo affidabile lo
+  stato salvato. Home ora si raggiunge sempre con un pop completo dello
+  stack e una nuova istanza, senza dipendere da `restoreState`.
+- **Transizioni di navigazione più veloci.** Sostituito il crossfade di
+  default di Navigation Compose (~700ms) con transizioni scorrevoli da
+  300ms allineate a
+  [ThePatientGamerHelper](https://github.com/Marcogn/ThePatientGamerHelper),
+  e aggiunta una guardia (`lifecycleIsResumed()`) su ogni `navigate()`/
+  `popBackStack()` per evitare che un tap durante una transizione atterri
+  sulla schermata sbagliata.
+- **Consigliami: il form di registrazione ora elenca tutti gli eventi.**
+  Il form era raggiungibile solo dal dettaglio di un evento mostrato
+  dalla lista, che di default nasconde con "Solo utili" gli eventi a
+  punteggio 0 — rendendo impossibile registrare un risultato per quegli
+  eventi. Aggiunto un selettore di evento al form e un punto di ingresso
+  globale ("Registra risultato" nella barra in alto di Consigliami), così
+  ogni Gran Premio/Knockout Tour è sempre registrabile.
+
 ## [0.1.1] - 2026-09-25
 
 - **Scaffold iniziale del progetto (SPEC §8, fase 1).** Struttura Gradle,

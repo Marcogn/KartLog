@@ -35,15 +35,26 @@ import com.marcogn.kartlog.R
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.EventType
 
-/** Form di registrazione risultato (SPEC §2.6): bottom sheet, evento fisso (schermata di dettaglio). */
+/** Un evento selezionabile nel form di registrazione (SPEC §2.6), a prescindere dai filtri della lista Consigliami. */
+data class EventPickerItem(val id: String, val name: String, val type: EventType)
+
+/**
+ * Form di registrazione risultato (SPEC §2.6): bottom sheet con **evento** selezionabile, non più
+ * legato a un solo evento fisso — vedi CLAUDE.md, "Aperto" 2026-09-25: la lista Consigliami nasconde
+ * di default gli eventi a punteggio 0 ("Solo utili"), quindi il form dev'essere raggiungibile ed
+ * eventualmente compilabile per **qualsiasi** evento, non solo per quelli mostrati in un dato momento.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RaceResultBottomSheet(
-    eventType: EventType,
+    events: List<EventPickerItem>,
+    initialEventId: String,
     characterNames: Map<String, String>,
-    onSave: (cc: Cc, stars: Int, placement: Int?, eliminatedAt: Int?, characterId: String?) -> Unit,
+    onSave: (eventId: String, cc: Cc, stars: Int, placement: Int?, eliminatedAt: Int?, characterId: String?) -> Unit,
     onDismiss: () -> Unit,
 ) {
+    var eventId by remember { mutableStateOf(initialEventId) }
+    var eventMenuExpanded by remember { mutableStateOf(false) }
     var cc by remember { mutableStateOf(Cc.CC_150) }
     var stars by remember { mutableStateOf(0) }
     // Il GP corre sempre un giro intero: solo posizione. Il KO può finire con un'eliminazione.
@@ -53,13 +64,41 @@ fun RaceResultBottomSheet(
     var characterId by remember { mutableStateOf<String?>(null) }
     var characterMenuExpanded by remember { mutableStateOf(false) }
 
+    val selectedEvent = events.firstOrNull { it.id == eventId } ?: events.firstOrNull()
+    val eventType = selectedEvent?.type ?: EventType.CUP
     val placement = placementText.toIntOrNull()?.takeIf { it in 1..24 }
     val checkpoint = checkpointText.toIntOrNull()?.takeIf { it > 0 }
-    val canSave = if (eliminatedMode) checkpoint != null else placement != null
+    val canSave = selectedEvent != null && if (eliminatedMode) checkpoint != null else placement != null
 
     ModalBottomSheet(onDismissRequest = onDismiss) {
         Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Text(stringResource(R.string.consigliami_register_result), style = MaterialTheme.typography.titleLarge)
+
+            ExposedDropdownMenuBox(expanded = eventMenuExpanded, onExpandedChange = { eventMenuExpanded = it }) {
+                OutlinedTextField(
+                    value = selectedEvent?.name.orEmpty(),
+                    onValueChange = {},
+                    readOnly = true,
+                    label = { Text(stringResource(R.string.consigliami_result_event_label)) },
+                    trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = eventMenuExpanded) },
+                    modifier = Modifier.fillMaxWidth().menuAnchor(),
+                )
+                DropdownMenu(expanded = eventMenuExpanded, onDismissRequest = { eventMenuExpanded = false }) {
+                    events.forEach { option ->
+                        val typeLabel = stringResource(
+                            if (option.type == EventType.CUP) R.string.consigliami_type_cup else R.string.consigliami_type_rally
+                        )
+                        DropdownMenuItem(
+                            text = { Text("${option.name} ($typeLabel)") },
+                            onClick = {
+                                eventId = option.id
+                                if (option.type != EventType.RALLY) eliminatedMode = false
+                                eventMenuExpanded = false
+                            },
+                        )
+                    }
+                }
+            }
 
             Text(stringResource(R.string.consigliami_reference_cc), style = MaterialTheme.typography.labelMedium)
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -141,7 +180,8 @@ fun RaceResultBottomSheet(
                 Button(
                     enabled = canSave,
                     onClick = {
-                        onSave(cc, stars, if (eliminatedMode) null else placement, if (eliminatedMode) checkpoint else null, characterId)
+                        val id = selectedEvent?.id ?: return@Button
+                        onSave(id, cc, stars, if (eliminatedMode) null else placement, if (eliminatedMode) checkpoint else null, characterId)
                     },
                 ) { Text(stringResource(R.string.consigliami_result_save)) }
             }

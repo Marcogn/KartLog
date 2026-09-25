@@ -1,5 +1,14 @@
 package com.marcogn.kartlog.ui.navigation
 
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -25,6 +34,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -40,6 +51,42 @@ import com.marcogn.kartlog.ui.skin.SkinDetailScreen
 import com.marcogn.kartlog.ui.skin.SkinScreen
 import kotlinx.coroutines.launch
 
+// Una NavBackStackEntry raggiunge RESUMED solo quando la sua transizione di enter/exit è
+// completamente finita ed è stabile in cima allo stack. Guardare ogni navigate()/popBackStack()
+// dietro questo controllo, sull'entry *specifica* proprietaria della callback, è la soluzione
+// raccomandata per un doppio tap rapido (es. indietro e poi subito un'altra destinazione) che
+// altrimenti atterrerebbe su una schermata ancora a metà transizione invece di quella voluta —
+// stesso fix di ThePatientGamerHelperNavGraph.kt (vedi CLAUDE.md, decisione fase 1, "da
+// rivalutare se emergono problemi di doppio tap": qui sono emersi davvero, dopo il rilascio 0.1.1).
+private fun NavBackStackEntry.lifecycleIsResumed() = lifecycle.currentState == Lifecycle.State.RESUMED
+
+private const val NAV_ANIM_DURATION_MS = 300
+
+private val navEnterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition = {
+    slideInHorizontally(
+        animationSpec = tween(NAV_ANIM_DURATION_MS, easing = FastOutSlowInEasing),
+        initialOffsetX = { fullWidth -> fullWidth },
+    ) + fadeIn(animationSpec = tween(NAV_ANIM_DURATION_MS))
+}
+private val navExitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition = {
+    slideOutHorizontally(
+        animationSpec = tween(NAV_ANIM_DURATION_MS, easing = FastOutSlowInEasing),
+        targetOffsetX = { fullWidth -> -fullWidth / 4 },
+    ) + fadeOut(animationSpec = tween(NAV_ANIM_DURATION_MS))
+}
+private val navPopEnterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition = {
+    slideInHorizontally(
+        animationSpec = tween(NAV_ANIM_DURATION_MS, easing = FastOutSlowInEasing),
+        initialOffsetX = { fullWidth -> -fullWidth / 4 },
+    ) + fadeIn(animationSpec = tween(NAV_ANIM_DURATION_MS))
+}
+private val navPopExitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition = {
+    slideOutHorizontally(
+        animationSpec = tween(NAV_ANIM_DURATION_MS, easing = FastOutSlowInEasing),
+        targetOffsetX = { fullWidth -> fullWidth },
+    ) + fadeOut(animationSpec = tween(NAV_ANIM_DURATION_MS))
+}
+
 /** ModalNavigationDrawer con hamburger sempre disponibile, voci per SPEC §2.1. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -49,11 +96,31 @@ fun KartLogNavGraph(navController: NavHostController = rememberNavController()) 
 
     val openDrawer: () -> Unit = { scope.launch { drawerState.open() } }
     val navigateFromDrawer: (Destination) -> Unit = { destination ->
-        scope.launch { drawerState.close() }
-        navController.navigate(destination) {
-            popUpTo(Destination.Home) { saveState = true }
-            launchSingleTop = true
-            restoreState = true
+        // Guardia contro un tap sul drawer che atterra mentre la schermata corrente è ancora a
+        // metà transizione (vedi lifecycleIsResumed() sopra) — stessa corsa di un doppio tap
+        // avanti/indietro.
+        if (navController.currentBackStackEntry?.lifecycleIsResumed() != false) {
+            scope.launch { drawerState.close() }
+            if (destination == Destination.Home) {
+                // Non un popUpTo(Home){saveState=true} + restoreState=true come le altre voci:
+                // qui il target DELLA navigazione e il target del popUpTo coincidono, e Home a
+                // quel punto non è quasi mai più in cima allo stack (l'ha già lasciato con lo
+                // stesso saveState quando si è navigato altrove) — un caso limite in cui
+                // Navigation Compose non ripristina in modo affidabile lo stato salvato di se
+                // stessa. Risultato osservato: "Home" nel drawer non portava mai a Home. Si pop
+                // sempre fino in fondo e si spinge una Home nuova, senza fare affidamento su
+                // save/restoreState.
+                navController.navigate(Destination.Home) {
+                    popUpTo<Destination.Home> { inclusive = true }
+                    launchSingleTop = true
+                }
+            } else {
+                navController.navigate(destination) {
+                    popUpTo(Destination.Home) { saveState = true }
+                    launchSingleTop = true
+                    restoreState = true
+                }
+            }
         }
     }
 
@@ -113,24 +180,33 @@ fun KartLogNavGraph(navController: NavHostController = rememberNavController()) 
             }
         },
     ) {
-        NavHost(navController = navController, startDestination = Destination.Home) {
-            composable<Destination.Home> {
+        NavHost(
+            navController = navController,
+            startDestination = Destination.Home,
+            enterTransition = navEnterTransition,
+            exitTransition = navExitTransition,
+            popEnterTransition = navPopEnterTransition,
+            popExitTransition = navPopExitTransition,
+        ) {
+            composable<Destination.Home> { entry ->
                 HomeScreen(
                     onMenuClick = openDrawer,
-                    onSkinClick = { navController.navigate(Destination.Skin) },
-                    onMedallionsClick = { navController.navigate(Destination.PeachMedallions) },
-                    onPSwitchesClick = { navController.navigate(Destination.PSwitches) },
-                    onConsigliamiClick = { navController.navigate(Destination.Consigliami) },
+                    onSkinClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.Skin) },
+                    onMedallionsClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.PeachMedallions) },
+                    onPSwitchesClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.PSwitches) },
+                    onConsigliamiClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.Consigliami) },
                 )
             }
-            composable<Destination.Skin> {
+            composable<Destination.Skin> { entry ->
                 SkinScreen(
                     onMenuClick = openDrawer,
-                    onCharacterClick = { characterId -> navController.navigate(Destination.SkinDetail(characterId)) },
+                    onCharacterClick = { characterId ->
+                        if (entry.lifecycleIsResumed()) navController.navigate(Destination.SkinDetail(characterId))
+                    },
                 )
             }
-            composable<Destination.SkinDetail> {
-                SkinDetailScreen(onBack = { navController.popBackStack() })
+            composable<Destination.SkinDetail> { entry ->
+                SkinDetailScreen(onBack = { if (entry.lifecycleIsResumed()) navController.popBackStack() })
             }
             composable<Destination.PeachMedallions> {
                 PeachMedallionsScreen(onMenuClick = openDrawer)
@@ -138,16 +214,18 @@ fun KartLogNavGraph(navController: NavHostController = rememberNavController()) 
             composable<Destination.PSwitches> {
                 PSwitchesScreen(onMenuClick = openDrawer)
             }
-            composable<Destination.Consigliami> {
+            composable<Destination.Consigliami> { entry ->
                 ConsigliamiScreen(
                     onMenuClick = openDrawer,
                     onEventClick = { eventId, includeNearby ->
-                        navController.navigate(Destination.ConsigliamiDetail(eventId, includeNearby))
+                        if (entry.lifecycleIsResumed()) {
+                            navController.navigate(Destination.ConsigliamiDetail(eventId, includeNearby))
+                        }
                     },
                 )
             }
-            composable<Destination.ConsigliamiDetail> {
-                ConsigliamiDetailScreen(onBack = { navController.popBackStack() })
+            composable<Destination.ConsigliamiDetail> { entry ->
+                ConsigliamiDetailScreen(onBack = { if (entry.lifecycleIsResumed()) navController.popBackStack() })
             }
             composable<Destination.Settings> {
                 SettingsScreen(onMenuClick = openDrawer)

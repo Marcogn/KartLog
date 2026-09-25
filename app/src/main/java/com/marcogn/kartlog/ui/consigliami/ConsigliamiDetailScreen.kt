@@ -100,10 +100,11 @@ fun ConsigliamiDetailScreen(
 
     if (showForm) {
         RaceResultBottomSheet(
-            eventType = state.eventType,
+            events = state.allEvents,
+            initialEventId = viewModel.eventId,
             characterNames = state.characterNames,
-            onSave = { cc, stars, placement, eliminatedAt, characterId ->
-                viewModel.onResultSaved(cc, stars, placement, eliminatedAt, characterId)
+            onSave = { eventId, cc, stars, placement, eliminatedAt, characterId ->
+                viewModel.onResultSaved(eventId, cc, stars, placement, eliminatedAt, characterId)
                 showForm = false
             },
             onDismiss = { showForm = false },
