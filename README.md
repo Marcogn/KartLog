@@ -40,7 +40,10 @@ Il progetto procede per fasi (vedi [`SPEC.md`](SPEC.md) §8 e
   personaggio.
 - **fase 5 — Monete Peach e Pulsanti P**: liste per regione con "segna
   tutti", ricerca sui Pulsanti P, link alla guida dei medaglioni.
-  Consigliami resta placeholder: arriva nella fase 6.
+- **fase 6 — Consigliami**: classifica dei Gran Premi/Knockout Tour da
+  correre in base agli outfit ancora mancanti, con personaggio
+  consigliato, alternative e cibi rilevanti. La registrazione dei
+  risultati (e il relativo peso nel punteggio) arriva nella fase 7.
 
 Segui [`CHANGELOG.md`](CHANGELOG.md) per lo stato aggiornato fase per fase.
 
@@ -121,7 +124,7 @@ app/src/main/java/com/marcogn/kartlog/
 ├── ui/                  schermate Compose (home, skin, medaglioni, pulsanti P,
 │                        consigliami, impostazioni) + tema + navigazione
 ├── data/                Room (entity/dao), DTO e repository del seed (fase 3)
-└── domain/              modelli puri; l'algoritmo di Consigliami arriva in fase 6
+└── domain/              modelli puri e l'algoritmo di Consigliami (fase 6), nessuna dipendenza Android
 ```
 
 ## Documentazione

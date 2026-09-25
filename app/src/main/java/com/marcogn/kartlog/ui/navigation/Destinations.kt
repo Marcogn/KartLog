@@ -24,6 +24,10 @@ sealed interface Destination {
     @Serializable
     data object Consigliami : Destination
 
+    /** Dettaglio evento (SPEC §2.5), raggiunto da [Consigliami]. */
+    @Serializable
+    data class ConsigliamiDetail(val eventId: String, val includeNearby: Boolean) : Destination
+
     @Serializable
     data object Settings : Destination
 }
