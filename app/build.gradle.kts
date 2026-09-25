@@ -99,6 +99,19 @@ ksp {
     arg("room.schemaLocation", "$projectDir/schemas")
 }
 
+// `assets.srcDir("$projectDir/schemas")` sopra punta a una cartella semplice: KSP ci scrive lo
+// schema come effetto collaterale, non come output dichiarato del task, quindi Gradle non deduce
+// da solo che mergeDebugAssets va dopo kspDebugKotlin. Dipendenza esplicita per evitare che, nella
+// stessa build, l'asset merge legga la cartella schemas prima che KSP l'abbia scritta.
+// NB: `app/schemas/` va comunque versionata (vedi Decisioni prese in CLAUDE.md) — Room non la
+// rigenera per intero a ogni build, accumula un file per versione nel tempo, quindi dichiararla
+// come *output* di kspDebugKotlin (tentato in una versione precedente di questa fix) sarebbe
+// sbagliato: Gradle cancellerebbe gli schemi delle versioni precedenti non riscritti dall'ultima
+// esecuzione.
+tasks.matching { it.name == "mergeDebugAssets" }.configureEach {
+    dependsOn("kspDebugKotlin")
+}
+
 // --- Dati di gioco (SPEC §5.4) -----------------------------------------------------------
 
 val seedDir = rootProject.file("seed")
