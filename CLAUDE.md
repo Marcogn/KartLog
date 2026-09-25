@@ -65,15 +65,17 @@ Flag della build release: `-PacceptSeedChanges`, `-PofflineSeed`, `-PpythonExec=
 - Monete Peach/Pulsanti P: stesso pattern di `SkinDao` (`MedallionsDao`/`PSwitchesDao`, una query con JOIN per schermata) e stesso componente condiviso `ui/common/RegionSection.kt` (intestazione regione + dialog di conferma "segna tutti") per le due schermate, che sono strutturalmente identiche (10 regioni collassabili).
 - Consigliami: l'algoritmo (SPEC §6) vive in `domain/consigliami/` come Kotlin puro (`ConsigliamiUseCase`, nessuna dipendenza Android/Room), testato con dati sintetici in `ConsigliamiUseCaseTest`. `ConsigliamiDao` espone solo `Flow` sulle tabelle grezze; `ConsigliamiViewModel` fa da ponte, ricombinando i `Flow` e rieseguendo l'algoritmo a ogni cambiamento — mai logica di dominio nel ViewModel o nel DAO.
 - Risultati: `bestStars(E, cc)` si calcola nel ViewModel (`ConsigliamiViewModel`) da `UserStateDao.allRaceResults()`, mai in una query SQL — il "miglior risultato" per una card è per stelle decrescenti poi posizione crescente, una decisione di prodotto non un dettaglio di persistenza.
+- Backup: `data/backup/` (non `domain/`) perché è solo mappatura dati↔JSON, nessun algoritmo puro da isolare. Un import **sostituisce** tutto lo stato utente (mai un merge) e valida ogni ID contro il seed corrente prima di scrivere, riportando gli sconosciuti invece di scartarli.
 
 ## Stato attuale
 <!-- Aggiornare a OGNI fine sessione: fase corrente, cosa è fatto, cosa resta, problemi aperti. -->
-- **Fase corrente:** 7, Risultati (SPEC §8/§2.6/§6.3, `docs/PHASES.md`). Completata: bottom sheet di registrazione (cilindrata, stelle, posizione o eliminazione, personaggio opzionale), storico con cancellazione, sezione "Pesa i risultati" (switch, slider, cilindrata di riferimento), punteggio pesato e `worstFirst` negli spareggi solo a risultati attivi. Test "con w=1 l'ordinamento dipende solo da improvement" verificato anche sui dati reali (rimasto aperto dalla fase 6).
+- **Fase corrente:** 8, Backup (SPEC §8/§4, `docs/PHASES.md`) — **ultima fase del roadmap**. Completata: export/import JSON dello stato utente via SAF dalla schermata Impostazioni, formato versionato, import che sostituisce tutto lo stato validando ogni ID contro il seed corrente (sconosciuti riportati, mai scartati in silenzio). Aggiunta anche l'attribuzione dati (SPEC §5.5, CC BY-SA 4.0 + `revid`) nella stessa schermata, non assegnata a nessuna fase in `docs/PHASES.md` ma parte dello stesso drawer "Impostazioni / Info".
+- **Fase 7** (Risultati): completata — bottom sheet di registrazione, storico, peso dei risultati in Consigliami.
 - **Fase 6** (Consigliami): completata — algoritmo puro con tutti i test di SPEC §6.5, lista, dettaglio.
-- **Fasi 3-5** (Seed nell'app, Skin, Monete/Pulsanti P): completate — vedi `docs/PHASES.md` per il dettaglio.
-- **Fasi 1-2** (Scaffold, verifica seedgen): completate.
-- **Secret GitHub:** tutti e 5 presenti. La prima release reale resta rimandata a fine fasi, come richiesto dall'autore.
-- **Aperto:** il percorso di rete reale di `generateSeed` non è stato eseguito end-to-end (l'ambiente di sviluppo non ha `python3-venv`/`ensurepip` di sistema, niente sudo). Nessun emulatore/dispositivo disponibile in questo ambiente: nessuna schermata è stata verificata visivamente, solo build/lint/test JVM (Robolectric). Immagini dei personaggi: ancora nessuna alternativa originale ai render Nintendo.
+- **Fasi 1-5** (Scaffold, seedgen, seed nell'app, Skin, Monete/Pulsanti P): completate — vedi `docs/PHASES.md` per il dettaglio.
+- **Tutte le fasi di `SPEC.md` §8 sono completate.** Non ho tagliato una release: l'autore ha detto che se ne occupa lui, verificando il tutto.
+- **Secret GitHub:** tutti e 5 presenti. `versionCode`/`versionName` fermi a `1`/`0.1.0` (punto di partenza dello scaffold, fase 1): da rivedere alla prima release reale.
+- **Aperto:** il percorso di rete reale di `generateSeed` non è stato eseguito end-to-end in nessuna sessione (l'ambiente di sviluppo non ha `python3-venv`/`ensurepip` di sistema, niente sudo) — solo verificato con un eseguibile finto al posto di seedgen. Nessun emulatore/dispositivo Android disponibile: **nessuna schermata di nessuna fase è mai stata verificata visivamente**, solo build/lint/test JVM (Robolectric). Immagini dei personaggi: ancora nessuna alternativa originale ai render Nintendo (placeholder con iniziali su tutte le schermate).
 
 ## Decisioni prese
 <!-- Una riga per decisione: data, cosa, perché. Aggiungere, non riscrivere. -->
@@ -114,6 +116,9 @@ Flag della build release: `-PacceptSeedChanges`, `-PofflineSeed`, `-PpythonExec=
 - 2026-09-25 · Pulsante "Registra risultato" (SPEC §2.5, dettaglio evento) **non aggiunto**: punterebbe a una funzionalità che non esiste ancora (fase 7); un bottone che non fa nulla è peggio di nessun bottone.
 - 2026-09-25 · Fase 7: l'eliminazione (checkpoint N invece di posizione) è selezionabile solo per i Knockout Tour, mai per i Gran Premi — SPEC §2.6 la prevede solo per KO ("GP: 1–24; KO: 1–24 oppure eliminato al checkpoint N"), un GP corre sempre un giro intero.
 - 2026-09-25 · Fase 7: "miglior risultato" per una card/evento = stelle decrescenti, poi posizione crescente (non l'ultimo registrato né una media) — coerente con SPEC §6.3 che usa `bestStars`, non una media.
+- 2026-09-25 · Fase 8: l'import **sostituisce** interamente lo stato utente (come il restore di ThePatientGamerHelper), non lo unisce a quello presente — "l'import ripristina tutto" (fatto quando) si legge come ripristino completo, non merge. Gli outfit di default rientrano da soli al prossimo avvio se un backup vecchio non li includeva (`ensureDefaultOutfitsOwned()` è già idempotente).
+- 2026-09-25 · Fase 8: l'attribuzione dati (SPEC §5.5) aggiunta nella stessa schermata Impostazioni/Info insieme al backup — nessuna fase in `docs/PHASES.md` la nominava esplicitamente, ma condivide la voce di drawer (SPEC §2.1) ed era l'ultima occasione per completarla prima della fine del roadmap.
+- 2026-09-25 · Fase 8, ultima del roadmap: **nessuna release tagliata**. L'autore ha chiesto esplicitamente di arrivare fino alla fine e occuparsi lui della release e della verifica finale.
 
 ## Manutenzione di questo file
 - A fine sessione: aggiorna **Stato attuale** e aggiungi a **Decisioni prese** ogni scelta non ovvia fatta durante la sessione.

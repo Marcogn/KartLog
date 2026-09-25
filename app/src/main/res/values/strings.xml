@@ -85,6 +85,11 @@
     <string name="consigliami_history_eliminated_format">Eliminato al checkpoint %1$d</string>
     <string name="cd_delete">Elimina</string>
     <string name="settings_title">Impostazioni / Info</string>
+    <string name="settings_backup_section">Backup</string>
+    <string name="settings_export_backup">Esporta backup</string>
+    <string name="settings_import_backup">Importa backup</string>
+    <string name="settings_info_section">Info</string>
+    <string name="settings_source_revid_format">%1$s · rev %2$d</string>
 
     <string name="placeholder_coming_soon">Schermata in arrivo</string>
 </resources>
