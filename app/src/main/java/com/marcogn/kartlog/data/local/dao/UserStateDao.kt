@@ -28,8 +28,22 @@ interface UserStateDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun setCharacterUnlock(entity: CharacterUnlockEntity)
 
+    /** Null = nessuna riga: SPEC §2.3, un personaggio è sbloccato di default. */
     @Query("SELECT unlocked FROM character_unlocks WHERE characterId = :characterId")
-    suspend fun isCharacterUnlocked(characterId: String): Boolean?
+    fun observeCharacterUnlock(characterId: String): Flow<Boolean?>
+
+    /**
+     * L'outfit di default non è spuntabile ed è sempre posseduto (SPEC §2.3): garantisce che ogni
+     * outfit di default abbia una riga in [OwnedOutfitEntity], senza toccare gli altri. Idempotente,
+     * va richiamata a ogni avvio (vedi [com.marcogn.kartlog.data.seed.SeedRepository]).
+     */
+    @Query(
+        """
+        INSERT OR IGNORE INTO owned_outfits (outfitId)
+        SELECT id FROM outfits WHERE isDefault = 1
+        """
+    )
+    suspend fun ensureDefaultOutfitsOwned()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun markMedallionCollected(entity: CollectedMedallionEntity)

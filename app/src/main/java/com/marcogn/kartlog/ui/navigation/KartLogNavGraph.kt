@@ -35,6 +35,7 @@ import com.marcogn.kartlog.ui.home.HomeScreen
 import com.marcogn.kartlog.ui.medallions.PeachMedallionsScreen
 import com.marcogn.kartlog.ui.pswitches.PSwitchesScreen
 import com.marcogn.kartlog.ui.settings.SettingsScreen
+import com.marcogn.kartlog.ui.skin.SkinDetailScreen
 import com.marcogn.kartlog.ui.skin.SkinScreen
 import kotlinx.coroutines.launch
 
@@ -122,7 +123,13 @@ fun KartLogNavGraph(navController: NavHostController = rememberNavController()) 
                 )
             }
             composable<Destination.Skin> {
-                SkinScreen(onMenuClick = openDrawer)
+                SkinScreen(
+                    onMenuClick = openDrawer,
+                    onCharacterClick = { characterId -> navController.navigate(Destination.SkinDetail(characterId)) },
+                )
+            }
+            composable<Destination.SkinDetail> {
+                SkinDetailScreen(onBack = { navController.popBackStack() })
             }
             composable<Destination.PeachMedallions> {
                 PeachMedallionsScreen(onMenuClick = openDrawer)

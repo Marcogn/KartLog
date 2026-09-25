@@ -3,6 +3,7 @@ package com.marcogn.kartlog.data.seed
 import com.marcogn.kartlog.data.local.dao.SeedContent
 import com.marcogn.kartlog.data.local.dao.SeedDao
 import com.marcogn.kartlog.data.local.dao.SeedMetaDao
+import com.marcogn.kartlog.data.local.dao.UserStateDao
 import com.marcogn.kartlog.data.local.entity.AreaEntity
 import com.marcogn.kartlog.data.local.entity.CharacterEntity
 import com.marcogn.kartlog.data.local.entity.CourseEntity
@@ -31,16 +32,22 @@ class SeedRepository @Inject constructor(
     private val assets: SeedAssetLoader,
     private val seedDao: SeedDao,
     private val seedMetaDao: SeedMetaDao,
+    private val userStateDao: UserStateDao,
 ) {
 
-    /** No-op se il `seedVersion` degli asset è già quello caricato in Room. */
+    /**
+     * Sostituisce i dati seed se il `seedVersion` degli asset è cambiato, poi garantisce
+     * comunque che ogni outfit di default risulti posseduto (SPEC §2.3) — anche quando il
+     * reseed è un no-op, per coprire la primissima esecuzione dopo l'installazione.
+     */
     suspend fun reseedIfNeeded() {
         val meta = assets.readMeta() ?: return
         val loadedVersion = seedMetaDao.getSeedVersion()
-        if (loadedVersion == meta.seedVersion) return
-
-        seedDao.replaceAll(buildSeedContent())
-        seedMetaDao.setSeedVersion(SeedMetaEntity(seedVersion = meta.seedVersion))
+        if (loadedVersion != meta.seedVersion) {
+            seedDao.replaceAll(buildSeedContent())
+            seedMetaDao.setSeedVersion(SeedMetaEntity(seedVersion = meta.seedVersion))
+        }
+        userStateDao.ensureDefaultOutfitsOwned()
     }
 
     private fun buildSeedContent(): SeedContent = SeedContent(

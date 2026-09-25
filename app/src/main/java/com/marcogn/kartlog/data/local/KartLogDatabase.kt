@@ -5,6 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.marcogn.kartlog.data.local.dao.SeedDao
 import com.marcogn.kartlog.data.local.dao.SeedMetaDao
+import com.marcogn.kartlog.data.local.dao.SkinDao
 import com.marcogn.kartlog.data.local.dao.UserStateDao
 import com.marcogn.kartlog.data.local.entity.AreaEntity
 import com.marcogn.kartlog.data.local.entity.CharacterEntity
@@ -56,4 +57,5 @@ abstract class KartLogDatabase : RoomDatabase() {
     abstract fun seedDao(): SeedDao
     abstract fun seedMetaDao(): SeedMetaDao
     abstract fun userStateDao(): UserStateDao
+    abstract fun skinDao(): SkinDao
 }

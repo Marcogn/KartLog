@@ -63,3 +63,13 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
   (`-PofflineSeed` per validare solo `seed/` versionato senza rete). Il
   build `debug` resta completamente offline: copia solo i JSON già
   versionati (`copySeedAssets`).
+- **Schermata Skin funzionante (SPEC §2.3, fase 8, fase 4).** Griglia a 2
+  colonne dei 24 personaggi con contatore `ottenuti/totali`; chi ha
+  tutti gli outfit si attenua e va in fondo alla griglia, con filtro
+  Tutti/Incompleti e ordinamento roster/alfabetico/%completamento.
+  Dettaglio personaggio: switch "Sbloccato" (default acceso), lista
+  outfit con checkbox e i gruppi di cibo che li sbloccano ("cibo
+  sconosciuto" se non ce ne sono), outfit di default sempre mostrato
+  come posseduto e non spuntabile. Spuntare un outfit aggiorna subito
+  sia il contatore del personaggio sia quello della Home (stesse righe
+  in `owned_outfits`, SPEC §9).
