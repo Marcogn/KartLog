@@ -7,7 +7,10 @@
 characters:
   mario:          { name: "Mario" }
   luigi:          { name: "Luigi" }
-  peach:          { name: "Peach", aliases: ["Princess Peach"] }
+  # wikiPage: "Peach" è una pagina di redirect verso "Princess Peach" (l'articolo vero, con la
+  # tabella "Names in other languages"): richiesto direttamente per evitare che il nome del file di
+  # fixture (che usa il titolo RISOLTO) non corrisponda al titolo richiesto da sources.yaml/aliases.yaml.
+  peach:          { name: "Peach", aliases: ["Princess Peach"], wikiPage: "Princess Peach" }
   daisy:          { name: "Daisy", aliases: ["Princess Daisy"] }
   yoshi:          { name: "Yoshi" }
   donkey_kong:    { name: "Donkey Kong", aliases: ["DK"] }
@@ -31,7 +34,11 @@ characters:
   baby_rosalina:  { name: "Baby Rosalina" }
 
 # I 30 corsi principali. "aliases" contiene i titoli di pagina a cui puntano i link del wiki
-# (attributo title dei tag <a>), che spesso hanno un disambiguatore tra parentesi.
+# (attributo title dei tag <a>), che spesso hanno un disambiguatore tra parentesi. "wikiPage"
+# (presente solo quando diverso da "name") è la pagina da cui seedgen/i18n.py estrae il nome
+# ufficiale in italiano: non sempre coincide con un alias qui sopra, perché molti corsi riappaiono
+# da giochi precedenti e il titolo senza disambiguatore può essere una pagina di disambiguazione o
+# panoramica multi-gioco, non l'articolo con la tabella "Names in other languages" giusta.
 courses:
   mario_bros_circuit:   { name: "Mario Bros. Circuit" }
   crown_city:           { name: "Crown City" }
@@ -39,30 +46,34 @@ courses:
   dk_spaceport:         { name: "DK Spaceport" }
   desert_hills:         { name: "Desert Hills" }
   shy_guy_bazaar:       { name: "Shy Guy Bazaar" }
-  wario_stadium:        { name: "Wario Stadium", aliases: ["Wario Stadium (Mario Kart 64)", "N64 Wario Stadium"] }
+  wario_stadium:        { name: "Wario Stadium", aliases: ["Wario Stadium (Mario Kart 64)", "N64 Wario Stadium"], wikiPage: "Wario Stadium (Mario Kart 64)" }
   airship_fortress:     { name: "Airship Fortress" }
   dk_pass:              { name: "DK Pass" }
   starview_peak:        { name: "Starview Peak" }
   sky_high_sundae:      { name: "Sky-High Sundae" }
   wario_shipyard:       { name: "Wario Shipyard" }
-  koopa_troopa_beach:   { name: "Koopa Troopa Beach", aliases: ["Koopa Troopa Beach (Super Mario Kart)"] }
+  # wikiPage: "Koopa Beach" (non un alias qui sopra) è la pagina di disambiguazione del nome, ma è
+  # anche l'unica con una tabella "Names in other languages" propria per il nome attuale (citazione
+  # dell'annuncio di Mario Kart World, aprile 2025) — le pagine per singolo gioco (Super Mario Kart,
+  # Mario Kart 64) hanno traduzioni storiche diverse, non quella corrente.
+  koopa_troopa_beach:   { name: "Koopa Troopa Beach", aliases: ["Koopa Troopa Beach (Super Mario Kart)"], wikiPage: "Koopa Beach" }
   faraway_oasis:        { name: "Faraway Oasis" }
   peach_stadium:        { name: "Peach Stadium" }
   peach_beach:          { name: "Peach Beach" }
   salty_salty_speedway: { name: "Salty Salty Speedway" }
   dino_dino_jungle:     { name: "Dino Dino Jungle" }
   great_q_block_ruins:  { name: "Great ? Block Ruins" }
-  cheep_cheep_falls:    { name: "Cheep Cheep Falls", aliases: ["Cheep Cheep Falls (race course)"] }
+  cheep_cheep_falls:    { name: "Cheep Cheep Falls", aliases: ["Cheep Cheep Falls (race course)"], wikiPage: "Cheep Cheep Falls (race course)" }
   dandelion_depths:     { name: "Dandelion Depths" }
   boo_cinema:           { name: "Boo Cinema" }
   dry_bones_burnout:    { name: "Dry Bones Burnout" }
   moo_moo_meadows:      { name: "Moo Moo Meadows" }
   choco_mountain:       { name: "Choco Mountain" }
   toads_factory:        { name: "Toad's Factory" }
-  bowsers_castle:       { name: "Bowser's Castle", aliases: ["Bowser's Castle (Mario Kart World)"] }
+  bowsers_castle:       { name: "Bowser's Castle", aliases: ["Bowser's Castle (Mario Kart World)"], wikiPage: "Bowser's Castle (Mario Kart World)" }
   acorn_heights:        { name: "Acorn Heights" }
-  mario_circuit:        { name: "Mario Circuit", aliases: ["Mario Circuit (Mario Kart World)"] }
-  rainbow_road:         { name: "Rainbow Road", aliases: ["Rainbow Road (Mario Kart World)"] }
+  mario_circuit:        { name: "Mario Circuit", aliases: ["Mario Circuit (Mario Kart World)"], wikiPage: "Mario Circuit (Mario Kart World)" }
+  rainbow_road:         { name: "Rainbow Road", aliases: ["Rainbow Road (Mario Kart World)"], wikiPage: "Rainbow Road (Mario Kart World)" }
 
 # Equivalenze dichiarate dalla pagina Dash Food: "Baby Peach, Baby Daisy, and Baby Rosalina always get
 # the same outfits as each other from a Dash Food, as do Toad and Toadette (with Burger Bud and Soft Server

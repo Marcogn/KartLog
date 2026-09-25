@@ -3,151 +3,181 @@
     {
       "id": "mario_bros_circuit",
       "name": "Mario Bros. Circuit",
+      "nameIt": "Circuito Mario Bros.",
       "regionId": "mesa"
     },
     {
       "id": "crown_city",
       "name": "Crown City",
+      "nameIt": "Trofea",
       "regionId": "southern_sea"
     },
     {
       "id": "whistlestop_summit",
       "name": "Whistlestop Summit",
+      "nameIt": "Monte Rotaia",
       "regionId": "mesa"
     },
     {
       "id": "dk_spaceport",
       "name": "DK Spaceport",
+      "nameIt": "Astroparco di DK",
       "regionId": "southern_sea"
     },
     {
       "id": "desert_hills",
       "name": "Desert Hills",
+      "nameIt": "Deserto Picchiasol",
       "regionId": "desert"
     },
     {
       "id": "shy_guy_bazaar",
       "name": "Shy Guy Bazaar",
+      "nameIt": "Bazar Tipo Timido",
       "regionId": "desert"
     },
     {
       "id": "wario_stadium",
       "name": "Wario Stadium",
+      "nameIt": "Stadio di Wario",
       "regionId": "mesa"
     },
     {
       "id": "airship_fortress",
       "name": "Airship Fortress",
+      "nameIt": "Fortezza Volante",
       "regionId": "volcanic"
     },
     {
       "id": "dk_pass",
       "name": "DK Pass",
+      "nameIt": "Vette di DK",
       "regionId": "snow"
     },
     {
       "id": "starview_peak",
       "name": "Starview Peak",
+      "nameIt": "Via celeste",
       "regionId": "snow"
     },
     {
       "id": "sky_high_sundae",
       "name": "Sky-High Sundae",
+      "nameIt": "Cieli stracciatella",
       "regionId": "snow"
     },
     {
       "id": "wario_shipyard",
       "name": "Wario Shipyard",
+      "nameIt": "Galeone di Wario",
       "regionId": "eastern_sea"
     },
     {
       "id": "koopa_troopa_beach",
       "name": "Koopa Troopa Beach",
+      "nameIt": "Spiaggia Koopa",
       "regionId": "southern_sea"
     },
     {
       "id": "faraway_oasis",
       "name": "Faraway Oasis",
+      "nameIt": "Savana Gincana",
       "regionId": "savanna_jungle"
     },
     {
       "id": "peach_stadium",
       "name": "Peach Stadium",
+      "nameIt": "Stadio di Peach",
       "regionId": "central_grassland"
     },
     {
       "id": "peach_beach",
       "name": "Peach Beach",
+      "nameIt": "Spiaggia di Peach",
       "regionId": "eastern_sea"
     },
     {
       "id": "salty_salty_speedway",
       "name": "Salty Salty Speedway",
+      "nameIt": "Laguna Acquasalata",
       "regionId": "eastern_sea"
     },
     {
       "id": "dino_dino_jungle",
       "name": "Dino Dino Jungle",
+      "nameIt": "Giungla di Dinodino",
       "regionId": "savanna_jungle"
     },
     {
       "id": "great_q_block_ruins",
       "name": "Great ? Block Ruins",
+      "nameIt": "Rovine del blocco ?",
       "regionId": "savanna_jungle"
     },
     {
       "id": "cheep_cheep_falls",
       "name": "Cheep Cheep Falls",
+      "nameIt": "Cascate Smack",
       "regionId": "autumnal_highland"
     },
     {
       "id": "dandelion_depths",
       "name": "Dandelion Depths",
+      "nameIt": "Lago dei soffioni",
       "regionId": "autumnal_highland"
     },
     {
       "id": "boo_cinema",
       "name": "Boo Cinema",
+      "nameIt": "Cinema spettrale",
       "regionId": "forest"
     },
     {
       "id": "dry_bones_burnout",
       "name": "Dry Bones Burnout",
+      "nameIt": "Vulcano Tartosso",
       "regionId": "volcanic"
     },
     {
       "id": "moo_moo_meadows",
       "name": "Moo Moo Meadows",
+      "nameIt": "Prateria Verde",
       "regionId": "central_grassland"
     },
     {
       "id": "choco_mountain",
       "name": "Choco Mountain",
+      "nameIt": "Cioccocanyon",
       "regionId": "central_grassland"
     },
     {
       "id": "toads_factory",
       "name": "Toad's Factory",
+      "nameIt": "Fabbrica di Toad",
       "regionId": "central_grassland"
     },
     {
       "id": "bowsers_castle",
       "name": "Bowser's Castle",
+      "nameIt": "Castello di Bowser",
       "regionId": "volcanic"
     },
     {
       "id": "acorn_heights",
       "name": "Acorn Heights",
+      "nameIt": "Ghiand Prix",
       "regionId": "forest"
     },
     {
       "id": "mario_circuit",
       "name": "Mario Circuit",
+      "nameIt": "Circuito di Mario",
       "regionId": "forest"
     },
     {
       "id": "rainbow_road",
       "name": "Rainbow Road",
+      "nameIt": "Pista Arcobaleno",
       "regionId": null
     }
   ],

@@ -20,6 +20,7 @@ import com.marcogn.kartlog.domain.model.Cc
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -70,6 +71,16 @@ class ConsigliamiDaoTest {
             resultsEnabled = resultsEnabled, weight = weight,
             bestStarsForEvent = { eventId -> bestStarsByEvent[eventId] },
         )
+    }
+
+    @Test
+    fun `courseNames e outfitNames del DAO portano il nome ufficiale in italiano`() = runBlocking {
+        val dao = db.consigliamiDao()
+        val courses = dao.courseNames().first().associateBy { it.id }
+        assertEquals("Circuito di Mario", courses.getValue("mario_circuit").nameIt)
+
+        val outfits = dao.outfitNames().first().filter { it.name == "Explorer" }
+        assertTrue("Explorer deve avere almeno una variante italiana tra gli outfit reali", outfits.any { it.nameIt != null })
     }
 
     @Test

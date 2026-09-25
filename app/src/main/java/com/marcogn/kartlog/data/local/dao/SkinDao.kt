@@ -14,7 +14,7 @@ interface SkinDao {
      */
     @Query(
         """
-        SELECT c.id AS id, c.name AS name, c.rosterOrder AS rosterOrder,
+        SELECT c.id AS id, c.name AS name, c.nameIt AS nameIt, c.rosterOrder AS rosterOrder,
                COUNT(o.id) AS totalOutfits,
                SUM(CASE WHEN oo.outfitId IS NOT NULL THEN 1 ELSE 0 END) AS ownedOutfits
         FROM characters c
@@ -37,7 +37,7 @@ interface SkinDao {
      */
     @Query(
         """
-        SELECT o.id AS outfitId, o.name AS outfitName, o.isDefault AS isDefault,
+        SELECT o.id AS outfitId, o.name AS outfitName, o.nameIt AS outfitNameIt, o.isDefault AS isDefault,
                (oo.outfitId IS NOT NULL) AS owned,
                (
                    SELECT GROUP_CONCAT(fg.name, ' · ')
@@ -57,6 +57,7 @@ interface SkinDao {
 data class CharacterProgress(
     val id: String,
     val name: String,
+    val nameIt: String?,
     val rosterOrder: Int,
     val totalOutfits: Int,
     val ownedOutfits: Int,
@@ -67,6 +68,7 @@ data class CharacterProgress(
 data class OutfitProgress(
     val outfitId: String,
     val outfitName: String?,
+    val outfitNameIt: String?,
     val isDefault: Boolean,
     val owned: Boolean,
     val foodGroups: String?,

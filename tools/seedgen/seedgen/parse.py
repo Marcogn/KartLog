@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup, Tag
 from .config import Config
 from .errors import ParseError
 from .html_table import Grid, cell_lines, cell_text, expand, find_column, link_titles
+from .i18n import Translations, extract_outfit_translations, extract_single_italian_name
 from .raw import RawData, RawEvent, RawFoodGroup, RawMission, RawOutfit, RawSource, RawStand
 from .wiki import WikiPage
 
@@ -274,12 +275,42 @@ def parse_all(pages: dict[str, WikiPage], cfg: Config) -> RawData:
         event.name = title.split(" (")[0]          # "Boomerang Rally (Mario Kart World)" -> "Boomerang Rally"
         rallies.append(event)
 
+    # Solo le pagine dei dati di gioco "core", non le ~55 pagine per personaggio/corso/outfit usate
+    # solo per il nome italiano (seedgen/i18n.py): quelle non vanno nell'attribuzione principale,
+    # affollerebbero la schermata Info per un dato supplementare. `pages` qui dentro può contenere
+    # anche quelle (viene dal fetch completo di wiki.all_titles), per questo si elenca esplicitamente
+    # solo ciò che parse_all usa davvero.
+    core_titles = [src["dash_food"], src["yoshis"], src["missions"], src["navbox"], *src["rallies"]]
     return RawData(
         food_groups=parse_dash_food(pages[src["dash_food"]]),
         cups=parse_cups(navbox, cfg),
         rallies=rallies,
         course_stands=parse_yoshis(pages[src["yoshis"]]),
         missions=parse_missions(pages[src["missions"]], cfg),
-        sources=[RawSource(p.title, p.revid) for p in pages.values()],
+        sources=[RawSource(pages[t].title, pages[t].revid) for t in core_titles],
         origin="api",
     )
+
+
+def parse_translations(pages: dict[str, WikiPage], cfg: Config) -> Translations:
+    """Nomi ufficiali in italiano (SPEC, "nomi ufficiali"): vedi seedgen/i18n.py per le regole."""
+    src = cfg.sources["pages"]
+    character_it = {}
+    for e in cfg.characters.entities:
+        page = pages.get(e.i18n_page())
+        if page is not None:
+            name = extract_single_italian_name(page.html)
+            if name:
+                character_it[e.id] = name
+    course_it = {}
+    for e in cfg.courses.entities:
+        page = pages.get(e.i18n_page())
+        if page is not None:
+            name = extract_single_italian_name(page.html)
+            if name:
+                course_it[e.id] = name
+    outfit_it = {}
+    outfit_page = pages.get(src["outfit_names_it"])
+    if outfit_page is not None:
+        outfit_it = extract_outfit_translations(outfit_page.html)
+    return Translations(character_it=character_it, course_it=course_it, outfit_it=outfit_it)

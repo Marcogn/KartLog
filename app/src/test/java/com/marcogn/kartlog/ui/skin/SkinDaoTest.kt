@@ -83,4 +83,17 @@ class SkinDaoTest {
         assertEquals(mario.totalOutfits, mario.ownedOutfits)
         assertTrue(mario.isComplete)
     }
+
+    @Test
+    fun `il seed reale porta il nome ufficiale in italiano fino al DAO`() = runBlocking {
+        val mario = db.skinDao().charactersWithProgress().first().first { it.id == "mario" }
+        assertEquals("Mario", mario.nameIt)
+
+        val outfits = db.skinDao().outfitsForCharacter("toad").first()
+        val explorer = outfits.first { it.outfitName == "Explorer" }
+        assertEquals("Esploratore", explorer.outfitNameIt)  // maschile (Toad)
+
+        // Outfit di default: mai un nome, in nessuna lingua (SPEC §2.3, mostrato come "Standard").
+        assertEquals(null, outfits.first { it.isDefault }.outfitNameIt)
+    }
 }

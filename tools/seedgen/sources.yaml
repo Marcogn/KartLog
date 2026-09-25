@@ -33,6 +33,11 @@ pages:
   # Si usa il template invece della pagina "Mario Kart World" perché è una tabella piccola e stabile.
   navbox: "Template:Mario Kart World"
 
+  # Nomi ufficiali degli outfit in altre lingue (seedgen/i18n.py). Una sezione per nome di outfit,
+  # con tabella "Names in other languages" propria (a volte con varianti maschile/femminile per
+  # l'italiano).
+  outfit_names_it: "List of Mario Kart World outfit names in other languages"
+
   # Una pagina per rally. La tabella con intestazioni "Starting point" ... "Final course"
   # dà le tappe in ordine. L'ordine di questa lista è l'ordine degli eventi in app.
   rallies:

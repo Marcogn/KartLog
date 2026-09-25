@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
 import com.marcogn.kartlog.data.local.dao.OutfitProgress
+import com.marcogn.kartlog.domain.model.localizedName
 import com.marcogn.kartlog.ui.common.CharacterAvatar
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -88,7 +89,8 @@ fun SkinDetailScreen(
 
 @Composable
 private fun OutfitRow(outfit: OutfitProgress, onToggle: (Boolean) -> Unit) {
-    val name = outfit.outfitName ?: stringResource(R.string.skin_default_outfit_name)
+    val name = outfit.outfitName?.let { localizedName(it, outfit.outfitNameIt) }
+        ?: stringResource(R.string.skin_default_outfit_name)
     val foodLabel = outfit.foodGroups ?: stringResource(R.string.skin_unknown_food)
 
     Row(

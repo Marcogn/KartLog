@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.marcogn.kartlog.data.local.dao.CharacterProgress
 import com.marcogn.kartlog.data.local.dao.SkinDao
+import com.marcogn.kartlog.domain.model.localizedName
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -51,7 +52,7 @@ class SkinListViewModel @Inject constructor(skinDao: SkinDao) : ViewModel() {
 
     private fun comparatorFor(mode: SkinSortMode): Comparator<CharacterProgress> = when (mode) {
         SkinSortMode.ROSTER -> compareBy { it.rosterOrder }
-        SkinSortMode.ALPHABETICAL -> compareBy { it.name }
+        SkinSortMode.ALPHABETICAL -> compareBy { localizedName(it.name, it.nameIt) }
         SkinSortMode.COMPLETION -> compareByDescending<CharacterProgress> {
             if (it.totalOutfits == 0) 0.0 else it.ownedOutfits.toDouble() / it.totalOutfits
         }.thenBy { it.rosterOrder }

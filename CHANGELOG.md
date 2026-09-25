@@ -6,6 +6,23 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Nomi ufficiali in italiano per personaggi, outfit e corsi.** I nomi
+  di gioco erano tutti in inglese anche con l'app in italiano. Aggiunto
+  `seedgen/i18n.py`: estrae i nomi ufficiali dalle tabelle "Names in
+  other languages" di Super Mario Wiki (mai una traduzione automatica),
+  con le varianti maschile/femminile italiane degli outfit dove esistono
+  (es. "Esploratore"/"Esploratrice"). Copertura: tutti i 24 personaggi,
+  30 corsi e 103 outfit alternativi. **Non coperti** (nessuna fonte
+  ufficiale verificabile): missioni dei pulsanti P, regioni/biomi
+  (nemmeno i nomi inglesi sono ufficiali per queste), Gran Premi/Knockout
+  Tour — restano in inglese, invece di mostrare una traduzione
+  inventata.
+- **App localizzata anche in inglese.** `values-en/strings.xml` accanto
+  all'italiano (resta la lingua di default), più `locales_config.xml`
+  per il selettore lingua di sistema (Impostazioni > App > KartLog >
+  Lingua, Android 13+). Un nome di gioco senza traduzione italiana
+  ufficiale resta in inglese anche con l'app in italiano — mai una
+  traduzione automatica.
 - **Nuova icona dell'app.** Il monogramma "K" provvisorio è sostituito
   da un'illustrazione originale (globo con anello e lettera "L"), adattata
   alla forma delle adaptive icon Android: cielo esteso attorno al disegno

@@ -3,121 +3,145 @@
     {
       "id": "mario",
       "name": "Mario",
+      "nameIt": "Mario",
       "rosterOrder": 0
     },
     {
       "id": "luigi",
       "name": "Luigi",
+      "nameIt": "Luigi",
       "rosterOrder": 1
     },
     {
       "id": "peach",
       "name": "Peach",
+      "nameIt": "Peach",
       "rosterOrder": 2
     },
     {
       "id": "daisy",
       "name": "Daisy",
+      "nameIt": "Daisy",
       "rosterOrder": 3
     },
     {
       "id": "yoshi",
       "name": "Yoshi",
+      "nameIt": "Yoshi",
       "rosterOrder": 4
     },
     {
       "id": "donkey_kong",
       "name": "Donkey Kong",
+      "nameIt": "Donkey Kong",
       "rosterOrder": 5
     },
     {
       "id": "bowser",
       "name": "Bowser",
+      "nameIt": "Bowser",
       "rosterOrder": 6
     },
     {
       "id": "bowser_jr",
       "name": "Bowser Jr.",
+      "nameIt": "Bowser Junior",
       "rosterOrder": 7
     },
     {
       "id": "koopa_troopa",
       "name": "Koopa Troopa",
+      "nameIt": "Koopa",
       "rosterOrder": 8
     },
     {
       "id": "toad",
       "name": "Toad",
+      "nameIt": "Toad",
       "rosterOrder": 9
     },
     {
       "id": "toadette",
       "name": "Toadette",
+      "nameIt": "Toadette",
       "rosterOrder": 10
     },
     {
       "id": "lakitu",
       "name": "Lakitu",
+      "nameIt": "Lakitu",
       "rosterOrder": 11
     },
     {
       "id": "king_boo",
       "name": "King Boo",
+      "nameIt": "Re Boo",
       "rosterOrder": 12
     },
     {
       "id": "shy_guy",
       "name": "Shy Guy",
+      "nameIt": "Tipo Timido",
       "rosterOrder": 13
     },
     {
       "id": "wario",
       "name": "Wario",
+      "nameIt": "Wario",
       "rosterOrder": 14
     },
     {
       "id": "waluigi",
       "name": "Waluigi",
+      "nameIt": "Waluigi",
       "rosterOrder": 15
     },
     {
       "id": "birdo",
       "name": "Birdo",
+      "nameIt": "Strutzi",
       "rosterOrder": 16
     },
     {
       "id": "pauline",
       "name": "Pauline",
+      "nameIt": "Pauline",
       "rosterOrder": 17
     },
     {
       "id": "rosalina",
       "name": "Rosalina",
+      "nameIt": "Rosalinda",
       "rosterOrder": 18
     },
     {
       "id": "baby_mario",
       "name": "Baby Mario",
+      "nameIt": "Baby Mario",
       "rosterOrder": 19
     },
     {
       "id": "baby_luigi",
       "name": "Baby Luigi",
+      "nameIt": "Baby Luigi",
       "rosterOrder": 20
     },
     {
       "id": "baby_peach",
       "name": "Baby Peach",
+      "nameIt": "Baby Peach",
       "rosterOrder": 21
     },
     {
       "id": "baby_daisy",
       "name": "Baby Daisy",
+      "nameIt": "Baby Daisy",
       "rosterOrder": 22
     },
     {
       "id": "baby_rosalina",
       "name": "Baby Rosalina",
+      "nameIt": "Baby Rosalinda",
       "rosterOrder": 23
     }
   ],

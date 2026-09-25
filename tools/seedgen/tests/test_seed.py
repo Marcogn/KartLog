@@ -23,11 +23,21 @@ def test_golden_is_valid(golden_seed, cfg):
     validate(golden_seed, cfg)
 
 
+def _without_name_it(seed: dict) -> dict:
+    """I nomi in altre lingue (seedgen/i18n.py) non sono nella trascrizione golden, come i pulsanti
+    P: azzerarli prima del confronto, non escludere l'intero file (il resto va comunque verificato)."""
+    seed = copy.deepcopy(seed)
+    for filename in ("characters.json", "outfits.json", "courses.json"):
+        for item in seed.get(filename, {}).get("items", []):
+            item.pop("nameIt", None)
+    return seed
+
+
 def test_versioned_seed_matches_golden(golden_seed):
     # I pulsanti P non sono nella trascrizione golden (arrivano solo con l'estrazione via API,
     # vedi SPEC §5.3 "Stato"): si escludono dal confronto, si verificano solo con validate().
-    versioned = {k: v for k, v in read_seed(SEED_DIR).items() if k != "p_switches.json"}
-    golden = {k: v for k, v in golden_seed.items() if k != "p_switches.json"}
+    versioned = {k: v for k, v in _without_name_it(read_seed(SEED_DIR)).items() if k != "p_switches.json"}
+    golden = {k: v for k, v in _without_name_it(golden_seed).items() if k != "p_switches.json"}
     assert diff(versioned, golden) == []
 
 

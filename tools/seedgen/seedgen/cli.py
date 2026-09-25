@@ -22,8 +22,9 @@ from . import wiki
 from .build import build
 from .config import Config
 from .errors import EXIT_CHANGED, EXIT_OK, SeedgenError, ValidationError
+from .i18n import Translations
 from .output import COMPARED_FILES, diff, read_seed, write_seed
-from .parse import parse_all
+from .parse import parse_all, parse_translations
 from .raw import RawData
 from .validate import validate
 
@@ -38,21 +39,23 @@ def _current_version(seed_dir: Path | None) -> int:
     return 1
 
 
-def _raw_from_args(args, cfg: Config) -> RawData:
+def _raw_from_args(args, cfg: Config) -> tuple[RawData, dict[str, wiki.WikiPage] | None]:
     if args.from_raw:
         _log(f"lettura dati grezzi da {args.from_raw}")
-        return RawData.from_yaml(Path(args.from_raw))
+        # Nessuna pagina scaricata in questa modalità (usata per verificare la normalizzazione a
+        # partire da una trascrizione, non i nomi in altre lingue): niente traduzioni disponibili.
+        return RawData.from_yaml(Path(args.from_raw)), None
     if args.from_fixtures:
         _log(f"parsing delle fixture in {args.from_fixtures}")
-        pages = wiki.load_fixtures(cfg.sources, Path(args.from_fixtures))
+        pages = wiki.load_fixtures(cfg, Path(args.from_fixtures))
     else:
         _log("download delle pagine dal wiki")
-        pages = wiki.fetch_all(cfg.sources)
-    return parse_all(pages, cfg)
+        pages = wiki.fetch_all(cfg)
+    return parse_all(pages, cfg), pages
 
 
 def cmd_fetch_fixtures(args, cfg: Config) -> int:
-    pages = wiki.fetch_all(cfg.sources)
+    pages = wiki.fetch_all(cfg)
     wiki.save_fixtures(list(pages.values()), Path(args.out))
     for p in pages.values():
         _log(f"salvata {p.title} @ rev {p.revid}")
@@ -60,10 +63,15 @@ def cmd_fetch_fixtures(args, cfg: Config) -> int:
 
 
 def _generate(args, cfg: Config, out: Path, seed_dir: Path | None) -> dict:
-    raw = _raw_from_args(args, cfg)
+    raw, pages = _raw_from_args(args, cfg)
     if getattr(args, "dump_raw", None):
         raw.to_yaml(Path(args.dump_raw))
-    seed = build(raw, cfg, seed_version=_current_version(seed_dir))
+    # I nomi in altre lingue si scaricano sempre dal vivo (mai da fixture: vedi wiki.i18n_titles),
+    # solo per una generate reale — non per --from-raw/--from-fixtures, dev-mode pensate per non
+    # toccare la rete.
+    live = not args.from_raw and not args.from_fixtures
+    translations = parse_translations(wiki.fetch_i18n(cfg), cfg) if live else Translations()
+    seed = build(raw, cfg, seed_version=_current_version(seed_dir), translations=translations)
     validate(seed, cfg)
     write_seed(seed, out)
     _log(f"seed valido scritto in {out}")

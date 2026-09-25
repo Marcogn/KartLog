@@ -8,6 +8,7 @@ import com.marcogn.kartlog.data.local.dao.SkinDao
 import com.marcogn.kartlog.data.local.dao.UserStateDao
 import com.marcogn.kartlog.data.local.entity.CharacterUnlockEntity
 import com.marcogn.kartlog.data.local.entity.OwnedOutfitEntity
+import com.marcogn.kartlog.domain.model.localizedName
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
@@ -40,7 +41,7 @@ class SkinDetailViewModel @Inject constructor(
         userStateDao.observeCharacterUnlock(characterId),
     ) { character, outfits, unlockedOrNull ->
         SkinDetailUiState(
-            characterName = character?.name ?: "",
+            characterName = character?.let { localizedName(it.name, it.nameIt) } ?: "",
             ownedCount = outfits.count { it.owned },
             totalCount = outfits.size,
             unlocked = unlockedOrNull ?: true,

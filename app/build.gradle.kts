@@ -85,6 +85,13 @@ android {
         getByName("main") {
             assets.srcDir(layout.buildDirectory.dir("generated/seedAssets"))
         }
+        // Schema esportati da Room (room.schemaLocation sotto): servono a MigrationTestHelper per
+        // MigrationTest (Robolectric, non uno unitTest sourceSet: i test JVM con
+        // isIncludeAndroidResources leggono gli asset del variant "debug" via mergeDebugAssets,
+        // non un asset set proprio — vedi test_config.properties generato da AGP).
+        getByName("debug") {
+            assets.srcDir("$projectDir/schemas")
+        }
     }
 }
 
@@ -276,6 +283,7 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.robolectric)
     testImplementation(libs.androidx.test.ext.junit)
+    testImplementation(libs.androidx.room.testing)
 
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)
