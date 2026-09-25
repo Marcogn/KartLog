@@ -1,0 +1,155 @@
+{
+  "items": [
+    {
+      "id": "mario_bros_circuit",
+      "name": "Mario Bros. Circuit",
+      "regionId": "mesa"
+    },
+    {
+      "id": "crown_city",
+      "name": "Crown City",
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "whistlestop_summit",
+      "name": "Whistlestop Summit",
+      "regionId": "mesa"
+    },
+    {
+      "id": "dk_spaceport",
+      "name": "DK Spaceport",
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "desert_hills",
+      "name": "Desert Hills",
+      "regionId": "desert"
+    },
+    {
+      "id": "shy_guy_bazaar",
+      "name": "Shy Guy Bazaar",
+      "regionId": "desert"
+    },
+    {
+      "id": "wario_stadium",
+      "name": "Wario Stadium",
+      "regionId": "mesa"
+    },
+    {
+      "id": "airship_fortress",
+      "name": "Airship Fortress",
+      "regionId": "volcanic"
+    },
+    {
+      "id": "dk_pass",
+      "name": "DK Pass",
+      "regionId": "snow"
+    },
+    {
+      "id": "starview_peak",
+      "name": "Starview Peak",
+      "regionId": "snow"
+    },
+    {
+      "id": "sky_high_sundae",
+      "name": "Sky-High Sundae",
+      "regionId": "snow"
+    },
+    {
+      "id": "wario_shipyard",
+      "name": "Wario Shipyard",
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "koopa_troopa_beach",
+      "name": "Koopa Troopa Beach",
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "faraway_oasis",
+      "name": "Faraway Oasis",
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "peach_stadium",
+      "name": "Peach Stadium",
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "peach_beach",
+      "name": "Peach Beach",
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "salty_salty_speedway",
+      "name": "Salty Salty Speedway",
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "dino_dino_jungle",
+      "name": "Dino Dino Jungle",
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "great_q_block_ruins",
+      "name": "Great ? Block Ruins",
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "cheep_cheep_falls",
+      "name": "Cheep Cheep Falls",
+      "regionId": "autumnal_highland"
+    },
+    {
+      "id": "dandelion_depths",
+      "name": "Dandelion Depths",
+      "regionId": "autumnal_highland"
+    },
+    {
+      "id": "boo_cinema",
+      "name": "Boo Cinema",
+      "regionId": "forest"
+    },
+    {
+      "id": "dry_bones_burnout",
+      "name": "Dry Bones Burnout",
+      "regionId": "volcanic"
+    },
+    {
+      "id": "moo_moo_meadows",
+      "name": "Moo Moo Meadows",
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "choco_mountain",
+      "name": "Choco Mountain",
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "toads_factory",
+      "name": "Toad's Factory",
+      "regionId": "volcanic"
+    },
+    {
+      "id": "bowsers_castle",
+      "name": "Bowser's Castle",
+      "regionId": "volcanic"
+    },
+    {
+      "id": "acorn_heights",
+      "name": "Acorn Heights",
+      "regionId": "forest"
+    },
+    {
+      "id": "mario_circuit",
+      "name": "Mario Circuit",
+      "regionId": "forest"
+    },
+    {
+      "id": "rainbow_road",
+      "name": "Rainbow Road",
+      "regionId": null
+    }
+  ],
+  "source": "https://www.mariowiki.com/Template:Mario_Kart_World"
+}

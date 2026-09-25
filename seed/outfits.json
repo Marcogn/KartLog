@@ -1,0 +1,767 @@
+{
+  "items": [
+    {
+      "characterId": "baby_daisy",
+      "id": "baby_daisy__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "baby_daisy",
+      "id": "baby_daisy__explorer",
+      "isDefault": false,
+      "name": "Explorer"
+    },
+    {
+      "characterId": "baby_daisy",
+      "id": "baby_daisy__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "baby_daisy",
+      "id": "baby_daisy__sailor",
+      "isDefault": false,
+      "name": "Sailor"
+    },
+    {
+      "characterId": "baby_daisy",
+      "id": "baby_daisy__touring",
+      "isDefault": false,
+      "name": "Touring"
+    },
+    {
+      "characterId": "baby_luigi",
+      "id": "baby_luigi__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "baby_luigi",
+      "id": "baby_luigi__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "baby_luigi",
+      "id": "baby_luigi__work_crew",
+      "isDefault": false,
+      "name": "Work Crew"
+    },
+    {
+      "characterId": "baby_mario",
+      "id": "baby_mario__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "baby_mario",
+      "id": "baby_mario__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "baby_mario",
+      "id": "baby_mario__swimwear",
+      "isDefault": false,
+      "name": "Swimwear"
+    },
+    {
+      "characterId": "baby_mario",
+      "id": "baby_mario__work_crew",
+      "isDefault": false,
+      "name": "Work Crew"
+    },
+    {
+      "characterId": "baby_peach",
+      "id": "baby_peach__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "baby_peach",
+      "id": "baby_peach__explorer",
+      "isDefault": false,
+      "name": "Explorer"
+    },
+    {
+      "characterId": "baby_peach",
+      "id": "baby_peach__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "baby_peach",
+      "id": "baby_peach__sailor",
+      "isDefault": false,
+      "name": "Sailor"
+    },
+    {
+      "characterId": "baby_peach",
+      "id": "baby_peach__touring",
+      "isDefault": false,
+      "name": "Touring"
+    },
+    {
+      "characterId": "baby_rosalina",
+      "id": "baby_rosalina__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "baby_rosalina",
+      "id": "baby_rosalina__explorer",
+      "isDefault": false,
+      "name": "Explorer"
+    },
+    {
+      "characterId": "baby_rosalina",
+      "id": "baby_rosalina__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "baby_rosalina",
+      "id": "baby_rosalina__sailor",
+      "isDefault": false,
+      "name": "Sailor"
+    },
+    {
+      "characterId": "baby_rosalina",
+      "id": "baby_rosalina__touring",
+      "isDefault": false,
+      "name": "Touring"
+    },
+    {
+      "characterId": "birdo",
+      "id": "birdo__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "birdo",
+      "id": "birdo__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "birdo",
+      "id": "birdo__vacation",
+      "isDefault": false,
+      "name": "Vacation"
+    },
+    {
+      "characterId": "bowser",
+      "id": "bowser__all_terrain",
+      "isDefault": false,
+      "name": "All-Terrain"
+    },
+    {
+      "characterId": "bowser",
+      "id": "bowser__biker",
+      "isDefault": false,
+      "name": "Biker"
+    },
+    {
+      "characterId": "bowser",
+      "id": "bowser__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "bowser",
+      "id": "bowser__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "bowser",
+      "id": "bowser__supercharged",
+      "isDefault": false,
+      "name": "Supercharged"
+    },
+    {
+      "characterId": "bowser_jr",
+      "id": "bowser_jr__biker_jr",
+      "isDefault": false,
+      "name": "Biker Jr."
+    },
+    {
+      "characterId": "bowser_jr",
+      "id": "bowser_jr__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "bowser_jr",
+      "id": "bowser_jr__explorer",
+      "isDefault": false,
+      "name": "Explorer"
+    },
+    {
+      "characterId": "bowser_jr",
+      "id": "bowser_jr__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "daisy",
+      "id": "daisy__aero",
+      "isDefault": false,
+      "name": "Aero"
+    },
+    {
+      "characterId": "daisy",
+      "id": "daisy__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "daisy",
+      "id": "daisy__oasis",
+      "isDefault": false,
+      "name": "Oasis"
+    },
+    {
+      "characterId": "daisy",
+      "id": "daisy__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "daisy",
+      "id": "daisy__swimwear",
+      "isDefault": false,
+      "name": "Swimwear"
+    },
+    {
+      "characterId": "daisy",
+      "id": "daisy__touring",
+      "isDefault": false,
+      "name": "Touring"
+    },
+    {
+      "characterId": "daisy",
+      "id": "daisy__vacation",
+      "isDefault": false,
+      "name": "Vacation"
+    },
+    {
+      "characterId": "donkey_kong",
+      "id": "donkey_kong__all_terrain",
+      "isDefault": false,
+      "name": "All-Terrain"
+    },
+    {
+      "characterId": "donkey_kong",
+      "id": "donkey_kong__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "king_boo",
+      "id": "king_boo__aristocrat",
+      "isDefault": false,
+      "name": "Aristocrat"
+    },
+    {
+      "characterId": "king_boo",
+      "id": "king_boo__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "king_boo",
+      "id": "king_boo__pirate",
+      "isDefault": false,
+      "name": "Pirate"
+    },
+    {
+      "characterId": "king_boo",
+      "id": "king_boo__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "koopa_troopa",
+      "id": "koopa_troopa__all_terrain",
+      "isDefault": false,
+      "name": "All-Terrain"
+    },
+    {
+      "characterId": "koopa_troopa",
+      "id": "koopa_troopa__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "koopa_troopa",
+      "id": "koopa_troopa__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "koopa_troopa",
+      "id": "koopa_troopa__runner",
+      "isDefault": false,
+      "name": "Runner"
+    },
+    {
+      "characterId": "koopa_troopa",
+      "id": "koopa_troopa__sailor",
+      "isDefault": false,
+      "name": "Sailor"
+    },
+    {
+      "characterId": "koopa_troopa",
+      "id": "koopa_troopa__work_crew",
+      "isDefault": false,
+      "name": "Work Crew"
+    },
+    {
+      "characterId": "lakitu",
+      "id": "lakitu__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "lakitu",
+      "id": "lakitu__fisherman",
+      "isDefault": false,
+      "name": "Fisherman"
+    },
+    {
+      "characterId": "lakitu",
+      "id": "lakitu__pit_crew",
+      "isDefault": false,
+      "name": "Pit Crew"
+    },
+    {
+      "characterId": "luigi",
+      "id": "luigi__all_terrain",
+      "isDefault": false,
+      "name": "All-Terrain"
+    },
+    {
+      "characterId": "luigi",
+      "id": "luigi__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "luigi",
+      "id": "luigi__farmer",
+      "isDefault": false,
+      "name": "Farmer"
+    },
+    {
+      "characterId": "luigi",
+      "id": "luigi__gondolier",
+      "isDefault": false,
+      "name": "Gondolier"
+    },
+    {
+      "characterId": "luigi",
+      "id": "luigi__happi",
+      "isDefault": false,
+      "name": "Happi"
+    },
+    {
+      "characterId": "luigi",
+      "id": "luigi__mechanic",
+      "isDefault": false,
+      "name": "Mechanic"
+    },
+    {
+      "characterId": "luigi",
+      "id": "luigi__oasis",
+      "isDefault": false,
+      "name": "Oasis"
+    },
+    {
+      "characterId": "luigi",
+      "id": "luigi__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "luigi",
+      "id": "luigi__touring",
+      "isDefault": false,
+      "name": "Touring"
+    },
+    {
+      "characterId": "mario",
+      "id": "mario__all_terrain",
+      "isDefault": false,
+      "name": "All-Terrain"
+    },
+    {
+      "characterId": "mario",
+      "id": "mario__aviator",
+      "isDefault": false,
+      "name": "Aviator"
+    },
+    {
+      "characterId": "mario",
+      "id": "mario__cowboy",
+      "isDefault": false,
+      "name": "Cowboy"
+    },
+    {
+      "characterId": "mario",
+      "id": "mario__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "mario",
+      "id": "mario__dune_rider",
+      "isDefault": false,
+      "name": "Dune Rider"
+    },
+    {
+      "characterId": "mario",
+      "id": "mario__happi",
+      "isDefault": false,
+      "name": "Happi"
+    },
+    {
+      "characterId": "mario",
+      "id": "mario__mechanic",
+      "isDefault": false,
+      "name": "Mechanic"
+    },
+    {
+      "characterId": "mario",
+      "id": "mario__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "mario",
+      "id": "mario__sightseeing",
+      "isDefault": false,
+      "name": "Sightseeing"
+    },
+    {
+      "characterId": "mario",
+      "id": "mario__touring",
+      "isDefault": false,
+      "name": "Touring"
+    },
+    {
+      "characterId": "pauline",
+      "id": "pauline__aero",
+      "isDefault": false,
+      "name": "Aero"
+    },
+    {
+      "characterId": "pauline",
+      "id": "pauline__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "peach",
+      "id": "peach__aero",
+      "isDefault": false,
+      "name": "Aero"
+    },
+    {
+      "characterId": "peach",
+      "id": "peach__aviator",
+      "isDefault": false,
+      "name": "Aviator"
+    },
+    {
+      "characterId": "peach",
+      "id": "peach__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "peach",
+      "id": "peach__farmer",
+      "isDefault": false,
+      "name": "Farmer"
+    },
+    {
+      "characterId": "peach",
+      "id": "peach__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "peach",
+      "id": "peach__sightseeing",
+      "isDefault": false,
+      "name": "Sightseeing"
+    },
+    {
+      "characterId": "peach",
+      "id": "peach__touring",
+      "isDefault": false,
+      "name": "Touring"
+    },
+    {
+      "characterId": "peach",
+      "id": "peach__vacation",
+      "isDefault": false,
+      "name": "Vacation"
+    },
+    {
+      "characterId": "peach",
+      "id": "peach__yukata",
+      "isDefault": false,
+      "name": "Yukata"
+    },
+    {
+      "characterId": "rosalina",
+      "id": "rosalina__aero",
+      "isDefault": false,
+      "name": "Aero"
+    },
+    {
+      "characterId": "rosalina",
+      "id": "rosalina__aurora",
+      "isDefault": false,
+      "name": "Aurora"
+    },
+    {
+      "characterId": "rosalina",
+      "id": "rosalina__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "rosalina",
+      "id": "rosalina__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "rosalina",
+      "id": "rosalina__touring",
+      "isDefault": false,
+      "name": "Touring"
+    },
+    {
+      "characterId": "shy_guy",
+      "id": "shy_guy__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "shy_guy",
+      "id": "shy_guy__pit_crew",
+      "isDefault": false,
+      "name": "Pit Crew"
+    },
+    {
+      "characterId": "shy_guy",
+      "id": "shy_guy__slope_styler",
+      "isDefault": false,
+      "name": "Slope Styler"
+    },
+    {
+      "characterId": "toad",
+      "id": "toad__burger_bud",
+      "isDefault": false,
+      "name": "Burger Bud"
+    },
+    {
+      "characterId": "toad",
+      "id": "toad__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "toad",
+      "id": "toad__engineer",
+      "isDefault": false,
+      "name": "Engineer"
+    },
+    {
+      "characterId": "toad",
+      "id": "toad__explorer",
+      "isDefault": false,
+      "name": "Explorer"
+    },
+    {
+      "characterId": "toad",
+      "id": "toad__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "toadette",
+      "id": "toadette__conductor",
+      "isDefault": false,
+      "name": "Conductor"
+    },
+    {
+      "characterId": "toadette",
+      "id": "toadette__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "toadette",
+      "id": "toadette__explorer",
+      "isDefault": false,
+      "name": "Explorer"
+    },
+    {
+      "characterId": "toadette",
+      "id": "toadette__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "toadette",
+      "id": "toadette__soft_server",
+      "isDefault": false,
+      "name": "Soft Server"
+    },
+    {
+      "characterId": "waluigi",
+      "id": "waluigi__biker",
+      "isDefault": false,
+      "name": "Biker"
+    },
+    {
+      "characterId": "waluigi",
+      "id": "waluigi__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "waluigi",
+      "id": "waluigi__mariachi",
+      "isDefault": false,
+      "name": "Mariachi"
+    },
+    {
+      "characterId": "waluigi",
+      "id": "waluigi__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "waluigi",
+      "id": "waluigi__road_ruffian",
+      "isDefault": false,
+      "name": "Road Ruffian"
+    },
+    {
+      "characterId": "waluigi",
+      "id": "waluigi__wampire",
+      "isDefault": false,
+      "name": "Wampire"
+    },
+    {
+      "characterId": "wario",
+      "id": "wario__biker",
+      "isDefault": false,
+      "name": "Biker"
+    },
+    {
+      "characterId": "wario",
+      "id": "wario__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "wario",
+      "id": "wario__oasis",
+      "isDefault": false,
+      "name": "Oasis"
+    },
+    {
+      "characterId": "wario",
+      "id": "wario__pirate",
+      "isDefault": false,
+      "name": "Pirate"
+    },
+    {
+      "characterId": "wario",
+      "id": "wario__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "wario",
+      "id": "wario__road_ruffian",
+      "isDefault": false,
+      "name": "Road Ruffian"
+    },
+    {
+      "characterId": "wario",
+      "id": "wario__wicked_wasp",
+      "isDefault": false,
+      "name": "Wicked Wasp"
+    },
+    {
+      "characterId": "wario",
+      "id": "wario__work_crew",
+      "isDefault": false,
+      "name": "Work Crew"
+    },
+    {
+      "characterId": "yoshi",
+      "id": "yoshi__aristocrat",
+      "isDefault": false,
+      "name": "Aristocrat"
+    },
+    {
+      "characterId": "yoshi",
+      "id": "yoshi__biker",
+      "isDefault": false,
+      "name": "Biker"
+    },
+    {
+      "characterId": "yoshi",
+      "id": "yoshi__default",
+      "isDefault": true,
+      "name": null
+    },
+    {
+      "characterId": "yoshi",
+      "id": "yoshi__food_slinger",
+      "isDefault": false,
+      "name": "Food Slinger"
+    },
+    {
+      "characterId": "yoshi",
+      "id": "yoshi__matsuri",
+      "isDefault": false,
+      "name": "Matsuri"
+    },
+    {
+      "characterId": "yoshi",
+      "id": "yoshi__pro_racer",
+      "isDefault": false,
+      "name": "Pro Racer"
+    },
+    {
+      "characterId": "yoshi",
+      "id": "yoshi__soft_server",
+      "isDefault": false,
+      "name": "Soft Server"
+    },
+    {
+      "characterId": "yoshi",
+      "id": "yoshi__swimwear",
+      "isDefault": false,
+      "name": "Swimwear"
+    },
+    {
+      "characterId": "yoshi",
+      "id": "yoshi__touring",
+      "isDefault": false,
+      "name": "Touring"
+    }
+  ],
+  "source": "https://www.mariowiki.com/Dash_Food"
+}

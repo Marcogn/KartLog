@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base platform theme: il contenuto reale è Compose (KartLogTheme, Material 3).
+         Serve solo come windowBackground prima che Compose disegni la prima frame. -->
+    <style name="Theme.KartLog" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>

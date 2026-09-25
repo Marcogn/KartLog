@@ -1,0 +1,1465 @@
+{
+  "items": [
+    {
+      "foodGroupId": "bread",
+      "outfitId": "baby_daisy__explorer"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "baby_daisy__explorer"
+    },
+    {
+      "foodGroupId": "pancakes",
+      "outfitId": "baby_daisy__explorer"
+    },
+    {
+      "foodGroupId": "wild_bone",
+      "outfitId": "baby_daisy__explorer"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "baby_daisy__pro_racer"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "baby_daisy__pro_racer"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "baby_daisy__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "baby_daisy__pro_racer"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "baby_daisy__pro_racer"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "baby_daisy__sailor"
+    },
+    {
+      "foodGroupId": "fritters",
+      "outfitId": "baby_daisy__sailor"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "baby_daisy__sailor"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "baby_daisy__touring"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "baby_daisy__touring"
+    },
+    {
+      "foodGroupId": "moo_moo_milk",
+      "outfitId": "baby_daisy__touring"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "baby_daisy__touring"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "baby_luigi__pro_racer"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "baby_luigi__pro_racer"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "baby_luigi__pro_racer"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "baby_luigi__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "baby_luigi__pro_racer"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "baby_luigi__pro_racer"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "baby_luigi__work_crew"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "baby_luigi__work_crew"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "baby_luigi__work_crew"
+    },
+    {
+      "foodGroupId": "pancakes",
+      "outfitId": "baby_luigi__work_crew"
+    },
+    {
+      "foodGroupId": "snacks_1",
+      "outfitId": "baby_luigi__work_crew"
+    },
+    {
+      "foodGroupId": "snacks_3",
+      "outfitId": "baby_luigi__work_crew"
+    },
+    {
+      "foodGroupId": "wild_bone",
+      "outfitId": "baby_luigi__work_crew"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "baby_mario__pro_racer"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "baby_mario__pro_racer"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "baby_mario__pro_racer"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "baby_mario__pro_racer"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "baby_mario__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "baby_mario__pro_racer"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "baby_mario__pro_racer"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "baby_mario__swimwear"
+    },
+    {
+      "foodGroupId": "fritters",
+      "outfitId": "baby_mario__swimwear"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "baby_mario__swimwear"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "baby_mario__swimwear"
+    },
+    {
+      "foodGroupId": "sushi",
+      "outfitId": "baby_mario__swimwear"
+    },
+    {
+      "foodGroupId": "pancakes",
+      "outfitId": "baby_mario__work_crew"
+    },
+    {
+      "foodGroupId": "snacks_1",
+      "outfitId": "baby_mario__work_crew"
+    },
+    {
+      "foodGroupId": "snacks_3",
+      "outfitId": "baby_mario__work_crew"
+    },
+    {
+      "foodGroupId": "wild_bone",
+      "outfitId": "baby_mario__work_crew"
+    },
+    {
+      "foodGroupId": "bread",
+      "outfitId": "baby_peach__explorer"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "baby_peach__explorer"
+    },
+    {
+      "foodGroupId": "pancakes",
+      "outfitId": "baby_peach__explorer"
+    },
+    {
+      "foodGroupId": "wild_bone",
+      "outfitId": "baby_peach__explorer"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "baby_peach__pro_racer"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "baby_peach__pro_racer"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "baby_peach__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "baby_peach__pro_racer"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "baby_peach__pro_racer"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "baby_peach__sailor"
+    },
+    {
+      "foodGroupId": "fritters",
+      "outfitId": "baby_peach__sailor"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "baby_peach__sailor"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "baby_peach__touring"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "baby_peach__touring"
+    },
+    {
+      "foodGroupId": "moo_moo_milk",
+      "outfitId": "baby_peach__touring"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "baby_peach__touring"
+    },
+    {
+      "foodGroupId": "bread",
+      "outfitId": "baby_rosalina__explorer"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "baby_rosalina__explorer"
+    },
+    {
+      "foodGroupId": "pancakes",
+      "outfitId": "baby_rosalina__explorer"
+    },
+    {
+      "foodGroupId": "wild_bone",
+      "outfitId": "baby_rosalina__explorer"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "baby_rosalina__pro_racer"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "baby_rosalina__pro_racer"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "baby_rosalina__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "baby_rosalina__pro_racer"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "baby_rosalina__pro_racer"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "baby_rosalina__sailor"
+    },
+    {
+      "foodGroupId": "fritters",
+      "outfitId": "baby_rosalina__sailor"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "baby_rosalina__sailor"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "baby_rosalina__touring"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "baby_rosalina__touring"
+    },
+    {
+      "foodGroupId": "moo_moo_milk",
+      "outfitId": "baby_rosalina__touring"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "baby_rosalina__touring"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "birdo__pro_racer"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "birdo__pro_racer"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "birdo__pro_racer"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "birdo__pro_racer"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "birdo__pro_racer"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "birdo__pro_racer"
+    },
+    {
+      "foodGroupId": "pancakes",
+      "outfitId": "birdo__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_1",
+      "outfitId": "birdo__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "birdo__pro_racer"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "birdo__vacation"
+    },
+    {
+      "foodGroupId": "fritters",
+      "outfitId": "birdo__vacation"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "birdo__vacation"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "birdo__vacation"
+    },
+    {
+      "foodGroupId": "snacks_3",
+      "outfitId": "birdo__vacation"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "birdo__vacation"
+    },
+    {
+      "foodGroupId": "sushi",
+      "outfitId": "birdo__vacation"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "bowser__all_terrain"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "bowser__all_terrain"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "bowser__biker"
+    },
+    {
+      "foodGroupId": "fritters",
+      "outfitId": "bowser__biker"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "bowser__biker"
+    },
+    {
+      "foodGroupId": "moo_moo_milk",
+      "outfitId": "bowser__biker"
+    },
+    {
+      "foodGroupId": "pancakes",
+      "outfitId": "bowser__biker"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "bowser__biker"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "bowser__biker"
+    },
+    {
+      "foodGroupId": "snacks_1",
+      "outfitId": "bowser__biker"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "bowser__pro_racer"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "bowser__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "bowser__pro_racer"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "bowser__supercharged"
+    },
+    {
+      "foodGroupId": "snacks_3",
+      "outfitId": "bowser__supercharged"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "bowser_jr__biker_jr"
+    },
+    {
+      "foodGroupId": "fritters",
+      "outfitId": "bowser_jr__biker_jr"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "bowser_jr__biker_jr"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "bowser_jr__biker_jr"
+    },
+    {
+      "foodGroupId": "moo_moo_milk",
+      "outfitId": "bowser_jr__biker_jr"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "bowser_jr__biker_jr"
+    },
+    {
+      "foodGroupId": "snacks_1",
+      "outfitId": "bowser_jr__biker_jr"
+    },
+    {
+      "foodGroupId": "snacks_3",
+      "outfitId": "bowser_jr__biker_jr"
+    },
+    {
+      "foodGroupId": "bread",
+      "outfitId": "bowser_jr__explorer"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "bowser_jr__explorer"
+    },
+    {
+      "foodGroupId": "pancakes",
+      "outfitId": "bowser_jr__explorer"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "bowser_jr__explorer"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "bowser_jr__explorer"
+    },
+    {
+      "foodGroupId": "wild_bone",
+      "outfitId": "bowser_jr__explorer"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "bowser_jr__pro_racer"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "bowser_jr__pro_racer"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "bowser_jr__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "bowser_jr__pro_racer"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "daisy__aero"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "daisy__oasis"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "daisy__oasis"
+    },
+    {
+      "foodGroupId": "bread",
+      "outfitId": "daisy__pro_racer"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "daisy__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "daisy__pro_racer"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "daisy__swimwear"
+    },
+    {
+      "foodGroupId": "fritters",
+      "outfitId": "daisy__swimwear"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "daisy__swimwear"
+    },
+    {
+      "foodGroupId": "sushi",
+      "outfitId": "daisy__swimwear"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "daisy__touring"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "daisy__touring"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "daisy__touring"
+    },
+    {
+      "foodGroupId": "moo_moo_milk",
+      "outfitId": "daisy__touring"
+    },
+    {
+      "foodGroupId": "snacks_1",
+      "outfitId": "daisy__touring"
+    },
+    {
+      "foodGroupId": "wild_bone",
+      "outfitId": "daisy__touring"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "daisy__vacation"
+    },
+    {
+      "foodGroupId": "snacks_3",
+      "outfitId": "daisy__vacation"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "donkey_kong__all_terrain"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "donkey_kong__all_terrain"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "donkey_kong__all_terrain"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "donkey_kong__all_terrain"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "donkey_kong__all_terrain"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "donkey_kong__all_terrain"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "donkey_kong__all_terrain"
+    },
+    {
+      "foodGroupId": "pancakes",
+      "outfitId": "donkey_kong__all_terrain"
+    },
+    {
+      "foodGroupId": "snacks_1",
+      "outfitId": "donkey_kong__all_terrain"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "donkey_kong__all_terrain"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "donkey_kong__all_terrain"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "king_boo__aristocrat"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "king_boo__aristocrat"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "king_boo__aristocrat"
+    },
+    {
+      "foodGroupId": "snacks_3",
+      "outfitId": "king_boo__aristocrat"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "king_boo__pirate"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "king_boo__pro_racer"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "king_boo__pro_racer"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "king_boo__pro_racer"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "king_boo__pro_racer"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "king_boo__pro_racer"
+    },
+    {
+      "foodGroupId": "pancakes",
+      "outfitId": "king_boo__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_1",
+      "outfitId": "king_boo__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "king_boo__pro_racer"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "king_boo__pro_racer"
+    },
+    {
+      "foodGroupId": "bread",
+      "outfitId": "koopa_troopa__all_terrain"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "koopa_troopa__all_terrain"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "koopa_troopa__all_terrain"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "koopa_troopa__all_terrain"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "koopa_troopa__pro_racer"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "koopa_troopa__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "koopa_troopa__pro_racer"
+    },
+    {
+      "foodGroupId": "fritters",
+      "outfitId": "koopa_troopa__runner"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "koopa_troopa__runner"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "koopa_troopa__runner"
+    },
+    {
+      "foodGroupId": "moo_moo_milk",
+      "outfitId": "koopa_troopa__runner"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "koopa_troopa__sailor"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "koopa_troopa__sailor"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "koopa_troopa__sailor"
+    },
+    {
+      "foodGroupId": "snacks_1",
+      "outfitId": "koopa_troopa__work_crew"
+    },
+    {
+      "foodGroupId": "snacks_3",
+      "outfitId": "koopa_troopa__work_crew"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "lakitu__fisherman"
+    },
+    {
+      "foodGroupId": "sushi",
+      "outfitId": "lakitu__fisherman"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "lakitu__pit_crew"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "lakitu__pit_crew"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "lakitu__pit_crew"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "lakitu__pit_crew"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "lakitu__pit_crew"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "lakitu__pit_crew"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "lakitu__pit_crew"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "luigi__all_terrain"
+    },
+    {
+      "foodGroupId": "moo_moo_milk",
+      "outfitId": "luigi__farmer"
+    },
+    {
+      "foodGroupId": "fritters",
+      "outfitId": "luigi__gondolier"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "luigi__gondolier"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "luigi__gondolier"
+    },
+    {
+      "foodGroupId": "snacks_3",
+      "outfitId": "luigi__gondolier"
+    },
+    {
+      "foodGroupId": "sushi",
+      "outfitId": "luigi__happi"
+    },
+    {
+      "foodGroupId": "snacks_1",
+      "outfitId": "luigi__mechanic"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "luigi__mechanic"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "luigi__oasis"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "luigi__oasis"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "luigi__pro_racer"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "luigi__touring"
+    },
+    {
+      "foodGroupId": "bread",
+      "outfitId": "luigi__touring"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "luigi__touring"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "luigi__touring"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "luigi__touring"
+    },
+    {
+      "foodGroupId": "wild_bone",
+      "outfitId": "luigi__touring"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "mario__all_terrain"
+    },
+    {
+      "foodGroupId": "bread",
+      "outfitId": "mario__aviator"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "mario__aviator"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "mario__cowboy"
+    },
+    {
+      "foodGroupId": "snacks_3",
+      "outfitId": "mario__cowboy"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "mario__dune_rider"
+    },
+    {
+      "foodGroupId": "wild_bone",
+      "outfitId": "mario__dune_rider"
+    },
+    {
+      "foodGroupId": "sushi",
+      "outfitId": "mario__happi"
+    },
+    {
+      "foodGroupId": "snacks_1",
+      "outfitId": "mario__mechanic"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "mario__mechanic"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "mario__pro_racer"
+    },
+    {
+      "foodGroupId": "fritters",
+      "outfitId": "mario__sightseeing"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "mario__sightseeing"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "mario__sightseeing"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "mario__sightseeing"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "mario__touring"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "mario__touring"
+    },
+    {
+      "foodGroupId": "moo_moo_milk",
+      "outfitId": "mario__touring"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "pauline__aero"
+    },
+    {
+      "foodGroupId": "bread",
+      "outfitId": "pauline__aero"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "pauline__aero"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "pauline__aero"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "pauline__aero"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "pauline__aero"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "pauline__aero"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "pauline__aero"
+    },
+    {
+      "foodGroupId": "pancakes",
+      "outfitId": "pauline__aero"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "pauline__aero"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "pauline__aero"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "peach__aero"
+    },
+    {
+      "foodGroupId": "bread",
+      "outfitId": "peach__aviator"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "peach__aviator"
+    },
+    {
+      "foodGroupId": "wild_bone",
+      "outfitId": "peach__aviator"
+    },
+    {
+      "foodGroupId": "moo_moo_milk",
+      "outfitId": "peach__farmer"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "peach__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "peach__pro_racer"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "peach__sightseeing"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "peach__sightseeing"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "peach__touring"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "peach__touring"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "peach__touring"
+    },
+    {
+      "foodGroupId": "snacks_1",
+      "outfitId": "peach__touring"
+    },
+    {
+      "foodGroupId": "fritters",
+      "outfitId": "peach__vacation"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "peach__vacation"
+    },
+    {
+      "foodGroupId": "snacks_3",
+      "outfitId": "peach__vacation"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "peach__vacation"
+    },
+    {
+      "foodGroupId": "sushi",
+      "outfitId": "peach__yukata"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "rosalina__aero"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "rosalina__aero"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "rosalina__aero"
+    },
+    {
+      "foodGroupId": "bread",
+      "outfitId": "rosalina__aurora"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "rosalina__aurora"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "rosalina__aurora"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "rosalina__pro_racer"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "rosalina__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "rosalina__pro_racer"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "rosalina__touring"
+    },
+    {
+      "foodGroupId": "fritters",
+      "outfitId": "rosalina__touring"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "rosalina__touring"
+    },
+    {
+      "foodGroupId": "moo_moo_milk",
+      "outfitId": "rosalina__touring"
+    },
+    {
+      "foodGroupId": "pancakes",
+      "outfitId": "rosalina__touring"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "rosalina__touring"
+    },
+    {
+      "foodGroupId": "wild_bone",
+      "outfitId": "rosalina__touring"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "shy_guy__pit_crew"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "shy_guy__pit_crew"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "shy_guy__pit_crew"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "shy_guy__pit_crew"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "shy_guy__pit_crew"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "shy_guy__pit_crew"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "shy_guy__pit_crew"
+    },
+    {
+      "foodGroupId": "bread",
+      "outfitId": "shy_guy__slope_styler"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "shy_guy__slope_styler"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "toad__burger_bud"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "toad__burger_bud"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "toad__burger_bud"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "toad__burger_bud"
+    },
+    {
+      "foodGroupId": "snacks_3",
+      "outfitId": "toad__engineer"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "toad__explorer"
+    },
+    {
+      "foodGroupId": "bread",
+      "outfitId": "toad__explorer"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "toad__explorer"
+    },
+    {
+      "foodGroupId": "pancakes",
+      "outfitId": "toad__explorer"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "toad__explorer"
+    },
+    {
+      "foodGroupId": "wild_bone",
+      "outfitId": "toad__explorer"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "toad__pro_racer"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "toad__pro_racer"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "toad__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "toad__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_3",
+      "outfitId": "toadette__conductor"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "toadette__explorer"
+    },
+    {
+      "foodGroupId": "bread",
+      "outfitId": "toadette__explorer"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "toadette__explorer"
+    },
+    {
+      "foodGroupId": "pancakes",
+      "outfitId": "toadette__explorer"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "toadette__explorer"
+    },
+    {
+      "foodGroupId": "wild_bone",
+      "outfitId": "toadette__explorer"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "toadette__pro_racer"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "toadette__pro_racer"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "toadette__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "toadette__pro_racer"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "toadette__soft_server"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "toadette__soft_server"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "toadette__soft_server"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "toadette__soft_server"
+    },
+    {
+      "foodGroupId": "fritters",
+      "outfitId": "waluigi__biker"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "waluigi__biker"
+    },
+    {
+      "foodGroupId": "moo_moo_milk",
+      "outfitId": "waluigi__biker"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "waluigi__biker"
+    },
+    {
+      "foodGroupId": "wild_bone",
+      "outfitId": "waluigi__biker"
+    },
+    {
+      "foodGroupId": "snacks_1",
+      "outfitId": "waluigi__mariachi"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "waluigi__pro_racer"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "waluigi__pro_racer"
+    },
+    {
+      "foodGroupId": "pancakes",
+      "outfitId": "waluigi__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "waluigi__pro_racer"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "waluigi__road_ruffian"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "waluigi__road_ruffian"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "waluigi__road_ruffian"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "waluigi__wampire"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "waluigi__wampire"
+    },
+    {
+      "foodGroupId": "fritters",
+      "outfitId": "wario__biker"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "wario__biker"
+    },
+    {
+      "foodGroupId": "moo_moo_milk",
+      "outfitId": "wario__biker"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "wario__biker"
+    },
+    {
+      "foodGroupId": "wild_bone",
+      "outfitId": "wario__biker"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "wario__oasis"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "wario__oasis"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "wario__pirate"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "wario__pro_racer"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "wario__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "wario__pro_racer"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "wario__road_ruffian"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "wario__road_ruffian"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "wario__wicked_wasp"
+    },
+    {
+      "foodGroupId": "pancakes",
+      "outfitId": "wario__wicked_wasp"
+    },
+    {
+      "foodGroupId": "snacks_1",
+      "outfitId": "wario__work_crew"
+    },
+    {
+      "foodGroupId": "snacks_3",
+      "outfitId": "wario__work_crew"
+    },
+    {
+      "foodGroupId": "sushi",
+      "outfitId": "wario__work_crew"
+    },
+    {
+      "foodGroupId": "popcorn",
+      "outfitId": "yoshi__aristocrat"
+    },
+    {
+      "foodGroupId": "snacks_3",
+      "outfitId": "yoshi__aristocrat"
+    },
+    {
+      "foodGroupId": "magma_curry",
+      "outfitId": "yoshi__biker"
+    },
+    {
+      "foodGroupId": "barbecue",
+      "outfitId": "yoshi__food_slinger"
+    },
+    {
+      "foodGroupId": "pizza",
+      "outfitId": "yoshi__food_slinger"
+    },
+    {
+      "foodGroupId": "sushi",
+      "outfitId": "yoshi__matsuri"
+    },
+    {
+      "foodGroupId": "cake",
+      "outfitId": "yoshi__pro_racer"
+    },
+    {
+      "foodGroupId": "donut",
+      "outfitId": "yoshi__pro_racer"
+    },
+    {
+      "foodGroupId": "snacks_2",
+      "outfitId": "yoshi__pro_racer"
+    },
+    {
+      "foodGroupId": "ice_cream",
+      "outfitId": "yoshi__soft_server"
+    },
+    {
+      "foodGroupId": "fritters",
+      "outfitId": "yoshi__swimwear"
+    },
+    {
+      "foodGroupId": "fruit_barrel",
+      "outfitId": "yoshi__swimwear"
+    },
+    {
+      "foodGroupId": "bread",
+      "outfitId": "yoshi__touring"
+    },
+    {
+      "foodGroupId": "hamburger",
+      "outfitId": "yoshi__touring"
+    },
+    {
+      "foodGroupId": "moo_moo_milk",
+      "outfitId": "yoshi__touring"
+    },
+    {
+      "foodGroupId": "snacks_1",
+      "outfitId": "yoshi__touring"
+    },
+    {
+      "foodGroupId": "spicy_curry",
+      "outfitId": "yoshi__touring"
+    },
+    {
+      "foodGroupId": "wild_bone",
+      "outfitId": "yoshi__touring"
+    }
+  ],
+  "source": "https://www.mariowiki.com/Dash_Food"
+}

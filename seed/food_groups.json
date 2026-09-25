@@ -1,0 +1,168 @@
+{
+  "items": [
+    {
+      "foods": [
+        "Hamburger"
+      ],
+      "id": "hamburger",
+      "name": "Hamburger",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Donut"
+      ],
+      "id": "donut",
+      "name": "Donut",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Spicy curry"
+      ],
+      "id": "spicy_curry",
+      "name": "Spicy curry",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Barbecue"
+      ],
+      "id": "barbecue",
+      "name": "Barbecue",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Wild bone"
+      ],
+      "id": "wild_bone",
+      "name": "Wild bone",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Pancakes"
+      ],
+      "id": "pancakes",
+      "name": "Pancakes",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Ice cream"
+      ],
+      "id": "ice_cream",
+      "name": "Ice cream",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Magma curry"
+      ],
+      "id": "magma_curry",
+      "name": "Magma curry",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Fruit barrel"
+      ],
+      "id": "fruit_barrel",
+      "name": "Fruit barrel",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Moo Moo Milk"
+      ],
+      "id": "moo_moo_milk",
+      "name": "Moo Moo Milk",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Cake"
+      ],
+      "id": "cake",
+      "name": "Cake",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Bread"
+      ],
+      "id": "bread",
+      "name": "Bread",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Pizza"
+      ],
+      "id": "pizza",
+      "name": "Pizza",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Fritters & potatoes"
+      ],
+      "id": "fritters",
+      "name": "Fritters & potatoes",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Takoyaki",
+        "Candy apple",
+        "Cheep Cheep taiyaki",
+        "Sushi"
+      ],
+      "id": "sushi",
+      "name": "Takoyaki / Candy apple / Cheep Cheep taiyaki / Sushi",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Snacks 1"
+      ],
+      "id": "snacks_1",
+      "name": "Snacks 1",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Snacks 2"
+      ],
+      "id": "snacks_2",
+      "name": "Snacks 2",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Snacks 3"
+      ],
+      "id": "snacks_3",
+      "name": "Snacks 3",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Popcorn"
+      ],
+      "id": "popcorn",
+      "name": "Popcorn",
+      "revertsToDefault": false
+    },
+    {
+      "foods": [
+        "Lunchbox"
+      ],
+      "id": "lunchbox",
+      "name": "Lunchbox",
+      "revertsToDefault": true
+    }
+  ],
+  "source": "https://www.mariowiki.com/Dash_Food"
+}

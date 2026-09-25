@@ -1,0 +1,32 @@
+# Conteggi attesi. Unica fonte di verità per lo script (seedgen) e per i test Kotlin dell'app.
+#
+# Se un aggiornamento del gioco cambia questi numeri, vanno modificati A MANO, in un commit dedicato
+# che cita la fonte. Non vanno mai rilassati per far passare la build.
+#
+# Verifica 25/09/2026: conteggio sulla tabella "List of food" della pagina Dash Food
+# (ultima modifica 19/08/2026), coerente con la guida Nintendo Life "All Costume Unlocks".
+
+# Versione del gioco a cui si riferiscono i dati (non estraibile dal wiki: si aggiorna a mano).
+game_version: "1.8.0"
+
+characters_with_outfits: 24
+alternative_outfits: 103
+total_outfits_including_default: 127
+
+# Gruppi "di outfit": ogni cella Outfits distinta della tabella è un gruppo.
+# 19 gruppi danno outfit + 1 (Lunchbox) che riporta al default.
+food_groups: 20
+food_groups_reverting_to_default: 1
+
+courses: 30
+cups: 8
+courses_per_cup: 4
+rallies: 12
+stops_per_rally: 6
+
+regions: 10
+
+# Totali confermati dal contatore in-game (dalla patch 1.2.0 diventa dorato a raccolta completa),
+# riportati da mariowiki e Game8.
+peach_medallions: 200
+p_switches: 394

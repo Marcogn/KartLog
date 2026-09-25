@@ -1,0 +1,644 @@
+{
+  "items": [
+    {
+      "courseId": "crown_city",
+      "foodGroupId": "barbecue",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "great_q_block_ruins",
+      "foodGroupId": "barbecue",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "peach_beach",
+      "foodGroupId": "barbecue",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "salty_salty_speedway",
+      "foodGroupId": "barbecue",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "shy_guy_bazaar",
+      "foodGroupId": "barbecue",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "sky_high_sundae",
+      "foodGroupId": "barbecue",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "wario_shipyard",
+      "foodGroupId": "barbecue",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "whistlestop_summit",
+      "foodGroupId": "barbecue",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "airship_fortress",
+      "foodGroupId": "bread",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "bowsers_castle",
+      "foodGroupId": "bread",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "dandelion_depths",
+      "foodGroupId": "bread",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "dk_pass",
+      "foodGroupId": "bread",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "shy_guy_bazaar",
+      "foodGroupId": "bread",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "sky_high_sundae",
+      "foodGroupId": "bread",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "starview_peak",
+      "foodGroupId": "bread",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "wario_shipyard",
+      "foodGroupId": "bread",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "crown_city",
+      "foodGroupId": "cake",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "peach_beach",
+      "foodGroupId": "cake",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "peach_stadium",
+      "foodGroupId": "cake",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "sky_high_sundae",
+      "foodGroupId": "cake",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "choco_mountain",
+      "foodGroupId": "donut",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "crown_city",
+      "foodGroupId": "donut",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "dandelion_depths",
+      "foodGroupId": "donut",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "mario_circuit",
+      "foodGroupId": "donut",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "peach_stadium",
+      "foodGroupId": "donut",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "whistlestop_summit",
+      "foodGroupId": "donut",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "crown_city",
+      "foodGroupId": "fritters",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "koopa_troopa_beach",
+      "foodGroupId": "fritters",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "peach_beach",
+      "foodGroupId": "fritters",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "salty_salty_speedway",
+      "foodGroupId": "fritters",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "desert_hills",
+      "foodGroupId": "fruit_barrel",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "dk_spaceport",
+      "foodGroupId": "fruit_barrel",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "faraway_oasis",
+      "foodGroupId": "fruit_barrel",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "great_q_block_ruins",
+      "foodGroupId": "fruit_barrel",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "koopa_troopa_beach",
+      "foodGroupId": "fruit_barrel",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "mario_bros_circuit",
+      "foodGroupId": "fruit_barrel",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "whistlestop_summit",
+      "foodGroupId": "fruit_barrel",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "crown_city",
+      "foodGroupId": "hamburger",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "dandelion_depths",
+      "foodGroupId": "hamburger",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "mario_bros_circuit",
+      "foodGroupId": "hamburger",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "whistlestop_summit",
+      "foodGroupId": "hamburger",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "crown_city",
+      "foodGroupId": "ice_cream",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "dandelion_depths",
+      "foodGroupId": "ice_cream",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "dk_pass",
+      "foodGroupId": "ice_cream",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "mario_circuit",
+      "foodGroupId": "ice_cream",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "peach_stadium",
+      "foodGroupId": "ice_cream",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "sky_high_sundae",
+      "foodGroupId": "ice_cream",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "starview_peak",
+      "foodGroupId": "ice_cream",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "airship_fortress",
+      "foodGroupId": "lunchbox",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "bowsers_castle",
+      "foodGroupId": "lunchbox",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "crown_city",
+      "foodGroupId": "lunchbox",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "mario_bros_circuit",
+      "foodGroupId": "lunchbox",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "mario_circuit",
+      "foodGroupId": "lunchbox",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "moo_moo_meadows",
+      "foodGroupId": "lunchbox",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "peach_stadium",
+      "foodGroupId": "lunchbox",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "toads_factory",
+      "foodGroupId": "lunchbox",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "airship_fortress",
+      "foodGroupId": "magma_curry",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "bowsers_castle",
+      "foodGroupId": "magma_curry",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "dk_pass",
+      "foodGroupId": "magma_curry",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "shy_guy_bazaar",
+      "foodGroupId": "magma_curry",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "wario_stadium",
+      "foodGroupId": "magma_curry",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "choco_mountain",
+      "foodGroupId": "moo_moo_milk",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "moo_moo_meadows",
+      "foodGroupId": "moo_moo_milk",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "peach_stadium",
+      "foodGroupId": "moo_moo_milk",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "acorn_heights",
+      "foodGroupId": "pancakes",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "crown_city",
+      "foodGroupId": "pancakes",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "great_q_block_ruins",
+      "foodGroupId": "pancakes",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "peach_stadium",
+      "foodGroupId": "pancakes",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "crown_city",
+      "foodGroupId": "pizza",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "koopa_troopa_beach",
+      "foodGroupId": "pizza",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "peach_beach",
+      "foodGroupId": "pizza",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "salty_salty_speedway",
+      "foodGroupId": "pizza",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "toads_factory",
+      "foodGroupId": "pizza",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "boo_cinema",
+      "foodGroupId": "popcorn",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "dandelion_depths",
+      "foodGroupId": "popcorn",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "choco_mountain",
+      "foodGroupId": "snacks_1",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "crown_city",
+      "foodGroupId": "snacks_1",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "dry_bones_burnout",
+      "foodGroupId": "snacks_1",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "mario_circuit",
+      "foodGroupId": "snacks_1",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "peach_stadium",
+      "foodGroupId": "snacks_1",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "toads_factory",
+      "foodGroupId": "snacks_1",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "whistlestop_summit",
+      "foodGroupId": "snacks_1",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "choco_mountain",
+      "foodGroupId": "snacks_2",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "crown_city",
+      "foodGroupId": "snacks_2",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "dry_bones_burnout",
+      "foodGroupId": "snacks_2",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "mario_circuit",
+      "foodGroupId": "snacks_2",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "peach_stadium",
+      "foodGroupId": "snacks_2",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "toads_factory",
+      "foodGroupId": "snacks_2",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "whistlestop_summit",
+      "foodGroupId": "snacks_2",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "choco_mountain",
+      "foodGroupId": "snacks_3",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "crown_city",
+      "foodGroupId": "snacks_3",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "dry_bones_burnout",
+      "foodGroupId": "snacks_3",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "mario_circuit",
+      "foodGroupId": "snacks_3",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "peach_stadium",
+      "foodGroupId": "snacks_3",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "toads_factory",
+      "foodGroupId": "snacks_3",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "whistlestop_summit",
+      "foodGroupId": "snacks_3",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "desert_hills",
+      "foodGroupId": "spicy_curry",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "mario_bros_circuit",
+      "foodGroupId": "spicy_curry",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "shy_guy_bazaar",
+      "foodGroupId": "spicy_curry",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "cheep_cheep_falls",
+      "foodGroupId": "sushi",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "great_q_block_ruins",
+      "foodGroupId": "sushi",
+      "listedInDashFood": true,
+      "presence": "ON_COURSE"
+    },
+    {
+      "courseId": "peach_beach",
+      "foodGroupId": "sushi",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "salty_salty_speedway",
+      "foodGroupId": "sushi",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "dino_dino_jungle",
+      "foodGroupId": "wild_bone",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "faraway_oasis",
+      "foodGroupId": "wild_bone",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    },
+    {
+      "courseId": "shy_guy_bazaar",
+      "foodGroupId": "wild_bone",
+      "listedInDashFood": true,
+      "presence": "NEARBY"
+    }
+  ],
+  "source": [
+    "https://www.mariowiki.com/Dash_Food",
+    "https://www.mariowiki.com/List_of_Yoshi's_locations"
+  ]
+}

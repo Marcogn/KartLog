@@ -1,0 +1,32 @@
+*.iml
+.gradle/
+.kotlin/
+/local.properties
+.idea/
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+*.apk
+*.ap_
+*.dex
+/app/build/
+/app/schemas/
+
+# Signing (never commit a release keystore or its credentials)
+*.jks
+*.keystore
+key.properties
+keystore.properties
+
+# Seed generato a build time (SPEC §5.4): i JSON versionati vivono in /seed,
+# quelli copiati negli asset dell'APK sono un artefatto di build.
+/app/src/main/assets/seed/
+
+# tools/seedgen (Python)
+tools/seedgen/.venv/
+tools/seedgen/__pycache__/
+tools/seedgen/**/__pycache__/
+tools/seedgen/.pytest_cache/
+tools/seedgen/tests/fixtures/real/

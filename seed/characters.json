@@ -1,0 +1,125 @@
+{
+  "items": [
+    {
+      "id": "mario",
+      "name": "Mario",
+      "rosterOrder": 0
+    },
+    {
+      "id": "luigi",
+      "name": "Luigi",
+      "rosterOrder": 1
+    },
+    {
+      "id": "peach",
+      "name": "Peach",
+      "rosterOrder": 2
+    },
+    {
+      "id": "daisy",
+      "name": "Daisy",
+      "rosterOrder": 3
+    },
+    {
+      "id": "yoshi",
+      "name": "Yoshi",
+      "rosterOrder": 4
+    },
+    {
+      "id": "donkey_kong",
+      "name": "Donkey Kong",
+      "rosterOrder": 5
+    },
+    {
+      "id": "bowser",
+      "name": "Bowser",
+      "rosterOrder": 6
+    },
+    {
+      "id": "bowser_jr",
+      "name": "Bowser Jr.",
+      "rosterOrder": 7
+    },
+    {
+      "id": "koopa_troopa",
+      "name": "Koopa Troopa",
+      "rosterOrder": 8
+    },
+    {
+      "id": "toad",
+      "name": "Toad",
+      "rosterOrder": 9
+    },
+    {
+      "id": "toadette",
+      "name": "Toadette",
+      "rosterOrder": 10
+    },
+    {
+      "id": "lakitu",
+      "name": "Lakitu",
+      "rosterOrder": 11
+    },
+    {
+      "id": "king_boo",
+      "name": "King Boo",
+      "rosterOrder": 12
+    },
+    {
+      "id": "shy_guy",
+      "name": "Shy Guy",
+      "rosterOrder": 13
+    },
+    {
+      "id": "wario",
+      "name": "Wario",
+      "rosterOrder": 14
+    },
+    {
+      "id": "waluigi",
+      "name": "Waluigi",
+      "rosterOrder": 15
+    },
+    {
+      "id": "birdo",
+      "name": "Birdo",
+      "rosterOrder": 16
+    },
+    {
+      "id": "pauline",
+      "name": "Pauline",
+      "rosterOrder": 17
+    },
+    {
+      "id": "rosalina",
+      "name": "Rosalina",
+      "rosterOrder": 18
+    },
+    {
+      "id": "baby_mario",
+      "name": "Baby Mario",
+      "rosterOrder": 19
+    },
+    {
+      "id": "baby_luigi",
+      "name": "Baby Luigi",
+      "rosterOrder": 20
+    },
+    {
+      "id": "baby_peach",
+      "name": "Baby Peach",
+      "rosterOrder": 21
+    },
+    {
+      "id": "baby_daisy",
+      "name": "Baby Daisy",
+      "rosterOrder": 22
+    },
+    {
+      "id": "baby_rosalina",
+      "name": "Baby Rosalina",
+      "rosterOrder": 23
+    }
+  ],
+  "source": "https://www.mariowiki.com/Dash_Food"
+}

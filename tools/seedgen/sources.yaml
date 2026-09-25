@@ -1,0 +1,61 @@
+# Pagine sorgente di Super Mario Wiki usate da seedgen.
+# Ogni pagina è identificata dal TITOLO ESATTO usato dalla MediaWiki API (action=parse&page=<title>).
+# Nessuna pagina viene "cercata": se un titolo cambia sul wiki, l'estrazione fallisce e va aggiornato qui.
+#
+# Licenza dei contenuti testuali: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).
+# Le immagini del wiki NON sono coperte da quella licenza e non vengono mai scaricate.
+
+api_url: "https://www.mariowiki.com/api.php"
+page_url_prefix: "https://www.mariowiki.com/"
+
+# User-Agent inviato al wiki. Sostituire <REPO_URL> con l'URL del repository (o un contatto)
+# prima della prima estrazione reale: la policy dei wiki MediaWiki chiede un contatto riconoscibile.
+user_agent: "KartLog-seedgen/1.0 (<REPO_URL>)"
+
+http:
+  timeout_seconds: 30        # per singola richiesta
+  total_timeout_seconds: 300 # per l'intera estrazione
+  max_retries: 4
+  maxlag: 5
+
+pages:
+  # Tabella "List of food": gruppi di cibo -> outfit per personaggio, e gruppi -> corsi (colonna Locations).
+  dash_food: "Dash Food"
+
+  # Stand Yoshi's divisi in "Course locations" (sul percorso) e "Route locations" (sulle strade).
+  # Si usa la sezione Course locations: dice con precisione quale cibo si trova SUL percorso.
+  yoshis: "List of Yoshi's locations"
+
+  # Pulsanti P: una sezione h2 per bioma, tabelle con colonne "In-game text" e "Location".
+  missions: "List of Mario Kart World missions"
+
+  # Navbox del gioco: composizione delle 8 cup (righe "<Nome> Cup") ed elenco dei rally.
+  # Si usa il template invece della pagina "Mario Kart World" perché è una tabella piccola e stabile.
+  navbox: "Template:Mario Kart World"
+
+  # Una pagina per rally. La tabella con intestazioni "Starting point" ... "Final course"
+  # dà le tappe in ordine. L'ordine di questa lista è l'ordine degli eventi in app.
+  rallies:
+    - "Golden Rally"
+    - "Ice Rally"
+    - "Moon Rally"
+    - "Spiny Rally"
+    - "Cherry Rally"
+    - "Acorn Rally"
+    - "Cloud Rally"
+    - "Heart Rally"
+    - "Drill Rally"
+    - "Boomerang Rally (Mario Kart World)"
+    - "Propeller Rally"
+    - "Turnip Rally"
+
+# Cup cercate nella navbox, in ordine di gioco.
+cups:
+  - "Mushroom Cup"
+  - "Flower Cup"
+  - "Star Cup"
+  - "Shell Cup"
+  - "Banana Cup"
+  - "Leaf Cup"
+  - "Lightning Cup"
+  - "Special Cup"

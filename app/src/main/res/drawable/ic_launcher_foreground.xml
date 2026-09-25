@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Monogramma "K" originale, nessun asset Nintendo (SPEC §0.2). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M30,21 L42,21 L42,87 L30,87 Z" />
+    <group
+        android:pivotX="42"
+        android:pivotY="54"
+        android:rotation="-45">
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M42,48 L88,48 L88,60 L42,60 Z" />
+    </group>
+    <group
+        android:pivotX="42"
+        android:pivotY="54"
+        android:rotation="45">
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M42,48 L88,48 L88,60 L42,60 Z" />
+    </group>
+</vector>

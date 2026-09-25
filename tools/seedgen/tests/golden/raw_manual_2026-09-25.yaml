@@ -1,0 +1,1221 @@
+food_groups:
+- names:
+  - Hamburger
+  outfits:
+  - character: Mario
+    outfit: Touring
+  - character: Luigi
+    outfit: Touring
+  - character: Peach
+    outfit: Touring
+  - character: Daisy
+    outfit: Touring
+  - character: Yoshi
+    outfit: Touring
+  - character: Donkey Kong
+    outfit: All-Terrain
+  - character: Bowser
+    outfit: Biker
+  - character: Bowser Jr.
+    outfit: Biker Jr.
+  - character: Koopa Troopa
+    outfit: Runner
+  - character: Toad
+    outfit: Burger Bud
+  - character: Toadette
+    outfit: Soft Server
+  - character: Lakitu
+    outfit: Pit Crew
+  - character: King Boo
+    outfit: Pro Racer
+  - character: Shy Guy
+    outfit: Pit Crew
+  - character: Wario
+    outfit: Biker
+  - character: Waluigi
+    outfit: Biker
+  - character: Birdo
+    outfit: Pro Racer
+  - character: Pauline
+    outfit: Aero
+  - character: Rosalina
+    outfit: Touring
+  - character: Baby Mario
+    outfit: Pro Racer
+  - character: Baby Luigi
+    outfit: Pro Racer
+  - character: Baby Peach
+    outfit: Touring
+  - character: Baby Daisy
+    outfit: Touring
+  - character: Baby Rosalina
+    outfit: Touring
+  courses:
+  - Crown City
+  - Dandelion Depths
+  - Mario Bros. Circuit
+  - Whistlestop Summit
+  reverts_to_default: false
+- names:
+  - Donut
+  outfits:
+  - character: Mario
+    outfit: All-Terrain
+  - character: Luigi
+    outfit: All-Terrain
+  - character: Peach
+    outfit: Aero
+  - character: Daisy
+    outfit: Aero
+  - character: Yoshi
+    outfit: Pro Racer
+  - character: Donkey Kong
+    outfit: All-Terrain
+  - character: Bowser
+    outfit: All-Terrain
+  - character: Bowser Jr.
+    outfit: Pro Racer
+  - character: Koopa Troopa
+    outfit: All-Terrain
+  - character: Toad
+    outfit: Pro Racer
+  - character: Toadette
+    outfit: Pro Racer
+  - character: Lakitu
+    outfit: Pit Crew
+  - character: King Boo
+    outfit: Pro Racer
+  - character: Shy Guy
+    outfit: Pit Crew
+  - character: Wario
+    outfit: Pro Racer
+  - character: Waluigi
+    outfit: Pro Racer
+  - character: Birdo
+    outfit: Pro Racer
+  - character: Pauline
+    outfit: Aero
+  - character: Rosalina
+    outfit: Aero
+  - character: Baby Mario
+    outfit: Pro Racer
+  - character: Baby Luigi
+    outfit: Work Crew
+  - character: Baby Peach
+    outfit: Pro Racer
+  - character: Baby Daisy
+    outfit: Pro Racer
+  - character: Baby Rosalina
+    outfit: Pro Racer
+  courses:
+  - Choco Mountain
+  - Crown City
+  - Dandelion Depths
+  - Mario Circuit (Mario Kart World)
+  - Peach Stadium
+  - Whistlestop Summit
+  reverts_to_default: false
+- names:
+  - Spicy curry
+  outfits:
+  - character: Mario
+    outfit: Dune Rider
+  - character: Luigi
+    outfit: Oasis
+  - character: Peach
+    outfit: Vacation
+  - character: Daisy
+    outfit: Oasis
+  - character: Yoshi
+    outfit: Touring
+  - character: Donkey Kong
+    outfit: All-Terrain
+  - character: Bowser Jr.
+    outfit: Explorer
+  - character: Koopa Troopa
+    outfit: All-Terrain
+  - character: Toad
+    outfit: Explorer
+  - character: Toadette
+    outfit: Explorer
+  - character: King Boo
+    outfit: Pro Racer
+  - character: Wario
+    outfit: Oasis
+  - character: Birdo
+    outfit: Vacation
+  - character: Pauline
+    outfit: Aero
+  - character: Rosalina
+    outfit: Aero
+  - character: Baby Mario
+    outfit: Pro Racer
+  - character: Baby Luigi
+    outfit: Pro Racer
+  - character: Baby Peach
+    outfit: Pro Racer
+  - character: Baby Daisy
+    outfit: Pro Racer
+  - character: Baby Rosalina
+    outfit: Pro Racer
+  courses:
+  - Desert Hills
+  - Mario Bros. Circuit
+  - Shy Guy Bazaar
+  reverts_to_default: false
+- names:
+  - Barbecue
+  outfits:
+  - character: Mario
+    outfit: Touring
+  - character: Luigi
+    outfit: Touring
+  - character: Peach
+    outfit: Touring
+  - character: Daisy
+    outfit: Swimwear
+  - character: Yoshi
+    outfit: Food Slinger
+  - character: Donkey Kong
+    outfit: All-Terrain
+  - character: Bowser
+    outfit: Biker
+  - character: Bowser Jr.
+    outfit: Biker Jr.
+  - character: Koopa Troopa
+    outfit: Sailor
+  - character: Toad
+    outfit: Explorer
+  - character: Toadette
+    outfit: Explorer
+  - character: Lakitu
+    outfit: Fisherman
+  - character: King Boo
+    outfit: Pirate
+  - character: Shy Guy
+    outfit: Pit Crew
+  - character: Wario
+    outfit: Pirate
+  - character: Waluigi
+    outfit: Road Ruffian
+  - character: Birdo
+    outfit: Vacation
+  - character: Pauline
+    outfit: Aero
+  - character: Rosalina
+    outfit: Touring
+  - character: Baby Mario
+    outfit: Swimwear
+  - character: Baby Luigi
+    outfit: Work Crew
+  - character: Baby Peach
+    outfit: Sailor
+  - character: Baby Daisy
+    outfit: Sailor
+  - character: Baby Rosalina
+    outfit: Sailor
+  courses:
+  - Crown City
+  - Great ? Block Ruins
+  - Peach Beach
+  - Salty Salty Speedway
+  - Shy Guy Bazaar
+  - Sky-High Sundae
+  - Wario Shipyard
+  - Whistlestop Summit
+  reverts_to_default: false
+- names:
+  - Wild bone
+  outfits:
+  - character: Mario
+    outfit: Dune Rider
+  - character: Luigi
+    outfit: Touring
+  - character: Peach
+    outfit: Aviator
+  - character: Daisy
+    outfit: Touring
+  - character: Yoshi
+    outfit: Touring
+  - character: Bowser Jr.
+    outfit: Explorer
+  - character: Toad
+    outfit: Explorer
+  - character: Toadette
+    outfit: Explorer
+  - character: Wario
+    outfit: Biker
+  - character: Waluigi
+    outfit: Biker
+  - character: Rosalina
+    outfit: Touring
+  - character: Baby Mario
+    outfit: Work Crew
+  - character: Baby Luigi
+    outfit: Work Crew
+  - character: Baby Peach
+    outfit: Explorer
+  - character: Baby Daisy
+    outfit: Explorer
+  - character: Baby Rosalina
+    outfit: Explorer
+  courses:
+  - Dino Dino Jungle
+  - Faraway Oasis
+  - Shy Guy Bazaar
+  reverts_to_default: false
+- names:
+  - Pancakes
+  outfits:
+  - character: Donkey Kong
+    outfit: All-Terrain
+  - character: Bowser
+    outfit: Biker
+  - character: Bowser Jr.
+    outfit: Explorer
+  - character: Toad
+    outfit: Explorer
+  - character: Toadette
+    outfit: Explorer
+  - character: King Boo
+    outfit: Pro Racer
+  - character: Wario
+    outfit: Wicked Wasp
+  - character: Waluigi
+    outfit: Pro Racer
+  - character: Birdo
+    outfit: Pro Racer
+  - character: Pauline
+    outfit: Aero
+  - character: Rosalina
+    outfit: Touring
+  - character: Baby Mario
+    outfit: Work Crew
+  - character: Baby Luigi
+    outfit: Work Crew
+  - character: Baby Peach
+    outfit: Explorer
+  - character: Baby Daisy
+    outfit: Explorer
+  - character: Baby Rosalina
+    outfit: Explorer
+  courses:
+  - Acorn Heights
+  - Crown City
+  - Great ? Block Ruins
+  - Peach Stadium
+  reverts_to_default: false
+- names:
+  - Ice cream
+  outfits:
+  - character: Mario
+    outfit: Sightseeing
+  - character: Luigi
+    outfit: Touring
+  - character: Peach
+    outfit: Touring
+  - character: Daisy
+    outfit: Touring
+  - character: Yoshi
+    outfit: Soft Server
+  - character: Donkey Kong
+    outfit: All-Terrain
+  - character: Bowser
+    outfit: Pro Racer
+  - character: Bowser Jr.
+    outfit: Pro Racer
+  - character: Koopa Troopa
+    outfit: Runner
+  - character: Toad
+    outfit: Burger Bud
+  - character: Toadette
+    outfit: Soft Server
+  - character: Lakitu
+    outfit: Pit Crew
+  - character: King Boo
+    outfit: Aristocrat
+  - character: Shy Guy
+    outfit: Slope Styler
+  - character: Wario
+    outfit: Wicked Wasp
+  - character: Waluigi
+    outfit: Wampire
+  - character: Birdo
+    outfit: Pro Racer
+  - character: Pauline
+    outfit: Aero
+  - character: Rosalina
+    outfit: Aurora
+  - character: Baby Mario
+    outfit: Pro Racer
+  - character: Baby Luigi
+    outfit: Pro Racer
+  - character: Baby Peach
+    outfit: Touring
+  - character: Baby Daisy
+    outfit: Touring
+  - character: Baby Rosalina
+    outfit: Touring
+  courses:
+  - Crown City
+  - Dandelion Depths
+  - DK Pass
+  - Mario Circuit (Mario Kart World)
+  - Peach Stadium
+  - Sky-High Sundae
+  - Starview Peak
+  reverts_to_default: false
+- names:
+  - Magma curry
+  outfits:
+  - character: Mario
+    outfit: Aviator
+  - character: Luigi
+    outfit: Touring
+  - character: Peach
+    outfit: Aviator
+  - character: Daisy
+    outfit: Touring
+  - character: Yoshi
+    outfit: Biker
+  - character: Donkey Kong
+    outfit: All-Terrain
+  - character: Bowser
+    outfit: Supercharged
+  - character: Bowser Jr.
+    outfit: Biker Jr.
+  - character: Koopa Troopa
+    outfit: All-Terrain
+  - character: Toad
+    outfit: Pro Racer
+  - character: Toadette
+    outfit: Pro Racer
+  - character: Lakitu
+    outfit: Pit Crew
+  - character: King Boo
+    outfit: Pro Racer
+  - character: Shy Guy
+    outfit: Pit Crew
+  - character: Wario
+    outfit: Road Ruffian
+  - character: Waluigi
+    outfit: Road Ruffian
+  - character: Birdo
+    outfit: Pro Racer
+  - character: Pauline
+    outfit: Aero
+  - character: Rosalina
+    outfit: Aero
+  - character: Baby Mario
+    outfit: Pro Racer
+  - character: Baby Luigi
+    outfit: Pro Racer
+  - character: Baby Peach
+    outfit: Pro Racer
+  - character: Baby Daisy
+    outfit: Pro Racer
+  - character: Baby Rosalina
+    outfit: Pro Racer
+  courses:
+  - Airship Fortress
+  - Bowser's Castle (Mario Kart World)
+  - DK Pass
+  - Shy Guy Bazaar
+  - Wario Stadium (Mario Kart 64)
+  reverts_to_default: false
+- names:
+  - Fruit barrel
+  outfits:
+  - character: Mario
+    outfit: Sightseeing
+  - character: Luigi
+    outfit: Gondolier
+  - character: Peach
+    outfit: Sightseeing
+  - character: Daisy
+    outfit: Swimwear
+  - character: Yoshi
+    outfit: Swimwear
+  - character: Donkey Kong
+    outfit: All-Terrain
+  - character: Bowser
+    outfit: All-Terrain
+  - character: Bowser Jr.
+    outfit: Explorer
+  - character: Koopa Troopa
+    outfit: Pro Racer
+  - character: Toad
+    outfit: Explorer
+  - character: Toadette
+    outfit: Explorer
+  - character: Lakitu
+    outfit: Pit Crew
+  - character: King Boo
+    outfit: Pro Racer
+  - character: Shy Guy
+    outfit: Pit Crew
+  - character: Wario
+    outfit: Road Ruffian
+  - character: Waluigi
+    outfit: Road Ruffian
+  - character: Birdo
+    outfit: Pro Racer
+  - character: Pauline
+    outfit: Aero
+  - character: Rosalina
+    outfit: Pro Racer
+  - character: Baby Mario
+    outfit: Swimwear
+  - character: Baby Luigi
+    outfit: Work Crew
+  - character: Baby Peach
+    outfit: Explorer
+  - character: Baby Daisy
+    outfit: Explorer
+  - character: Baby Rosalina
+    outfit: Explorer
+  courses:
+  - Desert Hills
+  - DK Spaceport
+  - Faraway Oasis
+  - Great ? Block Ruins
+  - Koopa Troopa Beach (Super Mario Kart)
+  - Mario Bros. Circuit
+  - Whistlestop Summit
+  reverts_to_default: false
+- names:
+  - Moo Moo Milk
+  outfits:
+  - character: Mario
+    outfit: Touring
+  - character: Luigi
+    outfit: Farmer
+  - character: Peach
+    outfit: Farmer
+  - character: Daisy
+    outfit: Touring
+  - character: Yoshi
+    outfit: Touring
+  - character: Bowser
+    outfit: Biker
+  - character: Bowser Jr.
+    outfit: Biker Jr.
+  - character: Koopa Troopa
+    outfit: Runner
+  - character: Wario
+    outfit: Biker
+  - character: Waluigi
+    outfit: Biker
+  - character: Rosalina
+    outfit: Touring
+  - character: Baby Peach
+    outfit: Touring
+  - character: Baby Daisy
+    outfit: Touring
+  - character: Baby Rosalina
+    outfit: Touring
+  courses:
+  - Choco Mountain
+  - Moo Moo Meadows
+  - Peach Stadium
+  reverts_to_default: false
+- names:
+  - Cake
+  outfits:
+  - character: Mario
+    outfit: Pro Racer
+  - character: Luigi
+    outfit: Pro Racer
+  - character: Peach
+    outfit: Pro Racer
+  - character: Daisy
+    outfit: Pro Racer
+  - character: Yoshi
+    outfit: Pro Racer
+  - character: Donkey Kong
+    outfit: All-Terrain
+  - character: Bowser
+    outfit: Pro Racer
+  - character: Bowser Jr.
+    outfit: Pro Racer
+  - character: Koopa Troopa
+    outfit: Pro Racer
+  - character: Toad
+    outfit: Pro Racer
+  - character: Toadette
+    outfit: Pro Racer
+  - character: Lakitu
+    outfit: Pit Crew
+  - character: King Boo
+    outfit: Pro Racer
+  - character: Shy Guy
+    outfit: Pit Crew
+  - character: Wario
+    outfit: Pro Racer
+  - character: Waluigi
+    outfit: Pro Racer
+  - character: Birdo
+    outfit: Pro Racer
+  - character: Pauline
+    outfit: Aero
+  - character: Rosalina
+    outfit: Pro Racer
+  - character: Baby Mario
+    outfit: Pro Racer
+  - character: Baby Luigi
+    outfit: Pro Racer
+  - character: Baby Peach
+    outfit: Pro Racer
+  - character: Baby Daisy
+    outfit: Pro Racer
+  - character: Baby Rosalina
+    outfit: Pro Racer
+  courses:
+  - Crown City
+  - Peach Beach
+  - Peach Stadium
+  - Sky-High Sundae
+  reverts_to_default: false
+- names:
+  - Bread
+  outfits:
+  - character: Mario
+    outfit: Aviator
+  - character: Luigi
+    outfit: Touring
+  - character: Peach
+    outfit: Aviator
+  - character: Daisy
+    outfit: Pro Racer
+  - character: Yoshi
+    outfit: Touring
+  - character: Bowser Jr.
+    outfit: Explorer
+  - character: Koopa Troopa
+    outfit: All-Terrain
+  - character: Toad
+    outfit: Explorer
+  - character: Toadette
+    outfit: Explorer
+  - character: Shy Guy
+    outfit: Slope Styler
+  - character: Pauline
+    outfit: Aero
+  - character: Rosalina
+    outfit: Aurora
+  - character: Baby Peach
+    outfit: Explorer
+  - character: Baby Daisy
+    outfit: Explorer
+  - character: Baby Rosalina
+    outfit: Explorer
+  courses:
+  - Airship Fortress
+  - Bowser's Castle (Mario Kart World)
+  - Dandelion Depths
+  - DK Pass
+  - Shy Guy Bazaar
+  - Sky-High Sundae
+  - Starview Peak
+  - Wario Shipyard
+  reverts_to_default: false
+- names:
+  - Pizza
+  outfits:
+  - character: Mario
+    outfit: Sightseeing
+  - character: Luigi
+    outfit: Gondolier
+  - character: Peach
+    outfit: Sightseeing
+  - character: Daisy
+    outfit: Vacation
+  - character: Yoshi
+    outfit: Food Slinger
+  - character: Bowser
+    outfit: Biker
+  - character: Bowser Jr.
+    outfit: Explorer
+  - character: Koopa Troopa
+    outfit: Sailor
+  - character: Toad
+    outfit: Burger Bud
+  - character: Toadette
+    outfit: Soft Server
+  - character: King Boo
+    outfit: Aristocrat
+  - character: Wario
+    outfit: Biker
+  - character: Waluigi
+    outfit: Biker
+  - character: Birdo
+    outfit: Vacation
+  - character: Rosalina
+    outfit: Touring
+  - character: Baby Mario
+    outfit: Swimwear
+  - character: Baby Peach
+    outfit: Sailor
+  - character: Baby Daisy
+    outfit: Sailor
+  - character: Baby Rosalina
+    outfit: Sailor
+  courses:
+  - Crown City
+  - Koopa Troopa Beach (Super Mario Kart)
+  - Peach Beach
+  - Salty Salty Speedway
+  - Toad's Factory
+  reverts_to_default: false
+- names:
+  - Fritters & potatoes
+  outfits:
+  - character: Mario
+    outfit: Sightseeing
+  - character: Luigi
+    outfit: Gondolier
+  - character: Peach
+    outfit: Vacation
+  - character: Daisy
+    outfit: Swimwear
+  - character: Yoshi
+    outfit: Swimwear
+  - character: Bowser
+    outfit: Biker
+  - character: Bowser Jr.
+    outfit: Biker Jr.
+  - character: Koopa Troopa
+    outfit: Runner
+  - character: Wario
+    outfit: Biker
+  - character: Waluigi
+    outfit: Biker
+  - character: Birdo
+    outfit: Vacation
+  - character: Rosalina
+    outfit: Touring
+  - character: Baby Mario
+    outfit: Swimwear
+  - character: Baby Peach
+    outfit: Sailor
+  - character: Baby Daisy
+    outfit: Sailor
+  - character: Baby Rosalina
+    outfit: Sailor
+  courses:
+  - Crown City
+  - Koopa Troopa Beach (Super Mario Kart)
+  - Peach Beach
+  - Salty Salty Speedway
+  reverts_to_default: false
+- names:
+  - Takoyaki
+  - Candy apple
+  - Cheep Cheep taiyaki
+  - Sushi
+  outfits:
+  - character: Mario
+    outfit: Happi
+  - character: Luigi
+    outfit: Happi
+  - character: Peach
+    outfit: Yukata
+  - character: Daisy
+    outfit: Swimwear
+  - character: Yoshi
+    outfit: Matsuri
+  - character: Lakitu
+    outfit: Fisherman
+  - character: Wario
+    outfit: Work Crew
+  - character: Birdo
+    outfit: Vacation
+  - character: Baby Mario
+    outfit: Swimwear
+  courses:
+  - Cheep Cheep Falls (race course)
+  - Great ? Block Ruins
+  - Peach Beach
+  - Salty Salty Speedway
+  reverts_to_default: false
+- names:
+  - Snacks 1
+  outfits:
+  - character: Mario
+    outfit: Mechanic
+  - character: Luigi
+    outfit: Mechanic
+  - character: Peach
+    outfit: Touring
+  - character: Daisy
+    outfit: Touring
+  - character: Yoshi
+    outfit: Touring
+  - character: Donkey Kong
+    outfit: All-Terrain
+  - character: Bowser
+    outfit: Biker
+  - character: Bowser Jr.
+    outfit: Biker Jr.
+  - character: Koopa Troopa
+    outfit: Work Crew
+  - character: King Boo
+    outfit: Pro Racer
+  - character: Wario
+    outfit: Work Crew
+  - character: Waluigi
+    outfit: Mariachi
+  - character: Birdo
+    outfit: Pro Racer
+  - character: Baby Mario
+    outfit: Work Crew
+  - character: Baby Luigi
+    outfit: Work Crew
+  courses:
+  - Choco Mountain
+  - Crown City
+  - Dry Bones Burnout
+  - Mario Circuit (Mario Kart World)
+  - Peach Stadium
+  - Toad's Factory
+  - Whistlestop Summit
+  reverts_to_default: false
+- names:
+  - Snacks 2
+  outfits:
+  - character: Mario
+    outfit: Mechanic
+  - character: Luigi
+    outfit: Mechanic
+  - character: Peach
+    outfit: Pro Racer
+  - character: Daisy
+    outfit: Pro Racer
+  - character: Yoshi
+    outfit: Pro Racer
+  - character: Donkey Kong
+    outfit: All-Terrain
+  - character: Bowser
+    outfit: Pro Racer
+  - character: Bowser Jr.
+    outfit: Pro Racer
+  - character: Koopa Troopa
+    outfit: Pro Racer
+  - character: Toad
+    outfit: Pro Racer
+  - character: Toadette
+    outfit: Pro Racer
+  - character: Lakitu
+    outfit: Pit Crew
+  - character: King Boo
+    outfit: Pro Racer
+  - character: Shy Guy
+    outfit: Pit Crew
+  - character: Wario
+    outfit: Pro Racer
+  - character: Waluigi
+    outfit: Pro Racer
+  - character: Birdo
+    outfit: Pro Racer
+  - character: Pauline
+    outfit: Aero
+  - character: Rosalina
+    outfit: Pro Racer
+  - character: Baby Mario
+    outfit: Pro Racer
+  - character: Baby Luigi
+    outfit: Pro Racer
+  - character: Baby Peach
+    outfit: Pro Racer
+  - character: Baby Daisy
+    outfit: Pro Racer
+  - character: Baby Rosalina
+    outfit: Pro Racer
+  courses:
+  - Choco Mountain
+  - Crown City
+  - Dry Bones Burnout
+  - Mario Circuit (Mario Kart World)
+  - Peach Stadium
+  - Toad's Factory
+  - Whistlestop Summit
+  reverts_to_default: false
+- names:
+  - Snacks 3
+  outfits:
+  - character: Mario
+    outfit: Cowboy
+  - character: Luigi
+    outfit: Gondolier
+  - character: Peach
+    outfit: Vacation
+  - character: Daisy
+    outfit: Vacation
+  - character: Yoshi
+    outfit: Aristocrat
+  - character: Bowser
+    outfit: Supercharged
+  - character: Bowser Jr.
+    outfit: Biker Jr.
+  - character: Koopa Troopa
+    outfit: Work Crew
+  - character: Toad
+    outfit: Engineer
+  - character: Toadette
+    outfit: Conductor
+  - character: King Boo
+    outfit: Aristocrat
+  - character: Wario
+    outfit: Work Crew
+  - character: Birdo
+    outfit: Vacation
+  - character: Baby Mario
+    outfit: Work Crew
+  - character: Baby Luigi
+    outfit: Work Crew
+  courses:
+  - Choco Mountain
+  - Crown City
+  - Dry Bones Burnout
+  - Mario Circuit (Mario Kart World)
+  - Peach Stadium
+  - Toad's Factory
+  - Whistlestop Summit
+  reverts_to_default: false
+- names:
+  - Popcorn
+  outfits:
+  - character: Mario
+    outfit: Cowboy
+  - character: Luigi
+    outfit: Oasis
+  - character: Peach
+    outfit: Vacation
+  - character: Daisy
+    outfit: Oasis
+  - character: Yoshi
+    outfit: Aristocrat
+  - character: Bowser
+    outfit: Biker
+  - character: Bowser Jr.
+    outfit: Biker Jr.
+  - character: Koopa Troopa
+    outfit: Sailor
+  - character: Toad
+    outfit: Burger Bud
+  - character: Toadette
+    outfit: Soft Server
+  - character: King Boo
+    outfit: Aristocrat
+  - character: Wario
+    outfit: Oasis
+  - character: Waluigi
+    outfit: Wampire
+  - character: Birdo
+    outfit: Vacation
+  - character: Rosalina
+    outfit: Aurora
+  - character: Baby Peach
+    outfit: Touring
+  - character: Baby Daisy
+    outfit: Touring
+  - character: Baby Rosalina
+    outfit: Touring
+  courses:
+  - Boo Cinema
+  - Dandelion Depths
+  reverts_to_default: false
+- names:
+  - Lunchbox
+  outfits: []
+  courses:
+  - Airship Fortress
+  - Bowser's Castle (Mario Kart World)
+  - Crown City
+  - Mario Bros. Circuit
+  - Mario Circuit (Mario Kart World)
+  - Moo Moo Meadows
+  - Peach Stadium
+  - Toad's Factory
+  reverts_to_default: true
+cups:
+- name: Mushroom Cup
+  courses:
+  - Mario Bros. Circuit
+  - Crown City
+  - Whistlestop Summit
+  - DK Spaceport
+- name: Flower Cup
+  courses:
+  - Desert Hills
+  - Shy Guy Bazaar
+  - Wario Stadium (Mario Kart 64)
+  - Airship Fortress
+- name: Star Cup
+  courses:
+  - DK Pass
+  - Starview Peak
+  - Sky-High Sundae
+  - Wario Shipyard
+- name: Shell Cup
+  courses:
+  - Koopa Troopa Beach (Super Mario Kart)
+  - Faraway Oasis
+  - Crown City
+  - Peach Stadium
+- name: Banana Cup
+  courses:
+  - Peach Beach
+  - Salty Salty Speedway
+  - Dino Dino Jungle
+  - Great ? Block Ruins
+- name: Leaf Cup
+  courses:
+  - Cheep Cheep Falls (race course)
+  - Dandelion Depths
+  - Boo Cinema
+  - Dry Bones Burnout
+- name: Lightning Cup
+  courses:
+  - Moo Moo Meadows
+  - Choco Mountain
+  - Toad's Factory
+  - Bowser's Castle (Mario Kart World)
+- name: Special Cup
+  courses:
+  - Acorn Heights
+  - Mario Circuit (Mario Kart World)
+  - Peach Stadium
+  - Rainbow Road (Mario Kart World)
+rallies:
+- name: Golden Rally
+  courses:
+  - Desert Hills
+  - Mario Bros. Circuit
+  - Choco Mountain
+  - Moo Moo Meadows
+  - Mario Circuit
+  - Acorn Heights
+- name: Ice Rally
+  courses:
+  - Sky-High Sundae
+  - Starview Peak
+  - Dandelion Depths
+  - Cheep Cheep Falls
+  - Peach Stadium
+  - Crown City
+- name: Moon Rally
+  courses:
+  - Bowser's Castle
+  - Toad's Factory
+  - Moo Moo Meadows
+  - Dandelion Depths
+  - Cheep Cheep Falls
+  - Faraway Oasis
+- name: Spiny Rally
+  courses:
+  - Boo Cinema
+  - Starview Peak
+  - DK Pass
+  - Salty Salty Speedway
+  - Peach Beach
+  - Wario Shipyard
+- name: Cherry Rally
+  courses:
+  - Peach Beach
+  - Dino Dino Jungle
+  - Koopa Troopa Beach
+  - DK Spaceport
+  - Whistlestop Summit
+  - Desert Hills
+- name: Acorn Rally
+  courses:
+  - Toad's Factory
+  - Wario Stadium
+  - Choco Mountain
+  - Peach Stadium
+  - Cheep Cheep Falls
+  - DK Pass
+- name: Cloud Rally
+  courses:
+  - Airship Fortress
+  - Shy Guy Bazaar
+  - Mario Bros. Circuit
+  - Crown City
+  - Faraway Oasis
+  - Great ? Block Ruins
+- name: Heart Rally
+  courses:
+  - Shy Guy Bazaar
+  - Airship Fortress
+  - Dry Bones Burnout
+  - Mario Circuit
+  - Moo Moo Meadows
+  - Peach Stadium
+- name: Drill Rally
+  courses:
+  - Wario Shipyard
+  - DK Pass
+  - Dandelion Depths
+  - Mario Circuit
+  - Dry Bones Burnout
+  - Bowser's Castle
+- name: Boomerang Rally
+  courses:
+  - Salty Salty Speedway
+  - Cheep Cheep Falls
+  - Moo Moo Meadows
+  - Choco Mountain
+  - Mario Bros. Circuit
+  - Whistlestop Summit
+- name: Propeller Rally
+  courses:
+  - Acorn Heights
+  - Boo Cinema
+  - Dandelion Depths
+  - Moo Moo Meadows
+  - Toad's Factory
+  - Airship Fortress
+- name: Turnip Rally
+  courses:
+  - DK Pass
+  - Cheep Cheep Falls
+  - Peach Stadium
+  - Choco Mountain
+  - Wario Stadium
+  - Shy Guy Bazaar
+course_stands:
+- course: Mario Bros. Circuit
+  foods:
+  - Burgers
+  - Lunchboxes
+- course: Crown City
+  foods:
+  - Pizza
+  - Chips
+  - soft drinks
+  - chocolate bars
+  - Pancakes
+  - Cake
+  - Ice cream
+  - Kebabs
+  - Fish and chips
+  - Burgers
+- course: Whistlestop Summit
+  foods:
+  - Kebabs
+  - Chips
+  - soft drinks
+  - chocolate bars
+  - Donuts
+- course: DK Spaceport
+  foods:
+  - Fruit salad
+- course: Shy Guy Bazaar
+  foods:
+  - Flatbread
+- course: Wario Stadium
+  foods:
+  - Curry
+- course: Airship Fortress
+  foods:
+  - Lunchboxes
+  - Curry
+  - Baked goods
+- course: Starview Peak
+  foods:
+  - Baked goods
+  - Ice cream
+- course: Sky-High Sundae
+  foods:
+  - Ice cream
+- course: Wario Shipyard
+  foods:
+  - Kebabs
+- course: Koopa Troopa Beach
+  foods:
+  - Fish and chips
+- course: Peach Stadium
+  foods:
+  - Cake
+  - Lunchboxes
+  - Pancakes
+  - Donuts
+- course: Peach Beach
+  foods:
+  - Fish and chips
+  - Cake
+  - Kebabs
+- course: Salty Salty Speedway
+  foods:
+  - Pizza
+  - Fish and chips
+- course: Great ? Block Ruins
+  foods:
+  - Sushi
+  - Pancakes
+  - Fruit salad
+- course: Cheep Cheep Falls
+  foods:
+  - Takoyaki
+  - Candy apples
+  - Taiyaki
+- course: Dry Bones Burnout
+  foods:
+  - Snacks
+  - Soft drinks
+  - Chocolate bars
+- course: Moo Moo Meadows
+  foods:
+  - Milk
+- course: Bowser's Castle
+  foods:
+  - Curry
+  - Lunchboxes
+  - Baked goods
+- course: Acorn Heights
+  foods:
+  - Pancakes
+- course: Mario Circuit
+  foods:
+  - Lunchboxes
+  - Chips
+  - Soft drinks
+  - Chocolate bars
+  - Donuts
+missions: []
+sources:
+- title: Dash Food
+  revid: null
+- title: List of Yoshi's locations
+  revid: null
+- title: Template:Mario Kart World
+  revid: null
+- title: Golden Rally
+  revid: null
+- title: Ice Rally
+  revid: null
+- title: Moon Rally
+  revid: null
+- title: Spiny Rally
+  revid: null
+- title: Cherry Rally
+  revid: null
+- title: Acorn Rally
+  revid: null
+- title: Cloud Rally
+  revid: null
+- title: Heart Rally
+  revid: null
+- title: Drill Rally
+  revid: null
+- title: Boomerang Rally (Mario Kart World)
+  revid: null
+- title: Propeller Rally
+  revid: null
+- title: Turnip Rally
+  revid: null
+origin: manual-transcription
+note: 'Trascrizione manuale (25/09/2026) delle pagine renderizzate di Super Mario Wiki: Dash Food (rev. 19/08/2026), List
+  of Yoshi''s locations (rev. 16/03/2026, solo sezione Course locations), navbox e pagine dei rally. Pulsanti P non trascritti.
+  Da sostituire con la prima estrazione via API (seedgen release).'
