@@ -12,7 +12,10 @@
 *.ap_
 *.dex
 /app/build/
-/app/schemas/
+# app/schemas/ (export dello schema Room) È versionata: vedi Decisioni prese in CLAUDE.md.
+# Non è rigenerata per intero a ogni build (Room accumula un file per versione nel tempo),
+# quindi su un checkout pulito MigrationTest fallirebbe senza gli schemi delle versioni
+# precedenti già presenti.
 
 # Signing (never commit a release keystore or its credentials)
 *.jks

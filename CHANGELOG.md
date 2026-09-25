@@ -6,6 +6,12 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Aggiornata l'icona dell'app.** Sostituita l'illustrazione "globo + L"
+  con una nuova versione fornita dall'autore (globo + sigla "MKL"),
+  adattata alla forma delle adaptive icon Android con lo stesso
+  procedimento: cielo esteso attorno al disegno e colore di sfondo
+  aggiornato di conseguenza.
+
 ## [0.1.2] - 2026-09-25
 
 - **Nomi ufficiali in italiano per personaggi, outfit e corsi.** I nomi
