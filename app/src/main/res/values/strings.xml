@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KartLog</string>
+    <string name="cd_menu">Apri il menu</string>
+
+    <string name="drawer_home">Home</string>
+    <string name="drawer_skin">Skin</string>
+    <string name="drawer_medallions">Monete Peach</string>
+    <string name="drawer_pswitches">Pulsanti P</string>
+    <string name="drawer_consigliami">Consigliami</string>
+    <string name="drawer_settings">Impostazioni / Info</string>
+
+    <string name="home_option_skin_title">Skin</string>
+    <string name="home_option_medallions_title">Monete Peach</string>
+    <string name="home_option_pswitches_title">Pulsanti P</string>
+    <string name="home_option_consigliami_title">Consigliami</string>
+    <string name="home_counter_format">%1$d / %2$d</string>
+
+    <string name="skin_title">Skin</string>
+    <string name="medallions_title">Monete Peach</string>
+    <string name="pswitches_title">Pulsanti P</string>
+    <string name="consigliami_title">Consigliami</string>
+    <string name="settings_title">Impostazioni / Info</string>
+
+    <string name="placeholder_coming_soon">Schermata in arrivo</string>
+</resources>

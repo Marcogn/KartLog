@@ -1,0 +1,29 @@
+# Peach Medallions per regione. FILE MANUALE: non esiste una fonte con licenza libera che li elenchi.
+#
+# I medaglioni stanno nel mondo aperto, non sui percorsi: ogni guida li raggruppa a modo suo.
+# Qui si usano le 10 regioni (stessi biomi dei pulsanti P) con i conteggi della guida Nintendo Life,
+# l'unica tra quelle consultate che somma esattamente a 200. Si copiano solo i numeri, nessuna descrizione.
+#
+# Verifica 25/09/2026:
+#   - totale 200: coerente con mariowiki (pagina Peach Medallion) e Game8 (contatore dorato dalla 1.2.0)
+#   - Gamer Guides raggruppa per percorso e somma 199: non usato
+#   - IGN non consultato (non raggiungibile dall'ambiente di scrittura)
+# Per cambiare raggruppamento (es. IGN) sostituire i numeri qui e aggiornare "source".
+
+source:
+  name: "Nintendo Life — Mario Kart World: All Peach Medallions & Locations"
+  url: "https://www.nintendolife.com/guides/mario-kart-world-all-peach-medallions-and-locations"
+  checked_on: "2026-09-25"
+
+# id regione (aliases.yaml -> regions) : numero di medaglioni
+counts:
+  central_grassland: 28   # Nintendo Life: "Central"
+  eastern_sea: 16         # "Coastal"
+  desert: 17              # "Desert"
+  autumnal_highland: 13   # "Fall"
+  forest: 26              # "Forest"
+  savanna_jungle: 20      # "Jungle Safari"
+  volcanic: 22            # "Lava"
+  snow: 18                # "Snow"
+  southern_sea: 20        # "South Sea"
+  mesa: 20                # "Wild West"

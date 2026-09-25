@@ -1,0 +1,90 @@
+{
+  "extractedOn": "2026-09-25",
+  "gameVersion": "1.8.0",
+  "license": {
+    "attribution": "Dati di gioco tratti da Super Mario Wiki (mariowiki.com)",
+    "name": "CC BY-SA 4.0",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  "note": "Trascrizione manuale (25/09/2026) delle pagine renderizzate di Super Mario Wiki: Dash Food (rev. 19/08/2026), List of Yoshi's locations (rev. 16/03/2026, solo sezione Course locations), navbox e pagine dei rally. Pulsanti P non trascritti. Da sostituire con la prima estrazione via API (seedgen release).",
+  "origin": "manual-transcription",
+  "seedVersion": 1,
+  "sources": [
+    {
+      "revid": null,
+      "title": "Dash Food",
+      "url": "https://www.mariowiki.com/Dash_Food"
+    },
+    {
+      "revid": null,
+      "title": "List of Yoshi's locations",
+      "url": "https://www.mariowiki.com/List_of_Yoshi's_locations"
+    },
+    {
+      "revid": null,
+      "title": "Template:Mario Kart World",
+      "url": "https://www.mariowiki.com/Template:Mario_Kart_World"
+    },
+    {
+      "revid": null,
+      "title": "Golden Rally",
+      "url": "https://www.mariowiki.com/Golden_Rally"
+    },
+    {
+      "revid": null,
+      "title": "Ice Rally",
+      "url": "https://www.mariowiki.com/Ice_Rally"
+    },
+    {
+      "revid": null,
+      "title": "Moon Rally",
+      "url": "https://www.mariowiki.com/Moon_Rally"
+    },
+    {
+      "revid": null,
+      "title": "Spiny Rally",
+      "url": "https://www.mariowiki.com/Spiny_Rally"
+    },
+    {
+      "revid": null,
+      "title": "Cherry Rally",
+      "url": "https://www.mariowiki.com/Cherry_Rally"
+    },
+    {
+      "revid": null,
+      "title": "Acorn Rally",
+      "url": "https://www.mariowiki.com/Acorn_Rally"
+    },
+    {
+      "revid": null,
+      "title": "Cloud Rally",
+      "url": "https://www.mariowiki.com/Cloud_Rally"
+    },
+    {
+      "revid": null,
+      "title": "Heart Rally",
+      "url": "https://www.mariowiki.com/Heart_Rally"
+    },
+    {
+      "revid": null,
+      "title": "Drill Rally",
+      "url": "https://www.mariowiki.com/Drill_Rally"
+    },
+    {
+      "revid": null,
+      "title": "Boomerang Rally (Mario Kart World)",
+      "url": "https://www.mariowiki.com/Boomerang_Rally_(Mario_Kart_World)"
+    },
+    {
+      "revid": null,
+      "title": "Propeller Rally",
+      "url": "https://www.mariowiki.com/Propeller_Rally"
+    },
+    {
+      "revid": null,
+      "title": "Turnip Rally",
+      "url": "https://www.mariowiki.com/Turnip_Rally"
+    }
+  ],
+  "warnings": []
+}

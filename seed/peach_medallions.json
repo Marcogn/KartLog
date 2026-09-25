@@ -1,0 +1,1006 @@
+{
+  "items": [
+    {
+      "id": "medallion_central_grassland_01",
+      "index": 1,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_02",
+      "index": 2,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_03",
+      "index": 3,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_04",
+      "index": 4,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_05",
+      "index": 5,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_06",
+      "index": 6,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_07",
+      "index": 7,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_08",
+      "index": 8,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_09",
+      "index": 9,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_10",
+      "index": 10,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_11",
+      "index": 11,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_12",
+      "index": 12,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_13",
+      "index": 13,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_14",
+      "index": 14,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_15",
+      "index": 15,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_16",
+      "index": 16,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_17",
+      "index": 17,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_18",
+      "index": 18,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_19",
+      "index": 19,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_20",
+      "index": 20,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_21",
+      "index": 21,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_22",
+      "index": 22,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_23",
+      "index": 23,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_24",
+      "index": 24,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_25",
+      "index": 25,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_26",
+      "index": 26,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_27",
+      "index": 27,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_central_grassland_28",
+      "index": 28,
+      "regionId": "central_grassland"
+    },
+    {
+      "id": "medallion_eastern_sea_01",
+      "index": 1,
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "medallion_eastern_sea_02",
+      "index": 2,
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "medallion_eastern_sea_03",
+      "index": 3,
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "medallion_eastern_sea_04",
+      "index": 4,
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "medallion_eastern_sea_05",
+      "index": 5,
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "medallion_eastern_sea_06",
+      "index": 6,
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "medallion_eastern_sea_07",
+      "index": 7,
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "medallion_eastern_sea_08",
+      "index": 8,
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "medallion_eastern_sea_09",
+      "index": 9,
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "medallion_eastern_sea_10",
+      "index": 10,
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "medallion_eastern_sea_11",
+      "index": 11,
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "medallion_eastern_sea_12",
+      "index": 12,
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "medallion_eastern_sea_13",
+      "index": 13,
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "medallion_eastern_sea_14",
+      "index": 14,
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "medallion_eastern_sea_15",
+      "index": 15,
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "medallion_eastern_sea_16",
+      "index": 16,
+      "regionId": "eastern_sea"
+    },
+    {
+      "id": "medallion_desert_01",
+      "index": 1,
+      "regionId": "desert"
+    },
+    {
+      "id": "medallion_desert_02",
+      "index": 2,
+      "regionId": "desert"
+    },
+    {
+      "id": "medallion_desert_03",
+      "index": 3,
+      "regionId": "desert"
+    },
+    {
+      "id": "medallion_desert_04",
+      "index": 4,
+      "regionId": "desert"
+    },
+    {
+      "id": "medallion_desert_05",
+      "index": 5,
+      "regionId": "desert"
+    },
+    {
+      "id": "medallion_desert_06",
+      "index": 6,
+      "regionId": "desert"
+    },
+    {
+      "id": "medallion_desert_07",
+      "index": 7,
+      "regionId": "desert"
+    },
+    {
+      "id": "medallion_desert_08",
+      "index": 8,
+      "regionId": "desert"
+    },
+    {
+      "id": "medallion_desert_09",
+      "index": 9,
+      "regionId": "desert"
+    },
+    {
+      "id": "medallion_desert_10",
+      "index": 10,
+      "regionId": "desert"
+    },
+    {
+      "id": "medallion_desert_11",
+      "index": 11,
+      "regionId": "desert"
+    },
+    {
+      "id": "medallion_desert_12",
+      "index": 12,
+      "regionId": "desert"
+    },
+    {
+      "id": "medallion_desert_13",
+      "index": 13,
+      "regionId": "desert"
+    },
+    {
+      "id": "medallion_desert_14",
+      "index": 14,
+      "regionId": "desert"
+    },
+    {
+      "id": "medallion_desert_15",
+      "index": 15,
+      "regionId": "desert"
+    },
+    {
+      "id": "medallion_desert_16",
+      "index": 16,
+      "regionId": "desert"
+    },
+    {
+      "id": "medallion_desert_17",
+      "index": 17,
+      "regionId": "desert"
+    },
+    {
+      "id": "medallion_autumnal_highland_01",
+      "index": 1,
+      "regionId": "autumnal_highland"
+    },
+    {
+      "id": "medallion_autumnal_highland_02",
+      "index": 2,
+      "regionId": "autumnal_highland"
+    },
+    {
+      "id": "medallion_autumnal_highland_03",
+      "index": 3,
+      "regionId": "autumnal_highland"
+    },
+    {
+      "id": "medallion_autumnal_highland_04",
+      "index": 4,
+      "regionId": "autumnal_highland"
+    },
+    {
+      "id": "medallion_autumnal_highland_05",
+      "index": 5,
+      "regionId": "autumnal_highland"
+    },
+    {
+      "id": "medallion_autumnal_highland_06",
+      "index": 6,
+      "regionId": "autumnal_highland"
+    },
+    {
+      "id": "medallion_autumnal_highland_07",
+      "index": 7,
+      "regionId": "autumnal_highland"
+    },
+    {
+      "id": "medallion_autumnal_highland_08",
+      "index": 8,
+      "regionId": "autumnal_highland"
+    },
+    {
+      "id": "medallion_autumnal_highland_09",
+      "index": 9,
+      "regionId": "autumnal_highland"
+    },
+    {
+      "id": "medallion_autumnal_highland_10",
+      "index": 10,
+      "regionId": "autumnal_highland"
+    },
+    {
+      "id": "medallion_autumnal_highland_11",
+      "index": 11,
+      "regionId": "autumnal_highland"
+    },
+    {
+      "id": "medallion_autumnal_highland_12",
+      "index": 12,
+      "regionId": "autumnal_highland"
+    },
+    {
+      "id": "medallion_autumnal_highland_13",
+      "index": 13,
+      "regionId": "autumnal_highland"
+    },
+    {
+      "id": "medallion_forest_01",
+      "index": 1,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_02",
+      "index": 2,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_03",
+      "index": 3,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_04",
+      "index": 4,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_05",
+      "index": 5,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_06",
+      "index": 6,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_07",
+      "index": 7,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_08",
+      "index": 8,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_09",
+      "index": 9,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_10",
+      "index": 10,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_11",
+      "index": 11,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_12",
+      "index": 12,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_13",
+      "index": 13,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_14",
+      "index": 14,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_15",
+      "index": 15,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_16",
+      "index": 16,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_17",
+      "index": 17,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_18",
+      "index": 18,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_19",
+      "index": 19,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_20",
+      "index": 20,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_21",
+      "index": 21,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_22",
+      "index": 22,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_23",
+      "index": 23,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_24",
+      "index": 24,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_25",
+      "index": 25,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_forest_26",
+      "index": 26,
+      "regionId": "forest"
+    },
+    {
+      "id": "medallion_savanna_jungle_01",
+      "index": 1,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_02",
+      "index": 2,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_03",
+      "index": 3,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_04",
+      "index": 4,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_05",
+      "index": 5,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_06",
+      "index": 6,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_07",
+      "index": 7,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_08",
+      "index": 8,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_09",
+      "index": 9,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_10",
+      "index": 10,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_11",
+      "index": 11,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_12",
+      "index": 12,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_13",
+      "index": 13,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_14",
+      "index": 14,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_15",
+      "index": 15,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_16",
+      "index": 16,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_17",
+      "index": 17,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_18",
+      "index": 18,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_19",
+      "index": 19,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_savanna_jungle_20",
+      "index": 20,
+      "regionId": "savanna_jungle"
+    },
+    {
+      "id": "medallion_volcanic_01",
+      "index": 1,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_02",
+      "index": 2,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_03",
+      "index": 3,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_04",
+      "index": 4,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_05",
+      "index": 5,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_06",
+      "index": 6,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_07",
+      "index": 7,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_08",
+      "index": 8,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_09",
+      "index": 9,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_10",
+      "index": 10,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_11",
+      "index": 11,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_12",
+      "index": 12,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_13",
+      "index": 13,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_14",
+      "index": 14,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_15",
+      "index": 15,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_16",
+      "index": 16,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_17",
+      "index": 17,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_18",
+      "index": 18,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_19",
+      "index": 19,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_20",
+      "index": 20,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_21",
+      "index": 21,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_volcanic_22",
+      "index": 22,
+      "regionId": "volcanic"
+    },
+    {
+      "id": "medallion_snow_01",
+      "index": 1,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_snow_02",
+      "index": 2,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_snow_03",
+      "index": 3,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_snow_04",
+      "index": 4,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_snow_05",
+      "index": 5,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_snow_06",
+      "index": 6,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_snow_07",
+      "index": 7,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_snow_08",
+      "index": 8,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_snow_09",
+      "index": 9,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_snow_10",
+      "index": 10,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_snow_11",
+      "index": 11,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_snow_12",
+      "index": 12,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_snow_13",
+      "index": 13,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_snow_14",
+      "index": 14,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_snow_15",
+      "index": 15,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_snow_16",
+      "index": 16,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_snow_17",
+      "index": 17,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_snow_18",
+      "index": 18,
+      "regionId": "snow"
+    },
+    {
+      "id": "medallion_southern_sea_01",
+      "index": 1,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_02",
+      "index": 2,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_03",
+      "index": 3,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_04",
+      "index": 4,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_05",
+      "index": 5,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_06",
+      "index": 6,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_07",
+      "index": 7,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_08",
+      "index": 8,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_09",
+      "index": 9,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_10",
+      "index": 10,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_11",
+      "index": 11,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_12",
+      "index": 12,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_13",
+      "index": 13,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_14",
+      "index": 14,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_15",
+      "index": 15,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_16",
+      "index": 16,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_17",
+      "index": 17,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_18",
+      "index": 18,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_19",
+      "index": 19,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_southern_sea_20",
+      "index": 20,
+      "regionId": "southern_sea"
+    },
+    {
+      "id": "medallion_mesa_01",
+      "index": 1,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_02",
+      "index": 2,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_03",
+      "index": 3,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_04",
+      "index": 4,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_05",
+      "index": 5,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_06",
+      "index": 6,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_07",
+      "index": 7,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_08",
+      "index": 8,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_09",
+      "index": 9,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_10",
+      "index": 10,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_11",
+      "index": 11,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_12",
+      "index": 12,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_13",
+      "index": 13,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_14",
+      "index": 14,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_15",
+      "index": 15,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_16",
+      "index": 16,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_17",
+      "index": 17,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_18",
+      "index": 18,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_19",
+      "index": 19,
+      "regionId": "mesa"
+    },
+    {
+      "id": "medallion_mesa_20",
+      "index": 20,
+      "regionId": "mesa"
+    }
+  ],
+  "manual": true,
+  "source": "https://www.nintendolife.com/guides/mario-kart-world-all-peach-medallions-and-locations"
+}

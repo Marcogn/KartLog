@@ -1,0 +1,283 @@
+{
+  "items": [
+    {
+      "id": "cup_mushroom",
+      "name": "Mushroom Cup",
+      "order": 0,
+      "stops": [
+        "mario_bros_circuit",
+        "crown_city",
+        "whistlestop_summit",
+        "dk_spaceport"
+      ],
+      "type": "CUP"
+    },
+    {
+      "id": "cup_flower",
+      "name": "Flower Cup",
+      "order": 1,
+      "stops": [
+        "desert_hills",
+        "shy_guy_bazaar",
+        "wario_stadium",
+        "airship_fortress"
+      ],
+      "type": "CUP"
+    },
+    {
+      "id": "cup_star",
+      "name": "Star Cup",
+      "order": 2,
+      "stops": [
+        "dk_pass",
+        "starview_peak",
+        "sky_high_sundae",
+        "wario_shipyard"
+      ],
+      "type": "CUP"
+    },
+    {
+      "id": "cup_shell",
+      "name": "Shell Cup",
+      "order": 3,
+      "stops": [
+        "koopa_troopa_beach",
+        "faraway_oasis",
+        "crown_city",
+        "peach_stadium"
+      ],
+      "type": "CUP"
+    },
+    {
+      "id": "cup_banana",
+      "name": "Banana Cup",
+      "order": 4,
+      "stops": [
+        "peach_beach",
+        "salty_salty_speedway",
+        "dino_dino_jungle",
+        "great_q_block_ruins"
+      ],
+      "type": "CUP"
+    },
+    {
+      "id": "cup_leaf",
+      "name": "Leaf Cup",
+      "order": 5,
+      "stops": [
+        "cheep_cheep_falls",
+        "dandelion_depths",
+        "boo_cinema",
+        "dry_bones_burnout"
+      ],
+      "type": "CUP"
+    },
+    {
+      "id": "cup_lightning",
+      "name": "Lightning Cup",
+      "order": 6,
+      "stops": [
+        "moo_moo_meadows",
+        "choco_mountain",
+        "toads_factory",
+        "bowsers_castle"
+      ],
+      "type": "CUP"
+    },
+    {
+      "id": "cup_special",
+      "name": "Special Cup",
+      "order": 7,
+      "stops": [
+        "acorn_heights",
+        "mario_circuit",
+        "peach_stadium",
+        "rainbow_road"
+      ],
+      "type": "CUP"
+    },
+    {
+      "id": "rally_golden",
+      "name": "Golden Rally",
+      "order": 8,
+      "stops": [
+        "desert_hills",
+        "mario_bros_circuit",
+        "choco_mountain",
+        "moo_moo_meadows",
+        "mario_circuit",
+        "acorn_heights"
+      ],
+      "type": "RALLY"
+    },
+    {
+      "id": "rally_ice",
+      "name": "Ice Rally",
+      "order": 9,
+      "stops": [
+        "sky_high_sundae",
+        "starview_peak",
+        "dandelion_depths",
+        "cheep_cheep_falls",
+        "peach_stadium",
+        "crown_city"
+      ],
+      "type": "RALLY"
+    },
+    {
+      "id": "rally_moon",
+      "name": "Moon Rally",
+      "order": 10,
+      "stops": [
+        "bowsers_castle",
+        "toads_factory",
+        "moo_moo_meadows",
+        "dandelion_depths",
+        "cheep_cheep_falls",
+        "faraway_oasis"
+      ],
+      "type": "RALLY"
+    },
+    {
+      "id": "rally_spiny",
+      "name": "Spiny Rally",
+      "order": 11,
+      "stops": [
+        "boo_cinema",
+        "starview_peak",
+        "dk_pass",
+        "salty_salty_speedway",
+        "peach_beach",
+        "wario_shipyard"
+      ],
+      "type": "RALLY"
+    },
+    {
+      "id": "rally_cherry",
+      "name": "Cherry Rally",
+      "order": 12,
+      "stops": [
+        "peach_beach",
+        "dino_dino_jungle",
+        "koopa_troopa_beach",
+        "dk_spaceport",
+        "whistlestop_summit",
+        "desert_hills"
+      ],
+      "type": "RALLY"
+    },
+    {
+      "id": "rally_acorn",
+      "name": "Acorn Rally",
+      "order": 13,
+      "stops": [
+        "toads_factory",
+        "wario_stadium",
+        "choco_mountain",
+        "peach_stadium",
+        "cheep_cheep_falls",
+        "dk_pass"
+      ],
+      "type": "RALLY"
+    },
+    {
+      "id": "rally_cloud",
+      "name": "Cloud Rally",
+      "order": 14,
+      "stops": [
+        "airship_fortress",
+        "shy_guy_bazaar",
+        "mario_bros_circuit",
+        "crown_city",
+        "faraway_oasis",
+        "great_q_block_ruins"
+      ],
+      "type": "RALLY"
+    },
+    {
+      "id": "rally_heart",
+      "name": "Heart Rally",
+      "order": 15,
+      "stops": [
+        "shy_guy_bazaar",
+        "airship_fortress",
+        "dry_bones_burnout",
+        "mario_circuit",
+        "moo_moo_meadows",
+        "peach_stadium"
+      ],
+      "type": "RALLY"
+    },
+    {
+      "id": "rally_drill",
+      "name": "Drill Rally",
+      "order": 16,
+      "stops": [
+        "wario_shipyard",
+        "dk_pass",
+        "dandelion_depths",
+        "mario_circuit",
+        "dry_bones_burnout",
+        "bowsers_castle"
+      ],
+      "type": "RALLY"
+    },
+    {
+      "id": "rally_boomerang",
+      "name": "Boomerang Rally",
+      "order": 17,
+      "stops": [
+        "salty_salty_speedway",
+        "cheep_cheep_falls",
+        "moo_moo_meadows",
+        "choco_mountain",
+        "mario_bros_circuit",
+        "whistlestop_summit"
+      ],
+      "type": "RALLY"
+    },
+    {
+      "id": "rally_propeller",
+      "name": "Propeller Rally",
+      "order": 18,
+      "stops": [
+        "acorn_heights",
+        "boo_cinema",
+        "dandelion_depths",
+        "moo_moo_meadows",
+        "toads_factory",
+        "airship_fortress"
+      ],
+      "type": "RALLY"
+    },
+    {
+      "id": "rally_turnip",
+      "name": "Turnip Rally",
+      "order": 19,
+      "stops": [
+        "dk_pass",
+        "cheep_cheep_falls",
+        "peach_stadium",
+        "choco_mountain",
+        "wario_stadium",
+        "shy_guy_bazaar"
+      ],
+      "type": "RALLY"
+    }
+  ],
+  "source": [
+    "https://www.mariowiki.com/Template:Mario_Kart_World",
+    "https://www.mariowiki.com/Golden_Rally",
+    "https://www.mariowiki.com/Ice_Rally",
+    "https://www.mariowiki.com/Moon_Rally",
+    "https://www.mariowiki.com/Spiny_Rally",
+    "https://www.mariowiki.com/Cherry_Rally",
+    "https://www.mariowiki.com/Acorn_Rally",
+    "https://www.mariowiki.com/Cloud_Rally",
+    "https://www.mariowiki.com/Heart_Rally",
+    "https://www.mariowiki.com/Drill_Rally",
+    "https://www.mariowiki.com/Boomerang_Rally_(Mario_Kart_World)",
+    "https://www.mariowiki.com/Propeller_Rally",
+    "https://www.mariowiki.com/Turnip_Rally"
+  ]
+}

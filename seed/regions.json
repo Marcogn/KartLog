@@ -1,0 +1,55 @@
+{
+  "items": [
+    {
+      "id": "mesa",
+      "name": "Mesa biome",
+      "order": 0
+    },
+    {
+      "id": "southern_sea",
+      "name": "Southern sea and coast",
+      "order": 1
+    },
+    {
+      "id": "desert",
+      "name": "Desert biome",
+      "order": 2
+    },
+    {
+      "id": "volcanic",
+      "name": "Volcanic biome",
+      "order": 3
+    },
+    {
+      "id": "snow",
+      "name": "Snow biome",
+      "order": 4
+    },
+    {
+      "id": "eastern_sea",
+      "name": "Eastern sea and coast",
+      "order": 5
+    },
+    {
+      "id": "savanna_jungle",
+      "name": "Savanna and jungle biome",
+      "order": 6
+    },
+    {
+      "id": "central_grassland",
+      "name": "Central grassland biome",
+      "order": 7
+    },
+    {
+      "id": "autumnal_highland",
+      "name": "Autumnal and highland biome",
+      "order": 8
+    },
+    {
+      "id": "forest",
+      "name": "Forest biome",
+      "order": 9
+    }
+  ],
+  "source": "https://www.mariowiki.com/List_of_Mario_Kart_World_missions"
+}
