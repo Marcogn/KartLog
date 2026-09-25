@@ -108,3 +108,16 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
   w=1 l'ordinamento dipende solo da improvement" (SPEC §6.5, rimasto
   aperto dalla fase 6) ora passa anche sui dati reali dell'app, non
   solo sullo UseCase.
+- **Backup dello stato utente (SPEC §4, fase 8 — ultima fase del
+  roadmap).** Export/import JSON tramite Storage Access Framework,
+  dalla schermata Impostazioni: mai i dati di gioco, solo outfit
+  posseduti, sblocchi personaggio, monete e pulsanti P raccolti,
+  risultati registrati. Formato versionato (`backupVersion`).
+  L'import valida ogni ID contro il seed corrente e **riporta** quelli
+  sconosciuti invece di scartarli in silenzio; sostituisce interamente
+  lo stato utente (un backup è un ripristino completo, non un merge).
+  La stessa schermata mostra anche l'attribuzione dei dati di gioco
+  (CC BY-SA 4.0, Super Mario Wiki) con i `revid` delle pagine usate
+  (SPEC §5.5), letti da `meta.json`.
+
+Con questa fase il roadmap di `SPEC.md` §8 è completo (fasi 1-8).

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.marcogn.kartlog.data.local.DATABASE_NAME
 import com.marcogn.kartlog.data.local.KartLogDatabase
+import com.marcogn.kartlog.data.local.dao.BackupDao
 import com.marcogn.kartlog.data.local.dao.ConsigliamiDao
 import com.marcogn.kartlog.data.local.dao.MedallionsDao
 import com.marcogn.kartlog.data.local.dao.PSwitchesDao
@@ -47,4 +48,7 @@ object DatabaseModule {
 
     @Provides
     fun provideConsigliamiDao(database: KartLogDatabase): ConsigliamiDao = database.consigliamiDao()
+
+    @Provides
+    fun provideBackupDao(database: KartLogDatabase): BackupDao = database.backupDao()
 }

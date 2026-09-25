@@ -23,48 +23,28 @@ con chi) per avvicinarsi il più possibile alla collezione completa.
 
 ## Stato del progetto
 
-Il progetto procede per fasi (vedi [`SPEC.md`](SPEC.md) §8 e
-[`docs/PHASES.md`](docs/PHASES.md)). Completate finora:
+Il roadmap di [`SPEC.md`](SPEC.md) §8 (vedi anche
+[`docs/PHASES.md`](docs/PHASES.md) per il dettaglio di ogni fase) è
+**completo**, fase 1-8. Segui [`CHANGELOG.md`](CHANGELOG.md) per la
+cronologia di cosa è arrivato in ciascuna fase.
 
-- **fase 1 — Scaffold**: struttura Gradle, signing, tema e navigazione sono
-  pronti, ma le schermate di Skin, Monete Peach, Pulsanti P e Consigliami
-  sono ancora placeholder senza dati reali né stato persistente.
-- **fase 2 — Verifica di seedgen sulle pagine reali**: i dati in `seed/`
-  vengono ora da un'estrazione reale via API (non più da trascrizione
-  manuale), completi dei 394 Pulsanti P.
-- **fase 3 — Seed nell'app e build**: l'app carica davvero i dati da
-  `seed/` in Room, con reseed automatico e test di validazione; la Home
-  mostra i conteggi reali.
-- **fase 4 — Skin**: griglia dei personaggi con contatore ottenuti/totali,
-  filtro e ordinamento, dettaglio con checkbox outfit e sblocco
-  personaggio.
-- **fase 5 — Monete Peach e Pulsanti P**: liste per regione con "segna
-  tutti", ricerca sui Pulsanti P, link alla guida dei medaglioni.
-- **fase 6 — Consigliami**: classifica dei Gran Premi/Knockout Tour da
-  correre in base agli outfit ancora mancanti, con personaggio
-  consigliato, alternative e cibi rilevanti.
-- **fase 7 — Risultati**: registrazione di stelle e piazzamenti per
-  evento, storico consultabile, e un peso opzionale che li fa contare
-  nel punteggio di Consigliami insieme al guadagno di outfit.
-
-Manca solo l'export/import dello stato (fase 8). Segui
-[`CHANGELOG.md`](CHANGELOG.md) per lo stato aggiornato fase per fase.
-
-## Funzionalità previste
+## Funzionalità
 
 Dalla specifica completa ([`SPEC.md`](SPEC.md)):
 
-- **Skin**: checklist per personaggio degli outfit ottenuti, con i gruppi
-  di cibo che sbloccano ciascuno.
-- **Monete Peach e Pulsanti P**: checklist per regione, con ricerca e
-  contatore globale.
+- **Skin**: griglia dei personaggi con contatore ottenuti/totali; per
+  ciascuno, checklist degli outfit con i gruppi di cibo che li
+  sbloccano e uno switch per lo stato di sblocco del personaggio.
+- **Monete Peach e Pulsanti P**: checklist per regione, con ricerca,
+  "segna tutti" e contatore globale.
 - **Consigliami**: classifica dei Gran Premi/Knockout Tour da correre in
-  base agli outfit ancora mancanti, con personaggio consigliato e cibi
-  rilevanti sul percorso.
-- **Registrazione risultati**: storico di stelle e piazzamenti per evento,
-  usabile come spareggio in Consigliami.
+  base agli outfit ancora mancanti, con personaggio consigliato, le due
+  alternative successive e i cibi rilevanti sul percorso (o nei
+  dintorni, se attivato).
+- **Registrazione risultati**: stelle e piazzamento per evento, storico
+  consultabile, peso opzionale nel punteggio di Consigliami.
 - **Backup**: export/import JSON dello stato utente (non dei dati di
-  gioco) tramite Storage Access Framework.
+  gioco) tramite Storage Access Framework, dalla schermata Impostazioni.
 
 ## Dati di gioco
 
