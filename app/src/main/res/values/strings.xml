@@ -70,6 +70,7 @@
     <string name="consigliami_cc_150">150cc</string>
     <string name="consigliami_cc_mirror">Specchio</string>
     <string name="consigliami_register_result">Registra risultato</string>
+    <string name="consigliami_result_event_label">Evento</string>
     <string name="consigliami_result_stars_label">Stelle</string>
     <string name="consigliami_result_placement_mode">Posizione finale</string>
     <string name="consigliami_result_eliminated_mode">Eliminato</string>

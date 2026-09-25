@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.Menu
@@ -54,6 +55,7 @@ fun ConsigliamiScreen(
     viewModel: ConsigliamiViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
+    var showForm by rememberSaveable { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -62,6 +64,11 @@ fun ConsigliamiScreen(
                 navigationIcon = {
                     IconButton(onClick = onMenuClick) {
                         Icon(Icons.Filled.Menu, contentDescription = stringResource(R.string.cd_menu))
+                    }
+                },
+                actions = {
+                    IconButton(onClick = { showForm = true }) {
+                        Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.consigliami_register_result))
                     }
                 },
             )
@@ -158,6 +165,19 @@ fun ConsigliamiScreen(
                 }
             }
         }
+    }
+
+    if (showForm && state.allEvents.isNotEmpty()) {
+        RaceResultBottomSheet(
+            events = state.allEvents,
+            initialEventId = state.allEvents.first().id,
+            characterNames = state.characterNames,
+            onSave = { eventId, cc, stars, placement, eliminatedAt, characterId ->
+                viewModel.onResultSaved(eventId, cc, stars, placement, eliminatedAt, characterId)
+                showForm = false
+            },
+            onDismiss = { showForm = false },
+        )
     }
 }
 

@@ -136,4 +136,34 @@ class ConsigliamiDaoTest {
             positionOf(lowGainEvent.event.id) < positionOf(highGainEvent.event.id),
         )
     }
+
+    @Test
+    fun `un evento a punteggio 0, nascosto da 'Solo utili', resta registrabile (SPEC §2_6)`() = runBlocking {
+        val dao = db.consigliamiDao()
+        // Tutti gli outfit posseduti -> gain 0 su ogni evento, esattamente quello che "Solo utili"
+        // (SPEC §6.3) nasconderebbe dalla lista. Il form di registrazione (RaceResultBottomSheet)
+        // elenca però sempre TUTTI gli eventi di dao.events(), non solo quelli con score > 0: è il
+        // fix per il "buco di analisi" segnalato dall'autore dopo la 0.1.1 (CLAUDE.md, "Aperto").
+        dao.outfits().first().forEach { db.userStateDao().markOutfitOwned(OwnedOutfitEntity(it.id)) }
+        val zeroScoreEvent = computeGroups(dao).flatMap { it.events }.first()
+        assertTrue("con tutti gli outfit posseduti ogni evento deve avere score 0", zeroScoreEvent.score == 0.0)
+
+        val allEventIds = dao.events().first().map { it.id }.toSet()
+        assertTrue("l'evento a score 0 deve comunque comparire in dao.events()", zeroScoreEvent.event.id in allEventIds)
+
+        db.userStateDao().insertRaceResult(
+            RaceResultEntity(
+                eventId = zeroScoreEvent.event.id,
+                cc = Cc.CC_150,
+                stars = 2,
+                placement = 3,
+                eliminatedAt = null,
+                characterId = null,
+                timestamp = 0L,
+            )
+        )
+
+        val history = db.userStateDao().raceResultsForEvent(zeroScoreEvent.event.id).first()
+        assertTrue("il risultato deve essere registrabile anche per un evento a punteggio 0", history.isNotEmpty())
+    }
 }

@@ -14,7 +14,6 @@ import com.marcogn.kartlog.domain.consigliami.ConsigliamiOutfit
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiRule
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiUseCase
 import com.marcogn.kartlog.domain.model.Cc
-import com.marcogn.kartlog.domain.model.EventType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
@@ -25,11 +24,11 @@ import kotlinx.coroutines.launch
 
 data class ConsigliamiDetailUiState(
     val eventName: String = "",
-    val eventType: EventType = EventType.CUP,
     val details: List<CharacterDetail> = emptyList(),
     val characterNames: Map<String, String> = emptyMap(),
     val outfitNames: Map<String, String> = emptyMap(),
     val history: List<RaceResultEntity> = emptyList(),
+    val allEvents: List<EventPickerItem> = emptyList(),
 )
 
 @HiltViewModel
@@ -63,16 +62,16 @@ class ConsigliamiDetailViewModel @Inject constructor(
 
         ConsigliamiDetailUiState(
             eventName = eventEntity?.name.orEmpty(),
-            eventType = eventEntity?.type ?: EventType.CUP,
             details = details,
             characterNames = characters.associate { it.id to it.name },
             outfitNames = outfitNames.associate { it.id to it.name },
             history = history,
+            allEvents = events.sortedBy { it.order }.map { EventPickerItem(it.id, it.name, it.type) },
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ConsigliamiDetailUiState())
 
     /** Form di registrazione (SPEC §2.6): esattamente uno tra [placement] ed [eliminatedAt]. */
-    fun onResultSaved(cc: Cc, stars: Int, placement: Int?, eliminatedAt: Int?, characterId: String?) {
+    fun onResultSaved(eventId: String, cc: Cc, stars: Int, placement: Int?, eliminatedAt: Int?, characterId: String?) {
         viewModelScope.launch {
             userStateDao.insertRaceResult(
                 RaceResultEntity(
