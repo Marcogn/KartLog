@@ -74,3 +74,7 @@ data class SeedMetaDto(
     val license: SeedMetaLicenseDto,
     val sources: List<SeedMetaSourceDto> = emptyList(),
 )
+
+/** Vedi [SeedAssetLoader.readSourceUrl]. */
+@Serializable
+data class SourceOnlyDto(val source: String? = null)

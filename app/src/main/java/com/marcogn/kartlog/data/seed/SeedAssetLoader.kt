@@ -30,4 +30,12 @@ class SeedAssetLoader @Inject constructor(@ApplicationContext private val contex
     }
 
     fun readMeta(): SeedMetaDto? = readText("meta.json")?.let { json.decodeFromString(it) }
+
+    /**
+     * L'URL `source` di un file seed (SPEC §2.4, "Apri guida" dei Peach Medallions) — a differenza
+     * di [readItems], non un campo del [SeedFile] condiviso: lì è stato tolto perché non sempre
+     * una stringa (`events.json` ce l'ha come array). Qui serve solo per file dove è una stringa.
+     */
+    fun readSourceUrl(fileName: String): String? =
+        readText(fileName)?.let { runCatching { json.decodeFromString<SourceOnlyDto>(it).source }.getOrNull() }
 }

@@ -54,6 +54,15 @@ interface UserStateDao {
     @Query("SELECT COUNT(*) FROM collected_medallions")
     fun countCollectedMedallions(): Flow<Int>
 
+    /** "Segna tutti" di una regione (SPEC §2.4): non tocca i medaglioni già segnati altrove. */
+    @Query(
+        """
+        INSERT OR IGNORE INTO collected_medallions (medallionId)
+        SELECT id FROM peach_medallions WHERE regionId = :regionId
+        """
+    )
+    suspend fun markAllMedallionsCollected(regionId: String)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun markPSwitchCompleted(entity: CompletedPSwitchEntity)
 
@@ -62,6 +71,15 @@ interface UserStateDao {
 
     @Query("SELECT COUNT(*) FROM completed_p_switches")
     fun countCompletedPSwitches(): Flow<Int>
+
+    /** "Segna tutti" di una regione (SPEC §2.4). */
+    @Query(
+        """
+        INSERT OR IGNORE INTO completed_p_switches (pSwitchId)
+        SELECT id FROM p_switches WHERE regionId = :regionId
+        """
+    )
+    suspend fun markAllPSwitchesCompleted(regionId: String)
 
     @Insert
     suspend fun insertRaceResult(entity: RaceResultEntity): Long

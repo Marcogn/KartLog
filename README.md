@@ -37,8 +37,10 @@ Il progetto procede per fasi (vedi [`SPEC.md`](SPEC.md) §8 e
   mostra i conteggi reali.
 - **fase 4 — Skin**: griglia dei personaggi con contatore ottenuti/totali,
   filtro e ordinamento, dettaglio con checkbox outfit e sblocco
-  personaggio. Monete Peach, Pulsanti P e Consigliami restano
-  placeholder: arrivano nelle fasi 5-6.
+  personaggio.
+- **fase 5 — Monete Peach e Pulsanti P**: liste per regione con "segna
+  tutti", ricerca sui Pulsanti P, link alla guida dei medaglioni.
+  Consigliami resta placeholder: arriva nella fase 6.
 
 Segui [`CHANGELOG.md`](CHANGELOG.md) per lo stato aggiornato fase per fase.
 

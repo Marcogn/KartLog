@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.marcogn.kartlog.data.local.DATABASE_NAME
 import com.marcogn.kartlog.data.local.KartLogDatabase
+import com.marcogn.kartlog.data.local.dao.MedallionsDao
+import com.marcogn.kartlog.data.local.dao.PSwitchesDao
 import com.marcogn.kartlog.data.local.dao.SeedDao
 import com.marcogn.kartlog.data.local.dao.SeedMetaDao
 import com.marcogn.kartlog.data.local.dao.SkinDao
@@ -35,4 +37,10 @@ object DatabaseModule {
 
     @Provides
     fun provideSkinDao(database: KartLogDatabase): SkinDao = database.skinDao()
+
+    @Provides
+    fun provideMedallionsDao(database: KartLogDatabase): MedallionsDao = database.medallionsDao()
+
+    @Provides
+    fun providePSwitchesDao(database: KartLogDatabase): PSwitchesDao = database.pSwitchesDao()
 }
