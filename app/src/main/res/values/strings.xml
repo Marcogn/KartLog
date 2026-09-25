@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">KartLog</string>
     <string name="cd_menu">Apri il menu</string>
+    <string name="cd_back">Indietro</string>
 
     <string name="drawer_home">Home</string>
     <string name="drawer_skin">Skin</string>
@@ -18,6 +19,15 @@
     <string name="home_counter_not_available">n/d</string>
 
     <string name="skin_title">Skin</string>
+    <string name="skin_filter_all">Tutti</string>
+    <string name="skin_filter_incomplete">Incompleti</string>
+    <string name="skin_sort_label">Ordina per</string>
+    <string name="skin_sort_roster">Roster ufficiale</string>
+    <string name="skin_sort_alphabetical">Alfabetico</string>
+    <string name="skin_sort_completion">%% completamento</string>
+    <string name="skin_unlock_switch">Sbloccato</string>
+    <string name="skin_default_outfit_name">Standard</string>
+    <string name="skin_unknown_food">Cibo sconosciuto</string>
     <string name="medallions_title">Monete Peach</string>
     <string name="pswitches_title">Pulsanti P</string>
     <string name="consigliami_title">Consigliami</string>

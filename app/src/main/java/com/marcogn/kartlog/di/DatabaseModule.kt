@@ -6,6 +6,7 @@ import com.marcogn.kartlog.data.local.DATABASE_NAME
 import com.marcogn.kartlog.data.local.KartLogDatabase
 import com.marcogn.kartlog.data.local.dao.SeedDao
 import com.marcogn.kartlog.data.local.dao.SeedMetaDao
+import com.marcogn.kartlog.data.local.dao.SkinDao
 import com.marcogn.kartlog.data.local.dao.UserStateDao
 import dagger.Module
 import dagger.Provides
@@ -31,4 +32,7 @@ object DatabaseModule {
 
     @Provides
     fun provideUserStateDao(database: KartLogDatabase): UserStateDao = database.userStateDao()
+
+    @Provides
+    fun provideSkinDao(database: KartLogDatabase): SkinDao = database.skinDao()
 }

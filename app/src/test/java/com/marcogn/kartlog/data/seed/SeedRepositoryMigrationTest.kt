@@ -32,7 +32,7 @@ class SeedRepositoryMigrationTest {
         db = Room.inMemoryDatabaseBuilder(context, KartLogDatabase::class.java)
             .allowMainThreadQueries()
             .build()
-        repository = SeedRepository(SeedAssetLoader(context), db.seedDao(), db.seedMetaDao())
+        repository = SeedRepository(SeedAssetLoader(context), db.seedDao(), db.seedMetaDao(), db.userStateDao())
     }
 
     @After
@@ -48,7 +48,9 @@ class SeedRepositoryMigrationTest {
 
         repository.reseedIfNeeded()
 
-        assertEquals(1, db.userStateDao().countOwnedOutfits().first())
+        // L'outfit segnato a mano resta posseduto, più i 24 outfit di default (uno per
+        // personaggio), sempre posseduti automaticamente (SPEC §2.3, ensureDefaultOutfitsOwned()).
+        assertEquals(25, db.userStateDao().countOwnedOutfits().first())
         assertTrue("il reseed deve popolare i dati statici", db.seedDao().countOutfits().first() > 0)
     }
 

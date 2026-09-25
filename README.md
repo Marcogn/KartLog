@@ -34,8 +34,11 @@ Il progetto procede per fasi (vedi [`SPEC.md`](SPEC.md) §8 e
   manuale), completi dei 394 Pulsanti P.
 - **fase 3 — Seed nell'app e build**: l'app carica davvero i dati da
   `seed/` in Room, con reseed automatico e test di validazione; la Home
-  mostra i conteggi reali. Le schermate di Skin, Monete Peach, Pulsanti P
-  e Consigliami restano placeholder: la logica arriva nelle fasi 4-6.
+  mostra i conteggi reali.
+- **fase 4 — Skin**: griglia dei personaggi con contatore ottenuti/totali,
+  filtro e ordinamento, dettaglio con checkbox outfit e sblocco
+  personaggio. Monete Peach, Pulsanti P e Consigliami restano
+  placeholder: arrivano nelle fasi 5-6.
 
 Segui [`CHANGELOG.md`](CHANGELOG.md) per lo stato aggiornato fase per fase.
 
