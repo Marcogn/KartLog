@@ -41,8 +41,10 @@ Dalla specifica completa ([`SPEC.md`](SPEC.md)):
   base agli outfit ancora mancanti, con personaggio consigliato, le due
   alternative successive e i cibi rilevanti sul percorso (o nei
   dintorni, se attivato).
-- **Registrazione risultati**: stelle e piazzamento per evento, storico
-  consultabile, peso opzionale nel punteggio di Consigliami.
+- **Risultati**: schermata dedicata, raggiungibile dalla Home, dove si
+  registra il miglior trofeo (bronzo … oro ★★★) di ogni Gran Premio e
+  Knockout Tour per cilindrata; peso opzionale nel punteggio di
+  Consigliami.
 - **Backup**: export/import JSON dello stato utente (non dei dati di
   gioco) tramite Storage Access Framework, dalla schermata Impostazioni.
 

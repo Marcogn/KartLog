@@ -2,6 +2,7 @@ package com.marcogn.kartlog.domain.consigliami
 
 import com.marcogn.kartlog.domain.model.EventType
 import com.marcogn.kartlog.domain.model.Presence
+import com.marcogn.kartlog.domain.model.TrophyRank
 import kotlin.math.abs
 
 /**
@@ -23,8 +24,8 @@ object ConsigliamiUseCase {
     )
 
     /**
-     * @param bestStarsForEvent stelle del miglior risultato registrato per un evento, alla
-     * cilindrata di riferimento scelta in Consigliami; null se nessun risultato (SPEC §6.3,
+     * @param bestRankForEvent miglior trofeo registrato per un evento che vale alla cilindrata di
+     * riferimento scelta in Consigliami (vedi `effectiveRank`); null se nessun risultato (SPEC §6.3,
      * "nessun risultato -> improvement 1"). Ignorato se [resultsEnabled] è false.
      */
     fun compute(
@@ -36,7 +37,7 @@ object ConsigliamiUseCase {
         includeNearby: Boolean,
         resultsEnabled: Boolean = false,
         weight: Double = 0.3,
-        bestStarsForEvent: (eventId: String) -> Int? = { null },
+        bestRankForEvent: (eventId: String) -> TrophyRank? = { null },
     ): List<RecommendationGroup> {
         val presences = if (includeNearby) setOf(Presence.ON_COURSE, Presence.NEARBY) else setOf(Presence.ON_COURSE)
         val rulesByOutfit: Map<String, Set<String>> =
@@ -46,7 +47,7 @@ object ConsigliamiUseCase {
         val unlocked = characters.filter { it.unlocked }
 
         val raw = events.map { event ->
-            scoreEventRaw(event, unlocked, missingByCharacter, rulesByOutfit, foodCourses, presences, bestStarsForEvent)
+            scoreEventRaw(event, unlocked, missingByCharacter, rulesByOutfit, foodCourses, presences, bestRankForEvent)
         }
         val maxGain = raw.maxOfOrNull { it.best?.gain ?: 0 } ?: 0
 
@@ -79,7 +80,7 @@ object ConsigliamiUseCase {
         rulesByOutfit: Map<String, Set<String>>,
         foodCourses: List<ConsigliamiFoodCourse>,
         presences: Set<Presence>,
-        bestStarsForEvent: (eventId: String) -> Int?,
+        bestRankForEvent: (eventId: String) -> TrophyRank?,
     ): RawEventScore {
         // foods(E) (SPEC §6.1): un cibo presente su più corsi dello stesso evento resta un solo
         // elemento dell'insieme, quindi conta una sola volta per outfit (Set, non lista).
@@ -119,7 +120,8 @@ object ConsigliamiUseCase {
             emptyList()
         }
         val relevantStops = relevantFoods.map { it.courseId }.distinct().size
-        val improvement = 1.0 - (bestStarsForEvent(event.id) ?: 0) / 3.0
+        // SPEC §6.3: bronzo..oro 3 stelle = livelli 1..6, nessun trofeo = 0 -> improvement 1.
+        val improvement = 1.0 - (bestRankForEvent(event.id)?.level ?: 0).toDouble() / TrophyRank.MAX_LEVEL
 
         return RawEventScore(event, total, best, runnersUp, relevantStops, relevantFoods, improvement)
     }

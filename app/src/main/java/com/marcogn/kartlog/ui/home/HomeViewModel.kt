@@ -18,6 +18,8 @@ data class HomeUiState(
     val totalMedallions: Int = 0,
     val completedPSwitches: Int = 0,
     val totalPSwitches: Int = 0,
+    val eventsWithResult: Int = 0,
+    val totalEvents: Int = 0,
 )
 
 @HiltViewModel
@@ -30,7 +32,8 @@ class HomeViewModel @Inject constructor(
         combine(seedDao.countOutfits(), userStateDao.countOwnedOutfits()) { total, owned -> total to owned },
         combine(seedDao.countPeachMedallions(), userStateDao.countCollectedMedallions()) { total, owned -> total to owned },
         combine(seedDao.countPSwitches(), userStateDao.countCompletedPSwitches()) { total, owned -> total to owned },
-    ) { outfits, medallions, pSwitches ->
+        combine(seedDao.countEvents(), userStateDao.countEventsWithResult()) { total, withResult -> total to withResult },
+    ) { outfits, medallions, pSwitches, events ->
         HomeUiState(
             ownedOutfits = outfits.second,
             totalOutfits = outfits.first,
@@ -38,6 +41,8 @@ class HomeViewModel @Inject constructor(
             totalMedallions = medallions.first,
             completedPSwitches = pSwitches.second,
             totalPSwitches = pSwitches.first,
+            eventsWithResult = events.second,
+            totalEvents = events.first,
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), HomeUiState())
 }

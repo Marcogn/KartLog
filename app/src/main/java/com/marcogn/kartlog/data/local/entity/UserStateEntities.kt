@@ -3,6 +3,7 @@ package com.marcogn.kartlog.data.local.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.marcogn.kartlog.domain.model.Cc
+import com.marcogn.kartlog.domain.model.TrophyRank
 
 /**
  * Stato utente (SPEC §3): mai cancellato o toccato dal reseed dei dati di gioco
@@ -29,14 +30,14 @@ data class CompletedPSwitchEntity(
     @PrimaryKey val pSwitchId: String,
 )
 
-@Entity(tableName = "race_results")
-data class RaceResultEntity(
-    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+/**
+ * Miglior risultato per evento e cilindrata (SPEC §2.6): una sola riga per coppia, un nuovo
+ * inserimento sostituisce il precedente. Sostituisce lo storico `race_results` dello schema v2
+ * (vedi [com.marcogn.kartlog.data.local.MIGRATION_2_3]).
+ */
+@Entity(tableName = "best_results", primaryKeys = ["eventId", "cc"])
+data class BestResultEntity(
     val eventId: String,
     val cc: Cc,
-    val stars: Int,
-    val placement: Int?,
-    val eliminatedAt: Int?,
-    val characterId: String?,
-    val timestamp: Long,
+    val rank: TrophyRank,
 )

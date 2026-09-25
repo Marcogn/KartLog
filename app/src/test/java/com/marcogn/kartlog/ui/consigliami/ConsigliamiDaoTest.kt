@@ -5,8 +5,8 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.marcogn.kartlog.data.local.KartLogDatabase
 import com.marcogn.kartlog.data.local.dao.ConsigliamiDao
+import com.marcogn.kartlog.data.local.entity.BestResultEntity
 import com.marcogn.kartlog.data.local.entity.OwnedOutfitEntity
-import com.marcogn.kartlog.data.local.entity.RaceResultEntity
 import com.marcogn.kartlog.data.seed.SeedAssetLoader
 import com.marcogn.kartlog.data.seed.SeedRepository
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiCharacter
@@ -17,6 +17,8 @@ import com.marcogn.kartlog.domain.consigliami.ConsigliamiRule
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiUseCase
 import com.marcogn.kartlog.domain.consigliami.RecommendationGroup
 import com.marcogn.kartlog.domain.model.Cc
+import com.marcogn.kartlog.domain.model.TrophyRank
+import com.marcogn.kartlog.domain.model.effectiveRank
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -62,14 +64,13 @@ class ConsigliamiDaoTest {
         val foodCourses = dao.foodCourses().first().map { ConsigliamiFoodCourse(it.foodGroupId, it.courseId, it.presence) }
         val stopsByEvent = dao.eventStops().first().groupBy({ it.eventId }, { it.courseId })
         val events = dao.events().first().map { ConsigliamiEvent(it.id, it.type, it.name, it.order, stopsByEvent[it.id].orEmpty()) }
-        val bestStarsByEvent = db.userStateDao().allRaceResults().first()
-            .filter { it.cc == referenceCc }
+        val bestRankByEvent = db.userStateDao().allBestResults().first()
             .groupBy { it.eventId }
-            .mapValues { (_, rows) -> rows.maxOf { it.stars } }
+            .mapValues { (_, rows) -> effectiveRank(rows.associate { it.cc to it.rank }, referenceCc) }
         return ConsigliamiUseCase.compute(
             characters, outfits, rules, foodCourses, events, includeNearby,
             resultsEnabled = resultsEnabled, weight = weight,
-            bestStarsForEvent = { eventId -> bestStarsByEvent[eventId] },
+            bestRankForEvent = { eventId -> bestRankByEvent[eventId] },
         )
     }
 
@@ -125,56 +126,34 @@ class ConsigliamiDaoTest {
         val lowGainEvent = disabled.filter { it.event.id != highGainEvent.event.id && it.score < highGainEvent.score }
             .maxBy { it.score }
 
-        // Tre stelle sull'evento col gain più alto -> improvement 0. Nessun risultato sull'altro -> improvement 1.
-        db.userStateDao().insertRaceResult(
-            RaceResultEntity(
-                eventId = highGainEvent.event.id,
-                cc = Cc.CC_150,
-                stars = 3,
-                placement = 1,
-                eliminatedAt = null,
-                characterId = null,
-                timestamp = 0L,
-            )
-        )
+        // Oro 3 stelle sull'evento col gain più alto -> improvement 0. Nessun risultato sull'altro -> improvement 1.
+        // Registrato allo Specchio: deve valere anche a 150cc (riporto verso le cilindrate inferiori).
+        db.userStateDao().upsertBestResult(BestResultEntity(highGainEvent.event.id, Cc.MIRROR, TrophyRank.GOLD_3_STARS))
 
         val weighted = computeGroups(dao, resultsEnabled = true, weight = 1.0, referenceCc = Cc.CC_150).flatMap { it.events }
         val positionOf = { eventId: String -> weighted.indexOfFirst { it.event.id == eventId } }
 
         assertTrue(
-            "con w=1 l'evento senza risultati (improvement 1) deve precedere quello con 3 stelle (improvement 0), " +
+            "con w=1 l'evento senza risultati (improvement 1) deve precedere quello a oro 3 stelle (improvement 0), " +
                 "anche se il suo gain è più basso",
             positionOf(lowGainEvent.event.id) < positionOf(highGainEvent.event.id),
         )
     }
 
     @Test
-    fun `un evento a punteggio 0, nascosto da 'Solo utili', resta registrabile (SPEC §2_6)`() = runBlocking {
-        val dao = db.consigliamiDao()
-        // Tutti gli outfit posseduti -> gain 0 su ogni evento, esattamente quello che "Solo utili"
-        // (SPEC §6.3) nasconderebbe dalla lista. Il form di registrazione (RaceResultBottomSheet)
-        // elenca però sempre TUTTI gli eventi di dao.events(), non solo quelli con score > 0: è il
-        // fix per il "buco di analisi" segnalato dall'autore dopo la 0.1.1 (CLAUDE.md, "Aperto").
-        dao.outfits().first().forEach { db.userStateDao().markOutfitOwned(OwnedOutfitEntity(it.id)) }
-        val zeroScoreEvent = computeGroups(dao).flatMap { it.events }.first()
-        assertTrue("con tutti gli outfit posseduti ogni evento deve avere score 0", zeroScoreEvent.score == 0.0)
+    fun `un nuovo miglior risultato sostituisce il precedente per la stessa cilindrata (SPEC §2_6)`() = runBlocking {
+        val userStateDao = db.userStateDao()
+        val eventId = db.consigliamiDao().events().first().first().id
 
-        val allEventIds = dao.events().first().map { it.id }.toSet()
-        assertTrue("l'evento a score 0 deve comunque comparire in dao.events()", zeroScoreEvent.event.id in allEventIds)
+        userStateDao.upsertBestResult(BestResultEntity(eventId, Cc.CC_150, TrophyRank.SILVER))
+        userStateDao.upsertBestResult(BestResultEntity(eventId, Cc.CC_150, TrophyRank.GOLD_1_STAR))
+        userStateDao.upsertBestResult(BestResultEntity(eventId, Cc.CC_100, TrophyRank.BRONZE))
 
-        db.userStateDao().insertRaceResult(
-            RaceResultEntity(
-                eventId = zeroScoreEvent.event.id,
-                cc = Cc.CC_150,
-                stars = 2,
-                placement = 3,
-                eliminatedAt = null,
-                characterId = null,
-                timestamp = 0L,
-            )
-        )
+        val results = userStateDao.bestResultsForEvent(eventId).first().associate { it.cc to it.rank }
+        assertEquals(mapOf(Cc.CC_150 to TrophyRank.GOLD_1_STAR, Cc.CC_100 to TrophyRank.BRONZE), results)
+        assertEquals(1, userStateDao.countEventsWithResult().first())
 
-        val history = db.userStateDao().raceResultsForEvent(zeroScoreEvent.event.id).first()
-        assertTrue("il risultato deve essere registrabile anche per un evento a punteggio 0", history.isNotEmpty())
+        userStateDao.deleteBestResult(eventId, Cc.CC_150)
+        assertEquals(listOf(Cc.CC_100), userStateDao.bestResultsForEvent(eventId).first().map { it.cc })
     }
 }

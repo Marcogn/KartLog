@@ -28,6 +28,10 @@ sealed interface Destination {
     @Serializable
     data class ConsigliamiDetail(val eventId: String, val includeNearby: Boolean) : Destination
 
+    /** Miglior trofeo per evento e cilindrata (SPEC §2.6), raggiunto dal pulsante in Home e dal drawer. */
+    @Serializable
+    data object Results : Destination
+
     @Serializable
     data object Settings : Destination
 }

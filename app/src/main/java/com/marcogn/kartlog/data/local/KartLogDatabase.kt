@@ -12,6 +12,7 @@ import com.marcogn.kartlog.data.local.dao.SeedMetaDao
 import com.marcogn.kartlog.data.local.dao.SkinDao
 import com.marcogn.kartlog.data.local.dao.UserStateDao
 import com.marcogn.kartlog.data.local.entity.AreaEntity
+import com.marcogn.kartlog.data.local.entity.BestResultEntity
 import com.marcogn.kartlog.data.local.entity.CharacterEntity
 import com.marcogn.kartlog.data.local.entity.CharacterUnlockEntity
 import com.marcogn.kartlog.data.local.entity.CollectedMedallionEntity
@@ -26,7 +27,6 @@ import com.marcogn.kartlog.data.local.entity.OutfitFoodRuleEntity
 import com.marcogn.kartlog.data.local.entity.OwnedOutfitEntity
 import com.marcogn.kartlog.data.local.entity.PSwitchEntity
 import com.marcogn.kartlog.data.local.entity.PeachMedallionEntity
-import com.marcogn.kartlog.data.local.entity.RaceResultEntity
 import com.marcogn.kartlog.data.local.entity.RegionEntity
 import com.marcogn.kartlog.data.local.entity.SeedMetaEntity
 
@@ -51,9 +51,9 @@ const val DATABASE_NAME = "kartlog.db"
         CharacterUnlockEntity::class,
         CollectedMedallionEntity::class,
         CompletedPSwitchEntity::class,
-        RaceResultEntity::class,
+        BestResultEntity::class,
     ],
-    version = 2,
+    version = 3,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)

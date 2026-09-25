@@ -64,27 +64,14 @@
     <string name="consigliami_weigh_results">Pesa i risultati</string>
     <string name="consigliami_weight_label">Peso dei risultati: %1$d%%</string>
     <string name="consigliami_reference_cc">Cilindrata di riferimento</string>
-    <string name="consigliami_best_result_format">Miglior risultato: %1$d★ · %2$s</string>
+    <string name="consigliami_best_result_format">Miglior risultato (%1$s): %2$s</string>
     <string name="consigliami_cc_50">50cc</string>
     <string name="consigliami_cc_100">100cc</string>
     <string name="consigliami_cc_150">150cc</string>
     <string name="consigliami_cc_mirror">Specchio</string>
-    <string name="consigliami_register_result">Registra risultato</string>
-    <string name="consigliami_result_event_label">Evento</string>
-    <string name="consigliami_result_stars_label">Stelle</string>
-    <string name="consigliami_result_placement_mode">Posizione finale</string>
-    <string name="consigliami_result_eliminated_mode">Eliminato</string>
-    <string name="consigliami_result_placement_label">Posizione (1-24)</string>
-    <string name="consigliami_result_checkpoint_label">Checkpoint di eliminazione</string>
-    <string name="consigliami_result_character_label">Personaggio usato (opzionale)</string>
-    <string name="consigliami_result_character_none">Nessuno</string>
-    <string name="consigliami_result_save">Salva</string>
-    <string name="consigliami_result_cancel">Annulla</string>
-    <string name="consigliami_history_title">Storico risultati</string>
-    <string name="consigliami_history_empty">Nessun risultato registrato</string>
-    <string name="consigliami_history_placement_format">%1$d°</string>
-    <string name="consigliami_history_eliminated_format">Eliminato al checkpoint %1$d</string>
-    <string name="cd_delete">Elimina</string>
+    <string name="consigliami_detail_results_title">Migliori risultati</string>
+    <string name="consigliami_detail_results_hint">Si registrano dalla schermata Risultati.</string>
+    <string name="consigliami_detail_results_none">—</string>
     <string name="settings_title">Impostazioni / Info</string>
     <string name="settings_backup_section">Backup</string>
     <string name="settings_export_backup">Esporta backup</string>
@@ -93,4 +80,25 @@
     <string name="settings_source_revid_format">%1$s · rev %2$d</string>
 
     <string name="placeholder_coming_soon">Schermata in arrivo</string>
+
+    <!-- Risultati (SPEC §2.6) -->
+    <string name="drawer_results">Risultati</string>
+    <string name="home_option_results_title">Risultati</string>
+    <string name="home_option_results_subtitle">Registra il miglior trofeo di Gran Premi e Knockout Tour</string>
+    <string name="home_results_counter_format">%1$d / %2$d eventi con un trofeo</string>
+    <string name="results_title">Risultati</string>
+    <string name="results_cc_label">Cilindrata</string>
+    <string name="results_hint">Un trofeo vale anche per le cilindrate inferiori, lo Specchio per tutte, come nel gioco.</string>
+    <string name="results_section_cup">Gran Premi</string>
+    <string name="results_section_rally">Knockout Tour</string>
+    <string name="results_no_trophy">Nessun trofeo</string>
+    <string name="results_inherited_format">%1$s (da %2$s)</string>
+    <string name="results_dialog_clear">Nessun trofeo (cancella)</string>
+    <string name="results_dialog_cancel">Annulla</string>
+    <string name="rank_bronze">Bronzo</string>
+    <string name="rank_silver">Argento</string>
+    <string name="rank_gold">Oro</string>
+    <string name="rank_gold_1_star">Oro ★</string>
+    <string name="rank_gold_2_stars">Oro ★★</string>
+    <string name="rank_gold_3_stars">Oro ★★★</string>
 </resources>

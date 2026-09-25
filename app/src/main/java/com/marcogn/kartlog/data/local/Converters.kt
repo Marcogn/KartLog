@@ -4,6 +4,7 @@ import androidx.room.TypeConverter
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.EventType
 import com.marcogn.kartlog.domain.model.Presence
+import com.marcogn.kartlog.domain.model.TrophyRank
 
 class Converters {
 
@@ -31,4 +32,10 @@ class Converters {
 
     @TypeConverter
     fun toCc(value: String): Cc = Cc.valueOf(value)
+
+    @TypeConverter
+    fun fromTrophyRank(value: TrophyRank): String = value.name
+
+    @TypeConverter
+    fun toTrophyRank(value: String): TrophyRank = TrophyRank.valueOf(value)
 }

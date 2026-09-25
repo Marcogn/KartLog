@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.Menu
@@ -39,13 +38,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
-import com.marcogn.kartlog.data.local.entity.RaceResultEntity
 import com.marcogn.kartlog.domain.consigliami.CharacterGain
 import com.marcogn.kartlog.domain.consigliami.EventScore
 import com.marcogn.kartlog.domain.consigliami.RecommendationGroup
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.EventType
 import com.marcogn.kartlog.domain.model.Presence
+import com.marcogn.kartlog.domain.model.TrophyRank
+import com.marcogn.kartlog.ui.common.ccLabel
+import com.marcogn.kartlog.ui.common.rankLabel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -55,7 +56,6 @@ fun ConsigliamiScreen(
     viewModel: ConsigliamiViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
-    var showForm by rememberSaveable { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -64,11 +64,6 @@ fun ConsigliamiScreen(
                 navigationIcon = {
                     IconButton(onClick = onMenuClick) {
                         Icon(Icons.Filled.Menu, contentDescription = stringResource(R.string.cd_menu))
-                    }
-                },
-                actions = {
-                    IconButton(onClick = { showForm = true }) {
-                        Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.consigliami_register_result))
                     }
                 },
             )
@@ -158,26 +153,14 @@ fun ConsigliamiScreen(
                             characterNames = state.characterNames,
                             courseNames = state.courseNames,
                             foodGroupNames = state.foodGroupNames,
-                            bestResultByEvent = if (state.resultsEnabled) state.bestResultByEvent else emptyMap(),
+                            bestRankByEvent = if (state.resultsEnabled) state.bestRankByEvent else emptyMap(),
+                            referenceCc = state.referenceCc,
                             onEventClick = { eventId -> onEventClick(eventId, state.includeNearby) },
                         )
                     }
                 }
             }
         }
-    }
-
-    if (showForm && state.allEvents.isNotEmpty()) {
-        RaceResultBottomSheet(
-            events = state.allEvents,
-            initialEventId = state.allEvents.first().id,
-            characterNames = state.characterNames,
-            onSave = { eventId, cc, stars, placement, eliminatedAt, characterId ->
-                viewModel.onResultSaved(eventId, cc, stars, placement, eliminatedAt, characterId)
-                showForm = false
-            },
-            onDismiss = { showForm = false },
-        )
     }
 }
 
@@ -199,7 +182,8 @@ private fun GroupSection(
     characterNames: Map<String, String>,
     courseNames: Map<String, String>,
     foodGroupNames: Map<String, String>,
-    bestResultByEvent: Map<String, RaceResultEntity>,
+    bestRankByEvent: Map<String, TrophyRank>,
+    referenceCc: Cc,
     onEventClick: (String) -> Unit,
 ) {
     var expanded by rememberSaveable(group.position) { mutableStateOf(group.events.size <= 1) }
@@ -223,12 +207,12 @@ private fun GroupSection(
         }
         if (expanded) {
             group.events.forEach { event ->
-                EventCard(event, group.position, characterNames, courseNames, foodGroupNames, bestResultByEvent[event.event.id], onClick = { onEventClick(event.event.id) })
+                EventCard(event, group.position, characterNames, courseNames, foodGroupNames, bestRankByEvent[event.event.id], referenceCc, onClick = { onEventClick(event.event.id) })
             }
         }
     } else {
         val event = group.events.single()
-        EventCard(event, group.position, characterNames, courseNames, foodGroupNames, bestResultByEvent[event.event.id], onClick = { onEventClick(event.event.id) })
+        EventCard(event, group.position, characterNames, courseNames, foodGroupNames, bestRankByEvent[event.event.id], referenceCc, onClick = { onEventClick(event.event.id) })
     }
 }
 
@@ -239,7 +223,8 @@ private fun EventCard(
     characterNames: Map<String, String>,
     courseNames: Map<String, String>,
     foodGroupNames: Map<String, String>,
-    bestResult: RaceResultEntity?,
+    bestRank: TrophyRank?,
+    referenceCc: Cc,
     onClick: () -> Unit,
 ) {
     Card(onClick = onClick, modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp)) {
@@ -259,12 +244,9 @@ private fun EventCard(
                 )
             }
 
-            if (bestResult != null) {
-                val placementText = bestResult.placement?.let { stringResource(R.string.consigliami_history_placement_format, it) }
-                    ?: bestResult.eliminatedAt?.let { stringResource(R.string.consigliami_history_eliminated_format, it) }
-                    ?: ""
+            if (bestRank != null) {
                 Text(
-                    stringResource(R.string.consigliami_best_result_format, bestResult.stars, placementText),
+                    stringResource(R.string.consigliami_best_result_format, ccLabel(referenceCc), rankLabel(bestRank)),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.padding(top = 4.dp),

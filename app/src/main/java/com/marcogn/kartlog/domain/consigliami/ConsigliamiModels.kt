@@ -30,7 +30,7 @@ data class EventScore(
     val runnersUp: List<CharacterGain>,
     val relevantStops: Int,
     val relevantFoods: List<RelevantFood>,
-    /** SPEC §6.3/§6.4: `1 - bestStars/3` (1 se nessun risultato). Spareggio solo a risultati attivi. */
+    /** SPEC §6.3/§6.4: `1 - bestRank.level/6` (1 se nessun risultato). Spareggio solo a risultati attivi. */
     val improvement: Double,
 )
 

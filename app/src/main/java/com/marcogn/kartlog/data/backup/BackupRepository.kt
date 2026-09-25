@@ -3,12 +3,13 @@ package com.marcogn.kartlog.data.backup
 import android.content.Context
 import android.net.Uri
 import com.marcogn.kartlog.data.local.dao.BackupDao
+import com.marcogn.kartlog.data.local.entity.BestResultEntity
 import com.marcogn.kartlog.data.local.entity.CharacterUnlockEntity
 import com.marcogn.kartlog.data.local.entity.CollectedMedallionEntity
 import com.marcogn.kartlog.data.local.entity.CompletedPSwitchEntity
 import com.marcogn.kartlog.data.local.entity.OwnedOutfitEntity
-import com.marcogn.kartlog.data.local.entity.RaceResultEntity
 import com.marcogn.kartlog.domain.model.Cc
+import com.marcogn.kartlog.domain.model.TrophyRank
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.IOException
 import javax.inject.Inject
@@ -19,7 +20,8 @@ class BackupRepository @Inject constructor(
     private val dao: BackupDao,
     @ApplicationContext private val context: Context,
 ) {
-    private val json = Json { prettyPrint = true; ignoreUnknownKeys = true }
+    // encodeDefaults: `backupVersion` va scritto anche quando coincide col default, altrimenti il file non lo porta.
+    private val json = Json { prettyPrint = true; ignoreUnknownKeys = true; encodeDefaults = true }
 
     suspend fun export(destination: Uri) {
         val payload = BackupPayload(
@@ -28,9 +30,7 @@ class BackupRepository @Inject constructor(
             characterUnlocks = dao.characterUnlocks().map { CharacterUnlockDto(it.characterId, it.unlocked) },
             collectedMedallionIds = dao.collectedMedallions().map { it.medallionId },
             completedPSwitchIds = dao.completedPSwitches().map { it.pSwitchId },
-            raceResults = dao.raceResults().map {
-                RaceResultDto(it.eventId, it.cc.name, it.stars, it.placement, it.eliminatedAt, it.characterId, it.timestamp)
-            },
+            bestResults = dao.bestResults().map { BestResultDto(it.eventId, it.cc.name, it.rank.name) },
         )
         val text = json.encodeToString(BackupPayload.serializer(), payload)
         val stream = context.contentResolver.openOutputStream(destination)
@@ -54,26 +54,14 @@ class BackupRepository @Inject constructor(
         val (validUnlocks, unknownUnlocks) = payload.characterUnlocks.partition { it.characterId in validCharacterIds }
         val (validMedallions, unknownMedallions) = payload.collectedMedallionIds.partition { it in validMedallionIds }
         val (validPSwitches, unknownPSwitches) = payload.completedPSwitchIds.partition { it in validPSwitchIds }
-        val (validResults, unknownResults) = payload.raceResults.partition {
-            it.eventId in validEventIds && (it.characterId == null || it.characterId in validCharacterIds)
-        }
+        val (validResults, unknownResults) = bestResultsOf(payload).partition { it.eventId in validEventIds }
 
         dao.replaceUserState(
             ownedOutfits = validOutfits.map { OwnedOutfitEntity(it) },
             characterUnlocks = validUnlocks.map { CharacterUnlockEntity(it.characterId, it.unlocked) },
             collectedMedallions = validMedallions.map { CollectedMedallionEntity(it) },
             completedPSwitches = validPSwitches.map { CompletedPSwitchEntity(it) },
-            raceResults = validResults.map {
-                RaceResultEntity(
-                    eventId = it.eventId,
-                    cc = Cc.valueOf(it.cc),
-                    stars = it.stars,
-                    placement = it.placement,
-                    eliminatedAt = it.eliminatedAt,
-                    characterId = it.characterId,
-                    timestamp = it.timestamp,
-                )
-            },
+            bestResults = validResults,
         )
 
         return ImportResult(
@@ -82,15 +70,30 @@ class BackupRepository @Inject constructor(
                 "characterUnlocks" to validUnlocks.size,
                 "medallions" to validMedallions.size,
                 "pSwitches" to validPSwitches.size,
-                "raceResults" to validResults.size,
+                "bestResults" to validResults.size,
             ),
             unknownIds = buildMap {
                 if (unknownOutfits.isNotEmpty()) put("outfits", unknownOutfits)
                 if (unknownUnlocks.isNotEmpty()) put("characterUnlocks", unknownUnlocks.map { it.characterId })
                 if (unknownMedallions.isNotEmpty()) put("medallions", unknownMedallions)
                 if (unknownPSwitches.isNotEmpty()) put("pSwitches", unknownPSwitches)
-                if (unknownResults.isNotEmpty()) put("raceResults", unknownResults.map { it.eventId })
+                if (unknownResults.isNotEmpty()) put("bestResults", unknownResults.map { it.eventId })
             },
         )
+    }
+
+    /**
+     * Risultati del backup nel modello attuale. Un backup v1 porta ancora lo storico `raceResults`:
+     * si converte con la stessa regola della migrazione Room v2 -> v3 (`TrophyRank.fromLegacy`),
+     * tenendo per ogni (evento, cilindrata) il trofeo più alto. Le corse senza trofeo non generano righe.
+     */
+    private fun bestResultsOf(payload: BackupPayload): List<BestResultEntity> {
+        val current = payload.bestResults.map { BestResultEntity(it.eventId, Cc.valueOf(it.cc), TrophyRank.valueOf(it.rank)) }
+        val legacy = payload.raceResults.mapNotNull { dto ->
+            TrophyRank.fromLegacy(dto.placement, dto.stars)?.let { BestResultEntity(dto.eventId, Cc.valueOf(dto.cc), it) }
+        }
+        return (current + legacy)
+            .groupBy { it.eventId to it.cc }
+            .map { (_, rows) -> rows.maxBy { it.rank.level } }
     }
 }

@@ -136,6 +136,9 @@ interface SeedDao {
 
     @Query("SELECT COUNT(*) FROM p_switches")
     fun countPSwitches(): Flow<Int>
+
+    @Query("SELECT COUNT(*) FROM events")
+    fun countEvents(): Flow<Int>
 }
 
 /** Tutte le tabelle seed insieme, così [SeedDao.replaceAll] è una singola transazione. */
