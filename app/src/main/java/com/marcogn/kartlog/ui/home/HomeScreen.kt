@@ -28,19 +28,16 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
-
-// Totali reali da SPEC §5.1 (127 outfit, 200 medaglioni, 394 pulsanti P): il numeratore è
-// fittizio finché lo stato utente non arriva (fase 3+), il denominatore no.
-private const val TOTAL_OUTFITS = 127
-private const val TOTAL_MEDALLIONS = 200
-private const val TOTAL_P_SWITCHES = 394
 
 private data class HomeTile(
     val icon: ImageVector,
@@ -58,26 +55,36 @@ fun HomeScreen(
     onMedallionsClick: () -> Unit,
     onPSwitchesClick: () -> Unit,
     onConsigliamiClick: () -> Unit,
+    viewModel: HomeViewModel = hiltViewModel(),
 ) {
+    val state by viewModel.uiState.collectAsState()
+    val notAvailable = stringResource(R.string.home_counter_not_available)
+
+    // "n/d" se il totale è 0 (SPEC §8, fase 3): i pulsanti P possono mancare finché la fase 2
+    // di seedgen non gira, un vero "0 / 0" non avrebbe senso da mostrare.
+    @Composable
+    fun counter(owned: Int, total: Int): String =
+        if (total == 0) notAvailable else stringResource(R.string.home_counter_format, owned, total)
+
     val tiles = listOf(
         HomeTile(
             icon = Icons.Filled.Checkroom,
             title = stringResource(R.string.home_option_skin_title),
-            counter = stringResource(R.string.home_counter_format, 0, TOTAL_OUTFITS),
+            counter = counter(state.ownedOutfits, state.totalOutfits),
             color = MaterialTheme.colorScheme.primary,
             onClick = onSkinClick,
         ),
         HomeTile(
             icon = Icons.Filled.MonetizationOn,
             title = stringResource(R.string.home_option_medallions_title),
-            counter = stringResource(R.string.home_counter_format, 0, TOTAL_MEDALLIONS),
+            counter = counter(state.collectedMedallions, state.totalMedallions),
             color = MaterialTheme.colorScheme.secondary,
             onClick = onMedallionsClick,
         ),
         HomeTile(
             icon = Icons.Filled.TouchApp,
             title = stringResource(R.string.home_option_pswitches_title),
-            counter = stringResource(R.string.home_counter_format, 0, TOTAL_P_SWITCHES),
+            counter = counter(state.completedPSwitches, state.totalPSwitches),
             color = MaterialTheme.colorScheme.tertiary,
             onClick = onPSwitchesClick,
         ),
