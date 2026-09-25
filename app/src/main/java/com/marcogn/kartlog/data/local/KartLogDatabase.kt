@@ -3,6 +3,7 @@ package com.marcogn.kartlog.data.local
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.marcogn.kartlog.data.local.dao.ConsigliamiDao
 import com.marcogn.kartlog.data.local.dao.MedallionsDao
 import com.marcogn.kartlog.data.local.dao.PSwitchesDao
 import com.marcogn.kartlog.data.local.dao.SeedDao
@@ -62,4 +63,5 @@ abstract class KartLogDatabase : RoomDatabase() {
     abstract fun skinDao(): SkinDao
     abstract fun medallionsDao(): MedallionsDao
     abstract fun pSwitchesDao(): PSwitchesDao
+    abstract fun consigliamiDao(): ConsigliamiDao
 }

@@ -30,6 +30,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.marcogn.kartlog.R
+import com.marcogn.kartlog.ui.consigliami.ConsigliamiDetailScreen
 import com.marcogn.kartlog.ui.consigliami.ConsigliamiScreen
 import com.marcogn.kartlog.ui.home.HomeScreen
 import com.marcogn.kartlog.ui.medallions.PeachMedallionsScreen
@@ -138,7 +139,15 @@ fun KartLogNavGraph(navController: NavHostController = rememberNavController()) 
                 PSwitchesScreen(onMenuClick = openDrawer)
             }
             composable<Destination.Consigliami> {
-                ConsigliamiScreen(onMenuClick = openDrawer)
+                ConsigliamiScreen(
+                    onMenuClick = openDrawer,
+                    onEventClick = { eventId, includeNearby ->
+                        navController.navigate(Destination.ConsigliamiDetail(eventId, includeNearby))
+                    },
+                )
+            }
+            composable<Destination.ConsigliamiDetail> {
+                ConsigliamiDetailScreen(onBack = { navController.popBackStack() })
             }
             composable<Destination.Settings> {
                 SettingsScreen(onMenuClick = openDrawer)

@@ -82,3 +82,16 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
   ricerca testuale sul nome della missione (il contatore globale non
   cambia durante la ricerca), messaggio "Dati non ancora disponibili"
   se `p_switches.json` manca dal seed.
+- **Consigliami (SPEC §2.5/§6, fase 6), senza registrazione risultati
+  (fase 7).** `ConsigliamiUseCase`: algoritmo puro (nessuna dipendenza
+  Android) con gain per personaggio, punteggio, pari merito (numerazione
+  "competition ranking") e spareggi — tutti i test di SPEC §6.5 scritti
+  prima della UI. Lista con toggle Gran Premi/Knockout Tour/Entrambi,
+  switch "Includi cibi nei dintorni" e "Solo utili" (default on),
+  gruppi a pari merito espandibili con il corso in comune nel titolo
+  quando presente. Ogni card mostra personaggio consigliato, le 2
+  alternative successive e i cibi rilevanti con l'indicazione sul
+  percorso/nei dintorni. Il dettaglio evento elenca tutti i personaggi
+  con gain > 0 e gli outfit specifici ottenibili. Si aggiorna in tempo
+  reale quando cambia lo stato di outfit o sblocchi (SPEC §9).
+  Peso dei risultati e pulsante "Registra risultato": fase 7.

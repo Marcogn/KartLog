@@ -43,6 +43,24 @@
     <string name="collectible_cancel">Annulla</string>
 
     <string name="consigliami_title">Consigliami</string>
+    <string name="consigliami_filter_cup">Gran Premi</string>
+    <string name="consigliami_filter_rally">Knockout Tour</string>
+    <string name="consigliami_filter_both">Entrambi</string>
+    <string name="consigliami_include_nearby">Includi cibi nei dintorni</string>
+    <string name="consigliami_only_useful">Solo utili</string>
+    <string name="consigliami_position_format">#%1$d</string>
+    <string name="consigliami_recommended_character">Personaggio consigliato</string>
+    <string name="consigliami_gain_format">+%1$d outfit</string>
+    <string name="consigliami_runners_up">Alternative</string>
+    <string name="consigliami_on_course">sul percorso</string>
+    <string name="consigliami_nearby">nei dintorni</string>
+    <string name="consigliami_banner">Stima basata sugli stand Yoshi\'s dei percorsi: non garantisce che il bag compaia o che tu riesca a prenderlo.</string>
+    <string name="consigliami_group_title_common">%1$d eventi passano da %2$s · stesso guadagno</string>
+    <string name="consigliami_group_title_generic">%1$d eventi a pari merito</string>
+    <string name="consigliami_no_recommendations">Nessun evento utile al momento</string>
+    <string name="consigliami_type_cup">Cup</string>
+    <string name="consigliami_type_rally">Rally</string>
+    <string name="consigliami_detail_no_characters">Nessun personaggio guadagna outfit da questo evento</string>
     <string name="settings_title">Impostazioni / Info</string>
 
     <string name="placeholder_coming_soon">Schermata in arrivo</string>
