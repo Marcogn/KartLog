@@ -29,7 +29,19 @@
     <string name="skin_default_outfit_name">Standard</string>
     <string name="skin_unknown_food">Cibo sconosciuto</string>
     <string name="medallions_title">Monete Peach</string>
+    <string name="medallions_open_guide">Apri guida</string>
+    <string name="medallions_item_label">Medaglione %1$d</string>
+
     <string name="pswitches_title">Pulsanti P</string>
+    <string name="pswitches_search_hint">Cerca missione</string>
+    <string name="pswitches_no_data">Dati non ancora disponibili</string>
+    <string name="pswitches_no_results">Nessuna missione trovata</string>
+
+    <string name="collectible_mark_all">Segna tutti</string>
+    <string name="collectible_mark_all_confirm">Segnare come completati tutti gli elementi di %1$s?</string>
+    <string name="collectible_mark_all_confirm_button">Segna tutti</string>
+    <string name="collectible_cancel">Annulla</string>
+
     <string name="consigliami_title">Consigliami</string>
     <string name="settings_title">Impostazioni / Info</string>
 

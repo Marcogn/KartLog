@@ -73,3 +73,12 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
   come posseduto e non spuntabile. Spuntare un outfit aggiorna subito
   sia il contatore del personaggio sia quello della Home (stesse righe
   in `owned_outfits`, SPEC §9).
+- **Schermate Monete Peach e Pulsanti P (SPEC §2.4, fase 5).** Entrambe
+  organizzate per le 10 regioni, in sezioni collassabili con contatore
+  `x/y` e azione "segna tutti" (con conferma). Monete Peach: checkbox
+  numerate "Medaglione N" e pulsante "Apri guida" che apre nel browser
+  la fonte di `peach_medallions.json` (`Intent.ACTION_VIEW`, nessun
+  permesso INTERNET). Pulsanti P: sottogruppi per percorso/luogo,
+  ricerca testuale sul nome della missione (il contatore globale non
+  cambia durante la ricerca), messaggio "Dati non ancora disponibili"
+  se `p_switches.json` manca dal seed.
