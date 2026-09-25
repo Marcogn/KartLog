@@ -1,15 +1,15 @@
 package com.marcogn.kartlog.data.local.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.marcogn.kartlog.data.local.entity.BestResultEntity
 import com.marcogn.kartlog.data.local.entity.CharacterUnlockEntity
 import com.marcogn.kartlog.data.local.entity.CollectedMedallionEntity
 import com.marcogn.kartlog.data.local.entity.CompletedPSwitchEntity
 import com.marcogn.kartlog.data.local.entity.OwnedOutfitEntity
-import com.marcogn.kartlog.data.local.entity.RaceResultEntity
+import com.marcogn.kartlog.domain.model.Cc
 import kotlinx.coroutines.flow.Flow
 
 /** Stato utente (SPEC §3): mai toccato dal reseed. */
@@ -81,16 +81,21 @@ interface UserStateDao {
     )
     suspend fun markAllPSwitchesCompleted(regionId: String)
 
-    @Insert
-    suspend fun insertRaceResult(entity: RaceResultEntity): Long
+    /** Un nuovo miglior risultato per (evento, cilindrata) sostituisce il precedente (SPEC §2.6). */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun upsertBestResult(entity: BestResultEntity)
 
-    @Delete
-    suspend fun deleteRaceResult(entity: RaceResultEntity)
+    @Query("DELETE FROM best_results WHERE eventId = :eventId AND cc = :cc")
+    suspend fun deleteBestResult(eventId: String, cc: Cc)
 
-    @Query("SELECT * FROM race_results WHERE eventId = :eventId ORDER BY timestamp DESC")
-    fun raceResultsForEvent(eventId: String): Flow<List<RaceResultEntity>>
+    @Query("SELECT * FROM best_results WHERE eventId = :eventId")
+    fun bestResultsForEvent(eventId: String): Flow<List<BestResultEntity>>
 
-    /** Tutti i risultati, per calcolare `bestStars(E, cc)` (SPEC §6.3) su tutti gli eventi in una volta. */
-    @Query("SELECT * FROM race_results")
-    fun allRaceResults(): Flow<List<RaceResultEntity>>
+    /** Eventi con almeno un trofeo a una qualsiasi cilindrata, per il contatore della Home. */
+    @Query("SELECT COUNT(DISTINCT eventId) FROM best_results WHERE eventId IN (SELECT id FROM events)")
+    fun countEventsWithResult(): Flow<Int>
+
+    /** Tutti i migliori risultati, per calcolare `bestRank(E, cc)` (SPEC §6.3) su tutti gli eventi in una volta. */
+    @Query("SELECT * FROM best_results")
+    fun allBestResults(): Flow<List<BestResultEntity>>
 }

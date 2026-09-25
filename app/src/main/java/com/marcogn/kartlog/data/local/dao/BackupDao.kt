@@ -4,11 +4,11 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
+import com.marcogn.kartlog.data.local.entity.BestResultEntity
 import com.marcogn.kartlog.data.local.entity.CharacterUnlockEntity
 import com.marcogn.kartlog.data.local.entity.CollectedMedallionEntity
 import com.marcogn.kartlog.data.local.entity.CompletedPSwitchEntity
 import com.marcogn.kartlog.data.local.entity.OwnedOutfitEntity
-import com.marcogn.kartlog.data.local.entity.RaceResultEntity
 
 /** Lettura/scrittura in blocco dello stato utente per l'export/import di backup (SPEC §4). */
 @Dao
@@ -26,8 +26,8 @@ interface BackupDao {
     @Query("SELECT * FROM completed_p_switches")
     suspend fun completedPSwitches(): List<CompletedPSwitchEntity>
 
-    @Query("SELECT * FROM race_results")
-    suspend fun raceResults(): List<RaceResultEntity>
+    @Query("SELECT * FROM best_results")
+    suspend fun bestResults(): List<BestResultEntity>
 
     // ID validi contro il seed corrente (SPEC §4): l'import li usa per riconoscere le righe
     // sconosciute invece di scartarle in silenzio.
@@ -58,8 +58,8 @@ interface BackupDao {
     @Query("DELETE FROM completed_p_switches")
     suspend fun clearCompletedPSwitches()
 
-    @Query("DELETE FROM race_results")
-    suspend fun clearRaceResults()
+    @Query("DELETE FROM best_results")
+    suspend fun clearBestResults()
 
     @Insert
     suspend fun insertOwnedOutfits(items: List<OwnedOutfitEntity>)
@@ -74,7 +74,7 @@ interface BackupDao {
     suspend fun insertCompletedPSwitches(items: List<CompletedPSwitchEntity>)
 
     @Insert
-    suspend fun insertRaceResults(items: List<RaceResultEntity>)
+    suspend fun insertBestResults(items: List<BestResultEntity>)
 
     /**
      * Un import sostituisce interamente lo stato utente con quello del backup (com'è già per il
@@ -88,17 +88,17 @@ interface BackupDao {
         characterUnlocks: List<CharacterUnlockEntity>,
         collectedMedallions: List<CollectedMedallionEntity>,
         completedPSwitches: List<CompletedPSwitchEntity>,
-        raceResults: List<RaceResultEntity>,
+        bestResults: List<BestResultEntity>,
     ) {
         clearOwnedOutfits()
         clearCharacterUnlocks()
         clearCollectedMedallions()
         clearCompletedPSwitches()
-        clearRaceResults()
+        clearBestResults()
         insertOwnedOutfits(ownedOutfits)
         insertCharacterUnlocks(characterUnlocks)
         insertCollectedMedallions(collectedMedallions)
         insertCompletedPSwitches(completedPSwitches)
-        insertRaceResults(raceResults)
+        insertBestResults(bestResults)
     }
 }

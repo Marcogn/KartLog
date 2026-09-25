@@ -2,6 +2,7 @@ package com.marcogn.kartlog.domain.consigliami
 
 import com.marcogn.kartlog.domain.model.EventType
 import com.marcogn.kartlog.domain.model.Presence
+import com.marcogn.kartlog.domain.model.TrophyRank
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -265,23 +266,23 @@ class ConsigliamiUseCaseTest {
             ConsigliamiFoodCourse("fg2", "course2", Presence.ON_COURSE),
         )
         // e1: gain più alto (2) ma nessun risultato (improvement = 1). e2: gain più basso (1) ma
-        // già 3 stelle registrate (improvement = 1 - 3/3 = 0). Con w=1 conta solo improvement.
+        // già oro 3 stelle (improvement = 1 - 6/6 = 0). Con w=1 conta solo improvement.
         val events = listOf(
             ConsigliamiEvent("e1", EventType.CUP, "E1", 0, listOf("course1", "course2")),
             ConsigliamiEvent("e2", EventType.CUP, "E2", 1, listOf("course1")),
         )
-        val bestStars: (String) -> Int? = { id -> if (id == "e2") 3 else null }
+        val bestRank: (String) -> TrophyRank? = { id -> if (id == "e2") TrophyRank.GOLD_3_STARS else null }
 
         val groups = ConsigliamiUseCase.compute(
             characters, outfits, rules, foodCourses, events, includeNearby = false,
-            resultsEnabled = true, weight = 1.0, bestStarsForEvent = bestStars,
+            resultsEnabled = true, weight = 1.0, bestRankForEvent = bestRank,
         )
 
         assertEquals(listOf("e1", "e2"), groups.flatMap { it.events }.map { it.event.id })
     }
 
     @Test
-    fun `con i risultati disattivati le stelle registrate non contano`() {
+    fun `con i risultati disattivati i trofei registrati non contano`() {
         val characters = listOf(ConsigliamiCharacter("mario", 0, unlocked = true))
         val outfits = listOf(
             ConsigliamiOutfit("mario_a", "mario", owned = false),
@@ -292,19 +293,51 @@ class ConsigliamiUseCaseTest {
             ConsigliamiFoodCourse("fg1", "course1", Presence.ON_COURSE),
             ConsigliamiFoodCourse("fg2", "course2", Presence.ON_COURSE),
         )
-        // e1: gain minore (1) ma 3 stelle registrate. e2: gain maggiore (2) ma 0 stelle.
+        // e1: gain minore (1) ma oro 3 stelle. e2: gain maggiore (2) ma solo bronzo.
         // Risultati disattivati (default): deve vincere il gain, non le stelle.
         val events = listOf(
             ConsigliamiEvent("e1", EventType.CUP, "E1", 0, listOf("course1")),
             ConsigliamiEvent("e2", EventType.CUP, "E2", 1, listOf("course1", "course2")),
         )
-        val bestStars: (String) -> Int? = { id -> if (id == "e1") 3 else 0 }
+        val bestRank: (String) -> TrophyRank? = { id -> if (id == "e1") TrophyRank.GOLD_3_STARS else TrophyRank.BRONZE }
 
         val groups = ConsigliamiUseCase.compute(
             characters, outfits, rules, foodCourses, events, includeNearby = false,
-            bestStarsForEvent = bestStars, // resultsEnabled di default è false
+            bestRankForEvent = bestRank, // resultsEnabled di default è false
         )
 
         assertEquals(listOf("e2", "e1"), groups.flatMap { it.events }.map { it.event.id })
+    }
+
+    @Test
+    fun `a parita di gain un argento precede un oro 3 stelle (esempio dell'autore)`() {
+        // Stesso personaggio, stesso guadagno (1 outfit) su due eventi diversi: il KO fatto solo
+        // in argento ha più margine di miglioramento del GP già a oro 3 stelle, quindi va prima.
+        val characters = listOf(ConsigliamiCharacter("wario", 0, unlocked = true))
+        val outfits = listOf(
+            ConsigliamiOutfit("wario_a", "wario", owned = false),
+            ConsigliamiOutfit("wario_b", "wario", owned = false),
+        )
+        val rules = listOf(ConsigliamiRule("wario_a", "fg1"), ConsigliamiRule("wario_b", "fg2"))
+        val foodCourses = listOf(
+            ConsigliamiFoodCourse("fg1", "course1", Presence.ON_COURSE),
+            ConsigliamiFoodCourse("fg2", "course2", Presence.ON_COURSE),
+        )
+        val events = listOf(
+            ConsigliamiEvent("cup", EventType.CUP, "Cup", 0, listOf("course1")),
+            ConsigliamiEvent("rally", EventType.RALLY, "Rally", 1, listOf("course2")),
+        )
+        val bestRank: (String) -> TrophyRank? = { id ->
+            if (id == "cup") TrophyRank.GOLD_3_STARS else TrophyRank.SILVER
+        }
+
+        val groups = ConsigliamiUseCase.compute(
+            characters, outfits, rules, foodCourses, events, includeNearby = false,
+            resultsEnabled = true, weight = 0.3, bestRankForEvent = bestRank,
+        )
+
+        // Senza risultati la Cup vincerebbe lo spareggio typeRank; con i trofei vince il Rally.
+        assertEquals(listOf("rally", "cup"), groups.flatMap { it.events }.map { it.event.id })
+        assertEquals(1.0 - 2.0 / 6.0, groups.first().events.single().improvement, 1e-9)
     }
 }

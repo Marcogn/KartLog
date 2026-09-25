@@ -8,18 +8,34 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class BackupPayload(
-    val backupVersion: Int = 1,
+    val backupVersion: Int = CURRENT_BACKUP_VERSION,
     val exportedAt: Long,
     val ownedOutfitIds: List<String> = emptyList(),
     val characterUnlocks: List<CharacterUnlockDto> = emptyList(),
     val collectedMedallionIds: List<String> = emptyList(),
     val completedPSwitchIds: List<String> = emptyList(),
+    /** Solo backup v1 (storico con stelle e posizione): letto all'import e convertito, mai più scritto. */
     val raceResults: List<RaceResultDto> = emptyList(),
+    /** Dalla v2: miglior risultato per evento e cilindrata (SPEC §2.6). */
+    val bestResults: List<BestResultDto> = emptyList(),
 )
+
+/** v2: `raceResults` (storico) sostituito da `bestResults` (un trofeo per evento e cilindrata). */
+const val CURRENT_BACKUP_VERSION = 2
 
 @Serializable
 data class CharacterUnlockDto(val characterId: String, val unlocked: Boolean)
 
+@Serializable
+data class BestResultDto(
+    val eventId: String,
+    /** Nome dell'enum [com.marcogn.kartlog.domain.model.Cc] (es. "CC_150"). */
+    val cc: String,
+    /** Nome dell'enum [com.marcogn.kartlog.domain.model.TrophyRank] (es. "GOLD_2_STARS"). */
+    val rank: String,
+)
+
+/** Formato v1, solo in lettura: convertito con `TrophyRank.fromLegacy`. */
 @Serializable
 data class RaceResultDto(
     val eventId: String,

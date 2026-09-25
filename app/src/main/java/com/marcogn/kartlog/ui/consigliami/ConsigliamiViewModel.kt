@@ -8,11 +8,11 @@ import com.marcogn.kartlog.data.local.dao.ConsigliamiOutfitRow
 import com.marcogn.kartlog.data.local.dao.IdName
 import com.marcogn.kartlog.data.local.dao.IdNameIt
 import com.marcogn.kartlog.data.local.dao.UserStateDao
+import com.marcogn.kartlog.data.local.entity.BestResultEntity
 import com.marcogn.kartlog.data.local.entity.EventEntity
 import com.marcogn.kartlog.data.local.entity.EventStopEntity
 import com.marcogn.kartlog.data.local.entity.FoodGroupCourseEntity
 import com.marcogn.kartlog.data.local.entity.OutfitFoodRuleEntity
-import com.marcogn.kartlog.data.local.entity.RaceResultEntity
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiCharacter
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiEvent
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiFoodCourse
@@ -22,6 +22,7 @@ import com.marcogn.kartlog.domain.consigliami.ConsigliamiUseCase
 import com.marcogn.kartlog.domain.consigliami.RecommendationGroup
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.EventType
+import com.marcogn.kartlog.domain.model.TrophyRank
 import com.marcogn.kartlog.domain.model.localizedName
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -30,7 +31,6 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
 
 enum class ConsigliamiEventFilter { CUP, RALLY, BOTH }
 
@@ -42,11 +42,11 @@ data class ConsigliamiUiState(
     val resultsEnabled: Boolean = false,
     val weight: Double = 0.3,
     val referenceCc: Cc = Cc.CC_150,
-    val bestResultByEvent: Map<String, RaceResultEntity> = emptyMap(),
+    /** Trofeo registrato alla cilindrata di riferimento (SPEC §6.3). */
+    val bestRankByEvent: Map<String, TrophyRank> = emptyMap(),
     val characterNames: Map<String, String> = emptyMap(),
     val courseNames: Map<String, String> = emptyMap(),
     val foodGroupNames: Map<String, String> = emptyMap(),
-    val allEvents: List<EventPickerItem> = emptyList(),
 )
 
 private data class RawSeedData(
@@ -60,12 +60,12 @@ private data class RawSeedData(
     val foodGroupNames: Map<String, String>,
 )
 
-private data class ResultsSettings(val enabled: Boolean, val weight: Double, val cc: Cc, val raceResults: List<RaceResultEntity>)
+private data class ResultsSettings(val enabled: Boolean, val weight: Double, val cc: Cc, val bestResults: List<BestResultEntity>)
 
 @HiltViewModel
 class ConsigliamiViewModel @Inject constructor(
     dao: ConsigliamiDao,
-    private val userStateDao: UserStateDao,
+    userStateDao: UserStateDao,
 ) : ViewModel() {
 
     private val eventFilter = MutableStateFlow(ConsigliamiEventFilter.BOTH)
@@ -87,7 +87,7 @@ class ConsigliamiViewModel @Inject constructor(
         resultsEnabled,
         weight,
         referenceCc,
-        userStateDao.allRaceResults(),
+        userStateDao.allBestResults(),
     ) { enabled, w, cc, results -> ResultsSettings(enabled, w, cc, results) }
 
     val uiState: StateFlow<ConsigliamiUiState> = combine(
@@ -102,12 +102,11 @@ class ConsigliamiViewModel @Inject constructor(
             .filter { filter == ConsigliamiEventFilter.BOTH || it.type == filter.toEventType() }
             .map { ConsigliamiEvent(it.id, it.type, it.name, it.order, eventStopsByEvent[it.id].orEmpty()) }
 
-        // bestStars(E, cc) (SPEC §6.3): solo i risultati alla cilindrata di riferimento.
-        val resultsAtCc = results.raceResults.filter { it.cc == results.cc }
-        val bestStarsByEvent = resultsAtCc.groupBy { it.eventId }.mapValues { (_, rows) -> rows.maxOf { it.stars } }
-        val bestResultByEvent = resultsAtCc.groupBy { it.eventId }.mapValues { (_, rows) ->
-            rows.sortedWith(compareByDescending<RaceResultEntity> { it.stars }.thenBy { it.placement ?: Int.MAX_VALUE }).first()
-        }
+        // bestRank(E, cc) (SPEC §6.3): solo il trofeo registrato alla cilindrata di riferimento,
+        // nessun riporto da altre cilindrate (decisione dell'autore, vedi CLAUDE.md).
+        val bestRankByEvent = results.bestResults
+            .filter { it.cc == results.cc }
+            .associate { it.eventId to it.rank }
 
         var groups = ConsigliamiUseCase.compute(
             characters = raw.characters.map { ConsigliamiCharacter(it.id, it.rosterOrder, it.unlocked) },
@@ -118,7 +117,7 @@ class ConsigliamiViewModel @Inject constructor(
             includeNearby = nearby,
             resultsEnabled = results.enabled,
             weight = results.weight,
-            bestStarsForEvent = { eventId -> bestStarsByEvent[eventId] },
+            bestRankForEvent = { eventId -> bestRankByEvent[eventId] },
         )
 
         // Filtro "Solo utili" (SPEC §6.3, default on): nasconde gli eventi a punteggio 0, mai i
@@ -138,13 +137,10 @@ class ConsigliamiViewModel @Inject constructor(
             resultsEnabled = results.enabled,
             weight = results.weight,
             referenceCc = results.cc,
-            bestResultByEvent = bestResultByEvent,
+            bestRankByEvent = bestRankByEvent,
             characterNames = raw.characters.associate { it.id to localizedName(it.name, it.nameIt) },
             courseNames = raw.courseNames,
             foodGroupNames = raw.foodGroupNames,
-            // Non filtrata da eventFilter/"Solo utili": la registrazione risultato deve poter
-            // raggiungere qualunque evento, anche quelli nascosti al momento dalla lista.
-            allEvents = raw.events.sortedBy { it.order }.map { EventPickerItem(it.id, it.name, it.type) },
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ConsigliamiUiState())
 
@@ -170,23 +166,6 @@ class ConsigliamiViewModel @Inject constructor(
 
     fun onReferenceCcChanged(value: Cc) {
         referenceCc.value = value
-    }
-
-    /** Punto di ingresso globale (SPEC §2.6): registra un risultato per un evento a scelta, non solo quello sotto una card visibile. */
-    fun onResultSaved(eventId: String, cc: Cc, stars: Int, placement: Int?, eliminatedAt: Int?, characterId: String?) {
-        viewModelScope.launch {
-            userStateDao.insertRaceResult(
-                RaceResultEntity(
-                    eventId = eventId,
-                    cc = cc,
-                    stars = stars,
-                    placement = placement,
-                    eliminatedAt = eliminatedAt,
-                    characterId = characterId,
-                    timestamp = System.currentTimeMillis(),
-                )
-            )
-        }
     }
 }
 

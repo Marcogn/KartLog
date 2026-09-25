@@ -4,16 +4,19 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Checkroom
+import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.Lightbulb
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MonetizationOn
@@ -55,6 +58,7 @@ fun HomeScreen(
     onMedallionsClick: () -> Unit,
     onPSwitchesClick: () -> Unit,
     onConsigliamiClick: () -> Unit,
+    onResultsClick: () -> Unit,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
@@ -119,6 +123,59 @@ fun HomeScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             items(tiles) { tile -> HomeTileCard(tile) }
+            // Pulsante largo a tutta riga (SPEC §2.1): i risultati alimentano Consigliami ma si
+            // registrano qui, non da dentro Consigliami.
+            item(span = { GridItemSpan(maxLineSpan) }) {
+                ResultsButton(
+                    counter = if (state.totalEvents == 0) {
+                        notAvailable
+                    } else {
+                        stringResource(R.string.home_results_counter_format, state.eventsWithResult, state.totalEvents)
+                    },
+                    onClick = onResultsClick,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun ResultsButton(counter: String, onClick: () -> Unit) {
+    val color = MaterialTheme.colorScheme.secondary
+    Card(
+        onClick = onClick,
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(containerColor = color.copy(alpha = 0.16f)),
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Icon(
+                imageVector = Icons.Filled.EmojiEvents,
+                contentDescription = null,
+                tint = color,
+                modifier = Modifier
+                    .size(56.dp)
+                    .background(color = color.copy(alpha = 0.18f), shape = MaterialTheme.shapes.large)
+                    .padding(12.dp),
+            )
+            Column(modifier = Modifier.padding(start = 16.dp)) {
+                Text(stringResource(R.string.home_option_results_title), style = MaterialTheme.typography.titleLarge)
+                Text(
+                    stringResource(R.string.home_option_results_subtitle),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                Text(
+                    counter,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 4.dp),
+                )
+            }
         }
     }
 }

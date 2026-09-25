@@ -64,27 +64,14 @@
     <string name="consigliami_weigh_results">Weigh results</string>
     <string name="consigliami_weight_label">Results weight: %1$d%%</string>
     <string name="consigliami_reference_cc">Reference cc</string>
-    <string name="consigliami_best_result_format">Best result: %1$d★ · %2$s</string>
+    <string name="consigliami_best_result_format">Best result (%1$s): %2$s</string>
     <string name="consigliami_cc_50">50cc</string>
     <string name="consigliami_cc_100">100cc</string>
     <string name="consigliami_cc_150">150cc</string>
     <string name="consigliami_cc_mirror">Mirror</string>
-    <string name="consigliami_register_result">Register result</string>
-    <string name="consigliami_result_event_label">Event</string>
-    <string name="consigliami_result_stars_label">Stars</string>
-    <string name="consigliami_result_placement_mode">Final placement</string>
-    <string name="consigliami_result_eliminated_mode">Eliminated</string>
-    <string name="consigliami_result_placement_label">Placement (1-24)</string>
-    <string name="consigliami_result_checkpoint_label">Elimination checkpoint</string>
-    <string name="consigliami_result_character_label">Character used (optional)</string>
-    <string name="consigliami_result_character_none">None</string>
-    <string name="consigliami_result_save">Save</string>
-    <string name="consigliami_result_cancel">Cancel</string>
-    <string name="consigliami_history_title">Result history</string>
-    <string name="consigliami_history_empty">No results recorded</string>
-    <string name="consigliami_history_placement_format">#%1$d</string>
-    <string name="consigliami_history_eliminated_format">Eliminated at checkpoint %1$d</string>
-    <string name="cd_delete">Delete</string>
+    <string name="consigliami_detail_results_title">Best results</string>
+    <string name="consigliami_detail_results_hint">Record them from the Results screen.</string>
+    <string name="consigliami_detail_results_none">—</string>
     <string name="settings_title">Settings / Info</string>
     <string name="settings_backup_section">Backup</string>
     <string name="settings_export_backup">Export backup</string>
@@ -93,4 +80,23 @@
     <string name="settings_source_revid_format">%1$s · rev %2$d</string>
 
     <string name="placeholder_coming_soon">Screen coming soon</string>
+
+    <!-- Results (SPEC §2.6) -->
+    <string name="drawer_results">Results</string>
+    <string name="home_option_results_title">Results</string>
+    <string name="home_option_results_subtitle">Record your best Grand Prix and Knockout Tour trophy</string>
+    <string name="home_results_counter_format">%1$d / %2$d events with a trophy</string>
+    <string name="results_title">Results</string>
+    <string name="results_cc_label">Engine class</string>
+    <string name="results_section_cup">Grand Prix</string>
+    <string name="results_section_rally">Knockout Tour</string>
+    <string name="results_no_trophy">No trophy</string>
+    <string name="results_dialog_clear">No trophy (clear)</string>
+    <string name="results_dialog_cancel">Cancel</string>
+    <string name="rank_bronze">Bronze</string>
+    <string name="rank_silver">Silver</string>
+    <string name="rank_gold">Gold</string>
+    <string name="rank_gold_1_star">Gold ★</string>
+    <string name="rank_gold_2_stars">Gold ★★</string>
+    <string name="rank_gold_3_stars">Gold ★★★</string>
 </resources>

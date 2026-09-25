@@ -6,6 +6,18 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Risultati in una schermata dedicata.** La registrazione dei
+  risultati esce da Consigliami: ora si fa da un pulsante largo
+  "Risultati" in Home (e dalla voce nel drawer), con tutti i Gran Premi
+  e Knockout Tour per cilindrata. Consigliami li mostra in sola lettura
+  e continua a usarli per "Pesa i risultati".
+- **Il risultato è un trofeo, non stelle e posizione separate.** Scala
+  unica bronzo, argento, oro, oro ★, oro ★★, oro ★★★, come nel gioco
+  (le stelle esistono solo con l'oro). Si salva solo il migliore per
+  evento e cilindrata. I risultati già registrati vengono
+  convertiti all'aggiornamento (1° → oro con le sue stelle, 2° →
+  argento, 3° → bronzo; dal 4° posto nessun trofeo), e i backup
+  precedenti restano importabili.
 - **Aggiornata l'icona dell'app.** Sostituita l'illustrazione "globo + L"
   con una nuova versione fornita dall'autore (globo + sigla "MKL"),
   adattata alla forma delle adaptive icon Android con lo stesso

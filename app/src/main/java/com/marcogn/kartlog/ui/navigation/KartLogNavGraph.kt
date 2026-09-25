@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Checkroom
+import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Lightbulb
 import androidx.compose.material.icons.filled.MonetizationOn
@@ -46,6 +47,7 @@ import com.marcogn.kartlog.ui.consigliami.ConsigliamiScreen
 import com.marcogn.kartlog.ui.home.HomeScreen
 import com.marcogn.kartlog.ui.medallions.PeachMedallionsScreen
 import com.marcogn.kartlog.ui.pswitches.PSwitchesScreen
+import com.marcogn.kartlog.ui.results.ResultsScreen
 import com.marcogn.kartlog.ui.settings.SettingsScreen
 import com.marcogn.kartlog.ui.skin.SkinDetailScreen
 import com.marcogn.kartlog.ui.skin.SkinScreen
@@ -169,6 +171,13 @@ fun KartLogNavGraph(navController: NavHostController = rememberNavController()) 
                     onClick = { navigateFromDrawer(Destination.Consigliami) },
                     modifier = Modifier.padding(horizontal = 12.dp),
                 )
+                NavigationDrawerItem(
+                    label = { Text(stringResource(R.string.drawer_results)) },
+                    icon = { Icon(Icons.Filled.EmojiEvents, contentDescription = null) },
+                    selected = false,
+                    onClick = { navigateFromDrawer(Destination.Results) },
+                    modifier = Modifier.padding(horizontal = 12.dp),
+                )
                 HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
                 NavigationDrawerItem(
                     label = { Text(stringResource(R.string.drawer_settings)) },
@@ -195,6 +204,7 @@ fun KartLogNavGraph(navController: NavHostController = rememberNavController()) 
                     onMedallionsClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.PeachMedallions) },
                     onPSwitchesClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.PSwitches) },
                     onConsigliamiClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.Consigliami) },
+                    onResultsClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.Results) },
                 )
             }
             composable<Destination.Skin> { entry ->
@@ -226,6 +236,9 @@ fun KartLogNavGraph(navController: NavHostController = rememberNavController()) 
             }
             composable<Destination.ConsigliamiDetail> { entry ->
                 ConsigliamiDetailScreen(onBack = { if (entry.lifecycleIsResumed()) navController.popBackStack() })
+            }
+            composable<Destination.Results> {
+                ResultsScreen(onMenuClick = openDrawer)
             }
             composable<Destination.Settings> {
                 SettingsScreen(onMenuClick = openDrawer)

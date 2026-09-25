@@ -48,4 +48,40 @@ class MigrationTest {
             assertEquals("mario__default", cursor.getString(0))
         }
     }
+
+    @Test
+    fun `migrazione 2 a 3 converte lo storico dei risultati nel miglior trofeo per cilindrata`() {
+        helper.createDatabase(dbName, 2).apply {
+            val insert = "INSERT INTO race_results (eventId, cc, stars, placement, eliminatedAt, characterId, timestamp) VALUES "
+            // cup_a 150cc: argento (stelle impossibili ignorate) e oro 2 stelle -> oro 2 stelle.
+            execSQL(insert + "('cup_a', 'CC_150', 3, 2, NULL, NULL, 1)")
+            execSQL(insert + "('cup_a', 'CC_150', 2, 1, NULL, 'mario', 2)")
+            // cup_a 100cc: bronzo.
+            execSQL(insert + "('cup_a', 'CC_100', 0, 3, NULL, NULL, 3)")
+            // rally_b Mirror: eliminato, e 4° -> nessun trofeo, nessuna riga.
+            execSQL(insert + "('rally_b', 'MIRROR', 0, NULL, 3, NULL, 4)")
+            execSQL(insert + "('rally_b', 'MIRROR', 0, 4, NULL, NULL, 5)")
+            // Stelle fuori scala (dati scritti a mano) -> limitate a 3.
+            execSQL(insert + "('cup_c', 'CC_50', 9, 1, NULL, NULL, 6)")
+            close()
+        }
+
+        val migrated = helper.runMigrationsAndValidate(dbName, 3, true, MIGRATION_2_3)
+
+        val rows = mutableMapOf<String, String>()
+        migrated.query("SELECT eventId, cc, rank FROM best_results").use { cursor ->
+            while (cursor.moveToNext()) rows["${cursor.getString(0)}/${cursor.getString(1)}"] = cursor.getString(2)
+        }
+        assertEquals(
+            mapOf(
+                "cup_a/CC_150" to "GOLD_2_STARS",
+                "cup_a/CC_100" to "BRONZE",
+                "cup_c/CC_50" to "GOLD_3_STARS",
+            ),
+            rows,
+        )
+        migrated.query("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'race_results'").use { cursor ->
+            assertEquals(false, cursor.moveToFirst())
+        }
+    }
 }
