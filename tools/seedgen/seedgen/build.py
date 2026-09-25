@@ -8,6 +8,7 @@ from datetime import date
 
 from .config import Config
 from .errors import ParseError
+from .i18n import Translations
 from .raw import RawData
 
 LICENSE = {
@@ -27,22 +28,29 @@ def _page_url(cfg: Config, title: str) -> str:
     return cfg.sources["page_url_prefix"] + title.replace(" ", "_")
 
 
-def build(raw: RawData, cfg: Config, seed_version: int = 1) -> dict[str, dict]:
+def build(raw: RawData, cfg: Config, seed_version: int = 1, translations: Translations | None = None) -> dict[str, dict]:
+    translations = translations or Translations()
     pages = cfg.sources["pages"]
     dash_url = _page_url(cfg, pages["dash_food"])
     navbox_url = _page_url(cfg, pages["navbox"])
 
     characters = [
-        {"id": e.id, "name": e.name, "rosterOrder": e.order} for e in cfg.characters.entities
+        {"id": e.id, "name": e.name, "nameIt": translations.character_it.get(e.id), "rosterOrder": e.order}
+        for e in cfg.characters.entities
     ]
-    courses = [{"id": e.id, "name": e.name, "regionId": cfg.region_of.get(e.id)} for e in cfg.courses.entities]
+    courses = [
+        {"id": e.id, "name": e.name, "nameIt": translations.course_it.get(e.id), "regionId": cfg.region_of.get(e.id)}
+        for e in cfg.courses.entities
+    ]
     regions = [{"id": e.id, "name": e.name, "order": e.order} for e in cfg.regions.entities]
     areas = [{"id": e.id, "name": e.name, "regionId": cfg.region_of[e.id]} for e in cfg.areas.entities]
     warnings: list[str] = []
 
     outfits: dict[str, dict] = {}
     for e in cfg.characters.entities:
-        outfits[f"{e.id}__default"] = {"id": f"{e.id}__default", "characterId": e.id, "name": None, "isDefault": True}
+        outfits[f"{e.id}__default"] = {
+            "id": f"{e.id}__default", "characterId": e.id, "name": None, "nameIt": None, "isDefault": True,
+        }
 
     food_groups, rules, dash_pairs = [], set(), set()
     for group in raw.food_groups:
@@ -60,7 +68,13 @@ def build(raw: RawData, cfg: Config, seed_version: int = 1) -> dict[str, dict]:
         for o in group.outfits:
             cid = cfg.characters.resolve(o.character, f"Dash Food / {label}")
             oid = f"{cid}__{slugify(o.outfit)}"
-            outfits.setdefault(oid, {"id": oid, "characterId": cid, "name": o.outfit, "isDefault": False})
+            outfits.setdefault(oid, {
+                "id": oid,
+                "characterId": cid,
+                "name": o.outfit,
+                "nameIt": translations.outfit_name_it(o.outfit, cid, cfg.character_genders),
+                "isDefault": False,
+            })
             rules.add((oid, gid))
         for title in group.courses:
             if cfg.courses.is_ignored(title):

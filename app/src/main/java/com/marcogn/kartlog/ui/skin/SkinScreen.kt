@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
 import com.marcogn.kartlog.data.local.dao.CharacterProgress
+import com.marcogn.kartlog.domain.model.localizedName
 import com.marcogn.kartlog.ui.common.CharacterAvatar
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -155,9 +156,10 @@ private fun CharacterCard(character: CharacterProgress, onClick: () -> Unit) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            CharacterAvatar(name = character.name, dimmed = character.isComplete)
+            val displayName = localizedName(character.name, character.nameIt)
+            CharacterAvatar(name = displayName, dimmed = character.isComplete)
             Text(
-                text = character.name,
+                text = displayName,
                 style = MaterialTheme.typography.titleMedium,
                 textAlign = TextAlign.Center,
                 color = if (character.isComplete) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onSurface,

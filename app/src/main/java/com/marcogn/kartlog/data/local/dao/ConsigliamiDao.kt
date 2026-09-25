@@ -14,22 +14,23 @@ interface ConsigliamiDao {
 
     @Query(
         """
-        SELECT c.id AS id, c.name AS name, c.rosterOrder AS rosterOrder, COALESCE(cu.unlocked, 1) AS unlocked
+        SELECT c.id AS id, c.name AS name, c.nameIt AS nameIt, c.rosterOrder AS rosterOrder,
+               COALESCE(cu.unlocked, 1) AS unlocked
         FROM characters c
         LEFT JOIN character_unlocks cu ON cu.characterId = c.id
         """
     )
     fun characters(): Flow<List<ConsigliamiCharacterRow>>
 
-    @Query("SELECT id, name FROM courses")
-    fun courseNames(): Flow<List<IdName>>
+    @Query("SELECT id, name, nameIt FROM courses")
+    fun courseNames(): Flow<List<IdNameIt>>
 
     @Query("SELECT id, name FROM food_groups")
     fun foodGroupNames(): Flow<List<IdName>>
 
     /** Solo outfit non default: hanno sempre un nome (SPEC §3, validato in fase 3). */
-    @Query("SELECT id, name FROM outfits WHERE isDefault = 0")
-    fun outfitNames(): Flow<List<IdName>>
+    @Query("SELECT id, name, nameIt FROM outfits WHERE isDefault = 0")
+    fun outfitNames(): Flow<List<IdNameIt>>
 
     /** Solo outfit non default: SPEC §6.2, "missing(C) = outfit di C non default e non posseduti". */
     @Query(
@@ -55,8 +56,16 @@ interface ConsigliamiDao {
     fun eventStops(): Flow<List<EventStopEntity>>
 }
 
-data class ConsigliamiCharacterRow(val id: String, val name: String, val rosterOrder: Int, val unlocked: Boolean)
+data class ConsigliamiCharacterRow(
+    val id: String,
+    val name: String,
+    val nameIt: String?,
+    val rosterOrder: Int,
+    val unlocked: Boolean,
+)
 
 data class ConsigliamiOutfitRow(val id: String, val characterId: String, val owned: Boolean)
 
 data class IdName(val id: String, val name: String)
+
+data class IdNameIt(val id: String, val name: String, val nameIt: String?)

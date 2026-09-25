@@ -63,6 +63,7 @@ class WikiClient:
             "disablelimitreport": "1",
             "disableeditsection": "1",
             "disabletoc": "1",
+            "redirects": "1",
             "maxlag": str(self.maxlag),
         }
         delay = 2.0
@@ -98,9 +99,24 @@ class WikiClient:
         raise NetworkError(f"Impossibile scaricare {title!r} dopo {self.max_retries} tentativi ({last_error})")
 
 
-def all_titles(sources: dict) -> list[str]:
-    pages = sources["pages"]
+def all_titles(cfg) -> list[str]:
+    pages = cfg.sources["pages"]
     return [pages["dash_food"], pages["yoshis"], pages["missions"], pages["navbox"], *pages["rallies"]]
+
+
+def i18n_titles(cfg) -> list[str]:
+    """Pagine per i nomi in altre lingue (seedgen/i18n.py): una per personaggio/corso, più quella
+    degli outfit. Separate da `all_titles()` perché sono pagine di biografia INTERE (fino a 2-3 MB
+    l'una) — va bene scaricarle a ogni `generate` reale, ma non hanno senso come fixture committate
+    (`tests/fixtures/real/`) solo per estrarre una piccola tabella: vedi `fetch_i18n()`, sempre in
+    rete, mai da fixture."""
+    pages = cfg.sources["pages"]
+    titles = [
+        pages["outfit_names_it"],
+        *(e.i18n_page() for e in cfg.characters.entities),
+        *(e.i18n_page() for e in cfg.courses.entities),
+    ]
+    return list(dict.fromkeys(titles))  # deduplica preservando l'ordine
 
 
 def fixture_name(title: str) -> str:
@@ -114,9 +130,9 @@ def save_fixtures(pages: list[WikiPage], directory: Path) -> None:
         path.write_text(json.dumps(page.to_json(), ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
 
-def load_fixtures(sources: dict, directory: Path) -> dict[str, WikiPage]:
+def load_fixtures(cfg, directory: Path) -> dict[str, WikiPage]:
     pages: dict[str, WikiPage] = {}
-    for title in all_titles(sources):
+    for title in all_titles(cfg):
         path = directory / fixture_name(title)
         if not path.is_file():
             raise SeedgenError(f"Fixture mancante: {path}. Eseguire prima `python -m seedgen fetch-fixtures`.")
@@ -124,6 +140,12 @@ def load_fixtures(sources: dict, directory: Path) -> dict[str, WikiPage]:
     return pages
 
 
-def fetch_all(sources: dict) -> dict[str, WikiPage]:
-    client = WikiClient(sources)
-    return {title: client.fetch(title) for title in all_titles(sources)}
+def fetch_all(cfg) -> dict[str, WikiPage]:
+    client = WikiClient(cfg.sources)
+    return {title: client.fetch(title) for title in all_titles(cfg)}
+
+
+def fetch_i18n(cfg) -> dict[str, WikiPage]:
+    """Sempre dal wiki, mai da fixture (vedi `i18n_titles`)."""
+    client = WikiClient(cfg.sources)
+    return {title: client.fetch(title) for title in i18n_titles(cfg)}

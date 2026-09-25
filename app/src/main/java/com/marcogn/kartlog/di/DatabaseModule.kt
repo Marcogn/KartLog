@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.marcogn.kartlog.data.local.DATABASE_NAME
 import com.marcogn.kartlog.data.local.KartLogDatabase
+import com.marcogn.kartlog.data.local.MIGRATION_1_2
 import com.marcogn.kartlog.data.local.dao.BackupDao
 import com.marcogn.kartlog.data.local.dao.ConsigliamiDao
 import com.marcogn.kartlog.data.local.dao.MedallionsDao
@@ -26,7 +27,9 @@ object DatabaseModule {
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): KartLogDatabase =
-        Room.databaseBuilder(context, KartLogDatabase::class.java, DATABASE_NAME).build()
+        Room.databaseBuilder(context, KartLogDatabase::class.java, DATABASE_NAME)
+            .addMigrations(MIGRATION_1_2)
+            .build()
 
     @Provides
     fun provideSeedDao(database: KartLogDatabase): SeedDao = database.seedDao()

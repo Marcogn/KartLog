@@ -52,10 +52,10 @@ class SeedRepository @Inject constructor(
 
     private fun buildSeedContent(): SeedContent = SeedContent(
         characters = assets.readItems<CharacterDto>("characters.json").map {
-            CharacterEntity(id = it.id, name = it.name, rosterOrder = it.rosterOrder)
+            CharacterEntity(id = it.id, name = it.name, nameIt = it.nameIt, rosterOrder = it.rosterOrder)
         },
         outfits = assets.readItems<OutfitDto>("outfits.json").map {
-            OutfitEntity(id = it.id, characterId = it.characterId, name = it.name, isDefault = it.isDefault)
+            OutfitEntity(id = it.id, characterId = it.characterId, name = it.name, nameIt = it.nameIt, isDefault = it.isDefault)
         },
         foodGroups = assets.readItems<FoodGroupDto>("food_groups.json").map {
             FoodGroupEntity(id = it.id, name = it.name, foods = it.foods, revertsToDefault = it.revertsToDefault)
@@ -72,7 +72,7 @@ class SeedRepository @Inject constructor(
             )
         },
         courses = assets.readItems<CourseDto>("courses.json").map {
-            CourseEntity(id = it.id, name = it.name, regionId = it.regionId)
+            CourseEntity(id = it.id, name = it.name, nameIt = it.nameIt, regionId = it.regionId)
         },
         regions = assets.readItems<RegionDto>("regions.json").map {
             RegionEntity(id = it.id, name = it.name, order = it.order)

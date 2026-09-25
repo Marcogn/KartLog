@@ -6,6 +6,10 @@ Confronta quello che il parser estrae con la trascrizione manuale in tests/golde
 - Se differiscono solo per aggiornamenti del wiki successivi alla trascrizione, va rivisto il diff
   e poi accettato (seedgen accept); il file golden resta come storico.
 - Se differiscono perché il parser legge male la pagina, va corretto il parser.
+
+I nomi in altre lingue (seedgen/i18n.py) non c'entrano qui: le loro pagine sorgente sono intere
+biografie/articoli (fino a 2-3 MB l'una) e non hanno senso come fixture committate solo per una
+piccola tabella — vedi tests/test_i18n_live.py, sempre dal vivo.
 """
 
 import pytest
@@ -26,7 +30,7 @@ pytestmark = pytest.mark.skipif(
 
 @pytest.fixture(scope="module")
 def real_seed(cfg):
-    pages = wiki.load_fixtures(cfg.sources, REAL)
+    pages = wiki.load_fixtures(cfg, REAL)
     return build(parse_all(pages, cfg), cfg)
 
 

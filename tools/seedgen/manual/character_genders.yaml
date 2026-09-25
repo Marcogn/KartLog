@@ -1,0 +1,41 @@
+# Genere grammaticale del personaggio, usato SOLO per scegliere quale delle due varianti italiane
+# (maschile/femminile) di un nome di outfit va assegnata quando la pagina "List of Mario Kart World
+# outfit names in other languages" ne distingue due per l'italiano (es. Explorer: "Esploratore" per i
+# personaggi maschili, "Esploratrice" per quelli femminili — la nota "Masculine"/"Feminine" è sul wiki
+# stesso, qui si registra solo a QUALE personaggio applicare quale nota).
+#
+# FILE MANUALE: non è un dato che il wiki elenca in forma tabellare per personaggio, va compilato a
+# mano una volta sola. Generi coerenti con le localizzazioni italiane ufficiali della serie Mario
+# (manuali di gioco, sottotitoli). Birdo: trattata come femminile, come nella quasi totalità delle
+# localizzazioni occidentali ufficiali dalla sua introduzione. Shy Guy: personaggio senza genere
+# canonico dichiarato da Nintendo, ma "Tipo Timido" è già un nome grammaticalmente maschile in
+# italiano — trattato come tale per coerenza.
+#
+# Se un personaggio manca da questo file, l'outfit corrispondente userà la variante "default" (o
+# nessuna, se la pagina ha solo maschile/femminile senza un default) — vedi seedgen/i18n.py,
+# OutfitTranslation.for_gender().
+
+mario: M
+luigi: M
+peach: F
+daisy: F
+yoshi: M
+donkey_kong: M
+bowser: M
+bowser_jr: M
+koopa_troopa: M
+toad: M
+toadette: F
+lakitu: M
+king_boo: M
+shy_guy: M
+wario: M
+waluigi: M
+birdo: F
+pauline: F
+rosalina: F
+baby_mario: M
+baby_luigi: M
+baby_peach: F
+baby_daisy: F
+baby_rosalina: F

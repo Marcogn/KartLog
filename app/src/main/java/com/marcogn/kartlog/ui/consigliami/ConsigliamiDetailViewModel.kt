@@ -14,6 +14,7 @@ import com.marcogn.kartlog.domain.consigliami.ConsigliamiOutfit
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiRule
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiUseCase
 import com.marcogn.kartlog.domain.model.Cc
+import com.marcogn.kartlog.domain.model.localizedName
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
@@ -63,8 +64,8 @@ class ConsigliamiDetailViewModel @Inject constructor(
         ConsigliamiDetailUiState(
             eventName = eventEntity?.name.orEmpty(),
             details = details,
-            characterNames = characters.associate { it.id to it.name },
-            outfitNames = outfitNames.associate { it.id to it.name },
+            characterNames = characters.associate { it.id to localizedName(it.name, it.nameIt) },
+            outfitNames = outfitNames.associate { it.id to localizedName(it.name, it.nameIt) },
             history = history,
             allEvents = events.sortedBy { it.order }.map { EventPickerItem(it.id, it.name, it.type) },
         )

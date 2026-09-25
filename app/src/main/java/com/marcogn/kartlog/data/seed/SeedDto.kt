@@ -13,10 +13,16 @@ data class SeedFile<T>(
 )
 
 @Serializable
-data class CharacterDto(val id: String, val name: String, val rosterOrder: Int)
+data class CharacterDto(val id: String, val name: String, val nameIt: String? = null, val rosterOrder: Int)
 
 @Serializable
-data class OutfitDto(val id: String, val characterId: String, val name: String? = null, val isDefault: Boolean)
+data class OutfitDto(
+    val id: String,
+    val characterId: String,
+    val name: String? = null,
+    val nameIt: String? = null,
+    val isDefault: Boolean,
+)
 
 @Serializable
 data class FoodGroupDto(val id: String, val name: String, val foods: List<String>, val revertsToDefault: Boolean)
@@ -33,7 +39,7 @@ data class FoodGroupCourseDto(
 )
 
 @Serializable
-data class CourseDto(val id: String, val name: String, val regionId: String? = null)
+data class CourseDto(val id: String, val name: String, val nameIt: String? = null, val regionId: String? = null)
 
 @Serializable
 data class RegionDto(val id: String, val name: String, val order: Int)

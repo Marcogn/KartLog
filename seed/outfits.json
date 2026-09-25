@@ -4,763 +4,890 @@
       "characterId": "baby_daisy",
       "id": "baby_daisy__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "baby_daisy",
       "id": "baby_daisy__explorer",
       "isDefault": false,
-      "name": "Explorer"
+      "name": "Explorer",
+      "nameIt": "Esploratrice"
     },
     {
       "characterId": "baby_daisy",
       "id": "baby_daisy__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "baby_daisy",
       "id": "baby_daisy__sailor",
       "isDefault": false,
-      "name": "Sailor"
+      "name": "Sailor",
+      "nameIt": "Marinaretta"
     },
     {
       "characterId": "baby_daisy",
       "id": "baby_daisy__touring",
       "isDefault": false,
-      "name": "Touring"
+      "name": "Touring",
+      "nameIt": "Sprintosa"
     },
     {
       "characterId": "baby_luigi",
       "id": "baby_luigi__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "baby_luigi",
       "id": "baby_luigi__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "baby_luigi",
       "id": "baby_luigi__work_crew",
       "isDefault": false,
-      "name": "Work Crew"
+      "name": "Work Crew",
+      "nameIt": "Muratore"
     },
     {
       "characterId": "baby_mario",
       "id": "baby_mario__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "baby_mario",
       "id": "baby_mario__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "baby_mario",
       "id": "baby_mario__swimwear",
       "isDefault": false,
-      "name": "Swimwear"
+      "name": "Swimwear",
+      "nameIt": "Balneare"
     },
     {
       "characterId": "baby_mario",
       "id": "baby_mario__work_crew",
       "isDefault": false,
-      "name": "Work Crew"
+      "name": "Work Crew",
+      "nameIt": "Muratore"
     },
     {
       "characterId": "baby_peach",
       "id": "baby_peach__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "baby_peach",
       "id": "baby_peach__explorer",
       "isDefault": false,
-      "name": "Explorer"
+      "name": "Explorer",
+      "nameIt": "Esploratrice"
     },
     {
       "characterId": "baby_peach",
       "id": "baby_peach__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "baby_peach",
       "id": "baby_peach__sailor",
       "isDefault": false,
-      "name": "Sailor"
+      "name": "Sailor",
+      "nameIt": "Marinaretta"
     },
     {
       "characterId": "baby_peach",
       "id": "baby_peach__touring",
       "isDefault": false,
-      "name": "Touring"
+      "name": "Touring",
+      "nameIt": "Sprintosa"
     },
     {
       "characterId": "baby_rosalina",
       "id": "baby_rosalina__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "baby_rosalina",
       "id": "baby_rosalina__explorer",
       "isDefault": false,
-      "name": "Explorer"
+      "name": "Explorer",
+      "nameIt": "Esploratrice"
     },
     {
       "characterId": "baby_rosalina",
       "id": "baby_rosalina__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "baby_rosalina",
       "id": "baby_rosalina__sailor",
       "isDefault": false,
-      "name": "Sailor"
+      "name": "Sailor",
+      "nameIt": "Marinaretta"
     },
     {
       "characterId": "baby_rosalina",
       "id": "baby_rosalina__touring",
       "isDefault": false,
-      "name": "Touring"
+      "name": "Touring",
+      "nameIt": "Sprintosa"
     },
     {
       "characterId": "birdo",
       "id": "birdo__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "birdo",
       "id": "birdo__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "birdo",
       "id": "birdo__vacation",
       "isDefault": false,
-      "name": "Vacation"
+      "name": "Vacation",
+      "nameIt": "Vacanza"
     },
     {
       "characterId": "bowser",
       "id": "bowser__all_terrain",
       "isDefault": false,
-      "name": "All-Terrain"
+      "name": "All-Terrain",
+      "nameIt": "Fuoristrada"
     },
     {
       "characterId": "bowser",
       "id": "bowser__biker",
       "isDefault": false,
-      "name": "Biker"
+      "name": "Biker",
+      "nameIt": "Centauro"
     },
     {
       "characterId": "bowser",
       "id": "bowser__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "bowser",
       "id": "bowser__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "bowser",
       "id": "bowser__supercharged",
       "isDefault": false,
-      "name": "Supercharged"
+      "name": "Supercharged",
+      "nameIt": "Turbo"
     },
     {
       "characterId": "bowser_jr",
       "id": "bowser_jr__biker_jr",
       "isDefault": false,
-      "name": "Biker Jr."
+      "name": "Biker Jr.",
+      "nameIt": "Centauro"
     },
     {
       "characterId": "bowser_jr",
       "id": "bowser_jr__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "bowser_jr",
       "id": "bowser_jr__explorer",
       "isDefault": false,
-      "name": "Explorer"
+      "name": "Explorer",
+      "nameIt": "Esploratore"
     },
     {
       "characterId": "bowser_jr",
       "id": "bowser_jr__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "daisy",
       "id": "daisy__aero",
       "isDefault": false,
-      "name": "Aero"
+      "name": "Aero",
+      "nameIt": "Motociclista"
     },
     {
       "characterId": "daisy",
       "id": "daisy__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "daisy",
       "id": "daisy__oasis",
       "isDefault": false,
-      "name": "Oasis"
+      "name": "Oasis",
+      "nameIt": "Oasi"
     },
     {
       "characterId": "daisy",
       "id": "daisy__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "daisy",
       "id": "daisy__swimwear",
       "isDefault": false,
-      "name": "Swimwear"
+      "name": "Swimwear",
+      "nameIt": "Balneare"
     },
     {
       "characterId": "daisy",
       "id": "daisy__touring",
       "isDefault": false,
-      "name": "Touring"
+      "name": "Touring",
+      "nameIt": "Sprintosa"
     },
     {
       "characterId": "daisy",
       "id": "daisy__vacation",
       "isDefault": false,
-      "name": "Vacation"
+      "name": "Vacation",
+      "nameIt": "Vacanza"
     },
     {
       "characterId": "donkey_kong",
       "id": "donkey_kong__all_terrain",
       "isDefault": false,
-      "name": "All-Terrain"
+      "name": "All-Terrain",
+      "nameIt": "Fuoristrada"
     },
     {
       "characterId": "donkey_kong",
       "id": "donkey_kong__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "king_boo",
       "id": "king_boo__aristocrat",
       "isDefault": false,
-      "name": "Aristocrat"
+      "name": "Aristocrat",
+      "nameIt": "Aristocratico"
     },
     {
       "characterId": "king_boo",
       "id": "king_boo__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "king_boo",
       "id": "king_boo__pirate",
       "isDefault": false,
-      "name": "Pirate"
+      "name": "Pirate",
+      "nameIt": "Filibustiere"
     },
     {
       "characterId": "king_boo",
       "id": "king_boo__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "koopa_troopa",
       "id": "koopa_troopa__all_terrain",
       "isDefault": false,
-      "name": "All-Terrain"
+      "name": "All-Terrain",
+      "nameIt": "Fuoristrada"
     },
     {
       "characterId": "koopa_troopa",
       "id": "koopa_troopa__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "koopa_troopa",
       "id": "koopa_troopa__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "koopa_troopa",
       "id": "koopa_troopa__runner",
       "isDefault": false,
-      "name": "Runner"
+      "name": "Runner",
+      "nameIt": "Podista"
     },
     {
       "characterId": "koopa_troopa",
       "id": "koopa_troopa__sailor",
       "isDefault": false,
-      "name": "Sailor"
+      "name": "Sailor",
+      "nameIt": "Marinaio"
     },
     {
       "characterId": "koopa_troopa",
       "id": "koopa_troopa__work_crew",
       "isDefault": false,
-      "name": "Work Crew"
+      "name": "Work Crew",
+      "nameIt": "Muratore"
     },
     {
       "characterId": "lakitu",
       "id": "lakitu__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "lakitu",
       "id": "lakitu__fisherman",
       "isDefault": false,
-      "name": "Fisherman"
+      "name": "Fisherman",
+      "nameIt": "Pescatore"
     },
     {
       "characterId": "lakitu",
       "id": "lakitu__pit_crew",
       "isDefault": false,
-      "name": "Pit Crew"
+      "name": "Pit Crew",
+      "nameIt": "Ingegnere di pista"
     },
     {
       "characterId": "luigi",
       "id": "luigi__all_terrain",
       "isDefault": false,
-      "name": "All-Terrain"
+      "name": "All-Terrain",
+      "nameIt": "Fuoristrada"
     },
     {
       "characterId": "luigi",
       "id": "luigi__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "luigi",
       "id": "luigi__farmer",
       "isDefault": false,
-      "name": "Farmer"
+      "name": "Farmer",
+      "nameIt": "Contadino"
     },
     {
       "characterId": "luigi",
       "id": "luigi__gondolier",
       "isDefault": false,
-      "name": "Gondolier"
+      "name": "Gondolier",
+      "nameIt": "Gondoliere"
     },
     {
       "characterId": "luigi",
       "id": "luigi__happi",
       "isDefault": false,
-      "name": "Happi"
+      "name": "Happi",
+      "nameIt": "Festival"
     },
     {
       "characterId": "luigi",
       "id": "luigi__mechanic",
       "isDefault": false,
-      "name": "Mechanic"
+      "name": "Mechanic",
+      "nameIt": "Meccanico"
     },
     {
       "characterId": "luigi",
       "id": "luigi__oasis",
       "isDefault": false,
-      "name": "Oasis"
+      "name": "Oasis",
+      "nameIt": "Oasi"
     },
     {
       "characterId": "luigi",
       "id": "luigi__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "luigi",
       "id": "luigi__touring",
       "isDefault": false,
-      "name": "Touring"
+      "name": "Touring",
+      "nameIt": "Sprintoso"
     },
     {
       "characterId": "mario",
       "id": "mario__all_terrain",
       "isDefault": false,
-      "name": "All-Terrain"
+      "name": "All-Terrain",
+      "nameIt": "Fuoristrada"
     },
     {
       "characterId": "mario",
       "id": "mario__aviator",
       "isDefault": false,
-      "name": "Aviator"
+      "name": "Aviator",
+      "nameIt": "Aviatore"
     },
     {
       "characterId": "mario",
       "id": "mario__cowboy",
       "isDefault": false,
-      "name": "Cowboy"
+      "name": "Cowboy",
+      "nameIt": "Cowboy"
     },
     {
       "characterId": "mario",
       "id": "mario__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "mario",
       "id": "mario__dune_rider",
       "isDefault": false,
-      "name": "Dune Rider"
+      "name": "Dune Rider",
+      "nameIt": "Oasi"
     },
     {
       "characterId": "mario",
       "id": "mario__happi",
       "isDefault": false,
-      "name": "Happi"
+      "name": "Happi",
+      "nameIt": "Festival"
     },
     {
       "characterId": "mario",
       "id": "mario__mechanic",
       "isDefault": false,
-      "name": "Mechanic"
+      "name": "Mechanic",
+      "nameIt": "Meccanico"
     },
     {
       "characterId": "mario",
       "id": "mario__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "mario",
       "id": "mario__sightseeing",
       "isDefault": false,
-      "name": "Sightseeing"
+      "name": "Sightseeing",
+      "nameIt": "Turista"
     },
     {
       "characterId": "mario",
       "id": "mario__touring",
       "isDefault": false,
-      "name": "Touring"
+      "name": "Touring",
+      "nameIt": "Sprintoso"
     },
     {
       "characterId": "pauline",
       "id": "pauline__aero",
       "isDefault": false,
-      "name": "Aero"
+      "name": "Aero",
+      "nameIt": "Motociclista"
     },
     {
       "characterId": "pauline",
       "id": "pauline__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "peach",
       "id": "peach__aero",
       "isDefault": false,
-      "name": "Aero"
+      "name": "Aero",
+      "nameIt": "Motociclista"
     },
     {
       "characterId": "peach",
       "id": "peach__aviator",
       "isDefault": false,
-      "name": "Aviator"
+      "name": "Aviator",
+      "nameIt": "Aviatore"
     },
     {
       "characterId": "peach",
       "id": "peach__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "peach",
       "id": "peach__farmer",
       "isDefault": false,
-      "name": "Farmer"
+      "name": "Farmer",
+      "nameIt": "Contadina"
     },
     {
       "characterId": "peach",
       "id": "peach__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "peach",
       "id": "peach__sightseeing",
       "isDefault": false,
-      "name": "Sightseeing"
+      "name": "Sightseeing",
+      "nameIt": "Turista"
     },
     {
       "characterId": "peach",
       "id": "peach__touring",
       "isDefault": false,
-      "name": "Touring"
+      "name": "Touring",
+      "nameIt": "Sprintosa"
     },
     {
       "characterId": "peach",
       "id": "peach__vacation",
       "isDefault": false,
-      "name": "Vacation"
+      "name": "Vacation",
+      "nameIt": "Vacanza"
     },
     {
       "characterId": "peach",
       "id": "peach__yukata",
       "isDefault": false,
-      "name": "Yukata"
+      "name": "Yukata",
+      "nameIt": "Festival"
     },
     {
       "characterId": "rosalina",
       "id": "rosalina__aero",
       "isDefault": false,
-      "name": "Aero"
+      "name": "Aero",
+      "nameIt": "Motociclista"
     },
     {
       "characterId": "rosalina",
       "id": "rosalina__aurora",
       "isDefault": false,
-      "name": "Aurora"
+      "name": "Aurora",
+      "nameIt": "Boreale"
     },
     {
       "characterId": "rosalina",
       "id": "rosalina__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "rosalina",
       "id": "rosalina__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "rosalina",
       "id": "rosalina__touring",
       "isDefault": false,
-      "name": "Touring"
+      "name": "Touring",
+      "nameIt": "Sprintosa"
     },
     {
       "characterId": "shy_guy",
       "id": "shy_guy__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "shy_guy",
       "id": "shy_guy__pit_crew",
       "isDefault": false,
-      "name": "Pit Crew"
+      "name": "Pit Crew",
+      "nameIt": "Ingegnere di pista"
     },
     {
       "characterId": "shy_guy",
       "id": "shy_guy__slope_styler",
       "isDefault": false,
-      "name": "Slope Styler"
+      "name": "Slope Styler",
+      "nameIt": "Snowboarder"
     },
     {
       "characterId": "toad",
       "id": "toad__burger_bud",
       "isDefault": false,
-      "name": "Burger Bud"
+      "name": "Burger Bud",
+      "nameIt": "Hamburger"
     },
     {
       "characterId": "toad",
       "id": "toad__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "toad",
       "id": "toad__engineer",
       "isDefault": false,
-      "name": "Engineer"
+      "name": "Engineer",
+      "nameIt": "Macchinista"
     },
     {
       "characterId": "toad",
       "id": "toad__explorer",
       "isDefault": false,
-      "name": "Explorer"
+      "name": "Explorer",
+      "nameIt": "Esploratore"
     },
     {
       "characterId": "toad",
       "id": "toad__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "toadette",
       "id": "toadette__conductor",
       "isDefault": false,
-      "name": "Conductor"
+      "name": "Conductor",
+      "nameIt": "Capotreno"
     },
     {
       "characterId": "toadette",
       "id": "toadette__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "toadette",
       "id": "toadette__explorer",
       "isDefault": false,
-      "name": "Explorer"
+      "name": "Explorer",
+      "nameIt": "Esploratrice"
     },
     {
       "characterId": "toadette",
       "id": "toadette__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "toadette",
       "id": "toadette__soft_server",
       "isDefault": false,
-      "name": "Soft Server"
+      "name": "Soft Server",
+      "nameIt": "Gelataia"
     },
     {
       "characterId": "waluigi",
       "id": "waluigi__biker",
       "isDefault": false,
-      "name": "Biker"
+      "name": "Biker",
+      "nameIt": "Centauro"
     },
     {
       "characterId": "waluigi",
       "id": "waluigi__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "waluigi",
       "id": "waluigi__mariachi",
       "isDefault": false,
-      "name": "Mariachi"
+      "name": "Mariachi",
+      "nameIt": "Mariachi"
     },
     {
       "characterId": "waluigi",
       "id": "waluigi__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "waluigi",
       "id": "waluigi__road_ruffian",
       "isDefault": false,
-      "name": "Road Ruffian"
+      "name": "Road Ruffian",
+      "nameIt": "Punk"
     },
     {
       "characterId": "waluigi",
       "id": "waluigi__wampire",
       "isDefault": false,
-      "name": "Wampire"
+      "name": "Wampire",
+      "nameIt": "Wampiro"
     },
     {
       "characterId": "wario",
       "id": "wario__biker",
       "isDefault": false,
-      "name": "Biker"
+      "name": "Biker",
+      "nameIt": "Centauro"
     },
     {
       "characterId": "wario",
       "id": "wario__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "wario",
       "id": "wario__oasis",
       "isDefault": false,
-      "name": "Oasis"
+      "name": "Oasis",
+      "nameIt": "Oasi"
     },
     {
       "characterId": "wario",
       "id": "wario__pirate",
       "isDefault": false,
-      "name": "Pirate"
+      "name": "Pirate",
+      "nameIt": "Filibustiere"
     },
     {
       "characterId": "wario",
       "id": "wario__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "wario",
       "id": "wario__road_ruffian",
       "isDefault": false,
-      "name": "Road Ruffian"
+      "name": "Road Ruffian",
+      "nameIt": "Punk"
     },
     {
       "characterId": "wario",
       "id": "wario__wicked_wasp",
       "isDefault": false,
-      "name": "Wicked Wasp"
+      "name": "Wicked Wasp",
+      "nameIt": "Wespone"
     },
     {
       "characterId": "wario",
       "id": "wario__work_crew",
       "isDefault": false,
-      "name": "Work Crew"
+      "name": "Work Crew",
+      "nameIt": "Muratore"
     },
     {
       "characterId": "yoshi",
       "id": "yoshi__aristocrat",
       "isDefault": false,
-      "name": "Aristocrat"
+      "name": "Aristocrat",
+      "nameIt": "Aristocratico"
     },
     {
       "characterId": "yoshi",
       "id": "yoshi__biker",
       "isDefault": false,
-      "name": "Biker"
+      "name": "Biker",
+      "nameIt": "Centauro"
     },
     {
       "characterId": "yoshi",
       "id": "yoshi__default",
       "isDefault": true,
-      "name": null
+      "name": null,
+      "nameIt": null
     },
     {
       "characterId": "yoshi",
       "id": "yoshi__food_slinger",
       "isDefault": false,
-      "name": "Food Slinger"
+      "name": "Food Slinger",
+      "nameIt": "Fast-food"
     },
     {
       "characterId": "yoshi",
       "id": "yoshi__matsuri",
       "isDefault": false,
-      "name": "Matsuri"
+      "name": "Matsuri",
+      "nameIt": "Festival"
     },
     {
       "characterId": "yoshi",
       "id": "yoshi__pro_racer",
       "isDefault": false,
-      "name": "Pro Racer"
+      "name": "Pro Racer",
+      "nameIt": "Pilota"
     },
     {
       "characterId": "yoshi",
       "id": "yoshi__soft_server",
       "isDefault": false,
-      "name": "Soft Server"
+      "name": "Soft Server",
+      "nameIt": "Gelataio"
     },
     {
       "characterId": "yoshi",
       "id": "yoshi__swimwear",
       "isDefault": false,
-      "name": "Swimwear"
+      "name": "Swimwear",
+      "nameIt": "Balneare"
     },
     {
       "characterId": "yoshi",
       "id": "yoshi__touring",
       "isDefault": false,
-      "name": "Touring"
+      "name": "Touring",
+      "nameIt": "Sprintoso"
     }
   ],
   "source": "https://www.mariowiki.com/Dash_Food"

@@ -24,6 +24,10 @@ class Entity:
     id: str
     name: str
     order: int
+    wiki_page: str | None = None  # titolo pagina per seedgen/i18n.py, se diverso da `name`
+
+    def i18n_page(self) -> str:
+        return self.wiki_page or self.name
 
 
 class AliasTable:
@@ -36,7 +40,7 @@ class AliasTable:
         self._ignored = {self._key(x) for x in (ignored or [])}
         for order, (slug, spec) in enumerate(entries.items()):
             name = spec["name"]
-            self.entities.append(Entity(slug, name, order))
+            self.entities.append(Entity(slug, name, order, spec.get("wikiPage")))
             for alias in [name, *spec.get("aliases", [])]:
                 key = self._key(alias)
                 if key in self._lookup and self._lookup[key] != slug:
@@ -80,6 +84,7 @@ class Config:
     region_of: dict[str, str]          # courseId / areaId -> regionId
     areas: AliasTable
     medallions: dict
+    character_genders: dict[str, str]  # characterId -> "M"/"F", solo per seedgen/i18n.py
 
     def yoshi_label_groups(self, label: str, context: str = "") -> list[str]:
         key = AliasTable._key(label)
@@ -115,4 +120,5 @@ class Config:
             region_of=region_of,
             areas=AliasTable("Luogo", aliases.get("areas", {})),
             medallions=_load_yaml(tool_dir / "manual" / "peach_medallions.yaml"),
+            character_genders=_load_yaml(tool_dir / "manual" / "character_genders.yaml"),
         )

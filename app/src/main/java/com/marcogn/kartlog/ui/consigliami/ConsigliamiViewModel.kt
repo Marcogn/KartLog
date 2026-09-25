@@ -6,6 +6,7 @@ import com.marcogn.kartlog.data.local.dao.ConsigliamiCharacterRow
 import com.marcogn.kartlog.data.local.dao.ConsigliamiDao
 import com.marcogn.kartlog.data.local.dao.ConsigliamiOutfitRow
 import com.marcogn.kartlog.data.local.dao.IdName
+import com.marcogn.kartlog.data.local.dao.IdNameIt
 import com.marcogn.kartlog.data.local.dao.UserStateDao
 import com.marcogn.kartlog.data.local.entity.EventEntity
 import com.marcogn.kartlog.data.local.entity.EventStopEntity
@@ -21,6 +22,7 @@ import com.marcogn.kartlog.domain.consigliami.ConsigliamiUseCase
 import com.marcogn.kartlog.domain.consigliami.RecommendationGroup
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.EventType
+import com.marcogn.kartlog.domain.model.localizedName
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -76,7 +78,7 @@ class ConsigliamiViewModel @Inject constructor(
     private val rawData = combine(
         combine(dao.characters(), dao.outfits(), dao.rules()) { c, o, r -> Triple(c, o, r) },
         combine(dao.foodCourses(), dao.events(), dao.eventStops()) { fc, e, es -> Triple(fc, e, es) },
-        combine(dao.courseNames(), dao.foodGroupNames()) { cn, fgn -> cn.toNameMap() to fgn.toNameMap() },
+        combine(dao.courseNames(), dao.foodGroupNames()) { cn, fgn -> cn.toLocalizedNameMap() to fgn.toNameMap() },
     ) { (characters, outfits, rules), (foodCourses, events, eventStops), (courseNames, foodGroupNames) ->
         RawSeedData(characters, outfits, rules, foodCourses, events, eventStops, courseNames, foodGroupNames)
     }
@@ -137,7 +139,7 @@ class ConsigliamiViewModel @Inject constructor(
             weight = results.weight,
             referenceCc = results.cc,
             bestResultByEvent = bestResultByEvent,
-            characterNames = raw.characters.associate { it.id to it.name },
+            characterNames = raw.characters.associate { it.id to localizedName(it.name, it.nameIt) },
             courseNames = raw.courseNames,
             foodGroupNames = raw.foodGroupNames,
             // Non filtrata da eventFilter/"Solo utili": la registrazione risultato deve poter
@@ -195,3 +197,6 @@ private fun ConsigliamiEventFilter.toEventType(): EventType? = when (this) {
 }
 
 private fun List<IdName>.toNameMap(): Map<String, String> = associate { it.id to it.name }
+
+private fun List<IdNameIt>.toLocalizedNameMap(): Map<String, String> =
+    associate { it.id to localizedName(it.name, it.nameIt) }

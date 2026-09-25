@@ -13,6 +13,7 @@ import com.marcogn.kartlog.domain.model.Presence
 data class CharacterEntity(
     @PrimaryKey val id: String,
     val name: String,
+    val nameIt: String?,
     val rosterOrder: Int,
     val imageRes: String? = null,
 )
@@ -22,6 +23,7 @@ data class OutfitEntity(
     @PrimaryKey val id: String,
     val characterId: String,
     val name: String?,
+    val nameIt: String?,
     val isDefault: Boolean,
 )
 
@@ -51,6 +53,7 @@ data class FoodGroupCourseEntity(
 data class CourseEntity(
     @PrimaryKey val id: String,
     val name: String,
+    val nameIt: String?,
     val regionId: String?,
 )
 
