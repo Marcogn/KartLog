@@ -251,4 +251,60 @@ class ConsigliamiUseCaseTest {
         assertEquals(2, details.single().gain)
         assertEquals(setOf("mario_a", "mario_b"), details.single().unlockableOutfitIds.toSet())
     }
+
+    @Test
+    fun `con w=1 l'ordinamento dipende solo da improvement`() {
+        val characters = listOf(ConsigliamiCharacter("mario", 0, unlocked = true))
+        val outfits = listOf(
+            ConsigliamiOutfit("mario_a", "mario", owned = false),
+            ConsigliamiOutfit("mario_b", "mario", owned = false),
+        )
+        val rules = listOf(ConsigliamiRule("mario_a", "fg1"), ConsigliamiRule("mario_b", "fg2"))
+        val foodCourses = listOf(
+            ConsigliamiFoodCourse("fg1", "course1", Presence.ON_COURSE),
+            ConsigliamiFoodCourse("fg2", "course2", Presence.ON_COURSE),
+        )
+        // e1: gain più alto (2) ma nessun risultato (improvement = 1). e2: gain più basso (1) ma
+        // già 3 stelle registrate (improvement = 1 - 3/3 = 0). Con w=1 conta solo improvement.
+        val events = listOf(
+            ConsigliamiEvent("e1", EventType.CUP, "E1", 0, listOf("course1", "course2")),
+            ConsigliamiEvent("e2", EventType.CUP, "E2", 1, listOf("course1")),
+        )
+        val bestStars: (String) -> Int? = { id -> if (id == "e2") 3 else null }
+
+        val groups = ConsigliamiUseCase.compute(
+            characters, outfits, rules, foodCourses, events, includeNearby = false,
+            resultsEnabled = true, weight = 1.0, bestStarsForEvent = bestStars,
+        )
+
+        assertEquals(listOf("e1", "e2"), groups.flatMap { it.events }.map { it.event.id })
+    }
+
+    @Test
+    fun `con i risultati disattivati le stelle registrate non contano`() {
+        val characters = listOf(ConsigliamiCharacter("mario", 0, unlocked = true))
+        val outfits = listOf(
+            ConsigliamiOutfit("mario_a", "mario", owned = false),
+            ConsigliamiOutfit("mario_b", "mario", owned = false),
+        )
+        val rules = listOf(ConsigliamiRule("mario_a", "fg1"), ConsigliamiRule("mario_b", "fg2"))
+        val foodCourses = listOf(
+            ConsigliamiFoodCourse("fg1", "course1", Presence.ON_COURSE),
+            ConsigliamiFoodCourse("fg2", "course2", Presence.ON_COURSE),
+        )
+        // e1: gain minore (1) ma 3 stelle registrate. e2: gain maggiore (2) ma 0 stelle.
+        // Risultati disattivati (default): deve vincere il gain, non le stelle.
+        val events = listOf(
+            ConsigliamiEvent("e1", EventType.CUP, "E1", 0, listOf("course1")),
+            ConsigliamiEvent("e2", EventType.CUP, "E2", 1, listOf("course1", "course2")),
+        )
+        val bestStars: (String) -> Int? = { id -> if (id == "e1") 3 else 0 }
+
+        val groups = ConsigliamiUseCase.compute(
+            characters, outfits, rules, foodCourses, events, includeNearby = false,
+            bestStarsForEvent = bestStars, // resultsEnabled di default è false
+        )
+
+        assertEquals(listOf("e2", "e1"), groups.flatMap { it.events }.map { it.event.id })
+    }
 }

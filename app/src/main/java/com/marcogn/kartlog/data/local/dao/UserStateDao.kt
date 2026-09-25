@@ -89,4 +89,8 @@ interface UserStateDao {
 
     @Query("SELECT * FROM race_results WHERE eventId = :eventId ORDER BY timestamp DESC")
     fun raceResultsForEvent(eventId: String): Flow<List<RaceResultEntity>>
+
+    /** Tutti i risultati, per calcolare `bestStars(E, cc)` (SPEC §6.3) su tutti gli eventi in una volta. */
+    @Query("SELECT * FROM race_results")
+    fun allRaceResults(): Flow<List<RaceResultEntity>>
 }

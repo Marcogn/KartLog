@@ -95,3 +95,16 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
   con gain > 0 e gli outfit specifici ottenibili. Si aggiorna in tempo
   reale quando cambia lo stato di outfit o sblocchi (SPEC §9).
   Peso dei risultati e pulsante "Registra risultato": fase 7.
+- **Registrazione risultati e peso in Consigliami (SPEC §2.6/§6.3, fase
+  7).** Bottom sheet di registrazione dal dettaglio evento: cilindrata,
+  stelle 0-3, posizione finale (1-24) o, per i Knockout Tour, eliminato
+  al checkpoint N, personaggio usato opzionale, data automatica.
+  Storico risultati per evento con cancellazione. Sezione "Pesa i
+  risultati" in Consigliami: switch, slider del peso `w` e cilindrata
+  di riferimento (default 150cc) — `score(E) = (1-w)·normGain(E) +
+  w·improvement(E)` quando attiva, `worstFirst` entra negli spareggi
+  solo in quel caso. Le card mostrano il miglior risultato registrato
+  (stelle e posizione) quando i risultati sono pesati. Il test "con
+  w=1 l'ordinamento dipende solo da improvement" (SPEC §6.5, rimasto
+  aperto dalla fase 6) ora passa anche sui dati reali dell'app, non
+  solo sullo UseCase.

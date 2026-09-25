@@ -6,6 +6,7 @@ import androidx.test.core.app.ApplicationProvider
 import com.marcogn.kartlog.data.local.KartLogDatabase
 import com.marcogn.kartlog.data.local.dao.ConsigliamiDao
 import com.marcogn.kartlog.data.local.entity.OwnedOutfitEntity
+import com.marcogn.kartlog.data.local.entity.RaceResultEntity
 import com.marcogn.kartlog.data.seed.SeedAssetLoader
 import com.marcogn.kartlog.data.seed.SeedRepository
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiCharacter
@@ -15,6 +16,7 @@ import com.marcogn.kartlog.domain.consigliami.ConsigliamiOutfit
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiRule
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiUseCase
 import com.marcogn.kartlog.domain.consigliami.RecommendationGroup
+import com.marcogn.kartlog.domain.model.Cc
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -46,14 +48,28 @@ class ConsigliamiDaoTest {
         db.close()
     }
 
-    private suspend fun computeGroups(dao: ConsigliamiDao, includeNearby: Boolean = false): List<RecommendationGroup> {
+    private suspend fun computeGroups(
+        dao: ConsigliamiDao,
+        includeNearby: Boolean = false,
+        resultsEnabled: Boolean = false,
+        weight: Double = 0.3,
+        referenceCc: Cc = Cc.CC_150,
+    ): List<RecommendationGroup> {
         val characters = dao.characters().first().map { ConsigliamiCharacter(it.id, it.rosterOrder, it.unlocked) }
         val outfits = dao.outfits().first().map { ConsigliamiOutfit(it.id, it.characterId, it.owned) }
         val rules = dao.rules().first().map { ConsigliamiRule(it.outfitId, it.foodGroupId) }
         val foodCourses = dao.foodCourses().first().map { ConsigliamiFoodCourse(it.foodGroupId, it.courseId, it.presence) }
         val stopsByEvent = dao.eventStops().first().groupBy({ it.eventId }, { it.courseId })
         val events = dao.events().first().map { ConsigliamiEvent(it.id, it.type, it.name, it.order, stopsByEvent[it.id].orEmpty()) }
-        return ConsigliamiUseCase.compute(characters, outfits, rules, foodCourses, events, includeNearby)
+        val bestStarsByEvent = db.userStateDao().allRaceResults().first()
+            .filter { it.cc == referenceCc }
+            .groupBy { it.eventId }
+            .mapValues { (_, rows) -> rows.maxOf { it.stars } }
+        return ConsigliamiUseCase.compute(
+            characters, outfits, rules, foodCourses, events, includeNearby,
+            resultsEnabled = resultsEnabled, weight = weight,
+            bestStarsForEvent = { eventId -> bestStarsByEvent[eventId] },
+        )
     }
 
     @Test
@@ -87,5 +103,37 @@ class ConsigliamiDaoTest {
             ?: 0
 
         assertTrue("il gain di $bestCharacterId per ${before.event.id} deve calare dopo aver posseduto l'outfit", gainAfter < gainBefore)
+    }
+
+    @Test
+    fun `sul seed reale con w=1 l'ordinamento dipende solo da improvement (fase 7)`() = runBlocking {
+        val dao = db.consigliamiDao()
+        val disabled = computeGroups(dao).flatMap { it.events }
+        val highGainEvent = disabled.maxBy { it.score }
+        // Un evento con gain minore del migliore, per verificare che con w=1 il gain smetta di contare.
+        val lowGainEvent = disabled.filter { it.event.id != highGainEvent.event.id && it.score < highGainEvent.score }
+            .maxBy { it.score }
+
+        // Tre stelle sull'evento col gain più alto -> improvement 0. Nessun risultato sull'altro -> improvement 1.
+        db.userStateDao().insertRaceResult(
+            RaceResultEntity(
+                eventId = highGainEvent.event.id,
+                cc = Cc.CC_150,
+                stars = 3,
+                placement = 1,
+                eliminatedAt = null,
+                characterId = null,
+                timestamp = 0L,
+            )
+        )
+
+        val weighted = computeGroups(dao, resultsEnabled = true, weight = 1.0, referenceCc = Cc.CC_150).flatMap { it.events }
+        val positionOf = { eventId: String -> weighted.indexOfFirst { it.event.id == eventId } }
+
+        assertTrue(
+            "con w=1 l'evento senza risultati (improvement 1) deve precedere quello con 3 stelle (improvement 0), " +
+                "anche se il suo gain è più basso",
+            positionOf(lowGainEvent.event.id) < positionOf(highGainEvent.event.id),
+        )
     }
 }

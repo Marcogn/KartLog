@@ -5,14 +5,28 @@ import com.marcogn.kartlog.domain.model.Presence
 import kotlin.math.abs
 
 /**
- * Algoritmo Consigliami (SPEC §6), senza registrazione risultati (fase 7): il punteggio è sempre
- * `score(E) = gain(E, best(E))`, i risultati sono considerati sempre disattivati (§6.3), quindi
- * `worstFirst` non entra mai negli spareggi (§6.4).
+ * Algoritmo Consigliami (SPEC §6). Con i risultati disattivati (default, fase 6) il punteggio è
+ * sempre `score(E) = gain(E, best(E))`; con i risultati attivati (fase 7) entra il peso `w` (§6.3).
  */
 object ConsigliamiUseCase {
 
     private const val SCORE_EPSILON = 1e-9
 
+    private data class RawEventScore(
+        val event: ConsigliamiEvent,
+        val total: Int,
+        val best: CharacterGain?,
+        val runnersUp: List<CharacterGain>,
+        val relevantStops: Int,
+        val relevantFoods: List<RelevantFood>,
+        val improvement: Double,
+    )
+
+    /**
+     * @param bestStarsForEvent stelle del miglior risultato registrato per un evento, alla
+     * cilindrata di riferimento scelta in Consigliami; null se nessun risultato (SPEC §6.3,
+     * "nessun risultato -> improvement 1"). Ignorato se [resultsEnabled] è false.
+     */
     fun compute(
         characters: List<ConsigliamiCharacter>,
         outfits: List<ConsigliamiOutfit>,
@@ -20,6 +34,9 @@ object ConsigliamiUseCase {
         foodCourses: List<ConsigliamiFoodCourse>,
         events: List<ConsigliamiEvent>,
         includeNearby: Boolean,
+        resultsEnabled: Boolean = false,
+        weight: Double = 0.3,
+        bestStarsForEvent: (eventId: String) -> Int? = { null },
     ): List<RecommendationGroup> {
         val presences = if (includeNearby) setOf(Presence.ON_COURSE, Presence.NEARBY) else setOf(Presence.ON_COURSE)
         val rulesByOutfit: Map<String, Set<String>> =
@@ -28,27 +45,42 @@ object ConsigliamiUseCase {
             outfits.filterNot { it.owned }.groupBy { it.characterId }
         val unlocked = characters.filter { it.unlocked }
 
-        val scored = events.map { event -> scoreEvent(event, unlocked, missingByCharacter, rulesByOutfit, foodCourses, presences) }
+        val raw = events.map { event ->
+            scoreEventRaw(event, unlocked, missingByCharacter, rulesByOutfit, foodCourses, presences, bestStarsForEvent)
+        }
+        val maxGain = raw.maxOfOrNull { it.best?.gain ?: 0 } ?: 0
 
-        val sorted = scored.sortedWith(
-            compareByDescending<EventScore> { it.score }
-                .thenByDescending { it.total }
-                .thenByDescending { it.relevantStops }
-                .thenBy { typeRank(it.event.type) }
-                .thenBy { it.event.order }
-        )
+        val scored = raw.map { r ->
+            val rawGain = r.best?.gain ?: 0
+            val score = if (!resultsEnabled) {
+                rawGain.toDouble()
+            } else {
+                val normGain = if (maxGain == 0) 0.0 else rawGain.toDouble() / maxGain
+                (1 - weight) * normGain + weight * r.improvement
+            }
+            EventScore(r.event, score, r.total, r.best, r.runnersUp, r.relevantStops, r.relevantFoods, r.improvement)
+        }
 
-        return assignGroups(sorted)
+        var comparator = compareByDescending<EventScore> { it.score }
+            .thenByDescending { it.total }
+            .thenByDescending { it.relevantStops }
+        if (resultsEnabled) {
+            comparator = comparator.thenByDescending { it.improvement } // worstFirst, SPEC §6.4
+        }
+        comparator = comparator.thenBy { typeRank(it.event.type) }.thenBy { it.event.order }
+
+        return assignGroups(scored.sortedWith(comparator))
     }
 
-    private fun scoreEvent(
+    private fun scoreEventRaw(
         event: ConsigliamiEvent,
         unlocked: List<ConsigliamiCharacter>,
         missingByCharacter: Map<String, List<ConsigliamiOutfit>>,
         rulesByOutfit: Map<String, Set<String>>,
         foodCourses: List<ConsigliamiFoodCourse>,
         presences: Set<Presence>,
-    ): EventScore {
+        bestStarsForEvent: (eventId: String) -> Int?,
+    ): RawEventScore {
         // foods(E) (SPEC §6.1): un cibo presente su più corsi dello stesso evento resta un solo
         // elemento dell'insieme, quindi conta una sola volta per outfit (Set, non lista).
         val foods = foodCourses
@@ -70,7 +102,6 @@ object ConsigliamiUseCase {
         val best = gains.firstOrNull()?.takeIf { it.gain > 0 }
         val runnersUp = gains.drop(1).take(2)
         val total = gains.sumOf { it.gain }
-        val score = best?.gain?.toDouble() ?: 0.0
 
         val relevantFoods = if (best != null) {
             val bestMissingIds = missingByCharacter[best.characterId].orEmpty().map { it.id }.toSet()
@@ -88,8 +119,9 @@ object ConsigliamiUseCase {
             emptyList()
         }
         val relevantStops = relevantFoods.map { it.courseId }.distinct().size
+        val improvement = 1.0 - (bestStarsForEvent(event.id) ?: 0) / 3.0
 
-        return EventScore(event, score, total, best, runnersUp, relevantStops, relevantFoods)
+        return RawEventScore(event, total, best, runnersUp, relevantStops, relevantFoods, improvement)
     }
 
     /**
