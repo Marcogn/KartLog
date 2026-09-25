@@ -27,3 +27,20 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 - Rimossa la configurazione Dependabot (`.github/dependabot.yml`): a
   differenza del progetto di riferimento, per ora si preferisce
   aggiornare le dipendenze a mano, senza PR automatiche settimanali.
+- **Dati di gioco aggiornati da Super Mario Wiki (seedVersion 2; Dash
+  Food@5455370, List of Yoshi's locations@5263331, List of Mario Kart
+  World missions@5472356, Template:Mario Kart World@5478848, Golden
+  Rally@5489159, Ice Rally@5479135, Moon Rally@5479138, Spiny
+  Rally@5479139, Cherry Rally@5479140, Acorn Rally@5479142, Cloud
+  Rally@5479143, Heart Rally@5479144, Drill Rally@5479145, Boomerang
+  Rally (Mario Kart World)@5479146, Propeller Rally@5492298, Turnip
+  Rally@5488553).** Fase 2 (SPEC §8): prima estrazione reale via API,
+  `seed/meta.json.origin` passa da `manual-transcription` ad `api`.
+  Aggiunti i 394 Pulsanti P (`seed/p_switches.json`, assente nel seed
+  iniziale). Corretti due problemi trovati confrontando l'estrazione
+  con la trascrizione manuale: area mancante "Big Donut" (regione
+  volcanica) e regione errata di Toad's Factory (era `volcanic`, è
+  `central_grassland` — le missioni lì ambientate sono tutte sotto
+  "Central grassland biome" sulla pagina reale). Nessun'altra
+  differenza: Dash Food, Yoshi's locations, navbox e rally combaciano
+  esattamente con la trascrizione manuale iniziale.

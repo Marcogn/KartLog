@@ -142,11 +142,11 @@ regions:
   mesa:              { name: "Mesa biome", courses: [mario_bros_circuit, whistlestop_summit, wario_stadium] }
   southern_sea:      { name: "Southern sea and coast", courses: [crown_city, dk_spaceport, koopa_troopa_beach] }
   desert:            { name: "Desert biome", courses: [desert_hills, shy_guy_bazaar] }
-  volcanic:          { name: "Volcanic biome", courses: [airship_fortress, bowsers_castle, dry_bones_burnout, toads_factory] }
+  volcanic:          { name: "Volcanic biome", courses: [airship_fortress, bowsers_castle, dry_bones_burnout] }
   snow:              { name: "Snow biome", courses: [dk_pass, sky_high_sundae, starview_peak] }
   eastern_sea:       { name: "Eastern sea and coast", courses: [salty_salty_speedway, wario_shipyard, peach_beach] }
   savanna_jungle:    { name: "Savanna and jungle biome", courses: [dino_dino_jungle, faraway_oasis, great_q_block_ruins] }
-  central_grassland: { name: "Central grassland biome", courses: [choco_mountain, moo_moo_meadows, peach_stadium] }
+  central_grassland: { name: "Central grassland biome", courses: [choco_mountain, moo_moo_meadows, peach_stadium, toads_factory] }
   autumnal_highland: { name: "Autumnal and highland biome", courses: [cheep_cheep_falls, dandelion_depths] }
   forest:            { name: "Forest biome", courses: [acorn_heights, boo_cinema, mario_circuit] }
 
@@ -154,3 +154,4 @@ regions:
 # Elenco incompleto per costruzione: un luogo nuovo fa fallire l'estrazione e va aggiunto qui con la sua regione.
 areas:
   chain_chomp_desert: { name: "Chain Chomp Desert", region: desert }
+  big_donut: { name: "Big Donut", region: volcanic }
