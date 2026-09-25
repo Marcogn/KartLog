@@ -6,6 +6,8 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-09-25
+
 - **Scaffold iniziale del progetto (SPEC §8, fase 1).** Struttura Gradle,
   toolchain e schema di signing/release allineati a
   [ThePatientGamerHelper](https://github.com/Marcogn/ThePatientGamerHelper)
