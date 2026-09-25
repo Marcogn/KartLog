@@ -24,3 +24,6 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
   repository (erano sotto `docs/`), per allinearsi alla struttura
   descritta in `CLAUDE.md` e in `SPEC.md` §5.1 — nessun contenuto
   modificato.
+- Rimossa la configurazione Dependabot (`.github/dependabot.yml`): a
+  differenza del progetto di riferimento, per ora si preferisce
+  aggiornare le dipendenze a mano, senza PR automatiche settimanali.
