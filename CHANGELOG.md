@@ -6,6 +6,8 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-09-25
+
 - **Nomi ufficiali in italiano per personaggi, outfit e corsi.** I nomi
   di gioco erano tutti in inglese anche con l'app in italiano. Aggiunto
   `seedgen/i18n.py`: estrae i nomi ufficiali dalle tabelle "Names in
