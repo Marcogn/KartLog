@@ -6,6 +6,8 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+## [0.1.4] - 2026-09-26
+
 - **Immagini di personaggi, outfit ed eventi.** Skin, dettaglio del
   personaggio, Consigliami e Risultati mostrano le immagini del gioco
   prese da Super Mario Wiki: griglia dei personaggi a 3 colonne con le
