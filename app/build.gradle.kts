@@ -296,6 +296,7 @@ dependencies {
     // (mai impacchettate: vedi CLAUDE.md, Decisioni prese).
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
+    implementation(libs.androidx.palette)
 
     // Selettore di lingua (AppCompatDelegate.setApplicationLocales) e di tema (DataStore), come
     // in ThePatientGamerHelper.

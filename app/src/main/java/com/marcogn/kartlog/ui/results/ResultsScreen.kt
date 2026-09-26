@@ -20,6 +20,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
@@ -57,7 +58,7 @@ fun ResultsScreen(
     var editingEventId by rememberSaveable { mutableStateOf<String?>(null) }
 
     Scaffold(
-        modifier = Modifier.kartSky(isKartDarkTheme()),
+        modifier = Modifier.kartSky(isKartDarkTheme(), faded = true),
         containerColor = Color.Transparent,
         topBar = {
             KartTopBar(
@@ -127,6 +128,8 @@ private fun LazyListScope.resultsSection(
                     color = if (row.rank == null) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.primary,
                 )
             },
+            // Trasparente: sotto si vede il cielo attenuato dello sfondo, non un bianco pieno.
+            colors = ListItemDefaults.colors(containerColor = Color.Transparent),
             modifier = Modifier.clickable { onClick(row.eventId) },
         )
     }

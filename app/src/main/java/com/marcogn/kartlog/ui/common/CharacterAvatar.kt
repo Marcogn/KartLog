@@ -26,7 +26,18 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.platform.LocalContext
+import androidx.palette.graphics.Palette
+import coil3.SingletonImageLoader
+import coil3.request.ImageRequest
+import coil3.request.SuccessResult
+import coil3.request.allowHardware
+import coil3.toBitmap
+import java.util.concurrent.ConcurrentHashMap
 import kotlin.math.absoluteValue
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 // Immagini dal CDN di Super Mario Wiki (URL nel seed, scaricate a runtime: mai nell'APK). Finché
 // non sono caricate, o se mancano rete e cache, al loro posto c'è il segnaposto con le iniziali
@@ -112,6 +123,37 @@ fun CharacterPortrait(
     Box(modifier = modifier.aspectRatio(CHARACTER_IMAGE_ASPECT).clip(RoundedCornerShape(12.dp))) {
         ImageOverInitials(name, imageUrl, dimmed, MaterialTheme.typography.headlineSmall, Alignment.Center)
     }
+}
+
+// Colore "del personaggio" per ogni URL, calcolato una volta per processo: la griglia scorre avanti
+// e indietro e ricalcolarlo a ogni ricomposizione non serve.
+private val accentCache = ConcurrentHashMap<String, Color>()
+
+/**
+ * Colore vivace dominante dell'immagine (rosso per Mario, verde per Yoshi…), estratto con Palette
+ * dalla stessa immagine del wiki: nessun colore scritto a mano per personaggio. `null` finché non
+ * è pronto o se l'immagine non si carica (offline senza cache).
+ */
+@Composable
+fun rememberImageAccentColor(imageUrl: String?): Color? {
+    val context = LocalContext.current
+    var color by remember(imageUrl) { mutableStateOf(imageUrl?.let { accentCache[it] }) }
+    LaunchedEffect(imageUrl) {
+        if (imageUrl == null || color != null) return@LaunchedEffect
+        val request = ImageRequest.Builder(context)
+            .data(imageUrl)
+            .size(96) // a Palette basta un'immagine piccola
+            .allowHardware(false) // Palette legge i pixel: niente bitmap hardware
+            .build()
+        val bitmap = (SingletonImageLoader.get(context).execute(request) as? SuccessResult)?.image?.toBitmap()
+            ?: return@LaunchedEffect
+        val rgb = withContext(Dispatchers.Default) {
+            val palette = Palette.from(bitmap).generate()
+            (palette.vibrantSwatch ?: palette.darkVibrantSwatch ?: palette.dominantSwatch)?.rgb
+        } ?: return@LaunchedEffect
+        color = Color(rgb).also { accentCache[imageUrl] = it }
+    }
+    return color
 }
 
 /** Icona di una cup o di un rally. Senza immagine non mostra nulla (il nome è sempre accanto). */

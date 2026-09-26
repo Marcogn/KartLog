@@ -7,6 +7,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -35,6 +36,8 @@ import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -61,13 +64,18 @@ import com.marcogn.kartlog.R
 import com.marcogn.kartlog.ui.theme.KartFont
 import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 
-private val KartInk = Color(0xFF1B1B1F)
+/** Nero dei contorni del mockup. */
+val KartInk = Color(0xFF1B1B1F)
 
 // "Cornice" grafica dell'app dal mockup dell'autore (26/09/2026): banner con cielo e pista in alto
 // su ogni schermata, tessere colorate a scacchi e footer con la pista in Home. Le immagini sono
 // in res/drawable-nodpi (banner, footer, logo e icone della Home, fornite dall'autore).
 
-/** Testo bianco con contorno scuro, come i titoli del mockup (font Lilita One). */
+/**
+ * Testo bianco con contorno scuro, come i titoli del mockup (font Lilita One). Con [minFontSize]
+ * più piccolo di [fontSize] il testo si rimpicciolisce fino a stare su una riga, prima di arrivare
+ * ai puntini.
+ */
 @Composable
 fun OutlinedTitle(
     text: String,
@@ -77,8 +85,42 @@ fun OutlinedTitle(
     outline: Color = KartInk,
     textAlign: TextAlign = TextAlign.Center,
     maxLines: Int = 1,
+    minFontSize: TextUnit = fontSize,
 ) {
-    val base = TextStyle(fontFamily = KartFont, fontSize = fontSize, textAlign = textAlign)
+    if (minFontSize == fontSize) {
+        OutlinedTitleText(text, modifier, fontSize, fill, outline, textAlign, maxLines)
+        return
+    }
+    val alignment = if (textAlign == TextAlign.Start) Alignment.CenterStart else Alignment.Center
+    BoxWithConstraints(modifier, contentAlignment = alignment) {
+        val measurer = rememberTextMeasurer()
+        val maxWidthPx = constraints.maxWidth
+        val fitting = remember(text, maxWidthPx, fontSize, minFontSize) {
+            var size = fontSize.value
+            while (size > minFontSize.value &&
+                measurer.measure(text, TextStyle(fontFamily = KartFont, fontSize = size.sp), maxLines = 1)
+                    .size.width > maxWidthPx
+            ) {
+                size -= 0.5f
+            }
+            size.sp
+        }
+        OutlinedTitleText(text, Modifier, fitting, fill, outline, textAlign, maxLines)
+    }
+}
+
+@Composable
+private fun OutlinedTitleText(
+    text: String,
+    modifier: Modifier,
+    fontSize: TextUnit,
+    fill: Color,
+    outline: Color,
+    textAlign: TextAlign,
+    maxLines: Int,
+) {
+    // Interlinea stretta: sui titoli a due righe ("Peach Medallions") lascia spazio al contatore.
+    val base = TextStyle(fontFamily = KartFont, fontSize = fontSize, lineHeight = fontSize * 1.05f, textAlign = textAlign)
     // Contorno proporzionale al testo (circa un sesto dell'altezza), come nel mockup.
     val strokePx = with(LocalDensity.current) { fontSize.toPx() } * 0.16f
     Box(modifier) {
@@ -216,10 +258,10 @@ fun KartFooter(modifier: Modifier = Modifier) {
 
 /**
  * Sfondo di tutte le schermate: cielo sfumato con nuvole, come ai lati del mockup. Disegnato, non
- * un'immagine, così si adatta a ogni altezza; di notte nel tema scuro. Va con
+ * un'immagine, così si adatta a ogni altezza; di notte nel tema scuro. [faded] lo attenua. Va con
  * `containerColor = Color.Transparent` sullo `Scaffold`.
  */
-fun Modifier.kartSky(dark: Boolean): Modifier = drawBehind {
+fun Modifier.kartSky(dark: Boolean, faded: Boolean = false): Modifier = drawBehind {
     val colors = if (dark) {
         listOf(Color(0xFF0B1631), Color(0xFF15264A), Color(0xFF1E3158))
     } else {
@@ -232,6 +274,8 @@ fun Modifier.kartSky(dark: Boolean): Modifier = drawBehind {
         Triple(0.08f, 0.18f, 0.34f), Triple(0.88f, 0.30f, 0.30f), Triple(0.18f, 0.52f, 0.28f),
         Triple(0.84f, 0.68f, 0.36f), Triple(0.30f, 0.86f, 0.30f),
     ).forEach { (x, y, w) -> drawCloud(Offset(size.width * x, size.height * y), size.width * w, cloud) }
+    // Velo sopra cielo e nuvole, per le liste fitte di testo (Risultati): il cielo resta, attenuato.
+    if (faded) drawRect(if (dark) Color(0x990B1631) else Color(0xA6FFFFFF))
 }
 
 /** Nuvola da cartone: base arrotondata con tre gobbe, centrata su [center]. */

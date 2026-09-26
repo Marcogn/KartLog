@@ -3,16 +3,16 @@ package com.marcogn.kartlog.ui.home
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.GridItemSpan
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Icon
@@ -118,19 +118,24 @@ internal fun HomeContent(
     ) { padding ->
         // Solo il margine in alto: il footer scende fin sotto la barra di navigazione.
         Column(modifier = Modifier.padding(top = padding.calculateTopPadding()).fillMaxSize()) {
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                modifier = Modifier.weight(1f),
-                contentPadding = PaddingValues(16.dp),
-                horizontalArrangement = Arrangement.spacedBy(14.dp),
+            // Righe normali invece di una griglia lazy (sono solo quattro tessere): con
+            // IntrinsicSize.Min le due tessere di una riga prendono l'altezza della più alta, così
+            // un titolo su due righe allunga entrambe invece di tagliare il contatore.
+            Column(
+                modifier = Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(16.dp),
                 verticalArrangement = Arrangement.spacedBy(14.dp),
             ) {
-                items(tiles) { tile -> HomeTileCard(tile) }
+                tiles.chunked(2).forEach { row ->
+                    Row(
+                        modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min),
+                        horizontalArrangement = Arrangement.spacedBy(14.dp),
+                    ) {
+                        row.forEach { tile -> HomeTileCard(tile, Modifier.weight(1f).fillMaxHeight()) }
+                    }
+                }
                 // Card larga a tutta riga (SPEC §2.1): Consigliami non ha un contatore, ha bisogno
                 // di una riga di spiegazione per far capire cosa fa.
-                item(span = { GridItemSpan(maxLineSpan) }) {
-                    ConsigliamiCard(onClick = onConsigliamiClick)
-                }
+                ConsigliamiCard(onClick = onConsigliamiClick)
             }
             KartFooter()
         }
@@ -138,14 +143,15 @@ internal fun HomeContent(
 }
 
 @Composable
-private fun HomeTileCard(tile: HomeTile) {
+private fun HomeTileCard(tile: HomeTile, modifier: Modifier) {
     KartPanel(
         colors = tile.colors,
-        modifier = Modifier.fillMaxWidth().aspectRatio(0.95f),
+        // Altezza minima come la vecchia tessera quasi quadrata; cresce se il titolo va a capo.
+        modifier = modifier.heightIn(min = 180.dp),
         onClick = tile.onClick,
     ) {
         Column(
-            modifier = Modifier.fillMaxSize().padding(12.dp),
+            modifier = Modifier.fillMaxSize().padding(horizontal = 12.dp, vertical = 16.dp),
             verticalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterVertically),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {

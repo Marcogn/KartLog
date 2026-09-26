@@ -1,6 +1,13 @@
 package com.marcogn.kartlog.ui.skin
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.compositeOver
+import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,8 +24,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -41,15 +46,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
 import com.marcogn.kartlog.data.local.dao.CharacterProgress
 import com.marcogn.kartlog.domain.model.localizedName
 import com.marcogn.kartlog.ui.common.CharacterPortrait
+import com.marcogn.kartlog.ui.common.KartInk
+import com.marcogn.kartlog.ui.common.KartTiles
 import com.marcogn.kartlog.ui.common.KartTopBar
+import com.marcogn.kartlog.ui.common.OutlinedTitle
+import com.marcogn.kartlog.ui.common.rememberImageAccentColor
 import com.marcogn.kartlog.ui.common.kartSky
 import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 
@@ -106,8 +113,8 @@ fun SkinScreen(
                 // riga su un telefono, di più su schermi larghi.
                 columns = GridCells.Adaptive(minSize = 104.dp),
                 contentPadding = PaddingValues(12.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
             ) {
                 items(state.characters, key = { it.id }) { character ->
                     CharacterCard(
@@ -158,63 +165,72 @@ private fun SortMenu(sortMode: SkinSortMode, onSortModeSelected: (SkinSortMode) 
     }
 }
 
+/**
+ * Card "polaroid" (richiesta dell'autore): cornice con bordo nero, l'immagine del wiki e sotto un
+ * cartellino del colore del personaggio (preso dall'immagine stessa) con nome e contatore nel font
+ * dei titoli. Chi ha tutti gli outfit resta attenuato, come prima.
+ */
 @Composable
 private fun CharacterCard(character: CharacterProgress, onClick: () -> Unit) {
-    Card(
-        onClick = onClick,
-        modifier = Modifier.fillMaxWidth(),
-        colors = if (character.isComplete) {
-            CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f))
-        } else {
-            CardDefaults.cardColors()
-        },
+    val displayName = localizedName(character.name, character.nameIt)
+    val frame = if (isKartDarkTheme()) Color(0xFF2A2D34) else Color.White
+    val accent = rememberImageAccentColor(character.imageUrl) ?: KartTiles.Gray.base
+    val banner = if (character.isComplete) accent.copy(alpha = 0.45f).compositeOver(frame) else accent
+    val shape = RoundedCornerShape(14.dp)
+    val inner = RoundedCornerShape(10.dp)
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .shadow(3.dp, shape)
+            .clip(shape)
+            .background(frame)
+            .border(2.5.dp, KartInk, shape)
+            .clickable(onClick = onClick)
+            .padding(6.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(6.dp),
     ) {
+        Box {
+            CharacterPortrait(
+                name = displayName,
+                imageUrl = character.imageUrl,
+                dimmed = character.isComplete,
+                modifier = Modifier.fillMaxWidth().border(1.5.dp, KartInk, RoundedCornerShape(12.dp)),
+            )
+            if (!character.unlocked) {
+                Icon(
+                    Icons.Filled.Lock,
+                    contentDescription = stringResource(R.string.skin_locked),
+                    tint = MaterialTheme.colorScheme.onSurface,
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(4.dp)
+                        .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.85f), CircleShape)
+                        .padding(4.dp)
+                        .size(16.dp),
+                )
+            }
+        }
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(8.dp),
+                .clip(inner)
+                .background(banner)
+                .border(1.5.dp, KartInk, inner)
+                .padding(horizontal = 4.dp, vertical = 3.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            val displayName = localizedName(character.name, character.nameIt)
-            Box {
-                CharacterPortrait(
-                    name = displayName,
-                    imageUrl = character.imageUrl,
-                    dimmed = character.isComplete,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-                if (!character.unlocked) {
-                    Icon(
-                        Icons.Filled.Lock,
-                        contentDescription = stringResource(R.string.skin_locked),
-                        tint = MaterialTheme.colorScheme.onSurface,
-                        modifier = Modifier
-                            .align(Alignment.TopEnd)
-                            .padding(4.dp)
-                            .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.85f), CircleShape)
-                            .padding(4.dp)
-                            .size(16.dp),
-                    )
-                }
-            }
-            Text(
-                text = displayName,
-                style = MaterialTheme.typography.titleSmall,
-                textAlign = TextAlign.Center,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-                color = if (character.isComplete) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier.padding(top = 6.dp),
-            )
-            Text(
+            // Una riga sola, rimpicciolendo i nomi lunghi: le card della stessa riga restano alte uguali.
+            OutlinedTitle(displayName, fontSize = 16.sp, minFontSize = 11.sp)
+            OutlinedTitle(
                 text = when {
                     character.hasOutfits ->
                         stringResource(R.string.home_counter_format, character.ownedOutfits, character.totalOutfits)
                     character.unlocked -> stringResource(R.string.skin_unlocked)
                     else -> stringResource(R.string.skin_locked)
                 },
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                fontSize = 14.sp,
+                minFontSize = 10.sp,
             )
         }
     }

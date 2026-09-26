@@ -18,7 +18,13 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
   con le stesse icone tonde della Home (ingranaggio grigio per le
   Impostazioni) e il font dei titoli.
 - **Titoli lunghi su due righe.** "Peach Medallions" in inglese non viene
-  più tagliato con i puntini.
+  più tagliato con i puntini, e la tessera si allunga per non tagliare il
+  contatore.
+- **Personaggi come polaroid.** Ogni personaggio ha una cornice con bordo
+  nero e un cartellino del suo colore, con nome e contatore nel font dei
+  titoli.
+- **Risultati sul cielo.** La lista non ha più lo sfondo bianco: cielo
+  attenuato per leggere bene.
 
 ## [0.1.7] - 2026-09-26
 
