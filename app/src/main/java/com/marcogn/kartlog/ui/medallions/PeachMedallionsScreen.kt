@@ -39,6 +39,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
+import com.marcogn.kartlog.ui.common.KartTitle
 import com.marcogn.kartlog.ui.common.KartTopBar
 import com.marcogn.kartlog.ui.common.MarkAllConfirmationDialog
 import com.marcogn.kartlog.ui.common.kartSky
@@ -59,7 +60,7 @@ fun PeachMedallionsScreen(
         containerColor = Color.Transparent,
         topBar = {
             KartTopBar(
-                title = { Text(stringResource(R.string.medallions_title)) },
+                title = { KartTitle(stringResource(R.string.medallions_title)) },
                 navigationIcon = {
                     IconButton(onClick = onMenuClick) {
                         Icon(Icons.Filled.Menu, contentDescription = stringResource(R.string.cd_menu))

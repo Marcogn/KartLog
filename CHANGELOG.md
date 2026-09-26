@@ -23,6 +23,14 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 - **Personaggi come polaroid.** Ogni personaggio ha una cornice con bordo
   nero e un cartellino del suo colore, con nome e contatore nel font dei
   titoli.
+- **Pulsantoni rossi.** Filtri, ordinamento e cilindrate (Personaggi,
+  Risultati, Consigliami) sono pulsanti rossi con scritte bianche
+  contornate, anche nel menu a tendina.
+- **Outfit a polaroid.** Nella pagina di un personaggio ogni outfit è una
+  polaroid del suo colore, con nome e cibi sempre leggibili per intero;
+  l'outfit di default resta come nella pagina Personaggi.
+- **Titoli grandi.** Il titolo di ogni schermata è grande, bianco con
+  contorno nero.
 - **Risultati sul cielo.** La lista non ha più lo sfondo bianco: cielo
   attenuato per leggere bene.
 

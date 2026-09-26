@@ -20,6 +20,16 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.semantics.Role
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -412,5 +422,95 @@ fun KartCounterPill(text: String, colors: KartColors, modifier: Modifier = Modif
         contentAlignment = Alignment.Center,
     ) {
         Text(text, style = TextStyle(fontFamily = KartFont, fontSize = 18.sp, color = Color.White))
+    }
+}
+
+/** Titolo grande delle schermate nel banner: bianco con contorno nero, rimpicciolito se è lungo. */
+@Composable
+fun KartTitle(text: String, modifier: Modifier = Modifier) {
+    OutlinedTitle(text, modifier, fontSize = 30.sp, textAlign = TextAlign.Start, minFontSize = 20.sp)
+}
+
+/**
+ * Pulsantone rosso delle scelte (filtri, cilindrate), al posto dei chip Material: rosso pieno con
+ * bordo nero e testo bianco contornato come nel drawer. Quello scelto è più chiaro, con un anello
+ * bianco interno; gli altri restano rossi, più scuri.
+ */
+@Composable
+fun KartChoiceButton(
+    text: String,
+    selected: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    trailing: (@Composable () -> Unit)? = null,
+) {
+    val red = KartTiles.Red
+    val shape = RoundedCornerShape(14.dp)
+    val inner = RoundedCornerShape(11.dp)
+    Box(
+        modifier = modifier
+            .shadow(if (selected) 4.dp else 1.dp, shape)
+            .clip(shape)
+            .background(
+                if (selected) Brush.verticalGradient(listOf(red.light, red.base))
+                else Brush.verticalGradient(listOf(red.base, red.dark)),
+            )
+            .border(2.5.dp, KartInk, shape)
+            .selectable(selected = selected, onClick = onClick, role = Role.RadioButton)
+            .padding(2.5.dp)
+            .then(if (selected) Modifier.border(2.dp, Color.White, inner) else Modifier)
+            .heightIn(min = 40.dp)
+            .padding(horizontal = 10.dp, vertical = 6.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
+            OutlinedTitle(text, Modifier.weight(1f, fill = false), fontSize = 17.sp, minFontSize = 11.sp)
+            trailing?.invoke()
+        }
+    }
+}
+
+/**
+ * Menu a tendina con lo stesso pulsantone: mostra la scelta corrente e apre le voci, anch'esse
+ * pulsantoni rossi.
+ */
+@Composable
+fun <T> KartDropdown(
+    options: List<T>,
+    selected: T,
+    label: @Composable (T) -> String,
+    onSelected: (T) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    var expanded by remember { mutableStateOf(false) }
+    Box(modifier) {
+        KartChoiceButton(
+            text = label(selected),
+            selected = true,
+            onClick = { expanded = true },
+            modifier = Modifier.fillMaxWidth(),
+            trailing = { Icon(Icons.Filled.ArrowDropDown, contentDescription = null, tint = Color.White) },
+        )
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false },
+            containerColor = Color.Transparent,
+            shadowElevation = 0.dp,
+            tonalElevation = 0.dp,
+        ) {
+            Column(
+                modifier = Modifier.padding(horizontal = 6.dp),
+                verticalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
+                options.forEach { option ->
+                    KartChoiceButton(
+                        text = label(option),
+                        selected = option == selected,
+                        onClick = { onSelected(option); expanded = false },
+                        modifier = Modifier.width(220.dp),
+                    )
+                }
+            }
+        }
     }
 }

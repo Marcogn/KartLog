@@ -47,6 +47,7 @@ import androidx.core.net.toUri
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
 import com.marcogn.kartlog.domain.model.ThemeMode
+import com.marcogn.kartlog.ui.common.KartTitle
 import com.marcogn.kartlog.ui.common.KartTopBar
 import com.marcogn.kartlog.ui.common.kartSky
 import com.marcogn.kartlog.ui.theme.ThemeViewModel
@@ -79,7 +80,7 @@ fun SettingsScreen(
         containerColor = Color.Transparent,
         topBar = {
             KartTopBar(
-                title = { Text(stringResource(R.string.settings_title)) },
+                title = { KartTitle(stringResource(R.string.settings_title)) },
                 navigationIcon = {
                     IconButton(onClick = onMenuClick) {
                         Icon(Icons.Filled.Menu, contentDescription = stringResource(R.string.cd_menu))

@@ -30,7 +30,7 @@ fun PlaceholderScreen(title: String, onMenuClick: () -> Unit) {
         containerColor = Color.Transparent,
         topBar = {
             KartTopBar(
-                title = { Text(title) },
+                title = { KartTitle(title) },
                 navigationIcon = {
                     IconButton(onClick = onMenuClick) {
                         Icon(Icons.Filled.Menu, contentDescription = stringResource(R.string.cd_menu))

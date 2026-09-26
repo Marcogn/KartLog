@@ -15,7 +15,6 @@ import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -47,6 +46,8 @@ import com.marcogn.kartlog.domain.model.Presence
 import com.marcogn.kartlog.domain.model.TrophyRank
 import com.marcogn.kartlog.ui.common.CharacterAvatar
 import com.marcogn.kartlog.ui.common.EventIcon
+import com.marcogn.kartlog.ui.common.KartChoiceButton
+import com.marcogn.kartlog.ui.common.KartTitle
 import com.marcogn.kartlog.ui.common.KartTopBar
 import com.marcogn.kartlog.ui.common.ccLabel
 import com.marcogn.kartlog.ui.common.kartSky
@@ -67,7 +68,7 @@ fun ConsigliamiScreen(
         containerColor = Color.Transparent,
         topBar = {
             KartTopBar(
-                title = { Text(stringResource(R.string.consigliami_title)) },
+                title = { KartTitle(stringResource(R.string.consigliami_title)) },
                 navigationIcon = {
                     IconButton(onClick = onMenuClick) {
                         Icon(Icons.Filled.Menu, contentDescription = stringResource(R.string.cd_menu))
@@ -90,20 +91,23 @@ fun ConsigliamiScreen(
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                FilterChip(
+                KartChoiceButton(
+                    text = stringResource(R.string.consigliami_filter_cup),
                     selected = state.eventFilter == ConsigliamiEventFilter.CUP,
                     onClick = { viewModel.onEventFilterChanged(ConsigliamiEventFilter.CUP) },
-                    label = { Text(stringResource(R.string.consigliami_filter_cup)) },
+                    modifier = Modifier.weight(1f),
                 )
-                FilterChip(
+                KartChoiceButton(
+                    text = stringResource(R.string.consigliami_filter_rally),
                     selected = state.eventFilter == ConsigliamiEventFilter.RALLY,
                     onClick = { viewModel.onEventFilterChanged(ConsigliamiEventFilter.RALLY) },
-                    label = { Text(stringResource(R.string.consigliami_filter_rally)) },
+                    modifier = Modifier.weight(1f),
                 )
-                FilterChip(
+                KartChoiceButton(
+                    text = stringResource(R.string.consigliami_filter_both),
                     selected = state.eventFilter == ConsigliamiEventFilter.BOTH,
                     onClick = { viewModel.onEventFilterChanged(ConsigliamiEventFilter.BOTH) },
-                    label = { Text(stringResource(R.string.consigliami_filter_both)) },
+                    modifier = Modifier.weight(1f),
                 )
             }
             SwitchRow(
@@ -133,12 +137,13 @@ fun ConsigliamiScreen(
                         valueRange = 0f..1f,
                     )
                     Text(stringResource(R.string.consigliami_reference_cc), style = MaterialTheme.typography.labelMedium)
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.padding(bottom = 8.dp)) {
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth().padding(top = 4.dp, bottom = 8.dp)) {
                         Cc.entries.forEach { cc ->
-                            FilterChip(
+                            KartChoiceButton(
+                                text = ccLabel(cc),
                                 selected = state.referenceCc == cc,
                                 onClick = { viewModel.onReferenceCcChanged(cc) },
-                                label = { Text(ccLabel(cc)) },
+                                modifier = Modifier.weight(1f),
                             )
                         }
                     }

@@ -33,6 +33,7 @@ import com.marcogn.kartlog.domain.consigliami.CharacterDetail
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.ui.common.CharacterAvatar
 import com.marcogn.kartlog.ui.common.EventIcon
+import com.marcogn.kartlog.ui.common.KartTitle
 import com.marcogn.kartlog.ui.common.KartTopBar
 import com.marcogn.kartlog.ui.common.ccLabel
 import com.marcogn.kartlog.ui.common.kartSky
@@ -55,7 +56,7 @@ fun ConsigliamiDetailScreen(
                 title = {
                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         EventIcon(name = state.eventName, imageUrl = state.eventImageUrl, size = 32.dp)
-                        Text(state.eventName)
+                        KartTitle(state.eventName, Modifier.weight(1f, fill = false))
                     }
                 },
                 navigationIcon = {
