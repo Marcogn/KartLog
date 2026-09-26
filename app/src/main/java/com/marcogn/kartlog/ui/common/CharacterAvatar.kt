@@ -10,7 +10,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -26,8 +29,8 @@ import coil3.compose.AsyncImage
 import kotlin.math.absoluteValue
 
 // Immagini dal CDN di Super Mario Wiki (URL nel seed, scaricate a runtime: mai nell'APK). Finché
-// non sono in cache, o se mancano rete e cache, resta visibile il segnaposto con le iniziali che
-// sta sotto l'immagine (SPEC §0.2).
+// non sono caricate, o se mancano rete e cache, al loro posto c'è il segnaposto con le iniziali
+// (SPEC §0.2).
 private val AvatarPalette = listOf(
     Color(0xFFFF6D00), Color(0xFF00BFA5), Color(0xFFE91E8C),
     Color(0xFF3F51B5), Color(0xFFFFC107), Color(0xFF43A047),
@@ -54,6 +57,36 @@ private fun Initials(name: String, dimmed: Boolean, style: TextStyle, modifier: 
     }
 }
 
+/**
+ * Immagine del wiki sopra il segnaposto con le iniziali. Il segnaposto si disegna solo finché
+ * l'immagine non è caricata (o se non si carica, es. offline senza cache): altrimenti, quando la
+ * card è attenuata e l'immagine semitrasparente, le iniziali si vedrebbero attraverso.
+ */
+@Composable
+private fun ImageOverInitials(
+    name: String,
+    imageUrl: String?,
+    dimmed: Boolean,
+    initialsStyle: TextStyle,
+    alignment: Alignment,
+) {
+    var loaded by remember(imageUrl) { mutableStateOf(false) }
+    if (!loaded) {
+        Initials(name, dimmed, initialsStyle, Modifier.fillMaxSize())
+    }
+    if (imageUrl != null) {
+        AsyncImage(
+            model = imageUrl,
+            contentDescription = name,
+            contentScale = ContentScale.Crop,
+            alignment = alignment,
+            colorFilter = rememberGrayscale(dimmed),
+            onSuccess = { loaded = true },
+            modifier = Modifier.fillMaxSize().alpha(if (dimmed) 0.6f else 1f),
+        )
+    }
+}
+
 /** Avatar tondo: il volto del personaggio (parte alta dell'immagine), o le iniziali. */
 @Composable
 fun CharacterAvatar(
@@ -64,17 +97,7 @@ fun CharacterAvatar(
     dimmed: Boolean = false,
 ) {
     Box(modifier = modifier.size(size).clip(CircleShape)) {
-        Initials(name, dimmed, MaterialTheme.typography.titleMedium, Modifier.fillMaxSize())
-        if (imageUrl != null) {
-            AsyncImage(
-                model = imageUrl,
-                contentDescription = name,
-                contentScale = ContentScale.Crop,
-                alignment = Alignment.TopCenter,
-                colorFilter = rememberGrayscale(dimmed),
-                modifier = Modifier.fillMaxSize().alpha(if (dimmed) 0.6f else 1f),
-            )
-        }
+        ImageOverInitials(name, imageUrl, dimmed, MaterialTheme.typography.titleMedium, Alignment.TopCenter)
     }
 }
 
@@ -86,18 +109,8 @@ fun CharacterPortrait(
     modifier: Modifier = Modifier,
     dimmed: Boolean = false,
 ) {
-    val shape = RoundedCornerShape(12.dp)
-    Box(modifier = modifier.aspectRatio(CHARACTER_IMAGE_ASPECT).clip(shape)) {
-        Initials(name, dimmed, MaterialTheme.typography.headlineSmall, Modifier.fillMaxSize())
-        if (imageUrl != null) {
-            AsyncImage(
-                model = imageUrl,
-                contentDescription = name,
-                contentScale = ContentScale.Crop,
-                colorFilter = rememberGrayscale(dimmed),
-                modifier = Modifier.fillMaxSize().alpha(if (dimmed) 0.6f else 1f),
-            )
-        }
+    Box(modifier = modifier.aspectRatio(CHARACTER_IMAGE_ASPECT).clip(RoundedCornerShape(12.dp))) {
+        ImageOverInitials(name, imageUrl, dimmed, MaterialTheme.typography.headlineSmall, Alignment.Center)
     }
 }
 
