@@ -14,16 +14,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.marcogn.kartlog.R
+import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 
 /** Scaffold condiviso dalle schermate ancora placeholder (SPEC §8, fase 1). */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PlaceholderScreen(title: String, onMenuClick: () -> Unit) {
     Scaffold(
+        modifier = Modifier.kartSky(isKartDarkTheme()),
+        containerColor = Color.Transparent,
         topBar = {
             KartTopBar(
                 title = { Text(title) },

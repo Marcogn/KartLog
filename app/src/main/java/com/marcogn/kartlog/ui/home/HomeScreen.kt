@@ -41,15 +41,11 @@ import com.marcogn.kartlog.ui.common.KartCounterPill
 import com.marcogn.kartlog.ui.common.KartFooter
 import com.marcogn.kartlog.ui.common.KartLogo
 import com.marcogn.kartlog.ui.common.KartPanel
+import com.marcogn.kartlog.ui.common.KartTiles
 import com.marcogn.kartlog.ui.common.KartTopBar
+import com.marcogn.kartlog.ui.common.kartSky
+import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 import com.marcogn.kartlog.ui.common.OutlinedTitle
-
-// Colori delle tessere, presi dal mockup dell'autore (26/09/2026).
-private val OrangeTile = KartColors(Color(0xFFF0561D), Color(0xFFFF7B3A), Color(0xFF9E2A0A))
-private val BlueTile = KartColors(Color(0xFF1A8CE8), Color(0xFF3FA9FF), Color(0xFF0B4F97))
-private val PinkTile = KartColors(Color(0xFFE84BA0), Color(0xFFFF72BE), Color(0xFF8E1A5B))
-private val YellowTile = KartColors(Color(0xFFFFB81C), Color(0xFFFFD34D), Color(0xFFA86A00))
-private val GreenTile = KartColors(Color(0xFF2EA83A), Color(0xFF4CCB55), Color(0xFF14621B))
 
 private data class HomeTile(
     @DrawableRes val icon: Int,
@@ -96,16 +92,18 @@ internal fun HomeContent(
     // Consigliami anche dopo lo scambio di posizione tra le due.
     val tiles = listOf(
         HomeTile(R.drawable.home_banana, stringResource(R.string.home_option_skin_title),
-            counter(state.ownedOutfits, state.totalOutfits), OrangeTile, onSkinClick),
+            counter(state.ownedOutfits, state.totalOutfits), KartTiles.Orange, onSkinClick),
         HomeTile(R.drawable.home_coin, stringResource(R.string.home_option_medallions_title),
-            counter(state.collectedMedallions, state.totalMedallions), BlueTile, onMedallionsClick),
+            counter(state.collectedMedallions, state.totalMedallions), KartTiles.Blue, onMedallionsClick),
         HomeTile(R.drawable.home_mushroom, stringResource(R.string.home_option_pswitches_title),
-            counter(state.completedPSwitches, state.totalPSwitches), PinkTile, onPSwitchesClick),
+            counter(state.completedPSwitches, state.totalPSwitches), KartTiles.Pink, onPSwitchesClick),
         HomeTile(R.drawable.home_trophy, stringResource(R.string.home_option_results_title),
-            counter(state.eventsWithResult, state.totalEvents), YellowTile, onResultsClick),
+            counter(state.eventsWithResult, state.totalEvents), KartTiles.Yellow, onResultsClick),
     )
 
     Scaffold(
+        modifier = Modifier.kartSky(isKartDarkTheme()),
+        containerColor = Color.Transparent,
         topBar = {
             KartTopBar(
                 title = { KartLogo() },
@@ -152,7 +150,8 @@ private fun HomeTileCard(tile: HomeTile) {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             KartBadge(painterResource(tile.icon), tile.colors)
-            OutlinedTitle(tile.title, fontSize = 22.sp)
+            // Due righe se serve ("Peach Medallions" in inglese non ci sta in una), mai i puntini.
+            OutlinedTitle(tile.title, fontSize = 22.sp, maxLines = 2)
             KartCounterPill(tile.counter, tile.colors)
         }
     }
@@ -160,13 +159,13 @@ private fun HomeTileCard(tile: HomeTile) {
 
 @Composable
 private fun ConsigliamiCard(onClick: () -> Unit) {
-    KartPanel(colors = GreenTile, modifier = Modifier.fillMaxWidth(), onClick = onClick) {
+    KartPanel(colors = KartTiles.Green, modifier = Modifier.fillMaxWidth(), onClick = onClick) {
         Row(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 18.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            KartBadge(painterResource(R.drawable.home_star), GreenTile, size = 84.dp)
+            KartBadge(painterResource(R.drawable.home_star), KartTiles.Green, size = 84.dp)
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 OutlinedTitle(
                     stringResource(R.string.home_option_consigliami_title),

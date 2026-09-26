@@ -39,16 +39,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
-import com.marcogn.kartlog.ui.common.KartTopBar
 import com.marcogn.kartlog.data.local.dao.CharacterProgress
 import com.marcogn.kartlog.domain.model.localizedName
 import com.marcogn.kartlog.ui.common.CharacterPortrait
+import com.marcogn.kartlog.ui.common.KartTopBar
+import com.marcogn.kartlog.ui.common.kartSky
+import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -60,6 +63,8 @@ fun SkinScreen(
     val state by viewModel.uiState.collectAsState()
 
     Scaffold(
+        modifier = Modifier.kartSky(isKartDarkTheme()),
+        containerColor = Color.Transparent,
         topBar = {
             KartTopBar(
                 title = { Text(stringResource(R.string.skin_title)) },

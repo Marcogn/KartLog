@@ -11,6 +11,14 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
   contorno e contatori in una pillola; pista in fondo alla Home. Nel tema
   scuro le tessere brillano del loro colore. Nuovo font per i titoli
   (Lilita One).
+- **Sfondo a cielo.** Cielo azzurro con le nuvole dietro tutte le
+  schermate (cielo notturno nel tema scuro); la pista della Home sfuma nel
+  cielo.
+- **Menu laterale rinnovato.** Rosso con gli scacchi, logo in alto, voci
+  con le stesse icone tonde della Home (ingranaggio grigio per le
+  Impostazioni) e il font dei titoli.
+- **Titoli lunghi su due righe.** "Peach Medallions" in inglese non viene
+  più tagliato con i puntini.
 
 ## [0.1.7] - 2026-09-26
 

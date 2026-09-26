@@ -33,16 +33,19 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
-import com.marcogn.kartlog.ui.common.KartTopBar
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.TrophyRank
 import com.marcogn.kartlog.ui.common.EventIcon
+import com.marcogn.kartlog.ui.common.KartTopBar
 import com.marcogn.kartlog.ui.common.ccLabel
+import com.marcogn.kartlog.ui.common.kartSky
 import com.marcogn.kartlog.ui.common.rankLabel
+import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -54,6 +57,8 @@ fun ResultsScreen(
     var editingEventId by rememberSaveable { mutableStateOf<String?>(null) }
 
     Scaffold(
+        modifier = Modifier.kartSky(isKartDarkTheme()),
+        containerColor = Color.Transparent,
         topBar = {
             KartTopBar(
                 title = { Text(stringResource(R.string.results_title)) },
