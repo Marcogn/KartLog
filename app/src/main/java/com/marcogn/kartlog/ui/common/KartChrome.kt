@@ -41,6 +41,7 @@ import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.material3.LocalContentColor
@@ -140,9 +141,7 @@ private fun ShrinkingOutlinedText(
             .semantics { this.text = AnnotatedString(text) }
             .drawBehind {
                 val layout = holder[0] ?: return@drawBehind
-                val strokePx = layout.layoutInput.style.fontSize.toPx() * 0.16f
-                drawText(layout, color = outline, drawStyle = Stroke(width = strokePx, join = StrokeJoin.Round))
-                drawText(layout, color = fill)
+                drawOutlinedText(layout, fill, outline)
             },
     ) { _, constraints ->
         val maxWidth = if (constraints.hasBoundedWidth) constraints.maxWidth else Int.MAX_VALUE
@@ -166,6 +165,15 @@ private fun ShrinkingOutlinedText(
             constraints.constrainHeight(result.size.height),
         ) {}
     }
+}
+
+/** Contorno e poi riempimento dello stesso testo già misurato. */
+internal fun DrawScope.drawOutlinedText(layout: TextLayoutResult, fill: Color, outline: Color) {
+    val strokePx = layout.layoutInput.style.fontSize.toPx() * 0.16f
+    drawText(layout, color = outline, drawStyle = Stroke(width = strokePx, join = StrokeJoin.Round))
+    // Fill esplicito: senza, il paragrafo tiene lo Stroke del disegno precedente e anche il
+    // riempimento esce come contorno (lettere "vuote", bug visto dall'autore).
+    drawText(layout, color = fill, drawStyle = Fill)
 }
 
 @Composable
