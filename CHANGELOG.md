@@ -6,6 +6,8 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-09-26
+
 - **Risultati in una schermata dedicata.** La registrazione dei
   risultati esce da Consigliami: ora si fa da un pulsante largo
   "Risultati" in Home (e dalla voce nel drawer), con tutti i Gran Premi
