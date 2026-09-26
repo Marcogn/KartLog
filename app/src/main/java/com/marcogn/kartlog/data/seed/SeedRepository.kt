@@ -52,10 +52,23 @@ class SeedRepository @Inject constructor(
 
     private fun buildSeedContent(): SeedContent = SeedContent(
         characters = assets.readItems<CharacterDto>("characters.json").map {
-            CharacterEntity(id = it.id, name = it.name, nameIt = it.nameIt, rosterOrder = it.rosterOrder)
+            CharacterEntity(
+                id = it.id,
+                name = it.name,
+                nameIt = it.nameIt,
+                rosterOrder = it.rosterOrder,
+                imageUrl = it.imageUrl,
+            )
         },
         outfits = assets.readItems<OutfitDto>("outfits.json").map {
-            OutfitEntity(id = it.id, characterId = it.characterId, name = it.name, nameIt = it.nameIt, isDefault = it.isDefault)
+            OutfitEntity(
+                id = it.id,
+                characterId = it.characterId,
+                name = it.name,
+                nameIt = it.nameIt,
+                isDefault = it.isDefault,
+                imageUrl = it.imageUrl,
+            )
         },
         foodGroups = assets.readItems<FoodGroupDto>("food_groups.json").map {
             FoodGroupEntity(id = it.id, name = it.name, foods = it.foods, revertsToDefault = it.revertsToDefault)
@@ -96,7 +109,13 @@ class SeedRepository @Inject constructor(
             )
         },
         events = assets.readItems<EventDto>("events.json").map {
-            EventEntity(id = it.id, type = EventType.valueOf(it.type), name = it.name, order = it.order)
+            EventEntity(
+                id = it.id,
+                type = EventType.valueOf(it.type),
+                name = it.name,
+                order = it.order,
+                imageUrl = it.imageUrl,
+            )
         },
         eventStops = assets.readItems<EventDto>("events.json").flatMap { event ->
             event.stops.mapIndexed { position, courseId ->

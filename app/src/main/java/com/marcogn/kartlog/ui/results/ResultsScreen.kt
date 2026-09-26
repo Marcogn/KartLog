@@ -40,6 +40,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.TrophyRank
+import com.marcogn.kartlog.ui.common.EventIcon
 import com.marcogn.kartlog.ui.common.ccLabel
 import com.marcogn.kartlog.ui.common.rankLabel
 
@@ -114,6 +115,7 @@ private fun LazyListScope.resultsSection(
     items(rows, key = { it.eventId }) { row ->
         ListItem(
             headlineContent = { Text(row.eventName) },
+            leadingContent = { EventIcon(name = row.eventName, imageUrl = row.imageUrl) },
             trailingContent = {
                 Text(
                     text = row.rank?.let { rankLabel(it) } ?: stringResource(R.string.results_no_trophy),

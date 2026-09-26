@@ -45,6 +45,8 @@ import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.EventType
 import com.marcogn.kartlog.domain.model.Presence
 import com.marcogn.kartlog.domain.model.TrophyRank
+import com.marcogn.kartlog.ui.common.CharacterAvatar
+import com.marcogn.kartlog.ui.common.EventIcon
 import com.marcogn.kartlog.ui.common.ccLabel
 import com.marcogn.kartlog.ui.common.rankLabel
 
@@ -151,6 +153,8 @@ fun ConsigliamiScreen(
                         GroupSection(
                             group = group,
                             characterNames = state.characterNames,
+                            characterImages = state.characterImages,
+                            eventImages = state.eventImages,
                             courseNames = state.courseNames,
                             foodGroupNames = state.foodGroupNames,
                             bestRankByEvent = if (state.resultsEnabled) state.bestRankByEvent else emptyMap(),
@@ -180,6 +184,8 @@ private fun SwitchRow(label: String, checked: Boolean, onCheckedChange: (Boolean
 private fun GroupSection(
     group: RecommendationGroup,
     characterNames: Map<String, String>,
+    characterImages: Map<String, String>,
+    eventImages: Map<String, String>,
     courseNames: Map<String, String>,
     foodGroupNames: Map<String, String>,
     bestRankByEvent: Map<String, TrophyRank>,
@@ -207,12 +213,12 @@ private fun GroupSection(
         }
         if (expanded) {
             group.events.forEach { event ->
-                EventCard(event, group.position, characterNames, courseNames, foodGroupNames, bestRankByEvent[event.event.id], referenceCc, onClick = { onEventClick(event.event.id) })
+                EventCard(event, group.position, characterNames, characterImages, eventImages[event.event.id], courseNames, foodGroupNames, bestRankByEvent[event.event.id], referenceCc, onClick = { onEventClick(event.event.id) })
             }
         }
     } else {
         val event = group.events.single()
-        EventCard(event, group.position, characterNames, courseNames, foodGroupNames, bestRankByEvent[event.event.id], referenceCc, onClick = { onEventClick(event.event.id) })
+        EventCard(event, group.position, characterNames, characterImages, eventImages[event.event.id], courseNames, foodGroupNames, bestRankByEvent[event.event.id], referenceCc, onClick = { onEventClick(event.event.id) })
     }
 }
 
@@ -221,6 +227,8 @@ private fun EventCard(
     eventScore: EventScore,
     position: Int,
     characterNames: Map<String, String>,
+    characterImages: Map<String, String>,
+    eventImageUrl: String?,
     courseNames: Map<String, String>,
     foodGroupNames: Map<String, String>,
     bestRank: TrophyRank?,
@@ -230,6 +238,7 @@ private fun EventCard(
     Card(onClick = onClick, modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp)) {
         Column(modifier = Modifier.padding(16.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                EventIcon(name = eventScore.event.name, imageUrl = eventImageUrl)
                 Text(eventScore.event.name, style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
                 Text(
                     text = stringResource(if (eventScore.event.type == EventType.CUP) R.string.consigliami_type_cup else R.string.consigliami_type_rally),
@@ -261,7 +270,7 @@ private fun EventCard(
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.padding(top = 8.dp),
                 )
-                CharacterGainRow(best, characterNames, emphasized = true)
+                CharacterGainRow(best, characterNames, characterImages, emphasized = true)
                 if (eventScore.runnersUp.isNotEmpty()) {
                     Text(
                         stringResource(R.string.consigliami_runners_up),
@@ -269,7 +278,7 @@ private fun EventCard(
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.padding(top = 8.dp),
                     )
-                    eventScore.runnersUp.forEach { CharacterGainRow(it, characterNames, emphasized = false) }
+                    eventScore.runnersUp.forEach { CharacterGainRow(it, characterNames, characterImages, emphasized = false) }
                 }
                 if (eventScore.relevantFoods.isNotEmpty()) {
                     Column(modifier = Modifier.padding(top = 8.dp)) {
@@ -289,14 +298,23 @@ private fun EventCard(
 }
 
 @Composable
-private fun CharacterGainRow(gain: CharacterGain, characterNames: Map<String, String>, emphasized: Boolean) {
+private fun CharacterGainRow(
+    gain: CharacterGain,
+    characterNames: Map<String, String>,
+    characterImages: Map<String, String>,
+    emphasized: Boolean,
+) {
+    val name = characterNames[gain.characterId] ?: gain.characterId
     Row(
         modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
+        CharacterAvatar(name = name, imageUrl = characterImages[gain.characterId], size = if (emphasized) 40.dp else 28.dp)
         Text(
-            text = characterNames[gain.characterId] ?: gain.characterId,
+            text = name,
             style = if (emphasized) MaterialTheme.typography.titleMedium else MaterialTheme.typography.bodyMedium,
+            modifier = Modifier.weight(1f),
         )
         Text(
             text = stringResource(R.string.consigliami_gain_format, gain.gain),

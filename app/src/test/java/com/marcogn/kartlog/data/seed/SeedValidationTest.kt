@@ -104,4 +104,15 @@ class SeedValidationTest {
             )
         }
     }
+
+    @Test
+    fun `ogni personaggio outfit ed evento ha un URL immagine del CDN del wiki`() {
+        // Solo URL, mai file impacchettati: l'app li scarica a runtime (vedi CLAUDE.md).
+        val urls = assets.readItems<CharacterDto>("characters.json").map { it.id to it.imageUrl } +
+            assets.readItems<OutfitDto>("outfits.json").map { it.id to it.imageUrl } +
+            assets.readItems<EventDto>("events.json").map { it.id to it.imageUrl }
+        urls.forEach { (id, url) ->
+            assertTrue("$id: imageUrl assente o inatteso ($url)", url?.startsWith("https://mario.wiki.gallery/images/") == true)
+        }
+    }
 }

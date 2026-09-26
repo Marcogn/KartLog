@@ -14,7 +14,7 @@ interface ConsigliamiDao {
 
     @Query(
         """
-        SELECT c.id AS id, c.name AS name, c.nameIt AS nameIt, c.rosterOrder AS rosterOrder,
+        SELECT c.id AS id, c.name AS name, c.nameIt AS nameIt, c.rosterOrder AS rosterOrder, c.imageUrl AS imageUrl,
                COALESCE(cu.unlocked, 1) AS unlocked
         FROM characters c
         LEFT JOIN character_unlocks cu ON cu.characterId = c.id
@@ -61,6 +61,7 @@ data class ConsigliamiCharacterRow(
     val name: String,
     val nameIt: String?,
     val rosterOrder: Int,
+    val imageUrl: String?,
     val unlocked: Boolean,
 )
 

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Nessun permesso INTERNET: l'app è completamente offline (SPEC §0.3).
-         La rete serve solo a build time, nello script tools/seedgen (SPEC §5.4). -->
+    <!-- INTERNET serve SOLO a scaricare le immagini di personaggi, outfit ed eventi dal CDN di
+         Super Mario Wiki (URL in seed/, estratti da tools/seedgen): non sono nel repository né
+         nell'APK. Tutto il resto dell'app resta offline e funziona anche senza rete (SPEC §0.3):
+         senza connessione si vedono i segnaposto con le iniziali. -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".KartLogApplication"

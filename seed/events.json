@@ -2,6 +2,7 @@
   "items": [
     {
       "id": "cup_mushroom",
+      "imageUrl": "https://mario.wiki.gallery/images/7/78/Mario_Kart_World_Mushroom_Cup_Icon.png",
       "name": "Mushroom Cup",
       "order": 0,
       "stops": [
@@ -14,6 +15,7 @@
     },
     {
       "id": "cup_flower",
+      "imageUrl": "https://mario.wiki.gallery/images/e/ee/Mario_Kart_World_Flower_Cup_Icon.png",
       "name": "Flower Cup",
       "order": 1,
       "stops": [
@@ -26,6 +28,7 @@
     },
     {
       "id": "cup_star",
+      "imageUrl": "https://mario.wiki.gallery/images/f/f5/Mario_Kart_World_Star_Cup_Icon.png",
       "name": "Star Cup",
       "order": 2,
       "stops": [
@@ -38,6 +41,7 @@
     },
     {
       "id": "cup_shell",
+      "imageUrl": "https://mario.wiki.gallery/images/6/67/Mario_Kart_World_Shell_Cup_Icon.png",
       "name": "Shell Cup",
       "order": 3,
       "stops": [
@@ -50,6 +54,7 @@
     },
     {
       "id": "cup_banana",
+      "imageUrl": "https://mario.wiki.gallery/images/9/9b/Mario_Kart_World_Banana_Cup_Icon.png",
       "name": "Banana Cup",
       "order": 4,
       "stops": [
@@ -62,6 +67,7 @@
     },
     {
       "id": "cup_leaf",
+      "imageUrl": "https://mario.wiki.gallery/images/1/10/Mario_Kart_World_Leaf_Cup_Icon.png",
       "name": "Leaf Cup",
       "order": 5,
       "stops": [
@@ -74,6 +80,7 @@
     },
     {
       "id": "cup_lightning",
+      "imageUrl": "https://mario.wiki.gallery/images/4/40/Mario_Kart_World_Lightning_Cup_Icon.png",
       "name": "Lightning Cup",
       "order": 6,
       "stops": [
@@ -86,6 +93,7 @@
     },
     {
       "id": "cup_special",
+      "imageUrl": "https://mario.wiki.gallery/images/6/66/Mario_Kart_World_Special_Cup_no_bg.png",
       "name": "Special Cup",
       "order": 7,
       "stops": [
@@ -98,6 +106,7 @@
     },
     {
       "id": "rally_golden",
+      "imageUrl": "https://mario.wiki.gallery/images/f/f0/Mario_Kart_World_Golden_Rally_Icon.png",
       "name": "Golden Rally",
       "order": 8,
       "stops": [
@@ -112,6 +121,7 @@
     },
     {
       "id": "rally_ice",
+      "imageUrl": "https://mario.wiki.gallery/images/2/26/Mario_Kart_World_Ice_Rally_Icon.png",
       "name": "Ice Rally",
       "order": 9,
       "stops": [
@@ -126,6 +136,7 @@
     },
     {
       "id": "rally_moon",
+      "imageUrl": "https://mario.wiki.gallery/images/6/64/Mario_Kart_World_Moon_Rally_Icon.png",
       "name": "Moon Rally",
       "order": 10,
       "stops": [
@@ -140,6 +151,7 @@
     },
     {
       "id": "rally_spiny",
+      "imageUrl": "https://mario.wiki.gallery/images/7/7f/Mario_Kart_World_Spiny_Rally_Icon.png",
       "name": "Spiny Rally",
       "order": 11,
       "stops": [
@@ -154,6 +166,7 @@
     },
     {
       "id": "rally_cherry",
+      "imageUrl": "https://mario.wiki.gallery/images/2/27/Mario_Kart_World_Cherry_Rally_Icon.png",
       "name": "Cherry Rally",
       "order": 12,
       "stops": [
@@ -168,6 +181,7 @@
     },
     {
       "id": "rally_acorn",
+      "imageUrl": "https://mario.wiki.gallery/images/c/c2/Mario_Kart_World_Acorn_Rally_Icon.png",
       "name": "Acorn Rally",
       "order": 13,
       "stops": [
@@ -182,6 +196,7 @@
     },
     {
       "id": "rally_cloud",
+      "imageUrl": "https://mario.wiki.gallery/images/8/89/Mario_Kart_World_Cloud_Rally_Icon.png",
       "name": "Cloud Rally",
       "order": 14,
       "stops": [
@@ -196,6 +211,7 @@
     },
     {
       "id": "rally_heart",
+      "imageUrl": "https://mario.wiki.gallery/images/8/87/Mario_Kart_World_Heart_Rally_Icon.png",
       "name": "Heart Rally",
       "order": 15,
       "stops": [
@@ -210,6 +226,7 @@
     },
     {
       "id": "rally_drill",
+      "imageUrl": "https://mario.wiki.gallery/images/5/56/Mario_Kart_World_Drill_Rally_Icon.png",
       "name": "Drill Rally",
       "order": 16,
       "stops": [
@@ -224,6 +241,7 @@
     },
     {
       "id": "rally_boomerang",
+      "imageUrl": "https://mario.wiki.gallery/images/a/ab/Mario_Kart_World_Boomerang_Rally_Icon.png",
       "name": "Boomerang Rally",
       "order": 17,
       "stops": [
@@ -238,6 +256,7 @@
     },
     {
       "id": "rally_propeller",
+      "imageUrl": "https://mario.wiki.gallery/images/1/1f/Mario_Kart_World_Propeller_Rally_Icon.png",
       "name": "Propeller Rally",
       "order": 18,
       "stops": [
@@ -252,6 +271,7 @@
     },
     {
       "id": "rally_turnip",
+      "imageUrl": "https://mario.wiki.gallery/images/d/de/Mario_Kart_World_Turnip_Rally_Icon.png",
       "name": "Turnip Rally",
       "order": 19,
       "stops": [

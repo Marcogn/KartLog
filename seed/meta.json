@@ -1,5 +1,5 @@
 {
-  "extractedOn": "2026-09-25",
+  "extractedOn": "2026-09-26",
   "gameVersion": "1.8.0",
   "license": {
     "attribution": "Dati di gioco tratti da Super Mario Wiki (mariowiki.com)",
@@ -8,7 +8,7 @@
   },
   "note": "",
   "origin": "api",
-  "seedVersion": 3,
+  "seedVersion": 4,
   "sources": [
     {
       "revid": 5455370,
@@ -89,6 +89,11 @@
       "revid": 5488553,
       "title": "Turnip Rally",
       "url": "https://www.mariowiki.com/Turnip_Rally"
+    },
+    {
+      "revid": 5498278,
+      "title": "Mario Kart World",
+      "url": "https://www.mariowiki.com/Mario_Kart_World"
     }
   ],
   "warnings": []

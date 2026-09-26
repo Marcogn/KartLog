@@ -292,6 +292,11 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.coroutines.android)
 
+    // Immagini di personaggi/outfit/eventi scaricate a runtime dal CDN di Super Mario Wiki
+    // (mai impacchettate: vedi CLAUDE.md, Decisioni prese).
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.robolectric)

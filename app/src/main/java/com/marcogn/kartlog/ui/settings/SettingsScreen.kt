@@ -5,6 +5,8 @@ import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -68,7 +70,7 @@ fun SettingsScreen(
         snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
         Column(
-            modifier = Modifier.padding(padding).fillMaxSize().padding(16.dp),
+            modifier = Modifier.padding(padding).fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             Text(stringResource(R.string.settings_backup_section), style = MaterialTheme.typography.titleMedium)
@@ -82,6 +84,8 @@ fun SettingsScreen(
             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
             Text(stringResource(R.string.settings_info_section), style = MaterialTheme.typography.titleMedium)
+            Text(stringResource(R.string.settings_images_title), style = MaterialTheme.typography.titleSmall)
+            Text(stringResource(R.string.settings_images_disclaimer), style = MaterialTheme.typography.bodySmall)
             viewModel.meta?.let { meta ->
                 Text(
                     "${meta.license.attribution} — ${meta.license.name}",

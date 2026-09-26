@@ -4,13 +4,14 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![minSdk 26](https://img.shields.io/badge/minSdk-26-brightgreen.svg)](app/build.gradle.kts)
 
-Tracker Android **offline** per i collectibles di Mario Kart World: skin
+Tracker Android per i collectibles di Mario Kart World: skin
 (outfit) dei personaggi, Monete Peach e Pulsanti P, con un modulo
 "Consigliami" che suggerisce quale Gran Premio o Knockout Tour correre — e
 con quale personaggio — per sbloccare più outfit mancanti.
 
 > Nome di lavoro "KartLog": nessun asset, nome o logo Nintendo compare nel
-> repository, nel package o nell'icona (vedi [`SPEC.md`](SPEC.md) §0).
+> repository, nel package o nell'icona (vedi [`SPEC.md`](SPEC.md) §0). Le immagini di
+> gioco si scaricano a runtime, vedi [Immagini](#immagini).
 
 ## Perché
 
@@ -57,9 +58,24 @@ contenuti testuali in licenza **CC BY-SA 4.0**, estratti dallo script in
 [`seed/`](seed/README.md). Nessun dato è inventato: dettagli su fonti,
 regole di estrazione e attribuzione in [`SPEC.md`](SPEC.md) §5.
 
-Le immagini di mariowiki (asset Nintendo) non sono mai scaricate: i
-personaggi in app usano un placeholder con le iniziali finché non si
-decide diversamente.
+## Immagini
+
+Le immagini di personaggi, outfit, Gran Premi e Knockout Tour vengono da
+[**Super Mario Wiki**](https://www.mariowiki.com/Mario_Kart_World)
+(pagina "Mario Kart World"), servite dal suo CDN `mario.wiki.gallery`.
+
+- **Non sono nel repository né nell'APK.** `tools/seedgen` ne registra
+  solo l'URL in `seed/` (`imageUrl`); l'app le scarica all'avvio e le
+  tiene nella propria cache. Senza rete e senza cache si vedono i
+  segnaposto con le iniziali.
+- **Non sono coperte dalla licenza CC BY-SA** del testo del wiki: sono
+  screenshot e artwork di Mario Kart World. Mario Kart World, i suoi
+  personaggi e le relative immagini sono © Nintendo.
+- Grazie a Super Mario Wiki e ai suoi contributori, che le hanno raccolte
+  e caricate.
+
+KartLog è un progetto amatoriale e gratuito, **non affiliato né approvato
+da Nintendo**. Lo stesso avviso è nell'app, in Impostazioni / Info.
 
 ## Come compilare
 
@@ -79,10 +95,11 @@ Maven di Google.
 
 ## Privacy
 
-KartLog è completamente offline: nessun permesso INTERNET nel manifest,
-nessuna analytics, nessun account. L'unico uso della rete nell'intero
-progetto è a **build time**, nello script `tools/seedgen` che rigenera i
-dati di gioco dal wiki — mai a runtime sul dispositivo.
+Nessuna analytics, nessun account. Il permesso INTERNET serve **solo** a
+scaricare le immagini (vedi [Immagini](#immagini)) dal CDN di Super Mario
+Wiki: nessun altro dato esce dal dispositivo, e tutto il resto dell'app
+funziona anche offline. A build time la rete serve anche allo script
+`tools/seedgen`, che rigenera i dati di gioco dal wiki.
 
 ## Stack tecnico
 

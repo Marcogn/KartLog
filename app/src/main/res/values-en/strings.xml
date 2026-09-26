@@ -78,6 +78,8 @@
     <string name="settings_import_backup">Import backup</string>
     <string name="settings_info_section">Info</string>
     <string name="settings_source_revid_format">%1$s · rev %2$d</string>
+    <string name="settings_images_title">Images</string>
+    <string name="settings_images_disclaimer">Character, outfit, Grand Prix and Knockout Tour images come from Super Mario Wiki (mariowiki.com) and are downloaded when a connection is available: they are not bundled with the app. Mario Kart World, its characters and related images are © Nintendo. KartLog is a fan project, not affiliated with or endorsed by Nintendo.</string>
 
     <string name="placeholder_coming_soon">Screen coming soon</string>
 
