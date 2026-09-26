@@ -1,6 +1,6 @@
 package com.marcogn.kartlog.ui.home
 
-import androidx.compose.foundation.background
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,48 +9,56 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.EmojiEvents
-import androidx.compose.material.icons.filled.Face
-import androidx.compose.material.icons.filled.Lightbulb
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.MonetizationOn
-import androidx.compose.material.icons.filled.TouchApp
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
+import com.marcogn.kartlog.ui.common.KartBadge
+import com.marcogn.kartlog.ui.common.KartColors
+import com.marcogn.kartlog.ui.common.KartCounterPill
+import com.marcogn.kartlog.ui.common.KartFooter
+import com.marcogn.kartlog.ui.common.KartLogo
+import com.marcogn.kartlog.ui.common.KartPanel
+import com.marcogn.kartlog.ui.common.KartTopBar
+import com.marcogn.kartlog.ui.common.OutlinedTitle
+
+// Colori delle tessere, presi dal mockup dell'autore (26/09/2026).
+private val OrangeTile = KartColors(Color(0xFFF0561D), Color(0xFFFF7B3A), Color(0xFF9E2A0A))
+private val BlueTile = KartColors(Color(0xFF1A8CE8), Color(0xFF3FA9FF), Color(0xFF0B4F97))
+private val PinkTile = KartColors(Color(0xFFE84BA0), Color(0xFFFF72BE), Color(0xFF8E1A5B))
+private val YellowTile = KartColors(Color(0xFFFFB81C), Color(0xFFFFD34D), Color(0xFFA86A00))
+private val GreenTile = KartColors(Color(0xFF2EA83A), Color(0xFF4CCB55), Color(0xFF14621B))
 
 private data class HomeTile(
-    val icon: ImageVector,
+    @DrawableRes val icon: Int,
     val title: String,
-    val counter: String?,
-    val color: Color,
+    val counter: String,
+    val colors: KartColors,
     val onClick: () -> Unit,
 )
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     onMenuClick: () -> Unit,
@@ -62,6 +70,20 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
+    HomeContent(state, onMenuClick, onSkinClick, onMedallionsClick, onPSwitchesClick, onConsigliamiClick, onResultsClick)
+}
+
+/** Home senza ViewModel: separata per poterla disegnare nei test con uno stato fisso. */
+@Composable
+internal fun HomeContent(
+    state: HomeUiState,
+    onMenuClick: () -> Unit,
+    onSkinClick: () -> Unit,
+    onMedallionsClick: () -> Unit,
+    onPSwitchesClick: () -> Unit,
+    onConsigliamiClick: () -> Unit,
+    onResultsClick: () -> Unit,
+) {
     val notAvailable = stringResource(R.string.home_counter_not_available)
 
     // "n/d" se il totale è 0 (SPEC §8, fase 3): i pulsanti P possono mancare finché la fase 2
@@ -70,139 +92,93 @@ fun HomeScreen(
     fun counter(owned: Int, total: Int): String =
         if (total == 0) notAvailable else stringResource(R.string.home_counter_format, owned, total)
 
+    // Icone dal mockup dell'autore, una per funzione: il trofeo resta a Risultati, la stella a
+    // Consigliami anche dopo lo scambio di posizione tra le due.
     val tiles = listOf(
-        HomeTile(
-            icon = Icons.Filled.Face,
-            title = stringResource(R.string.home_option_skin_title),
-            counter = counter(state.ownedOutfits, state.totalOutfits),
-            color = MaterialTheme.colorScheme.primary,
-            onClick = onSkinClick,
-        ),
-        HomeTile(
-            icon = Icons.Filled.MonetizationOn,
-            title = stringResource(R.string.home_option_medallions_title),
-            counter = counter(state.collectedMedallions, state.totalMedallions),
-            color = MaterialTheme.colorScheme.secondary,
-            onClick = onMedallionsClick,
-        ),
-        HomeTile(
-            icon = Icons.Filled.TouchApp,
-            title = stringResource(R.string.home_option_pswitches_title),
-            counter = counter(state.completedPSwitches, state.totalPSwitches),
-            color = MaterialTheme.colorScheme.tertiary,
-            onClick = onPSwitchesClick,
-        ),
-        HomeTile(
-            icon = Icons.Filled.EmojiEvents,
-            title = stringResource(R.string.home_option_results_title),
-            counter = counter(state.eventsWithResult, state.totalEvents),
-            color = MaterialTheme.colorScheme.primary,
-            onClick = onResultsClick,
-        ),
+        HomeTile(R.drawable.home_banana, stringResource(R.string.home_option_skin_title),
+            counter(state.ownedOutfits, state.totalOutfits), OrangeTile, onSkinClick),
+        HomeTile(R.drawable.home_coin, stringResource(R.string.home_option_medallions_title),
+            counter(state.collectedMedallions, state.totalMedallions), BlueTile, onMedallionsClick),
+        HomeTile(R.drawable.home_mushroom, stringResource(R.string.home_option_pswitches_title),
+            counter(state.completedPSwitches, state.totalPSwitches), PinkTile, onPSwitchesClick),
+        HomeTile(R.drawable.home_trophy, stringResource(R.string.home_option_results_title),
+            counter(state.eventsWithResult, state.totalEvents), YellowTile, onResultsClick),
     )
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.app_name)) },
+            KartTopBar(
+                title = { KartLogo() },
                 navigationIcon = {
                     IconButton(onClick = onMenuClick) {
                         Icon(Icons.Filled.Menu, contentDescription = stringResource(R.string.cd_menu))
                     }
                 },
+                tall = true,
             )
         },
     ) { padding ->
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier
-                .padding(padding)
-                .fillMaxSize(),
-            contentPadding = PaddingValues(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-        ) {
-            items(tiles) { tile -> HomeTileCard(tile) }
-            // Pulsante largo a tutta riga (SPEC §2.1): Consigliami non ha un contatore, ha bisogno
-            // di una riga di spiegazione per far capire cosa fa.
-            item(span = { GridItemSpan(maxLineSpan) }) {
-                ConsigliamiButton(onClick = onConsigliamiClick)
+        // Solo il margine in alto: il footer scende fin sotto la barra di navigazione.
+        Column(modifier = Modifier.padding(top = padding.calculateTopPadding()).fillMaxSize()) {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                modifier = Modifier.weight(1f),
+                contentPadding = PaddingValues(16.dp),
+                horizontalArrangement = Arrangement.spacedBy(14.dp),
+                verticalArrangement = Arrangement.spacedBy(14.dp),
+            ) {
+                items(tiles) { tile -> HomeTileCard(tile) }
+                // Card larga a tutta riga (SPEC §2.1): Consigliami non ha un contatore, ha bisogno
+                // di una riga di spiegazione per far capire cosa fa.
+                item(span = { GridItemSpan(maxLineSpan) }) {
+                    ConsigliamiCard(onClick = onConsigliamiClick)
+                }
             }
-        }
-    }
-}
-
-@Composable
-private fun ConsigliamiButton(onClick: () -> Unit) {
-    val color = MaterialTheme.colorScheme.tertiary
-    Card(
-        onClick = onClick,
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = color.copy(alpha = 0.16f)),
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(20.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Icon(
-                imageVector = Icons.Filled.Lightbulb,
-                contentDescription = null,
-                tint = color,
-                modifier = Modifier
-                    .size(56.dp)
-                    .background(color = color.copy(alpha = 0.18f), shape = MaterialTheme.shapes.large)
-                    .padding(12.dp),
-            )
-            Column(modifier = Modifier.padding(start = 16.dp)) {
-                Text(stringResource(R.string.home_option_consigliami_title), style = MaterialTheme.typography.titleLarge)
-                Text(
-                    stringResource(R.string.home_option_consigliami_subtitle),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
+            KartFooter()
         }
     }
 }
 
 @Composable
 private fun HomeTileCard(tile: HomeTile) {
-    Card(
+    KartPanel(
+        colors = tile.colors,
+        modifier = Modifier.fillMaxWidth().aspectRatio(0.95f),
         onClick = tile.onClick,
-        modifier = Modifier
-            .fillMaxWidth()
-            .aspectRatio(1f),
-        colors = CardDefaults.cardColors(containerColor = tile.color.copy(alpha = 0.16f)),
     ) {
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(20.dp),
-            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.fillMaxSize().padding(12.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterVertically),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Icon(
-                imageVector = tile.icon,
-                contentDescription = null,
-                tint = tile.color,
-                modifier = Modifier
-                    .size(56.dp)
-                    .background(color = tile.color.copy(alpha = 0.18f), shape = MaterialTheme.shapes.large)
-                    .padding(12.dp),
-            )
-            Text(
-                text = tile.title,
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier.padding(top = 16.dp),
-            )
-            if (tile.counter != null) {
+            KartBadge(painterResource(tile.icon), tile.colors)
+            OutlinedTitle(tile.title, fontSize = 22.sp)
+            KartCounterPill(tile.counter, tile.colors)
+        }
+    }
+}
+
+@Composable
+private fun ConsigliamiCard(onClick: () -> Unit) {
+    KartPanel(colors = GreenTile, modifier = Modifier.fillMaxWidth(), onClick = onClick) {
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 18.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+            KartBadge(painterResource(R.drawable.home_star), GreenTile, size = 84.dp)
+            Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                OutlinedTitle(
+                    stringResource(R.string.home_option_consigliami_title),
+                    fontSize = 26.sp,
+                    textAlign = TextAlign.Start,
+                )
                 Text(
-                    text = tile.counter,
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(top = 4.dp),
+                    stringResource(R.string.home_option_consigliami_subtitle),
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        color = Color.White,
+                        shadow = Shadow(Color(0x99000000), offset = Offset(0f, 2f), blurRadius = 3f),
+                    ),
                 )
             }
         }

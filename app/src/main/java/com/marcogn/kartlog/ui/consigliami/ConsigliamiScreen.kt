@@ -24,7 +24,6 @@ import androidx.compose.material3.Slider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -38,6 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
+import com.marcogn.kartlog.ui.common.KartTopBar
 import com.marcogn.kartlog.domain.consigliami.CharacterGain
 import com.marcogn.kartlog.domain.consigliami.EventScore
 import com.marcogn.kartlog.domain.consigliami.RecommendationGroup
@@ -61,7 +61,7 @@ fun ConsigliamiScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(
+            KartTopBar(
                 title = { Text(stringResource(R.string.consigliami_title)) },
                 navigationIcon = {
                     IconButton(onClick = onMenuClick) {

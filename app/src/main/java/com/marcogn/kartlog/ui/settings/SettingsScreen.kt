@@ -25,7 +25,6 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -36,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
+import com.marcogn.kartlog.ui.common.KartTopBar
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
@@ -73,7 +73,7 @@ fun SettingsScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(
+            KartTopBar(
                 title = { Text(stringResource(R.string.settings_title)) },
                 navigationIcon = {
                     IconButton(onClick = onMenuClick) {
@@ -106,6 +106,7 @@ fun SettingsScreen(
             Text(stringResource(R.string.settings_images_title), style = MaterialTheme.typography.titleSmall)
             Text(stringResource(R.string.settings_images_disclaimer), style = MaterialTheme.typography.bodySmall)
             Text(stringResource(R.string.settings_food_names_note), style = MaterialTheme.typography.bodySmall)
+            Text(stringResource(R.string.settings_font_credit), style = MaterialTheme.typography.bodySmall)
             viewModel.meta?.let { meta ->
                 Text(
                     "${meta.license.attribution} — ${meta.license.name}",

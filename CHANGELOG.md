@@ -6,6 +6,12 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Nuova grafica.** Banner con cielo e pista in alto su ogni schermata,
+  con il logo KartLog in Home; tessere colorate con icone, titoli con
+  contorno e contatori in una pillola; pista in fondo alla Home. Nel tema
+  scuro le tessere brillano del loro colore. Nuovo font per i titoli
+  (Lilita One).
+
 - **Niente iniziali dietro le immagini attenuate.** Sui personaggi
   completati (immagine sbiadita) si intravedevano le iniziali del
   segnaposto: ora il segnaposto compare solo finché l'immagine non è

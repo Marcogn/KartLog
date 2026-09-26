@@ -25,7 +25,6 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -39,6 +38,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
+import com.marcogn.kartlog.ui.common.KartTopBar
 import com.marcogn.kartlog.ui.common.MarkAllConfirmationDialog
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -53,7 +53,7 @@ fun PeachMedallionsScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(
+            KartTopBar(
                 title = { Text(stringResource(R.string.medallions_title)) },
                 navigationIcon = {
                     IconButton(onClick = onMenuClick) {

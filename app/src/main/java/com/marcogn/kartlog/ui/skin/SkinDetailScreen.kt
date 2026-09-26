@@ -28,7 +28,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -41,6 +40,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
+import com.marcogn.kartlog.ui.common.KartTopBar
 import com.marcogn.kartlog.data.local.dao.OutfitProgress
 import com.marcogn.kartlog.domain.model.localizedName
 import com.marcogn.kartlog.ui.common.CharacterPortrait
@@ -55,7 +55,7 @@ fun SkinDetailScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(
+            KartTopBar(
                 title = { Text(state.characterName) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {

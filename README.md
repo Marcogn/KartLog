@@ -87,6 +87,13 @@ Le immagini di personaggi, outfit, Gran Premi e Knockout Tour vengono da
 - Grazie a Super Mario Wiki e ai suoi contributori, che le hanno raccolte
   e caricate.
 
+La grafica dell'interfaccia (banner, pista in fondo alla Home, logo e
+icone della Home) viene da un mockup dell'autore; le icone della Home
+richiamano oggetti di gioco e verranno sostituite. Font dei titoli:
+[Lilita One](https://fonts.google.com/specimen/Lilita+One) di Juan
+Montoreano, SIL Open Font License 1.1 (testo in
+`app/src/main/assets/licenses/`).
+
 KartLog è un progetto amatoriale e gratuito, **non affiliato né approvato
 da Nintendo**. Lo stesso avviso è nell'app, in Impostazioni / Info.
 

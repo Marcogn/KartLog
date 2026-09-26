@@ -113,4 +113,5 @@
     <string name="language_italian">Italiano</string>
     <string name="language_english">English</string>
     <string name="settings_food_names_note">I nomi italiani dei cibi sono una traduzione non ufficiale: nessuna fonte li riporta.</string>
+    <string name="settings_font_credit">Font dei titoli: Lilita One di Juan Montoreano, SIL Open Font License 1.1.</string>
 </resources>
