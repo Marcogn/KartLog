@@ -13,7 +13,10 @@ Le pagine sono elencate **per titolo esatto** in `sources.yaml`: lo script non c
 | `List of Mario Kart World missions` | pulsanti P: bioma, nome della missione, percorso |
 | `Template:Mario Kart World` | navbox: gli 8 cup con i loro 4 corsi, e l'elenco dei rally (per accorgersi di rally nuovi) |
 | `Golden Rally`, `Ice Rally`, … (12 pagine) | tappe di ogni Knockout Tour, dalla tabella "Starting point … Final course" |
-| `Mario Kart World` | solo gli **URL** delle immagini di personaggi, outfit, cup e rally (`seedgen/images.py`), scaricata sempre dal vivo |
+| `Mario Kart World` | solo gli **URL** delle immagini di personaggi, outfit, cup e rally, e quali piloti sono disponibili dall'inizio (`seedgen/images.py`); scaricata sempre dal vivo |
+| mariowiki.it: `Mario Kart World`, `Lista delle missioni di Mario Kart World` | nomi italiani che mariowiki.com non ha: piloti senza outfit, biomi, Trofei e rally (`seedgen/it_wiki.py`); sempre dal vivo |
+
+`manual/food_names_it.yaml` contiene i nomi italiani dei cibi: **traduzione non ufficiale**, scelta dell'autore perché nessuna fonte li riporta.
 
 Le pagine si scaricano con la MediaWiki API (`https://www.mariowiki.com/api.php?action=parse&prop=text|revid`). Ogni estrazione registra il `revid` di ogni pagina in `seed/meta.json`. Le immagini non vengono mai scaricate: seedgen ne salva solo l'URL (`imageUrl`), l'app le scarica a runtime.
 

@@ -58,6 +58,7 @@ class SeedRepository @Inject constructor(
                 nameIt = it.nameIt,
                 rosterOrder = it.rosterOrder,
                 imageUrl = it.imageUrl,
+                starter = it.starter ?: true,
             )
         },
         outfits = assets.readItems<OutfitDto>("outfits.json").map {
@@ -71,7 +72,13 @@ class SeedRepository @Inject constructor(
             )
         },
         foodGroups = assets.readItems<FoodGroupDto>("food_groups.json").map {
-            FoodGroupEntity(id = it.id, name = it.name, foods = it.foods, revertsToDefault = it.revertsToDefault)
+            FoodGroupEntity(
+                id = it.id,
+                name = it.name,
+                foods = it.foods,
+                revertsToDefault = it.revertsToDefault,
+                nameIt = it.nameIt,
+            )
         },
         outfitFoodRules = assets.readItems<OutfitFoodRuleDto>("outfit_food_rules.json").map {
             OutfitFoodRuleEntity(outfitId = it.outfitId, foodGroupId = it.foodGroupId)
@@ -88,7 +95,7 @@ class SeedRepository @Inject constructor(
             CourseEntity(id = it.id, name = it.name, nameIt = it.nameIt, regionId = it.regionId)
         },
         regions = assets.readItems<RegionDto>("regions.json").map {
-            RegionEntity(id = it.id, name = it.name, order = it.order)
+            RegionEntity(id = it.id, name = it.name, order = it.order, nameIt = it.nameIt)
         },
         areas = assets.readItems<AreaDto>("areas.json").map {
             AreaEntity(id = it.id, name = it.name, regionId = it.regionId)
@@ -115,6 +122,7 @@ class SeedRepository @Inject constructor(
                 name = it.name,
                 order = it.order,
                 imageUrl = it.imageUrl,
+                nameIt = it.nameIt,
             )
         },
         eventStops = assets.readItems<EventDto>("events.json").flatMap { event ->

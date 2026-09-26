@@ -36,37 +36,39 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 
 ### 2.1 Struttura
 - `ModalNavigationDrawer` con hamburger in alto a sinistra, sempre disponibile.
-- Voci del drawer: **Home**, **Skin**, **Monete Peach**, **Pulsanti P**, **Consigliami**, **Risultati**, più in fondo **Impostazioni / Info** (crediti e licenze dei dati, §5.5).
+- Voci del drawer: **Home**, **Personaggi**, **Monete Peach**, **Pulsanti P**, **Consigliami**, **Risultati**, più in fondo **Impostazioni / Info** (crediti e licenze dei dati, §5.5).
 
 ### 2.2 Home
-- Griglia 2×2 di pulsanti **quadrati** e grandi: Skin, Monete Peach, Pulsanti P, Consigliami.
-- Ogni pulsante mostra icona, titolo e un contatore di progresso (es. `87 / 127`, `143 / 200`). Consigliami non ha contatore.
-- Sotto la griglia, un pulsante largo a tutta riga **Risultati** (§2.6) con il contatore degli eventi che hanno almeno un trofeo registrato (`12 / 60 eventi con un trofeo`).
+- Griglia 2×2 di pulsanti **quadrati** e grandi: Personaggi, Monete Peach, Pulsanti P, Risultati.
+- Ogni pulsante mostra icona, titolo e un contatore di progresso (es. `87 / 127`, `143 / 200`); per Risultati (§2.6) è il numero di eventi con almeno un trofeo registrato (a qualsiasi cilindrata) sul totale degli eventi (`12 / 20`), senza altro testo.
+- Sotto la griglia, un pulsante largo a tutta riga **Consigliami** (§2.5) con una riga di spiegazione ("Quale Gran Premio o Knockout Tour correre, e con chi, per sbloccare più outfit") e nessun contatore.
 - Il look deve essere colorato e "da gioco": palette vivace, angoli arrotondati generosi, tipografia bold. Non deve imitare la UI ufficiale.
 
-### 2.3 Skin
-**Schermata lista personaggi**
-- `LazyVerticalGrid` adattiva (**3 colonne** su telefono): le immagini sono verticali, nelle proporzioni della schermata di selezione del gioco. Le righe dipendono dal numero di personaggi **che hanno almeno un outfit alternativo**.
-- Ogni cella mostra l'immagine del personaggio (placeholder con le iniziali finché non è scaricata), il nome e un contatore `ottenuti/totali`.
+### 2.3 Personaggi
+**Schermata lista personaggi** (si chiamava "Skin")
+- `LazyVerticalGrid` adattiva (**3 colonne** su telefono): le immagini sono verticali, nelle proporzioni della schermata di selezione del gioco. Ci sono **tutti i 50 piloti**: i 24 con outfit alternativi e i 26 che ne hanno solo uno (Goomba, Mucca…).
+- Ogni cella mostra l'immagine del personaggio (placeholder con le iniziali finché non è scaricata), il nome e un contatore `ottenuti/totali`; per i piloti senza outfit, "Sbloccato" / "Da sbloccare". Un lucchetto sull'immagine segna chi non è ancora sbloccato.
+- Solo chi ha outfit apre il dettaglio. Per gli altri il tap sulla card segna sbloccato/non.
+- Stato iniziale di sblocco dal wiki: i 32 piloti "di base" partono sbloccati, i 18 "sbloccabili" (compresi DK, Daisy, Rosalinda, Lakitu, Bowser Jr., Strutzi, Re Boo) no. Consigliami considera solo i personaggi sbloccati (§6).
 - Il dettaglio mostra gli outfit come griglia di card con la loro immagine (2 per riga su telefono); l'outfit di default usa l'immagine del personaggio.
-- Se il personaggio ha **tutti** gli outfit, la cella è attenuata (nome e card con alpha ridotto o colori desaturati) e si ordina in fondo. L'ordinamento è configurabile: roster ufficiale / alfabetico / % completamento.
+- Se il personaggio ha **tutti** gli outfit (per i piloti senza outfit: se è sbloccato), la cella è attenuata (nome e card con alpha ridotto o colori desaturati) e si ordina in fondo. L'ordinamento è configurabile: roster ufficiale / alfabetico / % completamento.
 - Filtro in alto: Tutti / Incompleti.
 
 **Schermata dettaglio personaggio**
-- Header con nome, contatore e switch **"Personaggio sbloccato"**, necessario per Consigliami (§6). Default: sbloccato. Il seed non contiene lo stato di sblocco (il wiki non lo espone in forma estraibile), quindi è l'utente a disattivare i personaggi che non ha.
+- Header con nome, contatore e switch **"Personaggio sbloccato"**, necessario per Consigliami (§6). Default: quello del seed (`starter`, dalle gallerie "Default drivers"/"Unlockable drivers" del wiki); la scelta dell'utente vince sempre.
 - Lista outfit: ogni riga ha checkbox, nome outfit e **tutti** i gruppi di cibo che lo sbloccano (es. Mario Touring: "Hamburger · Barbecue · Moo Moo Milk"). Se non ci sono regole note, mostra "cibo sconosciuto".
 - L'outfit di default non è una riga spuntabile: è sempre posseduto e non si conta nei mancanti.
 
 ### 2.4 Monete Peach e Pulsanti P
-Entrambe le liste usano le **10 regioni** del mondo di gioco (`regions.json`), in sezioni collassabili. Ogni intestazione mostra il nome della regione e `x/y`; l'azione "segna tutti" di una sezione chiede conferma. In alto c'è il contatore globale (`x/200`, `x/394`).
+Entrambe le schermate usano le **10 regioni** del mondo di gioco (`regions.json`, nomi italiani da mariowiki.it), ciascuna con `x/y` e un'azione "segna tutti" che chiede conferma. In alto c'è il contatore globale (`x/200`, `x/394`).
 
 **Monete Peach**
-- Per ogni regione, checkbox numerate ("Medaglione 1…N"), senza descrizione: il seed contiene solo i conteggi per regione (§5.2).
+- Un **contatore per regione** con − e + e una barra di avanzamento, niente elenco "Medaglione 1…N": il seed contiene solo i conteggi per regione (§5.2), le righe di `peach_medallions` sono "posti" anonimi (+ segna il primo libero, − libera l'ultimo segnato).
 - Pulsante "Apri guida" che apre nel browser l'URL `source` di `peach_medallions.json` (Intent `ACTION_VIEW`: non richiede il permesso INTERNET).
 
 **Pulsanti P**
-- Dentro ogni regione, sottogruppi per percorso (o luogo, es. Chain Chomp Desert).
-- Ogni riga mostra il nome della missione (testo in-game dal wiki) e il percorso.
+- Sezioni collassabili per regione; dentro ogni regione, sottogruppi per percorso (o luogo, es. Chain Chomp Desert).
+- Ogni riga mostra il nome della missione (testo in-game dal wiki) e il percorso. I nomi delle missioni restano in inglese: la lista italiana di mariowiki.it è incompleta e senza una chiave per abbinarla a quella inglese (vedi `tools/seedgen/seedgen/it_wiki.py`).
 - Ricerca testuale sul nome della missione.
 - Finché `p_switches.json` non esiste (seed iniziale, §5.3 "Stato") la schermata mostra "Dati non ancora disponibili" invece di una lista vuota.
 
@@ -259,7 +261,7 @@ Requisiti:
 - Documentare nel README: prerequisiti Python, flag disponibili, come aggiornare `expected_counts.yaml` e `sources.yaml`.
 
 ### 5.5 Attribuzione
-La schermata Info deve riportare: "Dati di gioco tratti da Super Mario Wiki (mariowiki.com), licenza CC BY-SA 4.0" con link e i `revid` usati (letti da `meta.json`). I file in `seed/` restano sotto CC BY-SA, separati dalla licenza del codice (file `seed/LICENSE`).
+La schermata Info deve riportare: "Dati di gioco tratti da Super Mario Wiki (mariowiki.com) e Super Mario Wiki italiana (mariowiki.it), licenza CC BY-SA 4.0" con link e i `revid` usati (letti da `meta.json`), più la nota che i nomi italiani dei cibi sono una traduzione non ufficiale. I file in `seed/` restano sotto CC BY-SA, separati dalla licenza del codice (file `seed/LICENSE`).
 
 ### 5.6 Validazione lato app (unit test Kotlin)
 Doppio controllo sui JSON effettivamente impacchettati, indipendente dallo script:

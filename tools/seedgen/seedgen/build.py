@@ -16,7 +16,7 @@ from .raw import RawData
 LICENSE = {
     "name": "CC BY-SA 4.0",
     "url": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "attribution": "Dati di gioco tratti da Super Mario Wiki (mariowiki.com)",
+    "attribution": "Dati di gioco tratti da Super Mario Wiki (mariowiki.com) e Super Mario Wiki italiana (mariowiki.it)",
 }
 
 

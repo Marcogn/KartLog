@@ -8,6 +8,8 @@ import com.marcogn.kartlog.data.local.entity.BestResultEntity
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.EventType
 import com.marcogn.kartlog.domain.model.TrophyRank
+import com.marcogn.kartlog.domain.model.localizedName
+import com.marcogn.kartlog.domain.model.relocalizing
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -41,14 +43,14 @@ class ResultsViewModel @Inject constructor(
     private val cc = MutableStateFlow(Cc.CC_150)
 
     val uiState: StateFlow<ResultsUiState> = combine(
-        dao.events(),
+        dao.events().relocalizing(),
         userStateDao.allBestResults(),
         cc,
     ) { events, results, selectedCc ->
         // Nessun riporto tra cilindrate: ogni trofeo vale solo dove è registrato.
         val rankByEvent = results.filter { it.cc == selectedCc }.associate { it.eventId to it.rank }
         val rows = events.sortedBy { it.order }.map { event ->
-            event.type to ResultRow(event.id, event.name, rankByEvent[event.id], event.imageUrl)
+            event.type to ResultRow(event.id, localizedName(event.name, event.nameIt), rankByEvent[event.id], event.imageUrl)
         }
         ResultsUiState(
             cc = selectedCc,

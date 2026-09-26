@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Base platform theme: il contenuto reale è Compose (KartLogTheme, Material 3).
-         Serve solo come windowBackground prima che Compose disegni la prima frame. -->
-    <style name="Theme.KartLog" parent="android:Theme.Material.Light.NoActionBar" />
+    <!-- Il contenuto reale è Compose (KartLogTheme, Material 3): questo tema serve solo come
+         windowBackground prima della prima frame. AppCompat perché MainActivity è un
+         AppCompatActivity (richiesto da setApplicationLocales, selettore della lingua). -->
+    <style name="Theme.KartLog" parent="Theme.AppCompat.DayNight.NoActionBar" />
 </resources>

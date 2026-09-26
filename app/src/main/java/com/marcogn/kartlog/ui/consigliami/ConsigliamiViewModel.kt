@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.marcogn.kartlog.data.local.dao.ConsigliamiCharacterRow
 import com.marcogn.kartlog.data.local.dao.ConsigliamiDao
 import com.marcogn.kartlog.data.local.dao.ConsigliamiOutfitRow
-import com.marcogn.kartlog.data.local.dao.IdName
 import com.marcogn.kartlog.data.local.dao.IdNameIt
 import com.marcogn.kartlog.data.local.dao.UserStateDao
 import com.marcogn.kartlog.data.local.entity.BestResultEntity
@@ -24,6 +23,7 @@ import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.EventType
 import com.marcogn.kartlog.domain.model.TrophyRank
 import com.marcogn.kartlog.domain.model.localizedName
+import com.marcogn.kartlog.domain.model.relocalizing
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -81,7 +81,7 @@ class ConsigliamiViewModel @Inject constructor(
     private val rawData = combine(
         combine(dao.characters(), dao.outfits(), dao.rules()) { c, o, r -> Triple(c, o, r) },
         combine(dao.foodCourses(), dao.events(), dao.eventStops()) { fc, e, es -> Triple(fc, e, es) },
-        combine(dao.courseNames(), dao.foodGroupNames()) { cn, fgn -> cn.toLocalizedNameMap() to fgn.toNameMap() },
+        combine(dao.courseNames().relocalizing(), dao.foodGroupNames()) { cn, fgn -> cn.toLocalizedNameMap() to fgn.toLocalizedNameMap() },
     ) { (characters, outfits, rules), (foodCourses, events, eventStops), (courseNames, foodGroupNames) ->
         RawSeedData(characters, outfits, rules, foodCourses, events, eventStops, courseNames, foodGroupNames)
     }
@@ -103,7 +103,9 @@ class ConsigliamiViewModel @Inject constructor(
         val eventStopsByEvent = raw.eventStops.groupBy({ it.eventId }, { it.courseId })
         val events = raw.events
             .filter { filter == ConsigliamiEventFilter.BOTH || it.type == filter.toEventType() }
-            .map { ConsigliamiEvent(it.id, it.type, it.name, it.order, eventStopsByEvent[it.id].orEmpty()) }
+            .map {
+                ConsigliamiEvent(it.id, it.type, localizedName(it.name, it.nameIt), it.order, eventStopsByEvent[it.id].orEmpty())
+            }
 
         // bestRank(E, cc) (SPEC §6.3): solo il trofeo registrato alla cilindrata di riferimento,
         // nessun riporto da altre cilindrate (decisione dell'autore, vedi CLAUDE.md).
@@ -179,8 +181,6 @@ private fun ConsigliamiEventFilter.toEventType(): EventType? = when (this) {
     ConsigliamiEventFilter.RALLY -> EventType.RALLY
     ConsigliamiEventFilter.BOTH -> null
 }
-
-private fun List<IdName>.toNameMap(): Map<String, String> = associate { it.id to it.name }
 
 private fun List<IdNameIt>.toLocalizedNameMap(): Map<String, String> =
     associate { it.id to localizedName(it.name, it.nameIt) }

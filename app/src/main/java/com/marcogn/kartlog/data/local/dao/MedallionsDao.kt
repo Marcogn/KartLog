@@ -19,7 +19,33 @@ interface MedallionsDao {
         """
     )
     fun allMedallions(): Flow<List<MedallionWithRegion>>
+
+    /**
+     * Un contatore per bioma (SPEC §2.4): i medaglioni non hanno dettagli propri (fonte manuale con i
+     * soli conteggi per regione), quindi le righe di `peach_medallions` sono "posti" anonimi.
+     */
+    @Query(
+        """
+        SELECT r.id AS regionId, r.name AS regionName, r.nameIt AS regionNameIt, r."order" AS regionOrder,
+               COUNT(m.id) AS total, COUNT(cm.medallionId) AS collected
+        FROM regions r
+        JOIN peach_medallions m ON m.regionId = r.id
+        LEFT JOIN collected_medallions cm ON cm.medallionId = m.id
+        GROUP BY r.id
+        ORDER BY r."order" ASC
+        """
+    )
+    fun regionCounters(): Flow<List<RegionMedallionCount>>
 }
+
+data class RegionMedallionCount(
+    val regionId: String,
+    val regionName: String,
+    val regionNameIt: String?,
+    val regionOrder: Int,
+    val total: Int,
+    val collected: Int,
+)
 
 data class MedallionWithRegion(
     val medallionId: String,

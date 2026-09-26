@@ -17,7 +17,7 @@ interface PSwitchesDao {
         """
         SELECT p.id AS pSwitchId, p."index" AS "index", p.name AS name,
                (cp.pSwitchId IS NOT NULL) AS completed,
-               r.id AS regionId, r.name AS regionName, r."order" AS regionOrder,
+               r.id AS regionId, r.name AS regionName, r.nameIt AS regionNameIt, r."order" AS regionOrder,
                c.name AS courseName, c.nameIt AS courseNameIt, a.name AS areaName,
                COALESCE(c.name, a.name) AS locationSortKey
         FROM p_switches p
@@ -38,6 +38,7 @@ data class PSwitchWithLocation(
     val completed: Boolean,
     val regionId: String,
     val regionName: String,
+    val regionNameIt: String?,
     val regionOrder: Int,
     val courseName: String?,
     val courseNameIt: String?,
@@ -46,4 +47,8 @@ data class PSwitchWithLocation(
     /** Nome del corso in italiano se noto (seedgen/i18n.py), altrimenti quello del luogo (inglese). */
     val locationName: String
         get() = courseName?.let { localizedName(it, courseNameIt) } ?: areaName.orEmpty()
+
+    /** Nome del bioma in italiano se noto (mariowiki.it, seedgen/it_wiki.py). */
+    val localizedRegionName: String
+        get() = localizedName(regionName, regionNameIt)
 }

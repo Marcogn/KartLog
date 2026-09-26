@@ -5,20 +5,20 @@
     <string name="cd_back">Back</string>
 
     <string name="drawer_home">Home</string>
-    <string name="drawer_skin">Skins</string>
+    <string name="drawer_skin">Characters</string>
     <string name="drawer_medallions">Peach Medallions</string>
     <string name="drawer_pswitches">P Switches</string>
     <string name="drawer_consigliami">Recommend Me</string>
     <string name="drawer_settings">Settings / Info</string>
 
-    <string name="home_option_skin_title">Skins</string>
+    <string name="home_option_skin_title">Characters</string>
     <string name="home_option_medallions_title">Peach Medallions</string>
     <string name="home_option_pswitches_title">P Switches</string>
     <string name="home_option_consigliami_title">Recommend Me</string>
     <string name="home_counter_format">%1$d / %2$d</string>
     <string name="home_counter_not_available">n/a</string>
 
-    <string name="skin_title">Skins</string>
+    <string name="skin_title">Characters</string>
     <string name="skin_filter_all">All</string>
     <string name="skin_filter_incomplete">Incomplete</string>
     <string name="skin_sort_label">Sort by</string>
@@ -30,7 +30,6 @@
     <string name="skin_unknown_food">Unknown food</string>
     <string name="medallions_title">Peach Medallions</string>
     <string name="medallions_open_guide">Open guide</string>
-    <string name="medallions_item_label">Medallion %1$d</string>
 
     <string name="pswitches_title">P Switches</string>
     <string name="pswitches_search_hint">Search mission</string>
@@ -86,8 +85,6 @@
     <!-- Results (SPEC §2.6) -->
     <string name="drawer_results">Results</string>
     <string name="home_option_results_title">Results</string>
-    <string name="home_option_results_subtitle">Record your best Grand Prix and Knockout Tour trophy</string>
-    <string name="home_results_counter_format">%1$d / %2$d events with a trophy</string>
     <string name="results_title">Results</string>
     <string name="results_cc_label">Engine class</string>
     <string name="results_section_cup">Grand Prix</string>
@@ -101,4 +98,19 @@
     <string name="rank_gold_1_star">Gold ★</string>
     <string name="rank_gold_2_stars">Gold ★★</string>
     <string name="rank_gold_3_stars">Gold ★★★</string>
+    <string name="skin_unlocked">Unlocked</string>
+    <string name="skin_locked">Locked</string>
+    <string name="medallions_increment">Add a medallion</string>
+    <string name="medallions_decrement">Remove a medallion</string>
+    <string name="home_option_consigliami_subtitle">Which Grand Prix or Knockout Tour to race, and with whom, to unlock more outfits</string>
+    <string name="settings_preferences_section">Preferences</string>
+    <string name="settings_theme_label">Theme</string>
+    <string name="settings_language_label">Language</string>
+    <string name="theme_system">System</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="language_system">System</string>
+    <string name="language_italian">Italiano</string>
+    <string name="language_english">English</string>
+    <string name="settings_food_names_note">Italian food names are an unofficial translation: no source lists them.</string>
 </resources>

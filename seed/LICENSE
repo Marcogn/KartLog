@@ -1,9 +1,14 @@
-I file JSON in questa cartella contengono dati di gioco tratti da Super Mario Wiki (https://www.mariowiki.com),
-i cui contenuti testuali sono distribuiti con licenza Creative Commons Attribution-ShareAlike 4.0 International
+I file JSON in questa cartella contengono dati di gioco tratti da Super Mario Wiki (https://www.mariowiki.com)
+e, per alcuni nomi italiani, da Super Mario Wiki italiana (https://www.mariowiki.it), i cui contenuti testuali
+sono distribuiti con licenza Creative Commons Attribution-ShareAlike 4.0 International
 (CC BY-SA 4.0): https://creativecommons.org/licenses/by-sa/4.0/
+
+I nomi italiani dei cibi (food_groups.json, campo nameIt) non vengono da nessuna fonte: sono una traduzione
+non ufficiale fatta a mano (tools/seedgen/manual/food_names_it.yaml).
 
 Le pagine sorgente e le revisioni usate sono elencate in meta.json.
 Questi file restano sotto CC BY-SA 4.0, indipendentemente dalla licenza del codice dell'applicazione.
 
 Mario Kart World, i suoi personaggi e i relativi nomi sono marchi di Nintendo. Questo progetto non è
-affiliato né approvato da Nintendo. Nessun asset grafico di Nintendo è incluso.
+affiliato né approvato da Nintendo. Nessun asset grafico di Nintendo è incluso: i campi imageUrl sono solo indirizzi di immagini
+ospitate da Super Mario Wiki, scaricate dall'app a runtime.

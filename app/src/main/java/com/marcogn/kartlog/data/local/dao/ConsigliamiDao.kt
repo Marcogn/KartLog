@@ -15,7 +15,7 @@ interface ConsigliamiDao {
     @Query(
         """
         SELECT c.id AS id, c.name AS name, c.nameIt AS nameIt, c.rosterOrder AS rosterOrder, c.imageUrl AS imageUrl,
-               COALESCE(cu.unlocked, 1) AS unlocked
+               COALESCE(cu.unlocked, c.starter) AS unlocked
         FROM characters c
         LEFT JOIN character_unlocks cu ON cu.characterId = c.id
         """
@@ -25,8 +25,9 @@ interface ConsigliamiDao {
     @Query("SELECT id, name, nameIt FROM courses")
     fun courseNames(): Flow<List<IdNameIt>>
 
-    @Query("SELECT id, name FROM food_groups")
-    fun foodGroupNames(): Flow<List<IdName>>
+    /** `nameIt` dei cibi: traduzione NON ufficiale (tools/seedgen/manual/food_names_it.yaml). */
+    @Query("SELECT id, name, nameIt FROM food_groups")
+    fun foodGroupNames(): Flow<List<IdNameIt>>
 
     /** Solo outfit non default: hanno sempre un nome (SPEC §3, validato in fase 3). */
     @Query("SELECT id, name, nameIt FROM outfits WHERE isDefault = 0")
@@ -66,7 +67,5 @@ data class ConsigliamiCharacterRow(
 )
 
 data class ConsigliamiOutfitRow(val id: String, val characterId: String, val owned: Boolean)
-
-data class IdName(val id: String, val name: String)
 
 data class IdNameIt(val id: String, val name: String, val nameIt: String?)

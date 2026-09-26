@@ -4,7 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.marcogn.kartlog.data.local.dao.CharacterProgress
 import com.marcogn.kartlog.data.local.dao.SkinDao
+import com.marcogn.kartlog.data.local.dao.UserStateDao
+import com.marcogn.kartlog.data.local.entity.CharacterUnlockEntity
 import com.marcogn.kartlog.domain.model.localizedName
+import com.marcogn.kartlog.domain.model.relocalizing
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,6 +15,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 
 enum class SkinSortMode { ROSTER, ALPHABETICAL, COMPLETION }
 enum class SkinFilterMode { ALL, INCOMPLETE }
@@ -23,13 +27,16 @@ data class SkinListUiState(
 )
 
 @HiltViewModel
-class SkinListViewModel @Inject constructor(skinDao: SkinDao) : ViewModel() {
+class SkinListViewModel @Inject constructor(
+    skinDao: SkinDao,
+    private val userStateDao: UserStateDao,
+) : ViewModel() {
 
     private val sortMode = MutableStateFlow(SkinSortMode.ROSTER)
     private val filterMode = MutableStateFlow(SkinFilterMode.ALL)
 
     val uiState: StateFlow<SkinListUiState> = combine(
-        skinDao.charactersWithProgress(),
+        skinDao.charactersWithProgress().relocalizing(),
         sortMode,
         filterMode,
     ) { characters, sort, filter ->
@@ -50,11 +57,22 @@ class SkinListViewModel @Inject constructor(skinDao: SkinDao) : ViewModel() {
         filterMode.value = mode
     }
 
+    /** Piloti senza outfit: il tap sulla card segna sbloccato/non (per gli altri c'è il dettaglio). */
+    fun onUnlockToggled(characterId: String, unlocked: Boolean) {
+        viewModelScope.launch {
+            userStateDao.setCharacterUnlock(CharacterUnlockEntity(characterId = characterId, unlocked = unlocked))
+        }
+    }
+
     private fun comparatorFor(mode: SkinSortMode): Comparator<CharacterProgress> = when (mode) {
         SkinSortMode.ROSTER -> compareBy { it.rosterOrder }
         SkinSortMode.ALPHABETICAL -> compareBy { localizedName(it.name, it.nameIt) }
         SkinSortMode.COMPLETION -> compareByDescending<CharacterProgress> {
-            if (it.totalOutfits == 0) 0.0 else it.ownedOutfits.toDouble() / it.totalOutfits
+            when {
+                it.hasOutfits -> it.ownedOutfits.toDouble() / it.totalOutfits
+                it.unlocked -> 1.0
+                else -> 0.0
+            }
         }.thenBy { it.rosterOrder }
     }
 }

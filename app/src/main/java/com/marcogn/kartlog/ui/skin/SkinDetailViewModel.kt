@@ -9,6 +9,7 @@ import com.marcogn.kartlog.data.local.dao.UserStateDao
 import com.marcogn.kartlog.data.local.entity.CharacterUnlockEntity
 import com.marcogn.kartlog.data.local.entity.OwnedOutfitEntity
 import com.marcogn.kartlog.domain.model.localizedName
+import com.marcogn.kartlog.domain.model.relocalizing
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
@@ -36,9 +37,9 @@ class SkinDetailViewModel @Inject constructor(
     private val characterId: String = checkNotNull(savedStateHandle["characterId"])
 
     val uiState: StateFlow<SkinDetailUiState> = combine(
-        skinDao.character(characterId),
+        skinDao.character(characterId).relocalizing(),
         skinDao.outfitsForCharacter(characterId),
-        // Nessuna riga = sbloccato di default (SPEC §2.3).
+        // Stato di sblocco scelto dall'utente, se c'è (SPEC §2.3).
         userStateDao.observeCharacterUnlock(characterId),
     ) { character, outfits, unlockedOrNull ->
         SkinDetailUiState(
@@ -46,7 +47,8 @@ class SkinDetailViewModel @Inject constructor(
             characterImageUrl = character?.imageUrl,
             ownedCount = outfits.count { it.owned },
             totalCount = outfits.size,
-            unlocked = unlockedOrNull ?: true,
+            // Nessuna riga = stato iniziale dal seed (disponibile dall'inizio o da sbloccare).
+            unlocked = unlockedOrNull ?: character?.starter ?: true,
             outfits = outfits,
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SkinDetailUiState())

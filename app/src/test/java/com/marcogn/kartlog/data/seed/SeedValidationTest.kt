@@ -28,6 +28,10 @@ class SeedValidationTest {
             alternative.map { it.characterId }.distinct().size,
         )
 
+        val characters = assets.readItems<CharacterDto>("characters.json")
+        assertEquals(ExpectedCounts["drivers"], characters.size)
+        assertEquals(ExpectedCounts["starter_drivers"], characters.count { it.starter == true })
+
         val foodGroups = assets.readItems<FoodGroupDto>("food_groups.json")
         assertEquals(ExpectedCounts["food_groups"], foodGroups.size)
         assertEquals(ExpectedCounts["food_groups_reverting_to_default"], foodGroups.count { it.revertsToDefault })
