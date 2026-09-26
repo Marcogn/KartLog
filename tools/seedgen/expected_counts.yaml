@@ -10,6 +10,12 @@
 game_version: "1.8.0"
 
 characters_with_outfits: 24
+
+# Piloti selezionabili, con e senza outfit. Verifica 26/09/2026: gallerie "Default drivers" (32) e
+# "Unlockable drivers" (18) della pagina "Mario Kart World" di Super Mario Wiki (revid 5498278),
+# stessi numeri sulla pagina "Mario Kart World" di mariowiki.it (sezioni "Di base" e "Sbloccabili").
+drivers: 50
+starter_drivers: 32
 alternative_outfits: 103
 total_outfits_including_default: 127
 

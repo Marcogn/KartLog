@@ -2,13 +2,13 @@
   "extractedOn": "2026-09-26",
   "gameVersion": "1.8.0",
   "license": {
-    "attribution": "Dati di gioco tratti da Super Mario Wiki (mariowiki.com)",
+    "attribution": "Dati di gioco tratti da Super Mario Wiki (mariowiki.com) e Super Mario Wiki italiana (mariowiki.it)",
     "name": "CC BY-SA 4.0",
     "url": "https://creativecommons.org/licenses/by-sa/4.0/"
   },
   "note": "",
   "origin": "api",
-  "seedVersion": 4,
+  "seedVersion": 5,
   "sources": [
     {
       "revid": 5455370,
@@ -89,6 +89,16 @@
       "revid": 5488553,
       "title": "Turnip Rally",
       "url": "https://www.mariowiki.com/Turnip_Rally"
+    },
+    {
+      "revid": 698015,
+      "title": "Mario Kart World",
+      "url": "https://www.mariowiki.it/Mario_Kart_World"
+    },
+    {
+      "revid": 686389,
+      "title": "Lista delle missioni di Mario Kart World",
+      "url": "https://www.mariowiki.it/Lista_delle_missioni_di_Mario_Kart_World"
     },
     {
       "revid": 5498278,

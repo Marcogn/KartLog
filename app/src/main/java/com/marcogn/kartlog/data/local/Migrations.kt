@@ -74,3 +74,18 @@ val MIGRATION_3_4 = object : Migration(3, 4) {
         db.execSQL("ALTER TABLE events ADD COLUMN imageUrl TEXT")
     }
 }
+
+/**
+ * v4 -> v5: `starter` su `characters` (disponibile dall'inizio o da sbloccare, seedgen/images.py) e
+ * `nameIt` su `regions`, `events`, `food_groups` (mariowiki.it e traduzione manuale dei cibi).
+ * Solo tabelle seed: i valori arrivano dal reseed. `character_unlocks` non si tocca: chi aveva già
+ * segnato un personaggio mantiene la sua scelta, gli altri seguono il nuovo `starter`.
+ */
+val MIGRATION_4_5 = object : Migration(4, 5) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL("ALTER TABLE characters ADD COLUMN starter INTEGER NOT NULL DEFAULT 1")
+        db.execSQL("ALTER TABLE regions ADD COLUMN nameIt TEXT")
+        db.execSQL("ALTER TABLE events ADD COLUMN nameIt TEXT")
+        db.execSQL("ALTER TABLE food_groups ADD COLUMN nameIt TEXT")
+    }
+}

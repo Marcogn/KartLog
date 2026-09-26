@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.marcogn.kartlog.data.local.KartLogDatabase
+import com.marcogn.kartlog.data.local.entity.CharacterUnlockEntity
 import com.marcogn.kartlog.data.local.entity.OwnedOutfitEntity
 import com.marcogn.kartlog.data.seed.SeedAssetLoader
 import com.marcogn.kartlog.data.seed.SeedRepository
@@ -49,8 +50,8 @@ class SkinDaoTest {
     fun `a seed appena caricato ogni personaggio ha solo il default posseduto`() = runBlocking {
         val characters = db.skinDao().charactersWithProgress().first()
 
-        assertEquals(24, characters.size)
-        characters.forEach { character ->
+        assertEquals(50, characters.size)
+        characters.filter { it.hasOutfits }.forEach { character ->
             assertEquals("${character.name}: solo il default dovrebbe essere posseduto", 1, character.ownedOutfits)
             assertTrue("${character.name} non dovrebbe risultare completo", !character.isComplete)
         }
@@ -95,5 +96,32 @@ class SkinDaoTest {
 
         // Outfit di default: mai un nome, in nessuna lingua (SPEC §2.3, mostrato come "Standard").
         assertEquals(null, outfits.first { it.isDefault }.outfitNameIt)
+    }
+
+    @Test
+    fun `i piloti senza outfit partono dallo stato del seed e si sbloccano col tap`() = runBlocking {
+        val characters = db.skinDao().charactersWithProgress().first().associateBy { it.id }
+        assertEquals(24, characters.values.count { it.hasOutfits })
+
+        // Pilota di base senza outfit: già sbloccato, quindi "completo" (non c'è altro da raccogliere).
+        val goomba = characters.getValue("goomba")
+        assertTrue(!goomba.hasOutfits && goomba.unlocked && goomba.isComplete)
+
+        // Sbloccabile senza outfit: parte bloccato; segnarlo lo sblocca e lo completa.
+        val dolphin = characters.getValue("dolphin")
+        assertTrue(!dolphin.unlocked && !dolphin.isComplete)
+        db.userStateDao().setCharacterUnlock(CharacterUnlockEntity(characterId = "dolphin", unlocked = true))
+        val after = db.skinDao().charactersWithProgress().first().first { it.id == "dolphin" }
+        assertTrue(after.unlocked && after.isComplete)
+
+        // Sbloccabile con outfit (Daisy): bloccato finché l'utente non lo segna.
+        assertTrue(!characters.getValue("daisy").unlocked)
+    }
+
+    @Test
+    fun `i cibi hanno anche il nome italiano non ufficiale`() = runBlocking {
+        val touring = db.skinDao().outfitsForCharacter("mario").first().first { it.outfitName == "Touring" }
+        assertTrue(touring.foodGroups!!.contains("Hamburger"))
+        assertEquals(touring.foodGroups!!.split(" · ").size, touring.foodGroupsIt!!.split(" · ").size)
     }
 }

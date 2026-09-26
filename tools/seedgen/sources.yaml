@@ -59,6 +59,15 @@ pages:
     - "Propeller Rally"
     - "Turnip Rally"
 
+# Super Mario Wiki italiana (CC BY-SA 4.0): seconda fonte, SOLO per i nomi italiani che mariowiki.com
+# non ha (piloti senza outfit, biomi, Trofei e rally). Scaricata sempre dal vivo. Vedi seedgen/it_wiki.py.
+it_wiki:
+  api_url: "https://www.mariowiki.it/api.php"
+  page_url_prefix: "https://www.mariowiki.it/"
+  pages:
+    game: "Mario Kart World"
+    missions: "Lista delle missioni di Mario Kart World"
+
 # Cup cercate nella navbox, in ordine di gioco.
 cups:
   - "Mushroom Cup"

@@ -6,6 +6,7 @@
       ],
       "id": "hamburger",
       "name": "Hamburger",
+      "nameIt": "Hamburger",
       "revertsToDefault": false
     },
     {
@@ -14,6 +15,7 @@
       ],
       "id": "donut",
       "name": "Donut",
+      "nameIt": "Ciambella",
       "revertsToDefault": false
     },
     {
@@ -22,6 +24,7 @@
       ],
       "id": "spicy_curry",
       "name": "Spicy curry",
+      "nameIt": "Curry piccante",
       "revertsToDefault": false
     },
     {
@@ -30,6 +33,7 @@
       ],
       "id": "barbecue",
       "name": "Barbecue",
+      "nameIt": "Barbecue",
       "revertsToDefault": false
     },
     {
@@ -38,6 +42,7 @@
       ],
       "id": "wild_bone",
       "name": "Wild bone",
+      "nameIt": "Carne con l'osso",
       "revertsToDefault": false
     },
     {
@@ -46,6 +51,7 @@
       ],
       "id": "pancakes",
       "name": "Pancakes",
+      "nameIt": "Pancake",
       "revertsToDefault": false
     },
     {
@@ -54,6 +60,7 @@
       ],
       "id": "ice_cream",
       "name": "Ice cream",
+      "nameIt": "Gelato",
       "revertsToDefault": false
     },
     {
@@ -62,6 +69,7 @@
       ],
       "id": "magma_curry",
       "name": "Magma curry",
+      "nameIt": "Curry magma",
       "revertsToDefault": false
     },
     {
@@ -70,6 +78,7 @@
       ],
       "id": "fruit_barrel",
       "name": "Fruit barrel",
+      "nameIt": "Barile di frutta",
       "revertsToDefault": false
     },
     {
@@ -78,6 +87,7 @@
       ],
       "id": "moo_moo_milk",
       "name": "Moo Moo Milk",
+      "nameIt": "Latte Muu Muu",
       "revertsToDefault": false
     },
     {
@@ -86,6 +96,7 @@
       ],
       "id": "cake",
       "name": "Cake",
+      "nameIt": "Torta",
       "revertsToDefault": false
     },
     {
@@ -94,6 +105,7 @@
       ],
       "id": "bread",
       "name": "Bread",
+      "nameIt": "Pane",
       "revertsToDefault": false
     },
     {
@@ -102,6 +114,7 @@
       ],
       "id": "pizza",
       "name": "Pizza",
+      "nameIt": "Pizza",
       "revertsToDefault": false
     },
     {
@@ -110,6 +123,7 @@
       ],
       "id": "fritters",
       "name": "Fritters & potatoes",
+      "nameIt": "Frittelle e patate",
       "revertsToDefault": false
     },
     {
@@ -121,6 +135,7 @@
       ],
       "id": "sushi",
       "name": "Takoyaki / Candy apple / Cheep Cheep taiyaki / Sushi",
+      "nameIt": "Takoyaki / Mela caramellata / Taiyaki Pesce Smack / Sushi",
       "revertsToDefault": false
     },
     {
@@ -129,6 +144,7 @@
       ],
       "id": "snacks_1",
       "name": "Snacks 1",
+      "nameIt": "Snack 1",
       "revertsToDefault": false
     },
     {
@@ -137,6 +153,7 @@
       ],
       "id": "snacks_2",
       "name": "Snacks 2",
+      "nameIt": "Snack 2",
       "revertsToDefault": false
     },
     {
@@ -145,6 +162,7 @@
       ],
       "id": "snacks_3",
       "name": "Snacks 3",
+      "nameIt": "Snack 3",
       "revertsToDefault": false
     },
     {
@@ -153,6 +171,7 @@
       ],
       "id": "popcorn",
       "name": "Popcorn",
+      "nameIt": "Popcorn",
       "revertsToDefault": false
     },
     {
@@ -161,6 +180,7 @@
       ],
       "id": "lunchbox",
       "name": "Lunchbox",
+      "nameIt": "Pranzo al sacco",
       "revertsToDefault": true
     }
   ],

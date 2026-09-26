@@ -54,23 +54,46 @@ class WikiClient:
         self._started = time.monotonic()
 
     def fetch(self, title: str) -> WikiPage:
-        params = {
+        data = self._get(title, {
             "action": "parse",
             "page": title,
             "prop": "text|revid",
-            "format": "json",
-            "formatversion": "2",
             "disablelimitreport": "1",
             "disableeditsection": "1",
             "disabletoc": "1",
             "redirects": "1",
-            "maxlag": str(self.maxlag),
-        }
+        })
+        parsed = data["parse"]
+        return WikiPage(title=parsed["title"], revid=int(parsed["revid"]), html=parsed["text"])
+
+    def langlinks(self, titles: list[str], lang: str = "en") -> dict[str, str]:
+        """Titolo -> titolo della pagina collegata nella lingua `lang` (solo quelli che ne hanno una)."""
+        result: dict[str, str] = {}
+        for start in range(0, len(titles), 50):  # limite della MediaWiki API per `titles`
+            batch = titles[start:start + 50]
+            data = self._get(batch[0], {
+                "action": "query",
+                "prop": "langlinks",
+                "lllang": lang,
+                "lllimit": "max",
+                "titles": "|".join(batch),
+            })
+            query = data.get("query", {})
+            # Titoli normalizzati dall'API (es. spazi/maiuscole): si riportano a quelli richiesti.
+            back = {n["to"]: n["from"] for n in query.get("normalized", [])}
+            for page in query.get("pages", []):  # formatversion=2: lista, non dizionario
+                links = page.get("langlinks") or []
+                if links:
+                    result[back.get(page["title"], page["title"])] = links[0].get("*") or links[0].get("title")
+        return result
+
+    def _get(self, label: str, params: dict) -> dict:
+        params = {**params, "format": "json", "formatversion": "2", "maxlag": str(self.maxlag)}
         delay = 2.0
         last_error = ""
         for attempt in range(1, self.max_retries + 1):
             if time.monotonic() - self._started > self.total_timeout:
-                raise NetworkError(f"Timeout totale superato durante il download di {title!r}")
+                raise NetworkError(f"Timeout totale superato durante il download di {label!r}")
             try:
                 resp = self.session.get(self.api_url, params=params, timeout=self.timeout)
             except requests.RequestException as exc:
@@ -80,7 +103,7 @@ class WikiClient:
                     last_error = f"HTTP {resp.status_code}"
                     delay = float(resp.headers.get("Retry-After", delay))
                 elif resp.status_code != 200:
-                    raise NetworkError(f"HTTP {resp.status_code} per {title!r}")
+                    raise NetworkError(f"HTTP {resp.status_code} per {label!r}")
                 else:
                     data = resp.json()
                     error = data.get("error")
@@ -89,14 +112,13 @@ class WikiClient:
                         delay = float(resp.headers.get("Retry-After", delay))
                     elif error:
                         # es. missingtitle: il titolo in sources.yaml non esiste più.
-                        raise ParseError(f"Errore API per {title!r}: {error.get('code')}: {error.get('info')}")
+                        raise ParseError(f"Errore API per {label!r}: {error.get('code')}: {error.get('info')}")
                     else:
-                        parsed = data["parse"]
-                        return WikiPage(title=parsed["title"], revid=int(parsed["revid"]), html=parsed["text"])
+                        return data
             if attempt < self.max_retries:
                 time.sleep(delay)
                 delay = min(delay * 2, 60)
-        raise NetworkError(f"Impossibile scaricare {title!r} dopo {self.max_retries} tentativi ({last_error})")
+        raise NetworkError(f"Impossibile scaricare {label!r} dopo {self.max_retries} tentativi ({last_error})")
 
 
 def all_titles(cfg) -> list[str]:
@@ -154,3 +176,26 @@ def fetch_i18n(cfg) -> dict[str, WikiPage]:
 def fetch_images_page(cfg) -> WikiPage:
     """Sempre dal wiki, mai da fixture (vedi seedgen/images.py)."""
     return WikiClient(cfg.sources).fetch(cfg.sources["pages"]["images"])
+
+
+def it_client(cfg) -> WikiClient:
+    """Client per mariowiki.it: stesso User-Agent e stesse regole di cortesia, altra API."""
+    return WikiClient({**cfg.sources, "api_url": cfg.sources["it_wiki"]["api_url"]})
+
+
+def fetch_it_names(cfg):
+    """Sempre dal vivo, mai da fixture (seedgen/it_wiki.py). Restituisce (ItNames, pagine lette)."""
+    from .it_wiki import ItNames, extract_biomes, extract_drivers, extract_events
+
+    client = it_client(cfg)
+    pages = cfg.sources["it_wiki"]["pages"]
+    game = client.fetch(pages["game"])
+    missions = client.fetch(pages["missions"])
+    drivers = extract_drivers(game.html)
+    names = ItNames(
+        drivers=drivers,
+        langlinks=client.langlinks(sorted(drivers)),
+        events=extract_events(game.html),
+        biomes=extract_biomes(missions.html),
+    )
+    return names, [game, missions]

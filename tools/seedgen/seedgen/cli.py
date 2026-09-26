@@ -24,6 +24,7 @@ from .config import Config
 from .errors import EXIT_CHANGED, EXIT_OK, SeedgenError, ValidationError
 from .i18n import Translations
 from .images import Images, extract_images
+from .it_wiki import ItNames
 from .output import COMPARED_FILES, diff, read_seed, write_seed
 from .parse import parse_all, parse_translations
 from .raw import RawData, RawSource
@@ -73,12 +74,19 @@ def _generate(args, cfg: Config, out: Path, seed_dir: Path | None) -> dict:
     live = not args.from_raw and not args.from_fixtures
     translations = parse_translations(wiki.fetch_i18n(cfg), cfg) if live else Translations()
     images = Images()
+    it_names = ItNames()
     if live:
+        # Seconda fonte per i nomi italiani che mariowiki.com non ha (seedgen/it_wiki.py).
+        it_names, it_pages = wiki.fetch_it_names(cfg)
+        prefix = cfg.sources["it_wiki"]["page_url_prefix"]
+        for p in it_pages:
+            raw.sources.append(RawSource(title=p.title, revid=p.revid, url=prefix + p.title.replace(" ", "_")))
         # Stessa logica dei nomi in italiano: solo URL, estratti dal vivo (seedgen/images.py).
         page = wiki.fetch_images_page(cfg)
         images = extract_images(page.html)
         raw.sources.append(RawSource(title=page.title, revid=page.revid))
-    seed = build(raw, cfg, seed_version=_current_version(seed_dir), translations=translations, images=images)
+    seed = build(raw, cfg, seed_version=_current_version(seed_dir), translations=translations, images=images,
+                 it_names=it_names)
     validate(seed, cfg)
     write_seed(seed, out)
     _log(f"seed valido scritto in {out}")

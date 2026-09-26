@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.marcogn.kartlog.data.local.dao.PSwitchesDao
 import com.marcogn.kartlog.data.local.dao.UserStateDao
 import com.marcogn.kartlog.data.local.entity.CompletedPSwitchEntity
+import com.marcogn.kartlog.domain.model.relocalizing
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -44,7 +45,7 @@ class PSwitchesViewModel @Inject constructor(
 
     private val query = MutableStateFlow("")
 
-    val uiState: StateFlow<PSwitchesUiState> = combine(pSwitchesDao.allPSwitches(), query) { all, q ->
+    val uiState: StateFlow<PSwitchesUiState> = combine(pSwitchesDao.allPSwitches().relocalizing(), query) { all, q ->
         val filtered = if (q.isBlank()) all else all.filter { it.name.contains(q, ignoreCase = true) }
         val regions = filtered.groupBy { it.regionId }.map { (_, regionRows) ->
             val first = regionRows.first()
@@ -56,7 +57,7 @@ class PSwitchesViewModel @Inject constructor(
             }.sortedBy { it.locationName }
             RegionPSwitches(
                 regionId = first.regionId,
-                regionName = first.regionName,
+                regionName = first.localizedRegionName,
                 regionOrder = first.regionOrder,
                 completed = regionRows.count { it.completed },
                 total = regionRows.size,

@@ -33,11 +33,14 @@ cronologia di cosa è arrivato in ciascuna fase.
 
 Dalla specifica completa ([`SPEC.md`](SPEC.md)):
 
-- **Skin**: griglia dei personaggi con contatore ottenuti/totali; per
-  ciascuno, checklist degli outfit con i gruppi di cibo che li
-  sbloccano e uno switch per lo stato di sblocco del personaggio.
-- **Monete Peach e Pulsanti P**: checklist per regione, con ricerca,
-  "segna tutti" e contatore globale.
+- **Personaggi**: tutti i 50 piloti, con contatore ottenuti/totali degli
+  outfit per i 24 che ne hanno; per ciascuno, checklist degli outfit
+  con i gruppi di cibo che li sbloccano e uno switch per lo stato di
+  sblocco. I piloti senza outfit si segnano come sbloccati con un tap.
+- **Monete Peach**: un contatore per bioma (− / +), con contatore
+  globale.
+- **Pulsanti P**: checklist per bioma e percorso, con ricerca e
+  "segna tutti".
 - **Consigliami**: classifica dei Gran Premi/Knockout Tour da correre in
   base agli outfit ancora mancanti, con personaggio consigliato, le due
   alternative successive e i cibi rilevanti sul percorso (o nei
@@ -48,6 +51,8 @@ Dalla specifica completa ([`SPEC.md`](SPEC.md)):
   Consigliami.
 - **Backup**: export/import JSON dello stato utente (non dei dati di
   gioco) tramite Storage Access Framework, dalla schermata Impostazioni.
+- **Impostazioni**: tema (sistema/chiaro/scuro) e lingua dell'app
+  (sistema/italiano/inglese).
 
 ## Dati di gioco
 
@@ -57,6 +62,14 @@ contenuti testuali in licenza **CC BY-SA 4.0**, estratti dallo script in
 [`tools/seedgen/`](tools/seedgen/README.md) e versionati in
 [`seed/`](seed/README.md). Nessun dato è inventato: dettagli su fonti,
 regole di estrazione e attribuzione in [`SPEC.md`](SPEC.md) §5.
+
+I nomi italiani vengono da mariowiki.com e, per quello che lì manca
+(piloti senza outfit, biomi, Gran Premi e Knockout Tour), dalla
+[**Super Mario Wiki italiana**](https://www.mariowiki.it) (anch'essa
+CC BY-SA 4.0). Due eccezioni: le missioni dei Pulsanti P restano in
+inglese (la lista italiana è incompleta), e i nomi italiani dei **cibi**
+sono una **traduzione non ufficiale** fatta a mano, perché nessuna fonte
+li riporta.
 
 ## Immagini
 

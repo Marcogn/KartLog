@@ -297,6 +297,11 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
 
+    // Selettore di lingua (AppCompatDelegate.setApplicationLocales) e di tema (DataStore), come
+    // in ThePatientGamerHelper.
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.datastore.preferences)
+
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.robolectric)

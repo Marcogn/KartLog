@@ -37,6 +37,9 @@ class Images:
     characters: dict[str, str] = field(default_factory=dict)             # titolo pagina pilota -> URL
     outfits: dict[tuple[str, str], str] = field(default_factory=dict)   # (personaggio, outfit) -> URL
     events: dict[str, str] = field(default_factory=dict)                 # "Mushroom Cup" -> URL
+    # Titoli dei piloti nella galleria "Default drivers": disponibili dall'inizio. Gli altri
+    # (galleria "Unlockable drivers") si sbloccano giocando.
+    starters: frozenset[str] = frozenset()
 
     def is_empty(self) -> bool:
         return not (self.characters or self.outfits or self.events)
@@ -83,8 +86,9 @@ def _gallery_items(gallery: Tag) -> list[tuple[Tag, Tag]]:
     return items
 
 
-def _parse_drivers(soup: BeautifulSoup) -> dict[str, str]:
+def _parse_drivers(soup: BeautifulSoup) -> tuple[dict[str, str], frozenset[str]]:
     characters: dict[str, str] = {}
+    starters: set[str] = set()
     for anchor in DRIVER_SECTIONS:
         for node in _section_nodes(soup, anchor):
             galleries = [node] if "gallery" in (node.get("class") or []) else node.find_all("ul", class_="gallery")
@@ -92,8 +96,11 @@ def _parse_drivers(soup: BeautifulSoup) -> dict[str, str]:
                 for img, text in _gallery_items(gallery):
                     link = text.find("a")
                     if link is not None:
-                        characters.setdefault(link.get("title") or link.get_text(strip=True), original_url(img))
-    return characters
+                        title = link.get("title") or link.get_text(strip=True)
+                        characters.setdefault(title, original_url(img))
+                        if anchor == "Default_drivers":
+                            starters.add(title)
+    return characters, frozenset(starters)
 
 
 def _parse_outfits(soup: BeautifulSoup) -> dict[tuple[str, str], str]:
@@ -125,4 +132,5 @@ def _parse_events(soup: BeautifulSoup) -> dict[str, str]:
 
 def extract_images(html: str) -> Images:
     soup = BeautifulSoup(html, "html.parser")
-    return Images(characters=_parse_drivers(soup), outfits=_parse_outfits(soup), events=_parse_events(soup))
+    characters, starters = _parse_drivers(soup)
+    return Images(characters=characters, outfits=_parse_outfits(soup), events=_parse_events(soup), starters=starters)

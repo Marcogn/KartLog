@@ -15,8 +15,8 @@ import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Checkroom
 import androidx.compose.material.icons.filled.EmojiEvents
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Lightbulb
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MonetizationOn
@@ -72,7 +72,7 @@ fun HomeScreen(
 
     val tiles = listOf(
         HomeTile(
-            icon = Icons.Filled.Checkroom,
+            icon = Icons.Filled.Face,
             title = stringResource(R.string.home_option_skin_title),
             counter = counter(state.ownedOutfits, state.totalOutfits),
             color = MaterialTheme.colorScheme.primary,
@@ -93,11 +93,11 @@ fun HomeScreen(
             onClick = onPSwitchesClick,
         ),
         HomeTile(
-            icon = Icons.Filled.Lightbulb,
-            title = stringResource(R.string.home_option_consigliami_title),
-            counter = null,
+            icon = Icons.Filled.EmojiEvents,
+            title = stringResource(R.string.home_option_results_title),
+            counter = counter(state.eventsWithResult, state.totalEvents),
             color = MaterialTheme.colorScheme.primary,
-            onClick = onConsigliamiClick,
+            onClick = onResultsClick,
         ),
     )
 
@@ -123,25 +123,18 @@ fun HomeScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             items(tiles) { tile -> HomeTileCard(tile) }
-            // Pulsante largo a tutta riga (SPEC §2.1): i risultati alimentano Consigliami ma si
-            // registrano qui, non da dentro Consigliami.
+            // Pulsante largo a tutta riga (SPEC §2.1): Consigliami non ha un contatore, ha bisogno
+            // di una riga di spiegazione per far capire cosa fa.
             item(span = { GridItemSpan(maxLineSpan) }) {
-                ResultsButton(
-                    counter = if (state.totalEvents == 0) {
-                        notAvailable
-                    } else {
-                        stringResource(R.string.home_results_counter_format, state.eventsWithResult, state.totalEvents)
-                    },
-                    onClick = onResultsClick,
-                )
+                ConsigliamiButton(onClick = onConsigliamiClick)
             }
         }
     }
 }
 
 @Composable
-private fun ResultsButton(counter: String, onClick: () -> Unit) {
-    val color = MaterialTheme.colorScheme.secondary
+private fun ConsigliamiButton(onClick: () -> Unit) {
+    val color = MaterialTheme.colorScheme.tertiary
     Card(
         onClick = onClick,
         modifier = Modifier.fillMaxWidth(),
@@ -154,7 +147,7 @@ private fun ResultsButton(counter: String, onClick: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Icon(
-                imageVector = Icons.Filled.EmojiEvents,
+                imageVector = Icons.Filled.Lightbulb,
                 contentDescription = null,
                 tint = color,
                 modifier = Modifier
@@ -163,17 +156,11 @@ private fun ResultsButton(counter: String, onClick: () -> Unit) {
                     .padding(12.dp),
             )
             Column(modifier = Modifier.padding(start = 16.dp)) {
-                Text(stringResource(R.string.home_option_results_title), style = MaterialTheme.typography.titleLarge)
+                Text(stringResource(R.string.home_option_consigliami_title), style = MaterialTheme.typography.titleLarge)
                 Text(
-                    stringResource(R.string.home_option_results_subtitle),
+                    stringResource(R.string.home_option_consigliami_subtitle),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-                Text(
-                    counter,
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(top = 4.dp),
                 )
             }
         }

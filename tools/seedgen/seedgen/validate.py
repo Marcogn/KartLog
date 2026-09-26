@@ -145,6 +145,14 @@ def validate(seed: dict, cfg: Config) -> None:
             check(m["regionId"] == expected_region,
                   f"{m['id']} ({m['name']}): elencato in {m['regionId']} ma {place} è in {expected_region}")
 
+    # --- Piloti (anche senza outfit) e stato iniziale di sblocco ---------------------------------
+    check(len(characters) == exp["drivers"], f"piloti: {len(characters)}, attesi {exp['drivers']}")
+    starters = [c.get("starter") for c in characters]
+    if any(s is not None for s in starters):
+        check(None not in starters, "starter: presente solo su una parte dei piloti")
+        check(sum(bool(s) for s in starters) == exp["starter_drivers"],
+              f"piloti di base: {sum(bool(s) for s in starters)}, attesi {exp['starter_drivers']}")
+
     # --- Immagini (seedgen/images.py): solo URL del CDN del wiki, mai file locali ----------------
     for name, items in [("characters", characters), ("outfits", outfits), ("events", events)]:
         for i in items:

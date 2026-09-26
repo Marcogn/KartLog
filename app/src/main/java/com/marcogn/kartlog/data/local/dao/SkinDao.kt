@@ -2,26 +2,28 @@ package com.marcogn.kartlog.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Query
+import com.marcogn.kartlog.domain.model.localizedName
 import kotlinx.coroutines.flow.Flow
 
-/** Query di sola lettura per la schermata Skin (SPEC §2.3): incrociano dati seed e stato utente. */
+/** Query di sola lettura per la schermata Personaggi (SPEC §2.3): incrociano dati seed e stato utente. */
 @Dao
 interface SkinDao {
 
     /**
-     * Un personaggio per riga, con quanti dei suoi outfit sono posseduti. Solo i personaggi con
-     * almeno un outfit alternativo (SPEC §2.3) — con i dati attuali sono tutti e 24.
+     * Un pilota per riga, con quanti dei suoi outfit sono posseduti (0/0 per i piloti senza
+     * outfit) e se è sbloccato: la scelta dell'utente se c'è, altrimenti `starter` dal seed.
      */
     @Query(
         """
         SELECT c.id AS id, c.name AS name, c.nameIt AS nameIt, c.rosterOrder AS rosterOrder, c.imageUrl AS imageUrl,
+               COALESCE(cu.unlocked, c.starter) AS unlocked,
                COUNT(o.id) AS totalOutfits,
                SUM(CASE WHEN oo.outfitId IS NOT NULL THEN 1 ELSE 0 END) AS ownedOutfits
         FROM characters c
-        JOIN outfits o ON o.characterId = c.id
+        LEFT JOIN outfits o ON o.characterId = c.id
         LEFT JOIN owned_outfits oo ON oo.outfitId = o.id
+        LEFT JOIN character_unlocks cu ON cu.characterId = c.id
         GROUP BY c.id
-        HAVING SUM(CASE WHEN o.isDefault = 0 THEN 1 ELSE 0 END) > 0
         ORDER BY c.rosterOrder ASC
         """
     )
@@ -45,7 +47,13 @@ interface SkinDao {
                    FROM outfit_food_rules ofr
                    JOIN food_groups fg ON fg.id = ofr.foodGroupId
                    WHERE ofr.outfitId = o.id
-               ) AS foodGroups
+               ) AS foodGroups,
+               (
+                   SELECT GROUP_CONCAT(COALESCE(fg.nameIt, fg.name), ' · ')
+                   FROM outfit_food_rules ofr
+                   JOIN food_groups fg ON fg.id = ofr.foodGroupId
+                   WHERE ofr.outfitId = o.id
+               ) AS foodGroupsIt
         FROM outfits o
         LEFT JOIN owned_outfits oo ON oo.outfitId = o.id
         WHERE o.characterId = :characterId
@@ -61,10 +69,15 @@ data class CharacterProgress(
     val nameIt: String?,
     val rosterOrder: Int,
     val imageUrl: String?,
+    val unlocked: Boolean,
     val totalOutfits: Int,
     val ownedOutfits: Int,
 ) {
-    val isComplete: Boolean get() = ownedOutfits >= totalOutfits
+    /** Piloti senza outfit alternativi (Goomba, Mucca…): nessuna schermata di dettaglio. */
+    val hasOutfits: Boolean get() = totalOutfits > 0
+
+    /** Con outfit: tutti posseduti. Senza: basta averlo sbloccato, non c'è altro da raccogliere. */
+    val isComplete: Boolean get() = if (hasOutfits) ownedOutfits >= totalOutfits else unlocked
 }
 
 data class OutfitProgress(
@@ -75,4 +88,8 @@ data class OutfitProgress(
     val imageUrl: String?,
     val owned: Boolean,
     val foodGroups: String?,
-)
+    /** Stessa lista con i nomi italiani (traduzione NON ufficiale dei cibi, vedi il seed). */
+    val foodGroupsIt: String?,
+) {
+    val localizedFoodGroups: String? get() = foodGroups?.let { localizedName(it, foodGroupsIt) }
+}

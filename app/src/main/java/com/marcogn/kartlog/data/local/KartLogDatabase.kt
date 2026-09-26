@@ -53,7 +53,7 @@ const val DATABASE_NAME = "kartlog.db"
         CompletedPSwitchEntity::class,
         BestResultEntity::class,
     ],
-    version = 4,
+    version = 5,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)

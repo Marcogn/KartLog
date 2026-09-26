@@ -115,4 +115,32 @@ class MigrationTest {
             assertEquals("GOLD", cursor.getString(0))
         }
     }
+
+    @Test
+    fun `migrazione 4 a 5 aggiunge starter e nameIt e conserva le scelte di sblocco`() {
+        helper.createDatabase(dbName, 4).apply {
+            execSQL(
+                "INSERT INTO characters (id, name, nameIt, rosterOrder, imageRes, imageUrl) " +
+                    "VALUES ('daisy', 'Daisy', 'Daisy', 3, NULL, NULL)"
+            )
+            execSQL("INSERT INTO character_unlocks (characterId, unlocked) VALUES ('daisy', 1)")
+            execSQL("INSERT INTO regions (id, name, `order`) VALUES ('mesa', 'Mesa biome', 0)")
+            close()
+        }
+
+        val migrated = helper.runMigrationsAndValidate(dbName, 5, true, MIGRATION_4_5)
+
+        migrated.query("SELECT starter FROM characters WHERE id = 'daisy'").use { cursor ->
+            assertEquals(true, cursor.moveToFirst())
+            assertEquals(1, cursor.getInt(0))  // default fino al reseed
+        }
+        migrated.query("SELECT nameIt FROM regions").use { cursor ->
+            assertEquals(true, cursor.moveToFirst())
+            assertEquals(true, cursor.isNull(0))
+        }
+        migrated.query("SELECT unlocked FROM character_unlocks WHERE characterId = 'daisy'").use { cursor ->
+            assertEquals(true, cursor.moveToFirst())
+            assertEquals(1, cursor.getInt(0))
+        }
+    }
 }

@@ -6,6 +6,32 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Personaggi al posto di Skin, con tutti i 50 piloti.** Oltre ai 24
+  con outfit ci sono i 26 che hanno un solo aspetto (Goomba, Mucca,
+  Delfì…): niente schermata di dettaglio, un tap li segna come sbloccati.
+  Lo stato iniziale viene dal wiki: i 32 piloti di base partono
+  sbloccati, i 18 sbloccabili no. Attenzione: DK, Daisy, Rosalinda,
+  Lakitu, Bowser Jr., Strutzi e Re Boo partono quindi bloccati e
+  Consigliami li ignora finché non li segni (se li avevi già toccati,
+  resta la tua scelta).
+- **Home riorganizzata.** Risultati entra nella griglia con il solo
+  contatore; Consigliami diventa il pulsante largo, con una riga che
+  spiega a cosa serve.
+- **Monete Peach come contatore per bioma.** Al posto delle caselle
+  "Medaglione 1…20", un contatore − / + per bioma con barra di
+  avanzamento. Le monete già segnate restano.
+- **Tema e lingua in Impostazioni.** Tema di sistema, chiaro o scuro, e
+  lingua di sistema, italiano o inglese, come in ThePatientGamerHelper.
+- **Più nomi in italiano.** Biomi, Gran Premi e Knockout Tour ("Trofeo
+  Fungo", "Rally Turbo") e i piloti nuovi, dalla Super Mario Wiki
+  italiana. I nomi italiani dei cibi sono una traduzione non ufficiale:
+  nessuna fonte li riporta. Le missioni dei Pulsanti P restano in
+  inglese: la lista italiana è ancora incompleta.
+- **Dati di gioco aggiornati (seedVersion 5).** Piloti senza outfit e
+  stato iniziale di sblocco (Mario Kart World@5498278), nomi italiani da
+  mariowiki.it (Mario Kart World@698015, Lista delle missioni di Mario
+  Kart World@686389).
+
 ## [0.1.4] - 2026-09-26
 
 - **Immagini di personaggi, outfit ed eventi.** Skin, dettaglio del

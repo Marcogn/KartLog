@@ -1,16 +1,21 @@
 package com.marcogn.kartlog.ui.skin
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -100,7 +105,17 @@ fun SkinScreen(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 items(state.characters, key = { it.id }) { character ->
-                    CharacterCard(character, onClick = { onCharacterClick(character.id) })
+                    CharacterCard(
+                        character,
+                        onClick = {
+                            // Solo chi ha outfit alternativi ha una schermata di dettaglio.
+                            if (character.hasOutfits) {
+                                onCharacterClick(character.id)
+                            } else {
+                                viewModel.onUnlockToggled(character.id, !character.unlocked)
+                            }
+                        },
+                    )
                 }
             }
         }
@@ -156,12 +171,27 @@ private fun CharacterCard(character: CharacterProgress, onClick: () -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             val displayName = localizedName(character.name, character.nameIt)
-            CharacterPortrait(
-                name = displayName,
-                imageUrl = character.imageUrl,
-                dimmed = character.isComplete,
-                modifier = Modifier.fillMaxWidth(),
-            )
+            Box {
+                CharacterPortrait(
+                    name = displayName,
+                    imageUrl = character.imageUrl,
+                    dimmed = character.isComplete,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                if (!character.unlocked) {
+                    Icon(
+                        Icons.Filled.Lock,
+                        contentDescription = stringResource(R.string.skin_locked),
+                        tint = MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier
+                            .align(Alignment.TopEnd)
+                            .padding(4.dp)
+                            .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.85f), CircleShape)
+                            .padding(4.dp)
+                            .size(16.dp),
+                    )
+                }
+            }
             Text(
                 text = displayName,
                 style = MaterialTheme.typography.titleSmall,
@@ -172,7 +202,12 @@ private fun CharacterCard(character: CharacterProgress, onClick: () -> Unit) {
                 modifier = Modifier.padding(top = 6.dp),
             )
             Text(
-                text = stringResource(R.string.home_counter_format, character.ownedOutfits, character.totalOutfits),
+                text = when {
+                    character.hasOutfits ->
+                        stringResource(R.string.home_counter_format, character.ownedOutfits, character.totalOutfits)
+                    character.unlocked -> stringResource(R.string.skin_unlocked)
+                    else -> stringResource(R.string.skin_locked)
+                },
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )

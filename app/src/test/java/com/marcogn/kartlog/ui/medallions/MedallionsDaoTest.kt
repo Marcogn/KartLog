@@ -16,7 +16,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 
-/** SPEC §2.4 (Monete Peach): raggruppamento per regione e "segna tutti". */
+/** SPEC §2.4 (Monete Peach): contatore per regione, +/- e "segna tutti". */
 @RunWith(RobolectricTestRunner::class)
 class MedallionsDaoTest {
 
@@ -55,5 +55,33 @@ class MedallionsDaoTest {
         val updated = db.medallionsDao().allMedallions().first()
         assertEquals(totalInRegion, updated.count { it.regionId == regionId && it.collected })
         assertTrue("le altre regioni non devono essere toccate", updated.none { it.regionId != regionId && it.collected })
+    }
+
+    @Test
+    fun `il contatore per regione sale e scende di uno e resta nei limiti`() = runBlocking {
+        val region = db.medallionsDao().regionCounters().first().first()
+        assertEquals(0, region.collected)
+
+        db.userStateDao().collectNextMedallion(region.regionId)
+        db.userStateDao().collectNextMedallion(region.regionId)
+        assertEquals(2, db.medallionsDao().regionCounters().first().first { it.regionId == region.regionId }.collected)
+
+        db.userStateDao().uncollectLastMedallion(region.regionId)
+        assertEquals(1, db.medallionsDao().regionCounters().first().first { it.regionId == region.regionId }.collected)
+
+        repeat(region.total + 3) { db.userStateDao().collectNextMedallion(region.regionId) }
+        val full = db.medallionsDao().regionCounters().first().first { it.regionId == region.regionId }
+        assertEquals(region.total, full.collected)
+
+        repeat(region.total + 3) { db.userStateDao().uncollectLastMedallion(region.regionId) }
+        assertEquals(0, db.medallionsDao().regionCounters().first().sumOf { it.collected })
+    }
+
+    @Test
+    fun `le regioni hanno il nome italiano`() = runBlocking {
+        val counters = db.medallionsDao().regionCounters().first()
+        assertEquals(10, counters.size)
+        assertEquals(200, counters.sumOf { it.total })
+        assertTrue(counters.all { !it.regionNameIt.isNullOrBlank() })
     }
 }

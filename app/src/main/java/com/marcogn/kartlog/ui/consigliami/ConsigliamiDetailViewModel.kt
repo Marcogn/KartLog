@@ -15,6 +15,7 @@ import com.marcogn.kartlog.domain.consigliami.ConsigliamiUseCase
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.TrophyRank
 import com.marcogn.kartlog.domain.model.localizedName
+import com.marcogn.kartlog.domain.model.relocalizing
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
@@ -44,7 +45,7 @@ class ConsigliamiDetailViewModel @Inject constructor(
     private val includeNearby: Boolean = checkNotNull(savedStateHandle["includeNearby"])
 
     val uiState: StateFlow<ConsigliamiDetailUiState> = combine(
-        combine(dao.characters(), dao.outfits(), dao.rules()) { c, o, r -> Triple(c, o, r) },
+        combine(dao.characters().relocalizing(), dao.outfits(), dao.rules()) { c, o, r -> Triple(c, o, r) },
         combine(dao.foodCourses(), dao.events(), dao.eventStops()) { fc, e, es -> Triple(fc, e, es) },
         dao.outfitNames(),
         userStateDao.bestResultsForEvent(eventId),
@@ -53,7 +54,7 @@ class ConsigliamiDetailViewModel @Inject constructor(
         val courseIds = eventStops.filter { it.eventId == eventId }.map { it.courseId }
         val details = eventEntity?.let { entity ->
             ConsigliamiUseCase.detailFor(
-                event = ConsigliamiEvent(entity.id, entity.type, entity.name, entity.order, courseIds),
+                event = ConsigliamiEvent(entity.id, entity.type, localizedName(entity.name, entity.nameIt), entity.order, courseIds),
                 characters = characters.map { ConsigliamiCharacter(it.id, it.rosterOrder, it.unlocked) },
                 outfits = outfits.map { ConsigliamiOutfit(it.id, it.characterId, it.owned) },
                 rules = rules.map { ConsigliamiRule(it.outfitId, it.foodGroupId) },
@@ -63,7 +64,7 @@ class ConsigliamiDetailViewModel @Inject constructor(
         }.orEmpty()
 
         ConsigliamiDetailUiState(
-            eventName = eventEntity?.name.orEmpty(),
+            eventName = eventEntity?.let { localizedName(it.name, it.nameIt) }.orEmpty(),
             eventImageUrl = eventEntity?.imageUrl,
             details = details,
             characterNames = characters.associate { it.id to localizedName(it.name, it.nameIt) },

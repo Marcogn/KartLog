@@ -19,6 +19,8 @@ data class CharacterDto(
     val nameIt: String? = null,
     val rosterOrder: Int,
     val imageUrl: String? = null,
+    /** null = seed senza la pagina "Mario Kart World" (seedgen da fixture): tutti disponibili. */
+    val starter: Boolean? = null,
 )
 
 @Serializable
@@ -32,7 +34,13 @@ data class OutfitDto(
 )
 
 @Serializable
-data class FoodGroupDto(val id: String, val name: String, val foods: List<String>, val revertsToDefault: Boolean)
+data class FoodGroupDto(
+    val id: String,
+    val name: String,
+    val foods: List<String>,
+    val revertsToDefault: Boolean,
+    val nameIt: String? = null,
+)
 
 @Serializable
 data class OutfitFoodRuleDto(val outfitId: String, val foodGroupId: String)
@@ -49,7 +57,7 @@ data class FoodGroupCourseDto(
 data class CourseDto(val id: String, val name: String, val nameIt: String? = null, val regionId: String? = null)
 
 @Serializable
-data class RegionDto(val id: String, val name: String, val order: Int)
+data class RegionDto(val id: String, val name: String, val order: Int, val nameIt: String? = null)
 
 @Serializable
 data class AreaDto(val id: String, val name: String, val regionId: String)
@@ -75,6 +83,7 @@ data class EventDto(
     val order: Int,
     val stops: List<String>,
     val imageUrl: String? = null,
+    val nameIt: String? = null,
 )
 
 @Serializable

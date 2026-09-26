@@ -1,5 +1,6 @@
 package com.marcogn.kartlog.data.local.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.marcogn.kartlog.domain.model.EventType
@@ -18,6 +19,11 @@ data class CharacterEntity(
     val imageRes: String? = null,
     /** Immagine sul CDN di Super Mario Wiki (seedgen/images.py), scaricata a runtime: mai nell'APK. */
     val imageUrl: String? = null,
+    /**
+     * Disponibile dall'inizio (galleria "Default drivers" del wiki) o da sbloccare giocando. Vale
+     * finché l'utente non registra uno stato proprio in `character_unlocks`.
+     */
+    @ColumnInfo(defaultValue = "1") val starter: Boolean = true,
 )
 
 @Entity(tableName = "outfits")
@@ -37,6 +43,8 @@ data class FoodGroupEntity(
     val name: String,
     val foods: List<String>,
     val revertsToDefault: Boolean,
+    /** Traduzione NON ufficiale (tools/seedgen/manual/food_names_it.yaml): nessuna fonte ha i nomi italiani. */
+    val nameIt: String? = null,
 )
 
 @Entity(tableName = "outfit_food_rules", primaryKeys = ["outfitId", "foodGroupId"])
@@ -66,6 +74,8 @@ data class RegionEntity(
     @PrimaryKey val id: String,
     val name: String,
     val order: Int,
+    /** Nome del bioma su mariowiki.it (seedgen/it_wiki.py). */
+    val nameIt: String? = null,
 )
 
 @Entity(tableName = "areas")
@@ -100,6 +110,8 @@ data class EventEntity(
     val order: Int,
     /** Icona della cup/del rally, vedi [CharacterEntity.imageUrl]. */
     val imageUrl: String? = null,
+    /** "Trofeo Fungo", "Rally Turbo"… da mariowiki.it (seedgen/it_wiki.py). */
+    val nameIt: String? = null,
 )
 
 @Entity(tableName = "event_stops", primaryKeys = ["eventId", "position"])

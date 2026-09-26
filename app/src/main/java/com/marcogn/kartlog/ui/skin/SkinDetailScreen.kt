@@ -112,7 +112,7 @@ fun SkinDetailScreen(
 private fun OutfitCard(outfit: OutfitProgress, onToggle: (Boolean) -> Unit) {
     val name = outfit.outfitName?.let { localizedName(it, outfit.outfitNameIt) }
         ?: stringResource(R.string.skin_default_outfit_name)
-    val foodLabel = outfit.foodGroups ?: stringResource(R.string.skin_unknown_food)
+    val foodLabel = outfit.localizedFoodGroups ?: stringResource(R.string.skin_unknown_food)
     Card(
         // L'outfit di default è sempre posseduto e non spuntabile (SPEC §2.3): la card non reagisce al tap.
         modifier = Modifier

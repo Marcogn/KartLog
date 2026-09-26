@@ -51,6 +51,30 @@ interface UserStateDao {
     @Query("DELETE FROM collected_medallions WHERE medallionId = :medallionId")
     suspend fun markMedallionNotCollected(medallionId: String)
 
+    /** +1 sul contatore di un bioma: segna il primo "posto" libero (vedi [MedallionsDao.regionCounters]). */
+    @Query(
+        """
+        INSERT OR IGNORE INTO collected_medallions (medallionId)
+        SELECT id FROM peach_medallions
+        WHERE regionId = :regionId AND id NOT IN (SELECT medallionId FROM collected_medallions)
+        ORDER BY "index" ASC LIMIT 1
+        """
+    )
+    suspend fun collectNextMedallion(regionId: String)
+
+    /** -1 sul contatore di un bioma: libera l'ultimo "posto" segnato. */
+    @Query(
+        """
+        DELETE FROM collected_medallions WHERE medallionId = (
+            SELECT cm.medallionId FROM collected_medallions cm
+            JOIN peach_medallions m ON m.id = cm.medallionId
+            WHERE m.regionId = :regionId
+            ORDER BY m."index" DESC LIMIT 1
+        )
+        """
+    )
+    suspend fun uncollectLastMedallion(regionId: String)
+
     @Query("SELECT COUNT(*) FROM collected_medallions")
     fun countCollectedMedallions(): Flow<Int>
 
