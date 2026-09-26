@@ -6,6 +6,11 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Niente iniziali dietro le immagini attenuate.** Sui personaggi
+  completati (immagine sbiadita) si intravedevano le iniziali del
+  segnaposto: ora il segnaposto compare solo finché l'immagine non è
+  caricata, o offline senza cache.
+
 ## [0.1.6] - 2026-09-26
 
 - **Personaggi al posto di Skin, con tutti i 50 piloti.** Oltre ai 24
