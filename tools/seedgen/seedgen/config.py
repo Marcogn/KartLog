@@ -25,6 +25,7 @@ class Entity:
     name: str
     order: int
     wiki_page: str | None = None  # titolo pagina per seedgen/i18n.py, se diverso da `name`
+    it_wiki_page: str | None = None  # titolo su mariowiki.it se manca il langlink (seedgen/it_wiki.py)
 
     def i18n_page(self) -> str:
         return self.wiki_page or self.name
@@ -40,7 +41,7 @@ class AliasTable:
         self._ignored = {self._key(x) for x in (ignored or [])}
         for order, (slug, spec) in enumerate(entries.items()):
             name = spec["name"]
-            self.entities.append(Entity(slug, name, order, spec.get("wikiPage")))
+            self.entities.append(Entity(slug, name, order, spec.get("wikiPage"), spec.get("itWikiPage")))
             for alias in [name, *spec.get("aliases", [])]:
                 key = self._key(alias)
                 if key in self._lookup and self._lookup[key] != slug:
@@ -74,7 +75,8 @@ class AliasTable:
 @dataclass
 class Config:
     sources: dict
-    characters: AliasTable
+    characters: AliasTable             # i 24 con outfit
+    drivers: AliasTable                # i piloti senza outfit (solo immagine, nome, sblocco)
     courses: AliasTable
     expected: dict
     equivalences: list
@@ -85,6 +87,17 @@ class Config:
     areas: AliasTable
     medallions: dict
     character_genders: dict[str, str]  # characterId -> "M"/"F", solo per seedgen/i18n.py
+    food_names_it: dict[str, str]      # nome inglese del cibo -> traduzione NON ufficiale
+
+    def all_drivers(self) -> list[Entity]:
+        """Tutti i piloti, in ordine di roster: prima i 24 con outfit, poi gli altri."""
+        return [*self.characters.entities, *self.drivers.entities]
+
+    def knows_driver(self, name: str) -> bool:
+        return self.characters.knows(name) or self.drivers.knows(name)
+
+    def resolve_driver(self, name: str, context: str = "") -> str:
+        return self.drivers.resolve(name, context) if self.drivers.knows(name) else self.characters.resolve(name, context)
 
     def yoshi_label_groups(self, label: str, context: str = "") -> list[str]:
         key = AliasTable._key(label)
@@ -111,6 +124,7 @@ class Config:
         return cls(
             sources=sources,
             characters=AliasTable("Personaggio", aliases["characters"]),
+            drivers=AliasTable("Pilota", aliases.get("drivers", {})),
             courses=AliasTable("Corso", aliases["courses"], aliases.get("ignored_course_links")),
             expected=expected,
             equivalences=aliases.get("equivalences", []),
@@ -121,4 +135,5 @@ class Config:
             areas=AliasTable("Luogo", aliases.get("areas", {})),
             medallions=_load_yaml(tool_dir / "manual" / "peach_medallions.yaml"),
             character_genders=_load_yaml(tool_dir / "manual" / "character_genders.yaml"),
+            food_names_it=_load_yaml(tool_dir / "manual" / "food_names_it.yaml"),
         )

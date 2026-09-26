@@ -5,168 +5,400 @@
       "imageUrl": "https://mario.wiki.gallery/images/5/51/MarioMKworld.png",
       "name": "Mario",
       "nameIt": "Mario",
-      "rosterOrder": 0
+      "rosterOrder": 0,
+      "starter": true
     },
     {
       "id": "luigi",
       "imageUrl": "https://mario.wiki.gallery/images/b/b5/LuigiMKworld.png",
       "name": "Luigi",
       "nameIt": "Luigi",
-      "rosterOrder": 1
+      "rosterOrder": 1,
+      "starter": true
     },
     {
       "id": "peach",
       "imageUrl": "https://mario.wiki.gallery/images/a/a1/PeachMKworld.png",
       "name": "Peach",
       "nameIt": "Peach",
-      "rosterOrder": 2
+      "rosterOrder": 2,
+      "starter": true
     },
     {
       "id": "daisy",
       "imageUrl": "https://mario.wiki.gallery/images/c/cc/DaisyMKworld.png",
       "name": "Daisy",
       "nameIt": "Daisy",
-      "rosterOrder": 3
+      "rosterOrder": 3,
+      "starter": false
     },
     {
       "id": "yoshi",
       "imageUrl": "https://mario.wiki.gallery/images/c/c9/YoshiMKworld.png",
       "name": "Yoshi",
       "nameIt": "Yoshi",
-      "rosterOrder": 4
+      "rosterOrder": 4,
+      "starter": true
     },
     {
       "id": "donkey_kong",
       "imageUrl": "https://mario.wiki.gallery/images/3/31/Dkmkworld.png",
       "name": "Donkey Kong",
       "nameIt": "Donkey Kong",
-      "rosterOrder": 5
+      "rosterOrder": 5,
+      "starter": false
     },
     {
       "id": "bowser",
       "imageUrl": "https://mario.wiki.gallery/images/a/af/BowserMKworld.png",
       "name": "Bowser",
       "nameIt": "Bowser",
-      "rosterOrder": 6
+      "rosterOrder": 6,
+      "starter": true
     },
     {
       "id": "bowser_jr",
       "imageUrl": "https://mario.wiki.gallery/images/7/79/Bowserjrmkworld.png",
       "name": "Bowser Jr.",
       "nameIt": "Bowser Junior",
-      "rosterOrder": 7
+      "rosterOrder": 7,
+      "starter": false
     },
     {
       "id": "koopa_troopa",
       "imageUrl": "https://mario.wiki.gallery/images/4/4e/KoopaMKworld.png",
       "name": "Koopa Troopa",
       "nameIt": "Koopa",
-      "rosterOrder": 8
+      "rosterOrder": 8,
+      "starter": true
     },
     {
       "id": "toad",
       "imageUrl": "https://mario.wiki.gallery/images/8/81/ToadMKworld.png",
       "name": "Toad",
       "nameIt": "Toad",
-      "rosterOrder": 9
+      "rosterOrder": 9,
+      "starter": true
     },
     {
       "id": "toadette",
       "imageUrl": "https://mario.wiki.gallery/images/6/6f/Toadettemkworld.png",
       "name": "Toadette",
       "nameIt": "Toadette",
-      "rosterOrder": 10
+      "rosterOrder": 10,
+      "starter": true
     },
     {
       "id": "lakitu",
       "imageUrl": "https://mario.wiki.gallery/images/2/23/Lakitumkworld.png",
       "name": "Lakitu",
       "nameIt": "Lakitu",
-      "rosterOrder": 11
+      "rosterOrder": 11,
+      "starter": false
     },
     {
       "id": "king_boo",
       "imageUrl": "https://mario.wiki.gallery/images/8/80/Kingboomkworld.png",
       "name": "King Boo",
       "nameIt": "Re Boo",
-      "rosterOrder": 12
+      "rosterOrder": 12,
+      "starter": false
     },
     {
       "id": "shy_guy",
       "imageUrl": "https://mario.wiki.gallery/images/e/ea/Shyguymkworld.png",
       "name": "Shy Guy",
       "nameIt": "Tipo Timido",
-      "rosterOrder": 13
+      "rosterOrder": 13,
+      "starter": true
     },
     {
       "id": "wario",
       "imageUrl": "https://mario.wiki.gallery/images/3/3d/WarioMKworld.png",
       "name": "Wario",
       "nameIt": "Wario",
-      "rosterOrder": 14
+      "rosterOrder": 14,
+      "starter": true
     },
     {
       "id": "waluigi",
       "imageUrl": "https://mario.wiki.gallery/images/5/52/WaluigiMKworld.png",
       "name": "Waluigi",
       "nameIt": "Waluigi",
-      "rosterOrder": 15
+      "rosterOrder": 15,
+      "starter": true
     },
     {
       "id": "birdo",
       "imageUrl": "https://mario.wiki.gallery/images/1/12/Birdomkworld.png",
       "name": "Birdo",
       "nameIt": "Strutzi",
-      "rosterOrder": 16
+      "rosterOrder": 16,
+      "starter": false
     },
     {
       "id": "pauline",
       "imageUrl": "https://mario.wiki.gallery/images/d/d7/PaulineMKworld.png",
       "name": "Pauline",
       "nameIt": "Pauline",
-      "rosterOrder": 17
+      "rosterOrder": 17,
+      "starter": true
     },
     {
       "id": "rosalina",
       "imageUrl": "https://mario.wiki.gallery/images/0/06/RosalinaMKworld.png",
       "name": "Rosalina",
       "nameIt": "Rosalinda",
-      "rosterOrder": 18
+      "rosterOrder": 18,
+      "starter": false
     },
     {
       "id": "baby_mario",
       "imageUrl": "https://mario.wiki.gallery/images/0/0b/Babymariomkworld.png",
       "name": "Baby Mario",
       "nameIt": "Baby Mario",
-      "rosterOrder": 19
+      "rosterOrder": 19,
+      "starter": true
     },
     {
       "id": "baby_luigi",
       "imageUrl": "https://mario.wiki.gallery/images/a/af/Babyluigimkworld.png",
       "name": "Baby Luigi",
       "nameIt": "Baby Luigi",
-      "rosterOrder": 20
+      "rosterOrder": 20,
+      "starter": true
     },
     {
       "id": "baby_peach",
       "imageUrl": "https://mario.wiki.gallery/images/8/82/Babypeachmkworld.png",
       "name": "Baby Peach",
       "nameIt": "Baby Peach",
-      "rosterOrder": 21
+      "rosterOrder": 21,
+      "starter": true
     },
     {
       "id": "baby_daisy",
       "imageUrl": "https://mario.wiki.gallery/images/d/d5/Babydaisymkworld.png",
       "name": "Baby Daisy",
       "nameIt": "Baby Daisy",
-      "rosterOrder": 22
+      "rosterOrder": 22,
+      "starter": true
     },
     {
       "id": "baby_rosalina",
       "imageUrl": "https://mario.wiki.gallery/images/a/aa/Babyrosalinamkworld.png",
       "name": "Baby Rosalina",
       "nameIt": "Baby Rosalinda",
-      "rosterOrder": 23
+      "rosterOrder": 23,
+      "starter": true
+    },
+    {
+      "id": "nabbit",
+      "imageUrl": "https://mario.wiki.gallery/images/4/4d/Nabbitmkworld.png",
+      "name": "Nabbit",
+      "nameIt": "Ruboniglio",
+      "rosterOrder": 24,
+      "starter": true
+    },
+    {
+      "id": "piranha_plant",
+      "imageUrl": "https://mario.wiki.gallery/images/b/b1/MKWorld_Piranha_Plant_Racer.png",
+      "name": "Piranha Plant",
+      "nameIt": "Pianta Piranha",
+      "rosterOrder": 25,
+      "starter": true
+    },
+    {
+      "id": "hammer_bro",
+      "imageUrl": "https://mario.wiki.gallery/images/8/8a/Hammerbromkworld.png",
+      "name": "Hammer Bro",
+      "nameIt": "Martelkoopa",
+      "rosterOrder": 26,
+      "starter": true
+    },
+    {
+      "id": "monty_mole",
+      "imageUrl": "https://mario.wiki.gallery/images/9/95/Montymolemkworld.png",
+      "name": "Monty Mole",
+      "nameIt": "Tantatalpa",
+      "rosterOrder": 27,
+      "starter": true
+    },
+    {
+      "id": "goomba",
+      "imageUrl": "https://mario.wiki.gallery/images/a/a6/MKworld_Goomba.png",
+      "name": "Goomba",
+      "nameIt": "Goomba",
+      "rosterOrder": 28,
+      "starter": true
+    },
+    {
+      "id": "sidestepper",
+      "imageUrl": "https://mario.wiki.gallery/images/3/33/Mario_Kart_World_Sidestepper.png",
+      "name": "Sidestepper",
+      "nameIt": "Granchio",
+      "rosterOrder": 29,
+      "starter": true
+    },
+    {
+      "id": "cheep_cheep",
+      "imageUrl": "https://mario.wiki.gallery/images/2/29/Mario_Kart_World_Cheep_Cheep.png",
+      "name": "Cheep Cheep",
+      "nameIt": "Pesce Smack",
+      "rosterOrder": 30,
+      "starter": true
+    },
+    {
+      "id": "dry_bones",
+      "imageUrl": "https://mario.wiki.gallery/images/d/d3/MK_NS2_Dry_Bones.png",
+      "name": "Dry Bones",
+      "nameIt": "Tartosso",
+      "rosterOrder": 31,
+      "starter": true
+    },
+    {
+      "id": "wiggler",
+      "imageUrl": "https://mario.wiki.gallery/images/9/93/MKWorld_Wiggler.png",
+      "name": "Wiggler",
+      "nameIt": "Torcibruco",
+      "rosterOrder": 32,
+      "starter": true
+    },
+    {
+      "id": "pokey",
+      "imageUrl": "https://mario.wiki.gallery/images/f/fc/Pokey_MKWorld_Select.png",
+      "name": "Pokey",
+      "nameIt": "Marghibruco",
+      "rosterOrder": 33,
+      "starter": true
+    },
+    {
+      "id": "cow",
+      "imageUrl": "https://mario.wiki.gallery/images/f/f4/Cow_MKWorld_Select.png",
+      "name": "Cow",
+      "nameIt": "Mucca",
+      "rosterOrder": 34,
+      "starter": true
+    },
+    {
+      "id": "stingby",
+      "imageUrl": "https://mario.wiki.gallery/images/5/50/Stingby_MKWorld_Select.png",
+      "name": "Stingby",
+      "nameIt": "Apiciccia",
+      "rosterOrder": 35,
+      "starter": true
+    },
+    {
+      "id": "snowman",
+      "imageUrl": "https://mario.wiki.gallery/images/8/8e/SnowmanSelect.png",
+      "name": "Snowman",
+      "nameIt": "Pupazzo di neve",
+      "rosterOrder": 36,
+      "starter": true
+    },
+    {
+      "id": "penguin",
+      "imageUrl": "https://mario.wiki.gallery/images/9/90/PenguinSelect.png",
+      "name": "Penguin",
+      "nameIt": "Pinguotto",
+      "rosterOrder": 37,
+      "starter": true
+    },
+    {
+      "id": "para_biddybud",
+      "imageUrl": "https://mario.wiki.gallery/images/9/90/Bbmkworld.png",
+      "name": "Para-Biddybud",
+      "nameIt": "Coccinello volante",
+      "rosterOrder": 38,
+      "starter": true
+    },
+    {
+      "id": "spike",
+      "imageUrl": "https://mario.wiki.gallery/images/4/4d/Spikemkworld.png",
+      "name": "Spike",
+      "nameIt": "Spunzo",
+      "rosterOrder": 39,
+      "starter": false
+    },
+    {
+      "id": "cataquack",
+      "imageUrl": "https://mario.wiki.gallery/images/6/6b/Cataquackmkworld.png",
+      "name": "Cataquack",
+      "nameIt": "Catapapero",
+      "rosterOrder": 40,
+      "starter": false
+    },
+    {
+      "id": "pianta",
+      "imageUrl": "https://mario.wiki.gallery/images/2/2f/Mario_Kart_World_Pianta.png",
+      "name": "Pianta",
+      "nameIt": "Palmense",
+      "rosterOrder": 41,
+      "starter": false
+    },
+    {
+      "id": "rocky_wrench",
+      "imageUrl": "https://mario.wiki.gallery/images/e/e9/Mario_Kart_World_Rocky_Wrench.png",
+      "name": "Rocky Wrench",
+      "nameIt": "Tartatalpa",
+      "rosterOrder": 42,
+      "starter": false
+    },
+    {
+      "id": "conkdor",
+      "imageUrl": "https://mario.wiki.gallery/images/2/22/MKWorld_Conkdor_icon.png",
+      "name": "Conkdor",
+      "nameIt": "Kondorotto",
+      "rosterOrder": 43,
+      "starter": false
+    },
+    {
+      "id": "peepa",
+      "imageUrl": "https://mario.wiki.gallery/images/4/42/Peepa_MKWorld_Select.png",
+      "name": "Peepa",
+      "nameIt": "Ectobaldo",
+      "rosterOrder": 44,
+      "starter": false
+    },
+    {
+      "id": "swoop",
+      "imageUrl": "https://mario.wiki.gallery/images/2/27/Swoop_MKWorld_Select.png",
+      "name": "Swoop",
+      "nameIt": "Swooper",
+      "rosterOrder": 45,
+      "starter": false
+    },
+    {
+      "id": "fish_bone",
+      "imageUrl": "https://mario.wiki.gallery/images/4/4a/MKWorld_Fishbone_Select.png",
+      "name": "Fish Bone",
+      "nameIt": "Pesce Lisca",
+      "rosterOrder": 46,
+      "starter": false
+    },
+    {
+      "id": "coin_coffer",
+      "imageUrl": "https://mario.wiki.gallery/images/2/2c/Coin_Coffer_MKWorld_Select.png",
+      "name": "Coin Coffer",
+      "nameIt": "Rospicciolo",
+      "rosterOrder": 47,
+      "starter": false
+    },
+    {
+      "id": "dolphin",
+      "imageUrl": "https://mario.wiki.gallery/images/6/69/Dolphin_MKWorld_Select.png",
+      "name": "Dolphin",
+      "nameIt": "Delfì",
+      "rosterOrder": 48,
+      "starter": false
+    },
+    {
+      "id": "chargin_chuck",
+      "imageUrl": "https://mario.wiki.gallery/images/2/21/Chargin%27_Chuck_MKWorld_Select.png",
+      "name": "Chargin' Chuck",
+      "nameIt": "Plakkoopa",
+      "rosterOrder": 49,
+      "starter": false
     }
   ],
   "source": "https://www.mariowiki.com/Dash_Food"

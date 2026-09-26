@@ -10,6 +10,7 @@ from .config import Config
 from .errors import ParseError
 from .i18n import Translations
 from .images import Images
+from .it_wiki import ItNames, norm
 from .raw import RawData
 
 LICENSE = {
@@ -30,15 +31,80 @@ def _page_url(cfg: Config, title: str) -> str:
 
 
 def _resolve_images(images: Images, cfg: Config) -> tuple[dict[str, str], dict[str, str], dict[str, str]]:
-    """Nomi del wiki -> slug. I piloti senza outfit (Goomba, Cow...) non sono in KartLog: si ignorano."""
-    by_character = {
-        cfg.characters.resolve(title): url for title, url in images.characters.items() if cfg.characters.knows(title)
-    }
+    """Nomi del wiki -> slug. Ogni pilota della pagina deve essere in aliases.yaml (characters o drivers)."""
+    by_character = {cfg.resolve_driver(title, "Mario Kart World / drivers"): url for title, url in images.characters.items()}
     by_outfit = {
         f"{cfg.characters.resolve(character, 'Mario Kart World / Character outfits')}__{slugify(outfit)}": url
         for (character, outfit), url in images.outfits.items()
     }
     return by_character, by_outfit, dict(images.events)
+
+
+def _resolve_it_drivers(it: ItNames, cfg: Config) -> dict[str, str]:
+    """Slug -> nome italiano, via langlink (o `itWikiPage` in aliases.yaml se il langlink manca)."""
+    by_it_page = {e.it_wiki_page: e.id for e in cfg.all_drivers() if e.it_wiki_page}
+    result: dict[str, str] = {}
+    for it_title, it_name in it.drivers.items():
+        if it_title in by_it_page:
+            slug = by_it_page[it_title]
+        elif it_title in it.langlinks:
+            slug = cfg.resolve_driver(it.langlinks[it_title], f"mariowiki.it / langlink di {it_title!r}")
+        else:
+            raise ParseError(
+                f"mariowiki.it: il pilota {it_title!r} non ha un langlink verso mariowiki.com; "
+                f"aggiungere itWikiPage in aliases.yaml"
+            )
+        result[slug] = it_name
+    return result
+
+
+def _it_course_ids(names: list[str], course_by_it: dict[str, str]) -> list[str | None]:
+    return [course_by_it.get(norm(n)) for n in names]
+
+
+def _resolve_it_events(it: ItNames, events: list[dict], course_by_it: dict[str, str]) -> dict[str, str]:
+    """Id evento -> nome italiano, riconoscendo ogni Trofeo/rally dalla sequenza delle sue tappe."""
+    by_stops = {tuple(e["stops"]): e["id"] for e in events}
+    result: dict[str, str] = {}
+    for ev in it.events:
+        stops = _it_course_ids(ev.stops, course_by_it)
+        if None in stops:
+            unknown = [n for n, s in zip(ev.stops, stops) if s is None]
+            raise ParseError(f"mariowiki.it: {ev.name!r} ha tappe non riconosciute: {unknown}")
+        event_id = by_stops.get(tuple(stops))
+        if event_id is None:
+            raise ParseError(f"mariowiki.it: nessun evento con le tappe di {ev.name!r}: {stops}")
+        if event_id in result:
+            raise ParseError(f"mariowiki.it: {event_id} riconosciuto due volte ({result[event_id]!r}, {ev.name!r})")
+        result[event_id] = ev.name
+    return result
+
+
+def _resolve_it_biomes(it: ItNames, cfg: Config, course_by_it: dict[str, str]) -> dict[str, str]:
+    """Id regione -> nome italiano, dai corsi citati nella sezione del bioma.
+
+    I nomi non riconosciuti (luoghi che non sono corsi, es. "Deserto Categnaccio") si ignorano; quelli
+    riconosciuti devono indicare tutti la stessa regione. Se resta un solo bioma senza corsi riconosciuti
+    e una sola regione libera, l'abbinamento è per esclusione (deduzione, non posizione).
+    """
+    result: dict[str, str] = {}
+    pending: list[str] = []
+    for biome in it.biomes:
+        regions = {cfg.region_of.get(cid) for cid in _it_course_ids(biome.courses, course_by_it) if cid}
+        regions.discard(None)
+        if len(regions) > 1:
+            raise ParseError(f"mariowiki.it: il bioma {biome.name!r} cita corsi di regioni diverse: {sorted(regions)}")
+        if regions:
+            rid = regions.pop()
+            if rid in result:
+                raise ParseError(f"mariowiki.it: regione {rid} riconosciuta due volte ({result[rid]!r}, {biome.name!r})")
+            result[rid] = biome.name
+        else:
+            pending.append(biome.name)
+    free = [e.id for e in cfg.regions.entities if e.id not in result]
+    if len(pending) == 1 and len(free) == 1:
+        result[free[0]] = pending[0]
+    return result
 
 
 def build(
@@ -47,26 +113,46 @@ def build(
     seed_version: int = 1,
     translations: Translations | None = None,
     images: Images | None = None,
+    it_names: ItNames | None = None,
 ) -> dict[str, dict]:
     translations = translations or Translations()
     images = images or Images()
+    it_names = it_names or ItNames()
     image_of_character, image_of_outfit, image_of_event = _resolve_images(images, cfg)
+    driver_it = _resolve_it_drivers(it_names, cfg)
+    # Nomi italiani dei corsi (da mariowiki.com, seedgen/i18n.py): la chiave con cui si riconoscono
+    # Trofei, rally e biomi sulle pagine di mariowiki.it.
+    course_by_it = {norm(name): cid for cid, name in translations.course_it.items()}
+    starters = {cfg.resolve_driver(t) for t in images.starters}
     pages = cfg.sources["pages"]
     dash_url = _page_url(cfg, pages["dash_food"])
     navbox_url = _page_url(cfg, pages["navbox"])
 
-    characters = [
-        {"id": e.id, "name": e.name, "nameIt": translations.character_it.get(e.id), "rosterOrder": e.order,
-         "imageUrl": image_of_character.get(e.id)}
-        for e in cfg.characters.entities
-    ]
+    warnings: list[str] = []
+    characters = []
+    for order, e in enumerate(cfg.all_drivers()):
+        # Per i 24 con outfit vale il nome di mariowiki.com (seedgen/i18n.py); mariowiki.it solo per
+        # gli altri. Se le due fonti divergono lo si segnala, senza scegliere a caso.
+        name_it = translations.character_it.get(e.id) or driver_it.get(e.id)
+        if translations.character_it.get(e.id) and driver_it.get(e.id) and \
+                translations.character_it[e.id] != driver_it[e.id]:
+            warnings.append(f"{e.id}: nome italiano {translations.character_it[e.id]!r} (mariowiki.com) "
+                            f"diverso da {driver_it[e.id]!r} (mariowiki.it)")
+        characters.append({
+            "id": e.id, "name": e.name, "nameIt": name_it, "rosterOrder": order,
+            "imageUrl": image_of_character.get(e.id),
+            # Galleria "Default drivers" = disponibile dall'inizio; None se la pagina non è stata letta.
+            "starter": (e.id in starters) if images.starters else None,
+        })
     courses = [
         {"id": e.id, "name": e.name, "nameIt": translations.course_it.get(e.id), "regionId": cfg.region_of.get(e.id)}
         for e in cfg.courses.entities
     ]
-    regions = [{"id": e.id, "name": e.name, "order": e.order} for e in cfg.regions.entities]
+    region_it = _resolve_it_biomes(it_names, cfg, course_by_it)
+    regions = [
+        {"id": e.id, "name": e.name, "nameIt": region_it.get(e.id), "order": e.order} for e in cfg.regions.entities
+    ]
     areas = [{"id": e.id, "name": e.name, "regionId": cfg.region_of[e.id]} for e in cfg.areas.entities]
-    warnings: list[str] = []
 
     outfits: dict[str, dict] = {}
     for e in cfg.characters.entities:
@@ -86,6 +172,8 @@ def build(
         food_groups.append({
             "id": gid,
             "name": label,
+            # Traduzione NON ufficiale (manual/food_names_it.yaml): nessuna fonte ha i nomi italiani.
+            "nameIt": " / ".join(cfg.food_names_it.get(n, n) for n in group.names),
             "foods": group.names,
             "revertsToDefault": group.reverts_to_default,
         })
@@ -138,6 +226,19 @@ def build(
 
     rally_urls = [_page_url(cfg, t) for t in pages["rallies"]]
 
+    event_it = _resolve_it_events(it_names, events, course_by_it)
+    for e in events:
+        e["nameIt"] = event_it.get(e["id"])
+
+    if not it_names.is_empty():
+        missing_it = sorted(
+            [c["id"] for c in characters if not c["nameIt"]]
+            + [r["id"] for r in regions if not r["nameIt"]]
+            + [e["id"] for e in events if not e["nameIt"]]
+        )
+        if missing_it:
+            raise ParseError(f"mariowiki.it: nome italiano non trovato per {missing_it}")
+
     if not images.is_empty():
         # Estrazione con immagini: ognuna deve risolversi in un elemento noto e ogni elemento deve
         # averne una. Un'immagine in più o in meno vuol dire che la pagina è cambiata: meglio
@@ -150,6 +251,8 @@ def build(
             + [c["id"] for c in characters if not c["imageUrl"]]
             + [e["id"] for e in events if not e["imageUrl"]]
         )
+        if not starters:
+            missing.append("starter (galleria Default drivers vuota)")
         if missing:
             raise ParseError(f"Mario Kart World: immagine non trovata per {missing}")
 
@@ -196,7 +299,7 @@ def build(
             "warnings": warnings,
             "license": LICENSE,
             "sources": [
-                {"title": s.title, "url": _page_url(cfg, s.title), "revid": s.revid} for s in raw.sources
+                {"title": s.title, "url": s.url or _page_url(cfg, s.title), "revid": s.revid} for s in raw.sources
             ],
         },
     }

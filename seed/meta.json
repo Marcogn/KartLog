@@ -8,7 +8,7 @@
   },
   "note": "",
   "origin": "api",
-  "seedVersion": 4,
+  "seedVersion": 5,
   "sources": [
     {
       "revid": 5455370,
@@ -89,6 +89,16 @@
       "revid": 5488553,
       "title": "Turnip Rally",
       "url": "https://www.mariowiki.com/Turnip_Rally"
+    },
+    {
+      "revid": 698015,
+      "title": "Mario Kart World",
+      "url": "https://www.mariowiki.it/Mario_Kart_World"
+    },
+    {
+      "revid": 686389,
+      "title": "Lista delle missioni di Mario Kart World",
+      "url": "https://www.mariowiki.it/Lista_delle_missioni_di_Mario_Kart_World"
     },
     {
       "revid": 5498278,

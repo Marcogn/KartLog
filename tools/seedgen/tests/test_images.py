@@ -70,6 +70,8 @@ def test_original_url_strips_thumbnail():
 def test_drivers_from_both_sections_keyed_by_page_title():
     images = extract_images(HTML)
     assert set(images.characters) == {"Mario", "Princess Peach", "Goomba", "Daisy"}
+    # Solo la galleria "Default drivers" è disponibile dall'inizio.
+    assert images.starters == {"Mario", "Princess Peach", "Goomba"}
 
 
 def test_outfits_grouped_by_character_and_section_bounded():
@@ -106,13 +108,14 @@ def test_unexpected_url_fails():
 
 def _complete_images(cfg, raw: RawData) -> Images:
     """Un'immagine finta ma ben formata per ogni elemento del golden: serve solo a esercitare build()."""
-    characters = {e.name: f"{CDN}/c/{e.id}.png" for e in cfg.characters.entities}
+    characters = {e.name: f"{CDN}/c/{e.id}.png" for e in cfg.all_drivers()}
     outfits = {}
     for group in raw.food_groups:
         for o in group.outfits:
             outfits[(o.character, o.outfit)] = f"{CDN}/o/{o.character}_{o.outfit}.png"
     events = {e.name: f"{CDN}/e/{e.name}.png" for e in [*raw.cups, *raw.rallies]}
-    return Images(characters=characters, outfits=outfits, events=events)
+    starters = frozenset(e.name for e in cfg.all_drivers()[:cfg.expected["starter_drivers"]])
+    return Images(characters=characters, outfits=outfits, events=events, starters=starters)
 
 
 @pytest.fixture(scope="module")
@@ -140,14 +143,14 @@ def test_build_fails_on_missing_image(golden_raw, cfg):
     events = dict(images.events)
     events.pop("Turnip Rally")
     with pytest.raises(ParseError, match="rally_turnip"):
-        build(golden_raw, cfg, images=Images(images.characters, images.outfits, events))
+        build(golden_raw, cfg, images=Images(images.characters, images.outfits, events, images.starters))
 
 
 def test_build_fails_on_image_of_unknown_outfit(golden_raw, cfg):
     images = _complete_images(cfg, golden_raw)
     outfits = {**images.outfits, ("Mario", "Astronaut"): f"{CDN}/o/x.png"}
     with pytest.raises(ParseError, match="mario__astronaut"):
-        build(golden_raw, cfg, images=Images(images.characters, outfits, images.events))
+        build(golden_raw, cfg, images=Images(images.characters, outfits, images.events, images.starters))
 
 
 def test_validation_rejects_foreign_image_host(golden_raw, cfg):

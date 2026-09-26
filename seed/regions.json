@@ -3,51 +3,61 @@
     {
       "id": "mesa",
       "name": "Mesa biome",
+      "nameIt": "Bioma della Mesa",
       "order": 0
     },
     {
       "id": "southern_sea",
       "name": "Southern sea and coast",
+      "nameIt": "Mare e costa meridionali",
       "order": 1
     },
     {
       "id": "desert",
       "name": "Desert biome",
+      "nameIt": "Bioma desertico",
       "order": 2
     },
     {
       "id": "volcanic",
       "name": "Volcanic biome",
+      "nameIt": "Bioma vulcanico",
       "order": 3
     },
     {
       "id": "snow",
       "name": "Snow biome",
+      "nameIt": "Bioma innevato",
       "order": 4
     },
     {
       "id": "eastern_sea",
       "name": "Eastern sea and coast",
+      "nameIt": "Mare e costa orientale",
       "order": 5
     },
     {
       "id": "savanna_jungle",
       "name": "Savanna and jungle biome",
+      "nameIt": "Bioma della savana e della giungla",
       "order": 6
     },
     {
       "id": "central_grassland",
       "name": "Central grassland biome",
+      "nameIt": "Bioma delle praterie centrali",
       "order": 7
     },
     {
       "id": "autumnal_highland",
       "name": "Autumnal and highland biome",
+      "nameIt": "Bioma autunnale e montano",
       "order": 8
     },
     {
       "id": "forest",
       "name": "Forest biome",
+      "nameIt": "Bioma forestale",
       "order": 9
     }
   ],

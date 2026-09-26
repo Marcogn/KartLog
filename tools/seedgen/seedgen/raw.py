@@ -50,6 +50,7 @@ class RawMission:
 class RawSource:
     title: str
     revid: int | None                     # None = trascrizione manuale, non estratta dall'API
+    url: str | None = None                # None = pagina di mariowiki.com (URL ricavato dal titolo)
 
 
 @dataclass

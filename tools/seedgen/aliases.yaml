@@ -19,9 +19,9 @@ characters:
   koopa_troopa:   { name: "Koopa Troopa" }
   toad:           { name: "Toad" }
   toadette:       { name: "Toadette" }
-  lakitu:         { name: "Lakitu" }
+  lakitu:         { name: "Lakitu", aliases: ["Lakitu (character)"] }
   king_boo:       { name: "King Boo" }
-  shy_guy:        { name: "Shy Guy" }
+  shy_guy:        { name: "Shy Guy", itWikiPage: "Tipo Timido (personaggio)" }
   wario:          { name: "Wario" }
   waluigi:        { name: "Waluigi" }
   birdo:          { name: "Birdo" }
@@ -32,6 +32,40 @@ characters:
   baby_peach:     { name: "Baby Peach" }
   baby_daisy:     { name: "Baby Daisy" }
   baby_rosalina:  { name: "Baby Rosalina" }
+
+# Piloti SENZA outfit alternativi (Mario Kart World): nessuna regola di cibo, solo immagine, nome e
+# stato di sblocco. Stesso titolo di pagina usato dalle gallerie "Default drivers"/"Unlockable
+# drivers" della pagina "Mario Kart World" (seedgen/images.py), nello stesso ordine: prima quelli di
+# base, poi gli sbloccabili. rosterOrder continua dopo i 24 sopra.
+# itWikiPage: titolo della pagina su mariowiki.it quando non ha un collegamento interlingua verso
+# quella inglese (seedgen/it_wiki.py lo usa al posto del langlink); verificato a mano il 26/09/2026.
+drivers:
+  nabbit:          { name: "Nabbit" }
+  piranha_plant:   { name: "Piranha Plant" }
+  hammer_bro:      { name: "Hammer Bro" }
+  monty_mole:      { name: "Monty Mole" }
+  goomba:          { name: "Goomba" }
+  sidestepper:     { name: "Sidestepper" }
+  cheep_cheep:     { name: "Cheep Cheep" }
+  dry_bones:       { name: "Dry Bones" }
+  wiggler:         { name: "Wiggler" }
+  pokey:           { name: "Pokey" }
+  cow:             { name: "Cow" }
+  stingby:         { name: "Stingby" }
+  snowman:         { name: "Snowman" }
+  penguin:         { name: "Penguin" }
+  para_biddybud:   { name: "Para-Biddybud" }
+  spike:           { name: "Spike", itWikiPage: "Spunzo (personaggio)" }
+  cataquack:       { name: "Cataquack" }
+  pianta:          { name: "Pianta" }
+  rocky_wrench:    { name: "Rocky Wrench" }
+  conkdor:         { name: "Conkdor" }
+  peepa:           { name: "Peepa" }
+  swoop:           { name: "Swoop" }
+  fish_bone:       { name: "Fish Bone" }
+  coin_coffer:     { name: "Coin Coffer" }
+  dolphin:         { name: "Dolphin" }
+  chargin_chuck:   { name: "Chargin' Chuck" }
 
 # I 30 corsi principali. "aliases" contiene i titoli di pagina a cui puntano i link del wiki
 # (attributo title dei tag <a>), che spesso hanno un disambiguatore tra parentesi. "wikiPage"
