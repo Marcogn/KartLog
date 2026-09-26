@@ -61,3 +61,16 @@ val MIGRATION_2_3 = object : Migration(2, 3) {
         db.execSQL("DROP TABLE race_results")
     }
 }
+
+/**
+ * v3 -> v4: colonna `imageUrl` (URL dell'immagine sul CDN di Super Mario Wiki, seedgen/images.py)
+ * su `characters`, `outfits`, `events`. Come per v1 -> v2, solo tabelle seed: i valori arrivano dal
+ * reseed (seedVersion cambiato), lo stato utente non è toccato.
+ */
+val MIGRATION_3_4 = object : Migration(3, 4) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL("ALTER TABLE characters ADD COLUMN imageUrl TEXT")
+        db.execSQL("ALTER TABLE outfits ADD COLUMN imageUrl TEXT")
+        db.execSQL("ALTER TABLE events ADD COLUMN imageUrl TEXT")
+    }
+}

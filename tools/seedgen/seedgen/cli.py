@@ -23,9 +23,10 @@ from .build import build
 from .config import Config
 from .errors import EXIT_CHANGED, EXIT_OK, SeedgenError, ValidationError
 from .i18n import Translations
+from .images import Images, extract_images
 from .output import COMPARED_FILES, diff, read_seed, write_seed
 from .parse import parse_all, parse_translations
-from .raw import RawData
+from .raw import RawData, RawSource
 from .validate import validate
 
 
@@ -71,7 +72,13 @@ def _generate(args, cfg: Config, out: Path, seed_dir: Path | None) -> dict:
     # toccare la rete.
     live = not args.from_raw and not args.from_fixtures
     translations = parse_translations(wiki.fetch_i18n(cfg), cfg) if live else Translations()
-    seed = build(raw, cfg, seed_version=_current_version(seed_dir), translations=translations)
+    images = Images()
+    if live:
+        # Stessa logica dei nomi in italiano: solo URL, estratti dal vivo (seedgen/images.py).
+        page = wiki.fetch_images_page(cfg)
+        images = extract_images(page.html)
+        raw.sources.append(RawSource(title=page.title, revid=page.revid))
+    seed = build(raw, cfg, seed_version=_current_version(seed_dir), translations=translations, images=images)
     validate(seed, cfg)
     write_seed(seed, out)
     _log(f"seed valido scritto in {out}")

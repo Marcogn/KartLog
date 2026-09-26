@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -38,12 +37,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
 import com.marcogn.kartlog.data.local.dao.CharacterProgress
 import com.marcogn.kartlog.domain.model.localizedName
-import com.marcogn.kartlog.ui.common.CharacterAvatar
+import com.marcogn.kartlog.ui.common.CharacterPortrait
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -92,10 +92,12 @@ fun SkinScreen(
             }
 
             LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                contentPadding = PaddingValues(16.dp),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
+                // Immagini verticali (proporzioni della schermata di selezione del gioco): tre per
+                // riga su un telefono, di più su schermi larghi.
+                columns = GridCells.Adaptive(minSize = 104.dp),
+                contentPadding = PaddingValues(12.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 items(state.characters, key = { it.id }) { character ->
                     CharacterCard(character, onClick = { onCharacterClick(character.id) })
@@ -140,9 +142,7 @@ private fun SortMenu(sortMode: SkinSortMode, onSortModeSelected: (SkinSortMode) 
 private fun CharacterCard(character: CharacterProgress, onClick: () -> Unit) {
     Card(
         onClick = onClick,
-        modifier = Modifier
-            .fillMaxWidth()
-            .aspectRatio(1f),
+        modifier = Modifier.fillMaxWidth(),
         colors = if (character.isComplete) {
             CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f))
         } else {
@@ -151,19 +151,25 @@ private fun CharacterCard(character: CharacterProgress, onClick: () -> Unit) {
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(12.dp),
-            verticalArrangement = Arrangement.Center,
+                .fillMaxWidth()
+                .padding(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             val displayName = localizedName(character.name, character.nameIt)
-            CharacterAvatar(name = displayName, dimmed = character.isComplete)
+            CharacterPortrait(
+                name = displayName,
+                imageUrl = character.imageUrl,
+                dimmed = character.isComplete,
+                modifier = Modifier.fillMaxWidth(),
+            )
             Text(
                 text = displayName,
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.titleSmall,
                 textAlign = TextAlign.Center,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
                 color = if (character.isComplete) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier.padding(top = 8.dp),
+                modifier = Modifier.padding(top = 6.dp),
             )
             Text(
                 text = stringResource(R.string.home_counter_format, character.ownedOutfits, character.totalOutfits),

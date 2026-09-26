@@ -8,6 +8,10 @@ from .config import Config
 from .errors import ValidationError
 
 
+# CDN di Super Mario Wiki: l'unica origine ammessa per gli URL delle immagini.
+IMAGE_URL_PREFIX = "https://mario.wiki.gallery/images/"
+
+
 def _items(seed: dict, name: str) -> list[dict]:
     return seed[name]["items"]
 
@@ -140,6 +144,12 @@ def validate(seed: dict, cfg: Config) -> None:
             check(expected_region is not None, f"{m['id']} ({m['name']}): luogo sconosciuto {place}")
             check(m["regionId"] == expected_region,
                   f"{m['id']} ({m['name']}): elencato in {m['regionId']} ma {place} è in {expected_region}")
+
+    # --- Immagini (seedgen/images.py): solo URL del CDN del wiki, mai file locali ----------------
+    for name, items in [("characters", characters), ("outfits", outfits), ("events", events)]:
+        for i in items:
+            url = i.get("imageUrl")
+            check(url is None or url.startswith(IMAGE_URL_PREFIX), f"{name} {i['id']}: imageUrl inatteso {url!r}")
 
     if problems:
         raise ValidationError(problems)

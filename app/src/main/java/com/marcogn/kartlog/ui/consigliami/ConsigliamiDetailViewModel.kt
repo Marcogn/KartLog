@@ -24,8 +24,10 @@ import kotlinx.coroutines.flow.stateIn
 
 data class ConsigliamiDetailUiState(
     val eventName: String = "",
+    val eventImageUrl: String? = null,
     val details: List<CharacterDetail> = emptyList(),
     val characterNames: Map<String, String> = emptyMap(),
+    val characterImages: Map<String, String> = emptyMap(),
     val outfitNames: Map<String, String> = emptyMap(),
     /** Sola lettura (SPEC §2.5): trofeo registrato per ogni cilindrata. Si registra in Risultati. */
     val bestRankByCc: Map<Cc, TrophyRank> = emptyMap(),
@@ -62,8 +64,10 @@ class ConsigliamiDetailViewModel @Inject constructor(
 
         ConsigliamiDetailUiState(
             eventName = eventEntity?.name.orEmpty(),
+            eventImageUrl = eventEntity?.imageUrl,
             details = details,
             characterNames = characters.associate { it.id to localizedName(it.name, it.nameIt) },
+            characterImages = characters.mapNotNull { c -> c.imageUrl?.let { c.id to it } }.toMap(),
             outfitNames = outfitNames.associate { it.id to localizedName(it.name, it.nameIt) },
             bestRankByCc = results.associate { it.cc to it.rank },
         )

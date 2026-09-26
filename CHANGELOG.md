@@ -6,6 +6,18 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Immagini di personaggi, outfit ed eventi.** Skin, dettaglio del
+  personaggio, Consigliami e Risultati mostrano le immagini del gioco
+  prese da Super Mario Wiki: griglia dei personaggi a 3 colonne con le
+  immagini della selezione, outfit come card con la loro immagine, icone
+  di cup e rally. Non sono incluse nell'app: si scaricano all'avvio (serve
+  il permesso INTERNET, usato solo per questo) e restano in cache; senza
+  rete si vedono le iniziali come prima. Avviso e crediti in
+  Impostazioni / Info e nel README.
+- **Dati di gioco aggiornati da Super Mario Wiki (seedVersion 4).**
+  Aggiunti gli URL delle immagini (pagina Mario Kart World@5498278);
+  nessun altro dato cambiato.
+
 ## [0.1.3] - 2026-09-26
 
 - **Risultati in una schermata dedicata.** La registrazione dei

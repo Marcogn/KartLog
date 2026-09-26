@@ -2,144 +2,168 @@
   "items": [
     {
       "id": "mario",
+      "imageUrl": "https://mario.wiki.gallery/images/5/51/MarioMKworld.png",
       "name": "Mario",
       "nameIt": "Mario",
       "rosterOrder": 0
     },
     {
       "id": "luigi",
+      "imageUrl": "https://mario.wiki.gallery/images/b/b5/LuigiMKworld.png",
       "name": "Luigi",
       "nameIt": "Luigi",
       "rosterOrder": 1
     },
     {
       "id": "peach",
+      "imageUrl": "https://mario.wiki.gallery/images/a/a1/PeachMKworld.png",
       "name": "Peach",
       "nameIt": "Peach",
       "rosterOrder": 2
     },
     {
       "id": "daisy",
+      "imageUrl": "https://mario.wiki.gallery/images/c/cc/DaisyMKworld.png",
       "name": "Daisy",
       "nameIt": "Daisy",
       "rosterOrder": 3
     },
     {
       "id": "yoshi",
+      "imageUrl": "https://mario.wiki.gallery/images/c/c9/YoshiMKworld.png",
       "name": "Yoshi",
       "nameIt": "Yoshi",
       "rosterOrder": 4
     },
     {
       "id": "donkey_kong",
+      "imageUrl": "https://mario.wiki.gallery/images/3/31/Dkmkworld.png",
       "name": "Donkey Kong",
       "nameIt": "Donkey Kong",
       "rosterOrder": 5
     },
     {
       "id": "bowser",
+      "imageUrl": "https://mario.wiki.gallery/images/a/af/BowserMKworld.png",
       "name": "Bowser",
       "nameIt": "Bowser",
       "rosterOrder": 6
     },
     {
       "id": "bowser_jr",
+      "imageUrl": "https://mario.wiki.gallery/images/7/79/Bowserjrmkworld.png",
       "name": "Bowser Jr.",
       "nameIt": "Bowser Junior",
       "rosterOrder": 7
     },
     {
       "id": "koopa_troopa",
+      "imageUrl": "https://mario.wiki.gallery/images/4/4e/KoopaMKworld.png",
       "name": "Koopa Troopa",
       "nameIt": "Koopa",
       "rosterOrder": 8
     },
     {
       "id": "toad",
+      "imageUrl": "https://mario.wiki.gallery/images/8/81/ToadMKworld.png",
       "name": "Toad",
       "nameIt": "Toad",
       "rosterOrder": 9
     },
     {
       "id": "toadette",
+      "imageUrl": "https://mario.wiki.gallery/images/6/6f/Toadettemkworld.png",
       "name": "Toadette",
       "nameIt": "Toadette",
       "rosterOrder": 10
     },
     {
       "id": "lakitu",
+      "imageUrl": "https://mario.wiki.gallery/images/2/23/Lakitumkworld.png",
       "name": "Lakitu",
       "nameIt": "Lakitu",
       "rosterOrder": 11
     },
     {
       "id": "king_boo",
+      "imageUrl": "https://mario.wiki.gallery/images/8/80/Kingboomkworld.png",
       "name": "King Boo",
       "nameIt": "Re Boo",
       "rosterOrder": 12
     },
     {
       "id": "shy_guy",
+      "imageUrl": "https://mario.wiki.gallery/images/e/ea/Shyguymkworld.png",
       "name": "Shy Guy",
       "nameIt": "Tipo Timido",
       "rosterOrder": 13
     },
     {
       "id": "wario",
+      "imageUrl": "https://mario.wiki.gallery/images/3/3d/WarioMKworld.png",
       "name": "Wario",
       "nameIt": "Wario",
       "rosterOrder": 14
     },
     {
       "id": "waluigi",
+      "imageUrl": "https://mario.wiki.gallery/images/5/52/WaluigiMKworld.png",
       "name": "Waluigi",
       "nameIt": "Waluigi",
       "rosterOrder": 15
     },
     {
       "id": "birdo",
+      "imageUrl": "https://mario.wiki.gallery/images/1/12/Birdomkworld.png",
       "name": "Birdo",
       "nameIt": "Strutzi",
       "rosterOrder": 16
     },
     {
       "id": "pauline",
+      "imageUrl": "https://mario.wiki.gallery/images/d/d7/PaulineMKworld.png",
       "name": "Pauline",
       "nameIt": "Pauline",
       "rosterOrder": 17
     },
     {
       "id": "rosalina",
+      "imageUrl": "https://mario.wiki.gallery/images/0/06/RosalinaMKworld.png",
       "name": "Rosalina",
       "nameIt": "Rosalinda",
       "rosterOrder": 18
     },
     {
       "id": "baby_mario",
+      "imageUrl": "https://mario.wiki.gallery/images/0/0b/Babymariomkworld.png",
       "name": "Baby Mario",
       "nameIt": "Baby Mario",
       "rosterOrder": 19
     },
     {
       "id": "baby_luigi",
+      "imageUrl": "https://mario.wiki.gallery/images/a/af/Babyluigimkworld.png",
       "name": "Baby Luigi",
       "nameIt": "Baby Luigi",
       "rosterOrder": 20
     },
     {
       "id": "baby_peach",
+      "imageUrl": "https://mario.wiki.gallery/images/8/82/Babypeachmkworld.png",
       "name": "Baby Peach",
       "nameIt": "Baby Peach",
       "rosterOrder": 21
     },
     {
       "id": "baby_daisy",
+      "imageUrl": "https://mario.wiki.gallery/images/d/d5/Babydaisymkworld.png",
       "name": "Baby Daisy",
       "nameIt": "Baby Daisy",
       "rosterOrder": 22
     },
     {
       "id": "baby_rosalina",
+      "imageUrl": "https://mario.wiki.gallery/images/a/aa/Babyrosalinamkworld.png",
       "name": "Baby Rosalina",
       "nameIt": "Baby Rosalinda",
       "rosterOrder": 23

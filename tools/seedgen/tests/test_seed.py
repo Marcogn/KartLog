@@ -24,12 +24,14 @@ def test_golden_is_valid(golden_seed, cfg):
 
 
 def _without_name_it(seed: dict) -> dict:
-    """I nomi in altre lingue (seedgen/i18n.py) non sono nella trascrizione golden, come i pulsanti
-    P: azzerarli prima del confronto, non escludere l'intero file (il resto va comunque verificato)."""
+    """I nomi in altre lingue (seedgen/i18n.py) e gli URL delle immagini (seedgen/images.py) non sono
+    nella trascrizione golden, come i pulsanti P: azzerarli prima del confronto, non escludere
+    l'intero file (il resto va comunque verificato)."""
     seed = copy.deepcopy(seed)
-    for filename in ("characters.json", "outfits.json", "courses.json"):
+    for filename in ("characters.json", "outfits.json", "courses.json", "events.json"):
         for item in seed.get(filename, {}).get("items", []):
             item.pop("nameIt", None)
+            item.pop("imageUrl", None)
     return seed
 
 

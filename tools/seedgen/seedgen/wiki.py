@@ -6,7 +6,7 @@ delle pagine del sito). Motivo: la tabella Dash Food usa rowspan/colspan e link 
 celle normali e tag <a title="Corso">. Il `revid` rende ogni estrazione tracciabile.
 
 Regole di cortesia verso il wiki: richieste sequenziali, User-Agent con contatto, maxlag, retry con
-backoff, nessun download di immagini.
+backoff, nessun download di immagini (solo i loro URL, vedi seedgen/images.py).
 """
 
 from __future__ import annotations
@@ -149,3 +149,8 @@ def fetch_i18n(cfg) -> dict[str, WikiPage]:
     """Sempre dal wiki, mai da fixture (vedi `i18n_titles`)."""
     client = WikiClient(cfg.sources)
     return {title: client.fetch(title) for title in i18n_titles(cfg)}
+
+
+def fetch_images_page(cfg) -> WikiPage:
+    """Sempre dal wiki, mai da fixture (vedi seedgen/images.py)."""
+    return WikiClient(cfg.sources).fetch(cfg.sources["pages"]["images"])

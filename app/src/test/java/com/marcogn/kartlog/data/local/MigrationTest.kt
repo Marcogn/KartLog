@@ -84,4 +84,35 @@ class MigrationTest {
             assertEquals(false, cursor.moveToFirst())
         }
     }
+
+    @Test
+    fun `migrazione 3 a 4 aggiunge imageUrl e preserva lo stato utente`() {
+        helper.createDatabase(dbName, 3).apply {
+            execSQL("INSERT INTO characters (id, name, nameIt, rosterOrder, imageRes) VALUES ('mario', 'Mario', NULL, 0, NULL)")
+            execSQL(
+                "INSERT INTO outfits (id, characterId, name, nameIt, isDefault) VALUES ('mario__default', 'mario', NULL, NULL, 1)"
+            )
+            execSQL("INSERT INTO events (id, type, name, `order`) VALUES ('cup_a', 'CUP', 'Cup A', 0)")
+            execSQL("INSERT INTO owned_outfits (outfitId) VALUES ('mario__default')")
+            execSQL("INSERT INTO best_results (eventId, cc, rank) VALUES ('cup_a', 'CC_150', 'GOLD')")
+            close()
+        }
+
+        val migrated = helper.runMigrationsAndValidate(dbName, 4, true, MIGRATION_3_4)
+
+        for (table in listOf("characters", "outfits", "events")) {
+            migrated.query("SELECT imageUrl FROM $table").use { cursor ->
+                assertEquals(true, cursor.moveToFirst())
+                assertEquals(true, cursor.isNull(0))
+            }
+        }
+        migrated.query("SELECT outfitId FROM owned_outfits").use { cursor ->
+            assertEquals(true, cursor.moveToFirst())
+            assertEquals("mario__default", cursor.getString(0))
+        }
+        migrated.query("SELECT rank FROM best_results WHERE eventId = 'cup_a'").use { cursor ->
+            assertEquals(true, cursor.moveToFirst())
+            assertEquals("GOLD", cursor.getString(0))
+        }
+    }
 }

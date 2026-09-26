@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 
 data class SkinDetailUiState(
     val characterName: String = "",
+    val characterImageUrl: String? = null,
     val ownedCount: Int = 0,
     val totalCount: Int = 0,
     val unlocked: Boolean = true,
@@ -42,6 +43,7 @@ class SkinDetailViewModel @Inject constructor(
     ) { character, outfits, unlockedOrNull ->
         SkinDetailUiState(
             characterName = character?.let { localizedName(it.name, it.nameIt) } ?: "",
+            characterImageUrl = character?.imageUrl,
             ownedCount = outfits.count { it.owned },
             totalCount = outfits.size,
             unlocked = unlockedOrNull ?: true,

@@ -3,6 +3,7 @@
     {
       "characterId": "baby_daisy",
       "id": "baby_daisy__default",
+      "imageUrl": "https://mario.wiki.gallery/images/d/d5/Babydaisymkworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -10,6 +11,7 @@
     {
       "characterId": "baby_daisy",
       "id": "baby_daisy__explorer",
+      "imageUrl": "https://mario.wiki.gallery/images/3/32/Bdermkworld.png",
       "isDefault": false,
       "name": "Explorer",
       "nameIt": "Esploratrice"
@@ -17,6 +19,7 @@
     {
       "characterId": "baby_daisy",
       "id": "baby_daisy__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/0/02/Baby_Daisy_Racer.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -24,6 +27,7 @@
     {
       "characterId": "baby_daisy",
       "id": "baby_daisy__sailor",
+      "imageUrl": "https://mario.wiki.gallery/images/9/99/MKWorld_Baby_Daisy_alternate_outfit.png",
       "isDefault": false,
       "name": "Sailor",
       "nameIt": "Marinaretta"
@@ -31,6 +35,7 @@
     {
       "characterId": "baby_daisy",
       "id": "baby_daisy__touring",
+      "imageUrl": "https://mario.wiki.gallery/images/7/79/Bdtourmkworld.png",
       "isDefault": false,
       "name": "Touring",
       "nameIt": "Sprintosa"
@@ -38,6 +43,7 @@
     {
       "characterId": "baby_luigi",
       "id": "baby_luigi__default",
+      "imageUrl": "https://mario.wiki.gallery/images/a/af/Babyluigimkworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -45,6 +51,7 @@
     {
       "characterId": "baby_luigi",
       "id": "baby_luigi__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/2/25/Baby_Luigi_Racer.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -52,6 +59,7 @@
     {
       "characterId": "baby_luigi",
       "id": "baby_luigi__work_crew",
+      "imageUrl": "https://mario.wiki.gallery/images/1/1b/Baby_Luigi_Work_Crew.png",
       "isDefault": false,
       "name": "Work Crew",
       "nameIt": "Muratore"
@@ -59,6 +67,7 @@
     {
       "characterId": "baby_mario",
       "id": "baby_mario__default",
+      "imageUrl": "https://mario.wiki.gallery/images/0/0b/Babymariomkworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -66,6 +75,7 @@
     {
       "characterId": "baby_mario",
       "id": "baby_mario__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/2/2f/Baby_Mario_Racer.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -73,6 +83,7 @@
     {
       "characterId": "baby_mario",
       "id": "baby_mario__swimwear",
+      "imageUrl": "https://mario.wiki.gallery/images/9/96/Baby_Mario_Swimwear.png",
       "isDefault": false,
       "name": "Swimwear",
       "nameIt": "Balneare"
@@ -80,6 +91,7 @@
     {
       "characterId": "baby_mario",
       "id": "baby_mario__work_crew",
+      "imageUrl": "https://mario.wiki.gallery/images/2/25/Baby_Mario_Work_Crew.png",
       "isDefault": false,
       "name": "Work Crew",
       "nameIt": "Muratore"
@@ -87,6 +99,7 @@
     {
       "characterId": "baby_peach",
       "id": "baby_peach__default",
+      "imageUrl": "https://mario.wiki.gallery/images/8/82/Babypeachmkworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -94,6 +107,7 @@
     {
       "characterId": "baby_peach",
       "id": "baby_peach__explorer",
+      "imageUrl": "https://mario.wiki.gallery/images/7/71/Bpermkworld.png",
       "isDefault": false,
       "name": "Explorer",
       "nameIt": "Esploratrice"
@@ -101,6 +115,7 @@
     {
       "characterId": "baby_peach",
       "id": "baby_peach__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/b/bb/Baby_Peach_Racer.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -108,6 +123,7 @@
     {
       "characterId": "baby_peach",
       "id": "baby_peach__sailor",
+      "imageUrl": "https://mario.wiki.gallery/images/1/1b/Baby_Peach_Sailor.png",
       "isDefault": false,
       "name": "Sailor",
       "nameIt": "Marinaretta"
@@ -115,6 +131,7 @@
     {
       "characterId": "baby_peach",
       "id": "baby_peach__touring",
+      "imageUrl": "https://mario.wiki.gallery/images/2/27/Bptourmkworld.png",
       "isDefault": false,
       "name": "Touring",
       "nameIt": "Sprintosa"
@@ -122,6 +139,7 @@
     {
       "characterId": "baby_rosalina",
       "id": "baby_rosalina__default",
+      "imageUrl": "https://mario.wiki.gallery/images/a/aa/Babyrosalinamkworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -129,6 +147,7 @@
     {
       "characterId": "baby_rosalina",
       "id": "baby_rosalina__explorer",
+      "imageUrl": "https://mario.wiki.gallery/images/5/50/Brermkworld.png",
       "isDefault": false,
       "name": "Explorer",
       "nameIt": "Esploratrice"
@@ -136,6 +155,7 @@
     {
       "characterId": "baby_rosalina",
       "id": "baby_rosalina__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/8/83/MKWorld_Baby_Rosalina_Pro_Racer_alt.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -143,6 +163,7 @@
     {
       "characterId": "baby_rosalina",
       "id": "baby_rosalina__sailor",
+      "imageUrl": "https://mario.wiki.gallery/images/d/d6/Baby_Rosalina_Sailor.png",
       "isDefault": false,
       "name": "Sailor",
       "nameIt": "Marinaretta"
@@ -150,6 +171,7 @@
     {
       "characterId": "baby_rosalina",
       "id": "baby_rosalina__touring",
+      "imageUrl": "https://mario.wiki.gallery/images/7/75/Brtourmkworld.png",
       "isDefault": false,
       "name": "Touring",
       "nameIt": "Sprintosa"
@@ -157,6 +179,7 @@
     {
       "characterId": "birdo",
       "id": "birdo__default",
+      "imageUrl": "https://mario.wiki.gallery/images/1/12/Birdomkworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -164,6 +187,7 @@
     {
       "characterId": "birdo",
       "id": "birdo__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/0/06/Birdo_Racer.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -171,6 +195,7 @@
     {
       "characterId": "birdo",
       "id": "birdo__vacation",
+      "imageUrl": "https://mario.wiki.gallery/images/6/66/Birdo_Vacation.png",
       "isDefault": false,
       "name": "Vacation",
       "nameIt": "Vacanza"
@@ -178,6 +203,7 @@
     {
       "characterId": "bowser",
       "id": "bowser__all_terrain",
+      "imageUrl": "https://mario.wiki.gallery/images/7/72/Bowser_All_Terrain.png",
       "isDefault": false,
       "name": "All-Terrain",
       "nameIt": "Fuoristrada"
@@ -185,6 +211,7 @@
     {
       "characterId": "bowser",
       "id": "bowser__biker",
+      "imageUrl": "https://mario.wiki.gallery/images/b/b4/Bowser_Biker.png",
       "isDefault": false,
       "name": "Biker",
       "nameIt": "Centauro"
@@ -192,6 +219,7 @@
     {
       "characterId": "bowser",
       "id": "bowser__default",
+      "imageUrl": "https://mario.wiki.gallery/images/a/af/BowserMKworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -199,6 +227,7 @@
     {
       "characterId": "bowser",
       "id": "bowser__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/e/ec/MKWorld_Bowser_Pro_Racer_alt.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -206,6 +235,7 @@
     {
       "characterId": "bowser",
       "id": "bowser__supercharged",
+      "imageUrl": "https://mario.wiki.gallery/images/0/0c/Bowser_Costume_1_MKWorld_Select.png",
       "isDefault": false,
       "name": "Supercharged",
       "nameIt": "Turbo"
@@ -213,6 +243,7 @@
     {
       "characterId": "bowser_jr",
       "id": "bowser_jr__biker_jr",
+      "imageUrl": "https://mario.wiki.gallery/images/3/39/Bowser_Jr_Biker.png",
       "isDefault": false,
       "name": "Biker Jr.",
       "nameIt": "Centauro"
@@ -220,6 +251,7 @@
     {
       "characterId": "bowser_jr",
       "id": "bowser_jr__default",
+      "imageUrl": "https://mario.wiki.gallery/images/7/79/Bowserjrmkworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -227,6 +259,7 @@
     {
       "characterId": "bowser_jr",
       "id": "bowser_jr__explorer",
+      "imageUrl": "https://mario.wiki.gallery/images/7/73/Junior_Explorer.png",
       "isDefault": false,
       "name": "Explorer",
       "nameIt": "Esploratore"
@@ -234,6 +267,7 @@
     {
       "characterId": "bowser_jr",
       "id": "bowser_jr__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/0/05/MKWorld_Bowser_Jr_Pro_Racer_alt.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -241,6 +275,7 @@
     {
       "characterId": "daisy",
       "id": "daisy__aero",
+      "imageUrl": "https://mario.wiki.gallery/images/5/52/MKWorld_Daisy_Costume_3.png",
       "isDefault": false,
       "name": "Aero",
       "nameIt": "Motociclista"
@@ -248,6 +283,7 @@
     {
       "characterId": "daisy",
       "id": "daisy__default",
+      "imageUrl": "https://mario.wiki.gallery/images/c/cc/DaisyMKworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -255,6 +291,7 @@
     {
       "characterId": "daisy",
       "id": "daisy__oasis",
+      "imageUrl": "https://mario.wiki.gallery/images/4/4e/Daisy_Oasis.png",
       "isDefault": false,
       "name": "Oasis",
       "nameIt": "Oasi"
@@ -262,6 +299,7 @@
     {
       "characterId": "daisy",
       "id": "daisy__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/c/cc/MK_World_Daisy_black_scarf_costume.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -269,6 +307,7 @@
     {
       "characterId": "daisy",
       "id": "daisy__swimwear",
+      "imageUrl": "https://mario.wiki.gallery/images/9/9b/Daisy_Swimwear.png",
       "isDefault": false,
       "name": "Swimwear",
       "nameIt": "Balneare"
@@ -276,6 +315,7 @@
     {
       "characterId": "daisy",
       "id": "daisy__touring",
+      "imageUrl": "https://mario.wiki.gallery/images/a/ad/Daisytourmkworld.png",
       "isDefault": false,
       "name": "Touring",
       "nameIt": "Sprintosa"
@@ -283,6 +323,7 @@
     {
       "characterId": "daisy",
       "id": "daisy__vacation",
+      "imageUrl": "https://mario.wiki.gallery/images/6/64/MKWorld_Daisy_Vacation_alt.png",
       "isDefault": false,
       "name": "Vacation",
       "nameIt": "Vacanza"
@@ -290,6 +331,7 @@
     {
       "characterId": "donkey_kong",
       "id": "donkey_kong__all_terrain",
+      "imageUrl": "https://mario.wiki.gallery/images/b/be/Donkey_Kong_All_Terrain.png",
       "isDefault": false,
       "name": "All-Terrain",
       "nameIt": "Fuoristrada"
@@ -297,6 +339,7 @@
     {
       "characterId": "donkey_kong",
       "id": "donkey_kong__default",
+      "imageUrl": "https://mario.wiki.gallery/images/3/31/Dkmkworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -304,6 +347,7 @@
     {
       "characterId": "king_boo",
       "id": "king_boo__aristocrat",
+      "imageUrl": "https://mario.wiki.gallery/images/5/56/King_Boo_Aristocrat.png",
       "isDefault": false,
       "name": "Aristocrat",
       "nameIt": "Aristocratico"
@@ -311,6 +355,7 @@
     {
       "characterId": "king_boo",
       "id": "king_boo__default",
+      "imageUrl": "https://mario.wiki.gallery/images/8/80/Kingboomkworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -318,6 +363,7 @@
     {
       "characterId": "king_boo",
       "id": "king_boo__pirate",
+      "imageUrl": "https://mario.wiki.gallery/images/e/e2/MKWorld_King_Boo_pirate_outfit.png",
       "isDefault": false,
       "name": "Pirate",
       "nameIt": "Filibustiere"
@@ -325,6 +371,7 @@
     {
       "characterId": "king_boo",
       "id": "king_boo__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/7/7c/MKWorld_King_Boo_racing_outfit.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -332,6 +379,7 @@
     {
       "characterId": "koopa_troopa",
       "id": "koopa_troopa__all_terrain",
+      "imageUrl": "https://mario.wiki.gallery/images/c/c9/MKWorld_Koopa_Troopa_All-Terrain_alt.png",
       "isDefault": false,
       "name": "All-Terrain",
       "nameIt": "Fuoristrada"
@@ -339,6 +387,7 @@
     {
       "characterId": "koopa_troopa",
       "id": "koopa_troopa__default",
+      "imageUrl": "https://mario.wiki.gallery/images/4/4e/KoopaMKworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -346,6 +395,7 @@
     {
       "characterId": "koopa_troopa",
       "id": "koopa_troopa__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/d/d3/MKWorld_Koopa_Troopa_Pro_Racer_alt.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -353,6 +403,7 @@
     {
       "characterId": "koopa_troopa",
       "id": "koopa_troopa__runner",
+      "imageUrl": "https://mario.wiki.gallery/images/b/b0/Krtourmkworld.png",
       "isDefault": false,
       "name": "Runner",
       "nameIt": "Podista"
@@ -360,6 +411,7 @@
     {
       "characterId": "koopa_troopa",
       "id": "koopa_troopa__sailor",
+      "imageUrl": "https://mario.wiki.gallery/images/3/31/MKWorld_Koopa_Troopa_Sailor_alt.png",
       "isDefault": false,
       "name": "Sailor",
       "nameIt": "Marinaio"
@@ -367,6 +419,7 @@
     {
       "characterId": "koopa_troopa",
       "id": "koopa_troopa__work_crew",
+      "imageUrl": "https://mario.wiki.gallery/images/a/a4/MKWorld_Construction_Koopa.png",
       "isDefault": false,
       "name": "Work Crew",
       "nameIt": "Muratore"
@@ -374,6 +427,7 @@
     {
       "characterId": "lakitu",
       "id": "lakitu__default",
+      "imageUrl": "https://mario.wiki.gallery/images/2/23/Lakitumkworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -381,6 +435,7 @@
     {
       "characterId": "lakitu",
       "id": "lakitu__fisherman",
+      "imageUrl": "https://mario.wiki.gallery/images/b/bf/MK_World_Lakitu_Fisherman_char_select.png",
       "isDefault": false,
       "name": "Fisherman",
       "nameIt": "Pescatore"
@@ -388,6 +443,7 @@
     {
       "characterId": "lakitu",
       "id": "lakitu__pit_crew",
+      "imageUrl": "https://mario.wiki.gallery/images/9/92/MKWorld_Lakitu_Pit_Crew_alt.png",
       "isDefault": false,
       "name": "Pit Crew",
       "nameIt": "Ingegnere di pista"
@@ -395,6 +451,7 @@
     {
       "characterId": "luigi",
       "id": "luigi__all_terrain",
+      "imageUrl": "https://mario.wiki.gallery/images/b/b6/MKWorld_Luigi_All-Terrain_alt.png",
       "isDefault": false,
       "name": "All-Terrain",
       "nameIt": "Fuoristrada"
@@ -402,6 +459,7 @@
     {
       "characterId": "luigi",
       "id": "luigi__default",
+      "imageUrl": "https://mario.wiki.gallery/images/b/b5/LuigiMKworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -409,6 +467,7 @@
     {
       "characterId": "luigi",
       "id": "luigi__farmer",
+      "imageUrl": "https://mario.wiki.gallery/images/9/9e/Luigi_Farmer_MKWorld_Select.png",
       "isDefault": false,
       "name": "Farmer",
       "nameIt": "Contadino"
@@ -416,6 +475,7 @@
     {
       "characterId": "luigi",
       "id": "luigi__gondolier",
+      "imageUrl": "https://mario.wiki.gallery/images/5/58/Luigi_Gondolier.png",
       "isDefault": false,
       "name": "Gondolier",
       "nameIt": "Gondoliere"
@@ -423,6 +483,7 @@
     {
       "characterId": "luigi",
       "id": "luigi__happi",
+      "imageUrl": "https://mario.wiki.gallery/images/e/ec/Lhmkworld.png",
       "isDefault": false,
       "name": "Happi",
       "nameIt": "Festival"
@@ -430,6 +491,7 @@
     {
       "characterId": "luigi",
       "id": "luigi__mechanic",
+      "imageUrl": "https://mario.wiki.gallery/images/d/dc/MKWorld_Luigi_Mechanic_alt.png",
       "isDefault": false,
       "name": "Mechanic",
       "nameIt": "Meccanico"
@@ -437,6 +499,7 @@
     {
       "characterId": "luigi",
       "id": "luigi__oasis",
+      "imageUrl": "https://mario.wiki.gallery/images/f/ff/MKWorld_Luigi_Oasis_alt.png",
       "isDefault": false,
       "name": "Oasis",
       "nameIt": "Oasi"
@@ -444,6 +507,7 @@
     {
       "characterId": "luigi",
       "id": "luigi__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/5/5f/Luigi_Pro_Racer.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -451,6 +515,7 @@
     {
       "characterId": "luigi",
       "id": "luigi__touring",
+      "imageUrl": "https://mario.wiki.gallery/images/6/60/Luigitourmkworld.png",
       "isDefault": false,
       "name": "Touring",
       "nameIt": "Sprintoso"
@@ -458,6 +523,7 @@
     {
       "characterId": "mario",
       "id": "mario__all_terrain",
+      "imageUrl": "https://mario.wiki.gallery/images/6/6e/Mario_All_Terrain.png",
       "isDefault": false,
       "name": "All-Terrain",
       "nameIt": "Fuoristrada"
@@ -465,6 +531,7 @@
     {
       "characterId": "mario",
       "id": "mario__aviator",
+      "imageUrl": "https://mario.wiki.gallery/images/3/34/MKWorld_Mario_Costume_3.png",
       "isDefault": false,
       "name": "Aviator",
       "nameIt": "Aviatore"
@@ -472,6 +539,7 @@
     {
       "characterId": "mario",
       "id": "mario__cowboy",
+      "imageUrl": "https://mario.wiki.gallery/images/6/68/Mario_Cowboy_MKWorld_Select.png",
       "isDefault": false,
       "name": "Cowboy",
       "nameIt": "Cowboy"
@@ -479,6 +547,7 @@
     {
       "characterId": "mario",
       "id": "mario__default",
+      "imageUrl": "https://mario.wiki.gallery/images/5/51/MarioMKworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -486,6 +555,7 @@
     {
       "characterId": "mario",
       "id": "mario__dune_rider",
+      "imageUrl": "https://mario.wiki.gallery/images/0/00/MKWorld_Mario_Costume_6.png",
       "isDefault": false,
       "name": "Dune Rider",
       "nameIt": "Oasi"
@@ -493,6 +563,7 @@
     {
       "characterId": "mario",
       "id": "mario__happi",
+      "imageUrl": "https://mario.wiki.gallery/images/c/c8/Mhmkworld.png",
       "isDefault": false,
       "name": "Happi",
       "nameIt": "Festival"
@@ -500,6 +571,7 @@
     {
       "characterId": "mario",
       "id": "mario__mechanic",
+      "imageUrl": "https://mario.wiki.gallery/images/6/6f/MKWorld_Mechanic_Mario.png",
       "isDefault": false,
       "name": "Mechanic",
       "nameIt": "Meccanico"
@@ -507,6 +579,7 @@
     {
       "characterId": "mario",
       "id": "mario__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/f/fd/MKWorld_Mario_Pro_Racer_Outfit.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -514,6 +587,7 @@
     {
       "characterId": "mario",
       "id": "mario__sightseeing",
+      "imageUrl": "https://mario.wiki.gallery/images/e/e5/Sightseeing_MarioSelect.png",
       "isDefault": false,
       "name": "Sightseeing",
       "nameIt": "Turista"
@@ -521,6 +595,7 @@
     {
       "characterId": "mario",
       "id": "mario__touring",
+      "imageUrl": "https://mario.wiki.gallery/images/6/67/Mariotourmkworld.png",
       "isDefault": false,
       "name": "Touring",
       "nameIt": "Sprintoso"
@@ -528,6 +603,7 @@
     {
       "characterId": "pauline",
       "id": "pauline__aero",
+      "imageUrl": "https://mario.wiki.gallery/images/c/ce/Pauline_Aero.png",
       "isDefault": false,
       "name": "Aero",
       "nameIt": "Motociclista"
@@ -535,6 +611,7 @@
     {
       "characterId": "pauline",
       "id": "pauline__default",
+      "imageUrl": "https://mario.wiki.gallery/images/d/d7/PaulineMKworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -542,6 +619,7 @@
     {
       "characterId": "peach",
       "id": "peach__aero",
+      "imageUrl": "https://mario.wiki.gallery/images/b/b0/MKWorld_Peach_Costume_5.png",
       "isDefault": false,
       "name": "Aero",
       "nameIt": "Motociclista"
@@ -549,6 +627,7 @@
     {
       "characterId": "peach",
       "id": "peach__aviator",
+      "imageUrl": "https://mario.wiki.gallery/images/e/ee/MKWorld_Peach_Aviator_alt.png",
       "isDefault": false,
       "name": "Aviator",
       "nameIt": "Aviatore"
@@ -556,6 +635,7 @@
     {
       "characterId": "peach",
       "id": "peach__default",
+      "imageUrl": "https://mario.wiki.gallery/images/a/a1/PeachMKworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -563,6 +643,7 @@
     {
       "characterId": "peach",
       "id": "peach__farmer",
+      "imageUrl": "https://mario.wiki.gallery/images/7/74/Peach_Farmer_MKWorld_Select.png",
       "isDefault": false,
       "name": "Farmer",
       "nameIt": "Contadina"
@@ -570,6 +651,7 @@
     {
       "characterId": "peach",
       "id": "peach__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/a/a6/MKWorld_Peach_Costume_1.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -577,6 +659,7 @@
     {
       "characterId": "peach",
       "id": "peach__sightseeing",
+      "imageUrl": "https://mario.wiki.gallery/images/b/b8/MKWorld_Peach_Sightseeing_alt.png",
       "isDefault": false,
       "name": "Sightseeing",
       "nameIt": "Turista"
@@ -584,6 +667,7 @@
     {
       "characterId": "peach",
       "id": "peach__touring",
+      "imageUrl": "https://mario.wiki.gallery/images/4/4d/Peachtourmkworld.png",
       "isDefault": false,
       "name": "Touring",
       "nameIt": "Sprintosa"
@@ -591,6 +675,7 @@
     {
       "characterId": "peach",
       "id": "peach__vacation",
+      "imageUrl": "https://mario.wiki.gallery/images/3/36/MKWorld_Peach_Costume_4.png",
       "isDefault": false,
       "name": "Vacation",
       "nameIt": "Vacanza"
@@ -598,6 +683,7 @@
     {
       "characterId": "peach",
       "id": "peach__yukata",
+      "imageUrl": "https://mario.wiki.gallery/images/b/b8/Phmkworld.png",
       "isDefault": false,
       "name": "Yukata",
       "nameIt": "Festival"
@@ -605,6 +691,7 @@
     {
       "characterId": "rosalina",
       "id": "rosalina__aero",
+      "imageUrl": "https://mario.wiki.gallery/images/0/06/Rosalina_Biker.png",
       "isDefault": false,
       "name": "Aero",
       "nameIt": "Motociclista"
@@ -612,6 +699,7 @@
     {
       "characterId": "rosalina",
       "id": "rosalina__aurora",
+      "imageUrl": "https://mario.wiki.gallery/images/4/47/MKW_Rosalina_Aurora_alt.png",
       "isDefault": false,
       "name": "Aurora",
       "nameIt": "Boreale"
@@ -619,6 +707,7 @@
     {
       "characterId": "rosalina",
       "id": "rosalina__default",
+      "imageUrl": "https://mario.wiki.gallery/images/0/06/RosalinaMKworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -626,6 +715,7 @@
     {
       "characterId": "rosalina",
       "id": "rosalina__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/7/7c/Rosalina_Racer.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -633,6 +723,7 @@
     {
       "characterId": "rosalina",
       "id": "rosalina__touring",
+      "imageUrl": "https://mario.wiki.gallery/images/c/c0/Rtourmkworld.png",
       "isDefault": false,
       "name": "Touring",
       "nameIt": "Sprintosa"
@@ -640,6 +731,7 @@
     {
       "characterId": "shy_guy",
       "id": "shy_guy__default",
+      "imageUrl": "https://mario.wiki.gallery/images/e/ea/Shyguymkworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -647,6 +739,7 @@
     {
       "characterId": "shy_guy",
       "id": "shy_guy__pit_crew",
+      "imageUrl": "https://mario.wiki.gallery/images/b/bc/Shy_Guy_Racer.png",
       "isDefault": false,
       "name": "Pit Crew",
       "nameIt": "Ingegnere di pista"
@@ -654,6 +747,7 @@
     {
       "characterId": "shy_guy",
       "id": "shy_guy__slope_styler",
+      "imageUrl": "https://mario.wiki.gallery/images/8/8d/Shy_Guy_Sloper.png",
       "isDefault": false,
       "name": "Slope Styler",
       "nameIt": "Snowboarder"
@@ -661,6 +755,7 @@
     {
       "characterId": "toad",
       "id": "toad__burger_bud",
+      "imageUrl": "https://mario.wiki.gallery/images/5/59/ToadBurgerSelect.png",
       "isDefault": false,
       "name": "Burger Bud",
       "nameIt": "Hamburger"
@@ -668,6 +763,7 @@
     {
       "characterId": "toad",
       "id": "toad__default",
+      "imageUrl": "https://mario.wiki.gallery/images/8/81/ToadMKworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -675,6 +771,7 @@
     {
       "characterId": "toad",
       "id": "toad__engineer",
+      "imageUrl": "https://mario.wiki.gallery/images/f/fd/MKWorld_Toad_train_outfit.png",
       "isDefault": false,
       "name": "Engineer",
       "nameIt": "Macchinista"
@@ -682,6 +779,7 @@
     {
       "characterId": "toad",
       "id": "toad__explorer",
+      "imageUrl": "https://mario.wiki.gallery/images/4/4a/MKWorld_Toad_Costume_1.png",
       "isDefault": false,
       "name": "Explorer",
       "nameIt": "Esploratore"
@@ -689,6 +787,7 @@
     {
       "characterId": "toad",
       "id": "toad__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/a/a5/MKWorld_Toad_Costume_3.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -696,6 +795,7 @@
     {
       "characterId": "toadette",
       "id": "toadette__conductor",
+      "imageUrl": "https://mario.wiki.gallery/images/0/01/MKWorld_Toadette_Costume_2.png",
       "isDefault": false,
       "name": "Conductor",
       "nameIt": "Capotreno"
@@ -703,6 +803,7 @@
     {
       "characterId": "toadette",
       "id": "toadette__default",
+      "imageUrl": "https://mario.wiki.gallery/images/6/6f/Toadettemkworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -710,6 +811,7 @@
     {
       "characterId": "toadette",
       "id": "toadette__explorer",
+      "imageUrl": "https://mario.wiki.gallery/images/6/69/MKWorld_Toadette_Costume_1.png",
       "isDefault": false,
       "name": "Explorer",
       "nameIt": "Esploratrice"
@@ -717,6 +819,7 @@
     {
       "characterId": "toadette",
       "id": "toadette__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/9/96/MKWorld_New_Toadette_Costume.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -724,6 +827,7 @@
     {
       "characterId": "toadette",
       "id": "toadette__soft_server",
+      "imageUrl": "https://mario.wiki.gallery/images/c/c1/Toadette_Soft_Server_MKWorld_Select.png",
       "isDefault": false,
       "name": "Soft Server",
       "nameIt": "Gelataia"
@@ -731,6 +835,7 @@
     {
       "characterId": "waluigi",
       "id": "waluigi__biker",
+      "imageUrl": "https://mario.wiki.gallery/images/8/87/Waluigi_Biker.png",
       "isDefault": false,
       "name": "Biker",
       "nameIt": "Centauro"
@@ -738,6 +843,7 @@
     {
       "characterId": "waluigi",
       "id": "waluigi__default",
+      "imageUrl": "https://mario.wiki.gallery/images/5/52/WaluigiMKworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -745,6 +851,7 @@
     {
       "characterId": "waluigi",
       "id": "waluigi__mariachi",
+      "imageUrl": "https://mario.wiki.gallery/images/8/8f/Waluigi_Mariachi_MKWorld_Select.png",
       "isDefault": false,
       "name": "Mariachi",
       "nameIt": "Mariachi"
@@ -752,6 +859,7 @@
     {
       "characterId": "waluigi",
       "id": "waluigi__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/9/93/Waluigi_Dune_Rider.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -759,6 +867,7 @@
     {
       "characterId": "waluigi",
       "id": "waluigi__road_ruffian",
+      "imageUrl": "https://mario.wiki.gallery/images/a/a6/Waluigi_Road_Ruffian.png",
       "isDefault": false,
       "name": "Road Ruffian",
       "nameIt": "Punk"
@@ -766,6 +875,7 @@
     {
       "characterId": "waluigi",
       "id": "waluigi__wampire",
+      "imageUrl": "https://mario.wiki.gallery/images/1/12/Waluigi_Wampire.png",
       "isDefault": false,
       "name": "Wampire",
       "nameIt": "Wampiro"
@@ -773,6 +883,7 @@
     {
       "characterId": "wario",
       "id": "wario__biker",
+      "imageUrl": "https://mario.wiki.gallery/images/6/6c/Wario_Biker.png",
       "isDefault": false,
       "name": "Biker",
       "nameIt": "Centauro"
@@ -780,6 +891,7 @@
     {
       "characterId": "wario",
       "id": "wario__default",
+      "imageUrl": "https://mario.wiki.gallery/images/3/3d/WarioMKworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -787,6 +899,7 @@
     {
       "characterId": "wario",
       "id": "wario__oasis",
+      "imageUrl": "https://mario.wiki.gallery/images/9/99/Wario_Oasis.png",
       "isDefault": false,
       "name": "Oasis",
       "nameIt": "Oasi"
@@ -794,6 +907,7 @@
     {
       "characterId": "wario",
       "id": "wario__pirate",
+      "imageUrl": "https://mario.wiki.gallery/images/4/49/Wario_Pirate.png",
       "isDefault": false,
       "name": "Pirate",
       "nameIt": "Filibustiere"
@@ -801,6 +915,7 @@
     {
       "characterId": "wario",
       "id": "wario__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/9/9f/Wario_Racer.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -808,6 +923,7 @@
     {
       "characterId": "wario",
       "id": "wario__road_ruffian",
+      "imageUrl": "https://mario.wiki.gallery/images/b/b0/Wario_Road_Ruffian.png",
       "isDefault": false,
       "name": "Road Ruffian",
       "nameIt": "Punk"
@@ -815,6 +931,7 @@
     {
       "characterId": "wario",
       "id": "wario__wicked_wasp",
+      "imageUrl": "https://mario.wiki.gallery/images/3/36/Wario_Wicked_Wasp_MKWorld_Select.png",
       "isDefault": false,
       "name": "Wicked Wasp",
       "nameIt": "Wespone"
@@ -822,6 +939,7 @@
     {
       "characterId": "wario",
       "id": "wario__work_crew",
+      "imageUrl": "https://mario.wiki.gallery/images/a/a7/Wario_Construction.png",
       "isDefault": false,
       "name": "Work Crew",
       "nameIt": "Muratore"
@@ -829,6 +947,7 @@
     {
       "characterId": "yoshi",
       "id": "yoshi__aristocrat",
+      "imageUrl": "https://mario.wiki.gallery/images/9/9d/MKW_Purple_Yoshi_top_hat.png",
       "isDefault": false,
       "name": "Aristocrat",
       "nameIt": "Aristocratico"
@@ -836,6 +955,7 @@
     {
       "characterId": "yoshi",
       "id": "yoshi__biker",
+      "imageUrl": "https://mario.wiki.gallery/images/6/62/YoshiBikerSelect.png",
       "isDefault": false,
       "name": "Biker",
       "nameIt": "Centauro"
@@ -843,6 +963,7 @@
     {
       "characterId": "yoshi",
       "id": "yoshi__default",
+      "imageUrl": "https://mario.wiki.gallery/images/c/c9/YoshiMKworld.png",
       "isDefault": true,
       "name": null,
       "nameIt": null
@@ -850,6 +971,7 @@
     {
       "characterId": "yoshi",
       "id": "yoshi__food_slinger",
+      "imageUrl": "https://mario.wiki.gallery/images/f/fe/Yoshifood.png",
       "isDefault": false,
       "name": "Food Slinger",
       "nameIt": "Fast-food"
@@ -857,6 +979,7 @@
     {
       "characterId": "yoshi",
       "id": "yoshi__matsuri",
+      "imageUrl": "https://mario.wiki.gallery/images/8/8c/Ymmkworld.png",
       "isDefault": false,
       "name": "Matsuri",
       "nameIt": "Festival"
@@ -864,6 +987,7 @@
     {
       "characterId": "yoshi",
       "id": "yoshi__pro_racer",
+      "imageUrl": "https://mario.wiki.gallery/images/f/f6/MKWorld_Yoshi_Pro_Racer_alt.png",
       "isDefault": false,
       "name": "Pro Racer",
       "nameIt": "Pilota"
@@ -871,6 +995,7 @@
     {
       "characterId": "yoshi",
       "id": "yoshi__soft_server",
+      "imageUrl": "https://mario.wiki.gallery/images/c/cc/Yoshi_Pink_MKWorld_Select.png",
       "isDefault": false,
       "name": "Soft Server",
       "nameIt": "Gelataio"
@@ -878,6 +1003,7 @@
     {
       "characterId": "yoshi",
       "id": "yoshi__swimwear",
+      "imageUrl": "https://mario.wiki.gallery/images/1/14/MKW_Orange_Yoshi_swim.png",
       "isDefault": false,
       "name": "Swimwear",
       "nameIt": "Balneare"
@@ -885,6 +1011,7 @@
     {
       "characterId": "yoshi",
       "id": "yoshi__touring",
+      "imageUrl": "https://mario.wiki.gallery/images/5/5d/Yoshitourmkworld.png",
       "isDefault": false,
       "name": "Touring",
       "nameIt": "Sprintoso"

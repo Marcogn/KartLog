@@ -128,6 +128,16 @@ interface SeedDao {
         insertOutfitFoodRules(seed.outfitFoodRules)
     }
 
+    /** Tutti gli URL delle immagini (personaggi, outfit, eventi), per il prefetch all'avvio. */
+    @Query(
+        """
+        SELECT imageUrl FROM characters WHERE imageUrl IS NOT NULL
+        UNION SELECT imageUrl FROM outfits WHERE imageUrl IS NOT NULL
+        UNION SELECT imageUrl FROM events WHERE imageUrl IS NOT NULL
+        """
+    )
+    suspend fun allImageUrls(): List<String>
+
     @Query("SELECT COUNT(*) FROM outfits")
     fun countOutfits(): Flow<Int>
 

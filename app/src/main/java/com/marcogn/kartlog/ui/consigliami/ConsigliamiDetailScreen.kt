@@ -23,6 +23,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -30,6 +31,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
 import com.marcogn.kartlog.domain.consigliami.CharacterDetail
 import com.marcogn.kartlog.domain.model.Cc
+import com.marcogn.kartlog.ui.common.CharacterAvatar
+import com.marcogn.kartlog.ui.common.EventIcon
 import com.marcogn.kartlog.ui.common.ccLabel
 import com.marcogn.kartlog.ui.common.rankLabel
 
@@ -44,7 +47,12 @@ fun ConsigliamiDetailScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(state.eventName) },
+                title = {
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        EventIcon(name = state.eventName, imageUrl = state.eventImageUrl, size = 32.dp)
+                        Text(state.eventName)
+                    }
+                },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
@@ -64,7 +72,7 @@ fun ConsigliamiDetailScreen(
                 }
             } else {
                 items(state.details, key = { it.characterId }) { detail ->
-                    CharacterDetailCard(detail, state.characterNames, state.outfitNames)
+                    CharacterDetailCard(detail, state.characterNames, state.characterImages, state.outfitNames)
                 }
             }
 
@@ -95,13 +103,22 @@ fun ConsigliamiDetailScreen(
 }
 
 @Composable
-private fun CharacterDetailCard(detail: CharacterDetail, characterNames: Map<String, String>, outfitNames: Map<String, String>) {
+private fun CharacterDetailCard(
+    detail: CharacterDetail,
+    characterNames: Map<String, String>,
+    characterImages: Map<String, String>,
+    outfitNames: Map<String, String>,
+) {
+    val name = characterNames[detail.characterId] ?: detail.characterId
     Card(modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp)) {
         Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text(
-                text = stringResource(R.string.consigliami_gain_format, detail.gain).let { "${characterNames[detail.characterId] ?: detail.characterId} · $it" },
-                style = MaterialTheme.typography.titleMedium,
-            )
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                CharacterAvatar(name = name, imageUrl = characterImages[detail.characterId], size = 40.dp)
+                Text(
+                    text = stringResource(R.string.consigliami_gain_format, detail.gain).let { "$name · $it" },
+                    style = MaterialTheme.typography.titleMedium,
+                )
+            }
             detail.unlockableOutfitIds.forEach { outfitId ->
                 Text("• ${outfitNames[outfitId] ?: outfitId}", style = MaterialTheme.typography.bodyMedium)
             }

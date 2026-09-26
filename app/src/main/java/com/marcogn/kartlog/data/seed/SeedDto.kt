@@ -13,7 +13,13 @@ data class SeedFile<T>(
 )
 
 @Serializable
-data class CharacterDto(val id: String, val name: String, val nameIt: String? = null, val rosterOrder: Int)
+data class CharacterDto(
+    val id: String,
+    val name: String,
+    val nameIt: String? = null,
+    val rosterOrder: Int,
+    val imageUrl: String? = null,
+)
 
 @Serializable
 data class OutfitDto(
@@ -22,6 +28,7 @@ data class OutfitDto(
     val name: String? = null,
     val nameIt: String? = null,
     val isDefault: Boolean,
+    val imageUrl: String? = null,
 )
 
 @Serializable
@@ -61,7 +68,14 @@ data class PSwitchDto(
 )
 
 @Serializable
-data class EventDto(val id: String, val type: String, val name: String, val order: Int, val stops: List<String>)
+data class EventDto(
+    val id: String,
+    val type: String,
+    val name: String,
+    val order: Int,
+    val stops: List<String>,
+    val imageUrl: String? = null,
+)
 
 @Serializable
 data class SeedMetaSourceDto(val title: String, val url: String, val revid: Int? = null)

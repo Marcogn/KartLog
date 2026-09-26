@@ -3,7 +3,8 @@
 # Nessuna pagina viene "cercata": se un titolo cambia sul wiki, l'estrazione fallisce e va aggiornato qui.
 #
 # Licenza dei contenuti testuali: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).
-# Le immagini del wiki NON sono coperte da quella licenza e non vengono mai scaricate.
+# Le immagini del wiki NON sono coperte da quella licenza: seedgen non le scarica, ne registra solo
+# l'URL (pagina `images` qui sotto) e le scarica l'app a runtime. Mai nel repository né nell'APK.
 
 api_url: "https://www.mariowiki.com/api.php"
 page_url_prefix: "https://www.mariowiki.com/"
@@ -37,6 +38,10 @@ pages:
   # con tabella "Names in other languages" propria (a volte con varianti maschile/femminile per
   # l'italiano).
   outfit_names_it: "List of Mario Kart World outfit names in other languages"
+
+  # URL delle immagini di personaggi, outfit, cup e rally (seedgen/images.py). Scaricata sempre dal
+  # vivo, mai come fixture (oltre 1 MB per poche gallerie), come le pagine dei nomi in italiano.
+  images: "Mario Kart World"
 
   # Una pagina per rally. La tabella con intestazioni "Starting point" ... "Final course"
   # dà le tappe in ordine. L'ordine di questa lista è l'ordine degli eventi in app.

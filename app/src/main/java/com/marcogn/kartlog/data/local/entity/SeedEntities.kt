@@ -16,6 +16,8 @@ data class CharacterEntity(
     val nameIt: String?,
     val rosterOrder: Int,
     val imageRes: String? = null,
+    /** Immagine sul CDN di Super Mario Wiki (seedgen/images.py), scaricata a runtime: mai nell'APK. */
+    val imageUrl: String? = null,
 )
 
 @Entity(tableName = "outfits")
@@ -25,6 +27,8 @@ data class OutfitEntity(
     val name: String?,
     val nameIt: String?,
     val isDefault: Boolean,
+    /** Vedi [CharacterEntity.imageUrl]. Per l'outfit di default è l'immagine del personaggio. */
+    val imageUrl: String? = null,
 )
 
 @Entity(tableName = "food_groups")
@@ -94,6 +98,8 @@ data class EventEntity(
     val type: EventType,
     val name: String,
     val order: Int,
+    /** Icona della cup/del rally, vedi [CharacterEntity.imageUrl]. */
+    val imageUrl: String? = null,
 )
 
 @Entity(tableName = "event_stops", primaryKeys = ["eventId", "position"])

@@ -9,8 +9,8 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 ## 0. Regole per chi implementa (leggere prima di tutto)
 
 1. **Non inventare mai dati di gioco.** Personaggi, outfit, cibi, cup, rally, percorsi, medaglie e P Switch arrivano **solo** dai file seed JSON (§5), generati da `tools/seedgen`. Non modificare `seed/` a mano. Se un dato manca, lascialo vuoto o `null` e aggiungi un `TODO` nel JSON. Non usare valori plausibili al suo posto.
-2. **Nessun asset Nintendo nel repository**: niente render, loghi, font o screenshot. Le immagini dei personaggi sono placeholder (iniziali su sfondo colorato) finché non viene deciso diversamente. Il codice deve prevedere uno slot immagine opzionale (`imageRes: String?`).
-3. **App completamente offline**: nessun permesso INTERNET, nessuna analytics. La rete si usa **solo a build time**, nello script di estrazione dati (§5).
+2. **Nessun asset Nintendo nel repository**: niente render, loghi, font o screenshot, né nel repository né nell'APK. Le immagini di personaggi, outfit ed eventi si scaricano **a runtime** dal CDN di Super Mario Wiki (URL `imageUrl` nel seed, estratti da seedgen dalla pagina "Mario Kart World"); finché non ci sono si vede un placeholder con le iniziali. Decisione dell'autore del 26/09/2026, vedi `CLAUDE.md`.
+3. **Offline tranne le immagini**: il permesso INTERNET serve solo a scaricare le immagini del punto 2; nessuna analytics, nessun altro traffico, e l'app funziona interamente anche senza rete. I dati di gioco si scaricano **solo a build time**, nello script di estrazione dati (§5).
 4. Lavora per fasi (§8). Alla fine di ogni fase il progetto deve compilare e i test devono passare.
 
 ---
@@ -46,8 +46,9 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 
 ### 2.3 Skin
 **Schermata lista personaggi**
-- `LazyVerticalGrid` a **2 colonne**. Le righe dipendono dal numero di personaggi **che hanno almeno un outfit alternativo**.
-- Ogni cella mostra lo slot immagine (placeholder), il nome e un contatore `ottenuti/totali`.
+- `LazyVerticalGrid` adattiva (**3 colonne** su telefono): le immagini sono verticali, nelle proporzioni della schermata di selezione del gioco. Le righe dipendono dal numero di personaggi **che hanno almeno un outfit alternativo**.
+- Ogni cella mostra l'immagine del personaggio (placeholder con le iniziali finché non è scaricata), il nome e un contatore `ottenuti/totali`.
+- Il dettaglio mostra gli outfit come griglia di card con la loro immagine (2 per riga su telefono); l'outfit di default usa l'immagine del personaggio.
 - Se il personaggio ha **tutti** gli outfit, la cella è attenuata (nome e card con alpha ridotto o colori desaturati) e si ordina in fondo. L'ordinamento è configurabile: roster ufficiale / alfabetico / % completamento.
 - Filtro in alto: Tutti / Incompleti.
 
@@ -179,7 +180,7 @@ Tutte da **Super Mario Wiki** (mariowiki.com), contenuti testuali in CC BY-SA 4.
 **Peach Medallions: fonte manuale.** Nessuna fonte con licenza libera li elenca (la pagina mariowiki dà solo il totale). Poiché stanno nel mondo aperto, ogni guida li raggruppa a modo suo: Gamer Guides per percorso (somma 199), Nintendo Life per le 10 regioni (somma 200). Si usano i **conteggi per regione di Nintendo Life**, in `tools/seedgen/manual/peach_medallions.yaml`, copiando solo i numeri. Niente scraping automatico di siti commerciali (IGN, Game8, Nintendo Life): contenuti protetti, termini d'uso restrittivi e struttura instabile. Per cambiare raggruppamento si modifica quel file a mano.
 
 - Le guide commerciali (IGN, Game8, Nintendo Life, Gamer Guides) servono **solo per verificare** i dati, non per copiarne i contenuti. IGN è il riferimento dell'autore per il controllo a campione degli outfit (manuale, non automatizzato).
-- Le immagini di mariowiki **non** sono CC BY-SA: sono asset Nintendo e non vengono mai scaricate.
+- Le immagini di mariowiki **non** sono CC BY-SA: sono asset Nintendo. seedgen ne registra solo l'URL (`imageUrl` su personaggi, outfit, eventi; pagina `Mario Kart World`, sempre dal vivo come le pagine dei nomi in italiano); l'app le scarica a runtime e non entrano mai nel repository o nell'APK.
 
 ### 5.2.1 Regole di dominio verificate sulla pagina Dash Food
 - **Tutti i cibi di uno stesso gruppo danno lo stesso outfit**: gli snack non sono combinazioni. Il wiki parla di 18 gruppi ufficiali; per l'app conta la cella Outfits distinta, che dà **20 gruppi** (19 con outfit + Lunchbox).
@@ -341,11 +342,10 @@ I criteri 3–6 ordinano **dentro** il gruppo a pari merito ma non cambiano il n
 ---
 
 ## 7. Fuori scope v1
-- Immagini ufficiali dei personaggi
 - Mappa interattiva
 - Sticker e ? Panels (possibile v2, con la stessa struttura di medaglioni e pulsanti P)
 - Stato di sblocco di cup e rally (es. Special Cup, rally aggiuntivi)
-- Qualsiasi connessione di rete **nell'app** (la rete serve solo al build release, §5.4)
+- Qualsiasi connessione di rete **nell'app** oltre al download delle immagini (§0, punto 2)
 
 ---
 
@@ -361,7 +361,7 @@ I criteri 3–6 ordinano **dentro** il gruppo a pari merito ma non cambiano il n
 8. **Backup**: export/import dello stato utente.
 
 ## 9. Criteri di accettazione
-- L'app parte offline e senza permessi di rete.
+- L'app parte e funziona offline; l'unico uso della rete è il download delle immagini.
 - Spuntare l'ultimo outfit di un personaggio lo attenua subito nella griglia e aggiorna il contatore in Home.
 - Consigliami si aggiorna in tempo reale quando cambia lo stato degli outfit.
 - Un aggiornamento dei seed non perde lo stato utente (test di migrazione).

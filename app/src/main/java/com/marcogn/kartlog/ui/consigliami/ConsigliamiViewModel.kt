@@ -45,6 +45,9 @@ data class ConsigliamiUiState(
     /** Trofeo registrato alla cilindrata di riferimento (SPEC §6.3). */
     val bestRankByEvent: Map<String, TrophyRank> = emptyMap(),
     val characterNames: Map<String, String> = emptyMap(),
+    /** URL delle immagini (CDN del wiki, scaricate a runtime); assenti = segnaposto con iniziali. */
+    val characterImages: Map<String, String> = emptyMap(),
+    val eventImages: Map<String, String> = emptyMap(),
     val courseNames: Map<String, String> = emptyMap(),
     val foodGroupNames: Map<String, String> = emptyMap(),
 )
@@ -139,6 +142,8 @@ class ConsigliamiViewModel @Inject constructor(
             referenceCc = results.cc,
             bestRankByEvent = bestRankByEvent,
             characterNames = raw.characters.associate { it.id to localizedName(it.name, it.nameIt) },
+            characterImages = raw.characters.mapNotNull { c -> c.imageUrl?.let { c.id to it } }.toMap(),
+            eventImages = raw.events.mapNotNull { e -> e.imageUrl?.let { e.id to it } }.toMap(),
             courseNames = raw.courseNames,
             foodGroupNames = raw.foodGroupNames,
         )

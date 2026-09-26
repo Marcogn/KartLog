@@ -1,6 +1,6 @@
 # Security Policy
 
-KartLog is a single-user, fully offline Android app maintained by one
+KartLog is a single-user, mostly offline Android app maintained by one
 person in their spare time. There is no dedicated security team and no
 SLA, but reports are taken seriously and looked at as soon as possible.
 
@@ -23,9 +23,11 @@ progress or race results, or allow arbitrary code execution via a crafted
 backup import file (JSON export/import of the user state, SPEC §4).
 
 Things generally out of scope: issues that require a rooted/compromised
-device. The app has no network permission and makes no network calls at
-runtime — the only network access in this project happens at build time,
-in the `tools/seedgen` data-extraction script, never on-device.
+device. The app's only network access at runtime is downloading game images
+(characters, outfits, cups, rallies) over HTTPS from the Super Mario Wiki
+CDN (`mario.wiki.gallery`), at URLs fixed in the bundled `seed/` data; no
+user data is ever sent. The rest of the network access in this project
+happens at build time, in the `tools/seedgen` data-extraction script.
 
 ## Supported versions
 

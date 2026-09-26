@@ -22,6 +22,7 @@ data class ResultRow(
     val eventId: String,
     val eventName: String,
     val rank: TrophyRank?,
+    val imageUrl: String? = null,
 )
 
 data class ResultsUiState(
@@ -47,7 +48,7 @@ class ResultsViewModel @Inject constructor(
         // Nessun riporto tra cilindrate: ogni trofeo vale solo dove è registrato.
         val rankByEvent = results.filter { it.cc == selectedCc }.associate { it.eventId to it.rank }
         val rows = events.sortedBy { it.order }.map { event ->
-            event.type to ResultRow(event.id, event.name, rankByEvent[event.id])
+            event.type to ResultRow(event.id, event.name, rankByEvent[event.id], event.imageUrl)
         }
         ResultsUiState(
             cc = selectedCc,
