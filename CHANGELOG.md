@@ -6,6 +6,8 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+## [0.1.6] - 2026-09-26
+
 - **Personaggi al posto di Skin, con tutti i 50 piloti.** Oltre ai 24
   con outfit ci sono i 26 che hanno un solo aspetto (Goomba, Mucca,
   Delfì…): niente schermata di dettaglio, un tap li segna come sbloccati.
