@@ -85,7 +85,6 @@
     <string name="drawer_results">Results</string>
     <string name="home_option_results_title">Results</string>
     <string name="results_title">Results</string>
-    <string name="results_cc_label">Engine class</string>
     <string name="results_section_cup">Grand Prix</string>
     <string name="results_section_rally">Knockout Tour</string>
     <string name="results_no_trophy">No trophy</string>

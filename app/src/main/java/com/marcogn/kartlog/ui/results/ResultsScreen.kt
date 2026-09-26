@@ -41,7 +41,7 @@ import com.marcogn.kartlog.R
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.TrophyRank
 import com.marcogn.kartlog.ui.common.EventIcon
-import com.marcogn.kartlog.ui.common.KartChoiceButton
+import com.marcogn.kartlog.ui.common.KartTabs
 import com.marcogn.kartlog.ui.common.KartTitle
 import com.marcogn.kartlog.ui.common.KartTopBar
 import com.marcogn.kartlog.ui.common.ccLabel
@@ -72,24 +72,17 @@ fun ResultsScreen(
             )
         },
     ) { padding ->
-        LazyColumn(modifier = Modifier.padding(padding).fillMaxSize(), contentPadding = PaddingValues(bottom = 16.dp)) {
-            item {
-                Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
-                    Text(stringResource(R.string.results_cc_label), style = MaterialTheme.typography.labelMedium)
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.padding(top = 4.dp)) {
-                        Cc.entries.forEach { cc ->
-                            KartChoiceButton(
-                                text = ccLabel(cc),
-                                selected = state.cc == cc,
-                                onClick = { viewModel.onCcChanged(cc) },
-                                modifier = Modifier.weight(1f),
-                            )
-                        }
-                    }
-                }
+        KartTabs(
+            options = Cc.entries,
+            selected = state.cc,
+            label = { ccLabel(it) },
+            onSelected = viewModel::onCcChanged,
+            modifier = Modifier.padding(padding).fillMaxSize().padding(start = 8.dp, end = 8.dp, top = 8.dp),
+        ) {
+            LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(top = 4.dp, bottom = 16.dp)) {
+                resultsSection(R.string.results_section_cup, state.cups, onClick = { editingEventId = it })
+                resultsSection(R.string.results_section_rally, state.rallies, onClick = { editingEventId = it })
             }
-            resultsSection(R.string.results_section_cup, state.cups, onClick = { editingEventId = it })
-            resultsSection(R.string.results_section_rally, state.rallies, onClick = { editingEventId = it })
         }
     }
 

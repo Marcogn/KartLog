@@ -7,7 +7,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -36,6 +35,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.graphics.Paint
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.drawscope.DrawScope
@@ -61,6 +63,15 @@ import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.text
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextLayoutResult
+import androidx.compose.ui.text.drawText
+import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.constrainHeight
+import androidx.compose.ui.unit.constrainWidth
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -99,23 +110,61 @@ fun OutlinedTitle(
 ) {
     if (minFontSize == fontSize) {
         OutlinedTitleText(text, modifier, fontSize, fill, outline, textAlign, maxLines)
-        return
+    } else {
+        ShrinkingOutlinedText(text, modifier, fontSize, minFontSize, fill, outline)
     }
-    val alignment = if (textAlign == TextAlign.Start) Alignment.CenterStart else Alignment.Center
-    BoxWithConstraints(modifier, contentAlignment = alignment) {
-        val measurer = rememberTextMeasurer()
-        val maxWidthPx = constraints.maxWidth
-        val fitting = remember(text, maxWidthPx, fontSize, minFontSize) {
-            var size = fontSize.value
-            while (size > minFontSize.value &&
-                measurer.measure(text, TextStyle(fontFamily = KartFont, fontSize = size.sp), maxLines = 1)
-                    .size.width > maxWidthPx
-            ) {
-                size -= 0.5f
-            }
-            size.sp
+}
+
+/**
+ * Titolo su una riga che si rimpicciolisce fino a [minFontSize] per starci. Misura e disegna il
+ * testo a mano in un `Layout`, non con `BoxWithConstraints`: quello è una SubcomposeLayout e fa
+ * crashare l'app dentro i genitori che chiedono le misure intrinseche (le voci di `DropdownMenu`,
+ * le righe con `IntrinsicSize`).
+ */
+@Composable
+private fun ShrinkingOutlinedText(
+    text: String,
+    modifier: Modifier,
+    fontSize: TextUnit,
+    minFontSize: TextUnit,
+    fill: Color,
+    outline: Color,
+) {
+    val measurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+    // Scritto in misura e letto nel disegno dello stesso frame: non serve che sia uno State.
+    val holder = remember { arrayOfNulls<TextLayoutResult>(1) }
+    Layout(
+        content = {},
+        modifier = modifier
+            .semantics { this.text = AnnotatedString(text) }
+            .drawBehind {
+                val layout = holder[0] ?: return@drawBehind
+                val strokePx = layout.layoutInput.style.fontSize.toPx() * 0.16f
+                drawText(layout, color = outline, drawStyle = Stroke(width = strokePx, join = StrokeJoin.Round))
+                drawText(layout, color = fill)
+            },
+    ) { _, constraints ->
+        val maxWidth = if (constraints.hasBoundedWidth) constraints.maxWidth else Int.MAX_VALUE
+        fun measureAt(size: Float) = measurer.measure(
+            text = text,
+            style = TextStyle(fontFamily = KartFont, fontSize = size.sp),
+            overflow = TextOverflow.Ellipsis,
+            maxLines = 1,
+            constraints = Constraints(maxWidth = maxWidth),
+            density = density,
+        )
+        var size = fontSize.value
+        var result = measureAt(size)
+        while (size > minFontSize.value && result.hasVisualOverflow) {
+            size -= 0.5f
+            result = measureAt(size)
         }
-        OutlinedTitleText(text, Modifier, fitting, fill, outline, textAlign, maxLines)
+        holder[0] = result
+        layout(
+            constraints.constrainWidth(result.size.width),
+            constraints.constrainHeight(result.size.height),
+        ) {}
     }
 }
 
@@ -278,12 +327,17 @@ fun Modifier.kartSky(dark: Boolean, faded: Boolean = false): Modifier = drawBehi
         listOf(Color(0xFF8ED3FF), Color(0xFFC4E9FF), Color(0xFFEAF7FF))
     }
     drawRect(Brush.verticalGradient(colors))
-    val cloud = Color.White.copy(alpha = if (dark) 0.06f else 0.75f)
-    // (x, y, larghezza) in frazioni dello schermo: poche nuvole ai lati, lontane dal centro.
-    listOf(
+    // Tutte le nuvole in un unico livello opaco, reso trasparente solo alla fine: se ogni forma
+    // fosse semitrasparente, dove si sovrappongono si vedrebbero i "palloni" (tema scuro).
+    val clouds = listOf(
         Triple(0.08f, 0.18f, 0.34f), Triple(0.88f, 0.30f, 0.30f), Triple(0.18f, 0.52f, 0.28f),
         Triple(0.84f, 0.68f, 0.36f), Triple(0.30f, 0.86f, 0.30f),
-    ).forEach { (x, y, w) -> drawCloud(Offset(size.width * x, size.height * y), size.width * w, cloud) }
+    ) // (x, y, larghezza) in frazioni dello schermo: poche nuvole ai lati, lontane dal centro.
+    drawIntoCanvas { canvas ->
+        canvas.saveLayer(Rect(Offset.Zero, size), Paint().apply { alpha = if (dark) 0.06f else 0.75f })
+        clouds.forEach { (x, y, w) -> drawCloud(Offset(size.width * x, size.height * y), size.width * w, Color.White) }
+        canvas.restore()
+    }
     // Velo sopra cielo e nuvole, per le liste fitte di testo (Risultati): il cielo resta, attenuato.
     if (faded) drawRect(if (dark) Color(0x990B1631) else Color(0xA6FFFFFF))
 }
@@ -512,5 +566,60 @@ fun <T> KartDropdown(
                 }
             }
         }
+    }
+}
+
+/**
+ * Schede "a cartella" (Risultati, una per cilindrata): quella scelta è rossa chiara, più alta e
+ * attaccata al riquadro del contenuto sotto, bordato dello stesso rosso; le altre più basse e
+ * scure. Il contenuto va in [content], dentro il riquadro.
+ */
+@Composable
+fun <T> KartTabs(
+    options: List<T>,
+    selected: T,
+    label: @Composable (T) -> String,
+    onSelected: (T) -> Unit,
+    modifier: Modifier = Modifier,
+    content: @Composable BoxScope.() -> Unit,
+) {
+    val red = KartTiles.Red
+    val panelShape = RoundedCornerShape(bottomStart = 18.dp, bottomEnd = 18.dp)
+    val panelColor = if (isKartDarkTheme()) Color(0xCC15264A) else Color(0xB3FFFFFF)
+    Column(modifier) {
+        Row(
+            modifier = Modifier.fillMaxWidth().height(50.dp).padding(horizontal = 6.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            verticalAlignment = Alignment.Bottom,
+        ) {
+            options.forEach { option ->
+                val isSelected = option == selected
+                val tabShape = RoundedCornerShape(topStart = 14.dp, topEnd = 14.dp)
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(if (isSelected) 50.dp else 42.dp)
+                        .clip(tabShape)
+                        .background(
+                            if (isSelected) Brush.verticalGradient(listOf(red.light, red.base))
+                            else Brush.verticalGradient(listOf(red.base, red.dark)),
+                        )
+                        .selectable(selected = isSelected, onClick = { onSelected(option) }, role = Role.Tab)
+                        .padding(horizontal = 6.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    OutlinedTitle(label(option), fontSize = if (isSelected) 19.sp else 16.sp, minFontSize = 11.sp)
+                }
+            }
+        }
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f)
+                .clip(panelShape)
+                .background(panelColor)
+                .border(3.dp, red.base, panelShape),
+            content = content,
+        )
     }
 }

@@ -31,6 +31,10 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
   l'outfit di default resta come nella pagina Personaggi.
 - **Titoli grandi.** Il titolo di ogni schermata è grande, bianco con
   contorno nero.
+- **Risultati a schede.** Una scheda per cilindrata, attaccata alla lista:
+  si vede subito quale si sta guardando.
+- **Corretto il crash di "Ordina per"** nella pagina Personaggi.
+- **Nuvole uniformi** anche nel tema scuro, senza i cerchi sovrapposti.
 - **Risultati sul cielo.** La lista non ha più lo sfondo bianco: cielo
   attenuato per leggere bene.
 
