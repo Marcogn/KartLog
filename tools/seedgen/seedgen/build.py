@@ -107,6 +107,20 @@ def _resolve_it_biomes(it: ItNames, cfg: Config, course_by_it: dict[str, str]) -
     return result
 
 
+def _mirror_mode(images: Images, cfg: Config) -> list[dict]:
+    """Condizioni della modalità specchio: testo di mariowiki.com + traduzione manuale, che deve
+    corrispondere voce per voce al testo estratto (altrimenti le due lingue direbbero cose diverse)."""
+    if not images.mirror_steps:
+        return []
+    expected = [entry["en"] for entry in cfg.mirror_mode_it]
+    if expected != images.mirror_steps:
+        raise ParseError(
+            "Mario Kart World: le condizioni della modalità specchio sono cambiate sul wiki. Aggiornare "
+            f"manual/mirror_mode_it.yaml (en + it). Estratte: {images.mirror_steps}"
+        )
+    return [{"order": i, "text": e["en"], "textIt": e["it"]} for i, e in enumerate(cfg.mirror_mode_it)]
+
+
 def build(
     raw: RawData,
     cfg: Config,
@@ -124,6 +138,8 @@ def build(
     # Trofei, rally e biomi sulle pagine di mariowiki.it.
     course_by_it = {norm(name): cid for cid, name in translations.course_it.items()}
     starters = {cfg.resolve_driver(t) for t in images.starters}
+    # "Character outfits" nella stessa tabella non è un pilota: si tiene solo chi è in aliases.yaml.
+    criteria_en = {cfg.resolve_driver(t): c for t, c in images.unlock_criteria.items() if cfg.knows_driver(t)}
     pages = cfg.sources["pages"]
     dash_url = _page_url(cfg, pages["dash_food"])
     navbox_url = _page_url(cfg, pages["navbox"])
@@ -143,7 +159,14 @@ def build(
             "imageUrl": image_of_character.get(e.id),
             # Galleria "Default drivers" = disponibile dall'inizio; None se la pagina non è stata letta.
             "starter": (e.id in starters) if images.starters else None,
+            "unlockCriteria": criteria_en.get(e.id),
+            "unlockCriteriaIt": None,  # dopo, dai nomi italiani (tabella di mariowiki.it)
         })
+    # I criteri italiani sono indicizzati per nome italiano del pilota (tabella senza link).
+    by_name_it = {norm(c["nameIt"]): c for c in characters if c["nameIt"]}
+    for name, criterion in it_names.unlock_criteria.items():
+        if norm(name) in by_name_it:
+            by_name_it[norm(name)]["unlockCriteriaIt"] = criterion
     courses = [
         {"id": e.id, "name": e.name, "nameIt": translations.course_it.get(e.id), "regionId": cfg.region_of.get(e.id)}
         for e in cfg.courses.entities
@@ -240,6 +263,18 @@ def build(
             raise ParseError(f"mariowiki.it: nome italiano non trovato per {missing_it}")
 
     if not images.is_empty():
+        # Criteri di sblocco: uno per ogni pilota sbloccabile, nessuno per quelli di base.
+        wrong = sorted(c["id"] for c in characters if (c["unlockCriteria"] is None) != bool(c["starter"]))
+        if wrong:
+            raise ParseError(f"Mario Kart World: criterio di sblocco mancante o inatteso per {wrong}")
+    if not it_names.is_empty() and it_names.unlock_criteria:
+        wrong = sorted(c["id"] for c in characters if (c["unlockCriteria"] is None) != (c["unlockCriteriaIt"] is None))
+        if wrong:
+            raise ParseError(f"mariowiki.it: criterio di sblocco italiano mancante o in più per {wrong}")
+
+    mirror = _mirror_mode(images, cfg)
+
+    if not images.is_empty():
         # Estrazione con immagini: ognuna deve risolversi in un elemento noto e ogni elemento deve
         # averne una. Un'immagine in più o in meno vuol dire che la pagina è cambiata: meglio
         # fermarsi che mostrare un'immagine sbagliata.
@@ -303,6 +338,12 @@ def build(
             ],
         },
     }
+    if mirror:
+        seed["mirror_mode.json"] = {
+            "source": _page_url(cfg, pages["images"]),
+            "translationIt": "manual/mirror_mode_it.yaml (traduzione NON ufficiale)",
+            "items": mirror,
+        }
     if p_switches:
         seed["p_switches.json"] = {"source": _page_url(cfg, pages["missions"]), "items": p_switches}
     return seed

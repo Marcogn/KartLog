@@ -29,6 +29,9 @@ class SeedAssetLoader @Inject constructor(@ApplicationContext private val contex
         return json.decodeFromString<SeedFile<T>>(text).items
     }
 
+    /** Condizioni per la modalità specchio, in ordine (vuoto con un seed che non le ha). */
+    fun readMirrorSteps(): List<MirrorStepDto> = readItems<MirrorStepDto>("mirror_mode.json").sortedBy { it.order }
+
     fun readMeta(): SeedMetaDto? = readText("meta.json")?.let { json.decodeFromString(it) }
 
     /**

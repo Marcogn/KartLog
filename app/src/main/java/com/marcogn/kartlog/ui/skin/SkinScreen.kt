@@ -30,6 +30,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.foundation.layout.width
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -43,6 +47,9 @@ import com.marcogn.kartlog.ui.common.CharacterPortrait
 import com.marcogn.kartlog.ui.common.KartChoiceButton
 import com.marcogn.kartlog.ui.common.KartDropdown
 import com.marcogn.kartlog.ui.common.KartInk
+import com.marcogn.kartlog.ui.common.KartPopup
+import com.marcogn.kartlog.ui.common.KartPopupText
+import com.marcogn.kartlog.ui.common.KartSwitchRow
 import com.marcogn.kartlog.ui.common.KartTiles
 import com.marcogn.kartlog.ui.common.KartTitle
 import com.marcogn.kartlog.ui.common.KartTopBar
@@ -59,6 +66,21 @@ fun SkinScreen(
     viewModel: SkinListViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
+    // Istantanea del pilota del popup: col filtro "Incompleti" un pilota senza outfit appena
+    // sbloccato sparisce dalla lista, ma il popup resta aperto finché non lo si chiude.
+    var unlockPopup by remember { mutableStateOf<CharacterProgress?>(null) }
+
+    unlockPopup?.let { snapshot ->
+        val character = state.characters.firstOrNull { it.id == snapshot.id } ?: snapshot
+        UnlockPopup(
+            character = character,
+            onUnlockedChange = { unlocked ->
+                viewModel.onUnlockToggled(character.id, unlocked)
+                unlockPopup = character.copy(unlocked = unlocked)
+            },
+            onDismiss = { unlockPopup = null },
+        )
+    }
 
     Scaffold(
         modifier = Modifier.kartSky(isKartDarkTheme()),
@@ -115,11 +137,15 @@ fun SkinScreen(
                     CharacterCard(
                         character,
                         onClick = {
-                            // Solo chi ha outfit alternativi ha una schermata di dettaglio.
-                            if (character.hasOutfits) {
-                                onCharacterClick(character.id)
-                            } else {
-                                viewModel.onUnlockToggled(character.id, !character.unlocked)
+                            when {
+                                // Da sbloccare: prima il popup con il criterio (scelta dell'autore,
+                                // 27/09/2026). Chi ha outfit, una volta sbloccato, va al dettaglio;
+                                // chi non ne ha apre sempre il popup, dove si può anche ribloccarlo.
+                                character.isUnlockable && (!character.unlocked || !character.hasOutfits) ->
+                                    unlockPopup = character
+                                // Solo chi ha outfit alternativi ha una schermata di dettaglio.
+                                character.hasOutfits -> onCharacterClick(character.id)
+                                else -> viewModel.onUnlockToggled(character.id, !character.unlocked)
                             }
                         },
                     )
@@ -185,5 +211,27 @@ private fun CharacterCard(character: CharacterProgress, onClick: () -> Unit) {
                 minFontSize = 10.sp,
             )
         }
+    }
+}
+
+
+/** Popup di un pilota da sbloccare: come si sblocca e l'interruttore per segnarlo sbloccato. */
+@Composable
+private fun UnlockPopup(character: CharacterProgress, onUnlockedChange: (Boolean) -> Unit, onDismiss: () -> Unit) {
+    val name = localizedName(character.name, character.nameIt)
+    KartPopup(title = name, onDismiss = onDismiss) {
+        CharacterPortrait(
+            name = name,
+            imageUrl = character.imageUrl,
+            dimmed = !character.unlocked,
+            modifier = Modifier.width(110.dp).border(2.dp, KartInk, RoundedCornerShape(12.dp)),
+        )
+        KartPopupText(stringResource(R.string.skin_unlock_how) + ":")
+        KartPopupText(localizedName(character.unlockCriteria.orEmpty(), character.unlockCriteriaIt))
+        KartSwitchRow(
+            label = stringResource(R.string.skin_unlock_switch),
+            checked = character.unlocked,
+            onCheckedChange = onUnlockedChange,
+        )
     }
 }

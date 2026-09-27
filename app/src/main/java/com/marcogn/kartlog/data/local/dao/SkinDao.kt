@@ -17,6 +17,7 @@ interface SkinDao {
         """
         SELECT c.id AS id, c.name AS name, c.nameIt AS nameIt, c.rosterOrder AS rosterOrder, c.imageUrl AS imageUrl,
                COALESCE(cu.unlocked, c.starter) AS unlocked,
+               c.unlockCriteria AS unlockCriteria, c.unlockCriteriaIt AS unlockCriteriaIt,
                COUNT(o.id) AS totalOutfits,
                SUM(CASE WHEN oo.outfitId IS NOT NULL THEN 1 ELSE 0 END) AS ownedOutfits
         FROM characters c
@@ -72,7 +73,13 @@ data class CharacterProgress(
     val unlocked: Boolean,
     val totalOutfits: Int,
     val ownedOutfits: Int,
+    /** Solo per i piloti da sbloccare: come si sblocca (null per quelli di base). */
+    val unlockCriteria: String? = null,
+    val unlockCriteriaIt: String? = null,
 ) {
+    /** Pilota non di base: ha un criterio di sblocco da mostrare nel popup. */
+    val isUnlockable: Boolean get() = unlockCriteria != null
+
     /** Piloti senza outfit alternativi (Goomba, Mucca…): nessuna schermata di dettaglio. */
     val hasOutfits: Boolean get() = totalOutfits > 0
 

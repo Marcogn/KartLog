@@ -4,7 +4,9 @@ sono distribuiti con licenza Creative Commons Attribution-ShareAlike 4.0 Interna
 (CC BY-SA 4.0): https://creativecommons.org/licenses/by-sa/4.0/
 
 I nomi italiani dei cibi (food_groups.json, campo nameIt) non vengono da nessuna fonte: sono una traduzione
-non ufficiale fatta a mano (tools/seedgen/manual/food_names_it.yaml).
+non ufficiale fatta a mano (tools/seedgen/manual/food_names_it.yaml). Lo stesso vale per le condizioni della
+modalità specchio in italiano (mirror_mode.json, campo textIt; tools/seedgen/manual/mirror_mode_it.yaml),
+tradotte dal testo di mariowiki.com.
 
 Le pagine sorgente e le revisioni usate sono elencate in meta.json.
 Questi file restano sotto CC BY-SA 4.0, indipendentemente dalla licenza del codice dell'applicazione.

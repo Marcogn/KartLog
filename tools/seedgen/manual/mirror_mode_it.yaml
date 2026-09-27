@@ -1,0 +1,24 @@
+# Condizioni per sbloccare la modalità specchio, in italiano — TRADUZIONE NON UFFICIALE.
+#
+# Fonte: elenco dopo "Mirror Mode is unlocked by:" sulla pagina "Mario Kart World" di mariowiki.com
+# (seedgen/images.py), senza le note tra parentesi. mariowiki.it ha lo stesso elenco ma meno
+# aggiornato (omette l'ultimo passo, il Trofeo Speciale a 150cc, e parla di "tutti gli otto rally"):
+# il 27/09/2026 l'autore ha scelto di tradurre a mano il testo inglese e dichiararlo non ufficiale
+# (qui, nel README e in Impostazioni/Info), come per i nomi dei cibi.
+#
+# `en` è il testo esatto estratto dal wiki: se cambia, seedgen si ferma finché la traduzione non
+# viene aggiornata, così le due lingue non possono dire cose diverse. Termini come nell'app
+# (Trofei, Knockout Tour, Pulsanti P, Monete Peach).
+
+- en: "Playing the first seven cups in Grand Prix on 150cc"
+  it: "Giocare i primi sette Trofei del Gran Premio a 150cc"
+- en: "Playing the first eight rallies in Knockout Tour on 150cc"
+  it: "Giocare i primi otto rally del Knockout Tour a 150cc"
+- en: "Completing 10 P Switch missions in Free Roam"
+  it: "Completare 10 missioni dei Pulsanti P nella corsa libera"
+- en: "Activating 10 ? Panels in Free Roam"
+  it: "Attivare 10 pannelli ? nella corsa libera"
+- en: "Collecting 10 Peach Medallions in Free Roam"
+  it: "Raccogliere 10 Monete Peach nella corsa libera"
+- en: "Only after all of the above have been completed, the player must finish the Special Cup on 150cc to unlock it, including replaying the Special Cup if it has already been completed."
+  it: "Solo dopo aver completato tutto quanto sopra, bisogna finire il Trofeo Speciale a 150cc per sbloccarla, anche rigiocandolo se era già stato completato."

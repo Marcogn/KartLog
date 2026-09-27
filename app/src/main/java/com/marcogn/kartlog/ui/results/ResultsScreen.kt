@@ -33,6 +33,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -41,6 +42,9 @@ import com.marcogn.kartlog.R
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.TrophyRank
 import com.marcogn.kartlog.ui.common.EventIcon
+import com.marcogn.kartlog.ui.common.KartInfoButton
+import com.marcogn.kartlog.ui.common.KartPopup
+import com.marcogn.kartlog.ui.common.KartPopupText
 import com.marcogn.kartlog.ui.common.KartTabs
 import com.marcogn.kartlog.ui.common.KartTitle
 import com.marcogn.kartlog.ui.common.KartTopBar
@@ -57,6 +61,15 @@ fun ResultsScreen(
 ) {
     val state by viewModel.uiState.collectAsState()
     var editingEventId by rememberSaveable { mutableStateOf<String?>(null) }
+    var showMirrorInfo by rememberSaveable { mutableStateOf(false) }
+
+    if (showMirrorInfo) {
+        KartPopup(title = stringResource(R.string.results_mirror_info_title), onDismiss = { showMirrorInfo = false }) {
+            state.mirrorSteps.forEachIndexed { i, step ->
+                KartPopupText("${i + 1}. $step", Modifier.fillMaxWidth(), textAlign = TextAlign.Start)
+            }
+        }
+    }
 
     Scaffold(
         modifier = Modifier.kartSky(isKartDarkTheme(), faded = true),
@@ -77,6 +90,11 @@ fun ResultsScreen(
             selected = state.cc,
             label = { ccLabel(it) },
             onSelected = viewModel::onCcChanged,
+            tabTrailing = { cc ->
+                if (cc == Cc.MIRROR && state.mirrorSteps.isNotEmpty()) {
+                    KartInfoButton(stringResource(R.string.results_mirror_info_cd), onClick = { showMirrorInfo = true })
+                }
+            },
             modifier = Modifier.padding(padding).fillMaxSize().padding(start = 8.dp, end = 8.dp, top = 8.dp),
         ) {
             LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(top = 4.dp, bottom = 16.dp)) {

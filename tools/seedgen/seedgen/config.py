@@ -19,6 +19,16 @@ def _load_yaml(path: Path) -> dict:
         return yaml.safe_load(f) or {}
 
 
+def _load_list(path: Path) -> list:
+    if not path.is_file():
+        raise SeedgenError(f"File di configurazione mancante: {path}")
+    with path.open(encoding="utf-8") as f:
+        data = yaml.safe_load(f) or []
+    if not isinstance(data, list):
+        raise SeedgenError(f"{path}: attesa una lista")
+    return data
+
+
 @dataclass(frozen=True)
 class Entity:
     id: str
@@ -88,6 +98,7 @@ class Config:
     medallions: dict
     character_genders: dict[str, str]  # characterId -> "M"/"F", solo per seedgen/i18n.py
     food_names_it: dict[str, str]      # nome inglese del cibo -> traduzione NON ufficiale
+    mirror_mode_it: list[dict]         # [{en, it}]: condizioni della modalità specchio, traduzione NON ufficiale
 
     def all_drivers(self) -> list[Entity]:
         """Tutti i piloti, in ordine di roster: prima i 24 con outfit, poi gli altri."""
@@ -136,4 +147,5 @@ class Config:
             medallions=_load_yaml(tool_dir / "manual" / "peach_medallions.yaml"),
             character_genders=_load_yaml(tool_dir / "manual" / "character_genders.yaml"),
             food_names_it=_load_yaml(tool_dir / "manual" / "food_names_it.yaml"),
+            mirror_mode_it=_load_list(tool_dir / "manual" / "mirror_mode_it.yaml"),
         )

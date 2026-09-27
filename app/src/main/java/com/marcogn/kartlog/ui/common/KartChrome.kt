@@ -25,10 +25,17 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.semantics.Role
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.window.Dialog
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -75,6 +82,7 @@ import androidx.compose.ui.unit.constrainHeight
 import androidx.compose.ui.unit.constrainWidth
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -191,8 +199,10 @@ private fun OutlinedTitleText(
     // Contorno proporzionale al testo (circa un sesto dell'altezza), come nel mockup.
     val strokePx = with(LocalDensity.current) { fontSize.toPx() } * 0.16f
     Box(modifier) {
+        // Il contorno è solo disegno: fuori dalla semantica, altrimenti TalkBack legge il testo due volte.
         Text(
             text,
+            modifier = Modifier.clearAndSetSemantics {},
             style = base.copy(color = outline, drawStyle = Stroke(width = strokePx, join = StrokeJoin.Round)),
             maxLines = maxLines,
             overflow = TextOverflow.Ellipsis,
@@ -589,6 +599,7 @@ fun <T> KartTabs(
     label: @Composable (T) -> String,
     onSelected: (T) -> Unit,
     modifier: Modifier = Modifier,
+    tabTrailing: @Composable (T) -> Unit = {},
     content: @Composable BoxScope.() -> Unit,
 ) {
     val red = KartTiles.Red
@@ -616,7 +627,15 @@ fun <T> KartTabs(
                         .padding(horizontal = 6.dp),
                     contentAlignment = Alignment.Center,
                 ) {
-                    OutlinedTitle(label(option), fontSize = if (isSelected) 19.sp else 16.sp, minFontSize = 11.sp)
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(3.dp)) {
+                        OutlinedTitle(
+                            label(option),
+                            Modifier.weight(1f, fill = false),
+                            fontSize = if (isSelected) 19.sp else 16.sp,
+                            minFontSize = 11.sp,
+                        )
+                        tabTrailing(option)
+                    }
                 }
             }
         }
@@ -628,6 +647,119 @@ fun <T> KartTabs(
                 .background(panelColor)
                 .border(3.dp, red.base, panelShape),
             content = content,
+        )
+    }
+}
+
+/**
+ * Popup del gioco (richiesta dell'autore, 27/09/2026): rosso pieno con gli scacchi più chiari su
+ * tutto lo sfondo, bordo nero, titolo e testi bianchi contornati. La X in alto a destra chiude
+ * senza fare nulla, come il tap fuori o il tasto Indietro.
+ */
+@Composable
+fun KartPopup(
+    title: String,
+    onDismiss: () -> Unit,
+    content: @Composable ColumnScope.() -> Unit,
+) {
+    val red = KartTiles.Red
+    val shape = RoundedCornerShape(22.dp)
+    Dialog(onDismissRequest = onDismiss) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .shadow(12.dp, shape)
+                .clip(shape)
+                .background(Brush.verticalGradient(listOf(red.light, red.base)))
+                .drawBehind {
+                    // Scacchiera tenue su tutto il fondo.
+                    val s = 18.dp.toPx()
+                    val tint = Color.White.copy(alpha = 0.10f)
+                    var row = 0
+                    var y = 0f
+                    while (y < size.height) {
+                        var col = 0
+                        var x = 0f
+                        while (x < size.width) {
+                            if ((row + col) % 2 == 0) drawRect(tint, Offset(x, y), Size(s, s))
+                            x += s
+                            col++
+                        }
+                        y += s
+                        row++
+                    }
+                }
+                .border(3.dp, KartInk, shape),
+        ) {
+            Column(
+                modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp, top = 18.dp, bottom = 22.dp),
+                verticalArrangement = Arrangement.spacedBy(14.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                // Spazio a destra per la X, così un titolo lungo non ci finisce sotto.
+                OutlinedTitle(title, Modifier.padding(horizontal = 36.dp), fontSize = 26.sp, maxLines = 2)
+                content()
+            }
+            Box(
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(10.dp)
+                    .size(36.dp)
+                    .clip(CircleShape)
+                    .background(KartInk)
+                    .border(2.dp, Color.White, CircleShape)
+                    .clickable(role = Role.Button, onClick = onDismiss),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.cd_close), tint = Color.White, modifier = Modifier.size(22.dp))
+            }
+        }
+    }
+}
+
+/** Testo bianco contornato su più righe, per il corpo dei popup. */
+@Composable
+fun KartPopupText(text: String, modifier: Modifier = Modifier, textAlign: TextAlign = TextAlign.Center) {
+    OutlinedTitle(text, modifier, fontSize = 19.sp, textAlign = textAlign, maxLines = 8)
+}
+
+/** Piccola "i" tonda che apre un popup informativo. */
+@Composable
+fun KartInfoButton(contentDescription: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier
+            .size(22.dp)
+            .clip(CircleShape)
+            .background(Color.White)
+            .border(2.dp, KartInk, CircleShape)
+            .clickable(role = Role.Button, onClick = onClick)
+            .semantics { this.contentDescription = contentDescription },
+        contentAlignment = Alignment.Center,
+    ) {
+        Text("i", style = TextStyle(fontFamily = KartFont, fontSize = 14.sp, color = KartInk))
+    }
+}
+
+/** Etichetta bianca contornata e interruttore, per i popup: verde acceso, rosso scuro spento. */
+@Composable
+fun KartSwitchRow(label: String, checked: Boolean, onCheckedChange: (Boolean) -> Unit, modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(14.dp),
+    ) {
+        OutlinedTitle(label, fontSize = 22.sp)
+        Switch(
+            checked = checked,
+            onCheckedChange = onCheckedChange,
+            colors = SwitchDefaults.colors(
+                checkedThumbColor = Color.White,
+                checkedTrackColor = KartTiles.Green.base,
+                checkedBorderColor = KartInk,
+                uncheckedThumbColor = Color.White,
+                uncheckedTrackColor = KartTiles.Red.dark,
+                uncheckedBorderColor = KartInk,
+            ),
         )
     }
 }

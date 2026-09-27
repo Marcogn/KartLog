@@ -3,6 +3,7 @@
     <string name="app_name">KartLog</string>
     <string name="cd_menu">Apri il menu</string>
     <string name="cd_back">Indietro</string>
+    <string name="cd_close">Chiudi</string>
 
     <string name="drawer_home">Home</string>
     <string name="drawer_skin">Personaggi</string>
@@ -110,6 +111,9 @@
     <string name="language_system">Sistema</string>
     <string name="language_italian">Italiano</string>
     <string name="language_english">English</string>
-    <string name="settings_food_names_note">I nomi italiani dei cibi sono una traduzione non ufficiale: nessuna fonte li riporta.</string>
+    <string name="settings_food_names_note">I nomi italiani dei cibi sono una traduzione non ufficiale: nessuna fonte li riporta. Lo sono anche le condizioni della modalità specchio, tradotte da mariowiki.com perché la versione italiana del wiki è meno aggiornata.</string>
+    <string name="results_mirror_info_title">Modalità specchio</string>
+    <string name="results_mirror_info_cd">Come sbloccare la modalità specchio</string>
+    <string name="skin_unlock_how">Come si sblocca</string>
     <string name="settings_font_credit">Font dei titoli: Lilita One di Juan Montoreano, SIL Open Font License 1.1.</string>
 </resources>

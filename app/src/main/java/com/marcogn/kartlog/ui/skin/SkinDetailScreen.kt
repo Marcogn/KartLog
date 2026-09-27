@@ -102,6 +102,13 @@ fun SkinDetailScreen(
                 )
                 Switch(checked = state.unlocked, onCheckedChange = viewModel::onUnlockToggled)
             }
+            state.unlockCriteria?.let { criterion ->
+                Text(
+                    stringResource(R.string.skin_unlock_how) + ": " + criterion,
+                    style = TextStyle(fontFamily = KartFont, fontSize = 15.sp),
+                    modifier = Modifier.padding(horizontal = 4.dp),
+                )
+            }
             // Righe normali invece di una griglia lazy (al massimo una decina di outfit): con
             // IntrinsicSize.Min le polaroid della stessa riga si allungano insieme, così nomi e
             // cibi si leggono per intero senza tagli.

@@ -31,6 +31,12 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
   l'outfit di default resta come nella pagina Personaggi.
 - **Titoli grandi.** Il titolo di ogni schermata è grande, bianco con
   contorno nero.
+- **Come sbloccare i piloti.** Toccando un pilota da sbloccare si apre un
+  popup con il criterio (dalla Super Mario Wiki) e l'interruttore per
+  segnarlo sbloccato; la X lo chiude senza cambiare nulla.
+- **Come sbloccare la modalità specchio.** Una "i" sulla scheda Mirror di
+  Risultati apre l'elenco delle condizioni. In italiano è una traduzione
+  non ufficiale.
 - **Risultati a schede.** Una scheda per cilindrata, attaccata alla lista:
   si vede subito quale si sta guardando.
 - **Corretto il crash di "Ordina per"** nella pagina Personaggi.

@@ -25,10 +25,12 @@ from dataclasses import dataclass, field
 from bs4 import BeautifulSoup, Tag
 
 from .errors import ParseError
+from .images import parse_unlock_table
 
 DRIVER_SECTIONS = ("Di_base", "Sbloccabili")
 CUP_SECTION = "Gran_Premio_2"          # il primo "Gran_Premio" è la modalità di gioco, non i percorsi
 RALLY_SECTION = "Modalità_sopravvivenza"
+UNLOCK_SECTION = "Criteri_di_sblocco"
 # "Questi bioma" compare così su alcune sezioni della pagina (refuso del wiki).
 BIOME_INTRO = re.compile(r"Quest[oi] bioma contiene (.+?)\.?\s*$")
 
@@ -66,6 +68,8 @@ class ItNames:
     langlinks: dict[str, str] = field(default_factory=dict)  # titolo pagina italiana -> titolo inglese
     events: list[ItEvent] = field(default_factory=list)
     biomes: list[ItBiome] = field(default_factory=list)
+    # Nome italiano mostrato nella tabella "Criteri di sblocco" -> criterio (in italiano).
+    unlock_criteria: dict[str, str] = field(default_factory=dict)
 
     def is_empty(self) -> bool:
         return not (self.drivers or self.events or self.biomes)
@@ -158,3 +162,14 @@ def extract_biomes(html: str) -> list[ItBiome]:
         if courses:
             biomes.append(ItBiome(name=name, courses=courses))
     return biomes
+
+
+def extract_unlock_criteria(html: str) -> dict[str, str]:
+    """Tabella "Criteri di sblocco": nome del pilota (in grassetto, senza link) -> criterio. Si
+    abbina in build.py con i nomi italiani dei piloti, che su questa pagina coincidono."""
+    soup = BeautifulSoup(html, "html.parser")
+    tables = [n for n in _section_nodes(soup, UNLOCK_SECTION) if n.name == "table"]
+    if len(tables) != 1:
+        raise ParseError(f"mariowiki.it: attesa 1 tabella in 'Criteri di sblocco', trovate {len(tables)}")
+    return {" ".join(cell.get_text(" ", strip=True).split()): criterion
+            for cell, criterion in parse_unlock_table(tables[0])}

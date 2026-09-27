@@ -3,6 +3,7 @@
     <string name="app_name">KartLog</string>
     <string name="cd_menu">Open the menu</string>
     <string name="cd_back">Back</string>
+    <string name="cd_close">Close</string>
 
     <string name="drawer_home">Home</string>
     <string name="drawer_skin">Characters</string>
@@ -110,6 +111,9 @@
     <string name="language_system">System</string>
     <string name="language_italian">Italiano</string>
     <string name="language_english">English</string>
-    <string name="settings_food_names_note">Italian food names are an unofficial translation: no source lists them.</string>
+    <string name="settings_food_names_note">Italian food names are an unofficial translation: no source lists them. So are the Italian Mirror Mode conditions, translated from mariowiki.com because the Italian wiki is less up to date.</string>
+    <string name="results_mirror_info_title">Mirror Mode</string>
+    <string name="results_mirror_info_cd">How to unlock Mirror Mode</string>
+    <string name="skin_unlock_how">How to unlock</string>
     <string name="settings_font_credit">Title font: Lilita One by Juan Montoreano, SIL Open Font License 1.1.</string>
 </resources>

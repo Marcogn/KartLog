@@ -10,7 +10,7 @@ from pathlib import Path
 COMPARED_FILES = [
     "characters.json", "outfits.json", "food_groups.json", "outfit_food_rules.json",
     "food_group_courses.json", "courses.json", "events.json", "regions.json", "areas.json",
-    "peach_medallions.json", "p_switches.json",
+    "peach_medallions.json", "p_switches.json", "mirror_mode.json",
 ]
 
 

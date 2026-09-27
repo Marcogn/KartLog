@@ -5,6 +5,7 @@ pagina vera sta in test_images_live.py, che richiede la rete.
 """
 
 import copy
+from dataclasses import replace
 
 import pytest
 
@@ -51,7 +52,14 @@ HTML = (
     + _gallery(("1/11/PeachTouring.png", "Touring"))
     + _heading(3, "Unlock_criteria")
     + _gallery(("9/99/NonUnOutfit.png", "Sbloccato"))
+    + '<table><tr><th>Character</th><th>Criteria</th></tr>'
+    + '<tr><td><a href="/Daisy" title="Daisy">Daisy</a></td><td>Clear the <a href="/F">Flower Cup</a></td></tr>'
+    + '<tr><td><a href="/Spike" title="Spike">Spike</a></td><td rowspan="2">Be summoned by '
+    + '<a href="/K">Kamek</a> (note)<sup>1</sup></td></tr>'
+    + '<tr><td><a href="/Swoop" title="Swoop">Swoop</a></td></tr></table>'
     + _heading(2, "Courses")
+    + "<p>Mirror Mode is unlocked by:</p><ul><li>Playing seven cups (with a note)</li>"
+    + "<li>Activating 10 <a href='/P'>? Panels</a>, then more.</li></ul>"
     + '<table><tr><th>Cup</th></tr><tr><th class="subheader"><a href="/File:M" class="image">'
     + _img("7/78/Mario_Kart_World_Mushroom_Cup_Icon.png")
     + '</a><br /><a href="/Mushroom_Cup" title="Mushroom Cup">Mushroom Cup</a></th></tr>'
@@ -91,6 +99,17 @@ def test_event_icons_keyed_by_link_text():
     }
 
 
+def test_unlock_criteria_follow_rowspan_without_notes():
+    assert extract_images(HTML).unlock_criteria == {
+        "Daisy": "Clear the Flower Cup", "Spike": "Be summoned by Kamek", "Swoop": "Be summoned by Kamek",
+    }
+
+
+def test_mirror_steps_without_parenthetical_notes():
+    # "? Panels" è un nome: lo spazio prima del "?" resta, quello prima della virgola no.
+    assert extract_images(HTML).mirror_steps == ["Playing seven cups", "Activating 10 ? Panels, then more."]
+
+
 def test_missing_section_fails():
     with pytest.raises(ParseError, match="Character_outfits"):
         extract_images(HTML.replace('id="Character_outfits"', 'id="Outfits"'))
@@ -115,7 +134,9 @@ def _complete_images(cfg, raw: RawData) -> Images:
             outfits[(o.character, o.outfit)] = f"{CDN}/o/{o.character}_{o.outfit}.png"
     events = {e.name: f"{CDN}/e/{e.name}.png" for e in [*raw.cups, *raw.rallies]}
     starters = frozenset(e.name for e in cfg.all_drivers()[:cfg.expected["starter_drivers"]])
-    return Images(characters=characters, outfits=outfits, events=events, starters=starters)
+    criteria = {e.name: f"Unlock {e.name}" for e in cfg.all_drivers()[cfg.expected["starter_drivers"]:]}
+    return Images(characters=characters, outfits=outfits, events=events, starters=starters,
+                  unlock_criteria=criteria, mirror_steps=[m["en"] for m in cfg.mirror_mode_it])
 
 
 @pytest.fixture(scope="module")
@@ -143,14 +164,14 @@ def test_build_fails_on_missing_image(golden_raw, cfg):
     events = dict(images.events)
     events.pop("Turnip Rally")
     with pytest.raises(ParseError, match="rally_turnip"):
-        build(golden_raw, cfg, images=Images(images.characters, images.outfits, events, images.starters))
+        build(golden_raw, cfg, images=replace(images, events=events))
 
 
 def test_build_fails_on_image_of_unknown_outfit(golden_raw, cfg):
     images = _complete_images(cfg, golden_raw)
     outfits = {**images.outfits, ("Mario", "Astronaut"): f"{CDN}/o/x.png"}
     with pytest.raises(ParseError, match="mario__astronaut"):
-        build(golden_raw, cfg, images=Images(images.characters, outfits, images.events, images.starters))
+        build(golden_raw, cfg, images=replace(images, outfits=outfits))
 
 
 def test_validation_rejects_foreign_image_host(golden_raw, cfg):
@@ -158,3 +179,26 @@ def test_validation_rejects_foreign_image_host(golden_raw, cfg):
     seed["events.json"]["items"][0]["imageUrl"] = "https://example.com/x.png"
     with pytest.raises(ValidationError, match="imageUrl"):
         validate(seed, cfg)
+
+
+def test_build_puts_criteria_only_on_unlockable_drivers_and_mirror_translation(golden_raw, cfg):
+    seed = build(golden_raw, cfg, images=_complete_images(cfg, golden_raw))
+    characters = seed["characters.json"]["items"]
+    assert all((c["unlockCriteria"] is None) == c["starter"] for c in characters)
+    steps = seed["mirror_mode.json"]["items"]
+    assert [s["text"] for s in steps] == [m["en"] for m in cfg.mirror_mode_it]
+    assert all(s["textIt"] for s in steps)
+
+
+def test_build_fails_when_a_starter_has_a_criterion(golden_raw, cfg):
+    images = _complete_images(cfg, golden_raw)
+    criteria = {**images.unlock_criteria, "Mario": "?"}
+    with pytest.raises(ParseError, match="mario"):
+        build(golden_raw, cfg, images=replace(images, unlock_criteria=criteria))
+
+
+def test_build_fails_when_mirror_text_changes_on_the_wiki(golden_raw, cfg):
+    images = _complete_images(cfg, golden_raw)
+    steps = [*images.mirror_steps[:-1], "Something new"]
+    with pytest.raises(ParseError, match="mirror_mode_it.yaml"):
+        build(golden_raw, cfg, images=replace(images, mirror_steps=steps))

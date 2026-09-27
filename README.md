@@ -69,7 +69,10 @@ I nomi italiani vengono da mariowiki.com e, per quello che lì manca
 CC BY-SA 4.0). Due eccezioni: le missioni dei Pulsanti P restano in
 inglese (la lista italiana è incompleta), e i nomi italiani dei **cibi**
 sono una **traduzione non ufficiale** fatta a mano, perché nessuna fonte
-li riporta.
+li riporta. Lo stesso vale per le **condizioni della modalità specchio** in
+italiano: tradotte a mano dal testo di mariowiki.com, perché quello della
+wiki italiana è meno aggiornato. I criteri di sblocco dei piloti vengono
+invece dalle due wiki, ciascuno nella sua lingua.
 
 ## Immagini
 
