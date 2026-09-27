@@ -119,6 +119,20 @@ class SkinDaoTest {
     }
 
     @Test
+    fun `un pilota di base resta sbloccato anche con una vecchia scelta bloccato salvata`() = runBlocking {
+        // Prima il tap su un pilota di base senza outfit lo segnava bloccato: dati reali dell'autore.
+        db.userStateDao().setCharacterUnlock(CharacterUnlockEntity(characterId = "goomba", unlocked = false))
+        db.userStateDao().setCharacterUnlock(CharacterUnlockEntity(characterId = "mario", unlocked = false))
+        val characters = db.skinDao().charactersWithProgress().first().associateBy { it.id }
+        assertTrue(characters.getValue("goomba").unlocked)
+        assertTrue(characters.getValue("mario").unlocked)
+        assertTrue(!characters.getValue("goomba").isUnlockable)
+        // Consigliami li considera disponibili allo stesso modo.
+        val forConsigliami = db.consigliamiDao().characters().first().associateBy { it.id }
+        assertTrue(forConsigliami.getValue("mario").unlocked)
+    }
+
+    @Test
     fun `i cibi hanno anche il nome italiano non ufficiale`() = runBlocking {
         val touring = db.skinDao().outfitsForCharacter("mario").first().first { it.outfitName == "Touring" }
         assertTrue(touring.foodGroups!!.contains("Hamburger"))

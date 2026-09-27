@@ -11,12 +11,14 @@ interface SkinDao {
 
     /**
      * Un pilota per riga, con quanti dei suoi outfit sono posseduti (0/0 per i piloti senza
-     * outfit) e se è sbloccato: la scelta dell'utente se c'è, altrimenti `starter` dal seed.
+     * outfit) e se è sbloccato. I piloti di base (`starter`) lo sono sempre, anche se in
+     * `character_unlocks` c'è una scelta vecchia (prima si potevano segnare bloccati per sbaglio);
+     * per gli altri vale la scelta dell'utente, se c'è, altrimenti bloccati.
      */
     @Query(
         """
         SELECT c.id AS id, c.name AS name, c.nameIt AS nameIt, c.rosterOrder AS rosterOrder, c.imageUrl AS imageUrl,
-               COALESCE(cu.unlocked, c.starter) AS unlocked,
+               CASE WHEN c.starter THEN 1 ELSE COALESCE(cu.unlocked, 0) END AS unlocked,
                c.unlockCriteria AS unlockCriteria, c.unlockCriteriaIt AS unlockCriteriaIt,
                COUNT(o.id) AS totalOutfits,
                SUM(CASE WHEN oo.outfitId IS NOT NULL THEN 1 ELSE 0 END) AS ownedOutfits

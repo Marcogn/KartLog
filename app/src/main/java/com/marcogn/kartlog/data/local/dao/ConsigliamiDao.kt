@@ -15,7 +15,7 @@ interface ConsigliamiDao {
     @Query(
         """
         SELECT c.id AS id, c.name AS name, c.nameIt AS nameIt, c.rosterOrder AS rosterOrder, c.imageUrl AS imageUrl,
-               COALESCE(cu.unlocked, c.starter) AS unlocked
+               CASE WHEN c.starter THEN 1 ELSE COALESCE(cu.unlocked, 0) END AS unlocked
         FROM characters c
         LEFT JOIN character_unlocks cu ON cu.characterId = c.id
         """

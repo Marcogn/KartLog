@@ -98,6 +98,7 @@
     <string name="rank_gold_2_stars">Gold ★★</string>
     <string name="rank_gold_3_stars">Gold ★★★</string>
     <string name="skin_unlocked">Unlocked</string>
+    <string name="skin_starter">Default driver</string>
     <string name="skin_locked">Locked</string>
     <string name="medallions_increment">Add a medallion</string>
     <string name="medallions_decrement">Remove a medallion</string>

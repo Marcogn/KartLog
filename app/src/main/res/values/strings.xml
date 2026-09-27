@@ -98,6 +98,7 @@
     <string name="rank_gold_2_stars">Oro ★★</string>
     <string name="rank_gold_3_stars">Oro ★★★</string>
     <string name="skin_unlocked">Sbloccato</string>
+    <string name="skin_starter">Di base</string>
     <string name="skin_locked">Da sbloccare</string>
     <string name="medallions_increment">Aggiungi una moneta</string>
     <string name="medallions_decrement">Togli una moneta</string>

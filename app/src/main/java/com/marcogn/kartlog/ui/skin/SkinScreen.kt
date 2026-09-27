@@ -136,18 +136,19 @@ fun SkinScreen(
                 items(state.characters, key = { it.id }) { character ->
                     CharacterCard(
                         character,
-                        onClick = {
+                        // Pilota di base senza outfit: sempre disponibile, niente da fare al tap.
+                        onClick = if (!character.hasOutfits && !character.isUnlockable) null else ({
                             when {
                                 // Da sbloccare: prima il popup con il criterio (scelta dell'autore,
                                 // 27/09/2026). Chi ha outfit, una volta sbloccato, va al dettaglio;
                                 // chi non ne ha apre sempre il popup, dove si può anche ribloccarlo.
                                 character.isUnlockable && (!character.unlocked || !character.hasOutfits) ->
                                     unlockPopup = character
-                                // Solo chi ha outfit alternativi ha una schermata di dettaglio.
+                                // Solo chi ha outfit alternativi ha una schermata di dettaglio. I piloti
+                                // di base senza outfit sono sempre disponibili: il tap non fa nulla.
                                 character.hasOutfits -> onCharacterClick(character.id)
-                                else -> viewModel.onUnlockToggled(character.id, !character.unlocked)
                             }
-                        },
+                        }),
                     )
                 }
             }
@@ -168,7 +169,7 @@ private fun sortModeLabel(mode: SkinSortMode): String = when (mode) {
  * dei titoli. Chi ha tutti gli outfit resta attenuato, come prima.
  */
 @Composable
-private fun CharacterCard(character: CharacterProgress, onClick: () -> Unit) {
+private fun CharacterCard(character: CharacterProgress, onClick: (() -> Unit)?) {
     val displayName = localizedName(character.name, character.nameIt)
     val frame = polaroidFrameColor()
     val accent = rememberImageAccentColor(character.imageUrl) ?: KartTiles.Gray.base
@@ -179,7 +180,9 @@ private fun CharacterCard(character: CharacterProgress, onClick: () -> Unit) {
             CharacterPortrait(
                 name = displayName,
                 imageUrl = character.imageUrl,
-                dimmed = character.isComplete,
+                // Grigio = "hai finito qui". Non per i piloti di base senza outfit, che non hanno
+                // mai avuto nulla da fare: grigi sembravano bloccati (segnalazione dell'autore).
+                dimmed = character.isComplete && (character.hasOutfits || character.isUnlockable),
                 modifier = Modifier.fillMaxWidth().border(1.5.dp, KartInk, RoundedCornerShape(12.dp)),
             )
             if (!character.unlocked) {
@@ -197,13 +200,14 @@ private fun CharacterCard(character: CharacterProgress, onClick: () -> Unit) {
             }
         },
     ) {
-        PolaroidLabel(if (character.isComplete) accent.copy(alpha = 0.45f).compositeOver(frame) else accent) {
+        PolaroidLabel(if (character.isComplete && (character.hasOutfits || character.isUnlockable)) accent.copy(alpha = 0.45f).compositeOver(frame) else accent) {
             // Una riga sola, rimpicciolendo i nomi lunghi: le card della stessa riga restano alte uguali.
             OutlinedTitle(displayName, fontSize = 16.sp, minFontSize = 11.sp)
             OutlinedTitle(
                 text = when {
                     character.hasOutfits ->
                         stringResource(R.string.home_counter_format, character.ownedOutfits, character.totalOutfits)
+                    !character.isUnlockable -> stringResource(R.string.skin_starter)
                     character.unlocked -> stringResource(R.string.skin_unlocked)
                     else -> stringResource(R.string.skin_locked)
                 },

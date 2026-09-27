@@ -95,12 +95,15 @@ fun SkinDetailScreen(
                     kartColorsOf(accent.readableUnderWhiteText()),
                 )
                 Spacer(Modifier.weight(1f))
-                Text(
-                    stringResource(R.string.skin_unlock_switch),
-                    style = TextStyle(fontFamily = KartFont, fontSize = 16.sp),
-                    modifier = Modifier.padding(end = 8.dp),
-                )
-                Switch(checked = state.unlocked, onCheckedChange = viewModel::onUnlockToggled)
+                // Solo i piloti da sbloccare: quelli di base sono sempre disponibili.
+                if (state.canToggleUnlock) {
+                    Text(
+                        stringResource(R.string.skin_unlock_switch),
+                        style = TextStyle(fontFamily = KartFont, fontSize = 16.sp),
+                        modifier = Modifier.padding(end = 8.dp),
+                    )
+                    Switch(checked = state.unlocked, onCheckedChange = viewModel::onUnlockToggled)
+                }
             }
             state.unlockCriteria?.let { criterion ->
                 Text(

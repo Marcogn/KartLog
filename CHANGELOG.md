@@ -34,6 +34,9 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 - **Come sbloccare i piloti.** Toccando un pilota da sbloccare si apre un
   popup con il criterio (dalla Super Mario Wiki) e l'interruttore per
   segnarlo sbloccato; la X lo chiude senza cambiare nulla.
+- **Piloti di base sempre sbloccati.** Goomba, Pianta Piranha e gli altri
+  piloti disponibili dall'inizio non si possono più segnare come bloccati
+  (prima bastava un tap); chi lo era per sbaglio torna sbloccato.
 - **Come sbloccare la modalità specchio.** Una "i" sulla scheda Mirror di
   Risultati apre l'elenco delle condizioni. In italiano è una traduzione
   non ufficiale.
