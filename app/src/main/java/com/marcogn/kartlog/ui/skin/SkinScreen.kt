@@ -1,6 +1,10 @@
 package com.marcogn.kartlog.ui.skin
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.graphics.compositeOver
+import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,38 +21,42 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExposedDropdownMenuBox
-import androidx.compose.material3.ExposedDropdownMenuDefaults
-import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
 import com.marcogn.kartlog.data.local.dao.CharacterProgress
 import com.marcogn.kartlog.domain.model.localizedName
 import com.marcogn.kartlog.ui.common.CharacterPortrait
+import com.marcogn.kartlog.ui.common.KartChoiceButton
+import com.marcogn.kartlog.ui.common.KartDropdown
+import com.marcogn.kartlog.ui.common.KartInk
+import com.marcogn.kartlog.ui.common.KartPopup
+import com.marcogn.kartlog.ui.common.KartPopupText
+import com.marcogn.kartlog.ui.common.KartSwitchRow
+import com.marcogn.kartlog.ui.common.KartTiles
+import com.marcogn.kartlog.ui.common.KartTitle
+import com.marcogn.kartlog.ui.common.KartTopBar
+import com.marcogn.kartlog.ui.common.OutlinedTitle
+import com.marcogn.kartlog.ui.common.rememberImageAccentColor
+import com.marcogn.kartlog.ui.common.kartSky
+import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -58,11 +66,28 @@ fun SkinScreen(
     viewModel: SkinListViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
+    // Istantanea del pilota del popup: col filtro "Incompleti" un pilota senza outfit appena
+    // sbloccato sparisce dalla lista, ma il popup resta aperto finché non lo si chiude.
+    var unlockPopup by remember { mutableStateOf<CharacterProgress?>(null) }
+
+    unlockPopup?.let { snapshot ->
+        val character = state.characters.firstOrNull { it.id == snapshot.id } ?: snapshot
+        UnlockPopup(
+            character = character,
+            onUnlockedChange = { unlocked ->
+                viewModel.onUnlockToggled(character.id, unlocked)
+                unlockPopup = character.copy(unlocked = unlocked)
+            },
+            onDismiss = { unlockPopup = null },
+        )
+    }
 
     Scaffold(
+        modifier = Modifier.kartSky(isKartDarkTheme()),
+        containerColor = Color.Transparent,
         topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.skin_title)) },
+            KartTopBar(
+                title = { KartTitle(stringResource(R.string.skin_title)) },
                 navigationIcon = {
                     IconButton(onClick = onMenuClick) {
                         Icon(Icons.Filled.Menu, contentDescription = stringResource(R.string.cd_menu))
@@ -79,20 +104,24 @@ fun SkinScreen(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                FilterChip(
+                KartChoiceButton(
+                    text = stringResource(R.string.skin_filter_all),
                     selected = state.filterMode == SkinFilterMode.ALL,
                     onClick = { viewModel.onFilterModeSelected(SkinFilterMode.ALL) },
-                    label = { Text(stringResource(R.string.skin_filter_all)) },
+                    modifier = Modifier.weight(0.8f),
                 )
-                FilterChip(
+                KartChoiceButton(
+                    text = stringResource(R.string.skin_filter_incomplete),
                     selected = state.filterMode == SkinFilterMode.INCOMPLETE,
                     onClick = { viewModel.onFilterModeSelected(SkinFilterMode.INCOMPLETE) },
-                    label = { Text(stringResource(R.string.skin_filter_incomplete)) },
+                    modifier = Modifier.weight(1.1f),
                 )
-                SortMenu(
-                    sortMode = state.sortMode,
-                    onSortModeSelected = viewModel::onSortModeSelected,
-                    modifier = Modifier.weight(1f),
+                KartDropdown(
+                    options = SkinSortMode.entries,
+                    selected = state.sortMode,
+                    label = { sortModeLabel(it) },
+                    onSelected = viewModel::onSortModeSelected,
+                    modifier = Modifier.weight(1.4f),
                 )
             }
 
@@ -101,19 +130,18 @@ fun SkinScreen(
                 // riga su un telefono, di più su schermi larghi.
                 columns = GridCells.Adaptive(minSize = 104.dp),
                 contentPadding = PaddingValues(12.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
             ) {
                 items(state.characters, key = { it.id }) { character ->
+                    val behavior = cardBehavior(character)
                     CharacterCard(
                         character,
-                        onClick = {
-                            // Solo chi ha outfit alternativi ha una schermata di dettaglio.
-                            if (character.hasOutfits) {
-                                onCharacterClick(character.id)
-                            } else {
-                                viewModel.onUnlockToggled(character.id, !character.unlocked)
-                            }
+                        behavior,
+                        onClick = when (behavior.tap) {
+                            CardTap.NONE -> null
+                            CardTap.UNLOCK_POPUP -> ({ unlockPopup = character })
+                            CardTap.OUTFITS -> ({ onCharacterClick(character.id) })
                         },
                     )
                 }
@@ -129,88 +157,77 @@ private fun sortModeLabel(mode: SkinSortMode): String = when (mode) {
     SkinSortMode.COMPLETION -> stringResource(R.string.skin_sort_completion)
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+/**
+ * Card "polaroid" (richiesta dell'autore): cornice con bordo nero, l'immagine del wiki e sotto un
+ * cartellino del colore del personaggio (preso dall'immagine stessa) con nome e contatore nel font
+ * dei titoli. Grigia e col lucchetto solo se il pilota è da sbloccare ([cardBehavior]).
+ */
 @Composable
-private fun SortMenu(sortMode: SkinSortMode, onSortModeSelected: (SkinSortMode) -> Unit, modifier: Modifier = Modifier) {
-    var expanded by remember { mutableStateOf(false) }
-    ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = { expanded = it }, modifier = modifier) {
-        TextField(
-            value = sortModeLabel(sortMode),
-            onValueChange = {},
-            readOnly = true,
-            label = { Text(stringResource(R.string.skin_sort_label)) },
-            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-            modifier = Modifier.menuAnchor(),
-        )
-        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
-            SkinSortMode.entries.forEach { mode ->
-                DropdownMenuItem(
-                    text = { Text(sortModeLabel(mode)) },
-                    onClick = { onSortModeSelected(mode); expanded = false },
+private fun CharacterCard(character: CharacterProgress, behavior: CardBehavior, onClick: (() -> Unit)?) {
+    val displayName = localizedName(character.name, character.nameIt)
+    val frame = polaroidFrameColor()
+    val accent = rememberImageAccentColor(character.imageUrl) ?: KartTiles.Gray.base
+    Polaroid(
+        frame = frame,
+        onClick = onClick,
+        image = {
+            CharacterPortrait(
+                name = displayName,
+                imageUrl = character.imageUrl,
+                dimmed = behavior.dimmed,
+                modifier = Modifier.fillMaxWidth().border(1.5.dp, KartInk, RoundedCornerShape(12.dp)),
+            )
+            if (behavior.showsLock) {
+                Icon(
+                    Icons.Filled.Lock,
+                    contentDescription = stringResource(R.string.skin_locked),
+                    tint = MaterialTheme.colorScheme.onSurface,
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(4.dp)
+                        .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.85f), CircleShape)
+                        .padding(4.dp)
+                        .size(16.dp),
                 )
             }
+        },
+    ) {
+        PolaroidLabel(if (behavior.dimmed) accent.copy(alpha = 0.45f).compositeOver(frame) else accent) {
+            // Una riga sola, rimpicciolendo i nomi lunghi: le card della stessa riga restano alte uguali.
+            OutlinedTitle(displayName, fontSize = 16.sp, minFontSize = 11.sp)
+            OutlinedTitle(
+                text = when {
+                    character.hasOutfits ->
+                        stringResource(R.string.home_counter_format, character.ownedOutfits, character.totalOutfits)
+                    !character.isUnlockable -> stringResource(R.string.skin_starter)
+                    character.unlocked -> stringResource(R.string.skin_unlocked)
+                    else -> stringResource(R.string.skin_locked)
+                },
+                fontSize = 14.sp,
+                minFontSize = 10.sp,
+            )
         }
     }
 }
 
+
+/** Popup di un pilota da sbloccare: come si sblocca e l'interruttore per segnarlo sbloccato. */
 @Composable
-private fun CharacterCard(character: CharacterProgress, onClick: () -> Unit) {
-    Card(
-        onClick = onClick,
-        modifier = Modifier.fillMaxWidth(),
-        colors = if (character.isComplete) {
-            CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f))
-        } else {
-            CardDefaults.cardColors()
-        },
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            val displayName = localizedName(character.name, character.nameIt)
-            Box {
-                CharacterPortrait(
-                    name = displayName,
-                    imageUrl = character.imageUrl,
-                    dimmed = character.isComplete,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-                if (!character.unlocked) {
-                    Icon(
-                        Icons.Filled.Lock,
-                        contentDescription = stringResource(R.string.skin_locked),
-                        tint = MaterialTheme.colorScheme.onSurface,
-                        modifier = Modifier
-                            .align(Alignment.TopEnd)
-                            .padding(4.dp)
-                            .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.85f), CircleShape)
-                            .padding(4.dp)
-                            .size(16.dp),
-                    )
-                }
-            }
-            Text(
-                text = displayName,
-                style = MaterialTheme.typography.titleSmall,
-                textAlign = TextAlign.Center,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-                color = if (character.isComplete) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier.padding(top = 6.dp),
-            )
-            Text(
-                text = when {
-                    character.hasOutfits ->
-                        stringResource(R.string.home_counter_format, character.ownedOutfits, character.totalOutfits)
-                    character.unlocked -> stringResource(R.string.skin_unlocked)
-                    else -> stringResource(R.string.skin_locked)
-                },
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        }
+private fun UnlockPopup(character: CharacterProgress, onUnlockedChange: (Boolean) -> Unit, onDismiss: () -> Unit) {
+    val name = localizedName(character.name, character.nameIt)
+    KartPopup(title = name, onDismiss = onDismiss) {
+        CharacterPortrait(
+            name = name,
+            imageUrl = character.imageUrl,
+            dimmed = !character.unlocked,
+            modifier = Modifier.width(110.dp).border(2.dp, KartInk, RoundedCornerShape(12.dp)),
+        )
+        KartPopupText(stringResource(R.string.skin_unlock_how) + ":")
+        KartPopupText(localizedName(character.unlockCriteria.orEmpty(), character.unlockCriteriaIt))
+        KartSwitchRow(
+            label = stringResource(R.string.skin_unlock_switch),
+            checked = character.unlocked,
+            onCheckedChange = onUnlockedChange,
+        )
     }
 }

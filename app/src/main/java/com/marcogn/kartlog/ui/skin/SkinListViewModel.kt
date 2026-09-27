@@ -40,12 +40,7 @@ class SkinListViewModel @Inject constructor(
         sortMode,
         filterMode,
     ) { characters, sort, filter ->
-        // Chi ha ottenuto tutti gli outfit si attenua e va in fondo, qualunque sia
-        // l'ordinamento scelto (SPEC §2.3); con il filtro "Incompleti" sparisce del tutto.
-        val (incomplete, complete) = characters.partition { !it.isComplete }
-        val comparator = comparatorFor(sort)
-        val ordered = incomplete.sortedWith(comparator) +
-            if (filter == SkinFilterMode.INCOMPLETE) emptyList() else complete.sortedWith(comparator)
+        val ordered = orderCharacters(characters, sort, filter)
         SkinListUiState(characters = ordered, sortMode = sort, filterMode = filter)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SkinListUiState())
 
@@ -57,22 +52,42 @@ class SkinListViewModel @Inject constructor(
         filterMode.value = mode
     }
 
-    /** Piloti senza outfit: il tap sulla card segna sbloccato/non (per gli altri c'è il dettaglio). */
+    /** Sblocco di un pilota da sbloccare, dal popup (quelli di base sono sempre sbloccati). */
     fun onUnlockToggled(characterId: String, unlocked: Boolean) {
         viewModelScope.launch {
             userStateDao.setCharacterUnlock(CharacterUnlockEntity(characterId = characterId, unlocked = unlocked))
         }
     }
+}
 
-    private fun comparatorFor(mode: SkinSortMode): Comparator<CharacterProgress> = when (mode) {
-        SkinSortMode.ROSTER -> compareBy { it.rosterOrder }
-        SkinSortMode.ALPHABETICAL -> compareBy { localizedName(it.name, it.nameIt) }
-        SkinSortMode.COMPLETION -> compareByDescending<CharacterProgress> {
-            when {
-                it.hasOutfits -> it.ownedOutfits.toDouble() / it.totalOutfits
-                it.unlocked -> 1.0
-                else -> 0.0
-            }
-        }.thenBy { it.rosterOrder }
+/** Ordine e filtro della lista Personaggi (funzione pura, testata in `SkinOrderTest`). */
+internal fun orderCharacters(
+    characters: List<CharacterProgress>,
+    sort: SkinSortMode,
+    filter: SkinFilterMode,
+): List<CharacterProgress> {
+    // Chi ha completato quello che c'era da fare va in fondo, qualunque sia l'ordinamento
+    // (SPEC §2.3); con "Incompleti" sparisce. I piloti di base senza outfit non hanno nulla da
+    // fare: stanno nel gruppo in alto, ordinati come gli altri (prima finivano tutti in fondo,
+    // segnalazione dell'autore), e "Incompleti" non li mostra.
+    val (open, done) = characters.partition { !it.isDone }
+    val comparator = comparatorFor(sort)
+    return if (filter == SkinFilterMode.INCOMPLETE) {
+        open.filter { it.hasProgress }.sortedWith(comparator)
+    } else {
+        open.sortedWith(comparator) + done.sortedWith(comparator)
     }
+}
+
+private fun comparatorFor(mode: SkinSortMode): Comparator<CharacterProgress> = when (mode) {
+    SkinSortMode.ROSTER -> compareBy { it.rosterOrder }
+    SkinSortMode.ALPHABETICAL -> compareBy { localizedName(it.name, it.nameIt) }
+    SkinSortMode.COMPLETION -> compareByDescending<CharacterProgress> {
+        when {
+            it.hasOutfits -> it.ownedOutfits.toDouble() / it.totalOutfits
+            !it.isUnlockable -> -1.0  // nulla da completare: dopo chi ha un avanzamento
+            it.unlocked -> 1.0
+            else -> 0.0
+        }
+    }.thenBy { it.rosterOrder }
 }

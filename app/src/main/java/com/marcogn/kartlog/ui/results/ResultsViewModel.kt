@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.marcogn.kartlog.data.local.dao.ConsigliamiDao
 import com.marcogn.kartlog.data.local.dao.UserStateDao
 import com.marcogn.kartlog.data.local.entity.BestResultEntity
+import com.marcogn.kartlog.data.seed.SeedAssetLoader
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.EventType
 import com.marcogn.kartlog.domain.model.TrophyRank
@@ -31,6 +32,8 @@ data class ResultsUiState(
     val cc: Cc = Cc.CC_150,
     val cups: List<ResultRow> = emptyList(),
     val rallies: List<ResultRow> = emptyList(),
+    /** Condizioni per sbloccare la modalità specchio, nella lingua dell'app (popup della "i"). */
+    val mirrorSteps: List<String> = emptyList(),
 )
 
 /** Schermata Risultati (SPEC §2.6): miglior trofeo per evento e cilindrata, un solo valore per coppia. */
@@ -38,7 +41,12 @@ data class ResultsUiState(
 class ResultsViewModel @Inject constructor(
     dao: ConsigliamiDao,
     private val userStateDao: UserStateDao,
+    seedAssets: SeedAssetLoader,
 ) : ViewModel() {
+
+    // Testo statico del seed (mirror_mode.json): si legge una volta, si localizza a ogni emissione.
+    private val mirrorSteps = seedAssets.readMirrorSteps()
+
 
     private val cc = MutableStateFlow(Cc.CC_150)
 
@@ -56,6 +64,7 @@ class ResultsViewModel @Inject constructor(
             cc = selectedCc,
             cups = rows.filter { it.first == EventType.CUP }.map { it.second },
             rallies = rows.filter { it.first == EventType.RALLY }.map { it.second },
+            mirrorSteps = mirrorSteps.map { localizedName(it.text, it.textIt) },
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ResultsUiState())
 

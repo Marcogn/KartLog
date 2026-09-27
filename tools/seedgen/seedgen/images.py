@@ -14,12 +14,19 @@ Struttura della pagina (verificata a mano il 26/09/2026, revid 5498278):
 - tabelle dei Gran Premi e dei Knockout Tour: prima cella di ogni riga (`th.subheader`) con l'icona
   della cup/del rally e il link col suo nome.
 
+Dalla stessa pagina (testo, CC BY-SA, verificato a mano il 27/09/2026) seedgen legge anche:
+- la tabella "Unlock criteria": pilota -> come si sblocca (la cella del criterio ha `rowspan` quando
+  vale per più piloti di fila);
+- l'elenco puntato dopo "Mirror Mode is unlocked by:" (sezione Grand Prix): le condizioni per la
+  modalità specchio, senza le note tra parentesi (scelta dell'autore: popup più corto).
+
 Come per i nomi in altre lingue (seedgen/i18n.py) la pagina si scarica sempre dal vivo, mai da
 fixture: è di oltre 1 MB e se ne usa una piccola parte.
 """
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 
 from bs4 import BeautifulSoup, Tag
@@ -28,6 +35,8 @@ from .errors import ParseError
 
 DRIVER_SECTIONS = ("Default_drivers", "Unlockable_drivers")
 OUTFIT_SECTION = "Character_outfits"
+UNLOCK_SECTION = "Unlock_criteria"
+MIRROR_INTRO = re.compile(r"Mirror Mode is unlocked by")
 
 
 @dataclass(frozen=True)
@@ -40,6 +49,8 @@ class Images:
     # Titoli dei piloti nella galleria "Default drivers": disponibili dall'inizio. Gli altri
     # (galleria "Unlockable drivers") si sbloccano giocando.
     starters: frozenset[str] = frozenset()
+    unlock_criteria: dict[str, str] = field(default_factory=dict)  # titolo pilota -> criterio (inglese)
+    mirror_steps: list[str] = field(default_factory=list)          # condizioni della modalità specchio
 
     def is_empty(self) -> bool:
         return not (self.characters or self.outfits or self.events)
@@ -130,7 +141,60 @@ def _parse_events(soup: BeautifulSoup) -> dict[str, str]:
     return events
 
 
+def clean_text(tag: Tag) -> str:
+    """Testo di una cella/voce: senza note a piè di pagina né note tra parentesi, spazi compressi."""
+    for sup in tag.find_all("sup"):
+        sup.decompose()
+    text = " ".join(tag.get_text(" ", strip=True).split())
+    text = re.sub(r"\s*\([^()]*\)", "", text)
+    # get_text(" ") mette uno spazio anche prima della punteggiatura che segue un link.
+    return re.sub(r"\s+([,.;:])", r"\1", text).strip()
+
+
+def parse_unlock_table(table: Tag) -> list[tuple[Tag, str]]:
+    """(prima cella, criterio) per ogni riga di una tabella pilota/criterio. Una cella del criterio
+    con `rowspan` vale anche per le righe successive, che hanno solo la cella del pilota."""
+    rows: list[tuple[Tag, str]] = []
+    carried, remaining = None, 0
+    for tr in table.find_all("tr"):
+        cells = tr.find_all("td", recursive=False)
+        if not cells:
+            continue  # intestazione
+        if len(cells) >= 2:
+            carried = clean_text(cells[1])
+            remaining = int(cells[1].get("rowspan", 1)) - 1
+        elif remaining > 0:
+            remaining -= 1
+        else:
+            raise ParseError(f"tabella dei criteri di sblocco: riga senza criterio ({cells[0].get_text(strip=True)!r})")
+        rows.append((cells[0], carried))
+    return rows
+
+
+def _parse_unlock_criteria(soup: BeautifulSoup) -> dict[str, str]:
+    tables = [n for n in _section_nodes(soup, UNLOCK_SECTION) if n.name == "table"]
+    if len(tables) != 1:
+        raise ParseError(f"Mario Kart World: attesa 1 tabella in 'Unlock criteria', trovate {len(tables)}")
+    criteria: dict[str, str] = {}
+    for cell, criterion in parse_unlock_table(tables[0]):
+        link = cell.find("a")
+        title = (link.get("title") if link is not None else None) or cell.get_text(" ", strip=True)
+        criteria[title] = criterion
+    return criteria
+
+
+def _parse_mirror_steps(soup: BeautifulSoup) -> list[str]:
+    intro = soup.find(string=MIRROR_INTRO)
+    if intro is None:
+        raise ParseError("Mario Kart World: frase 'Mirror Mode is unlocked by' non trovata")
+    items = intro.find_parent("p").find_next_sibling()
+    if items is None or items.name != "ul":
+        raise ParseError("Mario Kart World: dopo 'Mirror Mode is unlocked by' non c'è un elenco puntato")
+    return [clean_text(li) for li in items.find_all("li", recursive=False)]
+
+
 def extract_images(html: str) -> Images:
     soup = BeautifulSoup(html, "html.parser")
     characters, starters = _parse_drivers(soup)
-    return Images(characters=characters, outfits=_parse_outfits(soup), events=_parse_events(soup), starters=starters)
+    return Images(characters=characters, outfits=_parse_outfits(soup), events=_parse_events(soup), starters=starters,
+                  unlock_criteria=_parse_unlock_criteria(soup), mirror_steps=_parse_mirror_steps(soup))

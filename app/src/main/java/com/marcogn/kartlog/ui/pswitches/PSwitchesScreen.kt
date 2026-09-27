@@ -19,7 +19,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -29,12 +28,17 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
+import com.marcogn.kartlog.ui.common.KartTitle
+import com.marcogn.kartlog.ui.common.KartTopBar
 import com.marcogn.kartlog.ui.common.MarkAllConfirmationDialog
 import com.marcogn.kartlog.ui.common.RegionHeader
+import com.marcogn.kartlog.ui.common.kartSky
+import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -47,9 +51,11 @@ fun PSwitchesScreen(
     var regionPendingConfirmation by remember { mutableStateOf<String?>(null) }
 
     Scaffold(
+        modifier = Modifier.kartSky(isKartDarkTheme()),
+        containerColor = Color.Transparent,
         topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.pswitches_title)) },
+            KartTopBar(
+                title = { KartTitle(stringResource(R.string.pswitches_title)) },
                 navigationIcon = {
                     IconButton(onClick = onMenuClick) {
                         Icon(Icons.Filled.Menu, contentDescription = stringResource(R.string.cd_menu))

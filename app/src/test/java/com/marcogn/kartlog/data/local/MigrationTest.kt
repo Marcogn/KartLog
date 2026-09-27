@@ -143,4 +143,29 @@ class MigrationTest {
             assertEquals(1, cursor.getInt(0))
         }
     }
+
+    @Test
+    fun `migrazione 5 a 6 aggiunge i criteri di sblocco e conserva le scelte di sblocco`() {
+        helper.createDatabase(dbName, 5).apply {
+            execSQL(
+                "INSERT INTO characters (id, name, nameIt, rosterOrder, imageRes, imageUrl, starter) " +
+                    "VALUES ('daisy', 'Daisy', 'Daisy', 3, NULL, NULL, 0)"
+            )
+            execSQL("INSERT INTO character_unlocks (characterId, unlocked) VALUES ('daisy', 1)")
+            close()
+        }
+
+        val migrated = helper.runMigrationsAndValidate(dbName, 6, true, MIGRATION_5_6)
+
+        migrated.query("SELECT unlockCriteria, unlockCriteriaIt FROM characters WHERE id = 'daisy'").use { cursor ->
+            assertEquals(true, cursor.moveToFirst())
+            assertEquals(true, cursor.isNull(0))  // li riempie il reseed
+            assertEquals(true, cursor.isNull(1))
+        }
+        migrated.query("SELECT unlocked FROM character_unlocks WHERE characterId = 'daisy'").use { cursor ->
+            assertEquals(true, cursor.moveToFirst())
+            assertEquals(1, cursor.getInt(0))
+        }
+    }
+
 }

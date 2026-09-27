@@ -15,17 +15,16 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -34,6 +33,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -41,8 +42,16 @@ import com.marcogn.kartlog.R
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.TrophyRank
 import com.marcogn.kartlog.ui.common.EventIcon
+import com.marcogn.kartlog.ui.common.KartInfoButton
+import com.marcogn.kartlog.ui.common.KartPopup
+import com.marcogn.kartlog.ui.common.KartPopupText
+import com.marcogn.kartlog.ui.common.KartTabs
+import com.marcogn.kartlog.ui.common.KartTitle
+import com.marcogn.kartlog.ui.common.KartTopBar
 import com.marcogn.kartlog.ui.common.ccLabel
+import com.marcogn.kartlog.ui.common.kartSky
 import com.marcogn.kartlog.ui.common.rankLabel
+import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -52,11 +61,22 @@ fun ResultsScreen(
 ) {
     val state by viewModel.uiState.collectAsState()
     var editingEventId by rememberSaveable { mutableStateOf<String?>(null) }
+    var showMirrorInfo by rememberSaveable { mutableStateOf(false) }
+
+    if (showMirrorInfo) {
+        KartPopup(title = stringResource(R.string.results_mirror_info_title), onDismiss = { showMirrorInfo = false }) {
+            state.mirrorSteps.forEachIndexed { i, step ->
+                KartPopupText("${i + 1}. $step", Modifier.fillMaxWidth(), textAlign = TextAlign.Start)
+            }
+        }
+    }
 
     Scaffold(
+        modifier = Modifier.kartSky(isKartDarkTheme(), faded = true),
+        containerColor = Color.Transparent,
         topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.results_title)) },
+            KartTopBar(
+                title = { KartTitle(stringResource(R.string.results_title)) },
                 navigationIcon = {
                     IconButton(onClick = onMenuClick) {
                         Icon(Icons.Filled.Menu, contentDescription = stringResource(R.string.cd_menu))
@@ -65,23 +85,22 @@ fun ResultsScreen(
             )
         },
     ) { padding ->
-        LazyColumn(modifier = Modifier.padding(padding).fillMaxSize(), contentPadding = PaddingValues(bottom = 16.dp)) {
-            item {
-                Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
-                    Text(stringResource(R.string.results_cc_label), style = MaterialTheme.typography.labelMedium)
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Cc.entries.forEach { cc ->
-                            FilterChip(
-                                selected = state.cc == cc,
-                                onClick = { viewModel.onCcChanged(cc) },
-                                label = { Text(ccLabel(cc)) },
-                            )
-                        }
-                    }
+        KartTabs(
+            options = Cc.entries,
+            selected = state.cc,
+            label = { ccLabel(it) },
+            onSelected = viewModel::onCcChanged,
+            tabTrailing = { cc ->
+                if (cc == Cc.MIRROR && state.mirrorSteps.isNotEmpty()) {
+                    KartInfoButton(stringResource(R.string.results_mirror_info_cd), onClick = { showMirrorInfo = true })
                 }
+            },
+            modifier = Modifier.padding(padding).fillMaxSize().padding(start = 8.dp, end = 8.dp, top = 8.dp),
+        ) {
+            LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(top = 4.dp, bottom = 16.dp)) {
+                resultsSection(R.string.results_section_cup, state.cups, onClick = { editingEventId = it })
+                resultsSection(R.string.results_section_rally, state.rallies, onClick = { editingEventId = it })
             }
-            resultsSection(R.string.results_section_cup, state.cups, onClick = { editingEventId = it })
-            resultsSection(R.string.results_section_rally, state.rallies, onClick = { editingEventId = it })
         }
     }
 
@@ -122,6 +141,8 @@ private fun LazyListScope.resultsSection(
                     color = if (row.rank == null) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.primary,
                 )
             },
+            // Trasparente: sotto si vede il cielo attenuato dello sfondo, non un bianco pieno.
+            colors = ListItemDefaults.colors(containerColor = Color.Transparent),
             modifier = Modifier.clickable { onClick(row.eventId) },
         )
     }

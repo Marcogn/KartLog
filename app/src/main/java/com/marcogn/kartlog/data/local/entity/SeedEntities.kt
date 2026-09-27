@@ -24,6 +24,9 @@ data class CharacterEntity(
      * finché l'utente non registra uno stato proprio in `character_unlocks`.
      */
     @ColumnInfo(defaultValue = "1") val starter: Boolean = true,
+    /** Come si sblocca, solo per i piloti non di base (tabella "Unlock criteria" del wiki). */
+    val unlockCriteria: String? = null,
+    val unlockCriteriaIt: String? = null,
 )
 
 @Entity(tableName = "outfits")

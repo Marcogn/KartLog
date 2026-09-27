@@ -123,3 +123,9 @@ def test_build_requires_every_italian_name_once_it_wiki_is_read(cfg):
     it = ItNames(drivers={"Mucca": "Mucca"}, langlinks={"Mucca": "Cow"})
     with pytest.raises(ParseError, match="nome italiano non trovato"):
         build(RawData.from_yaml(GOLDEN), cfg, translations=Translations(), it_names=it)
+
+
+def test_unlock_criteria_by_italian_name():
+    from seedgen.it_wiki import extract_unlock_criteria
+
+    assert extract_unlock_criteria(GAME) == {"Delfì": "Trofeo Fungo"}

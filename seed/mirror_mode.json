@@ -1,0 +1,36 @@
+{
+  "items": [
+    {
+      "order": 0,
+      "text": "Playing the first seven cups in Grand Prix on 150cc",
+      "textIt": "Giocare i primi sette Trofei del Gran Premio a 150cc"
+    },
+    {
+      "order": 1,
+      "text": "Playing the first eight rallies in Knockout Tour on 150cc",
+      "textIt": "Giocare i primi otto rally del Knockout Tour a 150cc"
+    },
+    {
+      "order": 2,
+      "text": "Completing 10 P Switch missions in Free Roam",
+      "textIt": "Completare 10 missioni dei Pulsanti P nella corsa libera"
+    },
+    {
+      "order": 3,
+      "text": "Activating 10 ? Panels in Free Roam",
+      "textIt": "Attivare 10 pannelli ? nella corsa libera"
+    },
+    {
+      "order": 4,
+      "text": "Collecting 10 Peach Medallions in Free Roam",
+      "textIt": "Raccogliere 10 Monete Peach nella corsa libera"
+    },
+    {
+      "order": 5,
+      "text": "Only after all of the above have been completed, the player must finish the Special Cup on 150cc to unlock it, including replaying the Special Cup if it has already been completed.",
+      "textIt": "Solo dopo aver completato tutto quanto sopra, bisogna finire il Trofeo Speciale a 150cc per sbloccarla, anche rigiocandolo se era già stato completato."
+    }
+  ],
+  "source": "https://www.mariowiki.com/Mario_Kart_World",
+  "translationIt": "manual/mirror_mode_it.yaml (traduzione NON ufficiale)"
+}

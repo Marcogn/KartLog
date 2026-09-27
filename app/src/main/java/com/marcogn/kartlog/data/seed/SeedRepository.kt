@@ -59,6 +59,8 @@ class SeedRepository @Inject constructor(
                 rosterOrder = it.rosterOrder,
                 imageUrl = it.imageUrl,
                 starter = it.starter ?: true,
+                unlockCriteria = it.unlockCriteria,
+                unlockCriteriaIt = it.unlockCriteriaIt,
             )
         },
         outfits = assets.readItems<OutfitDto>("outfits.json").map {

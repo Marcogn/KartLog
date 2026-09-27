@@ -15,7 +15,6 @@ import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -24,7 +23,6 @@ import androidx.compose.material3.Slider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -33,6 +31,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -47,8 +46,13 @@ import com.marcogn.kartlog.domain.model.Presence
 import com.marcogn.kartlog.domain.model.TrophyRank
 import com.marcogn.kartlog.ui.common.CharacterAvatar
 import com.marcogn.kartlog.ui.common.EventIcon
+import com.marcogn.kartlog.ui.common.KartChoiceButton
+import com.marcogn.kartlog.ui.common.KartTitle
+import com.marcogn.kartlog.ui.common.KartTopBar
 import com.marcogn.kartlog.ui.common.ccLabel
+import com.marcogn.kartlog.ui.common.kartSky
 import com.marcogn.kartlog.ui.common.rankLabel
+import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -60,9 +64,11 @@ fun ConsigliamiScreen(
     val state by viewModel.uiState.collectAsState()
 
     Scaffold(
+        modifier = Modifier.kartSky(isKartDarkTheme()),
+        containerColor = Color.Transparent,
         topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.consigliami_title)) },
+            KartTopBar(
+                title = { KartTitle(stringResource(R.string.consigliami_title)) },
                 navigationIcon = {
                     IconButton(onClick = onMenuClick) {
                         Icon(Icons.Filled.Menu, contentDescription = stringResource(R.string.cd_menu))
@@ -85,20 +91,23 @@ fun ConsigliamiScreen(
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                FilterChip(
+                KartChoiceButton(
+                    text = stringResource(R.string.consigliami_filter_cup),
                     selected = state.eventFilter == ConsigliamiEventFilter.CUP,
                     onClick = { viewModel.onEventFilterChanged(ConsigliamiEventFilter.CUP) },
-                    label = { Text(stringResource(R.string.consigliami_filter_cup)) },
+                    modifier = Modifier.weight(1f),
                 )
-                FilterChip(
+                KartChoiceButton(
+                    text = stringResource(R.string.consigliami_filter_rally),
                     selected = state.eventFilter == ConsigliamiEventFilter.RALLY,
                     onClick = { viewModel.onEventFilterChanged(ConsigliamiEventFilter.RALLY) },
-                    label = { Text(stringResource(R.string.consigliami_filter_rally)) },
+                    modifier = Modifier.weight(1f),
                 )
-                FilterChip(
+                KartChoiceButton(
+                    text = stringResource(R.string.consigliami_filter_both),
                     selected = state.eventFilter == ConsigliamiEventFilter.BOTH,
                     onClick = { viewModel.onEventFilterChanged(ConsigliamiEventFilter.BOTH) },
-                    label = { Text(stringResource(R.string.consigliami_filter_both)) },
+                    modifier = Modifier.weight(1f),
                 )
             }
             SwitchRow(
@@ -128,12 +137,13 @@ fun ConsigliamiScreen(
                         valueRange = 0f..1f,
                     )
                     Text(stringResource(R.string.consigliami_reference_cc), style = MaterialTheme.typography.labelMedium)
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.padding(bottom = 8.dp)) {
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth().padding(top = 4.dp, bottom = 8.dp)) {
                         Cc.entries.forEach { cc ->
-                            FilterChip(
+                            KartChoiceButton(
+                                text = ccLabel(cc),
                                 selected = state.referenceCc == cc,
                                 onClick = { viewModel.onReferenceCcChanged(cc) },
-                                label = { Text(ccLabel(cc)) },
+                                modifier = Modifier.weight(1f),
                             )
                         }
                     }

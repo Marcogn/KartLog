@@ -21,6 +21,17 @@ data class CharacterDto(
     val imageUrl: String? = null,
     /** null = seed senza la pagina "Mario Kart World" (seedgen da fixture): tutti disponibili. */
     val starter: Boolean? = null,
+    /** Come si sblocca (solo i piloti non di base), da mariowiki.com / mariowiki.it. */
+    val unlockCriteria: String? = null,
+    val unlockCriteriaIt: String? = null,
+)
+
+/** Una condizione per la modalità specchio (`mirror_mode.json`); l'italiano è una traduzione NON ufficiale. */
+@Serializable
+data class MirrorStepDto(
+    val order: Int,
+    val text: String,
+    val textIt: String? = null,
 )
 
 @Serializable

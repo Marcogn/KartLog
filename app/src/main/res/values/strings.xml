@@ -3,6 +3,7 @@
     <string name="app_name">KartLog</string>
     <string name="cd_menu">Apri il menu</string>
     <string name="cd_back">Indietro</string>
+    <string name="cd_close">Chiudi</string>
 
     <string name="drawer_home">Home</string>
     <string name="drawer_skin">Personaggi</string>
@@ -21,8 +22,7 @@
     <string name="skin_title">Personaggi</string>
     <string name="skin_filter_all">Tutti</string>
     <string name="skin_filter_incomplete">Incompleti</string>
-    <string name="skin_sort_label">Ordina per</string>
-    <string name="skin_sort_roster">Roster ufficiale</string>
+    <string name="skin_sort_roster">Roster</string>
     <string name="skin_sort_alphabetical">Alfabetico</string>
     <string name="skin_sort_completion">%% completamento</string>
     <string name="skin_unlock_switch">Sbloccato</string>
@@ -86,7 +86,6 @@
     <string name="drawer_results">Risultati</string>
     <string name="home_option_results_title">Risultati</string>
     <string name="results_title">Risultati</string>
-    <string name="results_cc_label">Cilindrata</string>
     <string name="results_section_cup">Gran Premi</string>
     <string name="results_section_rally">Knockout Tour</string>
     <string name="results_no_trophy">Nessun trofeo</string>
@@ -99,6 +98,7 @@
     <string name="rank_gold_2_stars">Oro ★★</string>
     <string name="rank_gold_3_stars">Oro ★★★</string>
     <string name="skin_unlocked">Sbloccato</string>
+    <string name="skin_starter">Di base</string>
     <string name="skin_locked">Da sbloccare</string>
     <string name="medallions_increment">Aggiungi una moneta</string>
     <string name="medallions_decrement">Togli una moneta</string>
@@ -112,5 +112,9 @@
     <string name="language_system">Sistema</string>
     <string name="language_italian">Italiano</string>
     <string name="language_english">English</string>
-    <string name="settings_food_names_note">I nomi italiani dei cibi sono una traduzione non ufficiale: nessuna fonte li riporta.</string>
+    <string name="settings_food_names_note">I nomi italiani dei cibi sono una traduzione non ufficiale: nessuna fonte li riporta. Lo sono anche le condizioni della modalità specchio, tradotte da mariowiki.com perché la versione italiana del wiki è meno aggiornata.</string>
+    <string name="results_mirror_info_title">Modalità specchio</string>
+    <string name="results_mirror_info_cd">Come sbloccare la modalità specchio</string>
+    <string name="skin_unlock_how">Come si sblocca</string>
+    <string name="settings_font_credit">Font dei titoli: Lilita One di Juan Montoreano, SIL Open Font License 1.1.</string>
 </resources>

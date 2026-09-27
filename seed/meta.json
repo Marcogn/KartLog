@@ -1,5 +1,5 @@
 {
-  "extractedOn": "2026-09-26",
+  "extractedOn": "2026-09-27",
   "gameVersion": "1.8.0",
   "license": {
     "attribution": "Dati di gioco tratti da Super Mario Wiki (mariowiki.com) e Super Mario Wiki italiana (mariowiki.it)",
@@ -8,7 +8,7 @@
   },
   "note": "",
   "origin": "api",
-  "seedVersion": 5,
+  "seedVersion": 6,
   "sources": [
     {
       "revid": 5455370,

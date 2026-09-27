@@ -42,7 +42,7 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 - Griglia 2×2 di pulsanti **quadrati** e grandi: Personaggi, Monete Peach, Pulsanti P, Risultati.
 - Ogni pulsante mostra icona, titolo e un contatore di progresso (es. `87 / 127`, `143 / 200`); per Risultati (§2.6) è il numero di eventi con almeno un trofeo registrato (a qualsiasi cilindrata) sul totale degli eventi (`12 / 20`), senza altro testo.
 - Sotto la griglia, un pulsante largo a tutta riga **Consigliami** (§2.5) con una riga di spiegazione ("Quale Gran Premio o Knockout Tour correre, e con chi, per sbloccare più outfit") e nessun contatore.
-- Il look deve essere colorato e "da gioco": palette vivace, angoli arrotondati generosi, tipografia bold. Non deve imitare la UI ufficiale.
+- Il look deve essere colorato e "da gioco": palette vivace, angoli arrotondati generosi, tipografia bold. Non deve imitare la UI ufficiale. Dal 26/09/2026 segue il mockup dell'autore: banner con cielo e pista (logo in Home, titolo altrove) in alto su ogni schermata, tessere a gradiente con scacchi tenui, icona tonda, titolo bianco con contorno scuro e contatore in una pillola, pista in fondo alla Home. Font dei titoli Lilita One.
 
 ### 2.3 Personaggi
 **Schermata lista personaggi** (si chiamava "Skin")
@@ -51,7 +51,7 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 - Solo chi ha outfit apre il dettaglio. Per gli altri il tap sulla card segna sbloccato/non.
 - Stato iniziale di sblocco dal wiki: i 32 piloti "di base" partono sbloccati, i 18 "sbloccabili" (compresi DK, Daisy, Rosalinda, Lakitu, Bowser Jr., Strutzi, Re Boo) no. Consigliami considera solo i personaggi sbloccati (§6).
 - Il dettaglio mostra gli outfit come griglia di card con la loro immagine (2 per riga su telefono); l'outfit di default usa l'immagine del personaggio.
-- Se il personaggio ha **tutti** gli outfit (per i piloti senza outfit: se è sbloccato), la cella è attenuata (nome e card con alpha ridotto o colori desaturati) e si ordina in fondo. L'ordinamento è configurabile: roster ufficiale / alfabetico / % completamento.
+- Se il personaggio ha **tutti** gli outfit (per i piloti da sbloccare senza outfit: se è sbloccato) si ordina in fondo; i piloti di base senza outfit non hanno nulla da completare e si ordinano insieme agli altri (il filtro "Incompleti" non li mostra). Colori (regola dell'autore, 27/09/2026): **grigio = ti manca, colorato = ce l'hai**, quindi la cella è grigia solo se il pilota è da sbloccare (con lucchetto e popup del criterio); nel dettaglio sono grigi gli outfit non ancora ottenuti. I piloti di base sono sempre sbloccati. L'ordinamento è configurabile: roster / alfabetico / % completamento. "Roster" è l'ordine di `aliases.yaml` di seedgen (prima i 24 con outfit, poi gli altri), **non** quello della schermata di selezione del gioco: scelta dell'autore, che lo preferisce.
 - Filtro in alto: Tutti / Incompleti.
 
 **Schermata dettaglio personaggio**

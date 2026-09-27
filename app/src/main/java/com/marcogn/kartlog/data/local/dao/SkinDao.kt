@@ -11,12 +11,15 @@ interface SkinDao {
 
     /**
      * Un pilota per riga, con quanti dei suoi outfit sono posseduti (0/0 per i piloti senza
-     * outfit) e se è sbloccato: la scelta dell'utente se c'è, altrimenti `starter` dal seed.
+     * outfit) e se è sbloccato. I piloti di base (`starter`) lo sono sempre, anche se in
+     * `character_unlocks` c'è una scelta vecchia (prima si potevano segnare bloccati per sbaglio);
+     * per gli altri vale la scelta dell'utente, se c'è, altrimenti bloccati.
      */
     @Query(
         """
         SELECT c.id AS id, c.name AS name, c.nameIt AS nameIt, c.rosterOrder AS rosterOrder, c.imageUrl AS imageUrl,
-               COALESCE(cu.unlocked, c.starter) AS unlocked,
+               CASE WHEN c.starter THEN 1 ELSE COALESCE(cu.unlocked, 0) END AS unlocked,
+               c.starter AS starter, c.unlockCriteria AS unlockCriteria, c.unlockCriteriaIt AS unlockCriteriaIt,
                COUNT(o.id) AS totalOutfits,
                SUM(CASE WHEN oo.outfitId IS NOT NULL THEN 1 ELSE 0 END) AS ownedOutfits
         FROM characters c
@@ -72,12 +75,32 @@ data class CharacterProgress(
     val unlocked: Boolean,
     val totalOutfits: Int,
     val ownedOutfits: Int,
+    /** Pilota di base (galleria "Default drivers"): sempre sbloccato. */
+    val starter: Boolean = true,
+    /** Solo per i piloti da sbloccare: come si sblocca (null per quelli di base). */
+    val unlockCriteria: String? = null,
+    val unlockCriteriaIt: String? = null,
 ) {
+    /**
+     * Pilota da sbloccare. Stessa fonte dello stato `unlocked` della query (`starter`), non la
+     * presenza del criterio: se le due cose divergessero, un pilota resterebbe bloccato senza popup.
+     */
+    val isUnlockable: Boolean get() = !starter
+
     /** Piloti senza outfit alternativi (Goomba, Mucca…): nessuna schermata di dettaglio. */
     val hasOutfits: Boolean get() = totalOutfits > 0
 
     /** Con outfit: tutti posseduti. Senza: basta averlo sbloccato, non c'è altro da raccogliere. */
     val isComplete: Boolean get() = if (hasOutfits) ownedOutfits >= totalOutfits else unlocked
+
+    /**
+     * Ha qualcosa da completare (outfit da ottenere o sblocco da fare). I piloti di base senza
+     * outfit no: non sono né "completi" né "incompleti", si ordinano insieme agli altri.
+     */
+    val hasProgress: Boolean get() = hasOutfits || isUnlockable
+
+    /** Ha completato qualcosa che c'era da fare: va in fondo alla lista (SPEC §2.3). */
+    val isDone: Boolean get() = hasProgress && isComplete
 }
 
 data class OutfitProgress(

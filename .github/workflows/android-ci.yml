@@ -39,6 +39,17 @@ jobs:
       - name: Assemble debug APK
         run: ./gradlew assembleDebug --no-daemon --stacktrace
 
+      # APK debug per provare una PR sul telefono. Firmato con la chiave debug effimera del runner
+      # (diversa a ogni run e diversa da quella di release): per installarlo va prima disinstallata
+      # l'app, perdendo i dati. Per provare sopra l'app installata usare il workflow "Build APK"
+      # (release firmato con la chiave persistente) sul branch della PR.
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v7
+        with:
+          name: app-debug-uninstall-required
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
       - name: Upload lint report
         if: always()
         uses: actions/upload-artifact@v7

@@ -185,7 +185,7 @@ def it_client(cfg) -> WikiClient:
 
 def fetch_it_names(cfg):
     """Sempre dal vivo, mai da fixture (seedgen/it_wiki.py). Restituisce (ItNames, pagine lette)."""
-    from .it_wiki import ItNames, extract_biomes, extract_drivers, extract_events
+    from .it_wiki import ItNames, extract_biomes, extract_drivers, extract_events, extract_unlock_criteria
 
     client = it_client(cfg)
     pages = cfg.sources["it_wiki"]["pages"]
@@ -197,5 +197,6 @@ def fetch_it_names(cfg):
         langlinks=client.langlinks(sorted(drivers)),
         events=extract_events(game.html),
         biomes=extract_biomes(missions.html),
+        unlock_criteria=extract_unlock_criteria(game.html),
     )
     return names, [game, missions]

@@ -35,6 +35,9 @@ def _without_name_it(seed: dict) -> dict:
             item.pop("nameIt", None)
             item.pop("imageUrl", None)
             item.pop("starter", None)
+            item.pop("unlockCriteria", None)
+            item.pop("unlockCriteriaIt", None)
+    seed.pop("mirror_mode.json", None)  # anche questo solo dalla pagina live (seedgen/images.py)
     return seed
 
 

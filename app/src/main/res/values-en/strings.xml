@@ -3,6 +3,7 @@
     <string name="app_name">KartLog</string>
     <string name="cd_menu">Open the menu</string>
     <string name="cd_back">Back</string>
+    <string name="cd_close">Close</string>
 
     <string name="drawer_home">Home</string>
     <string name="drawer_skin">Characters</string>
@@ -21,8 +22,7 @@
     <string name="skin_title">Characters</string>
     <string name="skin_filter_all">All</string>
     <string name="skin_filter_incomplete">Incomplete</string>
-    <string name="skin_sort_label">Sort by</string>
-    <string name="skin_sort_roster">Official roster</string>
+    <string name="skin_sort_roster">Roster</string>
     <string name="skin_sort_alphabetical">Alphabetical</string>
     <string name="skin_sort_completion">%% complete</string>
     <string name="skin_unlock_switch">Unlocked</string>
@@ -86,7 +86,6 @@
     <string name="drawer_results">Results</string>
     <string name="home_option_results_title">Results</string>
     <string name="results_title">Results</string>
-    <string name="results_cc_label">Engine class</string>
     <string name="results_section_cup">Grand Prix</string>
     <string name="results_section_rally">Knockout Tour</string>
     <string name="results_no_trophy">No trophy</string>
@@ -99,6 +98,7 @@
     <string name="rank_gold_2_stars">Gold ★★</string>
     <string name="rank_gold_3_stars">Gold ★★★</string>
     <string name="skin_unlocked">Unlocked</string>
+    <string name="skin_starter">Default driver</string>
     <string name="skin_locked">Locked</string>
     <string name="medallions_increment">Add a medallion</string>
     <string name="medallions_decrement">Remove a medallion</string>
@@ -112,5 +112,9 @@
     <string name="language_system">System</string>
     <string name="language_italian">Italiano</string>
     <string name="language_english">English</string>
-    <string name="settings_food_names_note">Italian food names are an unofficial translation: no source lists them.</string>
+    <string name="settings_food_names_note">Italian food names are an unofficial translation: no source lists them. So are the Italian Mirror Mode conditions, translated from mariowiki.com because the Italian wiki is less up to date.</string>
+    <string name="results_mirror_info_title">Mirror Mode</string>
+    <string name="results_mirror_info_cd">How to unlock Mirror Mode</string>
+    <string name="skin_unlock_how">How to unlock</string>
+    <string name="settings_font_credit">Title font: Lilita One by Juan Montoreano, SIL Open Font License 1.1.</string>
 </resources>

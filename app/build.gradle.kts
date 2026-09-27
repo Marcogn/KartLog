@@ -296,6 +296,7 @@ dependencies {
     // (mai impacchettate: vedi CLAUDE.md, Decisioni prese).
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
+    implementation(libs.androidx.palette)
 
     // Selettore di lingua (AppCompatDelegate.setApplicationLocales) e di tema (DataStore), come
     // in ThePatientGamerHelper.
@@ -307,6 +308,8 @@ dependencies {
     testImplementation(libs.robolectric)
     testImplementation(libs.androidx.test.ext.junit)
     testImplementation(libs.androidx.room.testing)
+    testImplementation(platform(libs.androidx.compose.bom))
+    testImplementation(libs.androidx.compose.ui.test.junit4)
 
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)

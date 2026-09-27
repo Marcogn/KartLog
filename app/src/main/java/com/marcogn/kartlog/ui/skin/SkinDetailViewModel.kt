@@ -24,6 +24,10 @@ data class SkinDetailUiState(
     val ownedCount: Int = 0,
     val totalCount: Int = 0,
     val unlocked: Boolean = true,
+    /** Solo i piloti da sbloccare hanno l'interruttore: quelli di base lo sono sempre. */
+    val canToggleUnlock: Boolean = false,
+    /** Come si sblocca, solo per i piloti non di base. */
+    val unlockCriteria: String? = null,
     val outfits: List<OutfitProgress> = emptyList(),
 )
 
@@ -45,10 +49,12 @@ class SkinDetailViewModel @Inject constructor(
         SkinDetailUiState(
             characterName = character?.let { localizedName(it.name, it.nameIt) } ?: "",
             characterImageUrl = character?.imageUrl,
+            unlockCriteria = character?.unlockCriteria?.let { localizedName(it, character.unlockCriteriaIt) },
             ownedCount = outfits.count { it.owned },
             totalCount = outfits.size,
-            // Nessuna riga = stato iniziale dal seed (disponibile dall'inizio o da sbloccare).
-            unlocked = unlockedOrNull ?: character?.starter ?: true,
+            // Piloti di base sempre sbloccati (come in SkinDao); gli altri: scelta dell'utente o bloccati.
+            unlocked = character?.starter != false || unlockedOrNull == true,
+            canToggleUnlock = character?.starter == false,
             outfits = outfits,
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SkinDetailUiState())

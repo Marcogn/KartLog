@@ -2,27 +2,36 @@ package com.marcogn.kartlog.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.marcogn.kartlog.R
 
-// Tipografia bold per il look "da gioco" richiesto in SPEC §2.2.
+/**
+ * Lilita One (Juan Montoreano, SIL Open Font License 1.1: testo in assets/licenses): il font "da
+ * gioco" dei titoli del mockup dell'autore. Un solo peso, quindi mai FontWeight.Bold sopra (sarebbe
+ * un grassetto sintetico).
+ */
+val KartFont = FontFamily(Font(R.font.lilita_one))
+
+// Tipografia bold per il look "da gioco" richiesto in SPEC §2.2: Lilita One per titoli e intestazioni.
 val Typography = Typography(
     headlineSmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Black,
+        fontFamily = KartFont,
+        fontWeight = FontWeight.Normal,
         fontSize = 24.sp,
         lineHeight = 30.sp,
     ),
     titleLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.ExtraBold,
+        fontFamily = KartFont,
+        fontWeight = FontWeight.Normal,
         fontSize = 22.sp,
         lineHeight = 28.sp,
     ),
     titleMedium = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Bold,
+        fontFamily = KartFont,
+        fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         lineHeight = 22.sp,
         letterSpacing = 0.15.sp,

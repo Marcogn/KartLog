@@ -153,6 +153,19 @@ def validate(seed: dict, cfg: Config) -> None:
         check(sum(bool(s) for s in starters) == exp["starter_drivers"],
               f"piloti di base: {sum(bool(s) for s in starters)}, attesi {exp['starter_drivers']}")
 
+        # Criteri di sblocco (seedgen/images.py, seedgen/it_wiki.py): tutti e soli i piloti sbloccabili.
+        if any(c.get("unlockCriteria") for c in characters):
+            with_it = any(c.get("unlockCriteriaIt") for c in characters)  # mariowiki.it letto
+            for c in characters:
+                has = bool(c.get("unlockCriteria")) and (bool(c.get("unlockCriteriaIt")) or not with_it)
+                check(has != bool(c["starter"]),
+                      f"{c['id']}: criterio di sblocco {'inatteso' if c['starter'] else 'mancante'}")
+
+    if "mirror_mode.json" in seed:
+        steps = _items(seed, "mirror_mode.json")
+        check(bool(steps), "mirror_mode.json: nessuna condizione")
+        check(all(s.get("text") and s.get("textIt") for s in steps), "mirror_mode.json: condizione senza testo EN o IT")
+
     # --- Immagini (seedgen/images.py): solo URL del CDN del wiki, mai file locali ----------------
     for name, items in [("characters", characters), ("outfits", outfits), ("events", events)]:
         for i in items:
