@@ -6,281 +6,40 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
-- **Nuova grafica.** Banner con cielo e pista in alto su ogni schermata,
-  con il logo KartLog in Home; tessere colorate con icone, titoli con
-  contorno e contatori in una pillola; pista in fondo alla Home. Nel tema
-  scuro le tessere brillano del loro colore. Nuovo font per i titoli
-  (Lilita One).
-- **Sfondo a cielo.** Cielo azzurro con le nuvole dietro tutte le
-  schermate (cielo notturno nel tema scuro); la pista della Home sfuma nel
-  cielo.
-- **Menu laterale rinnovato.** Rosso con gli scacchi, logo in alto, voci
-  con le stesse icone tonde della Home (ingranaggio grigio per le
-  Impostazioni) e il font dei titoli.
-- **Titoli lunghi su due righe.** "Peach Medallions" in inglese non viene
-  più tagliato con i puntini, e la tessera si allunga per non tagliare il
-  contatore.
-- **Personaggi come polaroid.** Ogni personaggio ha una cornice con bordo
-  nero e un cartellino del suo colore, con nome e contatore nel font dei
-  titoli.
-- **Pulsantoni rossi.** Filtri, ordinamento e cilindrate (Personaggi,
-  Risultati, Consigliami) sono pulsanti rossi con scritte bianche
-  contornate, anche nel menu a tendina.
-- **Outfit a polaroid.** Nella pagina di un personaggio ogni outfit è una
-  polaroid del suo colore, con nome e cibi sempre leggibili per intero;
-  l'outfit di default resta come nella pagina Personaggi.
-- **Titoli grandi.** Il titolo di ogni schermata è grande, bianco con
-  contorno nero.
-- **Come sbloccare i piloti.** Toccando un pilota da sbloccare si apre un
-  popup con il criterio (dalla Super Mario Wiki) e l'interruttore per
-  segnarlo sbloccato; la X lo chiude senza cambiare nulla.
-- **Grigio se ti manca, colorato se ce l'hai.** Nei Personaggi è grigio solo
-  chi è ancora da sbloccare; nella pagina degli outfit sono grigi quelli
-  non ancora ottenuti. Prima era il contrario: si ingrigiva chi aveva
-  completato tutto.
-- **Ordinamenti corretti.** I piloti di base senza outfit non finiscono più
-  tutti in fondo alla lista: si ordinano insieme agli altri. "Roster
-  ufficiale" diventa "Roster", perché non è l'ordine del gioco.
-- **Piloti di base sempre sbloccati.** Goomba, Pianta Piranha e gli altri
-  piloti disponibili dall'inizio non si possono più segnare come bloccati
-  (prima bastava un tap); chi lo era per sbaglio torna sbloccato.
-- **Come sbloccare la modalità specchio.** Una "i" sulla scheda Mirror di
-  Risultati apre l'elenco delle condizioni. In italiano è una traduzione
-  non ufficiale.
-- **Risultati a schede.** Una scheda per cilindrata, attaccata alla lista:
-  si vede subito quale si sta guardando.
-- **Corretto il crash di "Ordina per"** nella pagina Personaggi.
-- **Nuvole uniformi** anche nel tema scuro, senza i cerchi sovrapposti.
-- **Risultati sul cielo.** La lista non ha più lo sfondo bianco: cielo
-  attenuato per leggere bene.
+- **First release!**
 
-## [0.1.7] - 2026-09-26
+## [0.1.x] - beta
 
-- **Niente iniziali dietro le immagini attenuate.** Sui personaggi
-  completati (immagine sbiadita) si intravedevano le iniziali del
-  segnaposto: ora il segnaposto compare solo finché l'immagine non è
-  caricata, o offline senza cache.
+Le versioni di prova dalla 0.1.1 alla 0.1.7 (25–27/09/2026), riunite in
+una sola voce. Cosa contiene l'app alla fine della beta:
 
-## [0.1.6] - 2026-09-26
-
-- **Personaggi al posto di Skin, con tutti i 50 piloti.** Oltre ai 24
-  con outfit ci sono i 26 che hanno un solo aspetto (Goomba, Mucca,
-  Delfì…): niente schermata di dettaglio, un tap li segna come sbloccati.
-  Lo stato iniziale viene dal wiki: i 32 piloti di base partono
-  sbloccati, i 18 sbloccabili no. Attenzione: DK, Daisy, Rosalinda,
-  Lakitu, Bowser Jr., Strutzi e Re Boo partono quindi bloccati e
-  Consigliami li ignora finché non li segni (se li avevi già toccati,
-  resta la tua scelta).
-- **Home riorganizzata.** Risultati entra nella griglia con il solo
-  contatore; Consigliami diventa il pulsante largo, con una riga che
-  spiega a cosa serve.
-- **Monete Peach come contatore per bioma.** Al posto delle caselle
-  "Medaglione 1…20", un contatore − / + per bioma con barra di
-  avanzamento. Le monete già segnate restano.
-- **Tema e lingua in Impostazioni.** Tema di sistema, chiaro o scuro, e
-  lingua di sistema, italiano o inglese, come in ThePatientGamerHelper.
-- **Più nomi in italiano.** Biomi, Gran Premi e Knockout Tour ("Trofeo
-  Fungo", "Rally Turbo") e i piloti nuovi, dalla Super Mario Wiki
-  italiana. I nomi italiani dei cibi sono una traduzione non ufficiale:
-  nessuna fonte li riporta. Le missioni dei Pulsanti P restano in
-  inglese: la lista italiana è ancora incompleta.
-- **Dati di gioco aggiornati (seedVersion 5).** Piloti senza outfit e
-  stato iniziale di sblocco (Mario Kart World@5498278), nomi italiani da
-  mariowiki.it (Mario Kart World@698015, Lista delle missioni di Mario
-  Kart World@686389).
-
-## [0.1.4] - 2026-09-26
-
-- **Immagini di personaggi, outfit ed eventi.** Skin, dettaglio del
-  personaggio, Consigliami e Risultati mostrano le immagini del gioco
-  prese da Super Mario Wiki: griglia dei personaggi a 3 colonne con le
-  immagini della selezione, outfit come card con la loro immagine, icone
-  di cup e rally. Non sono incluse nell'app: si scaricano all'avvio (serve
-  il permesso INTERNET, usato solo per questo) e restano in cache; senza
-  rete si vedono le iniziali come prima. Avviso e crediti in
-  Impostazioni / Info e nel README.
-- **Dati di gioco aggiornati da Super Mario Wiki (seedVersion 4).**
-  Aggiunti gli URL delle immagini (pagina Mario Kart World@5498278);
-  nessun altro dato cambiato.
-
-## [0.1.3] - 2026-09-26
-
-- **Risultati in una schermata dedicata.** La registrazione dei
-  risultati esce da Consigliami: ora si fa da un pulsante largo
-  "Risultati" in Home (e dalla voce nel drawer), con tutti i Gran Premi
-  e Knockout Tour per cilindrata. Consigliami li mostra in sola lettura
-  e continua a usarli per "Pesa i risultati".
-- **Il risultato è un trofeo, non stelle e posizione separate.** Scala
-  unica bronzo, argento, oro, oro ★, oro ★★, oro ★★★, come nel gioco
-  (le stelle esistono solo con l'oro). Si salva solo il migliore per
-  evento e cilindrata. I risultati già registrati vengono
-  convertiti all'aggiornamento (1° → oro con le sue stelle, 2° →
-  argento, 3° → bronzo; dal 4° posto nessun trofeo), e i backup
-  precedenti restano importabili.
-- **Aggiornata l'icona dell'app.** Sostituita l'illustrazione "globo + L"
-  con una nuova versione fornita dall'autore (globo + sigla "MKL"),
-  adattata alla forma delle adaptive icon Android con lo stesso
-  procedimento: cielo esteso attorno al disegno e colore di sfondo
-  aggiornato di conseguenza.
-
-## [0.1.2] - 2026-09-25
-
-- **Nomi ufficiali in italiano per personaggi, outfit e corsi.** I nomi
-  di gioco erano tutti in inglese anche con l'app in italiano. Aggiunto
-  `seedgen/i18n.py`: estrae i nomi ufficiali dalle tabelle "Names in
-  other languages" di Super Mario Wiki (mai una traduzione automatica),
-  con le varianti maschile/femminile italiane degli outfit dove esistono
-  (es. "Esploratore"/"Esploratrice"). Copertura: tutti i 24 personaggi,
-  30 corsi e 103 outfit alternativi. **Non coperti** (nessuna fonte
-  ufficiale verificabile): missioni dei pulsanti P, regioni/biomi
-  (nemmeno i nomi inglesi sono ufficiali per queste), Gran Premi/Knockout
-  Tour — restano in inglese, invece di mostrare una traduzione
-  inventata.
-- **App localizzata anche in inglese.** `values-en/strings.xml` accanto
-  all'italiano (resta la lingua di default), più `locales_config.xml`
-  per il selettore lingua di sistema (Impostazioni > App > KartLog >
-  Lingua, Android 13+). Un nome di gioco senza traduzione italiana
-  ufficiale resta in inglese anche con l'app in italiano — mai una
-  traduzione automatica.
-- **Nuova icona dell'app.** Il monogramma "K" provvisorio è sostituito
-  da un'illustrazione originale (globo con anello e lettera "L"), adattata
-  alla forma delle adaptive icon Android: cielo esteso attorno al disegno
-  in modo che l'anello resti visibile con qualsiasi maschera del launcher.
-- **Corretta la navigazione dal drawer verso Home.** "Home" nel menu
-  laterale non portava mai alla schermata Home (funzionava solo il tasto
-  Indietro di sistema): il `popUpTo(Destination.Home)` combinato con la
-  navigazione verso lo stesso Home non ripristinava in modo affidabile lo
-  stato salvato. Home ora si raggiunge sempre con un pop completo dello
-  stack e una nuova istanza, senza dipendere da `restoreState`.
-- **Transizioni di navigazione più veloci.** Sostituito il crossfade di
-  default di Navigation Compose (~700ms) con transizioni scorrevoli da
-  300ms allineate a
-  [ThePatientGamerHelper](https://github.com/Marcogn/ThePatientGamerHelper),
-  e aggiunta una guardia (`lifecycleIsResumed()`) su ogni `navigate()`/
-  `popBackStack()` per evitare che un tap durante una transizione atterri
-  sulla schermata sbagliata.
-- **Consigliami: il form di registrazione ora elenca tutti gli eventi.**
-  Il form era raggiungibile solo dal dettaglio di un evento mostrato
-  dalla lista, che di default nasconde con "Solo utili" gli eventi a
-  punteggio 0 — rendendo impossibile registrare un risultato per quegli
-  eventi. Aggiunto un selettore di evento al form e un punto di ingresso
-  globale ("Registra risultato" nella barra in alto di Consigliami), così
-  ogni Gran Premio/Knockout Tour è sempre registrabile.
-
-## [0.1.1] - 2026-09-25
-
-- **Scaffold iniziale del progetto (SPEC §8, fase 1).** Struttura Gradle,
-  toolchain e schema di signing/release allineati a
-  [ThePatientGamerHelper](https://github.com/Marcogn/ThePatientGamerHelper)
-  (dettaglio in `docs/ALIGNMENT.md`): Kotlin, Jetpack Compose, Material 3,
-  Navigation Compose con rotte type-safe, Hilt, dipendenze Room e
-  kotlinx.serialization pronte per la fase 3. `ModalNavigationDrawer` con
-  le voci Home/Skin/Monete Peach/Pulsanti P/Consigliami/Impostazioni,
-  ciascuna una schermata placeholder. Home con griglia 2×2 di pulsanti
-  quadrati e contatori fittizi. Tema Material 3 con palette custom
-  vivace (arancio/verde acqua/magenta) e angoli arrotondati generosi.
-  Nessun permesso INTERNET nel manifest, nessun asset Nintendo.
-  `README.md`, `CHANGELOG.md`, `.gitignore`, workflow GitHub Actions
-  (`android-ci`, `build-apk`, `release`) e `SECURITY.md` ricalcano gli
-  equivalenti del progetto di riferimento.
-- `SPEC.md`, `seed/` e `tools/seedgen/` spostati alla radice del
-  repository (erano sotto `docs/`), per allinearsi alla struttura
-  descritta in `CLAUDE.md` e in `SPEC.md` §5.1 — nessun contenuto
-  modificato.
-- Rimossa la configurazione Dependabot (`.github/dependabot.yml`): a
-  differenza del progetto di riferimento, per ora si preferisce
-  aggiornare le dipendenze a mano, senza PR automatiche settimanali.
-- **Dati di gioco aggiornati da Super Mario Wiki (seedVersion 2; Dash
-  Food@5455370, List of Yoshi's locations@5263331, List of Mario Kart
-  World missions@5472356, Template:Mario Kart World@5478848, Golden
-  Rally@5489159, Ice Rally@5479135, Moon Rally@5479138, Spiny
-  Rally@5479139, Cherry Rally@5479140, Acorn Rally@5479142, Cloud
-  Rally@5479143, Heart Rally@5479144, Drill Rally@5479145, Boomerang
-  Rally (Mario Kart World)@5479146, Propeller Rally@5492298, Turnip
-  Rally@5488553).** Fase 2 (SPEC §8): prima estrazione reale via API,
-  `seed/meta.json.origin` passa da `manual-transcription` ad `api`.
-  Aggiunti i 394 Pulsanti P (`seed/p_switches.json`, assente nel seed
-  iniziale). Corretti due problemi trovati confrontando l'estrazione
-  con la trascrizione manuale: area mancante "Big Donut" (regione
-  volcanica) e regione errata di Toad's Factory (era `volcanic`, è
-  `central_grassland` — le missioni lì ambientate sono tutte sotto
-  "Central grassland biome" sulla pagina reale). Nessun'altra
-  differenza: Dash Food, Yoshi's locations, navbox e rally combaciano
-  esattamente con la trascrizione manuale iniziale.
-- **L'app carica i dati reali da `seed/` (SPEC §8, fase 3).** Entità Room
-  definitive (SPEC §3, sia i dati di gioco sia lo stato utente), modelli
-  kotlinx.serialization sui JSON reali, `SeedRepository` che fa il
-  reseed a ogni cambio di `seedVersion` senza mai toccare lo stato
-  utente (test di migrazione incluso). I contatori della Home sono ora
-  collegati ai dati reali tramite `HomeViewModel` (mostrano `0 / 127`,
-  `0 / 200`, `0 / 394` a stato utente vuoto, "n/d" se una sorgente
-  manca). Test di validazione lato app sugli asset effettivamente
-  impacchettati (SPEC §5.6), con i conteggi letti da
-  `tools/seedgen/expected_counts.yaml`.
-- **Task Gradle `generateSeed` (SPEC §5.4).** Il build `release` esegue
-  seedgen (in una venv sotto `build/`, mai nel sistema) prima di
-  impacchettare gli asset: dati identici a `seed/` prosegue, dati
-  cambiati ferma la build mostrando il diff (`-PacceptSeedChanges` per
-  accettarli e aggiungere automaticamente la riga al changelog), dati
-  non validi o rete/configurazione assenti fermano sempre la build
-  (`-PofflineSeed` per validare solo `seed/` versionato senza rete). Il
-  build `debug` resta completamente offline: copia solo i JSON già
-  versionati (`copySeedAssets`).
-- **Schermata Skin funzionante (SPEC §2.3, fase 8, fase 4).** Griglia a 2
-  colonne dei 24 personaggi con contatore `ottenuti/totali`; chi ha
-  tutti gli outfit si attenua e va in fondo alla griglia, con filtro
-  Tutti/Incompleti e ordinamento roster/alfabetico/%completamento.
-  Dettaglio personaggio: switch "Sbloccato" (default acceso), lista
-  outfit con checkbox e i gruppi di cibo che li sbloccano ("cibo
-  sconosciuto" se non ce ne sono), outfit di default sempre mostrato
-  come posseduto e non spuntabile. Spuntare un outfit aggiorna subito
-  sia il contatore del personaggio sia quello della Home (stesse righe
-  in `owned_outfits`, SPEC §9).
-- **Schermate Monete Peach e Pulsanti P (SPEC §2.4, fase 5).** Entrambe
-  organizzate per le 10 regioni, in sezioni collassabili con contatore
-  `x/y` e azione "segna tutti" (con conferma). Monete Peach: checkbox
-  numerate "Medaglione N" e pulsante "Apri guida" che apre nel browser
-  la fonte di `peach_medallions.json` (`Intent.ACTION_VIEW`, nessun
-  permesso INTERNET). Pulsanti P: sottogruppi per percorso/luogo,
-  ricerca testuale sul nome della missione (il contatore globale non
-  cambia durante la ricerca), messaggio "Dati non ancora disponibili"
-  se `p_switches.json` manca dal seed.
-- **Consigliami (SPEC §2.5/§6, fase 6), senza registrazione risultati
-  (fase 7).** `ConsigliamiUseCase`: algoritmo puro (nessuna dipendenza
-  Android) con gain per personaggio, punteggio, pari merito (numerazione
-  "competition ranking") e spareggi — tutti i test di SPEC §6.5 scritti
-  prima della UI. Lista con toggle Gran Premi/Knockout Tour/Entrambi,
-  switch "Includi cibi nei dintorni" e "Solo utili" (default on),
-  gruppi a pari merito espandibili con il corso in comune nel titolo
-  quando presente. Ogni card mostra personaggio consigliato, le 2
-  alternative successive e i cibi rilevanti con l'indicazione sul
-  percorso/nei dintorni. Il dettaglio evento elenca tutti i personaggi
-  con gain > 0 e gli outfit specifici ottenibili. Si aggiorna in tempo
-  reale quando cambia lo stato di outfit o sblocchi (SPEC §9).
-  Peso dei risultati e pulsante "Registra risultato": fase 7.
-- **Registrazione risultati e peso in Consigliami (SPEC §2.6/§6.3, fase
-  7).** Bottom sheet di registrazione dal dettaglio evento: cilindrata,
-  stelle 0-3, posizione finale (1-24) o, per i Knockout Tour, eliminato
-  al checkpoint N, personaggio usato opzionale, data automatica.
-  Storico risultati per evento con cancellazione. Sezione "Pesa i
-  risultati" in Consigliami: switch, slider del peso `w` e cilindrata
-  di riferimento (default 150cc) — `score(E) = (1-w)·normGain(E) +
-  w·improvement(E)` quando attiva, `worstFirst` entra negli spareggi
-  solo in quel caso. Le card mostrano il miglior risultato registrato
-  (stelle e posizione) quando i risultati sono pesati. Il test "con
-  w=1 l'ordinamento dipende solo da improvement" (SPEC §6.5, rimasto
-  aperto dalla fase 6) ora passa anche sui dati reali dell'app, non
-  solo sullo UseCase.
-- **Backup dello stato utente (SPEC §4, fase 8 — ultima fase del
-  roadmap).** Export/import JSON tramite Storage Access Framework,
-  dalla schermata Impostazioni: mai i dati di gioco, solo outfit
-  posseduti, sblocchi personaggio, monete e pulsanti P raccolti,
-  risultati registrati. Formato versionato (`backupVersion`).
-  L'import valida ogni ID contro il seed corrente e **riporta** quelli
-  sconosciuti invece di scartarli in silenzio; sostituisce interamente
-  lo stato utente (un backup è un ripristino completo, non un merge).
-  La stessa schermata mostra anche l'attribuzione dei dati di gioco
-  (CC BY-SA 4.0, Super Mario Wiki) con i `revid` delle pagine usate
-  (SPEC §5.5), letti da `meta.json`.
-
-Con questa fase il roadmap di `SPEC.md` §8 è completo (fasi 1-8).
+- **Personaggi.** Tutti i 50 piloti, con le immagini di Super Mario Wiki
+  in card a polaroid del colore del personaggio. I 24 con outfit hanno
+  la pagina degli outfit, con i cibi che li sbloccano. I 32 piloti di
+  base sono sempre sbloccati; per i 18 da sbloccare un popup mostra il
+  criterio dal wiki e l'interruttore per segnarli. Grigio se ti manca,
+  colorato se ce l'hai. Filtro Tutti/Incompleti e ordinamento per
+  roster, alfabetico o completamento.
+- **Monete Peach e Pulsanti P.** Monete Peach con un contatore − / + per
+  bioma; i 394 Pulsanti P divisi per regione e percorso, con ricerca e
+  "segna tutti".
+- **Consigliami.** Quale Gran Premio o Knockout Tour correre, e con chi,
+  per sbloccare più outfit, con i cibi sul percorso o nei dintorni e,
+  a scelta, il peso dei risultati già ottenuti.
+- **Risultati.** Il miglior trofeo (bronzo … oro ★★★) per ogni evento e
+  cilindrata, a schede; una "i" sulla scheda Mirror spiega come
+  sbloccare la modalità specchio.
+- **Grafica da gioco.** Banner con cielo e pista, tessere colorate in
+  Home, cielo con nuvole dietro ogni schermata (notturno nel tema
+  scuro), menu laterale rosso, pulsantoni rossi, popup a quadri, font
+  Lilita One.
+- **Italiano e inglese.** Nomi ufficiali in italiano da mariowiki.com e
+  mariowiki.it; nomi dei cibi e condizioni della modalità specchio in
+  italiano sono una traduzione non ufficiale. Le missioni dei Pulsanti P
+  restano in inglese. Tema e lingua si scelgono in Impostazioni.
+- **Backup.** Esportazione e importazione dello stato in JSON da
+  Impostazioni, con l'attribuzione dei dati (CC BY-SA 4.0, Super Mario
+  Wiki).
+- **Dati di gioco da Super Mario Wiki (seedVersion 6).** Estratti da
+  `tools/seedgen` e verificati a ogni build di release. Le immagini si
+  scaricano a runtime e non sono incluse nell'app.
