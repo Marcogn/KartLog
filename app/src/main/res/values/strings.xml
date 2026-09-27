@@ -22,7 +22,7 @@
     <string name="skin_title">Personaggi</string>
     <string name="skin_filter_all">Tutti</string>
     <string name="skin_filter_incomplete">Incompleti</string>
-    <string name="skin_sort_roster">Roster ufficiale</string>
+    <string name="skin_sort_roster">Roster</string>
     <string name="skin_sort_alphabetical">Alfabetico</string>
     <string name="skin_sort_completion">%% completamento</string>
     <string name="skin_unlock_switch">Sbloccato</string>
