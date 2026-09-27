@@ -6,6 +6,8 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-09-27
+
 - **First release!**
 
 ## [0.1.x] - beta
