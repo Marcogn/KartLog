@@ -34,6 +34,10 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 - **Come sbloccare i piloti.** Toccando un pilota da sbloccare si apre un
   popup con il criterio (dalla Super Mario Wiki) e l'interruttore per
   segnarlo sbloccato; la X lo chiude senza cambiare nulla.
+- **Grigio se ti manca, colorato se ce l'hai.** Nei Personaggi è grigio solo
+  chi è ancora da sbloccare; nella pagina degli outfit sono grigi quelli
+  non ancora ottenuti. Prima era il contrario: si ingrigiva chi aveva
+  completato tutto.
 - **Piloti di base sempre sbloccati.** Goomba, Pianta Piranha e gli altri
   piloti disponibili dall'inizio non si possono più segnare come bloccati
   (prima bastava un tap); chi lo era per sbaglio torna sbloccato.

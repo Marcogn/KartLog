@@ -180,9 +180,9 @@ private fun CharacterCard(character: CharacterProgress, onClick: (() -> Unit)?) 
             CharacterPortrait(
                 name = displayName,
                 imageUrl = character.imageUrl,
-                // Grigio = "hai finito qui". Non per i piloti di base senza outfit, che non hanno
-                // mai avuto nulla da fare: grigi sembravano bloccati (segnalazione dell'autore).
-                dimmed = character.isComplete && (character.hasOutfits || character.isUnlockable),
+                // Regola dell'autore (27/09/2026): grigio = ti manca, colorato = ce l'hai. Qui
+                // "ce l'hai" è il pilota: grigio solo se è ancora da sbloccare.
+                dimmed = !character.unlocked,
                 modifier = Modifier.fillMaxWidth().border(1.5.dp, KartInk, RoundedCornerShape(12.dp)),
             )
             if (!character.unlocked) {
@@ -200,7 +200,7 @@ private fun CharacterCard(character: CharacterProgress, onClick: (() -> Unit)?) 
             }
         },
     ) {
-        PolaroidLabel(if (character.isComplete && (character.hasOutfits || character.isUnlockable)) accent.copy(alpha = 0.45f).compositeOver(frame) else accent) {
+        PolaroidLabel(if (!character.unlocked) accent.copy(alpha = 0.45f).compositeOver(frame) else accent) {
             // Una riga sola, rimpicciolendo i nomi lunghi: le card della stessa riga restano alte uguali.
             OutlinedTitle(displayName, fontSize = 16.sp, minFontSize = 11.sp)
             OutlinedTitle(

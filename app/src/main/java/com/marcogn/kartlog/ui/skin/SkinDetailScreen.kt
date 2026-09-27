@@ -151,7 +151,14 @@ private fun OutfitCard(outfit: OutfitProgress, accent: Color, onToggle: (Boolean
     val name = outfit.outfitName?.let { localizedName(it, outfit.outfitNameIt) }
         ?: stringResource(R.string.skin_default_outfit_name)
     val foodLabel = outfit.localizedFoodGroups ?: stringResource(R.string.skin_unknown_food)
-    val frame = if (outfit.isDefault) polaroidFrameColor() else accent.readableUnderWhiteText()
+    // Grigio = non ancora ottenuto, colorato = ottenuto (regola dell'autore, 27/09/2026): anche la
+    // cornice passa al grigio, così la differenza si vede senza guardare la spunta.
+    val owned = outfit.owned || outfit.isDefault
+    val frame = when {
+        outfit.isDefault -> polaroidFrameColor()
+        owned -> accent.readableUnderWhiteText()
+        else -> KartTiles.Gray.dark
+    }
     val foodStyle = TextStyle(fontFamily = KartFont, fontSize = 13.sp, lineHeight = 16.sp, textAlign = TextAlign.Center)
     Polaroid(
         frame = frame,
@@ -162,6 +169,7 @@ private fun OutfitCard(outfit: OutfitProgress, accent: Color, onToggle: (Boolean
             CharacterPortrait(
                 name = name,
                 imageUrl = outfit.imageUrl,
+                dimmed = !owned,
                 modifier = Modifier.fillMaxWidth().border(1.5.dp, KartInk, RoundedCornerShape(12.dp)),
             )
             Surface(
