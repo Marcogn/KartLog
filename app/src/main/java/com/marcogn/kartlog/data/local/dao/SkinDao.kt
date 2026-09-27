@@ -19,7 +19,7 @@ interface SkinDao {
         """
         SELECT c.id AS id, c.name AS name, c.nameIt AS nameIt, c.rosterOrder AS rosterOrder, c.imageUrl AS imageUrl,
                CASE WHEN c.starter THEN 1 ELSE COALESCE(cu.unlocked, 0) END AS unlocked,
-               c.unlockCriteria AS unlockCriteria, c.unlockCriteriaIt AS unlockCriteriaIt,
+               c.starter AS starter, c.unlockCriteria AS unlockCriteria, c.unlockCriteriaIt AS unlockCriteriaIt,
                COUNT(o.id) AS totalOutfits,
                SUM(CASE WHEN oo.outfitId IS NOT NULL THEN 1 ELSE 0 END) AS ownedOutfits
         FROM characters c
@@ -75,12 +75,17 @@ data class CharacterProgress(
     val unlocked: Boolean,
     val totalOutfits: Int,
     val ownedOutfits: Int,
+    /** Pilota di base (galleria "Default drivers"): sempre sbloccato. */
+    val starter: Boolean = true,
     /** Solo per i piloti da sbloccare: come si sblocca (null per quelli di base). */
     val unlockCriteria: String? = null,
     val unlockCriteriaIt: String? = null,
 ) {
-    /** Pilota non di base: ha un criterio di sblocco da mostrare nel popup. */
-    val isUnlockable: Boolean get() = unlockCriteria != null
+    /**
+     * Pilota da sbloccare. Stessa fonte dello stato `unlocked` della query (`starter`), non la
+     * presenza del criterio: se le due cose divergessero, un pilota resterebbe bloccato senza popup.
+     */
+    val isUnlockable: Boolean get() = !starter
 
     /** Piloti senza outfit alternativi (Goomba, Mucca…): nessuna schermata di dettaglio. */
     val hasOutfits: Boolean get() = totalOutfits > 0
