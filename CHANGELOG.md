@@ -38,6 +38,8 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
   chi è ancora da sbloccare; nella pagina degli outfit sono grigi quelli
   non ancora ottenuti. Prima era il contrario: si ingrigiva chi aveva
   completato tutto.
+- **Ordinamenti corretti.** I piloti di base senza outfit non finiscono più
+  tutti in fondo alla lista: si ordinano insieme agli altri.
 - **Piloti di base sempre sbloccati.** Goomba, Pianta Piranha e gli altri
   piloti disponibili dall'inizio non si possono più segnare come bloccati
   (prima bastava un tap); chi lo era per sbaglio torna sbloccato.

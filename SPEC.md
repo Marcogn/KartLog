@@ -51,7 +51,7 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 - Solo chi ha outfit apre il dettaglio. Per gli altri il tap sulla card segna sbloccato/non.
 - Stato iniziale di sblocco dal wiki: i 32 piloti "di base" partono sbloccati, i 18 "sbloccabili" (compresi DK, Daisy, Rosalinda, Lakitu, Bowser Jr., Strutzi, Re Boo) no. Consigliami considera solo i personaggi sbloccati (§6).
 - Il dettaglio mostra gli outfit come griglia di card con la loro immagine (2 per riga su telefono); l'outfit di default usa l'immagine del personaggio.
-- Se il personaggio ha **tutti** gli outfit (per i piloti senza outfit: se è sbloccato) si ordina in fondo. Colori (regola dell'autore, 27/09/2026): **grigio = ti manca, colorato = ce l'hai**, quindi la cella è grigia solo se il pilota è da sbloccare (con lucchetto e popup del criterio); nel dettaglio sono grigi gli outfit non ancora ottenuti. I piloti di base sono sempre sbloccati. L'ordinamento è configurabile: roster ufficiale / alfabetico / % completamento.
+- Se il personaggio ha **tutti** gli outfit (per i piloti da sbloccare senza outfit: se è sbloccato) si ordina in fondo; i piloti di base senza outfit non hanno nulla da completare e si ordinano insieme agli altri (il filtro "Incompleti" non li mostra). Colori (regola dell'autore, 27/09/2026): **grigio = ti manca, colorato = ce l'hai**, quindi la cella è grigia solo se il pilota è da sbloccare (con lucchetto e popup del criterio); nel dettaglio sono grigi gli outfit non ancora ottenuti. I piloti di base sono sempre sbloccati. L'ordinamento è configurabile: roster ufficiale / alfabetico / % completamento.
 - Filtro in alto: Tutti / Incompleti.
 
 **Schermata dettaglio personaggio**

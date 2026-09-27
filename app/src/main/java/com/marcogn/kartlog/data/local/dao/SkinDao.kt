@@ -92,6 +92,15 @@ data class CharacterProgress(
 
     /** Con outfit: tutti posseduti. Senza: basta averlo sbloccato, non c'è altro da raccogliere. */
     val isComplete: Boolean get() = if (hasOutfits) ownedOutfits >= totalOutfits else unlocked
+
+    /**
+     * Ha qualcosa da completare (outfit da ottenere o sblocco da fare). I piloti di base senza
+     * outfit no: non sono né "completi" né "incompleti", si ordinano insieme agli altri.
+     */
+    val hasProgress: Boolean get() = hasOutfits || isUnlockable
+
+    /** Ha completato qualcosa che c'era da fare: va in fondo alla lista (SPEC §2.3). */
+    val isDone: Boolean get() = hasProgress && isComplete
 }
 
 data class OutfitProgress(
