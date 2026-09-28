@@ -73,8 +73,16 @@ data class RegionDto(val id: String, val name: String, val order: Int, val nameI
 @Serializable
 data class AreaDto(val id: String, val name: String, val regionId: String)
 
+/** Moneta Peach o pannello "?" (`peach_medallions.json`, `question_panels.json`, da mkworld-checklist). */
 @Serializable
-data class PeachMedallionDto(val id: String, val regionId: String, val index: Int)
+data class MapPointDto(
+    val id: String,
+    val index: Int,
+    val x: Double,
+    val y: Double,
+    val hint: String? = null,
+    val youtubeId: String? = null,
+)
 
 @Serializable
 data class PSwitchDto(
@@ -84,7 +92,15 @@ data class PSwitchDto(
     val courseId: String? = null,
     val areaId: String? = null,
     val name: String,
+    val x: Double? = null,
+    val y: Double? = null,
+    val hint: String? = null,
+    val youtubeId: String? = null,
 )
+
+/** L'immagine della mappa (`map.json`): solo l'URL, la scarica l'app; misure per le proporzioni. */
+@Serializable
+data class MapImageDto(val id: String, val imageUrl: String, val width: Int, val height: Int)
 
 @Serializable
 data class EventDto(

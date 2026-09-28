@@ -18,6 +18,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Map
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.runtime.Composable
@@ -75,6 +76,9 @@ fun KartDrawerSheet(onNavigate: (Destination) -> Unit) {
                 }
                 ImageItem(R.string.drawer_pswitches, R.drawable.home_mushroom, KartTiles.Pink) {
                     onNavigate(Destination.PSwitches)
+                }
+                DrawerItem(R.string.drawer_map, { onNavigate(Destination.CollectibleMap()) }) {
+                    KartBadge(Icons.Filled.Map, KartTiles.Ink, KartTiles.Red, size = BadgeSize)
                 }
                 ImageItem(R.string.drawer_consigliami, R.drawable.home_star, KartTiles.Green) {
                     onNavigate(Destination.Consigliami)

@@ -111,6 +111,7 @@ fun SettingsScreen(
             Text(stringResource(R.string.settings_info_section), style = MaterialTheme.typography.titleMedium)
             Text(stringResource(R.string.settings_images_title), style = MaterialTheme.typography.titleSmall)
             Text(stringResource(R.string.settings_images_disclaimer), style = MaterialTheme.typography.bodySmall)
+            Text(stringResource(R.string.settings_map_credit), style = MaterialTheme.typography.bodySmall)
             Text(stringResource(R.string.settings_food_names_note), style = MaterialTheme.typography.bodySmall)
             Text(stringResource(R.string.settings_font_credit), style = MaterialTheme.typography.bodySmall)
             viewModel.meta?.let { meta ->

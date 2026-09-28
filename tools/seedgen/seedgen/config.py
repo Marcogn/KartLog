@@ -95,7 +95,7 @@ class Config:
     regions: AliasTable
     region_of: dict[str, str]          # courseId / areaId -> regionId
     areas: AliasTable
-    medallions: dict
+    checklist_mission_names: dict[str, str]  # mkworld-checklist -> mariowiki, seedgen/checklist.py
     character_genders: dict[str, str]  # characterId -> "M"/"F", solo per seedgen/i18n.py
     food_names_it: dict[str, str]      # nome inglese del cibo -> traduzione NON ufficiale
     mirror_mode_it: list[dict]         # [{en, it}]: condizioni della modalità specchio, traduzione NON ufficiale
@@ -144,7 +144,7 @@ class Config:
             regions=AliasTable("Regione", aliases["regions"]),
             region_of=region_of,
             areas=AliasTable("Luogo", aliases.get("areas", {})),
-            medallions=_load_yaml(tool_dir / "manual" / "peach_medallions.yaml"),
+            checklist_mission_names=_load_yaml(tool_dir / "manual" / "checklist_mission_names.yaml"),
             character_genders=_load_yaml(tool_dir / "manual" / "character_genders.yaml"),
             food_names_it=_load_yaml(tool_dir / "manual" / "food_names_it.yaml"),
             mirror_mode_it=_load_list(tool_dir / "manual" / "mirror_mode_it.yaml"),

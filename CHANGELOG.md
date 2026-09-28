@@ -6,6 +6,18 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Mappa dei collezionabili.** Nuova schermata "Mappa" (menu laterale, e
+  pulsantone rosso in Monete Peach e Pulsanti P) con le posizioni di
+  Monete Peach, Pulsanti P e pannelli "?": zoom, filtri per tipo e per
+  "fatti", popup con istruzioni (in inglese), spunta e video YouTube.
+  Dati e mappa dal progetto mkworld-checklist (mktools.io) di
+  BamisWasTaken; l'immagine si scarica a runtime.
+- **Monete Peach una per una.** Le 200 monete diventano punti sulla mappa
+  con le loro istruzioni, al posto del contatore per bioma. I conteggi
+  segnati prima non si possono convertire: un avviso lo spiega.
+- **Pannelli "?".** I 150 pannelli, per ora solo sulla mappa, inclusi nel
+  backup.
+
 ## [1.0.0] - 2026-09-27
 
 - **First release!**

@@ -36,7 +36,7 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 
 ### 2.1 Struttura
 - `ModalNavigationDrawer` con hamburger in alto a sinistra, sempre disponibile.
-- Voci del drawer: **Home**, **Personaggi**, **Monete Peach**, **Pulsanti P**, **Consigliami**, **Risultati**, più in fondo **Impostazioni / Info** (crediti e licenze dei dati, §5.5).
+- Voci del drawer: **Home**, **Personaggi**, **Monete Peach**, **Pulsanti P**, **Mappa** (§2.4), **Consigliami**, **Risultati**, più in fondo **Impostazioni / Info** (crediti e licenze dei dati, §5.5).
 
 ### 2.2 Home
 - Griglia 2×2 di pulsanti **quadrati** e grandi: Personaggi, Monete Peach, Pulsanti P, Risultati.
@@ -60,17 +60,25 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 - L'outfit di default non è una riga spuntabile: è sempre posseduto e non si conta nei mancanti.
 
 ### 2.4 Monete Peach e Pulsanti P
-Entrambe le schermate usano le **10 regioni** del mondo di gioco (`regions.json`, nomi italiani da mariowiki.it), ciascuna con `x/y` e un'azione "segna tutti" che chiede conferma. In alto c'è il contatore globale (`x/200`, `x/394`).
+In alto c'è il contatore globale (`x/200`, `x/394`). In basso a destra, in sovrimpressione, un pulsantone tondo **rosso con l'icona bianca della mappa** apre la Mappa con i soli punti di quella schermata; ogni riga ha anche un'icona "Mostra sulla mappa" che la apre centrata su quel punto.
 
-**Monete Peach**
-- Un **contatore per regione** con − e + e una barra di avanzamento, niente elenco "Medaglione 1…N": il seed contiene solo i conteggi per regione (§5.2), le righe di `peach_medallions` sono "posti" anonimi (+ segna il primo libero, − libera l'ultimo segnato).
-- Pulsante "Apri guida" che apre nel browser l'URL `source` di `peach_medallions.json` (Intent `ACTION_VIEW`: non richiede il permesso INTERNET).
+**Monete Peach** (dal 28/09/2026, dati di mkworld-checklist, §5.2)
+- Le **200 monete una per una**, in ordine, ciascuna con checkbox e le istruzioni per trovarla (solo in inglese). Niente più biomi: la fonte non li dà.
+- I conteggi per bioma della versione precedente non si possono convertire (non dicono quali monete): la migrazione Room v6→v7 li cancella e l'app mostra una volta un avviso con quante monete erano segnate (scelta dell'autore).
 
 **Pulsanti P**
 - Sezioni collassabili per regione; dentro ogni regione, sottogruppi per percorso (o luogo, es. Chain Chomp Desert).
 - Ogni riga mostra il nome della missione (testo in-game dal wiki) e il percorso. I nomi delle missioni restano in inglese: la lista italiana di mariowiki.it è incompleta e senza una chiave per abbinarla a quella inglese (vedi `tools/seedgen/seedgen/it_wiki.py`).
 - Ricerca testuale sul nome della missione.
 - Finché `p_switches.json` non esiste (seed iniziale, §5.3 "Stato") la schermata mostra "Dati non ancora disponibili" invece di una lista vuota.
+- Sezioni collassabili per le **10 regioni** (`regions.json`, nomi italiani da mariowiki.it), ciascuna con `x/y` e un'azione "segna tutti" che chiede conferma.
+
+**Mappa** (voce del drawer, e pulsantone delle due schermate sopra)
+- L'immagine della mappa del mondo di mkworld-checklist, scaricata a runtime come le immagini del wiki (URL in `map.json`, mai nell'APK); senza rete e senza cache resta il mare, e i punti si vedono e si toccano lo stesso.
+- Zoom con il pizzico o il doppio tap (fino a ×8), trascinamento; i marker hanno la stessa dimensione a ogni zoom. Pulsante P blu con "P", Moneta Peach rosa, pannello "?" giallo; i punti già fatti sono attenuati con una spunta.
+- **Filtri visivi** in alto (pulsantoni rossi): un interruttore per tipo, con il contatore `fatti/totali`, e "Fatti" per mostrare o nascondere i punti già fatti. Aperta da una schermata, mostra solo il suo tipo.
+- Tap su un punto: popup (§ grafica) con il nome della missione e il luogo (Pulsanti P), le istruzioni (inglese), l'interruttore "Presa/Completata/Attivato" e "Guarda il video" (YouTube, Intent `ACTION_VIEW`). Lo stato è lo stesso delle liste.
+- I **pannelli "?"** (150) per ora esistono solo qui, senza contatore in Home.
 
 ### 2.5 Consigliami
 Vedi §6 per l'algoritmo. UI:
@@ -117,8 +125,10 @@ FoodGroupCourse(foodGroupId: FK, courseId: FK, presence: ON_COURSE|NEARBY, liste
 Course(id: String PK, name: String, regionId: FK?)            // null solo per Rainbow Road
 Region(id: String PK, name: String, order: Int)               // 10 regioni/biomi
 Area(id: String PK, name: String, regionId: FK)               // luoghi delle missioni che non sono uno dei 30 corsi
-PeachMedallion(id: String PK, regionId: FK, index: Int)       // 200, da file manuale (§5.2)
-PSwitch(id: String PK, index: Int, regionId: FK, courseId: FK?, areaId: FK?, name: String)  // 394, esattamente uno tra courseId e areaId
+PeachMedallion(id: String PK, index: Int, x: Double, y: Double, hint: String?, youtubeId: String?)   // 200, mkworld-checklist (§5.2)
+QuestionPanel(id: String PK, index: Int, x: Double, y: Double, hint: String?, youtubeId: String?)    // 150, mkworld-checklist
+PSwitch(id: String PK, index: Int, regionId: FK, courseId: FK?, areaId: FK?, name: String, x, y, hint, youtubeId)  // 394, esattamente uno tra courseId e areaId
+    // x, y: percentuale dell'immagine della mappa (map.json: imageUrl, width, height, letto dagli asset, nessuna tabella)
 Event(id: String PK, type: CUP|RALLY, name: String, order: Int)
 EventStop(eventId: FK, position: Int, courseId: FK)         // nel JSON è l'array "stops" dell'evento, in ordine
 ```
@@ -132,6 +142,8 @@ OwnedOutfit(outfitId PK)
 CharacterUnlock(characterId PK, unlocked: Boolean)
 CollectedMedallion(medallionId PK)
 CompletedPSwitch(pSwitchId PK)
+ActivatedQuestionPanel(panelId PK)
+PendingNotice(id PK, count: Int)        // avvisi da mostrare una volta, scritti da una migrazione (v6 -> v7)
 BestResult(eventId, cc, rank: BRONZE|SILVER|GOLD|GOLD_1_STAR|GOLD_2_STARS|GOLD_3_STARS)   // PK (eventId, cc), §2.6
     // Schema v3. Fino alla v2 era RaceResult (storico con stelle e posizione indipendenti): la migrazione
     // tiene il livello più alto per (evento, cilindrata) con 1° -> oro + stelle, 2° -> argento, 3° -> bronzo.
@@ -162,8 +174,10 @@ In `seed/` alla root del repository (versionati, **già presenti**), copiati neg
 | `regions.json` | `id`, `name`, `order` | 10 |
 | `areas.json` | `id`, `name`, `regionId` | 1 (cresce se le missioni citano altri luoghi) |
 | `events.json` | `id`, `type` (CUP/RALLY), `name`, `order`, `stops` (courseId in ordine) | 8 cup + 12 rally |
-| `peach_medallions.json` | `id`, `regionId`, `index`; `manual: true` a livello di file | 200 |
-| `p_switches.json` | `id`, `index`, `regionId`, `courseId`, `areaId`, `name` | 394 (**assente nel seed iniziale**, arriva con la prima estrazione) |
+| `peach_medallions.json` | `id`, `index`, `x`, `y`, `hint`, `youtubeId` (mkworld-checklist) | 200 |
+| `question_panels.json` | come `peach_medallions.json` | 150 |
+| `map.json` | un elemento: `imageUrl`, `width`, `height` dell'immagine della mappa | 1 |
+| `p_switches.json` | `id`, `index`, `regionId`, `courseId`, `areaId`, `name`; `x`, `y`, `hint`, `youtubeId` da mkworld-checklist | 394 (**assente nel seed iniziale**, arriva con la prima estrazione) |
 | `meta.json` | `seedVersion`, `gameVersion`, `extractedOn`, `origin`, `warnings`, `license`, `sources` (titolo, URL, `revid`) | — |
 
 `meta.json.origin` vale `manual-transcription` per il seed iniziale e `api` dopo la prima estrazione via script (§5.3, "Stato").
@@ -179,7 +193,7 @@ Tutte da **Super Mario Wiki** (mariowiki.com), contenuti testuali in CC BY-SA 4.
 | `Template:Mario Kart World` | navbox del gioco: righe "<Nome> Cup" con i 4 corsi; riga "Knockout Tour rallies" (per accorgersi di rally nuovi) |
 | `Golden Rally`, `Ice Rally`, `Moon Rally`, `Spiny Rally`, `Cherry Rally`, `Acorn Rally`, `Cloud Rally`, `Heart Rally`, `Drill Rally`, `Boomerang Rally (Mario Kart World)`, `Propeller Rally`, `Turnip Rally` | tappe del rally, dalla tabella "Starting point / Checkpoint N / Final course" |
 
-**Peach Medallions: fonte manuale.** Nessuna fonte con licenza libera li elenca (la pagina mariowiki dà solo il totale). Poiché stanno nel mondo aperto, ogni guida li raggruppa a modo suo: Gamer Guides per percorso (somma 199), Nintendo Life per le 10 regioni (somma 200). Si usano i **conteggi per regione di Nintendo Life**, in `tools/seedgen/manual/peach_medallions.yaml`, copiando solo i numeri. Niente scraping automatico di siti commerciali (IGN, Game8, Nintendo Life): contenuti protetti, termini d'uso restrittivi e struttura instabile. Per cambiare raggruppamento si modifica quel file a mano.
+**Mappa, Peach Medallions e pannelli "?": mkworld-checklist.** Dal 28/09/2026, per scelta dell'autore, le posizioni sulla mappa di Monete Peach, Pulsanti P e pannelli "?", le istruzioni (solo inglese), i video e l'immagine della mappa vengono dal progetto pubblico su GitHub [mkworld-checklist](https://github.com/BamisWasTaken/mkworld-checklist) (mktools.io), letto da `seedgen/checklist.py` a un **commit fissato** in `sources.yaml`, con i crediti in README, `seed/LICENSE` e Impostazioni/Info. Le monete e i pannelli vengono solo da lì; i Pulsanti P restano quelli di mariowiki e prendono la posizione per nome della missione (3 grafie diverse in `manual/checklist_mission_names.yaml`, un nome non abbinato ferma l'estrazione). Supera la fonte precedente dei medaglioni (conteggi per bioma di Nintendo Life, file manuale): le monete di mkworld-checklist non hanno un bioma, e un tentativo di ricavarlo dai Pulsanti P vicini non riproduceva i conteggi di Nintendo Life. Niente scraping automatico di siti commerciali (IGN, Game8, Nintendo Life): contenuti protetti, termini d'uso restrittivi e struttura instabile.
 
 - Le guide commerciali (IGN, Game8, Nintendo Life, Gamer Guides) servono **solo per verificare** i dati, non per copiarne i contenuti. IGN è il riferimento dell'autore per il controllo a campione degli outfit (manuale, non automatizzato).
 - Le immagini di mariowiki **non** sono CC BY-SA: sono asset Nintendo. seedgen ne registra solo l'URL (`imageUrl` su personaggi, outfit, eventi; pagina `Mario Kart World`, sempre dal vivo come le pagine dei nomi in italiano); l'app le scarica a runtime e non entrano mai nel repository o nell'APK.
@@ -218,7 +232,8 @@ Lo script **esiste già** ed è coperto da test: non va riscritto, solo verifica
 - Conteggi in `expected_counts.yaml`: 24 personaggi con outfit, 103 outfit alternativi, 127 totali, 20 gruppi di cibo (1 che riporta al default), 30 corsi, 8 cup da 4 corsi, 12 rally da 6 tappe. Se un update del gioco cambia i numeri, si aggiornano **a mano** in un commit dedicato, mai rilassati per far passare la build.
 - Integrità referenziale, ID unici, nessun outfit senza cibo, ogni gruppo con almeno un corso, le 8 cup coprono tutti i 30 corsi.
 - Equivalenze di §5.2.1 e controllo incrociato `ON_COURSE` ⊆ Dash Food.
-- 10 regioni; ogni corso tranne Rainbow Road in esattamente una regione; 200 medaglioni che coprono tutte le regioni.
+- 10 regioni; ogni corso tranne Rainbow Road in esattamente una regione.
+- Mappa (se presente, tutti o nessuno tra `peach_medallions.json`, `question_panels.json`, `map.json`): 200 monete, 150 pannelli, ID unici, ogni punto con `x`/`y` tra 0 e 100, immagine solo su `raw.githubusercontent.com/BamisWasTaken/mkworld-checklist/`.
 - Pulsanti P (se presenti): esattamente 394, e ogni missione sta nella regione del proprio percorso. Questo controllo verifica anche l'assegnazione corso→regione in `aliases.yaml`, che per 7 regioni su 10 è ricavata dalla guida Nintendo Life.
 
 **Comandi ed exit code**
@@ -261,7 +276,7 @@ Requisiti:
 - Documentare nel README: prerequisiti Python, flag disponibili, come aggiornare `expected_counts.yaml` e `sources.yaml`.
 
 ### 5.5 Attribuzione
-La schermata Info deve riportare: "Dati di gioco tratti da Super Mario Wiki (mariowiki.com) e Super Mario Wiki italiana (mariowiki.it), licenza CC BY-SA 4.0" con link e i `revid` usati (letti da `meta.json`), più la nota che i nomi italiani dei cibi sono una traduzione non ufficiale. I file in `seed/` restano sotto CC BY-SA, separati dalla licenza del codice (file `seed/LICENSE`).
+La schermata Info deve riportare: "Dati di gioco tratti da Super Mario Wiki (mariowiki.com) e Super Mario Wiki italiana (mariowiki.it), licenza CC BY-SA 4.0" con link e i `revid` usati (letti da `meta.json`), più la nota che i nomi italiani dei cibi sono una traduzione non ufficiale e il credito a mkworld-checklist (mktools.io) di BamisWasTaken per la mappa. I file in `seed/` restano sotto CC BY-SA, separati dalla licenza del codice (file `seed/LICENSE`).
 
 ### 5.6 Validazione lato app (unit test Kotlin)
 Doppio controllo sui JSON effettivamente impacchettati, indipendente dallo script:
@@ -344,10 +359,9 @@ I criteri 3–6 ordinano **dentro** il gruppo a pari merito ma non cambiano il n
 ---
 
 ## 7. Fuori scope v1
-- Mappa interattiva
-- Sticker e ? Panels (possibile v2, con la stessa struttura di medaglioni e pulsanti P)
+- Sticker (la mappa e i ? Panels sono arrivati dopo la 1.0, §2.4)
 - Stato di sblocco di cup e rally (es. Special Cup, rally aggiuntivi)
-- Qualsiasi connessione di rete **nell'app** oltre al download delle immagini (§0, punto 2)
+- Qualsiasi connessione di rete **nell'app** oltre al download delle immagini, mappa compresa (§0, punto 2)
 
 ---
 
@@ -379,7 +393,7 @@ I criteri 3–6 ordinano **dentro** il gruppo a pari merito ma non cambiano il n
 - Stato di sblocco dei personaggi: non estraibile; default sbloccato, lo gestisce l'utente (§2.3).
 - Cibo per percorso: distinzione `ON_COURSE` / `NEARBY` (§5.2.1). La posizione esatta dello stand sul percorso non serve per ora.
 - Pulsanti P: da `List of Mario Kart World missions` (mariowiki).
-- Peach Medallions: conteggi per regione da file manuale (§5.2).
+- Peach Medallions e ? Panels: da mkworld-checklist, con la mappa (§5.2).
 
 **Aperte (non bloccano l'implementazione)**
 - **9 percorsi senza stand noti sul tracciato** (§5.2.1): se giocando se ne trova uno, va segnalato su mariowiki; poi la prossima estrazione lo porta nel seed.

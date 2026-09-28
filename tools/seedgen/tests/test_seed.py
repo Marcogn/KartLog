@@ -38,6 +38,9 @@ def _without_name_it(seed: dict) -> dict:
             item.pop("unlockCriteria", None)
             item.pop("unlockCriteriaIt", None)
     seed.pop("mirror_mode.json", None)  # anche questo solo dalla pagina live (seedgen/images.py)
+    # Mappa e collezionabili solo da mkworld-checklist (seedgen/checklist.py), mai nella trascrizione.
+    for filename in ("peach_medallions.json", "question_panels.json", "map.json"):
+        seed.pop(filename, None)
     return seed
 
 
@@ -99,9 +102,25 @@ def test_validation_catches_on_course_not_in_dash_food(golden_seed, cfg):
         validate(_broken(golden_seed, mutate), cfg)
 
 
-def test_medallions_sum_to_200(golden_seed):
-    items = golden_seed["peach_medallions.json"]["items"]
-    assert len(items) == 200 and len({i["regionId"] for i in items}) == 10
+def test_versioned_map_files(cfg):
+    seed = read_seed(SEED_DIR)
+    assert len(seed["peach_medallions.json"]["items"]) == cfg.expected["peach_medallions"]
+    assert len(seed["question_panels.json"]["items"]) == cfg.expected["question_panels"]
+    assert all("x" in p and "y" in p for p in seed["p_switches.json"]["items"])
+
+
+def test_partial_map_files_are_caught(cfg):
+    seed = read_seed(SEED_DIR)
+    del seed["question_panels.json"]
+    with pytest.raises(ValidationError, match="presenti solo in parte"):
+        validate(seed, cfg)
+
+
+def test_point_out_of_bounds_is_caught(cfg):
+    seed = read_seed(SEED_DIR)
+    seed["peach_medallions.json"]["items"][0]["x"] = 120
+    with pytest.raises(ValidationError, match="fuori dai limiti"):
+        validate(seed, cfg)
 
 
 def test_p_switch_region_mismatch_is_caught(golden_seed, cfg):

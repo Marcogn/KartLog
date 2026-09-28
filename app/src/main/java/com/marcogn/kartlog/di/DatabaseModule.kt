@@ -9,8 +9,10 @@ import com.marcogn.kartlog.data.local.MIGRATION_2_3
 import com.marcogn.kartlog.data.local.MIGRATION_3_4
 import com.marcogn.kartlog.data.local.MIGRATION_4_5
 import com.marcogn.kartlog.data.local.MIGRATION_5_6
+import com.marcogn.kartlog.data.local.MIGRATION_6_7
 import com.marcogn.kartlog.data.local.dao.BackupDao
 import com.marcogn.kartlog.data.local.dao.ConsigliamiDao
+import com.marcogn.kartlog.data.local.dao.MapDao
 import com.marcogn.kartlog.data.local.dao.MedallionsDao
 import com.marcogn.kartlog.data.local.dao.PSwitchesDao
 import com.marcogn.kartlog.data.local.dao.SeedDao
@@ -32,7 +34,7 @@ object DatabaseModule {
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): KartLogDatabase =
         Room.databaseBuilder(context, KartLogDatabase::class.java, DATABASE_NAME)
-            .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6)
+            .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7)
             .build()
 
     @Provides
@@ -52,6 +54,9 @@ object DatabaseModule {
 
     @Provides
     fun providePSwitchesDao(database: KartLogDatabase): PSwitchesDao = database.pSwitchesDao()
+
+    @Provides
+    fun provideMapDao(database: KartLogDatabase): MapDao = database.mapDao()
 
     @Provides
     fun provideConsigliamiDao(database: KartLogDatabase): ConsigliamiDao = database.consigliamiDao()

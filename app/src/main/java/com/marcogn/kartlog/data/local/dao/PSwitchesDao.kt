@@ -16,7 +16,7 @@ interface PSwitchesDao {
     @Query(
         """
         SELECT p.id AS pSwitchId, p."index" AS "index", p.name AS name,
-               (cp.pSwitchId IS NOT NULL) AS completed,
+               (cp.pSwitchId IS NOT NULL) AS completed, (p.x IS NOT NULL) AS onMap,
                r.id AS regionId, r.name AS regionName, r.nameIt AS regionNameIt, r."order" AS regionOrder,
                c.name AS courseName, c.nameIt AS courseNameIt, a.name AS areaName,
                COALESCE(c.name, a.name) AS locationSortKey
@@ -36,6 +36,8 @@ data class PSwitchWithLocation(
     val index: Int,
     val name: String,
     val completed: Boolean,
+    /** Ha una posizione sulla mappa (mkworld-checklist). */
+    val onMap: Boolean = false,
     val regionId: String,
     val regionName: String,
     val regionNameIt: String?,

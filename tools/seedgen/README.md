@@ -14,13 +14,14 @@ Le pagine sono elencate **per titolo esatto** in `sources.yaml`: lo script non c
 | `Template:Mario Kart World` | navbox: gli 8 cup con i loro 4 corsi, e l'elenco dei rally (per accorgersi di rally nuovi) |
 | `Golden Rally`, `Ice Rally`, … (12 pagine) | tappe di ogni Knockout Tour, dalla tabella "Starting point … Final course" |
 | `Mario Kart World` | solo gli **URL** delle immagini di personaggi, outfit, cup e rally, quali piloti sono disponibili dall'inizio, la tabella "Unlock criteria" e le condizioni della modalità specchio, senza note tra parentesi (`seedgen/images.py`); scaricata sempre dal vivo |
+| mkworld-checklist (GitHub, commit fissato in `sources.yaml`): `checklist-data.json`, `i18n/en.json`, intestazione di `map.webp` | posizioni di Monete Peach, Pulsanti P e pannelli "?", istruzioni in inglese, video YouTube, URL e misure della mappa (`seedgen/checklist.py`); sempre dal vivo. I Pulsanti P si abbinano a quelli di mariowiki per nome della missione |
 | mariowiki.it: `Mario Kart World`, `Lista delle missioni di Mario Kart World` | nomi italiani che mariowiki.com non ha: piloti senza outfit, biomi, Trofei e rally, e la tabella "Criteri di sblocco" (`seedgen/it_wiki.py`); sempre dal vivo |
 
 `manual/food_names_it.yaml` contiene i nomi italiani dei cibi: **traduzione non ufficiale**, scelta dell'autore perché nessuna fonte li riporta. `manual/mirror_mode_it.yaml` traduce allo stesso modo le condizioni della modalità specchio (mariowiki.it ne ha una versione meno aggiornata). Ogni voce riporta anche il testo inglese esatto: se sul wiki cambia, seedgen si ferma finché la traduzione non viene aggiornata.
 
 Le pagine si scaricano con la MediaWiki API (`https://www.mariowiki.com/api.php?action=parse&prop=text|revid`). Ogni estrazione registra il `revid` di ogni pagina in `seed/meta.json`. Le immagini non vengono mai scaricate: seedgen ne salva solo l'URL (`imageUrl`), l'app le scarica a runtime.
 
-Le pagine dei nomi in italiano e la pagina `Mario Kart World` si scaricano solo in una `generate`/`release` dal vivo, mai da fixture (sono grandi e se ne usa una piccola parte): con `--from-fixtures` o `--from-raw` i campi `nameIt` e `imageUrl` restano `null`.
+Le pagine dei nomi in italiano e la pagina `Mario Kart World` si scaricano solo in una `generate`/`release` dal vivo, mai da fixture (sono grandi e se ne usa una piccola parte): con `--from-fixtures` o `--from-raw` i campi `nameIt` e `imageUrl` restano `null`. Lo stesso per mkworld-checklist: senza, mancano `peach_medallions.json`, `question_panels.json`, `map.json` e le posizioni dei Pulsanti P (la validazione accetta tutti o nessuno dei tre file).
 
 ## File
 
@@ -29,7 +30,7 @@ Le pagine dei nomi in italiano e la pagina `Mario Kart World` si scaricano solo 
 | `sources.yaml` | titoli delle pagine, URL dell'API, User-Agent, timeout |
 | `aliases.yaml` | nome del wiki → slug stabile per personaggi e corsi; equivalenze da validare. Un nome sconosciuto fa fallire l'estrazione |
 | `expected_counts.yaml` | conteggi attesi e versione del gioco. Fonte di verità anche per i test Kotlin |
-| `manual/peach_medallions.yaml` | conteggi dei Peach Medallions per regione: unico dato manuale, con fonte e data di verifica |
+| `manual/checklist_mission_names.yaml` | le 3 missioni scritte in modo diverso da mkworld-checklist e da mariowiki, verificate a mano |
 | `tests/golden/raw_manual_2026-09-25.yaml` | trascrizione manuale delle pagine, usata per generare il primo `seed/` e come controllo incrociato del parser |
 | `tests/fixtures/synthetic/` | HTML sintetici che riproducono la struttura delle pagine, per i test del parser |
 | `tests/fixtures/real/` | pagine reali salvate con `fetch-fixtures` (da creare, vedi sotto) |

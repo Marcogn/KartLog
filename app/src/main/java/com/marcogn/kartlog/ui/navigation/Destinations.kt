@@ -21,6 +21,14 @@ sealed interface Destination {
     @Serializable
     data object PSwitches : Destination
 
+    /**
+     * Mappa dei collezionabili (dati di mkworld-checklist): voce del drawer, e pulsantone in Monete
+     * Peach e Pulsanti P. [type] = nome di un [com.marcogn.kartlog.domain.model.MapPointType] da
+     * mostrare da solo all'apertura (null = tutti), [focusId] = punto su cui centrare la mappa.
+     */
+    @Serializable
+    data class CollectibleMap(val type: String? = null, val focusId: String? = null) : Destination
+
     @Serializable
     data object Consigliami : Destination
 

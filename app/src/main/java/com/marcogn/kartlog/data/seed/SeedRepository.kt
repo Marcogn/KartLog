@@ -15,6 +15,7 @@ import com.marcogn.kartlog.data.local.entity.OutfitEntity
 import com.marcogn.kartlog.data.local.entity.OutfitFoodRuleEntity
 import com.marcogn.kartlog.data.local.entity.PSwitchEntity
 import com.marcogn.kartlog.data.local.entity.PeachMedallionEntity
+import com.marcogn.kartlog.data.local.entity.QuestionPanelEntity
 import com.marcogn.kartlog.data.local.entity.RegionEntity
 import com.marcogn.kartlog.data.local.entity.SeedMetaEntity
 import com.marcogn.kartlog.domain.model.EventType
@@ -102,8 +103,11 @@ class SeedRepository @Inject constructor(
         areas = assets.readItems<AreaDto>("areas.json").map {
             AreaEntity(id = it.id, name = it.name, regionId = it.regionId)
         },
-        peachMedallions = assets.readItems<PeachMedallionDto>("peach_medallions.json").map {
-            PeachMedallionEntity(id = it.id, regionId = it.regionId, index = it.index)
+        peachMedallions = assets.readItems<MapPointDto>("peach_medallions.json").map {
+            PeachMedallionEntity(id = it.id, index = it.index, x = it.x, y = it.y, hint = it.hint, youtubeId = it.youtubeId)
+        },
+        questionPanels = assets.readItems<MapPointDto>("question_panels.json").map {
+            QuestionPanelEntity(id = it.id, index = it.index, x = it.x, y = it.y, hint = it.hint, youtubeId = it.youtubeId)
         },
         // Assente finché la fase 2 di seedgen non gira (SPEC §5.3 "Stato"): readItems torna
         // una lista vuota se il file manca, mai un errore.
@@ -115,6 +119,10 @@ class SeedRepository @Inject constructor(
                 courseId = it.courseId,
                 areaId = it.areaId,
                 name = it.name,
+                x = it.x,
+                y = it.y,
+                hint = it.hint,
+                youtubeId = it.youtubeId,
             )
         },
         events = assets.readItems<EventDto>("events.json").map {

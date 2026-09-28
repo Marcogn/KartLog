@@ -18,10 +18,15 @@ data class BackupPayload(
     val raceResults: List<RaceResultDto> = emptyList(),
     /** Dalla v2: miglior risultato per evento e cilindrata (SPEC §2.6). */
     val bestResults: List<BestResultDto> = emptyList(),
+    /** Dalla v3: pannelli "?" attivati (mappa di mkworld-checklist). */
+    val activatedQuestionPanelIds: List<String> = emptyList(),
 )
 
-/** v2: `raceResults` (storico) sostituito da `bestResults` (un trofeo per evento e cilindrata). */
-const val CURRENT_BACKUP_VERSION = 2
+/**
+ * v2: `raceResults` (storico) sostituito da `bestResults` (un trofeo per evento e cilindrata).
+ * v3: `activatedQuestionPanelIds`, e `collectedMedallionIds` con gli ID delle 200 monete sulla mappa.
+ */
+const val CURRENT_BACKUP_VERSION = 3
 
 @Serializable
 data class CharacterUnlockDto(val characterId: String, val unlocked: Boolean)

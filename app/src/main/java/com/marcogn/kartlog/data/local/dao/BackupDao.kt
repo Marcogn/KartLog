@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
+import com.marcogn.kartlog.data.local.entity.ActivatedQuestionPanelEntity
 import com.marcogn.kartlog.data.local.entity.BestResultEntity
 import com.marcogn.kartlog.data.local.entity.CharacterUnlockEntity
 import com.marcogn.kartlog.data.local.entity.CollectedMedallionEntity
@@ -26,6 +27,9 @@ interface BackupDao {
     @Query("SELECT * FROM completed_p_switches")
     suspend fun completedPSwitches(): List<CompletedPSwitchEntity>
 
+    @Query("SELECT * FROM activated_question_panels")
+    suspend fun activatedQuestionPanels(): List<ActivatedQuestionPanelEntity>
+
     @Query("SELECT * FROM best_results")
     suspend fun bestResults(): List<BestResultEntity>
 
@@ -43,6 +47,9 @@ interface BackupDao {
     @Query("SELECT id FROM p_switches")
     suspend fun validPSwitchIds(): List<String>
 
+    @Query("SELECT id FROM question_panels")
+    suspend fun validQuestionPanelIds(): List<String>
+
     @Query("SELECT id FROM events")
     suspend fun validEventIds(): List<String>
 
@@ -57,6 +64,9 @@ interface BackupDao {
 
     @Query("DELETE FROM completed_p_switches")
     suspend fun clearCompletedPSwitches()
+
+    @Query("DELETE FROM activated_question_panels")
+    suspend fun clearActivatedQuestionPanels()
 
     @Query("DELETE FROM best_results")
     suspend fun clearBestResults()
@@ -74,6 +84,9 @@ interface BackupDao {
     suspend fun insertCompletedPSwitches(items: List<CompletedPSwitchEntity>)
 
     @Insert
+    suspend fun insertActivatedQuestionPanels(items: List<ActivatedQuestionPanelEntity>)
+
+    @Insert
     suspend fun insertBestResults(items: List<BestResultEntity>)
 
     /**
@@ -89,16 +102,19 @@ interface BackupDao {
         collectedMedallions: List<CollectedMedallionEntity>,
         completedPSwitches: List<CompletedPSwitchEntity>,
         bestResults: List<BestResultEntity>,
+        activatedQuestionPanels: List<ActivatedQuestionPanelEntity>,
     ) {
         clearOwnedOutfits()
         clearCharacterUnlocks()
         clearCollectedMedallions()
         clearCompletedPSwitches()
         clearBestResults()
+        clearActivatedQuestionPanels()
         insertOwnedOutfits(ownedOutfits)
         insertCharacterUnlocks(characterUnlocks)
         insertCollectedMedallions(collectedMedallions)
         insertCompletedPSwitches(completedPSwitches)
         insertBestResults(bestResults)
+        insertActivatedQuestionPanels(activatedQuestionPanels)
     }
 }

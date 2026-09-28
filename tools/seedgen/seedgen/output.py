@@ -10,7 +10,7 @@ from pathlib import Path
 COMPARED_FILES = [
     "characters.json", "outfits.json", "food_groups.json", "outfit_food_rules.json",
     "food_group_courses.json", "courses.json", "events.json", "regions.json", "areas.json",
-    "peach_medallions.json", "p_switches.json", "mirror_mode.json",
+    "peach_medallions.json", "p_switches.json", "mirror_mode.json", "question_panels.json", "map.json",
 ]
 
 
@@ -57,12 +57,8 @@ def diff(old: dict[str, dict], new: dict[str, dict]) -> list[str]:
     added_removed("regione", _ids(old, "regions.json"), _ids(new, "regions.json"))
     ps = lambda i: f"{i['id']} {i['name']!r} @ {i['courseId'] or i['areaId']}"
     added_removed("pulsante P", _ids(old, "p_switches.json", ps), _ids(new, "p_switches.json", ps))
-    med = lambda i: i["regionId"]
-    old_med = [med(i) for i in old.get("peach_medallions.json", {}).get("items", [])]
-    new_med = [med(i) for i in new.get("peach_medallions.json", {}).get("items", [])]
-    for r in sorted(set(old_med) | set(new_med)):
-        if old_med.count(r) != new_med.count(r):
-            lines.append(f"~ medaglioni in {r}: {old_med.count(r)} -> {new_med.count(r)}")
+    added_removed("moneta Peach", _ids(old, "peach_medallions.json"), _ids(new, "peach_medallions.json"))
+    added_removed("pannello ?", _ids(old, "question_panels.json"), _ids(new, "question_panels.json"))
 
     old_events = {e["id"]: e for e in old.get("events.json", {}).get("items", [])}
     for e in new.get("events.json", {}).get("items", []):

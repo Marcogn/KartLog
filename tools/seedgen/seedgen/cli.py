@@ -18,6 +18,7 @@ import shutil
 import sys
 from pathlib import Path
 
+from . import checklist as mkchecklist
 from . import wiki
 from .build import build
 from .config import Config
@@ -85,8 +86,14 @@ def _generate(args, cfg: Config, out: Path, seed_dir: Path | None) -> dict:
         page = wiki.fetch_images_page(cfg)
         images = extract_images(page.html)
         raw.sources.append(RawSource(title=page.title, revid=page.revid))
+        # Mappa dei collezionabili (seedgen/checklist.py), a un commit fissato in sources.yaml.
+        checklist = mkchecklist.fetch(cfg)
+        raw.sources.append(RawSource(title=f"mkworld-checklist@{checklist.commit[:7]}", revid=None,
+                                     url=checklist.source_url))
+    else:
+        checklist = None
     seed = build(raw, cfg, seed_version=_current_version(seed_dir), translations=translations, images=images,
-                 it_names=it_names)
+                 it_names=it_names, checklist=checklist)
     validate(seed, cfg)
     write_seed(seed, out)
     _log(f"seed valido scritto in {out}")
@@ -133,9 +140,9 @@ def cmd_accept(args, cfg: Config) -> int:
         elif (seed_dir / name).is_file():
             (seed_dir / name).unlink()
     write_seed({"meta.json": new["meta.json"]}, seed_dir)
-    revs = ", ".join(f"{s['title']}@{s['revid']}" for s in new["meta.json"]["sources"])
+    revs = ", ".join(s["title"] + (f"@{s['revid']}" if s.get("revid") else "") for s in new["meta.json"]["sources"])
     # Riga pronta per il CHANGELOG: il task Gradle la inserisce nel formato del progetto.
-    print(f"Dati di gioco aggiornati da Super Mario Wiki (seedVersion {new['meta.json']['seedVersion']}; {revs})")
+    print(f"Dati di gioco aggiornati da Super Mario Wiki e mkworld-checklist (seedVersion {new['meta.json']['seedVersion']}; {revs})")
     return EXIT_OK
 
 

@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Place
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -38,12 +39,14 @@ import com.marcogn.kartlog.ui.common.KartTopBar
 import com.marcogn.kartlog.ui.common.MarkAllConfirmationDialog
 import com.marcogn.kartlog.ui.common.RegionHeader
 import com.marcogn.kartlog.ui.common.kartSky
+import com.marcogn.kartlog.ui.map.KartMapButton
 import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PSwitchesScreen(
     onMenuClick: () -> Unit,
+    onOpenMap: (focusId: String?) -> Unit,
     viewModel: PSwitchesViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
@@ -75,56 +78,64 @@ fun PSwitchesScreen(
             return@Scaffold
         }
 
-        LazyColumn(modifier = Modifier.padding(padding).fillMaxWidth(), contentPadding = PaddingValues(bottom = 16.dp)) {
-            item {
-                Text(
-                    text = stringResource(R.string.home_counter_format, state.totalCompleted, state.totalCount),
-                    style = MaterialTheme.typography.headlineSmall,
-                    modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp),
-                )
-                OutlinedTextField(
-                    value = state.query,
-                    onValueChange = viewModel::onQueryChanged,
-                    label = { Text(stringResource(R.string.pswitches_search_hint)) },
-                    singleLine = true,
-                    modifier = Modifier.fillMaxWidth().padding(16.dp),
-                )
-                if (state.regions.isEmpty()) {
+        Box(Modifier.padding(padding).fillMaxSize()) {
+            // Spazio in fondo per il pulsantone della mappa.
+            LazyColumn(modifier = Modifier.fillMaxWidth(), contentPadding = PaddingValues(bottom = 96.dp)) {
+                item {
                     Text(
-                        text = stringResource(R.string.pswitches_no_results),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(16.dp),
+                        text = stringResource(R.string.home_counter_format, state.totalCompleted, state.totalCount),
+                        style = MaterialTheme.typography.headlineSmall,
+                        modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp),
                     )
-                }
-            }
-            items(state.regions, key = { it.regionId }) { region ->
-                val expanded = region.regionId in expandedRegions || state.query.isNotBlank()
-                RegionHeader(
-                    name = region.regionName,
-                    collected = region.completed,
-                    total = region.total,
-                    expanded = expanded,
-                    onExpandToggle = {
-                        expandedRegions = if (expanded) expandedRegions - region.regionId else expandedRegions + region.regionId
-                    },
-                    onMarkAllClick = { regionPendingConfirmation = region.regionId },
-                )
-                if (expanded) {
-                    region.locations.forEach { location ->
+                    OutlinedTextField(
+                        value = state.query,
+                        onValueChange = viewModel::onQueryChanged,
+                        label = { Text(stringResource(R.string.pswitches_search_hint)) },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth().padding(16.dp),
+                    )
+                    if (state.regions.isEmpty()) {
                         Text(
-                            text = location.locationName,
-                            style = MaterialTheme.typography.labelLarge,
-                            color = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.padding(start = 32.dp, top = 8.dp, bottom = 4.dp),
+                            text = stringResource(R.string.pswitches_no_results),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(16.dp),
                         )
-                        location.pSwitches.forEach { mission ->
-                            PSwitchRowItem(mission, onToggle = { checked -> viewModel.onPSwitchToggled(mission.id, checked) })
-                        }
                     }
                 }
-                HorizontalDivider()
+                items(state.regions, key = { it.regionId }) { region ->
+                    val expanded = region.regionId in expandedRegions || state.query.isNotBlank()
+                    RegionHeader(
+                        name = region.regionName,
+                        collected = region.completed,
+                        total = region.total,
+                        expanded = expanded,
+                        onExpandToggle = {
+                            expandedRegions = if (expanded) expandedRegions - region.regionId else expandedRegions + region.regionId
+                        },
+                        onMarkAllClick = { regionPendingConfirmation = region.regionId },
+                    )
+                    if (expanded) {
+                        region.locations.forEach { location ->
+                            Text(
+                                text = location.locationName,
+                                style = MaterialTheme.typography.labelLarge,
+                                color = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.padding(start = 32.dp, top = 8.dp, bottom = 4.dp),
+                            )
+                            location.pSwitches.forEach { mission ->
+                                PSwitchRowItem(
+                                    mission,
+                                    onToggle = { checked -> viewModel.onPSwitchToggled(mission.id, checked) },
+                                    onShowOnMap = { onOpenMap(mission.id) },
+                                )
+                            }
+                        }
+                    }
+                    HorizontalDivider()
+                }
             }
+            KartMapButton(onClick = { onOpenMap(null) }, modifier = Modifier.align(Alignment.BottomEnd).padding(20.dp))
         }
     }
 
@@ -142,12 +153,17 @@ fun PSwitchesScreen(
 }
 
 @Composable
-private fun PSwitchRowItem(mission: PSwitchRow, onToggle: (Boolean) -> Unit) {
+private fun PSwitchRowItem(mission: PSwitchRow, onToggle: (Boolean) -> Unit, onShowOnMap: () -> Unit) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp),
+        modifier = Modifier.fillMaxWidth().padding(start = 16.dp, end = 8.dp),
     ) {
         Checkbox(checked = mission.completed, onCheckedChange = onToggle)
-        Text(mission.name, style = MaterialTheme.typography.bodyMedium)
+        Text(mission.name, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f))
+        if (mission.onMap) {
+            IconButton(onClick = onShowOnMap) {
+                Icon(Icons.Filled.Place, contentDescription = stringResource(R.string.map_show_on_map))
+            }
+        }
     }
 }

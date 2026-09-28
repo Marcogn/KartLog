@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "height": 2322,
+      "id": "world",
+      "imageUrl": "https://raw.githubusercontent.com/BamisWasTaken/mkworld-checklist/ee860555a71150a4d3d935ee1ad9a4471742fce6/public/imgs/map.webp",
+      "width": 2580
+    }
+  ],
+  "source": "https://github.com/BamisWasTaken/mkworld-checklist/tree/ee860555a71150a4d3d935ee1ad9a4471742fce6"
+}

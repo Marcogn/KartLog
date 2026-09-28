@@ -10,6 +10,14 @@ from .errors import ValidationError
 
 # CDN di Super Mario Wiki: l'unica origine ammessa per gli URL delle immagini.
 IMAGE_URL_PREFIX = "https://mario.wiki.gallery/images/"
+# Mappa di mkworld-checklist (seedgen/checklist.py), a un commit fissato.
+MAP_URL_PREFIX = "https://raw.githubusercontent.com/BamisWasTaken/mkworld-checklist/"
+
+
+def _check_points(name: str, points: list[dict], check) -> None:
+    for p in points:
+        ok = all(isinstance(p.get(k), (int, float)) and 0 <= p[k] <= 100 for k in ("x", "y"))
+        check(ok, f"{name} {p['id']}: posizione sulla mappa mancante o fuori dai limiti")
 
 
 def _items(seed: dict, name: str) -> list[dict]:
@@ -127,12 +135,22 @@ def validate(seed: dict, cfg: Config) -> None:
     area_region = {a["id"]: a["regionId"] for a in _items(seed, "areas.json")}
     course_region = {c["id"]: c.get("regionId") for c in courses}
 
-    # --- Peach Medallions (file manuale) ---------------------------------------------------------
-    meds = _items(seed, "peach_medallions.json")
-    check(len(meds) == exp["peach_medallions"], f"Peach Medallions: {len(meds)}, attesi {exp['peach_medallions']}")
-    for m in meds:
-        check(m["regionId"] in region_ids, f"medaglione {m['id']}: regione inesistente {m['regionId']}")
-    check({m["regionId"] for m in meds} == region_ids, "Peach Medallions: non tutte le regioni hanno medaglioni")
+    # --- Mappa, Monete Peach e pannelli "?" (seedgen/checklist.py) ------------------------------
+    # Assenti solo in un seed senza mkworld-checklist (trascrizione golden, fixture): o tutti o nessuno.
+    map_files = ("peach_medallions.json", "question_panels.json", "map.json")
+    present = [name in seed for name in map_files]
+    check(all(present) or not any(present), f"mappa: file presenti solo in parte {dict(zip(map_files, present))}")
+    if all(present):
+        for name, key in [("peach_medallions.json", "peach_medallions"), ("question_panels.json", "question_panels")]:
+            points = _items(seed, name)
+            check(len(points) == exp[key], f"{name}: {len(points)}, attesi {exp[key]}")
+            check(len({p["id"] for p in points}) == len(points), f"{name}: ID duplicati")
+            _check_points(name, points, check)
+        maps = _items(seed, "map.json")
+        check(len(maps) == 1 and maps[0]["imageUrl"].startswith(MAP_URL_PREFIX)
+              and maps[0]["width"] > 0 and maps[0]["height"] > 0, f"map.json non valido: {maps}")
+        if "p_switches.json" in seed:
+            _check_points("p_switches.json", _items(seed, "p_switches.json"), check)
 
     # --- Pulsanti P (assenti nel seed iniziale trascritto a mano) -------------------------------
     if "p_switches.json" in seed:

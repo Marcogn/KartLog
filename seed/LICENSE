@@ -8,8 +8,14 @@ non ufficiale fatta a mano (tools/seedgen/manual/food_names_it.yaml). Lo stesso 
 modalità specchio in italiano (mirror_mode.json, campo textIt; tools/seedgen/manual/mirror_mode_it.yaml),
 tradotte dal testo di mariowiki.com.
 
+Fanno eccezione i dati della mappa dei collezionabili: peach_medallions.json, question_panels.json, map.json
+e i campi x, y, hint e youtubeId di p_switches.json vengono dal progetto mkworld-checklist (mktools.io) di
+BamisWasTaken, https://github.com/BamisWasTaken/mkworld-checklist, al commit indicato in meta.json. Non sono
+contenuti di Super Mario Wiki e quindi non ricadono nella licenza CC BY-SA 4.0 qui sopra. map.json contiene solo
+l'indirizzo dell'immagine della mappa, scaricata dall'app a runtime.
+
 Le pagine sorgente e le revisioni usate sono elencate in meta.json.
-Questi file restano sotto CC BY-SA 4.0, indipendentemente dalla licenza del codice dell'applicazione.
+I dati di Super Mario Wiki restano sotto CC BY-SA 4.0, indipendentemente dalla licenza del codice dell'applicazione.
 
 Mario Kart World, i suoi personaggi e i relativi nomi sono marchi di Nintendo. Questo progetto non è
 affiliato né approvato da Nintendo. Nessun asset grafico di Nintendo è incluso: i campi imageUrl sono solo indirizzi di immagini
