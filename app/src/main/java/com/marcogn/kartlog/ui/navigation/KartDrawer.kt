@@ -19,6 +19,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Map
+import androidx.compose.material.icons.filled.QuestionMark
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.runtime.Composable
@@ -45,6 +46,7 @@ import com.marcogn.kartlog.ui.common.drawCornerCheckers
 // Home e Impostazioni non hanno un'icona nel mockup: sono disegnate (simbolo Material su disco).
 
 private val BadgeSize = 52.dp
+private val SubBadgeSize = 38.dp
 
 /** Contenuto del drawer: ogni voce chiama [onNavigate] con la sua destinazione. */
 @Composable
@@ -71,11 +73,23 @@ fun KartDrawerSheet(onNavigate: (Destination) -> Unit) {
                     KartBadge(Icons.Filled.Home, red, KartTiles.Ink, size = BadgeSize)
                 }
                 ImageItem(R.string.drawer_skin, R.drawable.home_banana, KartTiles.Orange) { onNavigate(Destination.Skin) }
-                ImageItem(R.string.drawer_medallions, R.drawable.home_coin, KartTiles.Blue) {
-                    onNavigate(Destination.PeachMedallions)
+                // Sezione "Collezionabili" (richiesta dell'autore): intestazione non cliccabile e le tre
+                // liste sotto, rientrate e più piccole, sempre visibili.
+                OutlinedTitle(
+                    stringResource(R.string.drawer_collectibles),
+                    modifier = Modifier.padding(start = 8.dp, top = 6.dp),
+                    fontSize = 22.sp,
+                    textAlign = TextAlign.Start,
+                )
+                SubItem(R.string.drawer_medallions, { onNavigate(Destination.PeachMedallions) }) {
+                    KartBadge(painterResource(R.drawable.home_coin), KartTiles.Blue, size = SubBadgeSize)
                 }
-                ImageItem(R.string.drawer_pswitches, R.drawable.home_mushroom, KartTiles.Pink) {
-                    onNavigate(Destination.PSwitches)
+                SubItem(R.string.drawer_pswitches, { onNavigate(Destination.PSwitches) }) {
+                    KartBadge(painterResource(R.drawable.home_mushroom), KartTiles.Pink, size = SubBadgeSize)
+                }
+                SubItem(R.string.drawer_panels, { onNavigate(Destination.QuestionPanels) }) {
+                    // Nessuna icona nel mockup: "?" disegnato, giallo come il marker dei pannelli sulla mappa.
+                    KartBadge(Icons.Filled.QuestionMark, KartTiles.Yellow, KartTiles.Yellow, size = SubBadgeSize)
                 }
                 DrawerItem(R.string.drawer_map, { onNavigate(Destination.CollectibleMap()) }) {
                     KartBadge(Icons.Filled.Map, KartTiles.Ink, KartTiles.Red, size = BadgeSize)
@@ -104,6 +118,24 @@ fun KartDrawerSheet(onNavigate: (Destination) -> Unit) {
 @Composable
 private fun ImageItem(@StringRes label: Int, @DrawableRes icon: Int, colors: KartColors, onClick: () -> Unit) {
     DrawerItem(label, onClick) { KartBadge(painterResource(icon), colors, size = BadgeSize) }
+}
+
+/** Voce di una sezione: rientrata, icona e testo più piccoli. */
+@Composable
+private fun SubItem(@StringRes label: Int, onClick: () -> Unit, badge: @Composable () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 24.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .clickable(onClick = onClick)
+            .padding(horizontal = 8.dp, vertical = 4.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        badge()
+        OutlinedTitle(stringResource(label), fontSize = 18.sp, textAlign = TextAlign.Start)
+    }
 }
 
 @Composable

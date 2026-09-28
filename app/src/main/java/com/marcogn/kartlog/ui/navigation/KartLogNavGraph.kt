@@ -28,6 +28,7 @@ import com.marcogn.kartlog.ui.consigliami.ConsigliamiScreen
 import com.marcogn.kartlog.ui.home.HomeScreen
 import com.marcogn.kartlog.ui.map.MapScreen
 import com.marcogn.kartlog.ui.medallions.PeachMedallionsScreen
+import com.marcogn.kartlog.ui.panels.QuestionPanelsScreen
 import com.marcogn.kartlog.ui.pswitches.PSwitchesScreen
 import com.marcogn.kartlog.ui.results.ResultsScreen
 import com.marcogn.kartlog.ui.settings.SettingsScreen
@@ -157,6 +158,16 @@ fun KartLogNavGraph(navController: NavHostController = rememberNavController()) 
                     onOpenMap = { focusId ->
                         if (entry.lifecycleIsResumed()) {
                             navController.navigate(Destination.CollectibleMap(MapPointType.P_SWITCH.name, focusId))
+                        }
+                    },
+                )
+            }
+            composable<Destination.QuestionPanels> { entry ->
+                QuestionPanelsScreen(
+                    onMenuClick = openDrawer,
+                    onOpenMap = { focusId ->
+                        if (entry.lifecycleIsResumed()) {
+                            navController.navigate(Destination.CollectibleMap(MapPointType.QUESTION_PANEL.name, focusId))
                         }
                     },
                 )

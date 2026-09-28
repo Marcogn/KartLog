@@ -8,6 +8,7 @@ import com.marcogn.kartlog.data.local.dao.ConsigliamiDao
 import com.marcogn.kartlog.data.local.dao.MapDao
 import com.marcogn.kartlog.data.local.dao.MedallionsDao
 import com.marcogn.kartlog.data.local.dao.PSwitchesDao
+import com.marcogn.kartlog.data.local.dao.QuestionPanelsDao
 import com.marcogn.kartlog.data.local.dao.SeedDao
 import com.marcogn.kartlog.data.local.dao.SeedMetaDao
 import com.marcogn.kartlog.data.local.dao.SkinDao
@@ -72,6 +73,7 @@ abstract class KartLogDatabase : RoomDatabase() {
     abstract fun medallionsDao(): MedallionsDao
     abstract fun pSwitchesDao(): PSwitchesDao
     abstract fun mapDao(): MapDao
+    abstract fun questionPanelsDao(): QuestionPanelsDao
     abstract fun consigliamiDao(): ConsigliamiDao
     abstract fun backupDao(): BackupDao
 }

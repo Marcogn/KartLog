@@ -17,7 +17,6 @@ import kotlinx.coroutines.launch
 
 data class MedallionsUiState(
     val medallions: List<MedallionRow> = emptyList(),
-    val totalCollected: Int = 0,
     /**
      * Monete segnate per bioma prima della mappa, che la migrazione v6 -> v7 non ha potuto convertire
      * (vedi `MIGRATION_6_7`): se non è null si mostra l'avviso, una volta sola.
@@ -35,7 +34,7 @@ class MedallionsViewModel @Inject constructor(
         medallionsDao.allMedallions(),
         userStateDao.observeNotice(NOTICE_MEDALLION_COUNTS_RESET),
     ) { rows, notice ->
-        MedallionsUiState(medallions = rows, totalCollected = rows.count { it.collected }, resetNoticeCount = notice)
+        MedallionsUiState(medallions = rows, resetNoticeCount = notice)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), MedallionsUiState())
 
     fun onMedallionToggled(medallionId: String, collected: Boolean) {

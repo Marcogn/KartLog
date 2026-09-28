@@ -36,7 +36,7 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 
 ### 2.1 Struttura
 - `ModalNavigationDrawer` con hamburger in alto a sinistra, sempre disponibile.
-- Voci del drawer: **Home**, **Personaggi**, **Monete Peach**, **Pulsanti P**, **Mappa** (§2.4), **Consigliami**, **Risultati**, più in fondo **Impostazioni / Info** (crediti e licenze dei dati, §5.5).
+- Voci del drawer: **Home**, **Personaggi**, la sezione **Collezionabili** (intestazione non cliccabile con tre voci più piccole e rientrate, sempre visibili: **Monete Peach**, **Pulsanti P**, **Pannelli ?**), **Mappa del mondo** (§2.4), **Consigliami**, **Risultati**, più in fondo **Impostazioni / Info** (crediti e licenze dei dati, §5.5).
 
 ### 2.2 Home
 - Griglia 2×2 di pulsanti grandi (disposizione dell'autore, 28/09/2026): **Personaggi, Risultati** / **Pulsanti P, Mappa del mondo** (§2.4). Monete Peach non ha più una tessera: resta nel menu laterale e sulla mappa.
@@ -78,7 +78,7 @@ In alto c'è il contatore globale (`x/200`, `x/394`). In basso a destra, in sovr
 - Zoom con il pizzico o il doppio tap (fino a ×8), trascinamento; i marker crescono con lo zoom (piccoli con la mappa intera, pieni da ×4) ma non seguono l'ingrandimento dell'immagine. Forma e simbolo per tipo: Pulsante P = cerchio blu con "P", Moneta Peach = moneta rosa con corona, pannello "?" = quadrato giallo con "?"; i punti già fatti restano riconoscibili, attenuati, con una spunta verde.
 - **Filtri visivi** in alto (pulsantoni rossi in griglia 2×2): un interruttore per tipo, con il marker come legenda e il contatore `fatti/totali`, e "Mostra fatti" per mostrare o nascondere i punti già fatti. Aperta da una schermata, mostra solo il suo tipo.
 - Tap su un punto: popup (§ grafica) con il nome della missione e il luogo (Pulsanti P), le istruzioni (inglese), l'interruttore "Presa/Completata/Attivato" e "Guarda il video" (YouTube, Intent `ACTION_VIEW`). Lo stato è lo stesso delle liste.
-- I **pannelli "?"** (150) per ora esistono solo qui, senza contatore in Home.
+- I **pannelli "?"** (150) hanno anche una lista uno per uno come le Monete Peach (stessa schermata condivisa, `MapPointListScreen`), senza contatore in Home.
 
 ### 2.5 Consigliami
 Vedi §6 per l'algoritmo. UI:
