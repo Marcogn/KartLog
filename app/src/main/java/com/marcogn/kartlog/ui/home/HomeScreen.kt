@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Map
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -48,9 +49,10 @@ import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 import com.marcogn.kartlog.ui.common.OutlinedTitle
 
 private data class HomeTile(
-    @DrawableRes val icon: Int,
+    val badge: @Composable () -> Unit,
     val title: String,
-    val counter: String,
+    /** null = nessun contatore (Mappa del mondo, scelta dell'autore). */
+    val counter: String?,
     val colors: KartColors,
     val onClick: () -> Unit,
 )
@@ -59,14 +61,14 @@ private data class HomeTile(
 fun HomeScreen(
     onMenuClick: () -> Unit,
     onSkinClick: () -> Unit,
-    onMedallionsClick: () -> Unit,
     onPSwitchesClick: () -> Unit,
+    onMapClick: () -> Unit,
     onConsigliamiClick: () -> Unit,
     onResultsClick: () -> Unit,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
-    HomeContent(state, onMenuClick, onSkinClick, onMedallionsClick, onPSwitchesClick, onConsigliamiClick, onResultsClick)
+    HomeContent(state, onMenuClick, onSkinClick, onPSwitchesClick, onMapClick, onConsigliamiClick, onResultsClick)
 }
 
 /** Home senza ViewModel: separata per poterla disegnare nei test con uno stato fisso. */
@@ -75,8 +77,8 @@ internal fun HomeContent(
     state: HomeUiState,
     onMenuClick: () -> Unit,
     onSkinClick: () -> Unit,
-    onMedallionsClick: () -> Unit,
     onPSwitchesClick: () -> Unit,
+    onMapClick: () -> Unit,
     onConsigliamiClick: () -> Unit,
     onResultsClick: () -> Unit,
 ) {
@@ -88,17 +90,21 @@ internal fun HomeContent(
     fun counter(owned: Int, total: Int): String =
         if (total == 0) notAvailable else stringResource(R.string.home_counter_format, owned, total)
 
-    // Icone dal mockup dell'autore, una per funzione: il trofeo resta a Risultati, la stella a
-    // Consigliami anche dopo lo scambio di posizione tra le due.
+    fun image(@DrawableRes icon: Int, colors: KartColors): @Composable () -> Unit = { KartBadge(painterResource(icon), colors) }
+
+    // Disposizione dell'autore (28/09/2026): Personaggi e Risultati, Pulsanti P e Mappa del mondo,
+    // Consigliami largo sotto. Le Monete Peach restano nel menu laterale e sulla mappa. Icone dal
+    // mockup, una per funzione; la mappa non ce l'ha ed è disegnata (bianca su rosso, come il
+    // pulsantone di Monete Peach e Pulsanti P).
     val tiles = listOf(
-        HomeTile(R.drawable.home_banana, stringResource(R.string.home_option_skin_title),
+        HomeTile(image(R.drawable.home_banana, KartTiles.Orange), stringResource(R.string.home_option_skin_title),
             counter(state.ownedOutfits, state.totalOutfits), KartTiles.Orange, onSkinClick),
-        HomeTile(R.drawable.home_coin, stringResource(R.string.home_option_medallions_title),
-            counter(state.collectedMedallions, state.totalMedallions), KartTiles.Blue, onMedallionsClick),
-        HomeTile(R.drawable.home_mushroom, stringResource(R.string.home_option_pswitches_title),
+        HomeTile(image(R.drawable.home_trophy, KartTiles.Yellow), stringResource(R.string.home_option_results_title),
+            counter(state.trophies, state.totalTrophies), KartTiles.Yellow, onResultsClick),
+        HomeTile(image(R.drawable.home_mushroom, KartTiles.Pink), stringResource(R.string.home_option_pswitches_title),
             counter(state.completedPSwitches, state.totalPSwitches), KartTiles.Pink, onPSwitchesClick),
-        HomeTile(R.drawable.home_trophy, stringResource(R.string.home_option_results_title),
-            counter(state.eventsWithResult, state.totalEvents), KartTiles.Yellow, onResultsClick),
+        HomeTile({ KartBadge(Icons.Filled.Map, KartTiles.Blue, KartTiles.Red) }, stringResource(R.string.home_option_map_title),
+            null, KartTiles.Blue, onMapClick),
     )
 
     Scaffold(
@@ -155,10 +161,10 @@ private fun HomeTileCard(tile: HomeTile, modifier: Modifier) {
             verticalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterVertically),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            KartBadge(painterResource(tile.icon), tile.colors)
-            // Due righe se serve ("Peach Medallions" in inglese non ci sta in una), mai i puntini.
+            tile.badge()
+            // Due righe se serve, mai i puntini.
             OutlinedTitle(tile.title, fontSize = 22.sp, maxLines = 2)
-            KartCounterPill(tile.counter, tile.colors)
+            tile.counter?.let { KartCounterPill(it, tile.colors) }
         }
     }
 }

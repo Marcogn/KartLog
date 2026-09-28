@@ -39,8 +39,8 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 - Voci del drawer: **Home**, **Personaggi**, **Monete Peach**, **Pulsanti P**, **Mappa** (§2.4), **Consigliami**, **Risultati**, più in fondo **Impostazioni / Info** (crediti e licenze dei dati, §5.5).
 
 ### 2.2 Home
-- Griglia 2×2 di pulsanti **quadrati** e grandi: Personaggi, Monete Peach, Pulsanti P, Risultati.
-- Ogni pulsante mostra icona, titolo e un contatore di progresso (es. `87 / 127`, `143 / 200`); per Risultati (§2.6) è il numero di eventi con almeno un trofeo registrato (a qualsiasi cilindrata) sul totale degli eventi (`12 / 20`), senza altro testo.
+- Griglia 2×2 di pulsanti grandi (disposizione dell'autore, 28/09/2026): **Personaggi, Risultati** / **Pulsanti P, Mappa del mondo** (§2.4). Monete Peach non ha più una tessera: resta nel menu laterale e sulla mappa.
+- Ogni pulsante mostra icona, titolo e un contatore di progresso (es. `87 / 127`); per Risultati (§2.6) è il numero di trofei registrati, uno per coppia evento + cilindrata di qualsiasi livello, su eventi × 4 cilindrate (`12 / 80`). La Mappa del mondo non ha contatore; la sua icona è disegnata (mappa bianca su disco rosso).
 - Sotto la griglia, un pulsante largo a tutta riga **Consigliami** (§2.5) con una riga di spiegazione ("Quale Gran Premio o Knockout Tour correre, e con chi, per sbloccare più outfit") e nessun contatore.
 - Il look deve essere colorato e "da gioco": palette vivace, angoli arrotondati generosi, tipografia bold. Non deve imitare la UI ufficiale. Dal 26/09/2026 segue il mockup dell'autore: banner con cielo e pista (logo in Home, titolo altrove) in alto su ogni schermata, tessere a gradiente con scacchi tenui, icona tonda, titolo bianco con contorno scuro e contatore in una pillola, pista in fondo alla Home. Font dei titoli Lilita One.
 

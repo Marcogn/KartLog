@@ -157,6 +157,8 @@ Flag della build release: `-PacceptSeedChanges`, `-PofflineSeed`, `-PpythonExec=
 - 2026-09-28 · Pulsanti P: 391 nomi coincidono con mariowiki (confronto su lettere e cifre), 3 differiscono per una parola ("collect/grab", "theatre/theater", "the way/your way") e sono in `manual/checklist_mission_names.yaml`. Pannelli "?": 150 confermati sulla pagina "? Panel" di mariowiki (`expected_counts.yaml`).
 - 2026-09-28 · Mappa, scelte mie: marker come l'oggetto nel gioco (P blu, moneta rosa, "?" giallo) invece dei colori delle tessere della Home; i punti fatti sono attenuati con una spunta, non grigi/colorati come in Personaggi, perché sulla mappa vanno evidenziati quelli da trovare. Aperta da Monete Peach o Pulsanti P mostra solo quel tipo (i filtri restano). Voce del drawer dopo Pulsanti P, nessuna tessera in Home ("unica voce", autore).
 
+- 2026-09-28 · Home rivista dall'autore: Personaggi+Risultati, Pulsanti P+Mappa del mondo (senza contatore, icona Material bianca su disco rosso), Consigliami largo. Monete Peach solo nel menu (lista mantenuta). Contatore di Risultati = righe di `best_results` (coppie evento+cilindrata, qualsiasi trofeo) su eventi × `Cc.entries` (80); prima contava gli eventi con almeno un trofeo.
+
 ## Manutenzione di questo file
 - A fine sessione: aggiorna **Stato attuale** e aggiungi a **Decisioni prese** ogni scelta non ovvia fatta durante la sessione.
 - Se cambia un comando, una convenzione o la struttura del repository, aggiorna la sezione corrispondente nella stessa sessione.

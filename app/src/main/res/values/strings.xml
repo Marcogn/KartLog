@@ -13,7 +13,7 @@
     <string name="drawer_settings">Impostazioni / Info</string>
 
     <string name="home_option_skin_title">Personaggi</string>
-    <string name="home_option_medallions_title">Monete Peach</string>
+    <string name="home_option_map_title">Mappa del mondo</string>
     <string name="home_option_pswitches_title">Pulsanti P</string>
     <string name="home_option_consigliami_title">Consigliami</string>
     <string name="home_counter_format">%1$d / %2$d</string>
@@ -117,8 +117,8 @@
 
 
     <!-- Mappa dei collezionabili (mkworld-checklist) -->
-    <string name="drawer_map">Mappa</string>
-    <string name="map_title">Mappa</string>
+    <string name="drawer_map">Mappa del mondo</string>
+    <string name="map_title">Mappa del mondo</string>
     <string name="map_open">Apri la mappa</string>
     <string name="map_show_on_map">Mostra sulla mappa</string>
     <string name="map_filter_medallions">Monete</string>

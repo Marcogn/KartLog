@@ -164,7 +164,7 @@ class ConsigliamiDaoTest {
 
         val results = userStateDao.bestResultsForEvent(eventId).first().associate { it.cc to it.rank }
         assertEquals(mapOf(Cc.CC_150 to TrophyRank.GOLD_1_STAR, Cc.CC_100 to TrophyRank.BRONZE), results)
-        assertEquals(1, userStateDao.countEventsWithResult().first())
+        assertEquals(2, userStateDao.countTrophies().first())  // una per cilindrata
 
         userStateDao.deleteBestResult(eventId, Cc.CC_150)
         assertEquals(listOf(Cc.CC_100), userStateDao.bestResultsForEvent(eventId).first().map { it.cc })

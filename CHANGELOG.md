@@ -15,6 +15,9 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 - **Monete Peach una per una.** Le 200 monete diventano punti sulla mappa
   con le loro istruzioni, al posto del contatore per bioma. I conteggi
   segnati prima non si possono convertire: un avviso lo spiega.
+- **Home rivista.** Personaggi e Risultati, Pulsanti P e Mappa del mondo,
+  Consigliami sotto; Monete Peach resta nel menu. Il contatore di
+  Risultati conta i trofei per cilindrata (x/80), non più gli eventi.
 - **Pannelli "?".** I 150 pannelli, per ora solo sulla mappa, inclusi nel
   backup.
 

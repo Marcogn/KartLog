@@ -97,9 +97,12 @@ interface UserStateDao {
     @Query("SELECT * FROM best_results WHERE eventId = :eventId")
     fun bestResultsForEvent(eventId: String): Flow<List<BestResultEntity>>
 
-    /** Eventi con almeno un trofeo a una qualsiasi cilindrata, per il contatore della Home. */
-    @Query("SELECT COUNT(DISTINCT eventId) FROM best_results WHERE eventId IN (SELECT id FROM events)")
-    fun countEventsWithResult(): Flow<Int>
+    /**
+     * Trofei registrati, uno per coppia (evento, cilindrata) di qualsiasi livello: il contatore della
+     * Home, sul totale eventi × cilindrate (scelta dell'autore, 28/09/2026).
+     */
+    @Query("SELECT COUNT(*) FROM best_results WHERE eventId IN (SELECT id FROM events)")
+    fun countTrophies(): Flow<Int>
 
     /** Tutti i migliori risultati, per calcolare `bestRank(E, cc)` (SPEC §6.3) su tutti gli eventi in una volta. */
     @Query("SELECT * FROM best_results")

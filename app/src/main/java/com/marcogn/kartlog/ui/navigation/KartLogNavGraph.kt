@@ -124,8 +124,8 @@ fun KartLogNavGraph(navController: NavHostController = rememberNavController()) 
                 HomeScreen(
                     onMenuClick = openDrawer,
                     onSkinClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.Skin) },
-                    onMedallionsClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.PeachMedallions) },
                     onPSwitchesClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.PSwitches) },
+                    onMapClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.CollectibleMap()) },
                     onConsigliamiClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.Consigliami) },
                     onResultsClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.Results) },
                 )
