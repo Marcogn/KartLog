@@ -140,4 +140,7 @@
     </plurals>
     <string name="medallions_reset_notice_ok">Got it</string>
     <string name="settings_map_credit">Map, locations of Peach Medallions, P Switches and ? Panels, instructions and videos: the mkworld-checklist project (mktools.io) by BamisWasTaken, github.com/BamisWasTaken/mkworld-checklist. The map image is downloaded when a connection is available and is not bundled with the app.</string>
+    <string name="drawer_collectibles">Collectibles</string>
+    <string name="drawer_panels">\? Panels</string>
+    <string name="panels_title">\? Panels</string>
 </resources>

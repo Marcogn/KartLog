@@ -21,6 +21,10 @@ sealed interface Destination {
     @Serializable
     data object PSwitches : Destination
 
+    /** Pannelli "?" uno per uno, come le Monete Peach (sezione "Collezionabili" del drawer). */
+    @Serializable
+    data object QuestionPanels : Destination
+
     /**
      * Mappa dei collezionabili (dati di mkworld-checklist): voce del drawer, e pulsantone in Monete
      * Peach e Pulsanti P. [type] = nome di un [com.marcogn.kartlog.domain.model.MapPointType] da

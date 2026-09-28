@@ -41,6 +41,8 @@ Dalla specifica completa ([`SPEC.md`](SPEC.md)):
   trovarle e il tasto per vederle sulla mappa.
 - **Pulsanti P**: checklist per bioma e percorso, con ricerca e
   "segna tutti".
+- **Pannelli "?"**: i 150 pannelli uno per uno, come le Monete Peach.
+  Nel menu laterale le tre liste stanno sotto "Collezionabili".
 - **Mappa**: Monete Peach, Pulsanti P e pannelli "?" sulla mappa del
   mondo, con zoom, filtri per tipo e per "fatti", istruzioni e video.
   Si apre dal menu o dal pulsantone rosso di Monete Peach e Pulsanti P.

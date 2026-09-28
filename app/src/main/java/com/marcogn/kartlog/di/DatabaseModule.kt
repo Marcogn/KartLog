@@ -15,6 +15,7 @@ import com.marcogn.kartlog.data.local.dao.ConsigliamiDao
 import com.marcogn.kartlog.data.local.dao.MapDao
 import com.marcogn.kartlog.data.local.dao.MedallionsDao
 import com.marcogn.kartlog.data.local.dao.PSwitchesDao
+import com.marcogn.kartlog.data.local.dao.QuestionPanelsDao
 import com.marcogn.kartlog.data.local.dao.SeedDao
 import com.marcogn.kartlog.data.local.dao.SeedMetaDao
 import com.marcogn.kartlog.data.local.dao.SkinDao
@@ -54,6 +55,9 @@ object DatabaseModule {
 
     @Provides
     fun providePSwitchesDao(database: KartLogDatabase): PSwitchesDao = database.pSwitchesDao()
+
+    @Provides
+    fun provideQuestionPanelsDao(database: KartLogDatabase): QuestionPanelsDao = database.questionPanelsDao()
 
     @Provides
     fun provideMapDao(database: KartLogDatabase): MapDao = database.mapDao()

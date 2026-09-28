@@ -140,4 +140,7 @@
     </plurals>
     <string name="medallions_reset_notice_ok">Ho capito</string>
     <string name="settings_map_credit">Mappa, posizioni di Monete Peach, Pulsanti P e pannelli ?, istruzioni (in inglese) e video: progetto mkworld-checklist (mktools.io) di BamisWasTaken, github.com/BamisWasTaken/mkworld-checklist. L\'immagine della mappa si scarica quando c\'è una connessione e non è inclusa nell\'app.</string>
+    <string name="drawer_collectibles">Collezionabili</string>
+    <string name="drawer_panels">Pannelli ?</string>
+    <string name="panels_title">Pannelli ?</string>
 </resources>

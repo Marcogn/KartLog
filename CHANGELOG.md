@@ -18,8 +18,11 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 - **Home rivista.** Personaggi e Risultati, Pulsanti P e Mappa del mondo,
   Consigliami sotto; Monete Peach resta nel menu. Il contatore di
   Risultati conta i trofei per cilindrata (x/80), non più gli eventi.
-- **Pannelli "?".** I 150 pannelli, per ora solo sulla mappa, inclusi nel
-  backup.
+- **Pannelli "?".** I 150 pannelli sulla mappa e in una pagina dedicata,
+  uno per uno con le istruzioni come le Monete Peach; inclusi nel backup.
+- **Menu con i Collezionabili.** Monete Peach, Pulsanti P e Pannelli ?
+  raggruppati sotto "Collezionabili", come voci più piccole sempre
+  visibili.
 
 ## [1.0.0] - 2026-09-27
 
