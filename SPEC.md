@@ -75,8 +75,8 @@ In alto c'è il contatore globale (`x/200`, `x/394`). In basso a destra, in sovr
 
 **Mappa** (voce del drawer, e pulsantone delle due schermate sopra)
 - L'immagine della mappa del mondo di mkworld-checklist, scaricata a runtime come le immagini del wiki (URL in `map.json`, mai nell'APK); senza rete e senza cache resta il mare, e i punti si vedono e si toccano lo stesso.
-- Zoom con il pizzico o il doppio tap (fino a ×8), trascinamento; i marker hanno la stessa dimensione a ogni zoom. Pulsante P blu con "P", Moneta Peach rosa, pannello "?" giallo; i punti già fatti sono attenuati con una spunta.
-- **Filtri visivi** in alto (pulsantoni rossi): un interruttore per tipo, con il contatore `fatti/totali`, e "Fatti" per mostrare o nascondere i punti già fatti. Aperta da una schermata, mostra solo il suo tipo.
+- Zoom con il pizzico o il doppio tap (fino a ×8), trascinamento; i marker crescono con lo zoom (piccoli con la mappa intera, pieni da ×4) ma non seguono l'ingrandimento dell'immagine. Forma e simbolo per tipo: Pulsante P = cerchio blu con "P", Moneta Peach = moneta rosa con corona, pannello "?" = quadrato giallo con "?"; i punti già fatti restano riconoscibili, attenuati, con una spunta verde.
+- **Filtri visivi** in alto (pulsantoni rossi in griglia 2×2): un interruttore per tipo, con il marker come legenda e il contatore `fatti/totali`, e "Mostra fatti" per mostrare o nascondere i punti già fatti. Aperta da una schermata, mostra solo il suo tipo.
 - Tap su un punto: popup (§ grafica) con il nome della missione e il luogo (Pulsanti P), le istruzioni (inglese), l'interruttore "Presa/Completata/Attivato" e "Guarda il video" (YouTube, Intent `ACTION_VIEW`). Lo stato è lo stesso delle liste.
 - I **pannelli "?"** (150) per ora esistono solo qui, senza contatore in Home.
 

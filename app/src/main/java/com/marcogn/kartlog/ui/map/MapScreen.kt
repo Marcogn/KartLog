@@ -1,10 +1,10 @@
 package com.marcogn.kartlog.ui.map
 
 import android.content.Intent
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -135,48 +135,51 @@ fun MapScreen(
 }
 
 @Composable
-private fun MapFilters(
+internal fun MapFilters(
     state: MapUiState,
     onTypeToggled: (MapPointType) -> Unit,
     onShowDoneToggled: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .horizontalScroll(rememberScrollState())
-            .padding(horizontal = 8.dp, vertical = 8.dp),
-        horizontalArrangement = Arrangement.spacedBy(6.dp),
-        verticalAlignment = Alignment.CenterVertically,
+    // Griglia 2×2 a larghezza fissa, non una riga scorrevole: con larghezza infinita i testi che si
+    // rimpiccioliscono dei pulsantoni finivano a larghezza zero (pulsanti vuoti, visto dall'autore).
+    @Composable
+    fun TypeButton(type: MapPointType, modifier: Modifier) {
+        val counter = state.counters[type]
+        KartChoiceButton(
+            text = stringResource(type.filterLabel()) + (counter?.let { " ${it.done}/${it.total}" } ?: ""),
+            selected = type in state.visibleTypes,
+            onClick = { onTypeToggled(type) },
+            modifier = modifier,
+            trailing = { MarkerIcon(type, Modifier.padding(start = 6.dp)) },
+        )
+    }
+    Column(
+        modifier = modifier.fillMaxWidth().padding(8.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
     ) {
         // Stesso ordine delle voci del drawer: Monete Peach, Pulsanti P, poi i pannelli "?".
-        listOf(MapPointType.MEDALLION, MapPointType.P_SWITCH, MapPointType.QUESTION_PANEL).forEach { type ->
-            val counter = state.counters[type]
+        Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            TypeButton(MapPointType.MEDALLION, Modifier.weight(1f))
+            TypeButton(MapPointType.P_SWITCH, Modifier.weight(1f))
+        }
+        Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            TypeButton(MapPointType.QUESTION_PANEL, Modifier.weight(1f))
             KartChoiceButton(
-                text = stringResource(type.filterLabel()) + (counter?.let { " ${it.done}/${it.total}" } ?: ""),
-                selected = type in state.visibleTypes,
-                onClick = { onTypeToggled(type) },
-                trailing = { MarkerDot(type, Modifier.padding(start = 6.dp)) },
+                text = stringResource(R.string.map_filter_show_done),
+                selected = state.showDone,
+                onClick = onShowDoneToggled,
+                modifier = Modifier.weight(1f),
             )
         }
-        KartChoiceButton(
-            text = stringResource(R.string.map_filter_show_done),
-            selected = state.showDone,
-            onClick = onShowDoneToggled,
-        )
     }
 }
 
-/** Legenda nei filtri: lo stesso pallino del marker sulla mappa. */
+/** Legenda nei filtri: lo stesso marker disegnato sulla mappa. */
 @Composable
-private fun MarkerDot(type: MapPointType, modifier: Modifier = Modifier) {
-    Box(
-        modifier
-            .size(16.dp)
-            .clip(CircleShape)
-            .background(type.markerColor())
-            .border(2.dp, KartInk, CircleShape),
-    )
+private fun MarkerIcon(type: MapPointType, modifier: Modifier = Modifier) {
+    val glyphs = rememberMarkerGlyphs()
+    Canvas(modifier.size(22.dp)) { drawMarker(type, center, 9.dp.toPx(), glyphs) }
 }
 
 private fun MapPointType.filterLabel(): Int = when (this) {

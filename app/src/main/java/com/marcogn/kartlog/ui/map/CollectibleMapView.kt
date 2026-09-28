@@ -18,6 +18,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.drawscope.scale
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TransformOrigin
@@ -50,7 +55,8 @@ import kotlin.math.min
 
 private const val MAX_ZOOM = 8f
 private const val FOCUS_ZOOM = 4f
-private val MarkerRadius = 11.dp
+private val MarkerRadius = 12.dp
+private val MinMarkerRadius = 6.5.dp
 private val TouchRadius = 24.dp
 
 /** Mare attorno alla mappa, e sfondo finché l'immagine non è scaricata. */
@@ -200,50 +206,102 @@ internal fun CollectibleMapView(
 
 @Composable
 private fun MarkerLayer(viewport: MapViewport, points: List<MapPoint>, highlightId: String?) {
-    val measurer = rememberTextMeasurer()
-    val glyphStyle = TextStyle(fontFamily = KartFont, fontSize = 13.sp, color = Color.White)
-    val glyphs = remember(measurer) {
-        mapOf(
-            "P" to measurer.measure("P", glyphStyle),
-            "?" to measurer.measure("?", glyphStyle.copy(color = KartInk)),
-            "✓" to measurer.measure("✓", glyphStyle),
-        )
-    }
+    val glyphs = rememberMarkerGlyphs()
     Canvas(Modifier.fillMaxSize()) {
-        val r = MarkerRadius.toPx()
+        val r = markerRadius(viewport.scale).toPx()
         // I già fatti sotto, così non coprono quelli ancora da fare.
         for (point in points.sortedBy { !it.done }) {
             val at = viewport.toScreen(point.x, point.y)
-            if (at.x < -r || at.y < -r || at.x > size.width + r || at.y > size.height + r) continue
-            drawMarker(point, at, r, glyphs, highlighted = point.id == highlightId)
+            if (at.x < -2 * r || at.y < -2 * r || at.x > size.width + 2 * r || at.y > size.height + 2 * r) continue
+            drawMarker(point.type, at, r, glyphs, done = point.done, highlighted = point.id == highlightId)
         }
     }
 }
 
-private fun DrawScope.drawMarker(
-    point: MapPoint,
+/**
+ * Raggio dei marker: piccoli con la mappa intera (sono più di 700, altrimenti si coprono tutti),
+ * pieni da zoom ×4 in su. Il raggio del tocco resta [TouchRadius].
+ */
+private fun markerRadius(scale: Float): Dp = lerp(MinMarkerRadius, MarkerRadius, ((scale - 1f) / 3f).coerceIn(0f, 1f))
+
+/** Lettere dei marker, misurate una volta a [MarkerRadius] e scalate al disegno. */
+@Composable
+internal fun rememberMarkerGlyphs(): Map<String, TextLayoutResult> {
+    val measurer = rememberTextMeasurer()
+    return remember(measurer) {
+        val style = TextStyle(fontFamily = KartFont, fontSize = 14.sp, color = Color.White)
+        mapOf(
+            "P" to measurer.measure("P", style),
+            "?" to measurer.measure("?", style.copy(color = KartInk)),
+            "✓" to measurer.measure("✓", style.copy(fontSize = 11.sp)),
+        )
+    }
+}
+
+/**
+ * Un marker per tipo, con forma e simbolo diversi oltre al colore: Pulsante P = cerchio blu con la
+ * "P", Moneta Peach = moneta rosa con la corona, pannello "?" = quadrato giallo con il "?". I già
+ * fatti restano riconoscibili (stessa forma, attenuati) con una spunta verde in alto a destra.
+ */
+internal fun DrawScope.drawMarker(
+    type: MapPointType,
     at: Offset,
     r: Float,
     glyphs: Map<String, TextLayoutResult>,
-    highlighted: Boolean,
+    done: Boolean = false,
+    highlighted: Boolean = false,
 ) {
-    val alpha = if (point.done) 0.55f else 1f
+    val alpha = if (done) 0.5f else 1f
+    val border = max(1.5f, r * 0.18f)
     if (highlighted) {
         drawCircle(Color.White, radius = r * 1.9f, center = at, style = Stroke(r * 0.35f))
         drawCircle(KartInk, radius = r * 2.15f, center = at, style = Stroke(r * 0.15f))
     }
-    drawCircle(KartInk.copy(alpha = alpha), radius = r + 2.dp.toPx(), center = at)
-    drawCircle(point.type.markerColor().copy(alpha = alpha), radius = r, center = at)
-    val glyph = when {
-        point.done -> glyphs["✓"]
-        point.type == MapPointType.P_SWITCH -> glyphs["P"]
-        point.type == MapPointType.QUESTION_PANEL -> glyphs["?"]
-        else -> null
+    val color = type.markerColor().copy(alpha = alpha)
+    val ink = KartInk.copy(alpha = alpha)
+    when (type) {
+        MapPointType.QUESTION_PANEL -> {
+            val side = r * 1.8f
+            val corner = CornerRadius(r * 0.3f)
+            val topLeft = Offset(at.x - side / 2, at.y - side / 2)
+            drawRoundRect(ink, topLeft - Offset(border, border), Size(side + 2 * border, side + 2 * border), corner)
+            drawRoundRect(color, topLeft, Size(side, side), corner)
+            drawGlyph(glyphs.getValue("?"), at, r, alpha)
+        }
+        MapPointType.P_SWITCH -> {
+            drawCircle(ink, radius = r + border, center = at)
+            drawCircle(color, radius = r, center = at)
+            drawGlyph(glyphs.getValue("P"), at, r, alpha)
+        }
+        MapPointType.MEDALLION -> {
+            drawCircle(ink, radius = r + border, center = at)
+            drawCircle(color, radius = r, center = at)
+            drawCircle(Color.White.copy(alpha = alpha), radius = r * 0.78f, center = at, style = Stroke(max(1f, r * 0.1f)))
+            drawPath(crownPath(at, r), Color.White.copy(alpha = alpha))
+        }
     }
-    if (glyph != null) {
+    if (done) {
+        val c = at + Offset(r * 0.8f, -r * 0.8f)
+        val badge = r * 0.55f
+        drawCircle(KartInk, radius = badge + border * 0.6f, center = c)
+        drawCircle(KartTiles.Green.base, radius = badge, center = c)
+        drawGlyph(glyphs.getValue("✓"), c, badge * 1.6f, 1f)
+    }
+}
+
+/** Disegna la lettera misurata a [MarkerRadius] scalata al raggio [r], centrata in [at]. */
+private fun DrawScope.drawGlyph(glyph: TextLayoutResult, at: Offset, r: Float, alpha: Float) {
+    val k = r / MarkerRadius.toPx()
+    scale(k, pivot = at) {
         drawText(glyph, topLeft = Offset(at.x - glyph.size.width / 2f, at.y - glyph.size.height / 2f), alpha = alpha)
-    } else {
-        // Moneta: anello bianco, come il bordo delle monete del gioco.
-        drawCircle(Color.White, radius = r * 0.55f, center = at, style = Stroke(max(1f, r * 0.22f)))
     }
+}
+
+/** Corona stilizzata (tre punte) come sulle monete di Peach. */
+private fun crownPath(at: Offset, r: Float): Path = Path().apply {
+    fun p(x: Float, y: Float) = Offset(at.x + x * r, at.y + y * r)
+    val points = listOf(p(-0.5f, 0.32f), p(-0.55f, -0.3f), p(-0.25f, 0f), p(0f, -0.42f), p(0.25f, 0f), p(0.55f, -0.3f), p(0.5f, 0.32f))
+    moveTo(points[0].x, points[0].y)
+    points.drop(1).forEach { lineTo(it.x, it.y) }
+    close()
 }

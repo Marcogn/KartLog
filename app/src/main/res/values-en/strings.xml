@@ -124,7 +124,7 @@
     <string name="map_filter_medallions">Medallions</string>
     <string name="map_filter_pswitches">P Switches</string>
     <string name="map_filter_panels">\? Panels</string>
-    <string name="map_filter_show_done">Done</string>
+    <string name="map_filter_show_done">Show done</string>
     <string name="map_point_medallion_format">Peach Medallion #%1$d</string>
     <string name="map_point_panel_format">\? Panel #%1$d</string>
     <string name="map_point_pswitch">P Switch</string>

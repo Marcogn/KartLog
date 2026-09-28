@@ -159,6 +159,8 @@ Flag della build release: `-PacceptSeedChanges`, `-PofflineSeed`, `-PpythonExec=
 
 - 2026-09-28 · Home rivista dall'autore: Personaggi+Risultati, Pulsanti P+Mappa del mondo (senza contatore, icona Material bianca su disco rosso), Consigliami largo. Monete Peach solo nel menu (lista mantenuta). Contatore di Risultati = righe di `best_results` (coppie evento+cilindrata, qualsiasi trofeo) su eventi × `Cc.entries` (80); prima contava gli eventi con almeno un trofeo.
 
+- 2026-09-28 · Mappa, dopo la prova dell'autore: pulsantoni dei filtri vuoti perché in una riga scorrevole (larghezza infinita, `weight` a zero: vale per ogni `KartChoiceButton`, mai in `horizontalScroll`) → griglia 2×2, test `MapFiltersTest`. Marker poco chiari → forma per tipo (cerchio P, moneta con corona, quadrato "?"), legenda uguale nei filtri, raggio che cresce con lo zoom, spunta verde sui fatti.
+
 ## Manutenzione di questo file
 - A fine sessione: aggiorna **Stato attuale** e aggiungi a **Decisioni prese** ogni scelta non ovvia fatta durante la sessione.
 - Se cambia un comando, una convenzione o la struttura del repository, aggiorna la sezione corrispondente nella stessa sessione.

@@ -124,7 +124,7 @@
     <string name="map_filter_medallions">Monete</string>
     <string name="map_filter_pswitches">Pulsanti P</string>
     <string name="map_filter_panels">Pannelli ?</string>
-    <string name="map_filter_show_done">Fatti</string>
+    <string name="map_filter_show_done">Mostra fatti</string>
     <string name="map_point_medallion_format">Moneta Peach n. %1$d</string>
     <string name="map_point_panel_format">Pannello ? n. %1$d</string>
     <string name="map_point_pswitch">Pulsante P</string>
