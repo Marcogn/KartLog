@@ -4,11 +4,13 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.marcogn.kartlog.data.local.entity.ActivatedQuestionPanelEntity
 import com.marcogn.kartlog.data.local.entity.BestResultEntity
 import com.marcogn.kartlog.data.local.entity.CharacterUnlockEntity
 import com.marcogn.kartlog.data.local.entity.CollectedMedallionEntity
 import com.marcogn.kartlog.data.local.entity.CompletedPSwitchEntity
 import com.marcogn.kartlog.data.local.entity.OwnedOutfitEntity
+import com.marcogn.kartlog.data.local.entity.PendingNoticeEntity
 import com.marcogn.kartlog.domain.model.Cc
 import kotlinx.coroutines.flow.Flow
 
@@ -51,41 +53,21 @@ interface UserStateDao {
     @Query("DELETE FROM collected_medallions WHERE medallionId = :medallionId")
     suspend fun markMedallionNotCollected(medallionId: String)
 
-    /** +1 sul contatore di un bioma: segna il primo "posto" libero (vedi [MedallionsDao.regionCounters]). */
-    @Query(
-        """
-        INSERT OR IGNORE INTO collected_medallions (medallionId)
-        SELECT id FROM peach_medallions
-        WHERE regionId = :regionId AND id NOT IN (SELECT medallionId FROM collected_medallions)
-        ORDER BY "index" ASC LIMIT 1
-        """
-    )
-    suspend fun collectNextMedallion(regionId: String)
-
-    /** -1 sul contatore di un bioma: libera l'ultimo "posto" segnato. */
-    @Query(
-        """
-        DELETE FROM collected_medallions WHERE medallionId = (
-            SELECT cm.medallionId FROM collected_medallions cm
-            JOIN peach_medallions m ON m.id = cm.medallionId
-            WHERE m.regionId = :regionId
-            ORDER BY m."index" DESC LIMIT 1
-        )
-        """
-    )
-    suspend fun uncollectLastMedallion(regionId: String)
-
     @Query("SELECT COUNT(*) FROM collected_medallions")
     fun countCollectedMedallions(): Flow<Int>
 
-    /** "Segna tutti" di una regione (SPEC §2.4): non tocca i medaglioni già segnati altrove. */
-    @Query(
-        """
-        INSERT OR IGNORE INTO collected_medallions (medallionId)
-        SELECT id FROM peach_medallions WHERE regionId = :regionId
-        """
-    )
-    suspend fun markAllMedallionsCollected(regionId: String)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun markQuestionPanelActivated(entity: ActivatedQuestionPanelEntity)
+
+    @Query("DELETE FROM activated_question_panels WHERE panelId = :panelId")
+    suspend fun markQuestionPanelNotActivated(panelId: String)
+
+    /** Avviso lasciato da una migrazione (vedi [PendingNoticeEntity]), null se non c'è o è già stato chiuso. */
+    @Query("SELECT count FROM pending_notices WHERE id = :id")
+    fun observeNotice(id: String): Flow<Int?>
+
+    @Query("DELETE FROM pending_notices WHERE id = :id")
+    suspend fun dismissNotice(id: String)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun markPSwitchCompleted(entity: CompletedPSwitchEntity)
@@ -115,9 +97,12 @@ interface UserStateDao {
     @Query("SELECT * FROM best_results WHERE eventId = :eventId")
     fun bestResultsForEvent(eventId: String): Flow<List<BestResultEntity>>
 
-    /** Eventi con almeno un trofeo a una qualsiasi cilindrata, per il contatore della Home. */
-    @Query("SELECT COUNT(DISTINCT eventId) FROM best_results WHERE eventId IN (SELECT id FROM events)")
-    fun countEventsWithResult(): Flow<Int>
+    /**
+     * Trofei registrati, uno per coppia (evento, cilindrata) di qualsiasi livello: il contatore della
+     * Home, sul totale eventi × cilindrate (scelta dell'autore, 28/09/2026).
+     */
+    @Query("SELECT COUNT(*) FROM best_results WHERE eventId IN (SELECT id FROM events)")
+    fun countTrophies(): Flow<Int>
 
     /** Tutti i migliori risultati, per calcolare `bestRank(E, cc)` (SPEC §6.3) su tutti gli eventi in una volta. */
     @Query("SELECT * FROM best_results")

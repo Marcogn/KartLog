@@ -9,6 +9,7 @@ import coil3.request.CachePolicy
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.marcogn.kartlog.data.local.dao.SeedDao
+import com.marcogn.kartlog.data.seed.SeedAssetLoader
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -24,6 +25,7 @@ import okio.Path.Companion.toOkioPath
 class WikiImagePrefetcher @Inject constructor(
     @ApplicationContext private val context: Context,
     private val seedDao: SeedDao,
+    private val assets: SeedAssetLoader,
 ) {
 
     suspend fun prefetchAll() {
@@ -33,6 +35,15 @@ class WikiImagePrefetcher @Inject constructor(
                 ImageRequest.Builder(context)
                     .data(url)
                     // Solo su disco: tenere 170 bitmap in memoria all'avvio non serve a nessuna schermata.
+                    .memoryCachePolicy(CachePolicy.DISABLED)
+                    .build()
+            )
+        }
+        // La mappa dei collezionabili (mkworld-checklist, ~280 KB): anche lei in cache, per l'uso offline.
+        assets.readMapImage()?.let { map ->
+            loader.enqueue(
+                ImageRequest.Builder(context)
+                    .data(map.imageUrl)
                     .memoryCachePolicy(CachePolicy.DISABLED)
                     .build()
             )

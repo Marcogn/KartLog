@@ -16,6 +16,7 @@ import com.marcogn.kartlog.data.local.entity.OutfitEntity
 import com.marcogn.kartlog.data.local.entity.OutfitFoodRuleEntity
 import com.marcogn.kartlog.data.local.entity.PSwitchEntity
 import com.marcogn.kartlog.data.local.entity.PeachMedallionEntity
+import com.marcogn.kartlog.data.local.entity.QuestionPanelEntity
 import com.marcogn.kartlog.data.local.entity.RegionEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -55,6 +56,9 @@ interface SeedDao {
     suspend fun insertPeachMedallions(items: List<PeachMedallionEntity>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertQuestionPanels(items: List<QuestionPanelEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPSwitches(items: List<PSwitchEntity>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -90,6 +94,9 @@ interface SeedDao {
     @Query("DELETE FROM peach_medallions")
     suspend fun clearPeachMedallions()
 
+    @Query("DELETE FROM question_panels")
+    suspend fun clearQuestionPanels()
+
     @Query("DELETE FROM p_switches")
     suspend fun clearPSwitches()
 
@@ -108,6 +115,7 @@ interface SeedDao {
         clearPSwitches()
         clearAreas()
         clearPeachMedallions()
+        clearQuestionPanels()
         clearCourses()
         clearFoodGroups()
         clearEvents()
@@ -120,6 +128,7 @@ interface SeedDao {
         insertFoodGroups(seed.foodGroups)
         insertCourses(seed.courses)
         insertPeachMedallions(seed.peachMedallions)
+        insertQuestionPanels(seed.questionPanels)
         insertAreas(seed.areas)
         insertPSwitches(seed.pSwitches)
         insertOutfits(seed.outfits)
@@ -165,4 +174,5 @@ data class SeedContent(
     val pSwitches: List<PSwitchEntity>,
     val events: List<EventEntity>,
     val eventStops: List<EventStopEntity>,
+    val questionPanels: List<QuestionPanelEntity> = emptyList(),
 )

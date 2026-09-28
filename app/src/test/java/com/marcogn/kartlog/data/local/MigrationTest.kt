@@ -168,4 +168,51 @@ class MigrationTest {
         }
     }
 
+    @Test
+    fun `migrazione 6 a 7 porta le monete sulla mappa e lascia l'avviso con quante erano segnate`() {
+        helper.createDatabase(dbName, 6).apply {
+            execSQL("INSERT INTO peach_medallions (id, regionId, `index`) VALUES ('medallion_snow_01', 'snow', 1)")
+            execSQL("INSERT INTO peach_medallions (id, regionId, `index`) VALUES ('medallion_snow_02', 'snow', 2)")
+            execSQL("INSERT INTO collected_medallions (medallionId) VALUES ('medallion_snow_01')")
+            execSQL("INSERT INTO collected_medallions (medallionId) VALUES ('medallion_snow_02')")
+            execSQL(
+                "INSERT INTO p_switches (id, `index`, regionId, courseId, areaId, name) " +
+                    "VALUES ('pswitch_001', 1, 'mesa', 'mario_bros_circuit', NULL, 'Go!')"
+            )
+            execSQL("INSERT INTO completed_p_switches (pSwitchId) VALUES ('pswitch_001')")
+            close()
+        }
+
+        val migrated = helper.runMigrationsAndValidate(dbName, 7, true, MIGRATION_6_7)
+
+        migrated.query("SELECT count FROM pending_notices WHERE id = '$NOTICE_MEDALLION_COUNTS_RESET'").use { cursor ->
+            assertEquals(true, cursor.moveToFirst())
+            assertEquals(2, cursor.getInt(0))
+        }
+        migrated.query("SELECT COUNT(*) FROM collected_medallions").use { cursor ->
+            cursor.moveToFirst()
+            assertEquals(0, cursor.getInt(0))
+        }
+        migrated.query("SELECT COUNT(*) FROM peach_medallions").use { cursor ->
+            cursor.moveToFirst()
+            assertEquals(0, cursor.getInt(0))  // le riempie il reseed (seedVersion 7)
+        }
+        // I Pulsanti P restano quelli, con lo stato dell'utente: cambia solo la posizione (dal reseed).
+        migrated.query("SELECT COUNT(*) FROM completed_p_switches").use { cursor ->
+            cursor.moveToFirst()
+            assertEquals(1, cursor.getInt(0))
+        }
+    }
+
+    @Test
+    fun `migrazione 6 a 7 senza monete segnate non lascia avvisi`() {
+        helper.createDatabase(dbName, 6).close()
+
+        val migrated = helper.runMigrationsAndValidate(dbName, 7, true, MIGRATION_6_7)
+
+        migrated.query("SELECT COUNT(*) FROM pending_notices").use { cursor ->
+            cursor.moveToFirst()
+            assertEquals(0, cursor.getInt(0))
+        }
+    }
 }

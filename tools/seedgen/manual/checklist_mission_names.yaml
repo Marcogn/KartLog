@@ -1,0 +1,8 @@
+# Missioni dei Pulsanti P scritte in modo diverso da mkworld-checklist e da mariowiki (seedgen/checklist.py).
+# nome in mkworld-checklist : nome su mariowiki (quello che resta in app)
+#
+# Verifica 28/09/2026 (commit ee86055): 391 missioni su 394 coincidono già (confronto su lettere e cifre);
+# queste 3 differiscono per una parola, stessa missione nello stesso luogo.
+"Loop around the observatory and collect blue coins!": "Loop around the observatory and grab blue coins!"
+"Ride the rails out to the theatre lobby!": "Ride the rails out to the theater lobby!"
+"Dodge Bowser's minions on the way to the goal!": "Dodge Bowser's minions on your way to the goal!"

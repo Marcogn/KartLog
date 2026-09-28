@@ -78,3 +78,16 @@ cups:
   - "Leaf Cup"
   - "Lightning Cup"
   - "Special Cup"
+
+# Mappa dei collezionabili (seedgen/checklist.py): posizioni di Pulsanti P, Monete Peach e pannelli "?"
+# sull'immagine della mappa, istruzioni in inglese e video YouTube. Progetto mktools.io di BamisWasTaken,
+# usato per scelta dell'autore (28/09/2026) con i crediti in README e Impostazioni/Info.
+# Letto a un commit FISSATO: per aggiornarlo si cambia `commit` e si rivede il diff di seedgen.
+mkworld_checklist:
+  name: "mktools.io — mkworld-checklist (BamisWasTaken)"
+  repo_url: "https://github.com/BamisWasTaken/mkworld-checklist"
+  raw_prefix: "https://raw.githubusercontent.com/BamisWasTaken/mkworld-checklist/"
+  commit: "ee860555a71150a4d3d935ee1ad9a4471742fce6"
+  data: "public/data/checklist-data.json"
+  texts: "public/i18n/en.json"
+  map: "public/imgs/map.webp"

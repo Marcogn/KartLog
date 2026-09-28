@@ -1,59 +1,57 @@
 package com.marcogn.kartlog.ui.medallions
 
-import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.DoneAll
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.MenuBook
-import androidx.compose.material.icons.filled.Remove
+import androidx.compose.material.icons.filled.Place
 import androidx.compose.material3.Card
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilledTonalIconButton
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcogn.kartlog.R
+import com.marcogn.kartlog.data.local.dao.MedallionRow
+import com.marcogn.kartlog.ui.common.KartChoiceButton
+import com.marcogn.kartlog.ui.common.KartPopup
+import com.marcogn.kartlog.ui.common.KartPopupText
 import com.marcogn.kartlog.ui.common.KartTitle
 import com.marcogn.kartlog.ui.common.KartTopBar
-import com.marcogn.kartlog.ui.common.MarkAllConfirmationDialog
 import com.marcogn.kartlog.ui.common.kartSky
+import com.marcogn.kartlog.ui.map.KartMapButton
 import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 
-@OptIn(ExperimentalMaterial3Api::class)
+/**
+ * Le 200 Monete Peach di mkworld-checklist, ognuna con le sue istruzioni (in inglese) e il tasto per
+ * vederla sulla mappa; il pulsantone in basso apre la mappa con le sole monete.
+ */
 @Composable
 fun PeachMedallionsScreen(
     onMenuClick: () -> Unit,
+    onOpenMap: (focusId: String?) -> Unit,
     viewModel: MedallionsViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
-    val context = LocalContext.current
-    var regionPendingConfirmation by remember { mutableStateOf<String?>(null) }
 
     Scaffold(
         modifier = Modifier.kartSky(isKartDarkTheme()),
@@ -66,81 +64,67 @@ fun PeachMedallionsScreen(
                         Icon(Icons.Filled.Menu, contentDescription = stringResource(R.string.cd_menu))
                     }
                 },
-                actions = {
-                    state.guideUrl?.let { url ->
-                        IconButton(onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))) }) {
-                            Icon(Icons.Filled.MenuBook, contentDescription = stringResource(R.string.medallions_open_guide))
-                        }
-                    }
-                },
             )
         },
     ) { padding ->
-        LazyColumn(
-            modifier = Modifier.padding(padding).fillMaxWidth(),
-            contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            item {
-                Text(
-                    text = stringResource(R.string.home_counter_format, state.totalCollected, state.totalCount),
-                    style = MaterialTheme.typography.headlineSmall,
-                    modifier = Modifier.padding(vertical = 16.dp),
-                )
+        Box(Modifier.padding(padding).fillMaxSize()) {
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth(),
+                // Spazio in fondo per il pulsantone della mappa.
+                contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 96.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                item {
+                    Text(
+                        text = stringResource(R.string.home_counter_format, state.totalCollected, state.medallions.size),
+                        style = MaterialTheme.typography.headlineSmall,
+                        modifier = Modifier.padding(vertical = 16.dp),
+                    )
+                }
+                items(state.medallions, key = { it.medallionId }) { medallion ->
+                    MedallionCard(
+                        medallion = medallion,
+                        onToggle = { viewModel.onMedallionToggled(medallion.medallionId, it) },
+                        onShowOnMap = { onOpenMap(medallion.medallionId) },
+                    )
+                }
             }
-            items(state.regions, key = { it.regionId }) { region ->
-                RegionCounterCard(
-                    region = region,
-                    onDecrement = { viewModel.onDecrement(region.regionId) },
-                    onIncrement = { viewModel.onIncrement(region.regionId) },
-                    onMarkAll = { regionPendingConfirmation = region.regionId },
-                )
-            }
+            KartMapButton(onClick = { onOpenMap(null) }, modifier = Modifier.align(Alignment.BottomEnd).padding(20.dp))
         }
     }
 
-    regionPendingConfirmation?.let { regionId ->
-        val regionName = state.regions.firstOrNull { it.regionId == regionId }?.regionName.orEmpty()
-        MarkAllConfirmationDialog(
-            regionName = regionName,
-            onConfirm = {
-                viewModel.onMarkAllRequested(regionId)
-                regionPendingConfirmation = null
-            },
-            onDismiss = { regionPendingConfirmation = null },
-        )
+    state.resetNoticeCount?.let { count ->
+        KartPopup(title = stringResource(R.string.medallions_reset_notice_title), onDismiss = viewModel::onResetNoticeDismissed) {
+            KartPopupText(pluralStringResource(R.plurals.medallions_reset_notice_text, count, count))
+            KartChoiceButton(
+                text = stringResource(R.string.medallions_reset_notice_ok),
+                selected = true,
+                onClick = viewModel::onResetNoticeDismissed,
+            )
+        }
     }
 }
 
 @Composable
-private fun RegionCounterCard(
-    region: RegionMedallions,
-    onDecrement: () -> Unit,
-    onIncrement: () -> Unit,
-    onMarkAll: () -> Unit,
-) {
+private fun MedallionCard(medallion: MedallionRow, onToggle: (Boolean) -> Unit, onShowOnMap: () -> Unit) {
     Card(modifier = Modifier.fillMaxWidth()) {
-        Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text(region.regionName, style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
-                FilledTonalIconButton(onClick = onDecrement, enabled = region.collected > 0) {
-                    Icon(Icons.Filled.Remove, contentDescription = stringResource(R.string.medallions_decrement))
-                }
+        Row(
+            modifier = Modifier.padding(start = 4.dp, end = 4.dp, top = 4.dp, bottom = 8.dp),
+            verticalAlignment = Alignment.Top,
+        ) {
+            Checkbox(checked = medallion.collected, onCheckedChange = onToggle)
+            Column(Modifier.weight(1f).padding(top = 12.dp)) {
                 Text(
-                    stringResource(R.string.home_counter_format, region.collected, region.total),
+                    stringResource(R.string.map_point_medallion_format, medallion.index),
                     style = MaterialTheme.typography.titleMedium,
                 )
-                FilledTonalIconButton(onClick = onIncrement, enabled = region.collected < region.total) {
-                    Icon(Icons.Filled.Add, contentDescription = stringResource(R.string.medallions_increment))
-                }
-                IconButton(onClick = onMarkAll, enabled = region.collected < region.total) {
-                    Icon(Icons.Filled.DoneAll, contentDescription = stringResource(R.string.collectible_mark_all))
+                medallion.hint?.let {
+                    Text(it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
-            LinearProgressIndicator(
-                progress = { if (region.total == 0) 0f else region.collected.toFloat() / region.total },
-                modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
-            )
+            IconButton(onClick = onShowOnMap) {
+                Icon(Icons.Filled.Place, contentDescription = stringResource(R.string.map_show_on_map))
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 {
-  "extractedOn": "2026-09-27",
+  "extractedOn": "2026-09-28",
   "gameVersion": "1.8.0",
   "license": {
     "attribution": "Dati di gioco tratti da Super Mario Wiki (mariowiki.com) e Super Mario Wiki italiana (mariowiki.it)",
@@ -8,7 +8,7 @@
   },
   "note": "",
   "origin": "api",
-  "seedVersion": 6,
+  "seedVersion": 7,
   "sources": [
     {
       "revid": 5455370,
@@ -101,9 +101,14 @@
       "url": "https://www.mariowiki.it/Lista_delle_missioni_di_Mario_Kart_World"
     },
     {
-      "revid": 5498278,
+      "revid": 5503051,
       "title": "Mario Kart World",
       "url": "https://www.mariowiki.com/Mario_Kart_World"
+    },
+    {
+      "revid": null,
+      "title": "mkworld-checklist@ee86055",
+      "url": "https://github.com/BamisWasTaken/mkworld-checklist/tree/ee860555a71150a4d3d935ee1ad9a4471742fce6"
     }
   ],
   "warnings": []

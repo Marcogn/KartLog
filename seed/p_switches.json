@@ -3,3155 +3,4732 @@
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "At the intersection heading to the P Switch \"Charge through the defensive line,\" head to the left instead of the right, but stay on course. Keep heading straight, then go off-road to the right before the first left bend. You will find the P Switch there.",
       "id": "pswitch_001",
       "index": 1,
       "name": "Aim for the Goal Pole atop the massive mushroom!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 30.3711,
+      "y": 65.4384,
+      "youtubeId": "-7kJgZ7WGZA"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "Drop down from the giant loop at the south part of the course to reach this P Switch.",
       "id": "pswitch_002",
       "index": 2,
       "name": "Bring an appetite and race to the goal!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 23.0742,
+      "y": 60.7205,
+      "youtubeId": "InU7T4gIsdI"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "From the Mario Bros. Circuit starting point, turn right then turn left once you reach the main road. Afterward, turn right at the next intersection past the Yoshi's Diner. The P Switch can be found off-road to the right on top of a rock.",
       "id": "pswitch_003",
       "index": 3,
       "name": "Charge through the defensive line!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 26.4531,
+      "y": 67.9688,
+      "youtubeId": "YWDMMqQbJx0"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "Complete the P-Switch mission \"Collect blue coins spanning the bridge!\" in or near Mario Bros. Circuit.",
       "id": "pswitch_004",
       "index": 4,
       "name": "Collect blue coins spanning the bridge!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 30.0508,
+      "y": 56.3802,
+      "youtubeId": "Rc67Z47EkZs"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "This P Switch can be found on the main road just south of the race track.",
       "id": "pswitch_005",
       "index": 5,
       "name": "Collect coins while pulling off high-flying stunts!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 22.0508,
+      "y": 64.822,
+      "youtubeId": "8hNMwMu8U74"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "From Luigi's starting point, turn around and head left off-course past the Yoshi's Diner. Keep heading straight then turn right once you get to the main road. Head straight and you'll find the P Switch on the right side of the road.",
       "id": "pswitch_006",
       "index": 6,
       "name": "Do tricks off the cacti for extra height!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 25.9883,
+      "y": 51.3368,
+      "youtubeId": "rtjA2B9q-7w"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "From Mario's starting point, keep heading right and follow the trail of Fire Flowers. You should pass through three Fire Flowers on the right and one on the left. After the last Fire Flower, head off-course to the left and head straight. When you reach the rock formation, head up two levels of the rock formation, then you will find the P Switch at the right side of that level of the rock formation behind bushes.",
       "id": "pswitch_007",
       "index": 7,
       "name": "Drop in on the racers atop the rocks!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 27.7617,
+      "y": 71.3889,
+      "youtubeId": "lptyec2Razo"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "From Luigi's starting point. Head straight then left up the road. At the first curve, go off-road to the right. Keep heading straight until you pass the lone Fire Flower and the rock formation. The P Switch should be in your vicinity afterward.",
       "id": "pswitch_008",
       "index": 8,
       "name": "Evade the armadillos on your way to the goal!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 28.9297,
+      "y": 51.9835,
+      "youtubeId": "cIoreBfozO4"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "Turn around from the Mario Bros. Circuit starting point and keep heading straight. Turn right at the DINER sign and stay on the main road. The P Switch should be past the train station on the right.",
       "id": "pswitch_009",
       "index": 9,
       "name": "Fly over to Yoshi's for a quick bite!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 22.0977,
+      "y": 56.428,
+      "youtubeId": "MV4VoOYw8dA"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "From Toadette's starting point, head straight. The P Switch can be found behind a building near two billboards.",
       "id": "pswitch_010",
       "index": 10,
       "name": "Follow that helicopter!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 33.7969,
+      "y": 61.8837,
+      "youtubeId": "UTdZV6qUnFM"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "Complete the P-Switch mission \"Gather blue coins and dodge the Goombas!\" in or near Mario Bros. Circuit.",
       "id": "pswitch_011",
       "index": 11,
       "name": "Gather blue coins and dodge the Goombas!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 19.832,
+      "y": 73.6111,
+      "youtubeId": "4ceGUkvonG4"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "From the P Switch \"Do tricks off the cacti for extra height,\" keep heading straight. Once you pass the building on the left that looks like a barn, you will see two traffic cones. Drive straight in the middle of those cones and keep going straight until you reach the P Switch.",
       "id": "pswitch_012",
       "index": 12,
       "name": "Hop along the blocky shortcut to Wario Stadium!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 28.8203,
+      "y": 49.77,
+      "youtubeId": "TJv0-18Mz2E"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "Take the nearby ramp and go up and to the right to reach it. Found by Amph_pm.",
       "id": "pswitch_013",
       "index": 13,
       "name": "Mush-zoom to the goal and don't sink!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 34.1328,
+      "y": 51.5408,
+      "youtubeId": "MoxuuOfVkjk"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "From the \"Fly over to Yoshi's for a quick bite!\" P Switch, head right to go off course past the train tracks. Go past the two steel structures with light fixtures and you will see an intersection with a Yoshi's Diner on the left. Head right on the intersection then immediately turn left at the next intersection. Afterward, go off-course to the right past the Fire Flowers. You will find the P Switch past two horizontal flags.",
       "id": "pswitch_014",
       "index": 14,
       "name": "Race over ramps and beams to reach the goal!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 26.9297,
+      "y": 55.9505,
+      "youtubeId": "U3td_rfTkVY"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "Use the warp tunnel near the starting line to reach this P Switch, or rail slide on from the south of the course.",
       "id": "pswitch_015",
       "index": 15,
       "name": "Race through the stands to the goal!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 22.6133,
+      "y": 63.4201,
+      "youtubeId": "O6uyRNqpcO8"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "This P Switch can be found on the second floor of one of the buildings the left of the starting line.",
       "id": "pswitch_016",
       "index": 16,
       "name": "Rail ride to gather the burger's blue coins!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 20.9648,
+      "y": 63.2943,
+      "youtubeId": "-_kOyfFXC6Q"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "Complete the P-Switch mission \"Ramp up over the cliff edge to the goal!\" in or near Mario Bros. Circuit.",
       "id": "pswitch_017",
       "index": 17,
       "name": "Ramp up over the cliff edge to the goal!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 26.2344,
+      "y": 72.4609,
+      "youtubeId": "7oPzQvT44gY"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "At the intersection heading to the P Switch \"Charge through the defensive line,\" head off-road to the left instead of going right. Keep heading straight and you will find the P Switch on top of a tall rock,",
       "id": "pswitch_018",
       "index": 18,
       "name": "Rely on tornado tailwinds to reach the Goal Pole!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 27.8906,
+      "y": 62.895,
+      "youtubeId": "CtAG6KR3e4E"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "From the Mario Bros. Circuit starting point, keep heading straight, then turn right toward the two green pipe rails and turn right again before the tunnel. Head straight, then turn right once you reach the main road. You will eventually see the P Switch under a gazebo on the right side of the road.",
       "id": "pswitch_019",
       "index": 19,
       "name": "Roar down the road in an explosive action scene!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 29.2578,
+      "y": 63.1337,
+      "youtubeId": "Rp2F3XK0cJY"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "Complete the P-Switch mission \"Soar through the air and through the bridge!\" in or near Mario Bros. Circuit.",
       "id": "pswitch_020",
       "index": 20,
       "name": "Soar through the air and through the bridge!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 29.5234,
+      "y": 53.303,
+      "youtubeId": "ilPCG2cwCyg"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "Turn around from the Mario Bros. Circuit and keep heading straight. Turn right at the DINER sign then stay on the main road. You'll see a building with a yellow line that leads to the roof. Ride the line to reach the P Switch.",
       "id": "pswitch_021",
       "index": 21,
       "name": "Soar up to the train station's Goal Pole!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 18.8633,
+      "y": 61.4193,
+      "youtubeId": "7mC5eIkmFeI"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "From the \"Fly over to Yoshi's for a quick bite!\" P Switch, head right to go off course past the train tracks. Afterward, keep heading straight and you will find the P Switch on top of a rock near two triangular flags.",
       "id": "pswitch_022",
       "index": 22,
       "name": "Take the offroad shortcut to Mario Bros. Circuit!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 25.8477,
+      "y": 56.25,
+      "youtubeId": "cANsLtc5R80"
     },
     {
       "areaId": null,
       "courseId": "mario_bros_circuit",
+      "hint": "From the Mario Bros. Circuit starting point, turn around and keep heading straight. Turn right at the DINER sign then keep driving on the main road. The P Switch should be at the parking lot beside the Yoshi's diner on the left side of the road.",
       "id": "pswitch_023",
       "index": 23,
       "name": "Use items to blitz across the desert sands!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 19.125,
+      "y": 64.4488,
+      "youtubeId": "AzvTnBwWYeU"
     },
     {
       "areaId": null,
       "courseId": "whistlestop_summit",
+      "hint": "Complete the P-Switch mission \"Inspect the railroad yard for blue coins!\" in or near Whistlestop Summit.",
       "id": "pswitch_024",
       "index": 24,
       "name": "Inspect the railroad yard for blue coins!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 29.4531,
+      "y": 75.2517,
+      "youtubeId": "FWytcI1cSqU"
     },
     {
       "areaId": null,
       "courseId": "whistlestop_summit",
+      "hint": "Complete the P-Switch mission \"Join in on a daredevil canyon loop!\" in or near Whistlestop Summit.",
       "id": "pswitch_025",
       "index": 25,
       "name": "Join in on a daredevil canyon loop!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 24.1562,
+      "y": 78.8194,
+      "youtubeId": "oIryKRCnRFU"
     },
     {
       "areaId": null,
       "courseId": "whistlestop_summit",
+      "hint": "Complete the P-Switch mission \"Join the spontaneous race in the canyon!\" in or near Whistlestop Summit.",
       "id": "pswitch_026",
       "index": 26,
       "name": "Join the spontaneous race in the canyon!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 28.0508,
+      "y": 80.1519,
+      "youtubeId": "5WKMXK4doJI"
     },
     {
       "areaId": null,
       "courseId": "whistlestop_summit",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_027",
       "index": 27,
       "name": "Launch from pipe to pipe up the plateaus!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 18.0078,
+      "y": 69.8524,
+      "youtubeId": "O7i4EVnbiaM"
     },
     {
       "areaId": null,
       "courseId": "whistlestop_summit",
+      "hint": "Complete the P-Switch mission \"Make a path through the back-road route!\" in or near Whistlestop Summit.",
       "id": "pswitch_028",
       "index": 28,
       "name": "Make a path through the back-road route!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 26.793,
+      "y": 80.6554,
+      "youtubeId": "4uKIcux8W5s"
     },
     {
       "areaId": null,
       "courseId": "whistlestop_summit",
+      "hint": "Complete the P-Switch mission \"Perform stunt after stunt across the bridge!\" in or near Whistlestop Summit.",
       "id": "pswitch_029",
       "index": 29,
       "name": "Perform stunt after stunt across the bridge!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 20.1914,
+      "y": 75.0911,
+      "youtubeId": "dMQGvPo9Xpo"
     },
     {
       "areaId": null,
       "courseId": "whistlestop_summit",
+      "hint": "Can be found on a stone pillar near a red bridge. Jump and ride the mountainside wall then ride the bridge rail. Jump then trick on the lamppost to reach the goal.",
       "id": "pswitch_030",
       "index": 30,
       "name": "Prove yourself in a SPECIAL test of skill #6!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 26.0195,
+      "y": 76.697,
+      "youtubeId": "A9P9W5YjJSE"
     },
     {
       "areaId": null,
       "courseId": "whistlestop_summit",
+      "hint": "This P Switch can be found near the starting line when you fast travel to Whistlestop Summit",
       "id": "pswitch_031",
       "index": 31,
       "name": "Race to the top of Whistlestop Summit!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 24.6875,
+      "y": 82.1137,
+      "youtubeId": "ThrA3ZbeDq0"
     },
     {
       "areaId": null,
       "courseId": "whistlestop_summit",
+      "hint": "From Mario's starting point, turn around and stay on the road. Once you pass the middle pillar under the bridge, immediately turn left toward the river. The P Switch should be there.",
       "id": "pswitch_032",
       "index": 32,
       "name": "Race upstream through the river valley!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 22.293,
+      "y": 77.9688,
+      "youtubeId": "SfJpmioisqk"
     },
     {
       "areaId": null,
       "courseId": "whistlestop_summit",
+      "hint": "From Mario's starting point, turn around and stay on the road. At the fork in the road, go right and cross the short bridge. Continue a bit then make a U-turn and drive near the edge. The P-Switch will be on that new platform.",
       "id": "pswitch_033",
       "index": 33,
       "name": "Ramp up and over the suspension bridge!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 24.8516,
+      "y": 77.73,
+      "youtubeId": "pKLtEfENWHQ"
     },
     {
       "areaId": null,
       "courseId": "whistlestop_summit",
+      "hint": "From Mario's starting point, turn around and stay on the road. Before you reach the bridge. turn right and the P Switch should be near a tall rock.",
       "id": "pswitch_034",
       "index": 34,
       "name": "Show off your wall-riding skills!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 24.1211,
+      "y": 76.0807,
+      "youtubeId": "WUS_fdcftbA"
     },
     {
       "areaId": null,
       "courseId": "whistlestop_summit",
+      "hint": "This P Switch is found as you go down from the third ramp towards a tunnel.",
       "id": "pswitch_035",
       "index": 35,
       "name": "Show the train how fast you can go!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 23.3359,
+      "y": 83.2639,
+      "youtubeId": "1FBM5X3wa_w"
     },
     {
       "areaId": null,
       "courseId": "whistlestop_summit",
+      "hint": "Complete the P-Switch mission \"Soar from plateau to plateau using steel ramps!\" in or near Whistlestop Summit.",
       "id": "pswitch_036",
       "index": 36,
       "name": "Soar from plateau to plateau using steel ramps!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 19.625,
+      "y": 79.171,
+      "youtubeId": "at2jckpFL4E"
     },
     {
       "areaId": null,
       "courseId": "whistlestop_summit",
+      "hint": "This P Switch can be found on the second bend past the starting line just before crossing the bridge to the other half of the course.",
       "id": "pswitch_037",
       "index": 37,
       "name": "Turn up the tricks to collect all the blue coins!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 24.9531,
+      "y": 83.1163,
+      "youtubeId": "TEA0hABw8Rs"
     },
     {
       "areaId": null,
       "courseId": "wario_stadium",
+      "hint": "Complete the P-Switch mission \"Borrow the truck and smash through!\" in or near Wario Stadium.",
       "id": "pswitch_038",
       "index": 38,
       "name": "Borrow the truck and smash through!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 31.9219,
+      "y": 41.684,
+      "youtubeId": "ovLnO2-Axa4"
     },
     {
       "areaId": null,
       "courseId": "wario_stadium",
+      "hint": "Complete the P-Switch mission \"Cross the beams of the busted bridge!\" in or near Wario Stadium.",
       "id": "pswitch_039",
       "index": 39,
       "name": "Cross the beams of the busted bridge!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 26.2578,
+      "y": 38.4115,
+      "youtubeId": "BS0gijRpwlU"
     },
     {
       "areaId": null,
       "courseId": "wario_stadium",
+      "hint": "Complete the P-Switch mission \"Drive through the Treaded Grrrol crossing!\" in or near Wario Stadium.",
       "id": "pswitch_040",
       "index": 40,
       "name": "Drive through the Treaded Grrrol crossing!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 27.7812,
+      "y": 41.0547,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "wario_stadium",
+      "hint": "This P Switch is found on top of the tunnel's entrance. It can be found a bit past the first panel.",
       "id": "pswitch_041",
       "index": 41,
       "name": "Follow the rings along the rooftops!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 25.5547,
+      "y": 46.5234,
+      "youtubeId": "AjMNi-U4DoY"
     },
     {
       "areaId": null,
       "courseId": "wario_stadium",
+      "hint": "This P Switch is found on the roof of the stadium. It can be found on the area below the second panel.",
       "id": "pswitch_042",
       "index": 42,
       "name": "Gather blue coins from the rooftops!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 27.4023,
+      "y": 41.8316,
+      "youtubeId": "0fSeTwK6Fcc"
     },
     {
       "areaId": null,
       "courseId": "wario_stadium",
+      "hint": "Found by Amph_pm and Tin Jm360.",
       "id": "pswitch_043",
       "index": 43,
       "name": "Overtake the train crossing the truss bridge!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 22.6055,
+      "y": 45.9549,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "wario_stadium",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_044",
       "index": 44,
       "name": "Race through a treacherous tire trial!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 28.4727,
+      "y": 46.0503,
+      "youtubeId": "BrcqdUlTeYs"
     },
     {
       "areaId": null,
       "courseId": "wario_stadium",
+      "hint": "This P Switch is found in the middle of the open area near the starting line.",
       "id": "pswitch_045",
       "index": 45,
       "name": "Ramp through rings and over flames!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 26.707,
+      "y": 43.8455,
+      "youtubeId": "zoYcvEQMJTY"
     },
     {
       "areaId": null,
       "courseId": "wario_stadium",
+      "hint": "Complete the P-Switch challenge \"Show off serious tightrope-riding skills!\" in or near Wario Stadium.",
       "id": "pswitch_046",
       "index": 46,
       "name": "Show off serious tightrope-riding skills!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 24.957,
+      "y": 40.1953,
+      "youtubeId": "z-Mi_y1tpo0"
     },
     {
       "areaId": null,
       "courseId": "wario_stadium",
+      "hint": "Complete the P-Switch mission \"Show Shy Guys how to race downriver!\" in or near Wario Stadium.",
       "id": "pswitch_047",
       "index": 47,
       "name": "Show Shy Guys how to race downriver!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 33.7969,
+      "y": 46.1502,
+      "youtubeId": "yEJ-Js0oDpQ"
     },
     {
       "areaId": null,
       "courseId": "wario_stadium",
+      "hint": "Complete the P-Switch mission \"Survive the spicy Fire Piranha Plant gauntlet!\" in or near Wario Stadium.",
       "id": "pswitch_048",
       "index": 48,
       "name": "Survive the spicy Fire Piranha Plant gauntlet!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 30.9805,
+      "y": 44.822,
+      "youtubeId": "zojL2RmI6Kw"
     },
     {
       "areaId": null,
       "courseId": "wario_stadium",
+      "hint": "Complete the P-Switch mission \"Tackle an endurance challenge in the wasteland!\" in or near Wario Stadium.",
       "id": "pswitch_049",
       "index": 49,
       "name": "Tackle an endurance challenge in the wasteland!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 30.9258,
+      "y": 47.8559,
+      "youtubeId": "nkG_5-5aNGw"
     },
     {
       "areaId": null,
       "courseId": "wario_stadium",
+      "hint": "Complete the P-Switch mission \"Thread the gaps in the steel supports!\" in or near Wario Stadium.",
       "id": "pswitch_050",
       "index": 50,
       "name": "Thread the gaps in the steel supports!",
-      "regionId": "mesa"
+      "regionId": "mesa",
+      "x": 29.6562,
+      "y": 40.7335,
+      "youtubeId": "grKI9v1Ot9g"
     },
     {
       "areaId": null,
       "courseId": "crown_city",
+      "hint": "From Toadette's starting point, immediately head off-road to the right and the P Switch should be there.",
       "id": "pswitch_051",
       "index": 51,
       "name": "Bounce, bounce, bounce to a grand vantage point!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 34.8359,
+      "y": 63.3116,
+      "youtubeId": "Tj8uslYMT6Y"
     },
     {
       "areaId": null,
       "courseId": "crown_city",
+      "hint": "This P switch can be found on the bridge near two Yoshi's Diner.",
       "id": "pswitch_052",
       "index": 52,
       "name": "Collect blue coins in a tricky rail-riding challenge!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 41.293,
+      "y": 74.987,
+      "youtubeId": "sKiEs7GrHPk"
     },
     {
       "areaId": null,
       "courseId": "crown_city",
+      "hint": "Complete the P-Switch mission \"Dash through traffic on the covered roads!\" in or near Crown City.",
       "id": "pswitch_053",
       "index": 53,
       "name": "Dash through traffic on the covered roads!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 40.375,
+      "y": 67.7865,
+      "youtubeId": "jyC2wB6ZBK0"
     },
     {
       "areaId": null,
       "courseId": "crown_city",
+      "hint": "This P Switch is found in an alley near the overlooking rock that says \"Home of the Rainbow Fragment\".",
       "id": "pswitch_054",
       "index": 54,
       "name": "Dodge Bowser's minions on your way to the goal!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 36.1523,
+      "y": 69.8958,
+      "youtubeId": "OMrzdKtpU3Y"
     },
     {
       "areaId": null,
       "courseId": "crown_city",
+      "hint": "This P Switch can be found on the roof of the multi-level parking garage building.",
       "id": "pswitch_055",
       "index": 55,
       "name": "Drift through the parking garage like a legend!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 37.7578,
+      "y": 72.7083,
+      "youtubeId": "V80QZKAc_nI"
     },
     {
       "areaId": null,
       "courseId": "crown_city",
+      "hint": "Complete the P-Switch mission \"Figure out a figure eight to grab the blue coins!\" in or near DK Spaceport.",
       "id": "pswitch_056",
       "index": 56,
       "name": "Figure out a figure eight to grab the blue coins!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 32.8945,
+      "y": 77.6042,
+      "youtubeId": "INTDPyNvXq4"
     },
     {
       "areaId": null,
       "courseId": "crown_city",
+      "hint": "This P Switch is found behind the stone sign that reads West Greens Park in the park.",
       "id": "pswitch_057",
       "index": 57,
       "name": "Gather blue coins on the park's twists and turns!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 35.5039,
+      "y": 74.2101,
+      "youtubeId": "f4Gg6VsPvwo"
     },
     {
       "areaId": null,
       "courseId": "crown_city",
+      "hint": "This P Switch can be found on the roof of a small building. Jump from the ramp on the roof of the multi-level parking building to reach this switch.",
       "id": "pswitch_058",
       "index": 58,
       "name": "Grab that parking spot! Fast!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 38.375,
+      "y": 74.1016,
+      "youtubeId": "A7k_xL_HOnk"
     },
     {
       "areaId": null,
       "courseId": "crown_city",
+      "hint": "From Toadette's starting point, turn around then immediately go off-course toward the left right before you reach the bridge. Keep heading straight to the end of the plateau. Drive past the jumping Goomba and you'll find the P Switch near a Spike. Found by Amph_pm.",
       "id": "pswitch_059",
       "index": 59,
       "name": "Hit the beach!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 39.3477,
+      "y": 65.0738,
+      "youtubeId": "PZyszz6tCrQ"
     },
     {
       "areaId": null,
       "courseId": "crown_city",
+      "hint": "From Toadette's starting point, turn around and head under the bridge. Drive straight past the river and the P Switch \"Take the river route to the city!\" Keep heading straight off-course until you see the P Switch on top of a rock.",
       "id": "pswitch_060",
       "index": 60,
       "name": "Pick up blue coins...and maybe a donut at the end?",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 33.0078,
+      "y": 67.6215,
+      "youtubeId": "_wILRneFIWA"
     },
     {
       "areaId": null,
       "courseId": "crown_city",
+      "hint": "From the Crown City starting point, head straight then turn left before the tunnel, then immediately head right toward the grassy narrow path. The P Switch should be in front of a dinosaur egg.",
       "id": "pswitch_061",
       "index": 61,
       "name": "Race through dinosaur-filled streets!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 39.0469,
+      "y": 77.2309,
+      "youtubeId": "xX9LOR9yNj0"
     },
     {
       "areaId": null,
       "courseId": "crown_city",
+      "hint": "This P Switch is located on top of a building near bridge. Use the rail to climb to the rooftops and jump down to the location of the switch.",
       "id": "pswitch_062",
       "index": 62,
       "name": "Ride the urban railings to collect blue coins!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 38.4922,
+      "y": 71.9184,
+      "youtubeId": "w-Zz-7ehvuk"
     },
     {
       "areaId": null,
       "courseId": "crown_city",
+      "hint": "This P Switch is found on top of one of the buildings. Follow the road then jump ahead when you see the tall tower.",
       "id": "pswitch_063",
       "index": 63,
       "name": "Take a parkour tour of Crown City!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 38.8555,
+      "y": 76.224,
+      "youtubeId": "auXTft4BpGg"
     },
     {
       "areaId": null,
       "courseId": "crown_city",
+      "hint": "Complete the P-Switch mission \"Take a somewhat-leisurely path to the goal!\" in or near Crown City.",
       "id": "pswitch_064",
       "index": 64,
       "name": "Take a somewhat-leisurely path to the goal!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 40.2383,
+      "y": 63.1641,
+      "youtubeId": "_Hke7ryiJdo"
     },
     {
       "areaId": null,
       "courseId": "crown_city",
+      "hint": "From Toadette's starting point, turn around and go under the bridge. The P Switch should be located on top of a rock near the river. Found by Amph_pm.",
       "id": "pswitch_065",
       "index": 65,
       "name": "Take the river route to the city!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 34.3594,
+      "y": 64.2969,
+      "youtubeId": "5hp94K3T3A8"
     },
     {
       "areaId": null,
       "courseId": "crown_city",
+      "hint": "This P Switch can be found in the building to the left of the spawn point when you fast travel to Crown City.",
       "id": "pswitch_066",
       "index": 66,
       "name": "Test your endurance in a race all over town!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 38.0664,
+      "y": 74.7439,
+      "youtubeId": "IhNI2mNBP4o"
     },
     {
       "areaId": null,
       "courseId": "crown_city",
+      "hint": "From the Crown City starting point, immediately turn right in between the two buildings. Keep heading straight until you reach the gray ramp, which leads to train tracks. Once you reach the bridge section of the train tracks, jump off to the right and you will see the P Switch.",
       "id": "pswitch_067",
       "index": 67,
       "name": "\"Vined\" a way to the trophy of trophies!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 33.7422,
+      "y": 74.6354,
+      "youtubeId": "JiIkJd_ySXE"
     },
     {
       "areaId": null,
       "courseId": "dk_spaceport",
+      "hint": "Complete the P-Switch challenge \"Board your chartered flight to the city!\" in or near DK Spaceport.",
       "id": "pswitch_068",
       "index": 68,
       "name": "Board your chartered flight to the city!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 36.8906,
+      "y": 83.0946,
+      "youtubeId": "pb1whpK3_68"
     },
     {
       "areaId": null,
       "courseId": "dk_spaceport",
+      "hint": "Complete the P-Switch mission \"Borrow some upgrades to reach the goal!\" in or near DK Spaceport.",
       "id": "pswitch_069",
       "index": 69,
       "name": "Borrow some upgrades to reach the goal!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 32.1953,
+      "y": 83.7109,
+      "youtubeId": "fzrK55vZX60"
     },
     {
       "areaId": null,
       "courseId": "dk_spaceport",
+      "hint": "Complete the P-Switch mission \"Check out the secret back-road barrel shortcut!\" in or near DK Spaceport.",
       "id": "pswitch_070",
       "index": 70,
       "name": "Check out the secret back-road barrel shortcut!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 32.8516,
+      "y": 80.1042,
+      "youtubeId": "XXI_6rt9pc0"
     },
     {
       "areaId": null,
       "courseId": "dk_spaceport",
+      "hint": "Complete the P-Switch mission \"Honk if you like to gather blue coins!\" in or near DK Spaceport.",
       "id": "pswitch_071",
       "index": 71,
       "name": "Honk if you like to gather blue coins!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 29.8438,
+      "y": 83.112,
+      "youtubeId": "Yxcx6aFxqi4"
     },
     {
       "areaId": null,
       "courseId": "dk_spaceport",
+      "hint": "Complete the P-Switch mission \"Practice precision driving in pursuit of blue coins!\" in or near DK Spaceport.",
       "id": "pswitch_072",
       "index": 72,
       "name": "Practice precision driving in pursuit of blue coins!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 27.332,
+      "y": 90.6944,
+      "youtubeId": "LcqPKfEtXQE"
     },
     {
       "areaId": null,
       "courseId": "dk_spaceport",
+      "hint": "This P Switch is found at the end of course. Drive up the zigzag platforms until you reach the top.",
       "id": "pswitch_073",
       "index": 73,
       "name": "Race back through DK Spaceport!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 38.6602,
+      "y": 85.2561,
+      "youtubeId": "mA7bp6e2n6U"
     },
     {
       "areaId": null,
       "courseId": "dk_spaceport",
+      "hint": "This P Switch can be found on a road near the starting area. It can be found near the third Peach Medallion, behind the blue pipes.",
       "id": "pswitch_074",
       "index": 74,
       "name": "Race to get ahead of the explosives!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 35.1445,
+      "y": 86.7231,
+      "youtubeId": "Igy_LdIT87Q"
     },
     {
       "areaId": null,
       "courseId": "dk_spaceport",
+      "hint": "This P Switch is found on the third floor of the course. Go up two flights of stairs and then head towards the left side.",
       "id": "pswitch_075",
       "index": 75,
       "name": "Remember the classic DONKEY KONG!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 41.0391,
+      "y": 87.9948,
+      "youtubeId": "1WGajQEmADs"
     },
     {
       "areaId": null,
       "courseId": "dk_spaceport",
+      "hint": "This P Switch is found on the second floor of the course. Go up the flight of stairs and then turn left. The switch should be below a blue structure.",
       "id": "pswitch_076",
       "index": 76,
       "name": "Ride the pipes to get the launchpad's blue coins!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 39.3047,
+      "y": 86.2413,
+      "youtubeId": "ru9jXL6stuA"
     },
     {
       "areaId": null,
       "courseId": "dk_spaceport",
+      "hint": "Complete the P-Switch mission \"Trick off vehicles on the way to the spaceport!\" in or near DK Spaceport.",
       "id": "pswitch_077",
       "index": 77,
       "name": "Trick off vehicles on the way to the spaceport!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 32.1367,
+      "y": 90.7509,
+      "youtubeId": "NtkiHxU6caQ"
     },
     {
       "areaId": null,
       "courseId": "koopa_troopa_beach",
+      "hint": "Complete the P-Switch mission \"Bounce your way to Koopa Troopa Beach!\" in or near Crown City.",
       "id": "pswitch_078",
       "index": 78,
       "name": "Bounce your way to Koopa Troopa Beach!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 49.5703,
+      "y": 76.1372,
+      "youtubeId": "2MbcQdRKsBY"
     },
     {
       "areaId": null,
       "courseId": "koopa_troopa_beach",
+      "hint": "Complete the P-Switch mission \"Brave sand and surf in a beachside race!\" in or near Koopa Troopa Beach.",
       "id": "pswitch_079",
       "index": 79,
       "name": "Brave sand and surf in a beachside race!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 56.7461,
+      "y": 83.4896,
+      "youtubeId": "lN1WIhfEG_U"
     },
     {
       "areaId": null,
       "courseId": "koopa_troopa_beach",
+      "hint": "Go to the western side of the course. You will find the P-Switch near a clif and beside a navigational buoy.",
       "id": "pswitch_080",
       "index": 80,
       "name": "Collect blue coins on the floating obstacle course!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 49.1914,
+      "y": 85.4991,
+      "youtubeId": "yuixgmXJ-x8"
     },
     {
       "areaId": null,
       "courseId": "koopa_troopa_beach",
+      "hint": "Complete the P-Switch mission \"Navigate the schools of fish to reach the goal!\" in or near Koopa Troopa Beach.",
       "id": "pswitch_081",
       "index": 81,
       "name": "Navigate the schools of fish to reach the goal!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 55.3086,
+      "y": 83.6675,
+      "youtubeId": "87KrQqa2HOw"
     },
     {
       "areaId": null,
       "courseId": "koopa_troopa_beach",
+      "hint": "When you reach the first curve, turn to the direction of the airplane at your right. Keep going forward and you will find the P-Switch on an island at the northwest portion of the course.",
       "id": "pswitch_082",
       "index": 82,
       "name": "Race around a tribute to Koopa Beach 1!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 45.9062,
+      "y": 84.8958,
+      "youtubeId": "UxwaoXiM-pQ"
     },
     {
       "areaId": null,
       "courseId": "koopa_troopa_beach",
+      "hint": "At the Start Point, turn around. You will find the P-Switch along the course. At a Sandbar Far From the Course",
       "id": "pswitch_083",
       "index": 83,
       "name": "Rail ride the ropes to the top!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 50.8086,
+      "y": 82.2266,
+      "youtubeId": "fJ0OhBTCD_A"
     },
     {
       "areaId": null,
       "courseId": "koopa_troopa_beach",
+      "hint": "Complete the P-Switch mission \"Receive a whale of a welcome to Peach Stadium!\" in or near Crown City.",
       "id": "pswitch_084",
       "index": 84,
       "name": "Receive a whale of a welcome to Peach Stadium!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 52.2578,
+      "y": 75.6771,
+      "youtubeId": "htAd9tOZ-mc"
     },
     {
       "areaId": null,
       "courseId": "koopa_troopa_beach",
+      "hint": "From the Starting Point, drive to the direction of the windmills. You will the P-Switch at a sandbar along the way.",
       "id": "pswitch_085",
       "index": 85,
       "name": "Take a dangerous voyage to the distant city!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 45.7305,
+      "y": 83.0035,
+      "youtubeId": "H_BMbu_sC5Q"
     },
     {
       "areaId": null,
       "courseId": "koopa_troopa_beach",
+      "hint": "Complete the P-Switch mission \"Trick your heart out in this challenging trial!\" in or near Crown City.",
       "id": "pswitch_086",
       "index": 86,
       "name": "Trick your heart out in this challenging trial!",
-      "regionId": "southern_sea"
+      "regionId": "southern_sea",
+      "x": 54.1328,
+      "y": 75.4384,
+      "youtubeId": "5XQP8S0_lo4"
     },
     {
       "areaId": null,
       "courseId": "desert_hills",
+      "hint": "From the Starting Point, turn around and drive to the direction of the tent at your right. Keep driving in that direction until you reach the P-Switch. You will find the P-Switch near a giant rock column.",
       "id": "pswitch_087",
       "index": 87,
       "name": "Avoid the Fire Snakes in the tunnel!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 13.0469,
+      "y": 72.2135,
+      "youtubeId": "akUUxoBfAuM"
     },
     {
       "areaId": null,
       "courseId": "desert_hills",
+      "hint": "From the starting point, turn around and go to the S-curve at the southwest portion of the course. At the righ side of the road, you will find a wooden road straying away from the main path. In the wooden path, fall off at the right side of the path before the first curve. You will find the P-Switch beside a broken column.",
       "id": "pswitch_088",
       "index": 88,
       "name": "Chase each Tokotoko to the next!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 12.4766,
+      "y": 69.0538,
+      "youtubeId": "PoLY2_5D3_k"
     },
     {
       "areaId": null,
       "courseId": "desert_hills",
+      "hint": "You will find the P-Switch at your right before you reach the first curve of the course.",
       "id": "pswitch_089",
       "index": 89,
       "name": "Dodge Tokotokos on the way uphill!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 10.8477,
+      "y": 75.0608,
+      "youtubeId": "4tbG4D8YgxA"
     },
     {
       "areaId": null,
       "courseId": "desert_hills",
+      "hint": "Complete the P-Switch mission \"Follow the rope for the ruin's blue coins!\" in or near Desert Hills.",
       "id": "pswitch_090",
       "index": 90,
       "name": "Follow the rope for the ruin's blue coins!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 11.0234,
+      "y": 73.0642,
+      "youtubeId": "Ef_ks1cfX2g"
     },
     {
       "areaId": null,
       "courseId": "desert_hills",
+      "hint": "Complete the P-Switch mission \"Launch from pipe to pipe to reach the goal!\" in or near Desert Hills.",
       "id": "pswitch_091",
       "index": 91,
       "name": "Launch from pipe to pipe to reach the goal!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 14.2422,
+      "y": 76.5972,
+      "youtubeId": "37XWTLJYp1I"
     },
     {
       "areaId": null,
       "courseId": "desert_hills",
+      "hint": "Complete the P-Switch mission \"Pull off tricky jumps from column to column!\" in or near Desert Hills.",
       "id": "pswitch_092",
       "index": 92,
       "name": "Pull off tricky jumps from column to column!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 15.0859,
+      "y": 72.0095,
+      "youtubeId": "denY5DyMSfM"
     },
     {
       "areaId": null,
       "courseId": "desert_hills",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_093",
       "index": 93,
       "name": "Sprint to the goal through a sea of sand!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 16.7656,
+      "y": 68.0946,
+      "youtubeId": "g1ZpYZi1e6c"
     },
     {
       "areaId": null,
       "courseId": "desert_hills",
+      "hint": "Complete the P-Switch mission \"Tackle a sandy test of endurance!\" in or near Desert Hills.",
       "id": "pswitch_094",
       "index": 94,
       "name": "Tackle a sandy test of endurance!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 13.0117,
+      "y": 64.2578,
+      "youtubeId": "SS_ijZFcsJk"
     },
     {
       "areaId": null,
       "courseId": "desert_hills",
+      "hint": "Complete the P-Switch mission \"Take to the skies to escape the desert!\" in or near Desert Hills.",
       "id": "pswitch_095",
       "index": 95,
       "name": "Take to the skies to escape the desert!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 14.1328,
+      "y": 75.3602,
+      "youtubeId": "PFSNvkVPd8g"
     },
     {
       "areaId": null,
       "courseId": "desert_hills",
+      "hint": "From the starting point, turn around and go to the S-curve at the southwest portion of the course. At one of the bends, take the wooden road at your right to reach the P-Switch.",
       "id": "pswitch_096",
       "index": 96,
       "name": "Traverse desert skies and grassy hills to the goal!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 11.3047,
+      "y": 70.1997,
+      "youtubeId": "2R5_lHeXwo4"
     },
     {
       "areaId": null,
       "courseId": "desert_hills",
+      "hint": "From the starting point, turn around and go to the S-curve at the southwest portion of the course. Enter the ruins at your left to reach the P-Switch.",
       "id": "pswitch_097",
       "index": 97,
       "name": "Zip forward and spring up to the Goal Pole!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 8.375,
+      "y": 73.0252,
+      "youtubeId": "1NZn5d8B9aw"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "You can find the P-Switch after going under the bridge and leaving the town.",
       "id": "pswitch_098",
       "index": 98,
       "name": "Break through the Hammer Bros. blockade!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 11.582,
+      "y": 49.6962,
+      "youtubeId": "O-Px9lmsZY4"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "After entering the Palace, take the left path when you reach a two-way fork. Enter the left pipe when you reach the end of the passageway.",
       "id": "pswitch_099",
       "index": 99,
       "name": "Bust a path through the maze of blocks!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 10.3555,
+      "y": 51.8273,
+      "youtubeId": "Y2ORxSQJh6E"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "Complete the P-Switch mission \"Collect blue coins in the dried-up oasis!\" in or near Desert Hills.",
       "id": "pswitch_100",
       "index": 100,
       "name": "Collect blue coins in the dried-up oasis!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 14.0234,
+      "y": 62.4349,
+      "youtubeId": "LxPQRsU6fjU"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "Complete the P-Switch mission \"Cool off at the oasis while grabbing blue coins!\" in or near Shy Guy Bazaar.",
       "id": "pswitch_101",
       "index": 101,
       "name": "Cool off at the oasis while grabbing blue coins!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 17.5547,
+      "y": 46.658,
+      "youtubeId": "9ZVL6858lPI"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "Complete the P-Switch mission \"Cruise along the curving route to reach the goal!\" in or near Shy Guy Bazaar.",
       "id": "pswitch_102",
       "index": 102,
       "name": "Cruise along the curving route to reach the goal!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 17.1992,
+      "y": 37.6649,
+      "youtubeId": "A_QQDBDor4k"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "Complete the P-Switch mission \"Dash wisely to reach the goal in time!\" in or near Shy Guy Bazaar.",
       "id": "pswitch_103",
       "index": 103,
       "name": "Dash wisely to reach the goal in time!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 18.7461,
+      "y": 53.0469,
+      "youtubeId": "84XEgHb6Dg0"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "From the \"Fly over to Yoshi's for a quick bite!\" P Switch, head left to go off- course. The P Switch can be found straight ahead on a rock.",
       "id": "pswitch_104",
       "index": 104,
       "name": "Dash, dash, dash to the goal!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 21.7305,
+      "y": 54.9957,
+      "youtubeId": "dSnlx-3frJU"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "Complete the P-Switch mission \"Dodge the Chain Chomps as you ascend!\" in or near Shy Guy Bazaar.",
       "id": "pswitch_105",
       "index": 105,
       "name": "Dodge the Chain Chomps as you ascend!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 18.2109,
+      "y": 42.8125,
+      "youtubeId": "QILDlt6Y_QI"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "Complete the P-Switch mission \"Harness 18 wheels of power to reach the goal!\" in or near Desert Hills.",
       "id": "pswitch_106",
       "index": 106,
       "name": "Harness 18 wheels of power to reach the goal!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 9.3945,
+      "y": 66.862,
+      "youtubeId": "pdqFcW6ExhQ"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "Turn around from the Mario Bros. Circuit and keep heading straight. Turn right at the DINER sign then stay on the main road. Immediately head off-course to the left after passing the green road signs. The P Switch can be found straight ahead.",
       "id": "pswitch_107",
       "index": 107,
       "name": "Hitch a ride to collect the airborne blue coins!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 16.6016,
+      "y": 62.7561,
+      "youtubeId": "Df6lH-vBoJM"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "Complete the P-Switch mission \"Overtake Shy Guys in an upriver race!\" in or near Shy Guy Bazaar.",
       "id": "pswitch_108",
       "index": 108,
       "name": "Overtake Shy Guys in an upriver race!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 9.9883,
+      "y": 46.4757,
+      "youtubeId": "baz684hSwMU"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "Complete the P-Switch mission \"Pass by plenty of Pokeys partying on the path!\" in or near Shy Guy Bazaar.",
       "id": "pswitch_109",
       "index": 109,
       "name": "Pass by plenty of Pokeys partying on the path!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 15.6953,
+      "y": 54.8958,
+      "youtubeId": "lnQPy-8pUtE"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "Complete the P-Switch mission \"Race down the river and escape to the sea!\" in or near Shy Guy Bazaar.",
       "id": "pswitch_110",
       "index": 110,
       "name": "Race down the river and escape to the sea!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 16.2227,
+      "y": 49.6571,
+      "youtubeId": "2T9yDIAyas8"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "Complete the P-Switch mission \"Race through a storm of rain and coins!\" in or near Shy Guy Bazaar.",
       "id": "pswitch_111",
       "index": 111,
       "name": "Race through a storm of rain and coins!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 12.3125,
+      "y": 58.8802,
+      "youtubeId": "R5I2bTP3yp8"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "You can find the P-Switch at the bottom of a cliff near the Finish Line.",
       "id": "pswitch_112",
       "index": 112,
       "name": "Ride along the outer wall to sneak in!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 13.1836,
+      "y": 53.7543,
+      "youtubeId": "OATs6zjLVNE"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "Turn around from the Mario Bros. Circuit starting point and keep heading straight. Turn right at the DINER sign and stay on the main road. Go off-course to the left past the purple Yoshi's Diner, and the P Switch can be found past the Fire Flowers.",
       "id": "pswitch_113",
       "index": 113,
       "name": "Salvage the scattered blue coins!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 20.1094,
+      "y": 56.658,
+      "youtubeId": "IvQSbxU1ESg"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "From the fountain in front of the palace, take the upward slope at your right. After going up the slope, turn right and fall off the wooden platform. You will find the P-Switch at your right.",
       "id": "pswitch_114",
       "index": 114,
       "name": "Scope out the bazaar and scoop up blue coins!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 10.1055,
+      "y": 52.7474,
+      "youtubeId": "orh1iCydxtM"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "Complete the P-Switch mission \"Slip past the Batadon blockades!\" in or near Shy Guy Bazaar.",
       "id": "pswitch_115",
       "index": 115,
       "name": "Slip past the Batadon blockades!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 15.5391,
+      "y": 57.2613,
+      "youtubeId": "KO2vZjiA670"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "After entering the Palace, take the right path when you reach a two way fork. Follow the path until you find the 3 P-Switches next to one another.",
       "id": "pswitch_116",
       "index": 116,
       "name": "Tackle Shy Guy Challenge #1!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 9.1055,
+      "y": 50.7422,
+      "youtubeId": "-zqFb1-r6PE"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "After entering the Palace, take the right path when you reach a two way fork. Follow the path until you find the 3 P-Switches next to one another. This switch should be on the middle.",
       "id": "pswitch_117",
       "index": 117,
       "name": "Tackle Shy Guy Challenge #2!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 9.4062,
+      "y": 50.6944,
+      "youtubeId": "-zqFb1-r6PE"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "After entering the Palace, take the right path when you reach a two way fork. Follow the path until you find the 3 P-Switches next to one another. This switch should be on the left.",
       "id": "pswitch_118",
       "index": 118,
       "name": "Tackle Shy Guy Challenge #3!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 8.8555,
+      "y": 50.816,
+      "youtubeId": "-zqFb1-r6PE"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "From the Starting Point, turn around and you can find the P-Switch at your right.",
       "id": "pswitch_119",
       "index": 119,
       "name": "Take a long-distance rail ride to the goal!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 11.957,
+      "y": 54.822,
+      "youtubeId": "sX5UyciXFi0"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "To reach the P-Switch, veer off-road and slide across the ropes to get to the wall of the town. Once you reach the wall, turn right and continue along the path until you reach a bridge. Go to the Jump Plate at your right and follow the path until you pass through another Jump Plate. Land at the building to the right, and you will find the P-Switch at the roof.",
       "id": "pswitch_120",
       "index": 120,
       "name": "Take a tricky tour through Shy Guy Bazaar!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 11.8594,
+      "y": 53.0642,
+      "youtubeId": "lWzyyoZudUA"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "Complete the P-Switch mission \"Travel across the bridge, tricking all the way!\" in or near Shy Guy Bazaar.",
       "id": "pswitch_121",
       "index": 121,
       "name": "Travel across the bridge, tricking all the way!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 15.4922,
+      "y": 42.1962,
+      "youtubeId": "60ECZTUY834"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "Complete the P-Switch mission \"Use the ancient shipwrecks to get a boost!\" in or near Desert Hills.",
       "id": "pswitch_122",
       "index": 122,
       "name": "Use the ancient shipwrecks to get a boost!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 8.8203,
+      "y": 61.0243,
+      "youtubeId": "3dLx_4wmpig"
     },
     {
       "areaId": null,
       "courseId": "shy_guy_bazaar",
+      "hint": "Complete the P-Switch mission \"Weave around the treacherous tornadoes!\" in or near Shy Guy Bazaar.",
       "id": "pswitch_123",
       "index": 123,
       "name": "Weave around the treacherous tornadoes!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 17.1484,
+      "y": 54.2925,
+      "youtubeId": "gHz-6LNZWRQ"
     },
     {
       "areaId": "chain_chomp_desert",
       "courseId": null,
+      "hint": "Complete the P-Switch mission \"Grab the blue coins and don't sink!\" in or near Shy Guy Bazaar.",
       "id": "pswitch_124",
       "index": 124,
       "name": "Grab the blue coins and don't sink!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 16.7969,
+      "y": 44.3446,
+      "youtubeId": "AelImkONrGU"
     },
     {
       "areaId": "chain_chomp_desert",
       "courseId": null,
+      "hint": "Complete the P-Switch mission \"Rescue blue coins from the sands!\" in or near Shy Guy Bazaar.",
       "id": "pswitch_125",
       "index": 125,
       "name": "Rescue blue coins from the sands!",
-      "regionId": "desert"
+      "regionId": "desert",
+      "x": 16.7109,
+      "y": 42.6172,
+      "youtubeId": "6zKUzEHExTc"
     },
     {
       "areaId": null,
       "courseId": "airship_fortress",
+      "hint": "Turn around from the starting line and head to the right. You'll see the P Switch on the path.",
       "id": "pswitch_126",
       "index": 126,
       "name": "Drift to the top of the twisting tower!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 14.3594,
+      "y": 29.7396,
+      "youtubeId": "Ko_zqPDACz4"
     },
     {
       "areaId": null,
       "courseId": "airship_fortress",
+      "hint": "Found by tari.",
       "id": "pswitch_127",
       "index": 127,
       "name": "Make a connecting flight to the Airship Fortress!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 20.7656,
+      "y": 30.3559,
+      "youtubeId": "ANaGppk6Vzo"
     },
     {
       "areaId": null,
       "courseId": "airship_fortress",
+      "hint": "Complete the P-Switch mission \"Scoop up blue coins while riding the rails!\" in or near Airship Fortress.",
       "id": "pswitch_128",
       "index": 128,
       "name": "Scoop up blue coins while riding the rails!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 17.3438,
+      "y": 32.0269,
+      "youtubeId": "P6pJx9qAuxc"
     },
     {
       "areaId": null,
       "courseId": "airship_fortress",
+      "hint": "Complete the P-Switch mission \"Show your stuff in this Airship Fortress time trial!\" in or near Airship Fortress.",
       "id": "pswitch_129",
       "index": 129,
       "name": "Show your stuff in this Airship Fortress time trial!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 13.1914,
+      "y": 33.6155,
+      "youtubeId": "zcgpZXoXGfQ"
     },
     {
       "areaId": null,
       "courseId": "airship_fortress",
+      "hint": "Complete the P-Switch mission \"Slip by line after line of Rocky Wrenches!\" in or near Airship Fortress.",
       "id": "pswitch_130",
       "index": 130,
       "name": "Slip by line after line of Rocky Wrenches!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 13.625,
+      "y": 34.375,
+      "youtubeId": "9oxpQxn2rEc"
     },
     {
       "areaId": null,
       "courseId": "airship_fortress",
+      "hint": "Complete the P-Switch mission \"Take a long flight for a hole in one!\" in or near Airship Fortress.",
       "id": "pswitch_131",
       "index": 131,
       "name": "Take a long flight for a hole in one!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 12.8555,
+      "y": 36.7795,
+      "youtubeId": "ii8f1ETKg58"
     },
     {
       "areaId": null,
       "courseId": "airship_fortress",
+      "hint": "Complete the P-Switch challenge \"Weave your way through the Whamps!\" in or near Airship Fortress.",
       "id": "pswitch_132",
       "index": 132,
       "name": "Weave your way through the Whamps!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 19.5039,
+      "y": 27.921,
+      "youtubeId": "QqRIoVbAY7M"
     },
     {
       "areaId": null,
       "courseId": "dry_bones_burnout",
+      "hint": "This P Switch is found on a slope off-course near the starting area. From the starting line, go off-course towards the right side and continue heading upwards while hugging the right wall. The second P Switch should be near the top.",
       "id": "pswitch_133",
       "index": 133,
       "name": "Balance on the tightrope to gather blue coins!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 37.1445,
+      "y": 16.237,
+      "youtubeId": "0H3r3ByEdSM"
     },
     {
       "areaId": null,
       "courseId": "dry_bones_burnout",
+      "hint": "Complete the P-Switch mission \"Collect blue coins in the hot springs!\" in or near Dry Bones Burnout.",
       "id": "pswitch_134",
       "index": 134,
       "name": "Collect blue coins in the hot springs!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 36.9688,
+      "y": 26.3498,
+      "youtubeId": "VcnAbR3ML4s"
     },
     {
       "areaId": null,
       "courseId": "dry_bones_burnout",
+      "hint": "This P Switch is found below a ramp off-course near the starting area. From the starting line, go off-course towards the right side and continue heading upwards. Wrap around the bone-like structure and the first P Switch should be at its base.",
       "id": "pswitch_135",
       "index": 135,
       "name": "Dodge the fireballs and collect blue coins!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 39.1445,
+      "y": 17.474,
+      "youtubeId": "ZIfejARjk_g"
     },
     {
       "areaId": null,
       "courseId": "dry_bones_burnout",
+      "hint": "Complete the P-Switch mission \"Grab the blue coins around the spooky graveyard!\" in or near Dry Bones Burnout.",
       "id": "pswitch_136",
       "index": 136,
       "name": "Grab the blue coins around the spooky graveyard!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 40.5742,
+      "y": 26.5842,
+      "youtubeId": "KM2lbrhJDNc"
     },
     {
       "areaId": null,
       "courseId": "dry_bones_burnout",
+      "hint": "Complete the P-Switch mission \"Ride geysers and shoot through rings to the goal!\" in or near Dry Bones Burnout.",
       "id": "pswitch_137",
       "index": 137,
       "name": "Ride geysers and shoot through rings to the goal!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 38.1523,
+      "y": 25.434,
+      "youtubeId": "Bf1iF4xn1dA"
     },
     {
       "areaId": null,
       "courseId": "dry_bones_burnout",
+      "hint": "This P Switch is found along the main road. From the starting line, turn around and follow the main road. The third P Switch can be found right before the second curve.",
       "id": "pswitch_138",
       "index": 138,
       "name": "Show everyone how to ride the wall!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 40.0352,
+      "y": 20.3559,
+      "youtubeId": "-orxcokHZJ0"
     },
     {
       "areaId": null,
       "courseId": "dry_bones_burnout",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_139",
       "index": 139,
       "name": "Slip past shocking sumo stomps!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 35.6445,
+      "y": 24.1536,
+      "youtubeId": "Xs-ysq-GXd0"
     },
     {
       "areaId": null,
       "courseId": "dry_bones_burnout",
+      "hint": "Complete the P-Switch mission \"Weave through the road crowded with Dry Bones!\" in or near Dry Bones Burnout.",
       "id": "pswitch_140",
       "index": 140,
       "name": "Weave through the road crowded with Dry Bones!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 43.2344,
+      "y": 25.8767,
+      "youtubeId": "ZatZmQoIbjQ"
     },
     {
       "areaId": null,
       "courseId": "dry_bones_burnout",
+      "hint": "Complete the P-Switch mission \"Zip by Fish Bones on the way to the hot springs!\" in or near Toad's Factory.",
       "id": "pswitch_141",
       "index": 141,
       "name": "Zip by Fish Bones on the way to the hot springs!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 43.6992,
+      "y": 30.0087,
+      "youtubeId": "vwUSYHE-gAQ"
     },
     {
       "areaId": null,
       "courseId": "bowsers_castle",
+      "hint": "Complete the P-Switch mission \"Bullet Bill through the fiery barrage!\" in or near Bowser's Castle.",
       "id": "pswitch_142",
       "index": 142,
       "name": "Bullet Bill through the fiery barrage!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 29.1289,
+      "y": 26.0026,
+      "youtubeId": "M3g7eosT6FI"
     },
     {
       "areaId": null,
       "courseId": "bowsers_castle",
+      "hint": "Complete the P-Switch mission \"Gather blue coins and watch out for Thwomps!\" in or near Bowser's Castle.",
       "id": "pswitch_143",
       "index": 143,
       "name": "Gather blue coins and watch out for Thwomps!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 31.3477,
+      "y": 24.9436,
+      "youtubeId": "yVoE8iigDR8"
     },
     {
       "areaId": null,
       "courseId": "bowsers_castle",
+      "hint": "From the Start Line, drive towards the central building. When you reach the bridge, Rail Slide across the chain to your left in order to reach the roof.",
       "id": "pswitch_144",
       "index": 144,
       "name": "Gather blue coins around the spicy food court!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 26.1172,
+      "y": 19.4618,
+      "youtubeId": "I4HQtSdkgPA"
     },
     {
       "areaId": null,
       "courseId": "bowsers_castle",
+      "hint": "Complete the P-Switch mission \"Hitch a ride in the helicopter and flee a fiery fate!\" in or near Bowser's Castle.",
       "id": "pswitch_145",
       "index": 145,
       "name": "Hitch a ride in the helicopter and flee a fiery fate!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 27.3359,
+      "y": 24.4575,
+      "youtubeId": "5W_2ORAscCE"
     },
     {
       "areaId": null,
       "courseId": "bowsers_castle",
+      "hint": "Complete the P-Switch mission \"Hop along the walls of Bowser's Castle!\" in or near Bowser's Castle.",
       "id": "pswitch_146",
       "index": 146,
       "name": "Hop along the walls of Bowser's Castle!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 25.5273,
+      "y": 19.809,
+      "youtubeId": "viy_ec-wdKs"
     },
     {
       "areaId": null,
       "courseId": "bowsers_castle",
+      "hint": "Complete the P-Switch mission \"Navigate a path of pipes and rings!\" in or near Bowser's Castle.",
       "id": "pswitch_147",
       "index": 147,
       "name": "Navigate a path of pipes and rings!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 31.7109,
+      "y": 29.6701,
+      "youtubeId": "-V-_0vXyvog"
     },
     {
       "areaId": null,
       "courseId": "bowsers_castle",
+      "hint": "From the Start Line, take the path to your left and Rail Slide across the outer perimeter of the course. Get off when you reach the northeast portion of the course.",
       "id": "pswitch_148",
       "index": 148,
       "name": "Perform tricks without plunging into lava pools!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 27.6523,
+      "y": 19.6918,
+      "youtubeId": "-UKxhjhSGH4"
     },
     {
       "areaId": null,
       "courseId": "bowsers_castle",
+      "hint": "From the Start Line, take the path to the left. You will find the P-Switch along the path.",
       "id": "pswitch_149",
       "index": 149,
       "name": "Race along a course filled with Bowser's minions!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 25.4648,
+      "y": 20.5165,
+      "youtubeId": "BWP-zg2Fp68"
     },
     {
       "areaId": null,
       "courseId": "bowsers_castle",
+      "hint": "Complete the P-Switch mission \"Slide by waves of fireballs! Don't get singed!\" in or near Bowser's Castle.",
       "id": "pswitch_150",
       "index": 150,
       "name": "Slide by waves of fireballs! Don't get singed!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 27.8438,
+      "y": 27.0747,
+      "youtubeId": "geTOD706tqs"
     },
     {
       "areaId": null,
       "courseId": "bowsers_castle",
+      "hint": "Complete the P-Switch mission \"Use Mushrooms to zip up the right-hand path!\" in or near Bowser's Castle.",
       "id": "pswitch_151",
       "index": 151,
       "name": "Use Mushrooms to zip up the right-hand path!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 29.2188,
+      "y": 26.6233,
+      "youtubeId": "w2yroBJ32w0"
     },
     {
       "areaId": null,
       "courseId": "bowsers_castle",
+      "hint": "Complete the P-Switch mission \"Zip up the left-hand path, Mushroom-free!\" in or near Bowser's Castle.",
       "id": "pswitch_152",
       "index": 152,
       "name": "Zip up the left-hand path, Mushroom-free!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 28.4766,
+      "y": 27.0399,
+      "youtubeId": "HFtzjeZda1g"
     },
     {
       "areaId": "big_donut",
       "courseId": null,
+      "hint": "Complete the P-Switch mission \"Blitz past Bullies while gathering blue coins!\" in or near Bowser's Castle.",
       "id": "pswitch_153",
       "index": 153,
       "name": "Blitz past Bullies while gathering blue coins!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 29.2266,
+      "y": 31.4019,
+      "youtubeId": "qsveRv96bzo"
     },
     {
       "areaId": "big_donut",
       "courseId": null,
+      "hint": "Complete the P-Switch mission \"Fly safely above the lake of lava!\" in or near Bowser's Castle.",
       "id": "pswitch_154",
       "index": 154,
       "name": "Fly safely above the lake of lava!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 31.3906,
+      "y": 29.9479,
+      "youtubeId": "vXOIBZcUaPI"
     },
     {
       "areaId": "big_donut",
       "courseId": null,
+      "hint": "Complete the P-Switch mission \"Gather blue coins along a narrow road!\" in or near Bowser's Castle.",
       "id": "pswitch_155",
       "index": 155,
       "name": "Gather blue coins along a narrow road!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 25.7461,
+      "y": 31.4193,
+      "youtubeId": "RIdqTMQurjA"
     },
     {
       "areaId": "big_donut",
       "courseId": null,
+      "hint": "Complete the P-Switch mission \"Race to the top of the castle wall!\" in or near Bowser's Castle.",
       "id": "pswitch_156",
       "index": 156,
       "name": "Race to the top of the castle wall!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 25.3633,
+      "y": 34.1623,
+      "youtubeId": "ASOXZrgcSfk"
     },
     {
       "areaId": "big_donut",
       "courseId": null,
+      "hint": "Complete the P-Switch mission \"Show the lava that you're a super star!\" in or near Bowser's Castle.",
       "id": "pswitch_157",
       "index": 157,
       "name": "Show the lava that you're a super star!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 23.2305,
+      "y": 32.1398,
+      "youtubeId": "pzu4KR5e7V8"
     },
     {
       "areaId": "big_donut",
       "courseId": null,
+      "hint": "Complete the P-Switch mission \"Snag a couple snacks in a race around Big Donut!\" in or near Bowser's Castle.",
       "id": "pswitch_158",
       "index": 158,
       "name": "Snag a couple snacks in a race around Big Donut!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 29.8398,
+      "y": 34.197,
+      "youtubeId": "EeRPgZuMP5k"
     },
     {
       "areaId": "big_donut",
       "courseId": null,
+      "hint": "Found by Immagine \\u0026 tari.",
       "id": "pswitch_159",
       "index": 159,
       "name": "Tear up the track with trick after trick!",
-      "regionId": "volcanic"
+      "regionId": "volcanic",
+      "x": 28.9102,
+      "y": 30.204,
+      "youtubeId": "gwikguNrPmA"
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "This P Switch is found on top of a floodlight post along the course. Rail slide on the cable to get on the floodlight post.",
       "id": "pswitch_160",
       "index": 160,
       "name": "C-c-c-collect the blue coins at DK Pass!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 74.5156,
+      "y": 44.9349,
+      "youtubeId": "xLW_oLfbUM8"
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "Complete the P-Switch mission \"Clear your path with some fireballs!\" in or near DK Pass.",
       "id": "pswitch_161",
       "index": 161,
       "name": "Clear your path with some fireballs!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 78.6445,
+      "y": 48.7934,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "Complete the P-Switch mission \"Collect blue coins among the Snow Pokeys!\" in or near DK Pass.",
       "id": "pswitch_162",
       "index": 162,
       "name": "Collect blue coins among the Snow Pokeys!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 71.6406,
+      "y": 41.6059,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "Complete the P-Switch mission \"Crash through traffic to reach the slopes!\" in or near DK Pass.",
       "id": "pswitch_163",
       "index": 163,
       "name": "Crash through traffic to reach the slopes!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 70.125,
+      "y": 43.8628,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "This P Switch is found in a hidden area that is accessible via the warp pipe. Use the warp pipe to the left of the starting line and follow the path to the right.",
       "id": "pswitch_164",
       "index": 164,
       "name": "Drop into the Shy Guy snowboarding competition!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 77.0,
+      "y": 45.5469,
+      "youtubeId": "kox6d1wKM7U"
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "Complete the P-Switch mission \"Grab blue coins as snowballs descend the slopes!\" in or near DK Pass.",
       "id": "pswitch_165",
       "index": 165,
       "name": "Grab blue coins as snowballs descend the slopes!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 73.4023,
+      "y": 39.0625,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "Complete the P-Switch mission \"Hitch a ride on the train to reach the goal!\" in or near DK Pass.",
       "id": "pswitch_166",
       "index": 166,
       "name": "Hitch a ride on the train to reach the goal!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 71.1484,
+      "y": 50.7292,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "Complete the P-Switch mission \"Hustle up and down to gather the blue coins!\" in or near DK Pass.",
       "id": "pswitch_167",
       "index": 167,
       "name": "Hustle up and down to gather the blue coins!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 70.5742,
+      "y": 38.4722,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "Complete the P-Switch mission \"Join the snowballs in a race downhill!\" in or near Starview Peak.",
       "id": "pswitch_168",
       "index": 168,
       "name": "Join the snowballs in a race downhill!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 71.6602,
+      "y": 33.3333,
+      "youtubeId": "ZYKynGp9Nfw"
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "Complete the P-Switch challenge \"Power past Fuzzies while gathering blue coins!\" in or near DK Pass.",
       "id": "pswitch_169",
       "index": 169,
       "name": "Power past Fuzzies while gathering blue coins!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 66.5469,
+      "y": 46.862,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "This P Switch is found on top of a floodlight post at the peak of the mountain. Use the dash panel to get as close as possible and use a Feather to jump onto the floodlight post.",
       "id": "pswitch_170",
       "index": 170,
       "name": "Prove yourself in a SPECIAL test of skill #5!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 75.2031,
+      "y": 45.0911,
+      "youtubeId": "XvA8bT13zCw"
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "This P Switch is found on the roof at the starting area. Use the slanted roof on the right side to get on top of it.",
       "id": "pswitch_171",
       "index": 171,
       "name": "Race through the empty stands to the goal!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 74.9219,
+      "y": 44.1927,
+      "youtubeId": "TIotQdKSdPM"
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "Complete the P-Switch mission \"Sail through the sky and rush to the goal!\" in or near Starview Peak.",
       "id": "pswitch_172",
       "index": 172,
       "name": "Sail through the sky and rush to the goal!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 68.4883,
+      "y": 35.2648,
+      "youtubeId": "wlNQXfb785k"
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "Complete the P-Switch mission \"Show your skill by gliding a really long way!\" in or near DK Pass.",
       "id": "pswitch_173",
       "index": 173,
       "name": "Show your skill by gliding a really long way!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 71.8047,
+      "y": 39.2448,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "Complete the P-Switch mission \"Slalom downhill and scoop up the blue coins!\" in or near DK Pass.",
       "id": "pswitch_174",
       "index": 174,
       "name": "Slalom downhill and scoop up the blue coins!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 74.1914,
+      "y": 35.9592,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "Complete the P-Switch mission \"Squeeze through traffic jams to reach the goal!\" in or near DK Pass.",
       "id": "pswitch_175",
       "index": 175,
       "name": "Squeeze through traffic jams to reach the goal!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 69.2344,
+      "y": 41.0373,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "Complete the P-Switch mission \"Tackle the chilly course on the lake!\" in or near DK Pass.",
       "id": "pswitch_176",
       "index": 176,
       "name": "Tackle the chilly course on the lake!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 71.582,
+      "y": 47.7214,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dk_pass",
+      "hint": "Complete the P-Switch mission \"Take some Green Shells for luck!\" in or near DK Pass.",
       "id": "pswitch_177",
       "index": 177,
       "name": "Take some Green Shells for luck!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 79.5547,
+      "y": 38.3464,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "starview_peak",
+      "hint": "Complete the P-Switch mission \"Boost through a rugged cross-country route!\" in or near Starview Peak.",
       "id": "pswitch_178",
       "index": 178,
       "name": "Boost through a rugged cross-country route!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 77.2031,
+      "y": 29.6745,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "starview_peak",
+      "hint": "Complete the P-Switch mission \"Brave the unfinished shortcut!\" in or near Starview Peak.",
       "id": "pswitch_179",
       "index": 179,
       "name": "Brave the unfinished shortcut!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 79.4688,
+      "y": 30.9201,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "starview_peak",
+      "hint": "Complete the P-Switch mission \"Grab all the snowmen's blue coins!\" in or near Starview Peak.",
       "id": "pswitch_180",
       "index": 180,
       "name": "Grab all the snowmen's blue coins!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 65.3945,
+      "y": 29.2448,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "starview_peak",
+      "hint": "From Question Panel 5, use the ramp in front of you to jump off from the top of the observatory and land at the circular platform where you will find the P-Switch.",
       "id": "pswitch_181",
       "index": 181,
       "name": "Loop around the observatory and grab blue coins!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 76.0742,
+      "y": 26.9531,
+      "youtubeId": "9bqdNH-0K2M"
     },
     {
       "areaId": null,
       "courseId": "starview_peak",
+      "hint": "Fall off the bridge in front of the Starting Point. Go right and you will find the P-Switch beside the road near the edge.",
       "id": "pswitch_182",
       "index": 182,
       "name": "Put the pedal to the metal! Go, go, go!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 74.4688,
+      "y": 27.7908,
+      "youtubeId": "1QceKmy69M0"
     },
     {
       "areaId": null,
       "courseId": "starview_peak",
+      "hint": "Complete the P-Switch challenge \"Race against the icy avian assault!\" in or near Starview Peak.",
       "id": "pswitch_183",
       "index": 183,
       "name": "Race against the icy avian assault!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 81.0234,
+      "y": 33.2899,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "starview_peak",
+      "hint": "Complete the P-Switch mission \"Scale the slippery slope to reach the goal!\" in or near Starview Peak.",
       "id": "pswitch_184",
       "index": 184,
       "name": "Scale the slippery slope to reach the goal!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 68.6289,
+      "y": 32.1875,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "starview_peak",
+      "hint": "Complete the P-Switch mission \"Show off rail tricks while gathering blue coins!\" in or near Starview Peak.",
       "id": "pswitch_185",
       "index": 185,
       "name": "Show off rail tricks while gathering blue coins!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 63.8555,
+      "y": 32.0356,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "starview_peak",
+      "hint": "Complete the P-Switch mission \"Soar high above the slopes!\" in or near Starview Peak.",
       "id": "pswitch_186",
       "index": 186,
       "name": "Soar high above the slopes!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 75.6992,
+      "y": 28.4983,
+      "youtubeId": "XTl3FUS4c4w"
     },
     {
       "areaId": null,
       "courseId": "starview_peak",
+      "hint": "Complete the P-Switch mission \"Use the Mushrooms to blitz to the station!\" in or near Starview Peak.",
       "id": "pswitch_187",
       "index": 187,
       "name": "Use the Mushrooms to blitz to the station!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 69.1172,
+      "y": 28.9583,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "starview_peak",
+      "hint": "Complete the P-Switch mission \"Watch out for attacks from Ice Bros.!\" in or near Starview Peak.",
       "id": "pswitch_188",
       "index": 188,
       "name": "Watch out for attacks from Ice Bros.!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 75.5078,
+      "y": 27.6693,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "starview_peak",
+      "hint": "Complete the P-Switch mission \"Weave past Frost Piranha attacks for blue coins!\" in or near Starview Peak.",
       "id": "pswitch_189",
       "index": 189,
       "name": "Weave past Frost Piranha attacks for blue coins!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 71.8281,
+      "y": 30.6076,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "sky_high_sundae",
+      "hint": "Complete the P-Switch mission \"Gather blue coins while penguins put on a parade!\" in or near Sky-High Sundae.",
       "id": "pswitch_190",
       "index": 190,
       "name": "Gather blue coins while penguins put on a parade!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 88.4336,
+      "y": 43.6502,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "sky_high_sundae",
+      "hint": "Complete the P-Switch mission \"Grab blue coins between Frost Piranha attacks!\" in or near Sky-High Sundae.",
       "id": "pswitch_191",
       "index": 191,
       "name": "Grab blue coins between Frost Piranha attacks!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 82.5273,
+      "y": 39.171,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "sky_high_sundae",
+      "hint": "By completing \"Note the wind on the way to the goal!\", you will end up in front of this P Switch. Found by Amph_pm.",
       "id": "pswitch_192",
       "index": 192,
       "name": "Hurry to the frozen peak!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 85.6367,
+      "y": 41.9271,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "sky_high_sundae",
+      "hint": "Complete the P-Switch mission \"Note the wind on the way to the goal!\" in or near Sky-High Sundae.",
       "id": "pswitch_193",
       "index": 193,
       "name": "Note the wind on the way to the goal!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 82.9141,
+      "y": 39.5182,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "sky_high_sundae",
+      "hint": "This P Switch is found on the pink road past Toadette's Area in the course. Glide onto the left course and head south until you reach the road with pink and green sides. The P Switch should be on the pink side near a rock.",
       "id": "pswitch_194",
       "index": 194,
       "name": "Perform a bold escape through the ice-cream ravine!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 88.5781,
+      "y": 37.2092,
+      "youtubeId": "dAdgmTiT1h0"
     },
     {
       "areaId": null,
       "courseId": "sky_high_sundae",
+      "hint": "Complete the P-Switch mission \"Race around a tribute to Vanilla Lake!\" in or near Sky-High Sundae.",
       "id": "pswitch_195",
       "index": 195,
       "name": "Race around a tribute to Vanilla Lake!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 88.0781,
+      "y": 45.5773,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "sky_high_sundae",
+      "hint": "Complete the P-Switch mission \"Reach the top of the rotating ice-cream cone!\" in or near Sky-High Sundae.",
       "id": "pswitch_196",
       "index": 196,
       "name": "Reach the top of the rotating ice-cream cone!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 87.9219,
+      "y": 37.2656,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "sky_high_sundae",
+      "hint": "Complete the P-Switch mission \"Slice through ice-skating practice!\" in or near Sky-High Sundae.",
       "id": "pswitch_197",
       "index": 197,
       "name": "Slice through ice-skating practice!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 84.1406,
+      "y": 38.4592,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "sky_high_sundae",
+      "hint": "This P Switch is found on the same area as the fourth panel. Go up the ramp and turn around. The P Switch should be near some lamp posts and a bench.",
       "id": "pswitch_198",
       "index": 198,
       "name": "Time your Mushroom to bust through to the goal!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 87.9219,
+      "y": 36.5104,
+      "youtubeId": "LliuopQDs_I"
     },
     {
       "areaId": null,
       "courseId": "sky_high_sundae",
+      "hint": "Complete the P-Switch mission \"Watch for the snowball hazards ahead!\" in or near Sky-High Sundae.",
       "id": "pswitch_199",
       "index": 199,
       "name": "Watch for the snowball hazards ahead!",
-      "regionId": "snow"
+      "regionId": "snow",
+      "x": 85.4023,
+      "y": 45.0998,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "wario_shipyard",
+      "hint": "This P Switch is found behind a rock on an island near the main ship. The island is to the north east of the main ship. Once on the island, go around the rock and the P Switch should be nearby.",
       "id": "pswitch_200",
       "index": 200,
       "name": "Brave the storm and gather blue coins!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 84.8711,
+      "y": 54.7179,
+      "youtubeId": "SeGsc1YN3ak"
     },
     {
       "areaId": null,
       "courseId": "wario_shipyard",
+      "hint": "Found by a Game8 user.",
       "id": "pswitch_201",
       "index": 201,
       "name": "Dare to hitch a ride on the Dragoneels!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 79.7227,
+      "y": 56.072,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "wario_shipyard",
+      "hint": "This P Switch is found on a slope at the right side of the starting area. Get on the water and go left until you find a large slope. The P Switch should be near the top of the slope.",
       "id": "pswitch_202",
       "index": 202,
       "name": "Follow the coin-strewn path to the goal!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 88.1406,
+      "y": 54.579,
+      "youtubeId": "IvRAs1Qof9E"
     },
     {
       "areaId": null,
       "courseId": "wario_shipyard",
+      "hint": "Complete the P-Switch mission \"Put your trust in waterspout winds!\" in or near Wario Shipyard.",
       "id": "pswitch_203",
       "index": 203,
       "name": "Put your trust in waterspout winds!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 80.5859,
+      "y": 50.6727,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "wario_shipyard",
+      "hint": "This P Switch is found in between rocks on an island near the main ship. This island is to the north west of the main ship. The rocks can be found on the edge of the island.",
       "id": "pswitch_204",
       "index": 204,
       "name": "Rescue blue coins from the whirlpool!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 88.0938,
+      "y": 59.2708,
+      "youtubeId": "h8LqmQaU_Qw"
     },
     {
       "areaId": null,
       "courseId": "wario_shipyard",
+      "hint": "This P Switch is found on an island to the left of the main ship. Head towards the island with the shipwreck on it and the P Switch should be hidden near the edge. Found by Amph_pm.",
       "id": "pswitch_205",
       "index": 205,
       "name": "Scale the shipwrecks for blue coins!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 87.4688,
+      "y": 56.0894,
+      "youtubeId": "Xqg9O9iQaUo"
     },
     {
       "areaId": null,
       "courseId": "wario_shipyard",
+      "hint": "Complete the P-Switch mission \"Soar to Salty Salty Speedway!\" in or near Salty Salty Speedway.",
       "id": "pswitch_206",
       "index": 206,
       "name": "Soar to Salty Salty Speedway!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 78.0039,
+      "y": 51.033,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "wario_shipyard",
+      "hint": "Complete the P-Switch mission \"Surf the waves as Bulbers look on!\" in or near Wario Shipyard.",
       "id": "pswitch_207",
       "index": 207,
       "name": "Surf the waves as Bulbers look on!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 74.3438,
+      "y": 55.5903,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "wario_shipyard",
+      "hint": "From the Wario Shipyard starting point, go backwards and fall into the water. Go to the right and around the far corner, and then back onto the stage when you can see a Yoshi serving Dash Food. Go up the ramp to the left, and through the door directly to the left to ride on a rope to another tower. Go down the slope to find a rope you can ride on the righthand side; ride it up and jump across the gap to the far tower. You'll find the P Switch on the opposite side of the tower.",
       "id": "pswitch_208",
       "index": 208,
       "name": "Take a nonstop flight from tower to tower!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 88.1328,
+      "y": 57.7821,
+      "youtubeId": "SWSe_dSnMKg"
     },
     {
       "areaId": null,
       "courseId": "peach_beach",
+      "hint": "Complete the P-Switch mission \"Carefully nab blue coins and enjoy some sea air!\" in or near Peach Beach.",
       "id": "pswitch_209",
       "index": 209,
       "name": "Carefully nab blue coins and enjoy some sea air!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 81.8008,
+      "y": 77.3785,
+      "youtubeId": "E2NJi3z3mM8"
     },
     {
       "areaId": null,
       "courseId": "peach_beach",
+      "hint": "Complete the P-Switch mission \"Catch major air to get to the goal!\" in or near Peach Beach.",
       "id": "pswitch_210",
       "index": 210,
       "name": "Catch major air to get to the goal!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 85.5508,
+      "y": 77.1918,
+      "youtubeId": "4OX6ESFe-jc"
     },
     {
       "areaId": null,
       "courseId": "peach_beach",
+      "hint": "Complete the P-Switch mission \"Cut through the Shy Guy water show!\" in or near Peach Beach.",
       "id": "pswitch_211",
       "index": 211,
       "name": "Cut through the Shy Guy water show!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 89.9023,
+      "y": 71.2326,
+      "youtubeId": "GmHmKcXSNSE"
     },
     {
       "areaId": null,
       "courseId": "peach_beach",
+      "hint": "You will find the P-Switch at a curve in the northwest portion of the course.",
       "id": "pswitch_212",
       "index": 212,
       "name": "Mush-zoom through town and to the goal!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 89.5625,
+      "y": 73.8976,
+      "youtubeId": "MYcNS_99lUI"
     },
     {
       "areaId": null,
       "courseId": "peach_beach",
+      "hint": "Complete the P-Switch mission \"Put the flower petal to the metal!\" in or near Peach Beach.",
       "id": "pswitch_213",
       "index": 213,
       "name": "Put the flower petal to the metal!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 80.375,
+      "y": 73.1597,
+      "youtubeId": "17mSgNFagkI"
     },
     {
       "areaId": null,
       "courseId": "peach_beach",
+      "hint": "Complete the P-Switch mission \"Seek the sea breeze past those windmills!\" in or near Peach Beach.",
       "id": "pswitch_214",
       "index": 214,
       "name": "Seek the sea breeze past those windmills!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 77.2656,
+      "y": 72.895,
+      "youtubeId": "AuS9gThowbg"
     },
     {
       "areaId": null,
       "courseId": "peach_beach",
+      "hint": "You will find the P-Switch at the roof of a house at the western side of the map. In order to reach the P-Switch, you need to get to the roof of the castle using a Warp Pipe in the town portion of the race course. At the roof, keep to the right and use Rail Sliding to get to the top of the buildings. When you arrive at the roof of the buildings, drive to the location of the P-Switch.",
       "id": "pswitch_215",
       "index": 215,
       "name": "Soar to the VIP-seating tower!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 88.0938,
+      "y": 70.7422,
+      "youtubeId": "X4DKLqexdcI"
     },
     {
       "areaId": null,
       "courseId": "peach_beach",
+      "hint": "Complete the P-Switch mission \"Zigzag downhill to reach the goal!\" in or near Peach Beach.",
       "id": "pswitch_216",
       "index": 216,
       "name": "Zigzag downhill to reach the goal!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 79.4961,
+      "y": 75.7812,
+      "youtubeId": "4yjMrWwZTo4"
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "This P Switch is found on top of a building on the left side of the starting area. You can get on top of the building by following the main road until you are able to wrap around on the left side. There will be stairs behind a building, which you can use to get up to the rooftop area. Cross to the next building and the P Switch should be near two item boxes.",
       "id": "pswitch_217",
       "index": 217,
       "name": "Bash through certain boxes for a boost!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 77.4375,
+      "y": 65.1085,
+      "youtubeId": "Dd0ah66l5cw"
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "Complete the P-Switch mission \"Blitz to the beach! Go, go, go!\" in or near Peach Beach.",
       "id": "pswitch_218",
       "index": 218,
       "name": "Blitz to the beach! Go, go, go!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 72.4844,
+      "y": 68.4158,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "Complete the P-Switch mission \"Brave the waterspouts on the high seas!\" in or near Peach Beach.",
       "id": "pswitch_219",
       "index": 219,
       "name": "Brave the waterspouts on the high seas!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 78.6055,
+      "y": 69.0191,
+      "youtubeId": "D5MOMW70wac"
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_220",
       "index": 220,
       "name": "Bust the Boomerang Bros. blockade!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 72.6133,
+      "y": 59.7743,
+      "youtubeId": "2ig-kmDBUqQ"
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "Complete the P-Switch mission \"Clear the windmill!\" in or near Peach Beach.",
       "id": "pswitch_221",
       "index": 221,
       "name": "Clear the windmill!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 75.6211,
+      "y": 71.3715,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "Complete the P-Switch mission \"Crash the seaside blue-coin party!\" in or near Peach Beach.",
       "id": "pswitch_222",
       "index": 222,
       "name": "Crash the seaside blue-coin party!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 79.2578,
+      "y": 70.4427,
+      "youtubeId": "7Qic3ZCZVqg"
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "Complete the P-Switch mission \"Cross treacherous bluffs to reach the Goal Pole!\" in or near Salty Salty Speedway.",
       "id": "pswitch_223",
       "index": 223,
       "name": "Cross treacherous bluffs to reach the Goal Pole!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 70.1562,
+      "y": 57.9427,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_224",
       "index": 224,
       "name": "Display precision driving to gather the blue coins!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 74.4336,
+      "y": 53.0642,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "Complete the P-Switch mission \"Follow the pipes and slender paths to the goal!\" in or near Salty Salty Speedway.",
       "id": "pswitch_225",
       "index": 225,
       "name": "Follow the pipes and slender paths to the goal!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 71.9062,
+      "y": 63.2509,
+      "youtubeId": "PDYwfhuGPWw"
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "This P Switch is found on top of the stairs of a nearby building. From the starting line, follow the path to the right until you cross the bridge. After passing the first building, turn left and climb up the stairs on that building.",
       "id": "pswitch_226",
       "index": 226,
       "name": "Gather the blue coins of the enchanting mermaid!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 77.6953,
+      "y": 64.1536,
+      "youtubeId": "G7JWu8ma1zQ"
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "Complete the P-Switch mission \"Hop for boosts as Cheep Cheeps cheer you on!\" in or near Salty Salty Speedway.",
       "id": "pswitch_227",
       "index": 227,
       "name": "Hop for boosts as Cheep Cheeps cheer you on!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 69.0586,
+      "y": 62.2613,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "Complete the P-Switch mission \"Join in on the race around the deserted island!\" in or near Wario Shipyard.",
       "id": "pswitch_228",
       "index": 228,
       "name": "Join in on the race around the deserted island!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 87.2461,
+      "y": 62.6649,
+      "youtubeId": "2vl2I74qpeA"
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "Complete the P-Switch mission \"Master the Feather to make it to the goal!\" in or near Salty Salty Speedway.",
       "id": "pswitch_229",
       "index": 229,
       "name": "Master the Feather to make it to the goal!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 70.7695,
+      "y": 53.3984,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "Complete the P-Switch challenge \"Nab blue coins from the Goombas' vacation spot!\" in or near Wario Shipyard.",
       "id": "pswitch_230",
       "index": 230,
       "name": "Nab blue coins from the Goombas' vacation spot!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 87.8047,
+      "y": 63.3464,
+      "youtubeId": "1lEWTcNmb7c"
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_231",
       "index": 231,
       "name": "Parkour across Salty Salty Speedway's rooftops!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 75.0156,
+      "y": 66.5234,
+      "youtubeId": "kgG0gEJlhec"
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "Found by a Game8 user.",
       "id": "pswitch_232",
       "index": 232,
       "name": "Reach the mermaid calling from across the sea!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 84.9961,
+      "y": 61.2153,
+      "youtubeId": "SPUyM9AwQl"
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_233",
       "index": 233,
       "name": "Tackle some advanced training in water steering!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 73.8164,
+      "y": 56.6406,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "This P Switch is found in the northeast part of the course, before the curve leading to the canal. Simply follow the main road until you reach the top building.",
       "id": "pswitch_234",
       "index": 234,
       "name": "Take a shortcut to stay dry and reach the goal!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 75.8633,
+      "y": 62.0443,
+      "youtubeId": "cxt0TWl4RXE"
     },
     {
       "areaId": null,
       "courseId": "salty_salty_speedway",
+      "hint": "Complete the P-Switch mission \"Tour the islands on the way to the goal!\" in or near Wario Shipyard.",
       "id": "pswitch_235",
       "index": 235,
       "name": "Tour the islands on the way to the goal!",
-      "regionId": "eastern_sea"
+      "regionId": "eastern_sea",
+      "x": 84.0352,
+      "y": 63.4201,
+      "youtubeId": "XeVppwasu6A"
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "Complete the P-Switch mission \"Brave the buffalo stampedes from both sides!\" in or near Faraway Oasis.",
       "id": "pswitch_236",
       "index": 236,
       "name": "Brave the buffalo stampedes from both sides!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 62.7656,
+      "y": 64.1102,
+      "youtubeId": "7YQo9Gg9b8o"
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "Complete the P-Switch mission \"Collect blue coins around the geyser field!\" in or near Faraway Oasis.",
       "id": "pswitch_237",
       "index": 237,
       "name": "Collect blue coins around the geyser field!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 60.9961,
+      "y": 75.6554,
+      "youtubeId": "LRGr8tNrcVU"
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "Complete the P-Switch mission \"Do a tricky U-turn to collect the blue coins in time!\" in or near Faraway Oasis.",
       "id": "pswitch_238",
       "index": 238,
       "name": "Do a tricky U-turn to collect the blue coins in time!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 62.5039,
+      "y": 69.1623,
+      "youtubeId": "nC05odZaRRQ"
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "This P Switch is found along the main road. From the starting line, turn around and follow the main road. The P Switch should be along the road.",
       "id": "pswitch_239",
       "index": 239,
       "name": "Dodge debris and drift across the waterfall!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 62.6055,
+      "y": 72.3177,
+      "youtubeId": "8gZAz2bXbhY"
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "Found by Thomas Mazza.",
       "id": "pswitch_240",
       "index": 240,
       "name": "Drop in and out of the downriver tours!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 70.1562,
+      "y": 73.0729,
+      "youtubeId": "PnrJ6xfTmp8"
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "This P Switch is found beside the rock structure on the other side of the riverbank. It can be found near the fifth panel.",
       "id": "pswitch_241",
       "index": 241,
       "name": "Gather up blue coins at the riverside safari!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 64.7461,
+      "y": 71.6493,
+      "youtubeId": "PKRmeJ2OjH8"
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "Complete the P-Switch mission \"Hitch a ride on the runaway truck!\" in or near Faraway Oasis.",
       "id": "pswitch_242",
       "index": 242,
       "name": "Hitch a ride on the runaway truck!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 60.8945,
+      "y": 82.2222,
+      "youtubeId": "aHXAp786IEg"
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "Complete the P-Switch mission \"Join the endurance race in the savanna!\" in or near Faraway Oasis.",
       "id": "pswitch_243",
       "index": 243,
       "name": "Join the endurance race in the savanna!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 60.1992,
+      "y": 70.3819,
+      "youtubeId": "mQCFVF9AIno"
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "This P Switch is found to the right side of the starting area. Go off course and head to the right side. The P Switch should be near a small plateau. Found by Amph_pm.",
       "id": "pswitch_244",
       "index": 244,
       "name": "Launch up, up, up into the clouds!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 65.3242,
+      "y": 74.9957,
+      "youtubeId": "T52lxsDkq5A"
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "Complete the P-Switch mission \"Make good use of Feathers to reach the goal!\" in or near Faraway Oasis.",
       "id": "pswitch_245",
       "index": 245,
       "name": "Make good use of Feathers to reach the goal!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 64.6914,
+      "y": 77.8819,
+      "youtubeId": "v5B-xSkm_BM"
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "Complete the P-Switch mission \"Mind the giraffes as you rocket toward blue coins!\" in or near Faraway Oasis.",
       "id": "pswitch_246",
       "index": 246,
       "name": "Mind the giraffes as you rocket toward blue coins!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 71.6367,
+      "y": 71.9531,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_247",
       "index": 247,
       "name": "Reach blue coins with the crocodiles' help!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 61.5859,
+      "y": 80.5165,
+      "youtubeId": "zB7FjUUcSCI"
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "Complete the P-Switch mission \"Ride the lines and collect the blue coins!\" in or near Faraway Oasis.",
       "id": "pswitch_248",
       "index": 248,
       "name": "Ride the lines and collect the blue coins!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 69.6133,
+      "y": 68.9193,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "Complete the P-Switch mission \"Rush from rock to rock through a busy savanna!\" in or near Faraway Oasis.",
       "id": "pswitch_249",
       "index": 249,
       "name": "Rush from rock to rock through a busy savanna!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 60.2266,
+      "y": 68.4722,
+      "youtubeId": "F2zKKSeaCz0"
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "Complete the P-Switch mission \"Save blue coins from the waves of the whirlpool!\" in or near Peach Stadium.",
       "id": "pswitch_250",
       "index": 250,
       "name": "Save blue coins from the waves of the whirlpool!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 57.3828,
+      "y": 68.7804,
+      "youtubeId": "alkrCo8J3E4"
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_251",
       "index": 251,
       "name": "Soar above the falls!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 70.8828,
+      "y": 75.9809,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "Complete the P-Switch mission \"Take to the sky and glide along the river valley!\" in or near Faraway Oasis.",
       "id": "pswitch_252",
       "index": 252,
       "name": "Take to the sky and glide along the river valley!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 67.082,
+      "y": 79.987,
+      "youtubeId": "UaQwrQDdJwE"
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "From Yoshi's starting point, go straight ahead to find it off the left side of the road.",
       "id": "pswitch_253",
       "index": 253,
       "name": "Thank the crocodiles for their notable help!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 67.4492,
+      "y": 67.1918,
+      "youtubeId": "ejBJwngWn2U"
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "Complete the P-Switch mission \"Use the herd's help to reach the goal!\" in or near Faraway Oasis.",
       "id": "pswitch_254",
       "index": 254,
       "name": "Use the herd's help to reach the goal!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 68.4922,
+      "y": 77.4089,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_255",
       "index": 255,
       "name": "Wall ride a waterfall? That...just might work!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 72.6719,
+      "y": 74.9045,
+      "youtubeId": "n2jWZYSNGIY"
     },
     {
       "areaId": null,
       "courseId": "faraway_oasis",
+      "hint": "Complete the P-Switch mission \"Zigzag through the zebra rush!\" in or near Faraway Oasis.",
       "id": "pswitch_256",
       "index": 256,
       "name": "Zigzag through the zebra rush!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 64.1641,
+      "y": 75.4167,
+      "youtubeId": "hgjsP9ntlDA"
     },
     {
       "areaId": null,
       "courseId": "dino_dino_jungle",
+      "hint": "This P Switch is found near the laboratory entrance. Follow the main road until you are inside the laboratory. The P Switch should be near the entrance.",
       "id": "pswitch_257",
       "index": 257,
       "name": "Brave the dino dome in pursuit of blue coins!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 65.4922,
+      "y": 90.8984,
+      "youtubeId": "LQ0Z4IitPqg"
     },
     {
       "areaId": null,
       "courseId": "dino_dino_jungle",
+      "hint": "Complete the P-Switch mission \"Get a lift from the brachiosauruses!\" in or near Dino Dino Jungle.",
       "id": "pswitch_258",
       "index": 258,
       "name": "Get a lift from the brachiosauruses!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 71.3789,
+      "y": 85.8724,
+      "youtubeId": "DBioOYw82Sg"
     },
     {
       "areaId": null,
       "courseId": "dino_dino_jungle",
+      "hint": "Complete the P-Switch mission \"Glide with gusto! Don't let the T.Rex scare you!\" in or near Faraway Oasis.",
       "id": "pswitch_259",
       "index": 259,
       "name": "Glide with gusto! Don't let the T. rex scare you!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 64.0078,
+      "y": 81.7535,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dino_dino_jungle",
+      "hint": "This P Switch is found behind the fence near the starting area. From the cliff of the first P switch, drop to the level with two palm trees on it. Then drop into the fenced area from there. This P Switch can also be easily reached by using a Feather to jump over the fence.",
       "id": "pswitch_260",
       "index": 260,
       "name": "Prove yourself in a SPECIAL test of skill #4!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 66.9961,
+      "y": 90.0868,
+      "youtubeId": "rdletjt4auI"
     },
     {
       "areaId": null,
       "courseId": "dino_dino_jungle",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_261",
       "index": 261,
       "name": "Race offroad through a dinosaur-filled jungle!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 62.793,
+      "y": 85.5642,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dino_dino_jungle",
+      "hint": "Complete the P-Switch mission \"Ramp off the triceratops!\" in or near Dino Dino Jungle.",
       "id": "pswitch_262",
       "index": 262,
       "name": "Ramp off the triceratops!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 70.8125,
+      "y": 82.5781,
+      "youtubeId": "-az7ViAt_R4"
     },
     {
       "areaId": null,
       "courseId": "dino_dino_jungle",
+      "hint": "Complete the P-Switch mission \"Tackle the tricky path up the mountain!\" in or near Dino Dino Jungle.",
       "id": "pswitch_263",
       "index": 263,
       "name": "Tackle the tricky path up the mountain!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 68.1797,
+      "y": 81.8359,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dino_dino_jungle",
+      "hint": "This P Switch is found on top of a cliff. From the start line, turn around and go up the cliff near the starting area.",
       "id": "pswitch_264",
       "index": 264,
       "name": "Take a flying tour through the dome and beyond!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 66.2695,
+      "y": 89.8655,
+      "youtubeId": "VHquO5TL1ek"
     },
     {
       "areaId": null,
       "courseId": "dino_dino_jungle",
+      "hint": "Complete the P-Switch mission \"Travel the savanna and visit the giant waterfalls!\" in or near Dino Dino Jungle.",
       "id": "pswitch_265",
       "index": 265,
       "name": "Travel the savanna and visit the giant waterfalls!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 72.1953,
+      "y": 81.7839,
+      "youtubeId": "eFMMikFA8B4"
     },
     {
       "areaId": null,
       "courseId": "dino_dino_jungle",
+      "hint": "This P Switch is found below a cliff. From the start line, turn around and go past the cliff of the first P Switch. The second P Switch should be hidden in the corner.",
       "id": "pswitch_266",
       "index": 266,
       "name": "Trust their backs to get you there!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 67.1758,
+      "y": 89.7222,
+      "youtubeId": "E7I3HNLsUjs"
     },
     {
       "areaId": null,
       "courseId": "dino_dino_jungle",
+      "hint": "Complete the P-Switch mission \"Zip past and over the wild dinosaurs!\" in or near Dino Dino Jungle.",
       "id": "pswitch_267",
       "index": 267,
       "name": "Zip past and over the wild dinosaurs!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 61.6289,
+      "y": 83.4115,
+      "youtubeId": "NqmNwP6DQf4"
     },
     {
       "areaId": null,
       "courseId": "great_q_block_ruins",
+      "hint": "From the Starting Point, drive backwards until you fall from a gap in the road. You will land at a small island where you will find the P-Switch.",
       "id": "pswitch_268",
       "index": 268,
       "name": "Bounce along the cloud tops!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 79.8008,
+      "y": 83.8585,
+      "youtubeId": "kVy0cw6PAUw"
     },
     {
       "areaId": null,
       "courseId": "great_q_block_ruins",
+      "hint": "Complete the P-Switch mission \"Bound from block to cloud to reach the goal!\" in or near Great ? Block Ruins.",
       "id": "pswitch_269",
       "index": 269,
       "name": "Bound from block to cloud to reach the goal!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 78.9414,
+      "y": 81.8403,
+      "youtubeId": "h6Fy10tdoQ0"
     },
     {
       "areaId": null,
       "courseId": "great_q_block_ruins",
+      "hint": "Complete the P-Switch mission \"Climb to great heights to reach the sky block!\" in or near Great ? Block Ruins.",
       "id": "pswitch_270",
       "index": 270,
       "name": "Climb to great heights to reach the sky block!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 75.7383,
+      "y": 85.2778,
+      "youtubeId": "j0VIhGYxYhI"
     },
     {
       "areaId": null,
       "courseId": "great_q_block_ruins",
+      "hint": "Complete the P-Switch mission \"Follow the Ivy Piranha Plants to blue coins!\" in or near Great ? Block Ruins.",
       "id": "pswitch_271",
       "index": 271,
       "name": "Follow the Ivy Piranha Plants to blue coins!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 77.5078,
+      "y": 76.1849,
+      "youtubeId": "DnLDqOrqGQo"
     },
     {
       "areaId": null,
       "courseId": "great_q_block_ruins",
+      "hint": "Keep going straight from the starting point. You will find the P-Switch behind a block near a curve inside the ruins.",
       "id": "pswitch_272",
       "index": 272,
       "name": "Gather blue coins among the gold of the ruins!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 82.125,
+      "y": 83.4549,
+      "youtubeId": "Y5K6GbU0vVs"
     },
     {
       "areaId": null,
       "courseId": "great_q_block_ruins",
+      "hint": "Complete the P-Switch mission \"Grab the blue coins the Piranha Plants want!\" in or near Dino Dino Jungle.",
       "id": "pswitch_273",
       "index": 273,
       "name": "Grab the blue coins the Piranha Plants want!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 72.5,
+      "y": 83.52,
+      "youtubeId": "1n6eC2AM2LY"
     },
     {
       "areaId": null,
       "courseId": "great_q_block_ruins",
+      "hint": "Complete the P-Switch mission \"Pluck the blue coins from the savanna sky!\" in or near Great ? Block Ruins.",
       "id": "pswitch_274",
       "index": 274,
       "name": "Pluck the blue coins from the savanna sky!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 74.2422,
+      "y": 79.9826,
+      "youtubeId": "VQD9X-zISJw"
     },
     {
       "areaId": null,
       "courseId": "great_q_block_ruins",
+      "hint": "Near the starting point, you will find a chain going downwards at your left. Use Rail Slide at the chain and you will reach the island where you will find the P-Switch.",
       "id": "pswitch_275",
       "index": 275,
       "name": "Race along a tricky path over ancient ruins!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 80.1406,
+      "y": 82.8906,
+      "youtubeId": "_-HbxI4bUwM"
     },
     {
       "areaId": null,
       "courseId": "great_q_block_ruins",
+      "hint": "Complete the P-Switch mission \"Ride Ivy Piranha Plant vines to grab blue coins!\" in or near Great ? Block Ruins.",
       "id": "pswitch_276",
       "index": 276,
       "name": "Ride Ivy Piranha Plant vines to grab blue coins!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 74.8945,
+      "y": 81.4106,
+      "youtubeId": "h6Fy10tdoQ0"
     },
     {
       "areaId": null,
       "courseId": "great_q_block_ruins",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_277",
       "index": 277,
       "name": "Ride the rails in the jungle to grab blue coins!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 77.3008,
+      "y": 77.9861,
+      "youtubeId": "vj5EaB5q6y8"
     },
     {
       "areaId": null,
       "courseId": "great_q_block_ruins",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_278",
       "index": 278,
       "name": "Take a leap of faith over the waterfall's edge!",
-      "regionId": "savanna_jungle"
+      "regionId": "savanna_jungle",
+      "x": 73.8477,
+      "y": 75.8984,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "peach_stadium",
+      "hint": "Complete the P-Switch mission \"Catch the express train to the city!\" in or near Crown City.",
       "id": "pswitch_279",
       "index": 279,
       "name": "Catch the express train to the city!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 39.2188,
+      "y": 61.5799,
+      "youtubeId": "Y4b5jQIXTCY"
     },
     {
       "areaId": null,
       "courseId": "peach_stadium",
+      "hint": "Complete the P-Switch mission \"Clear the lake! Don't become fish food!\" in or near Peach Stadium.",
       "id": "pswitch_280",
       "index": 280,
       "name": "Clear the lake! Don't become fish food!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 50.793,
+      "y": 54.8307,
+      "youtubeId": "5WT7A3Gu5QA"
     },
     {
       "areaId": null,
       "courseId": "peach_stadium",
+      "hint": "Complete the P-Switch mission \"Collect blue coins along a scenic back route!\" in or near Peach Stadium.",
       "id": "pswitch_281",
       "index": 281,
       "name": "Collect blue coins along a scenic back route!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 54.4883,
+      "y": 59.566,
+      "youtubeId": "DOVdFeGd8iE"
     },
     {
       "areaId": null,
       "courseId": "peach_stadium",
+      "hint": "Complete the P-Switch mission \"Crash through the Hermity Cone hideouts!\" in or near Crown City.",
       "id": "pswitch_282",
       "index": 282,
       "name": "Crash through the Hermity Cone hideouts!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 41.5938,
+      "y": 63.7934,
+      "youtubeId": "3n50hQAO5hU"
     },
     {
       "areaId": null,
       "courseId": "peach_stadium",
+      "hint": "Complete the P-Switch mission \"Grab blue coins among the Para-Biddybuds!\" in or near Peach Stadium.",
       "id": "pswitch_283",
       "index": 283,
       "name": "Grab blue coins among the Para-Biddybuds!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 47.5273,
+      "y": 54.9913,
+      "youtubeId": "1fuhCPh32C8"
     },
     {
       "areaId": null,
       "courseId": "peach_stadium",
+      "hint": "Found by a Game8 user.",
       "id": "pswitch_284",
       "index": 284,
       "name": "Hit the ramps and reach the goal!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 51.2422,
+      "y": 47.5608,
+      "youtubeId": "oOGWLoM6r3w"
     },
     {
       "areaId": null,
       "courseId": "peach_stadium",
+      "hint": "Complete the P-Switch mission \"Jump into a local amateur race!\" in or near Peach Stadium.",
       "id": "pswitch_285",
       "index": 285,
       "name": "Jump into a local amateur race!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 46.125,
+      "y": 53.2726,
+      "youtubeId": "KoBrx_HomtQ"
     },
     {
       "areaId": null,
       "courseId": "peach_stadium",
+      "hint": "Complete the P-Switch mission \"Note the shortcut through the stadium's garden!\" in or near Peach Stadium.",
       "id": "pswitch_286",
       "index": 286,
       "name": "Note the shortcut through the stadium's garden!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 53.1563,
+      "y": 56.5017,
+      "youtubeId": "YRaoUCtNS5M"
     },
     {
       "areaId": null,
       "courseId": "peach_stadium",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_287",
       "index": 287,
       "name": "Play some tunes while gathering blue coins!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 45.1719,
+      "y": 59.5139,
+      "youtubeId": "vUjv1ZpNU_s"
     },
     {
       "areaId": null,
       "courseId": "peach_stadium",
+      "hint": "Can be found behind barricades near the water. You must ride the wall then perform a trick when you pass each ring so that you don't fall.",
       "id": "pswitch_288",
       "index": 288,
       "name": "Prove yourself in a SPECIAL test of skill #1!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 41.5547,
+      "y": 65.3168,
+      "youtubeId": "Ztn-lFlDR4s"
     },
     {
       "areaId": null,
       "courseId": "peach_stadium",
+      "hint": "Complete the P-Switch mission \"Race through the figure-eight time trial!\" in or near Peach Stadium.",
       "id": "pswitch_289",
       "index": 289,
       "name": "Race through the figure-eight time trial!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 52.9414,
+      "y": 67.0877,
+      "youtubeId": "XCU0O452Y7U"
     },
     {
       "areaId": null,
       "courseId": "peach_stadium",
+      "hint": "Complete the P-Switch mission \"Steer the Ivy Piranha Plant vine toward the goal!\" in or near Cheep Cheep Falls.",
       "id": "pswitch_290",
       "index": 290,
       "name": "Steer the Ivy Piranha Plant vine toward the goal!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 55.7578,
+      "y": 52.6085,
+      "youtubeId": "vcujeOoxQN0"
     },
     {
       "areaId": null,
       "courseId": "peach_stadium",
+      "hint": "This P Switch is found under the main road. From the starting line, go forward until the left side does not have a barrier anymore. Fall off the main road and the P Switch should be behind you.",
       "id": "pswitch_291",
       "index": 291,
       "name": "Take to the skies high above Peach Stadium!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 52.3242,
+      "y": 61.1675,
+      "youtubeId": "ZQUJPBr8p6o"
     },
     {
       "areaId": null,
       "courseId": "peach_stadium",
+      "hint": "This P Switch is found near the starting area. From the starting line, turn around and go out of the small opening on the right side of the course.",
       "id": "pswitch_292",
       "index": 292,
       "name": "Trick your way to the top of the gate!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 50.0625,
+      "y": 61.9661,
+      "youtubeId": "UYstxU5LqPY"
     },
     {
       "areaId": null,
       "courseId": "peach_stadium",
+      "hint": "Complete the P-Switch challenge \"Use a delicate touch to reach the Goal Pole!\" in or near Peach Stadium.",
       "id": "pswitch_293",
       "index": 293,
       "name": "Use a delicate touch to reach the Goal Pole!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 47.9766,
+      "y": 67.1398,
+      "youtubeId": "SV3sXNUIyDE"
     },
     {
       "areaId": null,
       "courseId": "peach_stadium",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_294",
       "index": 294,
       "name": "Weave a route through a pack of Chain Chomps!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 58.2852,
+      "y": 63.4592,
+      "youtubeId": "OlPm60rsrtc"
     },
     {
       "areaId": null,
       "courseId": "moo_moo_meadows",
+      "hint": "Complete the P-Switch mission \"Bounce up! Drop down! Grab blue coins!\" in or near Moo Moo Meadows.",
       "id": "pswitch_295",
       "index": 295,
       "name": "Bounce up! Drop down! Grab blue coins!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 52.957,
+      "y": 40.0,
+      "youtubeId": "LIpE0oGWSyg"
     },
     {
       "areaId": null,
       "courseId": "moo_moo_meadows",
+      "hint": "Complete the P-Switch mission \"Chase whoever is tearing up the yard!\" in or near Moo Moo Meadows.",
       "id": "pswitch_296",
       "index": 296,
       "name": "Chase whoever is tearing up the yard!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 48.8555,
+      "y": 45.4731,
+      "youtubeId": "gOyD6Iwy_n8"
     },
     {
       "areaId": null,
       "courseId": "moo_moo_meadows",
+      "hint": "Complete the P-Switch mission \"Dash up the river and reach the goal!\" in or near Moo Moo Meadows.",
       "id": "pswitch_297",
       "index": 297,
       "name": "Dash up the river and reach the goal!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 54.3555,
+      "y": 48.572,
+      "youtubeId": "v5-L7yzTcp8"
     },
     {
       "areaId": null,
       "courseId": "moo_moo_meadows",
+      "hint": "Complete the P-Switch mission \"Grab some easy blue coins... and one tricky one!\" in or near Moo Moo Meadows.",
       "id": "pswitch_298",
       "index": 298,
       "name": "Grab some easy blue coins...and one tricky one!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 47.0547,
+      "y": 49.9479,
+      "youtubeId": "FHdjcVzJSIw"
     },
     {
       "areaId": null,
       "courseId": "moo_moo_meadows",
+      "hint": "Complete the P-Switch mission \"Hop over the meadows and launch to the goal!\" in or near Moo Moo Meadows.",
       "id": "pswitch_299",
       "index": 299,
       "name": "Hop over the meadows and launch to the goal!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 49.668,
+      "y": 43.5547,
+      "youtubeId": "VjIhYG5keTk"
     },
     {
       "areaId": null,
       "courseId": "moo_moo_meadows",
+      "hint": "Go through the cowshed to the left of the Start Line. You will find the P-Switch to your left, near Yoshi's Diner.",
       "id": "pswitch_300",
       "index": 300,
       "name": "Mooove through the herd of cows!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 50.8789,
+      "y": 44.0625,
+      "youtubeId": "8JOjfQdX9aw"
     },
     {
       "areaId": null,
       "courseId": "moo_moo_meadows",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_301",
       "index": 301,
       "name": "Pass beneath the Signal Bugs at the right time!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 47.9766,
+      "y": 35.026,
+      "youtubeId": "sOtfOv1QDeg"
     },
     {
       "areaId": null,
       "courseId": "moo_moo_meadows",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_302",
       "index": 302,
       "name": "Race downhill to reach the lake in time!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 46.0,
+      "y": 40.7856,
+      "youtubeId": "w3TSdy-8cds"
     },
     {
       "areaId": null,
       "courseId": "moo_moo_meadows",
+      "hint": "Complete the P-Switch mission \"SEARCH FIELDS. ABDUCT BLUE COINS.\" in or near Moo Moo Meadows.",
       "id": "pswitch_303",
       "index": 303,
       "name": "SEARCH FIELDS. ABDUCT BLUE COINS.",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 50.6172,
+      "y": 37.9297,
+      "youtubeId": "3DLkFJ_iidc"
     },
     {
       "areaId": null,
       "courseId": "moo_moo_meadows",
+      "hint": "Complete the P-Switch challenge \"Show everyone the slopes aren't off limits!\" in or near Choco Mountain.",
       "id": "pswitch_304",
       "index": 304,
       "name": "Show everyone the slopes aren't off limits!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 41.8203,
+      "y": 47.1224,
+      "youtubeId": "exQMBFYGWWo"
     },
     {
       "areaId": null,
       "courseId": "moo_moo_meadows",
+      "hint": "Complete the P-Switch challenge \"Tear up the mountain pass before time runs out!\" in or near Moo Moo Meadows.",
       "id": "pswitch_305",
       "index": 305,
       "name": "Tear up the mountain pass before time runs out!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 55.418,
+      "y": 44.9436,
+      "youtubeId": "9-ZpgzQrO7Q"
     },
     {
       "areaId": null,
       "courseId": "moo_moo_meadows",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_306",
       "index": 306,
       "name": "To the air! To the water!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 53.3594,
+      "y": 39.2405,
+      "youtubeId": "wis8HpZ7Dtw"
     },
     {
       "areaId": null,
       "courseId": "moo_moo_meadows",
+      "hint": "Go inside the cowshed to the left of the Start Line. You will find the P-Switch between 2 bales of hay.",
       "id": "pswitch_307",
       "index": 307,
       "name": "Trust that there's a blue-coin reason for the pipe!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 50.2695,
+      "y": 44.7049,
+      "youtubeId": "ddyzODpobc"
     },
     {
       "areaId": null,
       "courseId": "choco_mountain",
+      "hint": "This P Switch is found on the second curve along the main road. From the starting line, simply follow along the main road. The third P Switch should be near the second curve.",
       "id": "pswitch_308",
       "index": 308,
       "name": "Dash, dash, dash through the thick chocolate!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 36.5312,
+      "y": 52.1875,
+      "youtubeId": "EZjvtZ1eOR8"
     },
     {
       "areaId": null,
       "courseId": "choco_mountain",
+      "hint": "This P Switch is found in a hidden area accessible via the warp pipe on top of the tunnel. This P Switch can be found by using the warp pipe near the second panel.",
       "id": "pswitch_309",
       "index": 309,
       "name": "Focus on the blue coins in a sea of gold!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 39.1602,
+      "y": 52.2526,
+      "youtubeId": "AiwcVFIu6O8"
     },
     {
       "areaId": null,
       "courseId": "choco_mountain",
+      "hint": "Complete the P-Switch mission \"Race along a risky shortcut!\" in or near Choco Mountain.",
       "id": "pswitch_310",
       "index": 310,
       "name": "Race along a risky shortcut!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 40.3594,
+      "y": 48.2769,
+      "youtubeId": "Z7EGuArkVF8"
     },
     {
       "areaId": null,
       "courseId": "choco_mountain",
+      "hint": "Complete the P-Switch mission \"Race around a tribute to Choco Island 1!\" in or near Choco Mountain.",
       "id": "pswitch_311",
       "index": 311,
       "name": "Race around a tribute to Choco Island 1!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 42.7227,
+      "y": 56.1762,
+      "youtubeId": "reB3RZaSmEE"
     },
     {
       "areaId": null,
       "courseId": "choco_mountain",
+      "hint": "Complete the P-Switch mission \"Race around a tribute to Choco Island 2!\" in or near Choco Mountain.",
       "id": "pswitch_312",
       "index": 312,
       "name": "Race around a tribute to Choco Island 2!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 33.8203,
+      "y": 56.5278,
+      "youtubeId": "34u0DQwBp10"
     },
     {
       "areaId": null,
       "courseId": "choco_mountain",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_313",
       "index": 313,
       "name": "Shine bright with Super Star power!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 39.3477,
+      "y": 58.3767,
+      "youtubeId": "UWPo8cyRHbg"
     },
     {
       "areaId": null,
       "courseId": "choco_mountain",
+      "hint": "Complete the P-Switch mission \"Take an offroad route to Choco Mountain!\" in or near Choco Mountain.",
       "id": "pswitch_314",
       "index": 314,
       "name": "Take an offroad route to Choco Mountain!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 41.582,
+      "y": 48.3377,
+      "youtubeId": "g47xArmOu5g"
     },
     {
       "areaId": null,
       "courseId": "choco_mountain",
+      "hint": "This P Switch is found along the main road. From the starting line, turn around and follow the main road. The first P Switch should be near a curve.",
       "id": "pswitch_315",
       "index": 315,
       "name": "Watch out for falling chocolate! And rocks!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 38.9805,
+      "y": 50.6554,
+      "youtubeId": "St0qcDQls4g"
     },
     {
       "areaId": null,
       "courseId": "toads_factory",
+      "hint": "Complete the P-Switch mission \"Borrow a boat and become unstoppable!\" in or near Toad's Factory.",
       "id": "pswitch_316",
       "index": 316,
       "name": "Borrow a boat and become unstoppable!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 37.1602,
+      "y": 38.559,
+      "youtubeId": "07dxKrdXxBA"
     },
     {
       "areaId": null,
       "courseId": "toads_factory",
+      "hint": "Complete the P-Switch mission \"Climb one crane, then dodge the other!\" in or near Toad's Factory.",
       "id": "pswitch_317",
       "index": 317,
       "name": "Climb one crane, then dodge the other!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 32.7617,
+      "y": 36.9748,
+      "youtubeId": "BMFZ6Nnf9l4"
     },
     {
       "areaId": null,
       "courseId": "toads_factory",
+      "hint": "Complete the P-Switch mission \"Cut across traffic and grab the blue coins!\" in or near Toad's Factory.",
       "id": "pswitch_318",
       "index": 318,
       "name": "Cut across traffic and grab the blue coins!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 42.8945,
+      "y": 32.7214,
+      "youtubeId": "uroYNvnmdIw"
     },
     {
       "areaId": null,
       "courseId": "toads_factory",
+      "hint": "This P Switch is found at the base of a blue circular building. From the starting area, turn right past the orange freight container and head south towards the blue circular building. The second P Switch should be in front of it.",
       "id": "pswitch_319",
       "index": 319,
       "name": "Forgive the messy nature of prototype testing!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 38.9102,
+      "y": 36.5017,
+      "youtubeId": "DWrFvdpgjME"
     },
     {
       "areaId": null,
       "courseId": "toads_factory",
+      "hint": "Complete the P-Switch mission \"Gather the scattered blue coins!\" in or near Toad's Factory.",
       "id": "pswitch_320",
       "index": 320,
       "name": "Gather the scattered blue coins!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 38.6875,
+      "y": 33.1424,
+      "youtubeId": "oZhLsz08VW4"
     },
     {
       "areaId": null,
       "courseId": "toads_factory",
+      "hint": "Complete the P-Switch mission \"Hop from rail to rail to grab the blue coins!\" in or near Toad's Factory.",
       "id": "pswitch_321",
       "index": 321,
       "name": "Hop from rail to rail to grab the blue coins!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 34.8789,
+      "y": 33.9019,
+      "youtubeId": "YSetScgXH1M"
     },
     {
       "areaId": null,
       "courseId": "toads_factory",
+      "hint": "Complete the P-Switch mission \"Note the timing of your jumps!\" in or near Toad's Factory.",
       "id": "pswitch_322",
       "index": 322,
       "name": "Note the timing of your jumps!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 38.6445,
+      "y": 39.5356,
+      "youtubeId": "Cz3Dyb3PCtw"
     },
     {
       "areaId": null,
       "courseId": "toads_factory",
+      "hint": "This P Switch is found under a ramp on the water. From the starting area, head towards the southeast area of the course, near the warp pipe of the fourth panel. Wrap around the building and proceed further into the water. The third P Switch should be near the base of the ramp.",
       "id": "pswitch_323",
       "index": 323,
       "name": "Prove yourself in a SPECIAL test of skill #2!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 40.6445,
+      "y": 38.5547,
+      "youtubeId": "g09DXemtGGc"
     },
     {
       "areaId": null,
       "courseId": "toads_factory",
+      "hint": "This P Switch is found on the upper floor outside of the factory. From the starting area, head towards the left side and then go up the ramp with the red rails. The fourth P Switch should be to your right at the end of the ramp.",
       "id": "pswitch_324",
       "index": 324,
       "name": "Race up to the very top of the crane!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 36.7812,
+      "y": 35.5295,
+      "youtubeId": "_Wou4HdLn3E"
     },
     {
       "areaId": null,
       "courseId": "toads_factory",
+      "hint": "This P Switch is found to the left of the starting area. From the starting area, head to the left side of the factory and the first P Switch can be found under a Mario Kart banner.",
       "id": "pswitch_325",
       "index": 325,
       "name": "Take a tour of Toad's Factory!",
-      "regionId": "central_grassland"
+      "regionId": "central_grassland",
+      "x": 36.3984,
+      "y": 35.9635,
+      "youtubeId": "m0Uj2VhFiNI"
     },
     {
       "areaId": null,
       "courseId": "cheep_cheep_falls",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_326",
       "index": 326,
       "name": "Barrel through hay bales to bag blue coins!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 58.0078,
+      "y": 50.5425,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "cheep_cheep_falls",
+      "hint": "Complete the P-Switch mission \"Gather blue coins on the Thwompy-Whampy wall!\" in or near Cheep Cheep Falls.",
       "id": "pswitch_327",
       "index": 327,
       "name": "Gather blue coins on the Thwompy-Whampy wall!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 61.875,
+      "y": 59.4705,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "cheep_cheep_falls",
+      "hint": "Complete the P-Switch mission \"Gracefully grab blue coins amongst falling leaves!\" in or near Cheep Cheep Falls.",
       "id": "pswitch_328",
       "index": 328,
       "name": "Gracefully grab blue coins amongst falling leaves!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 65.1445,
+      "y": 50.1562,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "cheep_cheep_falls",
+      "hint": "Complete the P-Switch mission \"Harmonize with the world by ringing the bell!\" in or near Cheep Cheep Falls.",
       "id": "pswitch_329",
       "index": 329,
       "name": "Harmonize with the world by ringing the bell!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 65.1445,
+      "y": 52.0052,
+      "youtubeId": "Qm9Qe-ht9R4"
     },
     {
       "areaId": null,
       "courseId": "cheep_cheep_falls",
+      "hint": "Complete the P-Switch mission \"Look out! Look out again! Look out some more!\" in or near Cheep Cheep Falls.",
       "id": "pswitch_330",
       "index": 330,
       "name": "Look out! Look out again! Look out some more!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 60.7305,
+      "y": 48.8108,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "cheep_cheep_falls",
+      "hint": "You will find the P-Switch at a Sand Garden in the northwestern part of the map.",
       "id": "pswitch_331",
       "index": 331,
       "name": "Pursue zen by collecting blue coins!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 63.5977,
+      "y": 52.6259,
+      "youtubeId": "bsS-glLR-FQ"
     },
     {
       "areaId": null,
       "courseId": "cheep_cheep_falls",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_332",
       "index": 332,
       "name": "Scoop up what the Super Koopas drop!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 59.918,
+      "y": 46.5017,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "cheep_cheep_falls",
+      "hint": "From the Start Line, turn around and go down the set of stairs. You will find the P-Switch in the middle of the pond after turning left to the pagoda.",
       "id": "pswitch_333",
       "index": 333,
       "name": "Seek peace by climbing the falls!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 64.7656,
+      "y": 55.0738,
+      "youtubeId": "OWzV_V11K98"
     },
     {
       "areaId": null,
       "courseId": "cheep_cheep_falls",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_334",
       "index": 334,
       "name": "Show off a very dangerous way to board a train!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 59.2344,
+      "y": 53.2335,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "cheep_cheep_falls",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_335",
       "index": 335,
       "name": "Soar along a secret route to Cheep Cheep Falls!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 59.6406,
+      "y": 51.5712,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "cheep_cheep_falls",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_336",
       "index": 336,
       "name": "Watch for Dragoneels while racing on the lake!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 59.5508,
+      "y": 61.6623,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dandelion_depths",
+      "hint": "Complete the P-Switch mission \"Avoid the Piranha Plants as you go!\" in or near Mario Circuit.",
       "id": "pswitch_337",
       "index": 337,
       "name": "Avoid the Piranha Plants as you go!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 59.1055,
+      "y": 31.7665,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dandelion_depths",
+      "hint": "Complete the P-Switch mission \"Collect blue coins on the slackline course!\" in or near Dandelion Depths.",
       "id": "pswitch_338",
       "index": 338,
       "name": "Collect blue coins on the slackline course!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 60.3086,
+      "y": 42.8212,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dandelion_depths",
+      "hint": "This P Switch is found near a ramp in the underground cavern. From the starting line, follow the main road until you are able to jump off to the middle area. Once you're at the bottom, go to the base of the ramp and the second P Switch should be there.",
       "id": "pswitch_339",
       "index": 339,
       "name": "Collect the blue coins in the mysterious caverns!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 64.1055,
+      "y": 40.4384,
+      "youtubeId": "inIW0xUctI0"
     },
     {
       "areaId": null,
       "courseId": "dandelion_depths",
+      "hint": "Complete the P-Switch mission \"Go with the flow to collect blue coins!\" in or near Cheep Cheep Falls.",
       "id": "pswitch_340",
       "index": 340,
       "name": "Go with the flow to collect blue coins!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 62.2578,
+      "y": 46.2023,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dandelion_depths",
+      "hint": "Complete the P-Switch mission \"Grab the truck to barrel through the shortcuts!\" in or near Cheep Cheep Falls.",
       "id": "pswitch_341",
       "index": 341,
       "name": "Grab the truck to barrel through the shortcuts!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 61.4102,
+      "y": 44.7439,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dandelion_depths",
+      "hint": "This P Switch is found on a road off-course. From the starting line, turn around and jump off-course. Continue heading south and the third P Switch should be on the road near some red structures.",
       "id": "pswitch_342",
       "index": 342,
       "name": "Jump, jump, jump, jump, jump, jump, jump...jump!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 63.5273,
+      "y": 40.4123,
+      "youtubeId": "g5GI49jLGd0"
     },
     {
       "areaId": null,
       "courseId": "dandelion_depths",
+      "hint": "Complete the P-Switch mission \"Make use of the vehicles along the riverbanks!\" in or near Dandelion Depths.",
       "id": "pswitch_343",
       "index": 343,
       "name": "Make use of the vehicles along the riverbanks!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 59.3242,
+      "y": 41.8967,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dandelion_depths",
+      "hint": "This P Switch is found on the upper platform inside the tunnel. From the starting line, follow the main road until you reach the tunnel near the first P Switch. Wall ride on the right wall to be able to jump onto the platform. The fourth P Switch should be at the end of the platform behind a barrier.",
       "id": "pswitch_344",
       "index": 344,
       "name": "Prove yourself in a SPECIAL test of skill #3!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 63.7891,
+      "y": 38.2378,
+      "youtubeId": "igJJUDvjcVM"
     },
     {
       "areaId": null,
       "courseId": "dandelion_depths",
+      "hint": "This P Switch is found along the main road. From the starting line, simply follow the main road until you come across the first P Switch which should be in the middle of the road.",
       "id": "pswitch_345",
       "index": 345,
       "name": "Race up the Para-Biddybud-covered bridge!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 64.2656,
+      "y": 37.4826,
+      "youtubeId": "ZDSFIqv5cn4"
     },
     {
       "areaId": null,
       "courseId": "dandelion_depths",
+      "hint": "Complete the P-Switch mission \"Take a Yoshi's to-go bag! Or seven! Or eleven!\" in or near Dandelion Depths.",
       "id": "pswitch_346",
       "index": 346,
       "name": "Take a Yoshi's to-go bag! Or seven! Or eleven!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 58.8555,
+      "y": 38.0252,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dandelion_depths",
+      "hint": "Complete the P-Switch mission \"Trick your heart out to reach the mountaintop!\" in or near Dandelion Depths.",
       "id": "pswitch_347",
       "index": 347,
       "name": "Trick your heart out to reach the mountaintop!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 58.5586,
+      "y": 37.5391,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "dandelion_depths",
+      "hint": "Complete the P-Switch mission \"Weave through the most dangerous traffic ever!\" in or near Starview Peak.",
       "id": "pswitch_348",
       "index": 348,
       "name": "Weave through the most dangerous traffic ever!",
-      "regionId": "autumnal_highland"
+      "regionId": "autumnal_highland",
+      "x": 65.8203,
+      "y": 34.2144,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "acorn_heights",
+      "hint": "This P Switch is found on a lily pad along the main road. From the starting area, turn around and follow the main road to the left until you reach the lake. The fifth P Switch should be on the nearby lily pad.",
       "id": "pswitch_349",
       "index": 349,
       "name": "Climb up, up, up on Ivy Piranha Plants!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 52.5508,
+      "y": 13.5807,
+      "youtubeId": "DmLHsc_bpvw"
     },
     {
       "areaId": null,
       "courseId": "acorn_heights",
+      "hint": "This P Switch is found on the right side of the main road after gliding. From the starting area, follow the main road forward and take the right path when the road branches into two. Glide to the other side and the first P Switch should be on the right side of the road.",
       "id": "pswitch_350",
       "index": 350,
       "name": "Collect blue coins as you descend the lily valley!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 48.1367,
+      "y": 13.1554,
+      "youtubeId": "eVtlHMkHTMk"
     },
     {
       "areaId": null,
       "courseId": "acorn_heights",
+      "hint": "Complete the P-Switch mission \"Collect blue coins on a figure-eight path!\" in or near Acorn Heights.",
       "id": "pswitch_351",
       "index": 351,
       "name": "Collect blue coins on a figure-eight path!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 52.8281,
+      "y": 21.6363,
+      "youtubeId": "cKbJo7TA9bY"
     },
     {
       "areaId": null,
       "courseId": "acorn_heights",
+      "hint": "Complete the P-Switch mission \"Collect the blue coins the Wigglers have hoarded!\" in or near Acorn Heights.",
       "id": "pswitch_352",
       "index": 352,
       "name": "Collect the blue coins the Wigglers have hoarded!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 53.3242,
+      "y": 22.1962,
+      "youtubeId": "5xScaHmnXjg"
     },
     {
       "areaId": null,
       "courseId": "acorn_heights",
+      "hint": "This P Switch is found below a nearby cliff. From the starting area, turn around and follow the main road to the left. Take the first branching path at the intersection and the third P Switch should be near you when you drop off the cliff.",
       "id": "pswitch_353",
       "index": 353,
       "name": "Endure a storm of acorns!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 49.7734,
+      "y": 13.98,
+      "youtubeId": "x3kKok3Kp9s"
     },
     {
       "areaId": null,
       "courseId": "acorn_heights",
+      "hint": "Complete the P-Switch mission \"Hurry upstream and reach the goal!\" in or near Acorn Heights.",
       "id": "pswitch_354",
       "index": 354,
       "name": "Hurry upstream and reach the goal!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 50.3516,
+      "y": 15.2387,
+      "youtubeId": "wm-6st8_2rw"
     },
     {
       "areaId": null,
       "courseId": "acorn_heights",
+      "hint": "Complete the P-Switch mission \"Maneuver through the leisurely moose herd!\" in or near Acorn Heights.",
       "id": "pswitch_355",
       "index": 355,
       "name": "Maneuver through the leisurely moose herd!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 54.4414,
+      "y": 15.3299,
+      "youtubeId": "-uALNmgWKvc"
     },
     {
       "areaId": null,
       "courseId": "acorn_heights",
+      "hint": "Complete the P-Switch mission \"Round up blue coins at the riverside campsite!\" in or near Acorn Heights.",
       "id": "pswitch_356",
       "index": 356,
       "name": "Round up blue coins at the riverside campsite!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 47.0117,
+      "y": 18.1337,
+      "youtubeId": "sRNpPMjX9sU"
     },
     {
       "areaId": null,
       "courseId": "acorn_heights",
+      "hint": "Complete the P-Switch mission \"Scoop up blue coins in the Skeeters' water hole!\" in or near Acorn Heights.",
       "id": "pswitch_357",
       "index": 357,
       "name": "Scoop up blue coins in the Skeeters' water hole!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 50.1836,
+      "y": 20.6684,
+      "youtubeId": "CDlGbROny5o"
     },
     {
       "areaId": null,
       "courseId": "acorn_heights",
+      "hint": "Complete the P-Switch mission \"Use the flower petals to reach the giant apple!\" in or near Acorn Heights.",
       "id": "pswitch_358",
       "index": 358,
       "name": "Use the flower petals to reach the giant apple!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 50.0195,
+      "y": 23.6372,
+      "youtubeId": "KBYFJJ2cjH0"
     },
     {
       "areaId": null,
       "courseId": "acorn_heights",
+      "hint": "This P Switch is found on the left side of the main road. From the starting area, turn around and follow the road to the right. Turn right at the intersection and the second P Switch should be on the left side of the road.",
       "id": "pswitch_359",
       "index": 359,
       "name": "Wiggle past the Wigglers on your way to the goal!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 47.9766,
+      "y": 12.1788,
+      "youtubeId": "PhXkeq0I3EU"
     },
     {
       "areaId": null,
       "courseId": "boo_cinema",
+      "hint": "Complete the P-Switch mission \"Brave the haunted forest!\" in or near Boo Cinema.",
       "id": "pswitch_360",
       "index": 360,
       "name": "Brave the haunted forest!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 63.9492,
+      "y": 24.9653,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "boo_cinema",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_361",
       "index": 361,
       "name": "Brave the spooky forest in pursuit of blue coins!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 62.6914,
+      "y": 26.8576,
+      "youtubeId": "hu-PQl_TT5M"
     },
     {
       "areaId": null,
       "courseId": "boo_cinema",
+      "hint": "From the Start Line, you need to turn around and keep going straight until you reach the tunnel where you will find the P-Switch. You will see the P-Switch at your left side.",
       "id": "pswitch_362",
       "index": 362,
       "name": "Climb the camera cranes! Ready... Action!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 65.5234,
+      "y": 19.375,
+      "youtubeId": "JSy4CFHjBno"
     },
     {
       "areaId": null,
       "courseId": "boo_cinema",
+      "hint": "Complete the P-Switch mission \"Glide through the tree canopy!\" in or near Boo Cinema.",
       "id": "pswitch_363",
       "index": 363,
       "name": "Glide through the tree canopy!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 59.918,
+      "y": 29.8655,
+      "youtubeId": "JSH1ICdVFQQ"
     },
     {
       "areaId": null,
       "courseId": "boo_cinema",
+      "hint": "Complete the P-Switch mission \"Navigate the jumps of the narrow back roads!\" in or near Boo Cinema.",
       "id": "pswitch_364",
       "index": 364,
       "name": "Navigate the jumps of the narrow back roads!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 56.8984,
+      "y": 19.7786,
+      "youtubeId": "W6uU7TY1odI"
     },
     {
       "areaId": null,
       "courseId": "boo_cinema",
+      "hint": "Complete the P-Switch mission \"Overcome the sinking feeling to collect blue coins!\" in or near Boo Cinema.",
       "id": "pswitch_365",
       "index": 365,
       "name": "Overcome the sinking feeling to collect blue coins!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 62.4336,
+      "y": 21.9965,
+      "youtubeId": "JKBzclTFW9Y"
     },
     {
       "areaId": null,
       "courseId": "boo_cinema",
+      "hint": "Complete the P-Switch mission \"Race around a tribute to Ghost Valley 1!\" in or near Boo Cinema.",
       "id": "pswitch_366",
       "index": 366,
       "name": "Race around a tribute to Ghost Valley 1!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 63.8984,
+      "y": 20.0174,
+      "youtubeId": "Wq8rJ30Ev7Q"
     },
     {
       "areaId": null,
       "courseId": "boo_cinema",
+      "hint": "Complete the P-Switch mission \"Race around a tribute to Ghost Valley 2!\" in or near Boo Cinema.",
       "id": "pswitch_367",
       "index": 367,
       "name": "Race around a tribute to Ghost Valley 2!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 61.1484,
+      "y": 20.3255,
+      "youtubeId": "RAUvHm_5o1g"
     },
     {
       "areaId": null,
       "courseId": "boo_cinema",
+      "hint": "Complete the P-Switch mission \"Race around a tribute to Ghost Valley 3!\" in or near Boo Cinema.",
       "id": "pswitch_368",
       "index": 368,
       "name": "Race around a tribute to Ghost Valley 3!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 66.6172,
+      "y": 21.6233,
+      "youtubeId": "_V6LGHvlVnw"
     },
     {
       "areaId": null,
       "courseId": "boo_cinema",
+      "hint": "Go to the cinema. You will find the P-Switch behind the front section of the cinema.",
       "id": "pswitch_369",
       "index": 369,
       "name": "Race during a truly immersive movie experience!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 64.6211,
+      "y": 17.5,
+      "youtubeId": "3xHSJOA06EQ"
     },
     {
       "areaId": null,
       "courseId": "boo_cinema",
+      "hint": "Complete the P-Switch mission \"Race from bridge to bridge in the haunted swamp!\" in or near Boo Cinema.",
       "id": "pswitch_370",
       "index": 370,
       "name": "Race from bridge to bridge in the haunted swamp!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 64.8516,
+      "y": 23.6198,
+      "youtubeId": "IMJyO-9nnts"
     },
     {
       "areaId": null,
       "courseId": "boo_cinema",
+      "hint": "Complete the P-Switch challenge \"Ride the rail! Ride the line! Get to the goal!\" in or near Boo Cinema.",
       "id": "pswitch_371",
       "index": 371,
       "name": "Ride the rail! Ride the line! Get to the goal!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 58.9805,
+      "y": 23.3637,
+      "youtubeId": "urWUMrkehIs"
     },
     {
       "areaId": null,
       "courseId": "boo_cinema",
+      "hint": "Inside the cinema, you will find the P-Switch in front of the screen.",
       "id": "pswitch_372",
       "index": 372,
       "name": "Ride the rails out to the theater lobby!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 65.8984,
+      "y": 17.1267,
+      "youtubeId": "FTKP0tngvHk"
     },
     {
       "areaId": null,
       "courseId": "boo_cinema",
+      "hint": "Complete the P-Switch mission \"Show the swamp the power of Super Stars!\" in or near Boo Cinema.",
       "id": "pswitch_373",
       "index": 373,
       "name": "Show the swamp the power of Super Stars!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 60.1328,
+      "y": 18.5938,
+      "youtubeId": "w-rK_oAxGmw"
     },
     {
       "areaId": null,
       "courseId": "boo_cinema",
+      "hint": "You will find the P-Switch inside the cinema, near the rear entrance.",
       "id": "pswitch_374",
       "index": 374,
       "name": "Take a peek into a ghostly cinematic universe!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 64.8047,
+      "y": 18.3854,
+      "youtubeId": "sRRehrt4_mg"
     },
     {
       "areaId": null,
       "courseId": "boo_cinema",
+      "hint": "Complete the P-Switch mission \"Travel downstream to Acorn Heights!\" in or near Boo Cinema.",
       "id": "pswitch_375",
       "index": 375,
       "name": "Travel downstream to Acorn Heights!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 59.9453,
+      "y": 25.599,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "Complete the P-Switch mission \"Chase the train and follow the tracks!\" in or near Mario Circuit.",
       "id": "pswitch_376",
       "index": 376,
       "name": "Chase the train and follow the tracks!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 46.793,
+      "y": 31.2283,
+      "youtubeId": "b2Dn3DHwAA8"
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "From the Start Line, use the Warp Pipe to get up the roof. On the roof, you will find the P-Switch to your right. Found by BlueYoshi57.",
       "id": "pswitch_377",
       "index": 377,
       "name": "Collect blue coins around the control tower!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 52.1367,
+      "y": 28.2205,
+      "youtubeId": "EjhZKGUZEtg"
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "Complete the P-Switch mission \"Collect the blue coins of the great staircase!\" in or near Acorn Heights.",
       "id": "pswitch_378",
       "index": 378,
       "name": "Collect the blue coins of the great staircase!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 47.4766,
+      "y": 21.1328,
+      "youtubeId": "n4cDNZl91pw"
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "Complete the P-Switch mission \"Evade the Spikes' attacks and reach the goal!\" in or near Mario Circuit.",
       "id": "pswitch_379",
       "index": 379,
       "name": "Evade the Spikes' attacks and reach the goal!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 53.9297,
+      "y": 34.9045,
+      "youtubeId": "Kar_tCAeo7I"
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "This P Switch is found on the side of the track. From the starting line, turn around and follow the main road. When jumping to the next section, stay on the left to raid slide onto the side of the track. Found by Amph_pm.",
       "id": "pswitch_380",
       "index": 380,
       "name": "Gather the blue coins around the control tower!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 50.5469,
+      "y": 59.8698,
+      "youtubeId": "w1loXxxlzlU"
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "Complete the P-Switch mission \"Go on a wilderness adventure and reach the goal!\" in or near Mario Circuit.",
       "id": "pswitch_381",
       "index": 381,
       "name": "Go on a wilderness adventure and reach the goal!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 46.1523,
+      "y": 28.2856,
+      "youtubeId": "ELBbVJ7A6qA"
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "Complete the P-Switch mission \"Grab blue coins on the way to Dandelion Depths!\" in or near Mario Circuit.",
       "id": "pswitch_382",
       "index": 382,
       "name": "Grab blue coins on the way to Dandelion Depths!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 58.6875,
+      "y": 33.2682,
+      "youtubeId": null
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "Complete the P-Switch challenge \"Hop from line to line to collect the blue coins!\" in or near Mario Circuit.",
       "id": "pswitch_383",
       "index": 383,
       "name": "Hop from line to line to collect the blue coins!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 44.3711,
+      "y": 33.1944,
+      "youtubeId": "qLiK0QaQkQo"
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "Go to the hill at the northeastern portion of the map. You need to go off-course to reach the P-Switch.",
       "id": "pswitch_384",
       "index": 384,
       "name": "Jump, jump, jump your way through Mario Circuit!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 54.2812,
+      "y": 26.875,
+      "youtubeId": "2VTy4YmoX6k"
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "From the Start Line, turn left when you reach the fork in the road.",
       "id": "pswitch_385",
       "index": 385,
       "name": "Launch off the quarter pipe and get massive air!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 52.793,
+      "y": 28.8151,
+      "youtubeId": "H6EvMv-NrEc"
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "Complete the P-Switch mission \"Lead the way, Ivy Piranha Plants!\" in or near Mario Circuit.",
       "id": "pswitch_386",
       "index": 386,
       "name": "Lead the way, Ivy Piranha Plants!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 51.4453,
+      "y": 34.2578,
+      "youtubeId": "oGWZf0a4_D4"
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "Found by Amph_pm.",
       "id": "pswitch_387",
       "index": 387,
       "name": "Masterfully weave and wall ride past traffic!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 58.4883,
+      "y": 29.1623,
+      "youtubeId": "ER1AHDzkr-U"
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "Complete the P-Switch mission \"Power upstream with the might of the stars!\" in or near Mario Circuit.",
       "id": "pswitch_388",
       "index": 388,
       "name": "Power upstream with the might of the stars!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 57.1406,
+      "y": 28.6285,
+      "youtubeId": "xzBEspxWRNQ"
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "Complete the P-Switch mission \"Practice acrobatics and make a tricky landing!\" in or near Mario Circuit.",
       "id": "pswitch_389",
       "index": 389,
       "name": "Practice acrobatics and make a tricky landing!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 57.3945,
+      "y": 32.6345,
+      "youtubeId": "ti8hm5Xy4a8"
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "Complete the P-Switch mission \"Race on a wild route through the woodlands!\" in or near Acorn Heights.",
       "id": "pswitch_390",
       "index": 390,
       "name": "Race on a wild route through the woodlands!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 48.5469,
+      "y": 24.401,
+      "youtubeId": "xVICY5vOr7s"
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "Found by Rodri 2826.",
       "id": "pswitch_391",
       "index": 391,
       "name": "Ride the rope and soar to the goal!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 54.3672,
+      "y": 29.5052,
+      "youtubeId": "aRXdiI4sDMg"
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "Complete the P-Switch mission \"Say hi to the Mario statue as you soar by!\" in or near Mario Circuit.",
       "id": "pswitch_392",
       "index": 392,
       "name": "Say \"hi\" to the Mario statue as you soar by!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 56.2383,
+      "y": 30.3646,
+      "youtubeId": "8GEuX0q5cGI"
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "Found by Rodri 2826.",
       "id": "pswitch_393",
       "index": 393,
       "name": "Test yourself in a tough time trial challenge!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 52.6641,
+      "y": 26.862,
+      "youtubeId": "1oAp7vTdxyQ"
     },
     {
       "areaId": null,
       "courseId": "mario_circuit",
+      "hint": "Complete the P-Switch mission \"Weave through traffic and Chargin' Chucks!\" in or near Mario Circuit.",
       "id": "pswitch_394",
       "index": 394,
       "name": "Weave through traffic and Chargin' Chucks!",
-      "regionId": "forest"
+      "regionId": "forest",
+      "x": 48.9961,
+      "y": 27.7995,
+      "youtubeId": "aIInBh7iMU8"
     }
   ],
+  "mapSource": "https://github.com/BamisWasTaken/mkworld-checklist/tree/ee860555a71150a4d3d935ee1ad9a4471742fce6",
   "source": "https://www.mariowiki.com/List_of_Mario_Kart_World_missions"
 }

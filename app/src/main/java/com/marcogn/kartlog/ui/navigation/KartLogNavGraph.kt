@@ -21,9 +21,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
+import com.marcogn.kartlog.domain.model.MapPointType
 import com.marcogn.kartlog.ui.consigliami.ConsigliamiDetailScreen
 import com.marcogn.kartlog.ui.consigliami.ConsigliamiScreen
 import com.marcogn.kartlog.ui.home.HomeScreen
+import com.marcogn.kartlog.ui.map.MapScreen
 import com.marcogn.kartlog.ui.medallions.PeachMedallionsScreen
 import com.marcogn.kartlog.ui.pswitches.PSwitchesScreen
 import com.marcogn.kartlog.ui.results.ResultsScreen
@@ -121,8 +124,8 @@ fun KartLogNavGraph(navController: NavHostController = rememberNavController()) 
                 HomeScreen(
                     onMenuClick = openDrawer,
                     onSkinClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.Skin) },
-                    onMedallionsClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.PeachMedallions) },
                     onPSwitchesClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.PSwitches) },
+                    onMapClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.CollectibleMap()) },
                     onConsigliamiClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.Consigliami) },
                     onResultsClick = { if (entry.lifecycleIsResumed()) navController.navigate(Destination.Results) },
                 )
@@ -138,11 +141,33 @@ fun KartLogNavGraph(navController: NavHostController = rememberNavController()) 
             composable<Destination.SkinDetail> { entry ->
                 SkinDetailScreen(onBack = { if (entry.lifecycleIsResumed()) navController.popBackStack() })
             }
-            composable<Destination.PeachMedallions> {
-                PeachMedallionsScreen(onMenuClick = openDrawer)
+            composable<Destination.PeachMedallions> { entry ->
+                PeachMedallionsScreen(
+                    onMenuClick = openDrawer,
+                    onOpenMap = { focusId ->
+                        if (entry.lifecycleIsResumed()) {
+                            navController.navigate(Destination.CollectibleMap(MapPointType.MEDALLION.name, focusId))
+                        }
+                    },
+                )
             }
-            composable<Destination.PSwitches> {
-                PSwitchesScreen(onMenuClick = openDrawer)
+            composable<Destination.PSwitches> { entry ->
+                PSwitchesScreen(
+                    onMenuClick = openDrawer,
+                    onOpenMap = { focusId ->
+                        if (entry.lifecycleIsResumed()) {
+                            navController.navigate(Destination.CollectibleMap(MapPointType.P_SWITCH.name, focusId))
+                        }
+                    },
+                )
+            }
+            composable<Destination.CollectibleMap> { entry ->
+                val fromDrawer = entry.toRoute<Destination.CollectibleMap>().type == null
+                MapScreen(
+                    onMenuClick = openDrawer,
+                    // Dal pulsantone di Monete Peach/Pulsanti P si torna indietro, dal drawer si apre il menu.
+                    onBack = if (fromDrawer) null else { { if (entry.lifecycleIsResumed()) navController.popBackStack() } },
+                )
             }
             composable<Destination.Consigliami> { entry ->
                 ConsigliamiScreen(

@@ -6,6 +6,7 @@ import re
 import unicodedata
 from datetime import date
 
+from .checklist import Checklist, MapPoint, match_missions
 from .config import Config
 from .errors import ParseError
 from .i18n import Translations
@@ -128,6 +129,7 @@ def build(
     translations: Translations | None = None,
     images: Images | None = None,
     it_names: ItNames | None = None,
+    checklist: Checklist | None = None,
 ) -> dict[str, dict]:
     translations = translations or Translations()
     images = images or Images()
@@ -300,13 +302,11 @@ def build(
             cid, aid = None, cfg.areas.resolve(m.location, f"missione {m.name!r}")
         p_switches.append({"id": f"pswitch_{i:03d}", "index": i, "regionId": rid,
                            "courseId": cid, "areaId": aid, "name": m.name})
-
-    med = cfg.medallions
-    medallions = [
-        {"id": f"medallion_{rid}_{n:02d}", "regionId": rid, "index": n}
-        for rid, count in med["counts"].items()
-        for n in range(1, int(count) + 1)
-    ]
+    if checklist and p_switches:
+        # Stesse missioni di mariowiki, con posizione sulla mappa, istruzioni e video (seedgen/checklist.py).
+        points = match_missions(checklist.p_switches, [p["name"] for p in p_switches], cfg.checklist_mission_names)
+        for p in p_switches:
+            p.update(_point_fields(points[p["name"]]))
 
     seed = {
         "characters.json": {"source": dash_url, "items": characters},
@@ -323,7 +323,6 @@ def build(
         "courses.json": {"source": navbox_url, "items": courses},
         "regions.json": {"source": _page_url(cfg, pages["missions"]), "items": regions},
         "areas.json": {"source": _page_url(cfg, pages["missions"]), "items": areas},
-        "peach_medallions.json": {"source": med["source"]["url"], "manual": True, "items": medallions},
         "events.json": {"source": [navbox_url, *rally_urls], "items": events},
         "meta.json": {
             "seedVersion": seed_version,
@@ -346,4 +345,33 @@ def build(
         }
     if p_switches:
         seed["p_switches.json"] = {"source": _page_url(cfg, pages["missions"]), "items": p_switches}
+        if checklist:
+            seed["p_switches.json"]["mapSource"] = checklist.source_url
+    if checklist:
+        seed.update(_checklist_files(checklist))
     return seed
+
+
+def _point_fields(p: MapPoint) -> dict:
+    return {"x": p.x, "y": p.y, "hint": p.hint, "youtubeId": p.youtube_id}
+
+
+def _checklist_files(checklist: Checklist) -> dict[str, dict]:
+    """Monete Peach, pannelli "?" e mappa: solo da mkworld-checklist (seedgen/checklist.py).
+
+    L'ID usa l'indice della loro checklist (stabile tra le loro versioni), il numero mostrato in app
+    è la posizione in quell'ordine.
+    """
+    def points(prefix: str, items: list[MapPoint]) -> list[dict]:
+        return [{"id": f"{prefix}_{p.source_index:04d}", "index": n, **_point_fields(p)}
+                for n, p in enumerate(items, start=1)]
+
+    source = checklist.source_url
+    return {
+        "peach_medallions.json": {"source": source, "items": points("medallion", checklist.medallions)},
+        "question_panels.json": {"source": source, "items": points("panel", checklist.panels)},
+        "map.json": {"source": source, "items": [{
+            "id": "world", "imageUrl": checklist.map_url,
+            "width": checklist.map_width, "height": checklist.map_height,
+        }]},
+    }

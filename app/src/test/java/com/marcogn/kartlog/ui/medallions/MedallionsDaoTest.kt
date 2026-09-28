@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.marcogn.kartlog.data.local.KartLogDatabase
+import com.marcogn.kartlog.data.local.entity.CollectedMedallionEntity
 import com.marcogn.kartlog.data.seed.SeedAssetLoader
 import com.marcogn.kartlog.data.seed.SeedRepository
 import kotlinx.coroutines.flow.first
@@ -16,7 +17,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 
-/** SPEC §2.4 (Monete Peach): contatore per regione, +/- e "segna tutti". */
+/** Monete Peach: le 200 monete di mkworld-checklist, una per una. */
 @RunWith(RobolectricTestRunner::class)
 class MedallionsDaoTest {
 
@@ -36,52 +37,25 @@ class MedallionsDaoTest {
     }
 
     @Test
-    fun `tutti i 200 medaglioni sono presenti in 10 regioni, nessuno raccolto`() = runBlocking {
+    fun `tutte le 200 monete sono presenti in ordine, nessuna raccolta`() = runBlocking {
         val all = db.medallionsDao().allMedallions().first()
 
         assertEquals(200, all.size)
-        assertEquals(10, all.map { it.regionId }.distinct().size)
+        assertEquals((1..200).toList(), all.map { it.index })
         assertTrue(all.none { it.collected })
     }
 
     @Test
-    fun `segna tutti marca completa solo la regione indicata`() = runBlocking {
-        val all = db.medallionsDao().allMedallions().first()
-        val regionId = all.first().regionId
-        val totalInRegion = all.count { it.regionId == regionId }
+    fun `segnare e togliere una moneta cambia solo quella`() = runBlocking {
+        val (first, second) = db.medallionsDao().allMedallions().first()
 
-        db.userStateDao().markAllMedallionsCollected(regionId)
+        db.userStateDao().markMedallionCollected(CollectedMedallionEntity(second.medallionId))
+        val after = db.medallionsDao().allMedallions().first()
+        assertEquals(listOf(second.medallionId), after.filter { it.collected }.map { it.medallionId })
+        assertEquals(1, db.userStateDao().countCollectedMedallions().first())
 
-        val updated = db.medallionsDao().allMedallions().first()
-        assertEquals(totalInRegion, updated.count { it.regionId == regionId && it.collected })
-        assertTrue("le altre regioni non devono essere toccate", updated.none { it.regionId != regionId && it.collected })
-    }
-
-    @Test
-    fun `il contatore per regione sale e scende di uno e resta nei limiti`() = runBlocking {
-        val region = db.medallionsDao().regionCounters().first().first()
-        assertEquals(0, region.collected)
-
-        db.userStateDao().collectNextMedallion(region.regionId)
-        db.userStateDao().collectNextMedallion(region.regionId)
-        assertEquals(2, db.medallionsDao().regionCounters().first().first { it.regionId == region.regionId }.collected)
-
-        db.userStateDao().uncollectLastMedallion(region.regionId)
-        assertEquals(1, db.medallionsDao().regionCounters().first().first { it.regionId == region.regionId }.collected)
-
-        repeat(region.total + 3) { db.userStateDao().collectNextMedallion(region.regionId) }
-        val full = db.medallionsDao().regionCounters().first().first { it.regionId == region.regionId }
-        assertEquals(region.total, full.collected)
-
-        repeat(region.total + 3) { db.userStateDao().uncollectLastMedallion(region.regionId) }
-        assertEquals(0, db.medallionsDao().regionCounters().first().sumOf { it.collected })
-    }
-
-    @Test
-    fun `le regioni hanno il nome italiano`() = runBlocking {
-        val counters = db.medallionsDao().regionCounters().first()
-        assertEquals(10, counters.size)
-        assertEquals(200, counters.sumOf { it.total })
-        assertTrue(counters.all { !it.regionNameIt.isNullOrBlank() })
+        db.userStateDao().markMedallionNotCollected(second.medallionId)
+        assertTrue(db.medallionsDao().allMedallions().first().none { it.collected })
+        assertTrue(first.medallionId != second.medallionId)
     }
 }

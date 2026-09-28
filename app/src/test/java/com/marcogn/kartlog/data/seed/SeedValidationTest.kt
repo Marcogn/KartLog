@@ -50,7 +50,7 @@ class SeedValidationTest {
         // Se una sorgente non è ancora nel seed (es. i pulsanti P prima della fase 2 di
         // seedgen), il controllo si salta esplicitamente invece di passare in silenzio su una
         // lista vuota confusa con "zero elementi attesi".
-        val medallions = assets.readItems<PeachMedallionDto>("peach_medallions.json")
+        val medallions = assets.readItems<MapPointDto>("peach_medallions.json")
         if (medallions.isEmpty()) {
             println("SKIP peach_medallions.json: assente nel seed pacchettizzato")
         } else {
@@ -63,6 +63,23 @@ class SeedValidationTest {
         } else {
             assertEquals(ExpectedCounts["p_switches"], pSwitches.size)
         }
+
+        assertEquals(ExpectedCounts["question_panels"], assets.readItems<MapPointDto>("question_panels.json").size)
+    }
+
+    @Test
+    fun `ogni punto ha una posizione sulla mappa e la mappa e solo un URL`() {
+        // mkworld-checklist (seedgen/checklist.py): percentuali dell'immagine, mai file impacchettati.
+        val positions = assets.readItems<MapPointDto>("peach_medallions.json").map { it.id to (it.x to it.y) } +
+            assets.readItems<MapPointDto>("question_panels.json").map { it.id to (it.x to it.y) } +
+            assets.readItems<PSwitchDto>("p_switches.json").map { it.id to (it.x to it.y) }
+        positions.forEach { (id, xy) ->
+            val (x, y) = xy
+            assertTrue("$id: posizione assente o fuori mappa ($x, $y)", x != null && y != null && x in 0.0..100.0 && y in 0.0..100.0)
+        }
+        val map = assets.readMapImage()
+        assertTrue("map.json: URL inatteso ${map?.imageUrl}", map?.imageUrl?.startsWith("https://raw.githubusercontent.com/BamisWasTaken/mkworld-checklist/") == true)
+        assertTrue(map!!.width > 0 && map.height > 0)
     }
 
     @Test
@@ -78,8 +95,9 @@ class SeedValidationTest {
         assertNoDuplicates("regions", assets.readItems<RegionDto>("regions.json").map { it.id })
         assertNoDuplicates("areas", assets.readItems<AreaDto>("areas.json").map { it.id })
         assertNoDuplicates("events", assets.readItems<EventDto>("events.json").map { it.id })
-        assertNoDuplicates("peach_medallions", assets.readItems<PeachMedallionDto>("peach_medallions.json").map { it.id })
+        assertNoDuplicates("peach_medallions", assets.readItems<MapPointDto>("peach_medallions.json").map { it.id })
         assertNoDuplicates("p_switches", assets.readItems<PSwitchDto>("p_switches.json").map { it.id })
+        assertNoDuplicates("question_panels", assets.readItems<MapPointDto>("question_panels.json").map { it.id })
     }
 
     @Test

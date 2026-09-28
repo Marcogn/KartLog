@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-data class PSwitchRow(val id: String, val name: String, val completed: Boolean)
+data class PSwitchRow(val id: String, val name: String, val completed: Boolean, val onMap: Boolean = false)
 
 data class LocationGroup(val locationName: String, val pSwitches: List<PSwitchRow>)
 
@@ -52,7 +52,7 @@ class PSwitchesViewModel @Inject constructor(
             val locations = regionRows.groupBy { it.locationName }.map { (locationName, rows) ->
                 LocationGroup(
                     locationName = locationName,
-                    pSwitches = rows.sortedBy { it.index }.map { PSwitchRow(it.pSwitchId, it.name, it.completed) },
+                    pSwitches = rows.sortedBy { it.index }.map { PSwitchRow(it.pSwitchId, it.name, it.completed, it.onMap) },
                 )
             }.sortedBy { it.locationName }
             RegionPSwitches(

@@ -32,6 +32,9 @@ class SeedAssetLoader @Inject constructor(@ApplicationContext private val contex
     /** Condizioni per la modalità specchio, in ordine (vuoto con un seed che non le ha). */
     fun readMirrorSteps(): List<MirrorStepDto> = readItems<MirrorStepDto>("mirror_mode.json").sortedBy { it.order }
 
+    /** Immagine della mappa dei collezionabili (null con un seed senza mkworld-checklist). */
+    fun readMapImage(): MapImageDto? = readItems<MapImageDto>("map.json").firstOrNull()
+
     fun readMeta(): SeedMetaDto? = readText("meta.json")?.let { json.decodeFromString(it) }
 
     /**

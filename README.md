@@ -37,10 +37,13 @@ Dalla specifica completa ([`SPEC.md`](SPEC.md)):
   outfit per i 24 che ne hanno; per ciascuno, checklist degli outfit
   con i gruppi di cibo che li sbloccano e uno switch per lo stato di
   sblocco. I piloti senza outfit si segnano come sbloccati con un tap.
-- **Monete Peach**: un contatore per bioma (− / +), con contatore
-  globale.
+- **Monete Peach**: le 200 monete una per una, con le istruzioni per
+  trovarle e il tasto per vederle sulla mappa.
 - **Pulsanti P**: checklist per bioma e percorso, con ricerca e
   "segna tutti".
+- **Mappa**: Monete Peach, Pulsanti P e pannelli "?" sulla mappa del
+  mondo, con zoom, filtri per tipo e per "fatti", istruzioni e video.
+  Si apre dal menu o dal pulsantone rosso di Monete Peach e Pulsanti P.
 - **Consigliami**: classifica dei Gran Premi/Knockout Tour da correre in
   base agli outfit ancora mancanti, con personaggio consigliato, le due
   alternative successive e i cibi rilevanti sul percorso (o nei
@@ -56,8 +59,8 @@ Dalla specifica completa ([`SPEC.md`](SPEC.md)):
 
 ## Dati di gioco
 
-Tutti i dati di gioco (personaggi, outfit, cibi, percorsi, eventi,
-Monete Peach, Pulsanti P) vengono da **Super Mario Wiki** (mariowiki.com),
+I dati di gioco (personaggi, outfit, cibi, percorsi, eventi, Pulsanti P)
+vengono da **Super Mario Wiki** (mariowiki.com),
 contenuti testuali in licenza **CC BY-SA 4.0**, estratti dallo script in
 [`tools/seedgen/`](tools/seedgen/README.md) e versionati in
 [`seed/`](seed/README.md). Nessun dato è inventato: dettagli su fonti,
@@ -73,6 +76,17 @@ li riporta. Lo stesso vale per le **condizioni della modalità specchio** in
 italiano: tradotte a mano dal testo di mariowiki.com, perché quello della
 wiki italiana è meno aggiornato. I criteri di sblocco dei piloti vengono
 invece dalle due wiki, ciascuno nella sua lingua.
+
+## Mappa dei collezionabili
+
+La mappa, le posizioni di Monete Peach, Pulsanti P e pannelli "?", le
+istruzioni per trovarli (solo in inglese) e i video vengono dal progetto
+[**mkworld-checklist**](https://github.com/BamisWasTaken/mkworld-checklist)
+di BamisWasTaken, che pubblica [mktools.io](https://www.mktools.io).
+Grazie! `tools/seedgen` legge i suoi dati a un commit fissato
+(`sources.yaml`) e li abbina alle missioni di mariowiki; l'immagine della
+mappa non è nel repository né nell'APK, l'app la scarica a runtime come
+le immagini del wiki.
 
 ## Immagini
 

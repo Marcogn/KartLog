@@ -1,1006 +1,1605 @@
 {
   "items": [
     {
-      "id": "medallion_central_grassland_01",
+      "hint": "Found in a clearing near some regular coins.",
+      "id": "medallion_1056",
       "index": 1,
-      "regionId": "central_grassland"
+      "x": 68.9688,
+      "y": 69.9436,
+      "youtubeId": "6UhOhB93--s"
     },
     {
-      "id": "medallion_central_grassland_02",
+      "hint": "Find ramps to shoot you into the sky and land on top of the Yoshi Diner to get the medallion.",
+      "id": "medallion_1057",
       "index": 2,
-      "regionId": "central_grassland"
+      "x": 30.9492,
+      "y": 75.217,
+      "youtubeId": "BnTR9Eb8sX0"
     },
     {
-      "id": "medallion_central_grassland_03",
+      "hint": "From Baby Peach's starting point, turn around and head straight. At the first fork, turn right, then immediately veer off-course to the left after passing the first windmill. Continue heading left until you reach the train tracks. Follow the tracks and turn right just before the bridge. Drive over the red flowers to reach the high ground and the hill across the tracks where the Medallion is located.",
+      "id": "medallion_1058",
       "index": 3,
-      "regionId": "central_grassland"
+      "x": 73.125,
+      "y": 69.5703,
+      "youtubeId": "TiQ8JMsUdss"
     },
     {
-      "id": "medallion_central_grassland_04",
+      "hint": "From the Dandelion Depths starting point, head straight until you reach the rock formation wall. Rail ride on the yellow rail on the right, then wall ride the on the rock formation to the right to get the Medallion.",
+      "id": "medallion_1059",
       "index": 4,
-      "regionId": "central_grassland"
+      "x": 64.8242,
+      "y": 39.987,
+      "youtubeId": "Mgw2hTY3Yu4"
     },
     {
-      "id": "medallion_central_grassland_05",
+      "hint": "From the Desert Hills starting point, turn back and immediately go up the ramp on the right toward the tent. Keep heading straight and you will see the Medallion under another tent.",
+      "id": "medallion_1060",
       "index": 5,
-      "regionId": "central_grassland"
+      "x": 13.5117,
+      "y": 73.2205,
+      "youtubeId": "cxnzWORSio8"
     },
     {
-      "id": "medallion_central_grassland_06",
+      "hint": "At the end of a rail ride under a large stone bridge.",
+      "id": "medallion_1061",
       "index": 6,
-      "regionId": "central_grassland"
+      "x": 67.7891,
+      "y": 48.7413,
+      "youtubeId": "acIoLqzPf2o"
     },
     {
-      "id": "medallion_central_grassland_07",
+      "hint": "Go straight ahead to Peach Stadium, turn right at the fountain plaza, and you'll find the Medallion on top of a note block.",
+      "id": "medallion_1062",
       "index": 7,
-      "regionId": "central_grassland"
+      "x": 55.3359,
+      "y": 56.2891,
+      "youtubeId": "UY0ZmDvgUdc"
     },
     {
-      "id": "medallion_central_grassland_08",
+      "hint": "Near fishing Toad, on top of cooler.",
+      "id": "medallion_1063",
       "index": 8,
-      "regionId": "central_grassland"
+      "x": 17.3086,
+      "y": 47.2352,
+      "youtubeId": "YIeoCPWzfJE"
     },
     {
-      "id": "medallion_central_grassland_09",
+      "hint": "Top of sand dune, in the middle of coin trail, near Elephant.",
+      "id": "medallion_1064",
       "index": 9,
-      "regionId": "central_grassland"
+      "x": 16.6055,
+      "y": 51.5538,
+      "youtubeId": "ZyAN8AOFPMs"
     },
     {
-      "id": "medallion_central_grassland_10",
+      "hint": "On top of colored blocks, near Choco Mountain.",
+      "id": "medallion_1065",
       "index": 10,
-      "regionId": "central_grassland"
+      "x": 41.5234,
+      "y": 56.1762,
+      "youtubeId": "LA9aK9kojDI"
     },
     {
-      "id": "medallion_central_grassland_11",
+      "hint": "Near Faraway Oasis, on top of half-bridge above the waterfall.",
+      "id": "medallion_1066",
       "index": 11,
-      "regionId": "central_grassland"
+      "x": 63.7109,
+      "y": 72.474,
+      "youtubeId": "qvRCOZazywg"
     },
     {
-      "id": "medallion_central_grassland_12",
+      "hint": "Just outside of DK Spaceport atop some musical note blocks.",
+      "id": "medallion_1067",
       "index": 12,
-      "regionId": "central_grassland"
+      "x": 34.9844,
+      "y": 88.1814,
+      "youtubeId": "b57-SO_riQY"
     },
     {
-      "id": "medallion_central_grassland_13",
+      "hint": "On top of a coin pyramid above a ramp that says \"Koopa.\"",
+      "id": "medallion_1068",
       "index": 13,
-      "regionId": "central_grassland"
+      "x": 52.5781,
+      "y": 84.6875,
+      "youtubeId": "7tWtbR6OGao"
     },
     {
-      "id": "medallion_central_grassland_14",
+      "hint": "On top of stone pillar.",
+      "id": "medallion_1069",
       "index": 14,
-      "regionId": "central_grassland"
+      "x": 86.6953,
+      "y": 53.3681,
+      "youtubeId": "qd1YEi22XCE"
     },
     {
-      "id": "medallion_central_grassland_15",
+      "hint": "On top of pink tower.",
+      "id": "medallion_1070",
       "index": 15,
-      "regionId": "central_grassland"
+      "x": 90.3281,
+      "y": 74.8915,
+      "youtubeId": "ejJRvgRBjQs"
     },
     {
-      "id": "medallion_central_grassland_16",
+      "hint": "On top of melody blocks.",
+      "id": "medallion_1071",
       "index": 16,
-      "regionId": "central_grassland"
+      "x": 49.9297,
+      "y": 26.5365,
+      "youtubeId": "Us3T1MQAsdQ"
     },
     {
-      "id": "medallion_central_grassland_17",
+      "hint": "Near a billboard along the road.",
+      "id": "medallion_1072",
       "index": 17,
-      "regionId": "central_grassland"
+      "x": 43.9609,
+      "y": 29.4618,
+      "youtubeId": "ycFobIzEZzk"
     },
     {
-      "id": "medallion_central_grassland_18",
+      "hint": "Found in a tunnel inside Wario's Stadium.",
+      "id": "medallion_1073",
       "index": 18,
-      "regionId": "central_grassland"
+      "x": 25.8711,
+      "y": 46.1936,
+      "youtubeId": "aRvBnaLvpa0"
     },
     {
-      "id": "medallion_central_grassland_19",
+      "hint": "Can be found inside the right warp tunnel.",
+      "id": "medallion_1074",
       "index": 19,
-      "regionId": "central_grassland"
+      "x": 10.5352,
+      "y": 51.8273,
+      "youtubeId": "CFNyl2CyiPE"
     },
     {
-      "id": "medallion_central_grassland_20",
+      "hint": "On top of a leaf.",
+      "id": "medallion_1075",
       "index": 20,
-      "regionId": "central_grassland"
+      "x": 48.0,
+      "y": 23.2465,
+      "youtubeId": "NWr8HVdf2XI"
     },
     {
-      "id": "medallion_central_grassland_21",
+      "hint": "On top of music note blocks.",
+      "id": "medallion_1076",
       "index": 21,
-      "regionId": "central_grassland"
+      "x": 41.4453,
+      "y": 35.1649,
+      "youtubeId": "5QLX8cRVRlc"
     },
     {
-      "id": "medallion_central_grassland_22",
+      "hint": "On top of some scaffolding. Use the geyser on the other end to reach the  Peach Medallion. You get the Taxi Sticker as a reward.",
+      "id": "medallion_1077",
       "index": 22,
-      "regionId": "central_grassland"
+      "x": 33.918,
+      "y": 47.6389,
+      "youtubeId": "3y7RcOxIznk"
     },
     {
-      "id": "medallion_central_grassland_23",
+      "hint": "At the end of a ramp boost in DK Pass.",
+      "id": "medallion_1078",
       "index": 23,
-      "regionId": "central_grassland"
+      "x": 74.75,
+      "y": 46.4236,
+      "youtubeId": "rpYdnb9-dsI"
     },
     {
-      "id": "medallion_central_grassland_24",
+      "hint": "On top of one of Starview Peak's chandelier.",
+      "id": "medallion_1079",
       "index": 24,
-      "regionId": "central_grassland"
+      "x": 76.9258,
+      "y": 27.092,
+      "youtubeId": "PSvgTcDQ27Y"
     },
     {
-      "id": "medallion_central_grassland_25",
+      "hint": "Near palm tree on the road to Crown City.",
+      "id": "medallion_1080",
       "index": 25,
-      "regionId": "central_grassland"
+      "x": 34.3945,
+      "y": 76.9748,
+      "youtubeId": "jFlxTRPDiTY"
     },
     {
-      "id": "medallion_central_grassland_26",
+      "hint": "Drive up the rope up to the top of the railing of the bridge, then jump off at the top and land on the top of the platform to grab it. Best to abuse Reverse until you land it.",
+      "id": "medallion_1081",
       "index": 26,
-      "regionId": "central_grassland"
+      "x": 22.5,
+      "y": 77.2569,
+      "youtubeId": "fGyWRyqfWrQ"
     },
     {
-      "id": "medallion_central_grassland_27",
+      "hint": "Found on top of a branch high in the trees.",
+      "id": "medallion_1082",
       "index": 27,
-      "regionId": "central_grassland"
+      "x": 66.1055,
+      "y": 89.3446,
+      "youtubeId": "ccYgdHEJm3k"
     },
     {
-      "id": "medallion_central_grassland_28",
+      "hint": "Found on top of an archway in the jungle.",
+      "id": "medallion_1083",
       "index": 28,
-      "regionId": "central_grassland"
+      "x": 70.9102,
+      "y": 85.3733,
+      "youtubeId": "mXWzKSBzA5k"
     },
     {
-      "id": "medallion_eastern_sea_01",
-      "index": 1,
-      "regionId": "eastern_sea"
+      "hint": "Found in a closed off area in the middle.",
+      "id": "medallion_1084",
+      "index": 29,
+      "x": 87.2266,
+      "y": 46.4106,
+      "youtubeId": "5LSErpkQuAg"
     },
     {
-      "id": "medallion_eastern_sea_02",
-      "index": 2,
-      "regionId": "eastern_sea"
+      "hint": "Under the Bridge Near DK Spaceport",
+      "id": "medallion_1085",
+      "index": 30,
+      "x": 33.0312,
+      "y": 81.5885,
+      "youtubeId": "bj3WO2qNnXo"
     },
     {
-      "id": "medallion_eastern_sea_03",
-      "index": 3,
-      "regionId": "eastern_sea"
+      "hint": "From Toadette's starting point, look to your right to see Peach Stadium in the distance; make a beeline towards it until you reach an inclined ground with a tent below. Trick jump off the tent as shown in the video, or if the tent is in the wrong spot, use a Charge Jump to get on top of the inclined ground and find a Peach Medallion at the end.",
+      "id": "medallion_1086",
+      "index": 31,
+      "x": 39.5625,
+      "y": 63.9062,
+      "youtubeId": "kqqgg4Mq_7w"
     },
     {
-      "id": "medallion_eastern_sea_04",
-      "index": 4,
-      "regionId": "eastern_sea"
+      "hint": "Found on top of an elevated tree root.",
+      "id": "medallion_1087",
+      "index": 32,
+      "x": 54.2969,
+      "y": 13.7457,
+      "youtubeId": "wq8H4OHN-Vg"
     },
     {
-      "id": "medallion_eastern_sea_05",
-      "index": 5,
-      "regionId": "eastern_sea"
+      "hint": "The Peach medallion can be found on one of the hanging white flower stalks.",
+      "id": "medallion_1088",
+      "index": 33,
+      "x": 50.082,
+      "y": 11.7969,
+      "youtubeId": "r6_CKmEjnK0"
     },
     {
-      "id": "medallion_eastern_sea_06",
-      "index": 6,
-      "regionId": "eastern_sea"
+      "hint": "Found along some railroad tracks and 3 billboards near Mario Circuit.",
+      "id": "medallion_1089",
+      "index": 34,
+      "x": 48.0469,
+      "y": 25.2387,
+      "youtubeId": "iMqAsc0Cu-A"
     },
     {
-      "id": "medallion_eastern_sea_07",
-      "index": 7,
-      "regionId": "eastern_sea"
+      "hint": "Found inside Bowser's Castle on top of a rail.",
+      "id": "medallion_1090",
+      "index": 35,
+      "x": 26.8711,
+      "y": 21.671,
+      "youtubeId": "b3ABJNJS_Ic"
     },
     {
-      "id": "medallion_eastern_sea_08",
-      "index": 8,
-      "regionId": "eastern_sea"
+      "hint": "On top of a rock formation, north of Choco Mountain.",
+      "id": "medallion_1091",
+      "index": 36,
+      "x": 37.7617,
+      "y": 46.3889,
+      "youtubeId": "tKJp9WwgAaU"
     },
     {
-      "id": "medallion_eastern_sea_09",
-      "index": 9,
-      "regionId": "eastern_sea"
+      "hint": "South of Wario Stadium.",
+      "id": "medallion_1092",
+      "index": 37,
+      "x": 26.0508,
+      "y": 48.8715,
+      "youtubeId": "BbNkd2eHYEA"
     },
     {
-      "id": "medallion_eastern_sea_10",
-      "index": 10,
-      "regionId": "eastern_sea"
+      "hint": "On top of a tent house, west of Shy Guy Bazaar.",
+      "id": "medallion_1093",
+      "index": 38,
+      "x": 13.0898,
+      "y": 49.7613,
+      "youtubeId": "mhZAzYpHLK0"
     },
     {
-      "id": "medallion_eastern_sea_11",
-      "index": 11,
-      "regionId": "eastern_sea"
+      "hint": "Atop one of the station structures near a pile of coins in Whistlestop Summit. If you fast travel to whistlestop, it should be on the structure behind you.",
+      "id": "medallion_1094",
+      "index": 39,
+      "x": 24.3398,
+      "y": 82.4132,
+      "youtubeId": "lCJeHepteZM"
     },
     {
-      "id": "medallion_eastern_sea_12",
-      "index": 12,
-      "regionId": "eastern_sea"
+      "hint": "On top of the starting arch of the track. Use the ramp on the truck to reach the roof and rail grind towards the medallion.",
+      "id": "medallion_1095",
+      "index": 40,
+      "x": 22.0508,
+      "y": 62.3655,
+      "youtubeId": "1gPxXJHprzg"
     },
     {
-      "id": "medallion_eastern_sea_13",
-      "index": 13,
-      "regionId": "eastern_sea"
+      "hint": "This medallion is found high up in the tracks, inside a tower entrance near a Yoshi's Diner food cart.",
+      "id": "medallion_1096",
+      "index": 41,
+      "x": 22.7227,
+      "y": 84.0538,
+      "youtubeId": "zpcDTbINR0w"
     },
     {
-      "id": "medallion_eastern_sea_14",
-      "index": 14,
-      "regionId": "eastern_sea"
+      "hint": "This Peach medallion can be found by the docks. Check the underside of the wooden bridge by the sea.",
+      "id": "medallion_1097",
+      "index": 42,
+      "x": 41.0156,
+      "y": 71.1458,
+      "youtubeId": "9yL_ESINnS0"
     },
     {
-      "id": "medallion_eastern_sea_15",
-      "index": 15,
-      "regionId": "eastern_sea"
+      "hint": "This Peach medallion can be found on a detour through the construction zone.",
+      "id": "medallion_1098",
+      "index": 43,
+      "x": 36.8711,
+      "y": 75.6424,
+      "youtubeId": "xVmt5LnYlyA"
     },
     {
-      "id": "medallion_eastern_sea_16",
-      "index": 16,
-      "regionId": "eastern_sea"
+      "hint": "Behind a Lantern Pillar.",
+      "id": "medallion_1099",
+      "index": 44,
+      "x": 40.3516,
+      "y": 25.7899,
+      "youtubeId": "RTDnZrDTUZQ"
     },
     {
-      "id": "medallion_desert_01",
-      "index": 1,
-      "regionId": "desert"
+      "hint": "From the Acorn Heights starting point, go straight and take a left at the fork; before the glider panel, fall off the edge and land on a leaf to grab it.",
+      "id": "medallion_1100",
+      "index": 45,
+      "x": 50.6055,
+      "y": 12.691,
+      "youtubeId": "mYt1Tpfb_I8"
     },
     {
-      "id": "medallion_desert_02",
-      "index": 2,
-      "regionId": "desert"
+      "hint": "Above the bridge, south of Mario Circuit.",
+      "id": "medallion_1101",
+      "index": 46,
+      "x": 53.6367,
+      "y": 35.7639,
+      "youtubeId": "IlM4qCSr2X8"
     },
     {
-      "id": "medallion_desert_03",
-      "index": 3,
-      "regionId": "desert"
+      "hint": "On top of a tractor, north of Moo Moo Meadows.",
+      "id": "medallion_1102",
+      "index": 47,
+      "x": 52.5273,
+      "y": 38.8325,
+      "youtubeId": "1eFQbvltI1M"
     },
     {
-      "id": "medallion_desert_04",
-      "index": 4,
-      "regionId": "desert"
+      "hint": "On top of sand dune near the sea, overlooking Shy Guy Bazaar.",
+      "id": "medallion_1103",
+      "index": 48,
+      "x": 7.9805,
+      "y": 54.0495,
+      "youtubeId": "0qqrNCeCyj0"
     },
     {
-      "id": "medallion_desert_05",
-      "index": 5,
-      "regionId": "desert"
+      "hint": "Found inside a train tunnel north of Desert Hills. Ride on the rail until you meet a train coming the opposite direction. When it gets close, turn around and start following alongside it. When it gets ahead of you, ride the rail to catch up and get on the back. Wait there until you get to the Peach Medallion; you can reach it from on top of the train.",
+      "id": "medallion_1104",
+      "index": 49,
+      "x": 10.457,
+      "y": 66.658,
+      "youtubeId": "Uw1PK9dyfZc"
     },
     {
-      "id": "medallion_desert_06",
-      "index": 6,
-      "regionId": "desert"
+      "hint": "Found on a wooden stump.",
+      "id": "medallion_1105",
+      "index": 50,
+      "x": 43.4492,
+      "y": 48.7587,
+      "youtubeId": "xV-L0HLcMw8"
     },
     {
-      "id": "medallion_desert_07",
-      "index": 7,
-      "regionId": "desert"
+      "hint": "Climb the Ivy Vine to reach it.",
+      "id": "medallion_1106",
+      "index": 51,
+      "x": 47.3164,
+      "y": 46.02,
+      "youtubeId": "oTFWJR3mhbI"
     },
     {
-      "id": "medallion_desert_08",
-      "index": 8,
-      "regionId": "desert"
+      "hint": "Can be found next to a lighthouse.",
+      "id": "medallion_1107",
+      "index": 52,
+      "x": 77.9883,
+      "y": 72.7734,
+      "youtubeId": "_UGgi6JwKMA"
     },
     {
-      "id": "medallion_desert_09",
-      "index": 9,
-      "regionId": "desert"
+      "hint": "Can be found on a roof.",
+      "id": "medallion_1108",
+      "index": 53,
+      "x": 29.4258,
+      "y": 61.9965,
+      "youtubeId": "VbdjL0wavEI"
     },
     {
-      "id": "medallion_desert_10",
-      "index": 10,
-      "regionId": "desert"
+      "hint": "On top of red steel wall.",
+      "id": "medallion_1109",
+      "index": 54,
+      "x": 30.8203,
+      "y": 85.3342,
+      "youtubeId": "Q0fPC3ZQWvk"
     },
     {
-      "id": "medallion_desert_11",
-      "index": 11,
-      "regionId": "desert"
+      "hint": "On top of the sign that says DINER. Jump from the telephone line at high speed and do a trick to reach it.",
+      "id": "medallion_1110",
+      "index": 55,
+      "x": 27.1055,
+      "y": 61.7969,
+      "youtubeId": "NBblPkIXXgg"
     },
     {
-      "id": "medallion_desert_12",
-      "index": 12,
-      "regionId": "desert"
+      "hint": "On a tropical island underneath the DK Spaceport map icon.",
+      "id": "medallion_1111",
+      "index": 56,
+      "x": 39.6719,
+      "y": 92.8168,
+      "youtubeId": "yfUwhBEPF1U"
     },
     {
-      "id": "medallion_desert_13",
-      "index": 13,
-      "regionId": "desert"
+      "hint": "On the very top of the Crown Bridge, above the drawbridge.",
+      "id": "medallion_1112",
+      "index": 57,
+      "x": 51.3906,
+      "y": 76.0547,
+      "youtubeId": "53O6F6jL9yI"
     },
     {
-      "id": "medallion_desert_14",
-      "index": 14,
-      "regionId": "desert"
+      "hint": "Behind the brown house with the blue roof, southwest of Faraway Oasis.",
+      "id": "medallion_1113",
+      "index": 58,
+      "x": 60.0938,
+      "y": 74.8611,
+      "youtubeId": "iHpb090zjqo"
     },
     {
-      "id": "medallion_desert_15",
-      "index": 15,
-      "regionId": "desert"
+      "hint": "On top of a building between two Yoshi's Diner food trucks. Find where the telephone line connects to the ground and ride it up and over to the building, then jump off to grab it.",
+      "id": "medallion_1114",
+      "index": 59,
+      "x": 56.8203,
+      "y": 84.1884,
+      "youtubeId": "xLgL1dBxV-Q"
     },
     {
-      "id": "medallion_desert_16",
-      "index": 16,
-      "regionId": "desert"
+      "hint": "At the top of the waterfall near Cheep Cheep Falls.",
+      "id": "medallion_1115",
+      "index": 60,
+      "x": 65.6953,
+      "y": 52.296,
+      "youtubeId": "Nhutvr_i78c"
     },
     {
-      "id": "medallion_desert_17",
-      "index": 17,
-      "regionId": "desert"
+      "hint": "Above the waterfall in Dandelion Depths.",
+      "id": "medallion_1116",
+      "index": 61,
+      "x": 63.9805,
+      "y": 37.1441,
+      "youtubeId": "gYfzRcjfTrY"
     },
     {
-      "id": "medallion_autumnal_highland_01",
-      "index": 1,
-      "regionId": "autumnal_highland"
+      "hint": "Jump on the Red Flower to land on the broken stone arch.",
+      "id": "medallion_1117",
+      "index": 62,
+      "x": 78.3086,
+      "y": 75.447,
+      "youtubeId": "TQLlBt4oL0c"
     },
     {
-      "id": "medallion_autumnal_highland_02",
-      "index": 2,
-      "regionId": "autumnal_highland"
+      "hint": "On top of a cabin near DK Pass. Jump on the ledge to land on the roof.You can rewind if you miss the jump.",
+      "id": "medallion_1118",
+      "index": 63,
+      "x": 70.2109,
+      "y": 43.316,
+      "youtubeId": "DxZg7bdbR9s"
     },
     {
-      "id": "medallion_autumnal_highland_03",
-      "index": 3,
-      "regionId": "autumnal_highland"
+      "hint": "Between two snowmen. Easy to grab on the ground.",
+      "id": "medallion_1119",
+      "index": 64,
+      "x": 72.2422,
+      "y": 39.9826,
+      "youtubeId": "nMdQKweAgTk"
     },
     {
-      "id": "medallion_autumnal_highland_04",
-      "index": 4,
-      "regionId": "autumnal_highland"
+      "hint": "On a high snowy cliff.",
+      "id": "medallion_1120",
+      "index": 65,
+      "x": 67.3672,
+      "y": 26.2674,
+      "youtubeId": "hpBIDdu-3h8"
     },
     {
-      "id": "medallion_autumnal_highland_05",
-      "index": 5,
-      "regionId": "autumnal_highland"
+      "hint": "On top of a lamppost outside of Boo Cinema.",
+      "id": "medallion_1121",
+      "index": 66,
+      "x": 65.1289,
+      "y": 21.3498,
+      "youtubeId": "uHGMIhVmPos"
     },
     {
-      "id": "medallion_autumnal_highland_06",
-      "index": 6,
-      "regionId": "autumnal_highland"
+      "hint": "On top of a power line near the railroad. Ride the power line to get the Medallion.",
+      "id": "medallion_1122",
+      "index": 67,
+      "x": 58.6055,
+      "y": 26.5582,
+      "youtubeId": "kzv7pd1FzGs"
     },
     {
-      "id": "medallion_autumnal_highland_07",
-      "index": 7,
-      "regionId": "autumnal_highland"
+      "hint": "Found inside a tunnel near the Mario Circuit.",
+      "id": "medallion_1123",
+      "index": 68,
+      "x": 47.8477,
+      "y": 27.0139,
+      "youtubeId": "GW98-kyBfIE"
     },
     {
-      "id": "medallion_autumnal_highland_08",
-      "index": 8,
-      "regionId": "autumnal_highland"
+      "hint": "On top of a tree between two music note blocks by the road.",
+      "id": "medallion_1124",
+      "index": 69,
+      "x": 53.8594,
+      "y": 26.8099,
+      "youtubeId": "17plZzP9ehs"
     },
     {
-      "id": "medallion_autumnal_highland_09",
-      "index": 9,
-      "regionId": "autumnal_highland"
+      "hint": "Drive uphill to find the starting point, the Medallion can be found at the end of a power line.",
+      "id": "medallion_1125",
+      "index": 70,
+      "x": 47.625,
+      "y": 31.1458,
+      "youtubeId": "KJdT5H0y52w"
     },
     {
-      "id": "medallion_autumnal_highland_10",
-      "index": 10,
-      "regionId": "autumnal_highland"
+      "hint": "Ride the third power line from the left near the P-Switch \"Hop from line to line to collect blue coins!\"",
+      "id": "medallion_1126",
+      "index": 71,
+      "x": 37.8398,
+      "y": 41.862,
+      "youtubeId": "ik9SUogTeTU"
     },
     {
-      "id": "medallion_autumnal_highland_11",
-      "index": 11,
-      "regionId": "autumnal_highland"
+      "hint": "On top of the bridge. Ride the power line from the P Switch \"Show off serious tightrope-riding skills!\" then drop down to the left.",
+      "id": "medallion_1127",
+      "index": 72,
+      "x": 28.2383,
+      "y": 39.0278,
+      "youtubeId": "Fd4U8C150jU"
     },
     {
-      "id": "medallion_autumnal_highland_12",
-      "index": 12,
-      "regionId": "autumnal_highland"
+      "hint": "On top of a crane.",
+      "id": "medallion_1128",
+      "index": 73,
+      "x": 38.1367,
+      "y": 37.7127,
+      "youtubeId": "HZjR3xUV5lE"
     },
     {
-      "id": "medallion_autumnal_highland_13",
-      "index": 13,
-      "regionId": "autumnal_highland"
+      "hint": "On top of the tunnel leading up to Bowser's Castle. Drive around to the right side to find a path leading up to the top of the tunnel.",
+      "id": "medallion_1129",
+      "index": 74,
+      "x": 24.6875,
+      "y": 33.4679,
+      "youtubeId": "Zdoh-HMjOgM"
     },
     {
-      "id": "medallion_forest_01",
-      "index": 1,
-      "regionId": "forest"
+      "hint": "On top of billboard railing.",
+      "id": "medallion_1130",
+      "index": 75,
+      "x": 27.8789,
+      "y": 42.8082,
+      "youtubeId": "2qVt2l29r7g"
     },
     {
-      "id": "medallion_forest_02",
-      "index": 2,
-      "regionId": "forest"
+      "hint": "Drop down from Starview Peak onto the ledge.",
+      "id": "medallion_1131",
+      "index": 76,
+      "x": 74.6758,
+      "y": 28.0599,
+      "youtubeId": "KFlNlQHEzEE"
     },
     {
-      "id": "medallion_forest_03",
-      "index": 3,
-      "regionId": "forest"
+      "hint": "Located on a high ledge outside Boo Cinema. Drive past the Peach Medallion near the Toad camp in the snowy area, then drop down to the grassy section below to reach it.",
+      "id": "medallion_1132",
+      "index": 77,
+      "x": 67.7148,
+      "y": 22.9861,
+      "youtubeId": "Nj1pmMF0XBo"
     },
     {
-      "id": "medallion_forest_04",
-      "index": 4,
-      "regionId": "forest"
+      "hint": "In between two rocks under the green bridge.",
+      "id": "medallion_1133",
+      "index": 78,
+      "x": 70.4883,
+      "y": 61.4106,
+      "youtubeId": "_oaXvoAnZSo"
     },
     {
-      "id": "medallion_forest_05",
-      "index": 5,
-      "regionId": "forest"
+      "hint": "It is recommended that you have a Gold Mushroom and / or a Triple Mushroom. Jump from the highest point in Acorn Heights and dash boost your way into landing on the giant log. The Peach Medallion will be on top.",
+      "id": "medallion_1134",
+      "index": 79,
+      "x": 50.6016,
+      "y": 17.5694,
+      "youtubeId": null
     },
     {
-      "id": "medallion_forest_06",
-      "index": 6,
-      "regionId": "forest"
+      "hint": "Drop down from one of the initial curves in Starview Peak. You will land at an observatory where you will see the Peach Medallion when you go around.",
+      "id": "medallion_1135",
+      "index": 80,
+      "x": 76.1797,
+      "y": 26.3932,
+      "youtubeId": "FtxOb8EwF44"
     },
     {
-      "id": "medallion_forest_07",
-      "index": 7,
-      "regionId": "forest"
+      "hint": "Found underneath the bridge southeast of Starview Peak.",
+      "id": "medallion_1136",
+      "index": 81,
+      "x": 77.5234,
+      "y": 29.5833,
+      "youtubeId": "iEBMx1j42rg"
     },
     {
-      "id": "medallion_forest_08",
-      "index": 8,
-      "regionId": "forest"
+      "hint": "From the DK Pass starting point, turn right and head up the ramps, then turn offroad to the right and follow main road uphill. Take the ramp to get onto the cabin roof and blast in the cannon to reach the platform with the Peach Medallion. Note: If you drive up to the top of the platform normally, the Peach Medallion will not appear!",
+      "id": "medallion_1137",
+      "index": 82,
+      "x": 75.9648,
+      "y": 44.8872,
+      "youtubeId": "70KMsuKUUXs"
     },
     {
-      "id": "medallion_forest_09",
-      "index": 9,
-      "regionId": "forest"
+      "hint": "Under the bridge leading up to Bowser's Castle.",
+      "id": "medallion_1138",
+      "index": 83,
+      "x": 30.7969,
+      "y": 36.6276,
+      "youtubeId": "wrd1aCopvoQ"
     },
     {
-      "id": "medallion_forest_10",
-      "index": 10,
-      "regionId": "forest"
+      "hint": "In the middle of a field of trees.",
+      "id": "medallion_1139",
+      "index": 84,
+      "x": 47.5117,
+      "y": 36.6927,
+      "youtubeId": "FFGQ8Xl9AKE"
     },
     {
-      "id": "medallion_forest_11",
-      "index": 11,
-      "regionId": "forest"
+      "hint": "In front of 3 bales of hay.",
+      "id": "medallion_1140",
+      "index": 85,
+      "x": 47.5273,
+      "y": 44.1102,
+      "youtubeId": "KsnaExhyVU0"
     },
     {
-      "id": "medallion_forest_12",
-      "index": 12,
-      "regionId": "forest"
+      "hint": "Inside the course, found near P Switch \"Follow the rope for the ruin's blue coins!\".",
+      "id": "medallion_1141",
+      "index": 86,
+      "x": 11.2578,
+      "y": 72.7561,
+      "youtubeId": "HEGOG_KAoyc"
     },
     {
-      "id": "medallion_forest_13",
-      "index": 13,
-      "regionId": "forest"
+      "hint": "Found at the end of a ramp in Dry Bones Burnout.",
+      "id": "medallion_1142",
+      "index": 87,
+      "x": 40.375,
+      "y": 20.0694,
+      "youtubeId": "nNvsaUCWSYs"
     },
     {
-      "id": "medallion_forest_14",
-      "index": 14,
-      "regionId": "forest"
+      "hint": "Found inside a tent northeast of Choco Mountain!",
+      "id": "medallion_1143",
+      "index": 88,
+      "x": 40.3242,
+      "y": 49.2187,
+      "youtubeId": "FLmCVVO0oDI"
     },
     {
-      "id": "medallion_forest_15",
-      "index": 15,
-      "regionId": "forest"
+      "hint": "Found west of Peach Stadium. Use the Warp Pipe to launch towards the music blocks and grab it.",
+      "id": "medallion_1144",
+      "index": 89,
+      "x": 45.5117,
+      "y": 58.8368,
+      "youtubeId": "No26r0ead08"
     },
     {
-      "id": "medallion_forest_16",
-      "index": 16,
-      "regionId": "forest"
+      "hint": "Found on a rail up in the tracks of Choco Mountain.",
+      "id": "medallion_1145",
+      "index": 90,
+      "x": 40.0391,
+      "y": 52.092,
+      "youtubeId": "o2hoGkV27zo"
     },
     {
-      "id": "medallion_forest_17",
-      "index": 17,
-      "regionId": "forest"
+      "hint": "From the Choco Mountain starting point, turn backwards and go through the door, then fall off onto the lower track. Continue ahead until you find a rail on the left you can ride up; trick off to the left onto another rail to reach an area where you can loop around continuously on a single rail. After jumping over the gap, jump on another rail to the left to ride up to the Peach Medallion.",
+      "id": "medallion_1146",
+      "index": 91,
+      "x": 38.7344,
+      "y": 52.5391,
+      "youtubeId": "Kbc1bHSvHAI"
     },
     {
-      "id": "medallion_forest_18",
-      "index": 18,
-      "regionId": "forest"
+      "hint": "Under a bridge near Faraway Oasis.",
+      "id": "medallion_1147",
+      "index": 92,
+      "x": 60.4453,
+      "y": 69.4054,
+      "youtubeId": "W3-yjA5Oz5c"
     },
     {
-      "id": "medallion_forest_19",
-      "index": 19,
-      "regionId": "forest"
+      "hint": "Found in Dino Dino Jungle. Go into the Laboratory and grind the rails to jump off to a ramp. Dash to the next ramp, and again to the next one, then glide to the medallion.",
+      "id": "medallion_1148",
+      "index": 93,
+      "x": 64.9414,
+      "y": 90.8854,
+      "youtubeId": "gwISzXwv3Tk"
     },
     {
-      "id": "medallion_forest_20",
-      "index": 20,
-      "regionId": "forest"
+      "hint": "Can be found north of Whistlestop Summit. Ride up the cable of the bridgebridge and press R to hop off and land on the pillar with the Peach Medallion.",
+      "id": "medallion_1149",
+      "index": 94,
+      "x": 25.7578,
+      "y": 78.0556,
+      "youtubeId": "1WO3PzPbXC4"
     },
     {
-      "id": "medallion_forest_21",
-      "index": 21,
-      "regionId": "forest"
+      "hint": "On top of a plateau, south of DK Pass.",
+      "id": "medallion_1150",
+      "index": 95,
+      "x": 77.9062,
+      "y": 47.2873,
+      "youtubeId": "1eJzGY_VCzQ"
     },
     {
-      "id": "medallion_forest_22",
-      "index": 22,
-      "regionId": "forest"
+      "hint": "On the west side of the steel bridge, go down the ridge and the Medallion should be on top of a rock near a cactus.",
+      "id": "medallion_1151",
+      "index": 96,
+      "x": 18.9492,
+      "y": 49.9089,
+      "youtubeId": "i7HWfXkt7e8"
     },
     {
-      "id": "medallion_forest_23",
-      "index": 23,
-      "regionId": "forest"
+      "hint": "On top of a multi-layered rock formation.",
+      "id": "medallion_1152",
+      "index": 97,
+      "x": 15.6523,
+      "y": 45.4167,
+      "youtubeId": "rcI85ezE9nE"
     },
     {
-      "id": "medallion_forest_24",
-      "index": 24,
-      "regionId": "forest"
+      "hint": "On top of the house to the right of the starting line.",
+      "id": "medallion_1153",
+      "index": 98,
+      "x": 11.6797,
+      "y": 53.7543,
+      "youtubeId": "3r_LSVisslo"
     },
     {
-      "id": "medallion_forest_25",
-      "index": 25,
-      "regionId": "forest"
+      "hint": "Inside ruined building with 3 pillars.",
+      "id": "medallion_1154",
+      "index": 99,
+      "x": 14.6602,
+      "y": 66.7535,
+      "youtubeId": "KbKPxCK3zp4"
     },
     {
-      "id": "medallion_forest_26",
-      "index": 26,
-      "regionId": "forest"
+      "hint": "From the Fast Travel Point, go straight forward up the ramp and fly into the hole in the ice cream billboard to get it.",
+      "id": "medallion_1155",
+      "index": 100,
+      "x": 87.6289,
+      "y": 37.2439,
+      "youtubeId": "55I4YRE-nqg"
     },
     {
-      "id": "medallion_savanna_jungle_01",
-      "index": 1,
-      "regionId": "savanna_jungle"
+      "hint": "On top of the arch at the starting point.",
+      "id": "medallion_1156",
+      "index": 101,
+      "x": 87.4062,
+      "y": 71.9618,
+      "youtubeId": "3pr9t_mvS1w"
     },
     {
-      "id": "medallion_savanna_jungle_02",
-      "index": 2,
-      "regionId": "savanna_jungle"
+      "hint": "Travel through the pipe and it's directly underneath the landing spot.",
+      "id": "medallion_1157",
+      "index": 102,
+      "x": 37.5859,
+      "y": 87.921,
+      "youtubeId": "qwW1njiJ1jQ"
     },
     {
-      "id": "medallion_savanna_jungle_03",
-      "index": 3,
-      "regionId": "savanna_jungle"
+      "hint": "On the roof after the dash panel in the middle of the course.",
+      "id": "medallion_1158",
+      "index": 103,
+      "x": 51.1992,
+      "y": 61.0938,
+      "youtubeId": "EM46l91Hv2c"
     },
     {
-      "id": "medallion_savanna_jungle_04",
-      "index": 4,
-      "regionId": "savanna_jungle"
+      "hint": "At the top of a spiral hill; jump off the ledge at the top to get it.",
+      "id": "medallion_1159",
+      "index": 104,
+      "x": 62.5508,
+      "y": 71.9054,
+      "youtubeId": "n4PqAx-1HYc"
     },
     {
-      "id": "medallion_savanna_jungle_05",
-      "index": 5,
-      "regionId": "savanna_jungle"
+      "hint": "On the rail that encircles the ship.",
+      "id": "medallion_1160",
+      "index": 105,
+      "x": 14.0156,
+      "y": 34.7092,
+      "youtubeId": "mHm54tV69K0"
     },
     {
-      "id": "medallion_savanna_jungle_06",
-      "index": 6,
-      "regionId": "savanna_jungle"
+      "hint": "Cross over the lanterns by grinding on the rail.",
+      "id": "medallion_1161",
+      "index": 106,
+      "x": 65.5703,
+      "y": 54.3229,
+      "youtubeId": "ysgoOrsZdhA"
     },
     {
-      "id": "medallion_savanna_jungle_07",
-      "index": 7,
-      "regionId": "savanna_jungle"
+      "hint": "Go inside the pipe that's inside the screen.",
+      "id": "medallion_1162",
+      "index": 107,
+      "x": 66.2656,
+      "y": 16.9314,
+      "youtubeId": "tor4J4Zl3K8"
     },
     {
-      "id": "medallion_savanna_jungle_08",
-      "index": 8,
-      "regionId": "savanna_jungle"
+      "hint": "Proceed from the starting area and go to the right.",
+      "id": "medallion_1163",
+      "index": 108,
+      "x": 40.3984,
+      "y": 18.8194,
+      "youtubeId": "39vgIE-VdD8"
     },
     {
-      "id": "medallion_savanna_jungle_09",
-      "index": 9,
-      "regionId": "savanna_jungle"
+      "hint": "From the Mario Circuit starting point, immediately go left into the pipe to reach the control tower roof. Use the bounce pad to jump up onto the next level of the roof, and then trick up two more levels on the rail to get to the top. When you reach the top, immediately jump forward over the sign ahead to land on the finish line arch and grab it. Note: This Peach Medallion will only appear if you are on the top level of the control tower roof, and if approached from any other angle, it will disappear!",
+      "id": "medallion_1164",
+      "index": 109,
+      "x": 52.0898,
+      "y": 29.2361,
+      "youtubeId": "-JAPicHxgvI"
     },
     {
-      "id": "medallion_savanna_jungle_10",
-      "index": 10,
-      "regionId": "savanna_jungle"
+      "hint": "Can be found after descending from the high ground in the center of the map.",
+      "id": "medallion_1165",
+      "index": 110,
+      "x": 88.9453,
+      "y": 54.7266,
+      "youtubeId": "jnvwqEzkeOQ"
     },
     {
-      "id": "medallion_savanna_jungle_11",
-      "index": 11,
-      "regionId": "savanna_jungle"
+      "hint": "From the Mario Circuit starting point, immediately go left into the pipe to reach the control tower roof. Go straight ahead and use the boost from the bounce pad to jump off the edge onto the top of the finish line arch and grab it. Note: This Peach Medallion will only appear if you are on the lowest level of the control tower roof, and if approached from any other angle, it will disappear!",
+      "id": "medallion_1166",
+      "index": 111,
+      "x": 50.4102,
+      "y": 27.7778,
+      "youtubeId": "UIh0P5mAs-w"
     },
     {
-      "id": "medallion_savanna_jungle_12",
-      "index": 12,
-      "regionId": "savanna_jungle"
+      "hint": "On the rail above the building in the bottom-right of the course.",
+      "id": "medallion_1167",
+      "index": 112,
+      "x": 39.7109,
+      "y": 37.2439,
+      "youtubeId": "oUqRWg77bYs"
     },
     {
-      "id": "medallion_savanna_jungle_13",
-      "index": 13,
-      "regionId": "savanna_jungle"
+      "hint": "Follow the course in the opposite direction. When you reach the seating area, turn right and go to the end of the road.",
+      "id": "medallion_1168",
+      "index": 113,
+      "x": 66.5195,
+      "y": 18.5243,
+      "youtubeId": "mpFXjQBjENg"
     },
     {
-      "id": "medallion_savanna_jungle_14",
-      "index": 14,
-      "regionId": "savanna_jungle"
+      "hint": "Follow the road and fly around the curve to the outside. Proceed on the rail slide of the spectator seating and go up to the top of the entrance gate.",
+      "id": "medallion_1169",
+      "index": 114,
+      "x": 51.2461,
+      "y": 63.0382,
+      "youtubeId": "xOUQh5hjN8c"
     },
     {
-      "id": "medallion_savanna_jungle_15",
-      "index": 15,
-      "regionId": "savanna_jungle"
+      "hint": "Follow the path and do the rail slide on the palace roof.",
+      "id": "medallion_1170",
+      "index": 115,
+      "x": 8.4609,
+      "y": 49.4965,
+      "youtubeId": "4FtoQCnEPrQ"
     },
     {
-      "id": "medallion_savanna_jungle_16",
-      "index": 16,
-      "regionId": "savanna_jungle"
+      "hint": "From Lakitu's starting point, take the path to the left until you get to the water, then turn right to find a P-Switch for the \"Climb to great heights to reach the sky block!\" chellenge. After completing it, drop off the edge straight ahead to find it on the ledge below.",
+      "id": "medallion_1171",
+      "index": 116,
+      "x": 78.5625,
+      "y": 85.1736,
+      "youtubeId": "TswI8S6cuEA"
     },
     {
-      "id": "medallion_savanna_jungle_17",
-      "index": 17,
-      "regionId": "savanna_jungle"
+      "hint": "Fall from the left side of the starting line and enter the pipe in front twice.",
+      "id": "medallion_1172",
+      "index": 117,
+      "x": 81.0664,
+      "y": 84.4661,
+      "youtubeId": "ydaqOEu3No8"
     },
     {
-      "id": "medallion_savanna_jungle_18",
-      "index": 18,
-      "regionId": "savanna_jungle"
+      "hint": "Slide on the rail from the left side of the start and fly with a glider.",
+      "id": "medallion_1173",
+      "index": 118,
+      "x": 24.0469,
+      "y": 63.3594,
+      "youtubeId": "Qtd69kVUdu0"
     },
     {
-      "id": "medallion_savanna_jungle_19",
-      "index": 19,
-      "regionId": "savanna_jungle"
+      "hint": "Follow the course and turn right at the T-junction, then you'll find it on top of the lava.",
+      "id": "medallion_1174",
+      "index": 119,
+      "x": 27.9961,
+      "y": 20.7292,
+      "youtubeId": "0p5DYV0_Zzo"
     },
     {
-      "id": "medallion_savanna_jungle_20",
-      "index": 20,
-      "regionId": "savanna_jungle"
+      "hint": "On top of the sails, which are reached by sliding along the railings around the perimeter of the ship.",
+      "id": "medallion_1175",
+      "index": 120,
+      "x": 13.5977,
+      "y": 33.2422,
+      "youtubeId": "ozKOrsWsj-U"
     },
     {
-      "id": "medallion_volcanic_01",
-      "index": 1,
-      "regionId": "volcanic"
+      "hint": "On the left side of the road that splits into two, run along the wall and onto the rails. Found by Fae-Zanna Holman.",
+      "id": "medallion_1176",
+      "index": 121,
+      "x": 87.3633,
+      "y": 35.5425,
+      "youtubeId": "pe845TILHEU"
     },
     {
-      "id": "medallion_volcanic_02",
-      "index": 2,
-      "regionId": "volcanic"
+      "hint": "Go up the arch at the starting point and take the clay pipe on the slope on the left.",
+      "id": "medallion_1177",
+      "index": 122,
+      "x": 50.7461,
+      "y": 81.3932,
+      "youtubeId": "vSN1kp_k1OY"
     },
     {
-      "id": "medallion_volcanic_03",
-      "index": 3,
-      "regionId": "volcanic"
+      "hint": "From the Crown City starting point, you can immediately see Rosalina Automobile on your left. Do a charge jump to hop up to an elevated grassy area, then drive up over the curved roof or go around it to reach a veranda area on the roof with the Peach Medallion in the center.",
+      "id": "medallion_1178",
+      "index": 123,
+      "x": 37.9727,
+      "y": 75.9332,
+      "youtubeId": "h5D6YQtGU_I"
     },
     {
-      "id": "medallion_volcanic_04",
-      "index": 4,
-      "regionId": "volcanic"
+      "hint": "Go up the stairs in front of the starting point and go straight along the river. Turn right at the crossroads and go behind the waterfall on your left.",
+      "id": "medallion_1179",
+      "index": 124,
+      "x": 75.8125,
+      "y": 63.151,
+      "youtubeId": "YveBqAwM5q4"
     },
     {
-      "id": "medallion_volcanic_05",
-      "index": 5,
-      "regionId": "volcanic"
+      "hint": "Go up the stairs in front of the starting point and go straight along the river. Continue straight at the intersection, follow the road up the slope and use the rail slide to climb onto the roof of the building.",
+      "id": "medallion_1180",
+      "index": 125,
+      "x": 77.3633,
+      "y": 62.1441,
+      "youtubeId": "ekWBOdK7xTo"
     },
     {
-      "id": "medallion_volcanic_06",
-      "index": 6,
-      "regionId": "volcanic"
+      "hint": "The starting point is on the cliff on the left.",
+      "id": "medallion_1181",
+      "index": 126,
+      "x": 79.0664,
+      "y": 65.6293,
+      "youtubeId": "V5ohdcgm7ME"
     },
     {
-      "id": "medallion_volcanic_07",
-      "index": 7,
-      "regionId": "volcanic"
+      "hint": "At the starting point, turn around and follow the path on the right. On the way, go into the forest on the left and follow the path.",
+      "id": "medallion_1182",
+      "index": 127,
+      "x": 62.7617,
+      "y": 82.322,
+      "youtubeId": "_3C73VeNT2Q"
     },
     {
-      "id": "medallion_volcanic_08",
-      "index": 8,
-      "regionId": "volcanic"
+      "hint": "From the starting point, head straight towards the grassland, pass through the big trees and head to the coast, where you will find the campsite.",
+      "id": "medallion_1183",
+      "index": 128,
+      "x": 62.0,
+      "y": 91.4323,
+      "youtubeId": "15VVCIA2oCw"
     },
     {
-      "id": "medallion_volcanic_09",
-      "index": 9,
-      "regionId": "volcanic"
+      "hint": "Turn around and fall off the course. Go straight and slide through the vines with a rail.",
+      "id": "medallion_1184",
+      "index": 129,
+      "x": 72.2109,
+      "y": 80.5903,
+      "youtubeId": "2cNTyMxvWoY"
     },
     {
-      "id": "medallion_volcanic_10",
-      "index": 10,
-      "regionId": "volcanic"
+      "hint": "From the Wario Shipyard starting point, go straight, turn right a little on the sea, and go straight again until you find it on a coast.",
+      "id": "medallion_1185",
+      "index": 130,
+      "x": 82.3438,
+      "y": 53.8585,
+      "youtubeId": "mPjzqSsgSKk"
     },
     {
-      "id": "medallion_volcanic_11",
-      "index": 11,
-      "regionId": "volcanic"
+      "hint": "It's on a floating island in the sea, straight ahead from the starting point of Wario Shipyard.",
+      "id": "medallion_1186",
+      "index": 131,
+      "x": 83.7305,
+      "y": 54.5573,
+      "youtubeId": "OP2ZJErE5bM"
     },
     {
-      "id": "medallion_volcanic_12",
-      "index": 12,
-      "regionId": "volcanic"
+      "hint": "From the starting point of Bowser's Castle, go right and go straight from the place where you moved to the pipe on the way.",
+      "id": "medallion_1187",
+      "index": 132,
+      "x": 28.7969,
+      "y": 22.7083,
+      "youtubeId": "BYQQMLy0Ytk"
     },
     {
-      "id": "medallion_volcanic_13",
-      "index": 13,
-      "regionId": "volcanic"
+      "hint": "Under the bridge a little to the right from Birdo's starting point.",
+      "id": "medallion_1188",
+      "index": 133,
+      "x": 73.7852,
+      "y": 57.9384,
+      "youtubeId": "DgcmBhv-cJk"
     },
     {
-      "id": "medallion_volcanic_14",
-      "index": 14,
-      "regionId": "volcanic"
+      "hint": "From the starting point of Salty Salty Speedway, go a little to the left and follow the road. Drop into the waterway inside the town and go straight until you find it under the windmill.",
+      "id": "medallion_1189",
+      "index": 134,
+      "x": 72.3281,
+      "y": 60.5642,
+      "youtubeId": "FuXSlTXU0x8"
     },
     {
-      "id": "medallion_volcanic_15",
-      "index": 15,
-      "regionId": "volcanic"
+      "hint": "From Yoshi's starting point, go back along the rails to the left, then jump off the hill you climbed and you'll find yourself under the building.",
+      "id": "medallion_1190",
+      "index": 135,
+      "x": 61.1992,
+      "y": 60.5642,
+      "youtubeId": "RVvAjlyON3M"
     },
     {
-      "id": "medallion_volcanic_16",
-      "index": 16,
-      "regionId": "volcanic"
+      "hint": "From the starting point of Moo Moo Meadows, go straight to the right and you'll find it on the island in the eye of the star-shaped pond.",
+      "id": "medallion_1191",
+      "index": 136,
+      "x": 50.4922,
+      "y": 50.0608,
+      "youtubeId": "5w892bJIkFc"
     },
     {
-      "id": "medallion_volcanic_17",
-      "index": 17,
-      "regionId": "volcanic"
+      "hint": "From Baby Rosalina, go in the opposite direction from the starting point, slide on the rails on the bridge, and then fly to the destination.",
+      "id": "medallion_1192",
+      "index": 137,
+      "x": 58.7969,
+      "y": 72.7995,
+      "youtubeId": "eAymd1Yb5gs"
     },
     {
-      "id": "medallion_volcanic_18",
-      "index": 18,
-      "regionId": "volcanic"
+      "hint": "Starting from Baby Rosalina, go backwards past the bridge and go left after the big red toll gate. Then, immediately go offroad to the left and keep heading left until you see a cliff beside a wall with coins. Ride the wall and jump on the Star Ring to get the Medallion.",
+      "id": "medallion_1193",
+      "index": 138,
+      "x": 58.4336,
+      "y": 70.3212,
+      "youtubeId": "7ELA7n1CeiU"
     },
     {
-      "id": "medallion_volcanic_19",
-      "index": 19,
-      "regionId": "volcanic"
+      "hint": "From the starting point of Wario Stadium, go straight, turn right at the Y-shaped intersection, and go along the outer wall until you reach the top of the crane.",
+      "id": "medallion_1194",
+      "index": 139,
+      "x": 28.4609,
+      "y": 42.5608,
+      "youtubeId": "iuNs_d3Et4o"
     },
     {
-      "id": "medallion_volcanic_20",
-      "index": 20,
-      "regionId": "volcanic"
+      "hint": "From the starting point of Peach Stadium, go straight ahead and behind the Peach statue.",
+      "id": "medallion_1195",
+      "index": 140,
+      "x": 51.1289,
+      "y": 51.6536,
+      "youtubeId": "r6zrtSW2UQc"
     },
     {
-      "id": "medallion_volcanic_21",
-      "index": 21,
-      "regionId": "volcanic"
+      "hint": "From the starting point of Peach Stadium, go straight, turn right at the circular plaza, and you will find it on top of the arch.",
+      "id": "medallion_1196",
+      "index": 141,
+      "x": 51.0664,
+      "y": 54.6181,
+      "youtubeId": "yxkl0GDmXVA"
     },
     {
-      "id": "medallion_volcanic_22",
-      "index": 22,
-      "regionId": "volcanic"
+      "hint": "From the starting point Cheep Cheep Falls, go in the opposite direction and go behind the Yoshi's Diner with the roof.",
+      "id": "medallion_1197",
+      "index": 142,
+      "x": 64.6641,
+      "y": 59.7439,
+      "youtubeId": "9nAD8ejuz1s"
     },
     {
-      "id": "medallion_snow_01",
-      "index": 1,
-      "regionId": "snow"
+      "hint": "From the DK Pass starting point, go backwards and straight ahead to find two ramps leading to lift ropes. Go up the ramp to the right and ride the lift rope up, and find this Peach Medallion up the slope in the space between the two ropes.",
+      "id": "medallion_1198",
+      "index": 143,
+      "x": 75.1836,
+      "y": 38.3637,
+      "youtubeId": "DLgtYUyMhcg"
     },
     {
-      "id": "medallion_snow_02",
-      "index": 2,
-      "regionId": "snow"
+      "hint": "Go in the opposite direction from Yoshi's starting point, then turn left after passing the arch with the sign.",
+      "id": "medallion_1199",
+      "index": 144,
+      "x": 59.1992,
+      "y": 66.0417,
+      "youtubeId": "y2Eqyirr1co"
     },
     {
-      "id": "medallion_snow_03",
-      "index": 3,
-      "regionId": "snow"
+      "hint": "From the start of Mario Circuit, keep going forward and cross the bridge. After the bridge, go to the right and look down to see it on a cliff below; fall down at the right spot to grab it.",
+      "id": "medallion_1200",
+      "index": 145,
+      "x": 57.1992,
+      "y": 30.4123,
+      "youtubeId": "tjqm2pV81OM"
     },
     {
-      "id": "medallion_snow_04",
-      "index": 4,
-      "regionId": "snow"
+      "hint": "From Luigi's starting point, go left along the fork in the road and you will see a gap between the platforms. Found by Fae-Zanna Holman.",
+      "id": "medallion_1201",
+      "index": 146,
+      "x": 25.582,
+      "y": 53.1771,
+      "youtubeId": "nYffFypSuUI"
     },
     {
-      "id": "medallion_snow_05",
-      "index": 5,
-      "regionId": "snow"
+      "hint": "On top of the start line of Moo Moo Meadows. Rail slide to the top using the rope on the left side of the start line.",
+      "id": "medallion_1202",
+      "index": 147,
+      "x": 50.7969,
+      "y": 45.5208,
+      "youtubeId": "JE4KNcnY_DY"
     },
     {
-      "id": "medallion_snow_06",
-      "index": 6,
-      "regionId": "snow"
+      "hint": "From the starting point of the Dry Bones Burnout, go to the right and go through the dash panels in succession. It's on a platform that falls off a cliff.",
+      "id": "medallion_1203",
+      "index": 148,
+      "x": 38.6641,
+      "y": 16.8576,
+      "youtubeId": "5MXbBe5vP0A"
     },
     {
-      "id": "medallion_snow_07",
-      "index": 7,
-      "regionId": "snow"
+      "hint": "From the Cheep Cheep Falls starting point, head in the opposite direction, take a detour through the passageway slightly to the right, and go under the structure after crossing the river.",
+      "id": "medallion_1204",
+      "index": 149,
+      "x": 63.332,
+      "y": 56.7101,
+      "youtubeId": "2Z4h1TeYS_M"
     },
     {
-      "id": "medallion_snow_08",
-      "index": 8,
-      "regionId": "snow"
+      "hint": "Start as Yoshi and proceed along the road for a while. When you see a green, unpaved road on your left, turn and follow the cliff on your left for a while. You will find a slope you can climb on your left, so go up it and ride the rope lift at the end. After riding the rope lift, you can glide from the star-shaped gate, so fly towards the high point on the left.",
+      "id": "medallion_1205",
+      "index": 150,
+      "x": 66.1172,
+      "y": 64.362,
+      "youtubeId": "emQfOeT_5kQ"
     },
     {
-      "id": "medallion_snow_09",
-      "index": 9,
-      "regionId": "snow"
+      "hint": "Starting from Baby Daisy, cross the swamp a little to the left of the starting point, and when the course joins, it's on top of the leaves next to the jump panel.",
+      "id": "medallion_1206",
+      "index": 151,
+      "x": 53.0469,
+      "y": 21.6233,
+      "youtubeId": "sAJA0PVkZ2M"
     },
     {
-      "id": "medallion_snow_10",
-      "index": 10,
-      "regionId": "snow"
+      "hint": "From the Cheep Cheep Falls starting point, follow the road, go straight after the S-curve, and it's behind the shop at the spot where the road merges and you turn right.",
+      "id": "medallion_1207",
+      "index": 152,
+      "x": 66.3984,
+      "y": 53.303,
+      "youtubeId": "0i98vXUvRnM"
     },
     {
-      "id": "medallion_snow_11",
-      "index": 11,
-      "regionId": "snow"
+      "hint": "From the Starview Peak starting point, drop down to the left and follow the road. On the way, drop down the cliff on the left to the tip.",
+      "id": "medallion_1208",
+      "index": 153,
+      "x": 82.9961,
+      "y": 35.0825,
+      "youtubeId": "AXldi3IxK2I"
     },
     {
-      "id": "medallion_snow_12",
-      "index": 12,
-      "regionId": "snow"
+      "hint": "From the Great ? Block Ruins starting point, go up the hill until you reach the building. Grab the item blocks to get Mushrooms, then do a Charge Jump to get onto the chain to the left. Go to the end and then get back on the chain going the opposite direction, and look up at the end to see the Medallion in the window above. Use a Mushroom, then trick at the end of the chain to jump up and grab it. NOTE: This Peach Medallion only appears when approached in this way, and attempting to get to the platform from any other direction will cause it to disappear!",
+      "id": "medallion_1209",
+      "index": 154,
+      "x": 81.8477,
+      "y": 83.9497,
+      "youtubeId": "tbqlwARQxAs"
     },
     {
-      "id": "medallion_snow_13",
-      "index": 13,
-      "regionId": "snow"
+      "hint": "From Mario's starting point, go left off the road across the hills until you reach a road; turn left to find a jump panel. Do a charge jump right when you hit the jump panel to go higher with the glider, and do air tricks with the L-stick pointing down to slightly raise your elevation. Land on the plateau directly ahead to get the Peach Medallion.",
+      "id": "medallion_1210",
+      "index": 155,
+      "x": 22.3867,
+      "y": 72.8125,
+      "youtubeId": "VKo-jVKOd2M"
     },
     {
-      "id": "medallion_snow_14",
-      "index": 14,
-      "regionId": "snow"
+      "hint": "Starting from Toadette, go right on the map until you find a platform above the road which you can drop onto.",
+      "id": "medallion_1211",
+      "index": 156,
+      "x": 41.7812,
+      "y": 64.5616,
+      "youtubeId": "bqQCp1f5DCM"
     },
     {
-      "id": "medallion_snow_15",
-      "index": 15,
-      "regionId": "snow"
+      "hint": "From the Starview Peak starting point, go ahead and drop down to continue onto the road to the right. Pass through two gates and on the curved path with the Ty-foos, jump off when the path curves to the left and trick off the pole to reach an elevated plateau with the Peach Medallion.",
+      "id": "medallion_1212",
+      "index": 157,
+      "x": 71.8633,
+      "y": 31.1285,
+      "youtubeId": "NNxRyuGyhH0"
     },
     {
-      "id": "medallion_snow_16",
-      "index": 16,
-      "regionId": "snow"
+      "hint": "Starting from Baby Mario, turn around and go across the river and up onto the opposite shore to find it next to a red silo.",
+      "id": "medallion_1213",
+      "index": 158,
+      "x": 61.8477,
+      "y": 42.6997,
+      "youtubeId": "qvH_8zlM9og"
     },
     {
-      "id": "medallion_snow_17",
-      "index": 17,
-      "regionId": "snow"
+      "hint": "From the DK Spaceport starting point, go backwards and follow the road straight, then turn left to go up the grassy hill. Drop down to a cliff path with coins until you find a barrel cannon, which will blast you to the Peach Medallion.",
+      "id": "medallion_1214",
+      "index": 159,
+      "x": 30.1797,
+      "y": 90.0217,
+      "youtubeId": "PQtbE3QsRZQ"
     },
     {
-      "id": "medallion_snow_18",
-      "index": 18,
-      "regionId": "snow"
+      "hint": "From Daisy's starting point, continue ahead and turn right to go up onto the plateaus next to the large archway with purple flags. The Peach Medallion is on a rock next to the archway.",
+      "id": "medallion_1215",
+      "index": 160,
+      "x": 15.3203,
+      "y": 59.8524,
+      "youtubeId": "ZNq6uf0mHDY"
     },
     {
-      "id": "medallion_southern_sea_01",
-      "index": 1,
-      "regionId": "southern_sea"
+      "hint": "From the Crown City fast travel point, turn left and head straight until you find the Koopa Hotel on your right. Ride the rail on the staircase and trick jump to the left to wall ride up to the roof. Ride across the rope with flags hanging off it and go up the pipe rail on the tower staircase to find it.",
+      "id": "medallion_1216",
+      "index": 161,
+      "x": 38.7773,
+      "y": 74.5964,
+      "youtubeId": "X2h0D_21xfQ"
     },
     {
-      "id": "medallion_southern_sea_02",
-      "index": 2,
-      "regionId": "southern_sea"
+      "hint": "From the Boo Cinema starting point, continue ahead into the building and back outside through the exit to the left. Continue across the wooden boardwalks until you reach a Mario Kart banner. Go off the path and look under the boardwalk to find the Peach Medallion.",
+      "id": "medallion_1217",
+      "index": 162,
+      "x": 59.6211,
+      "y": 19.4054,
+      "youtubeId": "n3q5eaeSmbk"
     },
     {
-      "id": "medallion_southern_sea_03",
-      "index": 3,
-      "regionId": "southern_sea"
+      "hint": "From the Mario Bros. Circuit starting point, go backwards and when you get to the main road, turn left and then turn left again, then go offroad to the right. Continue ahead across the hills, then drop down to the left to find it at the end of a plateau.",
+      "id": "medallion_1218",
+      "index": 163,
+      "x": 17.6523,
+      "y": 72.9991,
+      "youtubeId": "Qa-FOPWPgTs"
     },
     {
-      "id": "medallion_southern_sea_04",
-      "index": 4,
-      "regionId": "southern_sea"
+      "hint": "From the Crown City starting point, turn around and head straight north, then when you hit an intersection, continue on the road slightly to the left going north. When you get to the skate park, ride up on the red pipe rail, then continue on the buildings and ride the next rail and clothesline to the opposite side. Find the Peach Medallion on a building ahead; do a trick jump to reach it.",
+      "id": "medallion_1219",
+      "index": 164,
+      "x": 40.418,
+      "y": 69.5182,
+      "youtubeId": "W7t-qsXTFwQ"
     },
     {
-      "id": "medallion_southern_sea_05",
-      "index": 5,
-      "regionId": "southern_sea"
+      "hint": "Start as Mario, turn around and drive towards the hills and near the train tracks. Go through the first tunnel and go left, then follow the path, going right at the cliff.",
+      "id": "medallion_1220",
+      "index": 165,
+      "x": 15.0586,
+      "y": 71.5365,
+      "youtubeId": "FJpb2R87DV0"
     },
     {
-      "id": "medallion_southern_sea_06",
-      "index": 6,
-      "regionId": "southern_sea"
+      "hint": "From the Dino Dino Jungle starting point, turn backwards and go straight on the road ahead, then when it forks left and right, turn right and go offroad to the right to find a plateau with an Ivy Piranha Plant. Ride its vine up to reach another Ivy Piranha Plant; and ride its vine to a spiral hill with the Peach Medallion at the top.",
+      "id": "medallion_1221",
+      "index": 166,
+      "x": 70.3711,
+      "y": 83.9627,
+      "youtubeId": "mAx7Dd0-kpg"
     },
     {
-      "id": "medallion_southern_sea_07",
-      "index": 7,
-      "regionId": "southern_sea"
+      "hint": "From the DK Pass starting point, go backwards and straight ahead to find two ramps leading to lift ropes. Go up the ramp to the left and ride the lift rope up, and find this Peach Medallion up the slope in the space between the two ropes. Found by Fae-Zanna Holman.",
+      "id": "medallion_1222",
+      "index": 167,
+      "x": 72.7656,
+      "y": 37.4696,
+      "youtubeId": "W37d22EKSIE"
     },
     {
-      "id": "medallion_southern_sea_08",
-      "index": 8,
-      "regionId": "southern_sea"
+      "hint": "From Yoshi's starting point, go backwards and continue along the road until you see 2 Mushroom Houses on the left; the Peach Medallion is behind the further one. Found by Blaze.",
+      "id": "medallion_1223",
+      "index": 168,
+      "x": 57.5625,
+      "y": 64.0885,
+      "youtubeId": "fHMXdFd-UlU"
     },
     {
-      "id": "medallion_southern_sea_09",
-      "index": 9,
-      "regionId": "southern_sea"
+      "hint": "From the Choco Mountain starting point, turn right and then go straight on the dirt road. When you reach the main road, turn left to find two huge jump panels going the opposite direction. Take the further one and glide straight ahead to find it on the highest plateau. Found by Blaze.",
+      "id": "medallion_1224",
+      "index": 169,
+      "x": 34.5117,
+      "y": 50.0304,
+      "youtubeId": "rrE5krFiddQ"
     },
     {
-      "id": "medallion_southern_sea_10",
-      "index": 10,
-      "regionId": "southern_sea"
+      "hint": "From the Toad's Factory starting point, go backwards and continue straight ahead across the mud until you get to the bridge leading out of the course. At the end of the bridge, look to the left to find breakable blocks; the block closest to the course contains a Peach Medallion. Found by estoysoy.",
+      "id": "medallion_1225",
+      "index": 170,
+      "x": 38.2422,
+      "y": 39.7917,
+      "youtubeId": "gMaVZwUR1bQ"
     },
     {
-      "id": "medallion_southern_sea_11",
-      "index": 11,
-      "regionId": "southern_sea"
+      "hint": "From Crown City, turn right at the first intersection, then turn right on the dirt road ahead. When you get to a jump panel, go around it to the right to reach an area with crates. The Peach Medallion is between two of the crates. Found by Cameron Smith.",
+      "id": "medallion_1226",
+      "index": 171,
+      "x": 29.0234,
+      "y": 74.4705,
+      "youtubeId": "AdE7yI80igA"
     },
     {
-      "id": "medallion_southern_sea_12",
-      "index": 12,
-      "regionId": "southern_sea"
+      "hint": "From Donkey Kong's starting point, turn right and go across the snow until you reach the cliffs going down towards the water. Look for a cliff with a tree on the left and a bush on the right near the edge; at that point, look down to see the Peach Medallion, then drop down to get it. Found by Blaze.",
+      "id": "medallion_1227",
+      "index": 172,
+      "x": 72.168,
+      "y": 53.9323,
+      "youtubeId": "sWyAA0Isk5w"
     },
     {
-      "id": "medallion_southern_sea_13",
-      "index": 13,
-      "regionId": "southern_sea"
+      "hint": "From the Mario Circuit starting point, turn left and go through to the course exit. When you reach the railroad tracks, turn left, then turn right into the forest and find the P-switch for the mission 'Use the flower petals to find the giant apple!' Complete the mission; even if you don't succeed, just reaching the endpoint is good enough. From there, you can find a log with a Peach Medallion on it. Found by funkyracer.",
+      "id": "medallion_1228",
+      "index": 173,
+      "x": 52.293,
+      "y": 18.3854,
+      "youtubeId": "o2PWpqgLkDg"
     },
     {
-      "id": "medallion_southern_sea_14",
-      "index": 14,
-      "regionId": "southern_sea"
+      "hint": "From the Peach's Castle starting point, turn right and go straight across the bridge, then stop at the end and go offroad to the right along the grass. Continue ahead and stay to the right while dropping down cliffs without falling into the water. When you reach the furthest cliff, turn around to find a hidden Peach Medallion in the corner on the far side from Peach's Castle.",
+      "id": "medallion_1229",
+      "index": 174,
+      "x": 55.0547,
+      "y": 67.7691,
+      "youtubeId": "rTf67cOphBY"
     },
     {
-      "id": "medallion_southern_sea_15",
-      "index": 15,
-      "regionId": "southern_sea"
+      "hint": "From the DK Spaceport starting spot, go backwards and to the right to find a bridge leading to the rocket area. Go up the staircase and find bounce pads you can use to bounce up to the top of the frame surrounding the rocket. Look down to find a Peach Medallion on one of the bars of the frame, and fall down at the right angle to land on the bar and grab it. Found by Braeden Brown \\u0026 David Hutton.",
+      "id": "medallion_1230",
+      "index": 175,
+      "x": 40.0781,
+      "y": 88.0816,
+      "youtubeId": "osW9N9eoxJo"
     },
     {
-      "id": "medallion_southern_sea_16",
-      "index": 16,
-      "regionId": "southern_sea"
+      "hint": "From the Boo Cinema starting point, go straight into the building and out again through the door to the left, then continue through past the Mario Kart banner and straight ahead. When you reach the bridge leading across the forest, fall off at the very start of the bridge to find the Peach Medallion below. Found by Braeden Brown.",
+      "id": "medallion_1231",
+      "index": 176,
+      "x": 56.9844,
+      "y": 21.25,
+      "youtubeId": "gUOHlnBSEs4"
     },
     {
-      "id": "medallion_southern_sea_17",
-      "index": 17,
-      "regionId": "southern_sea"
+      "hint": "From Toadette's starting point, go straight across the bridge, then turn left and go offroad. Find an area where you can drive up onto the cliffs to the left, and continue up until you find it on a rock. Found by Braeden Brown.",
+      "id": "medallion_1232",
+      "index": 177,
+      "x": 31.9453,
+      "y": 62.8429,
+      "youtubeId": "TFc9d-PT00w"
     },
     {
-      "id": "medallion_southern_sea_18",
-      "index": 18,
-      "regionId": "southern_sea"
+      "hint": "From the Airship Fortress starting point, go onto the ship and turn left, and blast off in the cannon to exit the course. After landing, immediately turn right and look behind the giant cannon on the ground to find it. Found by funkyracer.",
+      "id": "medallion_1233",
+      "index": 178,
+      "x": 14.9531,
+      "y": 38.2205,
+      "youtubeId": "nqzlVPA2yXU"
     },
     {
-      "id": "medallion_southern_sea_19",
-      "index": 19,
-      "regionId": "southern_sea"
+      "hint": "From the Shy Guy Bazaar starting point, ride the rope on the right to get to the upper layer of the outer palace. Keep heading straight then head up the ramp and ride the brown rail on the left side into the four item boxes. Keep turning right until you see a tree beside a lower wall. Drop down to the lower wall to grab it. Note: If you approach this spot from any other path, the Peach Medallion will not appear!",
+      "id": "medallion_1234",
+      "index": 179,
+      "x": 11.668,
+      "y": 50.9809,
+      "youtubeId": "mK8nobCYVLU"
     },
     {
-      "id": "medallion_southern_sea_20",
-      "index": 20,
-      "regionId": "southern_sea"
+      "hint": "From the Wario Shipyard starting point, go backwards and fall through the window, then go left and backwards through the door and go up the beach. Take the rope up onto the ship, and then go to the right and jump across the poles to get to the opposite side. Charge up a Charge Jump to jump inside the wall of the tower, and Wall Ride up the wall to get up to the rope. Jump to the next rope and through the glider ring, and glide up to the tower on the opposite side to grab the Peach Medallion. Found by carson_cooley and B.",
+      "id": "medallion_1235",
+      "index": 180,
+      "x": 88.4688,
+      "y": 53.4462,
+      "youtubeId": "FmJaw8eDwaU"
     },
     {
-      "id": "medallion_mesa_01",
-      "index": 1,
-      "regionId": "mesa"
+      "hint": "From the Salty Salty Speedway starting point, go backwards and follow the road on the beach; continue ahead past the Yoshi's and turn left onto a dirt road surrounded by windmills. Continue up the road and then go offroad to the left to find a ramp with a glider ring next to a windmill. Glide through the coin rings in the sky; the 3rd coin ring will have a Peach Medallion in the center.",
+      "id": "medallion_1236",
+      "index": 181,
+      "x": 79.0898,
+      "y": 68.6458,
+      "youtubeId": "-URBkqqIp9k"
     },
     {
-      "id": "medallion_mesa_02",
-      "index": 2,
-      "regionId": "mesa"
+      "hint": "From the Toad's Factory starting point, go straight past the lap marker and turn left until the next lap marker. Continue through the water and go left at an area containing many storage units. From the left side, continue forward until you find it underneath some storage units that are stacked.",
+      "id": "medallion_1237",
+      "index": 182,
+      "x": 35.2656,
+      "y": 37.9948,
+      "youtubeId": "RpgOzohImDU"
     },
     {
-      "id": "medallion_mesa_03",
-      "index": 3,
-      "regionId": "mesa"
+      "hint": "From Koopa Troopa's starting point, turn around then immediately turn right at the fork to keep going down the main road. Once you reach the trees, turn left to go offroad and keep heading straight until you reach a big green dinosaur and a red flower. Jump on the red flower to get on the hill beside it. The Medallion can be found on top of the hill. Found by carson_cooley \\u0026 Blaze.",
+      "id": "medallion_1238",
+      "index": 183,
+      "x": 62.6797,
+      "y": 83.5547,
+      "youtubeId": "a34bFi6dr4g"
     },
     {
-      "id": "medallion_mesa_04",
-      "index": 4,
-      "regionId": "mesa"
+      "hint": "Under the red roof tent at Choco Mountain. Walking around from the outside. Found by carson_cooley and Blaze.",
+      "id": "medallion_1239",
+      "index": 184,
+      "x": 35.9766,
+      "y": 54.3446,
+      "youtubeId": "CUz8LidNNqM"
     },
     {
-      "id": "medallion_mesa_05",
-      "index": 5,
-      "regionId": "mesa"
+      "hint": "Can be found under the bridge south of Dandelion Depths. At the very start of the bridge, you can jump down on the left side to reach the Medallion. Found by carson_coolsey and Blaze.",
+      "id": "medallion_1240",
+      "index": 185,
+      "x": 63.5781,
+      "y": 44.0582,
+      "youtubeId": "PZNBFvMha8Y"
     },
     {
-      "id": "medallion_mesa_06",
-      "index": 6,
-      "regionId": "mesa"
+      "hint": "On top of the crane near the road north of Toad Factory. Wait for a car with a glider and fly up. Found by carson_cooley and Blaze.",
+      "id": "medallion_1241",
+      "index": 186,
+      "x": 37.3477,
+      "y": 32.3177,
+      "youtubeId": "AGNpoL2mCsE"
     },
     {
-      "id": "medallion_mesa_07",
-      "index": 7,
-      "regionId": "mesa"
+      "hint": "Under the cliff to the left of Bowser's location. Found by 半寝コム(hannekomu).",
+      "id": "medallion_1242",
+      "index": 187,
+      "x": 33.8633,
+      "y": 29.0972,
+      "youtubeId": "07aVqRbfS2o"
     },
     {
-      "id": "medallion_mesa_08",
-      "index": 8,
-      "regionId": "mesa"
-    },
-    {
-      "id": "medallion_mesa_09",
-      "index": 9,
-      "regionId": "mesa"
-    },
-    {
-      "id": "medallion_mesa_10",
-      "index": 10,
-      "regionId": "mesa"
-    },
-    {
-      "id": "medallion_mesa_11",
-      "index": 11,
-      "regionId": "mesa"
-    },
-    {
-      "id": "medallion_mesa_12",
-      "index": 12,
-      "regionId": "mesa"
-    },
-    {
-      "id": "medallion_mesa_13",
-      "index": 13,
-      "regionId": "mesa"
-    },
-    {
-      "id": "medallion_mesa_14",
-      "index": 14,
-      "regionId": "mesa"
-    },
-    {
-      "id": "medallion_mesa_15",
-      "index": 15,
-      "regionId": "mesa"
-    },
-    {
-      "id": "medallion_mesa_16",
-      "index": 16,
-      "regionId": "mesa"
-    },
-    {
-      "id": "medallion_mesa_17",
-      "index": 17,
-      "regionId": "mesa"
-    },
-    {
-      "id": "medallion_mesa_18",
-      "index": 18,
-      "regionId": "mesa"
-    },
-    {
-      "id": "medallion_mesa_19",
-      "index": 19,
-      "regionId": "mesa"
-    },
-    {
-      "id": "medallion_mesa_20",
-      "index": 20,
-      "regionId": "mesa"
+      "hint": "From Dry Bones Burnout, go to Bowser's Castle. Turn left off-road just before the bridge and head straight toward the trees and the pillar that resembles a candelabra. The Medallion can be found on a lower platform where the candelabra pillar stands. Found by Blaze.",
+      "id": "medallion_1243",
+      "index": 188,
+      "x": 37.7617,
+      "y": 22.8038,
+      "youtubeId": "byS73AbXhao"
+    },
+    {
+      "hint": "From Dry Bones Burnout, go to Bowser's Castle. Before the bridge, turn right. The Medallion will be on the right side of the bridge. Found by carson_cooley and Blaze.",
+      "id": "medallion_1244",
+      "index": 189,
+      "x": 34.8945,
+      "y": 22.1484,
+      "youtubeId": "POxAQgzMw3c"
+    },
+    {
+      "hint": "From Baby Bowser's starting point, turn right at the fork then turn left at the next intersection up the ramp toward Bowser's Castle. Immediately turn right, then turn right again to go off-course when you see the P-Switch. Head straight and you will find the Medallion on a lower platform near a pipe. Found by funkyracer.",
+      "id": "medallion_1245",
+      "index": 190,
+      "x": 26.8477,
+      "y": 32.2222,
+      "youtubeId": "s3_LWRh7LGY"
+    },
+    {
+      "hint": "On the cliff southeast of Baby Daisy's location. Wall run up to the top. Found by Roberto Antonio Deplano and Blaze.",
+      "id": "medallion_1246",
+      "index": 191,
+      "x": 55.6797,
+      "y": 23.0208,
+      "youtubeId": "4z5YZMN2Hg4"
+    },
+    {
+      "hint": "Can be found on a platform under a green bridge. If you start from Waluigi then immediately head southwest, you will eventually reach the green bridge and the Medallion. Found by Johnny84_.",
+      "id": "medallion_1247",
+      "index": 192,
+      "x": 35.8281,
+      "y": 41.0069,
+      "youtubeId": "BRUuTIZ7oXc"
+    },
+    {
+      "hint": "Take the warp pipe in the barn to warp to the roof. Jump from the roof to the string of lights, then jump towards the billboard to get the medallion at the end. Found by hannekomu.",
+      "id": "medallion_1248",
+      "index": 193,
+      "x": 52.457,
+      "y": 45.3819,
+      "youtubeId": "0f3xkSA6jmQ"
+    },
+    {
+      "hint": "Travel to the east of Wario Stadium. Get to the bridge with cranes. Climb up one of the cranes. The medallion will only appear while you're on the right crane. Found by Blaze.",
+      "id": "medallion_1249",
+      "index": 194,
+      "x": 33.0859,
+      "y": 45.8203,
+      "youtubeId": "Fqz6-DaPJvU"
+    },
+    {
+      "hint": "Run the natural course until you reach the construction area. Drop down the ramp and land on the roof with the warp pipe, go through it and it will shoot you on the roof nearby. The Medallion will only spawn if you manage to jump from the designated rooftop. Found by carson_cooley.",
+      "id": "medallion_1250",
+      "index": 195,
+      "x": 38.8672,
+      "y": 75.0694,
+      "youtubeId": "GvNmogPevIo"
+    },
+    {
+      "hint": "Spawn in Bowser's Castle. Travel southeast towards the wall. Drop just before the downward ramp.Traverse around the wall and the medallion will be overlooking the large circle of lava. Found by Julien and Jordin Duyck.",
+      "id": "medallion_1251",
+      "index": 196,
+      "x": 31.1055,
+      "y": 30.6727,
+      "youtubeId": "HVp_ceZzc1w"
+    },
+    {
+      "hint": "Travel south of Dandelion Depths towards a bridge  . It is recommended to have a Feather. Jump towards the raised area near the bridge. Continue on the path and the Peach Medallion will be on a rock. Found by Fae-Zanna Holman.",
+      "id": "medallion_1252",
+      "index": 197,
+      "x": 63.6016,
+      "y": 46.1328,
+      "youtubeId": "7Fcy0NLfFjw"
+    },
+    {
+      "hint": "Drive west from Boo Cinema. When you reach the hanging bridge, get a little distance to do a charge jump and land on the rope. Jump from the rope to the right where the Medallion will spawn. Found by Blaze.",
+      "id": "medallion_1253",
+      "index": 198,
+      "x": 55.5039,
+      "y": 20.816,
+      "youtubeId": "d3pERuWi9ZQ"
+    },
+    {
+      "hint": "Drive out of Wario Stadium towards the freeway. Get on the ramp and glide towards where the Medallion spawns. Found by socandrewer.",
+      "id": "medallion_1254",
+      "index": 199,
+      "x": 22.8945,
+      "y": 48.5069,
+      "youtubeId": "oSrpaXgUWKA"
+    },
+    {
+      "hint": "From the Cheep Cheep Falls starting point, Turn back and go past the lake. Immediately head left and go on the bridge then keep going straight until you reach the main road. Turn left on the main road and you will see a Yoshi's diner. Wait for a truck with a ramp to pass by then ride the ramp to glide up to the plateau past the fork up ahead. The Medallion should be behind the two billboards on a platform below the plateau that you landed on. Found by socandrewer.",
+      "id": "medallion_1255",
+      "index": 200,
+      "x": 67.8984,
+      "y": 56.4844,
+      "youtubeId": "1kKP2z4FOds"
     }
   ],
-  "manual": true,
-  "source": "https://www.nintendolife.com/guides/mario-kart-world-all-peach-medallions-and-locations"
+  "source": "https://github.com/BamisWasTaken/mkworld-checklist/tree/ee860555a71150a4d3d935ee1ad9a4471742fce6"
 }

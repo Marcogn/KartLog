@@ -13,7 +13,7 @@
     <string name="drawer_settings">Settings / Info</string>
 
     <string name="home_option_skin_title">Characters</string>
-    <string name="home_option_medallions_title">Peach Medallions</string>
+    <string name="home_option_map_title">World map</string>
     <string name="home_option_pswitches_title">P Switches</string>
     <string name="home_option_consigliami_title">Recommend Me</string>
     <string name="home_counter_format">%1$d / %2$d</string>
@@ -29,7 +29,6 @@
     <string name="skin_default_outfit_name">Default</string>
     <string name="skin_unknown_food">Unknown food</string>
     <string name="medallions_title">Peach Medallions</string>
-    <string name="medallions_open_guide">Open guide</string>
 
     <string name="pswitches_title">P Switches</string>
     <string name="pswitches_search_hint">Search mission</string>
@@ -100,8 +99,6 @@
     <string name="skin_unlocked">Unlocked</string>
     <string name="skin_starter">Default driver</string>
     <string name="skin_locked">Locked</string>
-    <string name="medallions_increment">Add a medallion</string>
-    <string name="medallions_decrement">Remove a medallion</string>
     <string name="home_option_consigliami_subtitle">Which Grand Prix or Knockout Tour to race, and with whom, to unlock more outfits</string>
     <string name="settings_preferences_section">Preferences</string>
     <string name="settings_theme_label">Theme</string>
@@ -117,4 +114,30 @@
     <string name="results_mirror_info_cd">How to unlock Mirror Mode</string>
     <string name="skin_unlock_how">How to unlock</string>
     <string name="settings_font_credit">Title font: Lilita One by Juan Montoreano, SIL Open Font License 1.1.</string>
+
+
+    <!-- Mappa dei collezionabili (mkworld-checklist) -->
+    <string name="drawer_map">World map</string>
+    <string name="map_title">World map</string>
+    <string name="map_open">Open the map</string>
+    <string name="map_show_on_map">Show on the map</string>
+    <string name="map_filter_medallions">Medallions</string>
+    <string name="map_filter_pswitches">P Switches</string>
+    <string name="map_filter_panels">\? Panels</string>
+    <string name="map_filter_show_done">Show done</string>
+    <string name="map_point_medallion_format">Peach Medallion #%1$d</string>
+    <string name="map_point_panel_format">\? Panel #%1$d</string>
+    <string name="map_point_pswitch">P Switch</string>
+    <string name="map_done_medallion">Collected</string>
+    <string name="map_done_pswitch">Cleared</string>
+    <string name="map_done_panel">Activated</string>
+    <string name="map_watch_video">Watch the video</string>
+    <string name="map_image_unavailable">Map image not downloaded yet: a connection is needed. The markers work anyway.</string>
+    <string name="medallions_reset_notice_title">Peach Medallions on the map</string>
+    <plurals name="medallions_reset_notice_text">
+        <item quantity="one">Every medallion is now a precise spot on the map. The medallion you had marked per biome can\'t be converted: please mark it again if you already collected it.</item>
+        <item quantity="other">Every medallion is now a precise spot on the map. The %1$d medallions you had marked per biome can\'t be converted: please mark again the ones you already collected.</item>
+    </plurals>
+    <string name="medallions_reset_notice_ok">Got it</string>
+    <string name="settings_map_credit">Map, locations of Peach Medallions, P Switches and ? Panels, instructions and videos: the mkworld-checklist project (mktools.io) by BamisWasTaken, github.com/BamisWasTaken/mkworld-checklist. The map image is downloaded when a connection is available and is not bundled with the app.</string>
 </resources>

@@ -3,6 +3,7 @@ package com.marcogn.kartlog.data.backup
 import android.content.Context
 import android.net.Uri
 import com.marcogn.kartlog.data.local.dao.BackupDao
+import com.marcogn.kartlog.data.local.entity.ActivatedQuestionPanelEntity
 import com.marcogn.kartlog.data.local.entity.BestResultEntity
 import com.marcogn.kartlog.data.local.entity.CharacterUnlockEntity
 import com.marcogn.kartlog.data.local.entity.CollectedMedallionEntity
@@ -31,6 +32,7 @@ class BackupRepository @Inject constructor(
             collectedMedallionIds = dao.collectedMedallions().map { it.medallionId },
             completedPSwitchIds = dao.completedPSwitches().map { it.pSwitchId },
             bestResults = dao.bestResults().map { BestResultDto(it.eventId, it.cc.name, it.rank.name) },
+            activatedQuestionPanelIds = dao.activatedQuestionPanels().map { it.panelId },
         )
         val text = json.encodeToString(BackupPayload.serializer(), payload)
         val stream = context.contentResolver.openOutputStream(destination)
@@ -49,12 +51,16 @@ class BackupRepository @Inject constructor(
         val validMedallionIds = dao.validMedallionIds().toSet()
         val validPSwitchIds = dao.validPSwitchIds().toSet()
         val validEventIds = dao.validEventIds().toSet()
+        val validPanelIds = dao.validQuestionPanelIds().toSet()
 
         val (validOutfits, unknownOutfits) = payload.ownedOutfitIds.partition { it in validOutfitIds }
         val (validUnlocks, unknownUnlocks) = payload.characterUnlocks.partition { it.characterId in validCharacterIds }
         val (validMedallions, unknownMedallions) = payload.collectedMedallionIds.partition { it in validMedallionIds }
         val (validPSwitches, unknownPSwitches) = payload.completedPSwitchIds.partition { it in validPSwitchIds }
         val (validResults, unknownResults) = bestResultsOf(payload).partition { it.eventId in validEventIds }
+        // Le monete di un backup v1/v2 (posti anonimi per bioma, prima di MIGRATION_6_7) non esistono più:
+        // finiscono tra gli sconosciuti, come ogni altro ID che il seed corrente non ha.
+        val (validPanels, unknownPanels) = payload.activatedQuestionPanelIds.partition { it in validPanelIds }
 
         dao.replaceUserState(
             ownedOutfits = validOutfits.map { OwnedOutfitEntity(it) },
@@ -62,6 +68,7 @@ class BackupRepository @Inject constructor(
             collectedMedallions = validMedallions.map { CollectedMedallionEntity(it) },
             completedPSwitches = validPSwitches.map { CompletedPSwitchEntity(it) },
             bestResults = validResults,
+            activatedQuestionPanels = validPanels.map { ActivatedQuestionPanelEntity(it) },
         )
 
         return ImportResult(
@@ -71,6 +78,7 @@ class BackupRepository @Inject constructor(
                 "medallions" to validMedallions.size,
                 "pSwitches" to validPSwitches.size,
                 "bestResults" to validResults.size,
+                "questionPanels" to validPanels.size,
             ),
             unknownIds = buildMap {
                 if (unknownOutfits.isNotEmpty()) put("outfits", unknownOutfits)
@@ -78,6 +86,7 @@ class BackupRepository @Inject constructor(
                 if (unknownMedallions.isNotEmpty()) put("medallions", unknownMedallions)
                 if (unknownPSwitches.isNotEmpty()) put("pSwitches", unknownPSwitches)
                 if (unknownResults.isNotEmpty()) put("bestResults", unknownResults.map { it.eventId })
+                if (unknownPanels.isNotEmpty()) put("questionPanels", unknownPanels)
             },
         )
     }

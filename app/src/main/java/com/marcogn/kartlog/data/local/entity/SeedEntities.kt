@@ -88,11 +88,30 @@ data class AreaEntity(
     val regionId: String,
 )
 
+/**
+ * Una moneta sulla mappa di mkworld-checklist (seedgen/checklist.py): [x]/[y] in percentuale
+ * dell'immagine della mappa, [hint] le istruzioni (solo inglese), [youtubeId] il video della soluzione.
+ * Nessun bioma: la fonte non lo dà (vedi MIGRATION_6_7).
+ */
 @Entity(tableName = "peach_medallions")
 data class PeachMedallionEntity(
     @PrimaryKey val id: String,
-    val regionId: String,
     val index: Int,
+    val x: Double,
+    val y: Double,
+    val hint: String?,
+    val youtubeId: String?,
+)
+
+/** Pannello "?" sulla mappa, stessi campi di [PeachMedallionEntity]. */
+@Entity(tableName = "question_panels")
+data class QuestionPanelEntity(
+    @PrimaryKey val id: String,
+    val index: Int,
+    val x: Double,
+    val y: Double,
+    val hint: String?,
+    val youtubeId: String?,
 )
 
 @Entity(tableName = "p_switches")
@@ -103,6 +122,11 @@ data class PSwitchEntity(
     val courseId: String?,
     val areaId: String?,
     val name: String,
+    /** Posizione, istruzioni e video da mkworld-checklist, vedi [PeachMedallionEntity]. */
+    val x: Double? = null,
+    val y: Double? = null,
+    val hint: String? = null,
+    val youtubeId: String? = null,
 )
 
 @Entity(tableName = "events")

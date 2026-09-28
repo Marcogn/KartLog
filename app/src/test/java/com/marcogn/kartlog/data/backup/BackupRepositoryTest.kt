@@ -7,6 +7,7 @@ import androidx.test.core.app.ApplicationProvider
 import com.marcogn.kartlog.data.local.KartLogDatabase
 import com.marcogn.kartlog.data.local.entity.BestResultEntity
 import com.marcogn.kartlog.data.local.entity.CharacterUnlockEntity
+import com.marcogn.kartlog.data.local.entity.ActivatedQuestionPanelEntity
 import com.marcogn.kartlog.data.local.entity.CollectedMedallionEntity
 import com.marcogn.kartlog.data.local.entity.CompletedPSwitchEntity
 import com.marcogn.kartlog.data.local.entity.OwnedOutfitEntity
@@ -65,8 +66,10 @@ class BackupRepositoryTest {
         val medallionId = db.medallionsDao().allMedallions().first().first().medallionId
         val pSwitchId = db.pSwitchesDao().allPSwitches().first().first().pSwitchId
         val eventId = db.consigliamiDao().events().first().first().id
+        val panelId = db.mapDao().allPoints().first().first { it.type == "QUESTION_PANEL" }.id
 
         userStateDao.markOutfitOwned(OwnedOutfitEntity(outfitId))
+        userStateDao.markQuestionPanelActivated(ActivatedQuestionPanelEntity(panelId))
         userStateDao.setCharacterUnlock(CharacterUnlockEntity(lockedCharacterId, unlocked = false))
         userStateDao.markMedallionCollected(CollectedMedallionEntity(medallionId))
         userStateDao.markPSwitchCompleted(CompletedPSwitchEntity(pSwitchId))
@@ -77,7 +80,7 @@ class BackupRepositoryTest {
         repository.export(uri)
 
         // "Reinstallazione": stato utente azzerato, i dati di gioco restano (mai toccati dal backup).
-        db.backupDao().replaceUserState(emptyList(), emptyList(), emptyList(), emptyList(), emptyList())
+        db.backupDao().replaceUserState(emptyList(), emptyList(), emptyList(), emptyList(), emptyList(), emptyList())
         assertEquals(0, userStateDao.countOwnedOutfits().first())
 
         val result = repository.import(uri)
@@ -86,6 +89,7 @@ class BackupRepositoryTest {
         assertEquals(ownedBefore, userStateDao.countOwnedOutfits().first())
         assertEquals(1, userStateDao.countCollectedMedallions().first())
         assertEquals(1, userStateDao.countCompletedPSwitches().first())
+        assertEquals(true, db.mapDao().allPoints().first().single { it.id == panelId }.done)
         assertEquals(false, userStateDao.observeCharacterUnlock(lockedCharacterId).first())
         assertEquals(listOf(BestResultEntity(eventId, Cc.CC_150, TrophyRank.GOLD_2_STARS)), userStateDao.bestResultsForEvent(eventId).first())
     }

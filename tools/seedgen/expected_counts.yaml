@@ -36,3 +36,7 @@ regions: 10
 # riportati da mariowiki e Game8.
 peach_medallions: 200
 p_switches: 394
+
+# Verifica 28/09/2026: pagina "? Panel" di Super Mario Wiki ("There are 150 ? Panels in total, with ten in
+# Crown City and five in every other course"), stesso numero in mkworld-checklist (commit ee86055).
+question_panels: 150

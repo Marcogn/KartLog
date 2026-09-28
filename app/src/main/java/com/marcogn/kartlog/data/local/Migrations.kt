@@ -97,3 +97,42 @@ val MIGRATION_5_6 = object : Migration(5, 6) {
         db.execSQL("ALTER TABLE characters ADD COLUMN unlockCriteriaIt TEXT")
     }
 }
+
+/** Id della riga di `pending_notices` scritta da [MIGRATION_6_7]. */
+const val NOTICE_MEDALLION_COUNTS_RESET = "medallion_counts_reset"
+
+/**
+ * v7: mappa dei collezionabili da mkworld-checklist (scelta dell'autore, 28/09/2026).
+ * - `peach_medallions` cambia forma: da "posti" anonimi per bioma a 200 monete con posizione, senza
+ *   bioma. Tabella seed, si ricrea vuota e la riempie il reseed (seedVersion 7).
+ * - Le monete segnate (`collected_medallions`) non si possono convertire: un conteggio per bioma non dice
+ *   quali monete. Si cancellano, lasciando in `pending_notices` quante erano, per avvisare l'utente.
+ * - `p_switches` prende posizione, istruzioni e video; nuove `question_panels` e `activated_question_panels`.
+ */
+val MIGRATION_6_7 = object : Migration(6, 7) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL("CREATE TABLE IF NOT EXISTS `pending_notices` (`id` TEXT NOT NULL, `count` INTEGER NOT NULL, PRIMARY KEY(`id`))")
+        db.execSQL(
+            """
+            INSERT INTO pending_notices (id, count)
+            SELECT '$NOTICE_MEDALLION_COUNTS_RESET', (SELECT COUNT(*) FROM collected_medallions)
+            WHERE EXISTS (SELECT 1 FROM collected_medallions)
+            """.trimIndent()
+        )
+        db.execSQL("DELETE FROM collected_medallions")
+        db.execSQL("DROP TABLE peach_medallions")
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS `peach_medallions` (`id` TEXT NOT NULL, `index` INTEGER NOT NULL, " +
+                "`x` REAL NOT NULL, `y` REAL NOT NULL, `hint` TEXT, `youtubeId` TEXT, PRIMARY KEY(`id`))"
+        )
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS `question_panels` (`id` TEXT NOT NULL, `index` INTEGER NOT NULL, " +
+                "`x` REAL NOT NULL, `y` REAL NOT NULL, `hint` TEXT, `youtubeId` TEXT, PRIMARY KEY(`id`))"
+        )
+        db.execSQL("CREATE TABLE IF NOT EXISTS `activated_question_panels` (`panelId` TEXT NOT NULL, PRIMARY KEY(`panelId`))")
+        db.execSQL("ALTER TABLE p_switches ADD COLUMN x REAL")
+        db.execSQL("ALTER TABLE p_switches ADD COLUMN y REAL")
+        db.execSQL("ALTER TABLE p_switches ADD COLUMN hint TEXT")
+        db.execSQL("ALTER TABLE p_switches ADD COLUMN youtubeId TEXT")
+    }
+}
