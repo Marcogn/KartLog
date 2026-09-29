@@ -6,6 +6,8 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-09-29
+
 - **Mappa dei collezionabili.** Nuova schermata "Mappa" (menu laterale, e
   pulsantone rosso in Monete Peach e Pulsanti P) con le posizioni di
   Monete Peach, Pulsanti P e pannelli "?": zoom, filtri per tipo e per
