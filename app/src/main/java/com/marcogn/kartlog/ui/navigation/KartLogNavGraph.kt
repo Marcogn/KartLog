@@ -120,6 +120,12 @@ fun KartLogNavGraph(navController: NavHostController = rememberNavController()) 
             exitTransition = navExitTransition,
             popEnterTransition = navPopEnterTransition,
             popExitTransition = navPopExitTransition,
+            // Da Navigation 2.10 il gesto indietro predittivo non segue più popEnter/popExit ma
+            // queste due transizioni, che di default rimpiccioliscono la schermata
+            // (scaleOut(0.7f), DefaultNavTransitions): si riusano le stesse del pop normale,
+            // come fino alla 1.1.0 (Navigation 2.8). swipeEdge (bordo del gesto) è ignorato.
+            predictivePopEnterTransition = { navPopEnterTransition() },
+            predictivePopExitTransition = { navPopExitTransition() },
         ) {
             composable<Destination.Home> { entry ->
                 HomeScreen(
