@@ -129,8 +129,14 @@ Il build **debug** usa solo i JSON già versionati in `seed/`. Il build
 dal wiki (vedi `SPEC.md` §5.4) — richiede Python 3 e, salvo `-PofflineSeed`,
 accesso di rete a mariowiki.com.
 
-Richiede l'Android SDK (`compileSdk 36`) e accesso di rete al repository
-Maven di Google.
+Richiede JDK 17 o successivo, l'Android SDK (`compileSdk 37`) e accesso di rete
+al repository Maven di Google. Gradle 9.8 e AGP 9.4 (vedi
+[`docs/AGGIORNAMENTO_DIPENDENZE.md`](docs/AGGIORNAMENTO_DIPENDENZE.md)).
+
+**Quale APK installare:** quello del workflow *Build APK* (Actions → Build
+APK → Run workflow) o di una release: è la build di release firmata sempre
+con la stessa chiave, quindi si installa sopra l'app già presente senza
+perdere i dati. La CI non carica più APK; dettagli in [`docs/ci.md`](docs/ci.md).
 
 ## Privacy
 
@@ -151,7 +157,7 @@ dell'allineamento):
 - **Hilt** per la dependency injection
 - **Navigation Compose** con rotte type-safe (`kotlinx.serialization`)
 - **ViewModel + StateFlow**, flusso dati unidirezionale
-- `minSdk 26`, `targetSdk 36`, `compileSdk 36`
+- `minSdk 26`, `targetSdk 36`, `compileSdk 37`
 
 ## Struttura del progetto
 
@@ -174,6 +180,11 @@ app/src/main/java/com/marcogn/kartlog/
 - [`SPEC.md`](SPEC.md) — specifica funzionale e tecnica, con la roadmap
 - [`docs/ALIGNMENT.md`](docs/ALIGNMENT.md) — allineamento a
   ThePatientGamerHelper (Gradle, signing, release, convenzioni)
+- [`docs/ci.md`](docs/ci.md) — i workflow di GitHub Actions (CI, Build
+  APK, Release, pulizia delle esecuzioni), condivisi con gli altri progetti
+  Android dell'autore (in inglese, come il file di riferimento)
+- [`docs/AGGIORNAMENTO_DIPENDENZE.md`](docs/AGGIORNAMENTO_DIPENDENZE.md) —
+  l'aggiornamento di Gradle, AGP, Kotlin e librerie del 2026-10-04
 - [`CLAUDE.md`](CLAUDE.md) — regole operative, comandi, stato e decisioni
   per chi sviluppa il progetto
 - [`tools/seedgen/README.md`](tools/seedgen/README.md) — uso dello script

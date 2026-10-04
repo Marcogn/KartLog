@@ -6,6 +6,15 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Librerie e strumenti di build aggiornati.** Gradle 9.8, Android Gradle
+  Plugin 9.4, Kotlin 2.4, Compose BOM 2026.09, Room 2.8, Hilt 2.60, Coil 3.6
+  e le altre librerie AndroidX alle ultime versioni stabili; nessuna
+  funzione cambia (dettagli in `docs/AGGIORNAMENTO_DIPENDENZE.md`).
+- **Workflow di GitHub Actions condivisi con gli altri progetti.** La CI ora
+  verifica anche la build di release e non carica più l'APK debug (andava
+  disinstallata l'app per provarlo); l'APK da provare è quello di *Build
+  APK*, che ora controlla la firma, come la release (`docs/ci.md`).
+
 ## [1.1.0] - 2026-09-29
 
 - **Mappa dei collezionabili.** Nuova schermata "Mappa" (menu laterale, e

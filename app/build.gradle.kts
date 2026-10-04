@@ -1,8 +1,7 @@
-import java.io.ByteArrayOutputStream
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.kotlin.serialization)
@@ -11,7 +10,9 @@ plugins {
 
 android {
     namespace = "com.marcogn.kartlog"
-    compileSdk = 36
+    // Il massimo supportato da AGP 9.4. targetSdk resta 36: alzarlo cambia il comportamento a
+    // runtime (Android 17) e va provato prima su un dispositivo (docs/AGGIORNAMENTO_DIPENDENZE.md).
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.marcogn.kartlog"
@@ -59,10 +60,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
     buildFeatures {
         compose = true
     }
@@ -81,9 +78,11 @@ android {
 
     // SPEC §5.4: i JSON di /seed diventano un asset "seed/*.json" impacchettato nell'APK,
     // sia in debug sia in release. Il contenuto arriva da copySeedAssets qui sotto.
+    // Un File e non un Provider: AGP 9 rifiuta i Provider nei sourceSet. L'ordine con
+    // copySeedAssets lo garantisce comunque preBuild.dependsOn(copySeedAssets), come prima.
     sourceSets {
         getByName("main") {
-            assets.srcDir(layout.buildDirectory.dir("generated/seedAssets"))
+            assets.srcDir(layout.buildDirectory.dir("generated/seedAssets").get().asFile)
         }
         // Schema esportati da Room (room.schemaLocation sotto): servono a MigrationTestHelper per
         // MigrationTest (Robolectric, non uno unitTest sourceSet: i test JVM con
@@ -92,6 +91,12 @@ android {
         getByName("debug") {
             assets.srcDir("$projectDir/schemas")
         }
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_17
     }
 }
 
@@ -231,16 +236,15 @@ fun runProcess(command: List<String>, workingDir: File) {
     if (exit != 0) throw GradleException("${command.joinToString(" ")} fallito (exit $exit):\n$output")
 }
 
+// ProcessBuilder e non `project.exec`, rimosso in Gradle 9: stdout e stderr nello stesso flusso,
+// come prima, e l'exit code restituito invece di far fallire il task.
 fun runProcessCapturingOutput(command: List<String>, workingDir: File): Pair<Int, String> {
-    val stdout = ByteArrayOutputStream()
-    val result = project.exec {
-        commandLine(command)
-        this.workingDir = workingDir
-        standardOutput = stdout
-        errorOutput = stdout
-        isIgnoreExitValue = true
-    }
-    return result.exitValue to stdout.toString(Charsets.UTF_8).trim()
+    val process = ProcessBuilder(command)
+        .directory(workingDir)
+        .redirectErrorStream(true)
+        .start()
+    val output = process.inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() }
+    return process.waitFor() to output.trim()
 }
 
 /**
@@ -287,7 +291,7 @@ dependencies {
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)
 
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.coroutines.android)

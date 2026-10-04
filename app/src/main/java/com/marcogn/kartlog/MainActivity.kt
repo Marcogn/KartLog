@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.marcogn.kartlog.domain.model.AppLocale
 import com.marcogn.kartlog.domain.model.ThemeMode
 import com.marcogn.kartlog.ui.navigation.KartLogNavGraph
