@@ -6,6 +6,9 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Fonte del Boomerang Rally aggiornata (seedVersion 8).** Il 03/10/2026 mariowiki ha rinominato la
+  pagina "Boomerang Rally (Mario Kart World)" in "Boomerang Rally (rally)" e la build di release si
+  fermava; dati di gioco invariati, cambiano solo il titolo della fonte e le revisioni registrate.
 - **Librerie e strumenti di build aggiornati.** Gradle 9.8, Android Gradle
   Plugin 9.4, Kotlin 2.4, Compose BOM 2026.09, Room 2.8, Hilt 2.60, Coil 3.6
   e le altre librerie AndroidX alle ultime versioni stabili; nessuna
