@@ -1,5 +1,5 @@
 {
-  "extractedOn": "2026-09-28",
+  "extractedOn": "2026-10-04",
   "gameVersion": "1.8.0",
   "license": {
     "attribution": "Dati di gioco tratti da Super Mario Wiki (mariowiki.com) e Super Mario Wiki italiana (mariowiki.it)",
@@ -8,7 +8,7 @@
   },
   "note": "",
   "origin": "api",
-  "seedVersion": 7,
+  "seedVersion": 8,
   "sources": [
     {
       "revid": 5455370,
@@ -26,7 +26,7 @@
       "url": "https://www.mariowiki.com/List_of_Mario_Kart_World_missions"
     },
     {
-      "revid": 5499076,
+      "revid": 5507542,
       "title": "Template:Mario Kart World",
       "url": "https://www.mariowiki.com/Template:Mario_Kart_World"
     },
@@ -51,7 +51,7 @@
       "url": "https://www.mariowiki.com/Spiny_Rally"
     },
     {
-      "revid": 5479140,
+      "revid": 5507581,
       "title": "Cherry Rally",
       "url": "https://www.mariowiki.com/Cherry_Rally"
     },
@@ -71,14 +71,14 @@
       "url": "https://www.mariowiki.com/Heart_Rally"
     },
     {
-      "revid": 5479145,
+      "revid": 5507592,
       "title": "Drill Rally",
       "url": "https://www.mariowiki.com/Drill_Rally"
     },
     {
-      "revid": 5479146,
-      "title": "Boomerang Rally (Mario Kart World)",
-      "url": "https://www.mariowiki.com/Boomerang_Rally_(Mario_Kart_World)"
+      "revid": 5507540,
+      "title": "Boomerang Rally (rally)",
+      "url": "https://www.mariowiki.com/Boomerang_Rally_(rally)"
     },
     {
       "revid": 5492298,
@@ -101,7 +101,7 @@
       "url": "https://www.mariowiki.it/Lista_delle_missioni_di_Mario_Kart_World"
     },
     {
-      "revid": 5503051,
+      "revid": 5507571,
       "title": "Mario Kart World",
       "url": "https://www.mariowiki.com/Mario_Kart_World"
     },
