@@ -6,6 +6,10 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Gesto indietro di nuovo con lo scorrimento laterale.** Dalla 1.1.1, tornando indietro la
+  schermata si rimpiccioliva e spariva: l'animazione predefinita del gesto indietro predittivo di
+  Navigation 2.10. Ora il gesto usa la stessa animazione del tasto indietro, come nella 1.1.0.
+
 ## [1.1.1] - 2026-10-04
 
 - **Fonte del Boomerang Rally aggiornata (seedVersion 8).** Il 03/10/2026 mariowiki ha rinominato la
