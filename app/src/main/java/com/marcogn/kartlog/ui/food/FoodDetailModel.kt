@@ -73,7 +73,7 @@ private fun sectionOf(variantName: String?, rows: List<FoodStandRow>): FoodStand
 }
 
 /**
- * Gli outfit del cibo per personaggio (ordine di roster) e, a parte, i nomi dei personaggi che hanno
+ * Gli outfit del cibo per personaggio (prima i mancanti, poi in ordine di roster) e, a parte, i nomi dei personaggi che hanno
  * outfit ma non ne ottengono nessuno da questo cibo.
  */
 internal fun buildCharacterOutfits(
@@ -81,9 +81,10 @@ internal fun buildCharacterOutfits(
     charactersWithOutfits: List<FoodCharacterRow>,
 ): Pair<List<FoodCharacterOutfits>, List<String>> {
     val grouped = outfits.groupBy { it.characterId }
+    // Prima chi ha ancora outfit da ottenere, poi gli altri; a parità resta l'ordine di roster (sortedBy è stabile).
     val withFood = charactersWithOutfits.filter { it.id in grouped }.map { ch ->
         FoodCharacterOutfits(ch.id, localizedName(ch.name, ch.nameIt), ch.imageUrl, grouped.getValue(ch.id))
-    }
+    }.sortedBy { entry -> entry.outfits.all { it.owned } }
     val without = charactersWithOutfits.filter { it.id !in grouped }.map { localizedName(it.name, it.nameIt) }
     return withFood to without
 }

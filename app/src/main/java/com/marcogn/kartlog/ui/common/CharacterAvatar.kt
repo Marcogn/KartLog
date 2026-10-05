@@ -1,9 +1,11 @@
 package com.marcogn.kartlog.ui.common
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -113,10 +115,22 @@ fun CharacterAvatar(
     }
 }
 
-/** Immagine di un cibo (quadrata, intera, senza ritagli) con le iniziali finché non è caricata. */
+/**
+ * Immagine di un cibo (intera, senza ritagli) con le iniziali finché non è caricata. Le immagini
+ * del wiki non sono omogenee (alcune hanno una cornice scura incorporata, altre sono sagome su
+ * sfondo trasparente): un riquadro uguale per tutte le rende uniformi.
+ */
 @Composable
 fun FoodImage(name: String, imageUrl: String?, modifier: Modifier = Modifier, size: Dp = 72.dp) {
-    Box(modifier = modifier.size(size).clip(RoundedCornerShape(12.dp))) {
+    val shape = RoundedCornerShape(12.dp)
+    Box(
+        modifier = modifier
+            .size(size)
+            .clip(shape)
+            .background(Color.Black.copy(alpha = 0.3f))
+            .border(2.dp, Color(0xFF1B1B1F), shape)
+            .padding(3.dp),
+    ) {
         ImageOverInitials(name, imageUrl, false, MaterialTheme.typography.titleMedium, Alignment.Center, ContentScale.Fit)
     }
 }

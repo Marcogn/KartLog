@@ -74,6 +74,20 @@ class FoodDetailModelTest {
     }
 
     @Test
+    fun `prima i personaggi a cui manca l'outfit, poi quelli che ce l'hanno, a parità ordine di roster`() {
+        val characters = listOf("a", "b", "c").map { FoodCharacterRow(it, it.uppercase(), null, null) }
+        fun outfit(ch: String, owned: Boolean) =
+            FoodOutfitRow("${ch}__x", "X", null, null, ch, ch, null, null, 0, owned)
+
+        val (withFood, _) = buildCharacterOutfits(
+            listOf(outfit("a", true), outfit("b", false), outfit("c", false)),
+            characters,
+        )
+
+        assertEquals(listOf("b", "c", "a"), withFood.map { it.characterId })
+    }
+
+    @Test
     fun `i personaggi senza outfit da questo cibo vanno in fondo, in ordine di roster`() {
         val characters = listOf(
             FoodCharacterRow("hero", "Hero", "Eroe", null),

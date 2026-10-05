@@ -98,7 +98,16 @@ internal fun FoodDetailContent(state: FoodDetailUiState, onBack: () -> Unit) {
             if (state.characters.isEmpty()) {
                 BodyText(stringResource(R.string.food_no_outfits_given))
             }
-            state.characters.forEach { CharacterOutfitsPanel(it) }
+            // Un cibo dà al massimo un outfit per personaggio (verificato sul seed): due pannelli per riga.
+            state.characters.chunked(OUTFIT_COLUMNS).forEach { row ->
+                Row(
+                    modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    row.forEach { CharacterOutfitsPanel(it, Modifier.weight(1f).fillMaxHeight()) }
+                    repeat(OUTFIT_COLUMNS - row.size) { Spacer(Modifier.weight(1f)) }
+                }
+            }
             if (state.withoutOutfit.isNotEmpty()) {
                 BodyText(stringResource(R.string.food_without_outfit, state.withoutOutfit.joinToString(", ")))
             }
@@ -173,30 +182,20 @@ private fun StandSectionPanel(section: FoodStandSection) {
 }
 
 @Composable
-private fun CharacterOutfitsPanel(entry: FoodCharacterOutfits) {
+private fun CharacterOutfitsPanel(entry: FoodCharacterOutfits, modifier: Modifier) {
     val accent = rememberImageAccentColor(entry.imageUrl) ?: KartTiles.Gray.base
-    KartPanel(colors = kartColorsOf(accent.readableUnderWhiteText()), modifier = Modifier.fillMaxWidth()) {
-        Column(Modifier.fillMaxWidth().padding(10.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                CharacterAvatar(entry.name, imageUrl = entry.imageUrl, size = 44.dp)
-                OutlinedTitle(entry.name, fontSize = 20.sp, textAlign = TextAlign.Start, maxLines = 2)
+    KartPanel(colors = kartColorsOf(accent.readableUnderWhiteText()), modifier = modifier) {
+        Column(Modifier.fillMaxWidth().padding(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                CharacterAvatar(entry.name, imageUrl = entry.imageUrl, size = 40.dp)
+                OutlinedTitle(entry.name, fontSize = 18.sp, textAlign = TextAlign.Start, maxLines = 2)
             }
-            // Righe normali (non una griglia lazy): con IntrinsicSize.Min le polaroid della stessa
-            // riga si allungano insieme, come nel dettaglio di Personaggi.
-            entry.outfits.chunked(OUTFIT_COLUMNS).forEach { row ->
-                Row(
-                    modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    row.forEach { OutfitPolaroid(it, accent, Modifier.weight(1f).fillMaxHeight()) }
-                    repeat(OUTFIT_COLUMNS - row.size) { Spacer(Modifier.weight(1f)) }
-                }
-            }
+            entry.outfits.forEach { OutfitPolaroid(it, accent, Modifier) }
         }
     }
 }
 
-private const val OUTFIT_COLUMNS = 3
+private const val OUTFIT_COLUMNS = 2
 
 /** Polaroid piccola di un outfit: grigia se non ce l'hai, del colore del personaggio se ce l'hai. */
 @Composable
