@@ -102,6 +102,8 @@ class ConsigliamiScreenTest {
         show(state.copy(groups = state.groups.reversed()))
         compose.onNodeWithText(str(R.string.consigliami_group_title_common, 2, "Percorso FAKE_FOR_TESTS")).assertIsDisplayed()
         compose.onNodeWithText("KO uno FAKE_FOR_TESTS").assertDoesNotExist()
+        // Chiuso, il gruppo mostra comunque la sua posizione: la classifica non sembra partire dalla card dopo.
+        compose.onNodeWithText(str(R.string.consigliami_position_format, 2), substring = true).assertIsDisplayed()
         compose.onNodeWithContentDescription(str(R.string.consigliami_group_expand_cd)).performClick()
         compose.onNodeWithText("KO uno FAKE_FOR_TESTS").assertIsDisplayed()
         compose.onNodeWithContentDescription(str(R.string.consigliami_group_collapse_cd)).performClick()

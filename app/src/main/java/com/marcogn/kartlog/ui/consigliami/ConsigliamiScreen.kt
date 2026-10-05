@@ -267,20 +267,25 @@ private fun GroupSection(
             } else {
                 stringResource(R.string.consigliami_group_title_generic, group.events.size)
             }
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(start = 4.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                OutlinedTitle(title, Modifier.weight(1f), fontSize = 18.sp, textAlign = TextAlign.Start, maxLines = 3)
-                IconButton(onClick = { expanded = !expanded }) {
-                    Icon(
-                        if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
-                        contentDescription = stringResource(
-                            if (expanded) R.string.consigliami_group_collapse_cd else R.string.consigliami_group_expand_cd,
-                        ),
-                        tint = Color.White,
-                    )
+            // Tessera del gruppo con la sua posizione: chiuso, senza il numero sembrerebbe che la
+            // classifica parta dalla card successiva (1, 1, 3: "competition ranking", SPEC §6.4).
+            KartPanel(colors = KartTiles.Pink, onClick = { expanded = !expanded }, modifier = Modifier.fillMaxWidth()) {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(start = 12.dp, top = 6.dp, bottom = 6.dp, end = 4.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    KartCounterPill(stringResource(R.string.consigliami_position_format, group.position), KartTiles.Pink)
+                    OutlinedTitle(title, Modifier.weight(1f), fontSize = 18.sp, textAlign = TextAlign.Start, maxLines = 3)
+                    IconButton(onClick = { expanded = !expanded }) {
+                        Icon(
+                            if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
+                            contentDescription = stringResource(
+                                if (expanded) R.string.consigliami_group_collapse_cd else R.string.consigliami_group_expand_cd,
+                            ),
+                            tint = Color.White,
+                        )
+                    }
                 }
             }
         }

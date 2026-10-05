@@ -9,7 +9,8 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 - **Consigliami con la grafica del gioco.** Le card degli eventi sono tessere colorate (arancio i Gran
   Premi, verde i Knockout Tour) con icona, posizione, personaggio consigliato e cibi possibili; filtri,
   switch e peso dei risultati stanno in una tessera blu e l'avviso sugli stand è dietro la "i".
-  Icone degli eventi e avatar con il contorno nero.
+  Icone degli eventi e avatar con il contorno nero. I gruppi a pari merito sono una tessera rosa
+  con la loro posizione (#1), così anche chiusi si capisce che la card dopo è la #3.
 - **Dettaglio dell'evento rifatto.** Una tessera per personaggio con una riga per outfit e il cibo
   che serve accanto ("Vespone – Barbecue"), con i percorsi dell'evento dove potrebbe esserci lo
   stand; toccando il cibo si apre nella sezione Cibi. Migliori trofei in una tessera in fondo.

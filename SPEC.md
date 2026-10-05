@@ -91,7 +91,7 @@ Vedi §6 per l'algoritmo. UI:
 - Grafica del mockup (fase C3): in cima una tessera blu con i pulsantoni **Gran Premi** / **Knockout Tour** / **Entrambi**, gli switch (`KartSwitchRow`) e, con i risultati attivi, slider del peso e cilindrata di riferimento; l'avviso sugli stand ("occhi aperti", cambio d'abito disattivabile) sta dietro una "i" (`KartInfoButton` + `KartPopup`). Le card sono `KartPanel`: arancio i Gran Premi, verde i Knockout Tour.
 - Toggle: **Gran Premi** / **Knockout Tour** / **Entrambi**.
 - Lista ordinata per punteggio (decrescente), con **posizioni a pari merito** (1, 1, 1, 4…), come da §6.4.
-- Gli eventi a pari merito si raggruppano in **una card espandibile**. Se hanno in comune i corsi che generano il guadagno, il titolo li nomina: "4 eventi passano da Crown City · stesso guadagno". All'interno del gruppo restano ordinati con gli spareggi §6.4.
+- Gli eventi a pari merito si raggruppano in **una card espandibile**. Se hanno in comune i corsi che generano il guadagno, il titolo li nomina: "4 eventi passano da Crown City · stesso guadagno". All'interno del gruppo restano ordinati con gli spareggi §6.4. La tessera del gruppo mostra la sua posizione anche chiusa: senza, la classifica sembrerebbe partire dalla card successiva (1, 1, 3).
 - Ogni card evento mostra:
   - nome evento, tipo (Cup/Rally) e posizione in classifica
   - **personaggio consigliato** e numero di outfit nuovi che potrebbe ottenere ("fino a +N")
