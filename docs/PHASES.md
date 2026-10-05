@@ -126,7 +126,7 @@ Richiesta dell'autore dopo una prova in gioco: i consigli non corrispondono agli
 | Fase | Modello | In breve |
 |---|---|---|
 | C1 Dati degli stand | **Opus** | seedgen estrae ogni stand Yoshi's (percorso o strada, cibo, luogo EN + traduzione IT manuale); tabella Room e migrazione; Consigliami solo sugli stand dei percorsi, con testi "potrebbe esserci", senza "Includi cibi nei dintorni" |
-| C2 Sezione Cibi | Sonnet | Nuova schermata, sottosezione di Personaggi: per ogni cibo, gli outfit che dà e dove trovarlo |
+| C2 Sezione Cibi | Sonnet | Griglia di cibi con la grafica dell'app (sottosezione di Personaggi); toccando un cibo: dove si trova e outfit sbloccati per personaggio |
 | C3 Grafica della lista | Sonnet | Lista di Consigliami e controlli con i componenti `Kart*` |
 | C4 Dettaglio evento | Sonnet | Dettaglio con grafica `Kart*` e righe "outfit – cibo – percorso" |
 
@@ -158,20 +158,26 @@ Il calcolo fa quello che dice SPEC §6 (letto in `ConsigliamiUseCase`); il probl
 - Conteggio atteso degli stand in `expected_counts.yaml`, contato sulla pagina (commit dedicato che cita la revisione).
 - Seed rigenerato e accettato dall'autore (`check` → diff → conferma → `accept`), `seedVersion` +1, entità e migrazione Room (mai distruttiva) con test; backup invariato (nessuno stato utente nuovo).
 - Consigliami: `foods(E)` dagli stand dei percorsi dell'evento (niente più `NEARBY`); tolti switch, preferenza e stringhe di "Includi cibi nei dintorni"; SPEC §6 e §6.5 aggiornati (via il test `NEARBY`, nuovo test: uno stand su una strada non dà gain a nessun evento); testi di lista e dettaglio riformulati come possibilità ("potrebbe esserci", "occhi aperti"), senza rifare la grafica.
-- API per C2 e C4: stand per cibo (percorsi e strade) e, per evento e personaggio, gli outfit con cibo e percorso.
+- Immagini dei cibi per la griglia di C2: le pagine Dash Food ha un'immagine per ogni cibo, ma la decisione del 26/09/2026 copre solo le immagini della pagina "Mario Kart World". **Chiedi all'autore** se estenderla (solo URL nel seed, validati sul prefisso `https://mario.wiki.gallery/images/`, scaricati a runtime); se no, nessuna immagine.
+- Bioma degli stand: per i percorsi da `courses.regionId`; per le strade solo se la fonte lo dice, mai dedotto dalla descrizione.
+- API per C2 e C4: stand per cibo (percorsi e strade, con bioma) e, per evento e personaggio, gli outfit con cibo e percorso.
 
 **Fuori scope:** la schermata Cibi (C2) e la grafica (C3, C4).
 
 **Fatto quando:** pytest, test JVM, lint, `assembleDebug` e `assembleRelease -PofflineSeed` verdi; **handoff** (max 15 righe) per C2–C4 in "Stato attuale". **Controlli a schermo:** il testo di Consigliami parla di possibilità; lo switch dei dintorni non c'è più; un utente con dati vecchi apre l'app senza perdere nulla.
 
 ### C2 — Sezione Cibi (Sonnet)
-**Obiettivo:** una schermata che dice, per ogni cibo, che outfit dà e dove trovarlo.
+**Obiettivo:** una griglia di cibi; toccando un cibo si vede dove trovarlo e quali outfit sblocca per ciascun personaggio. Stessa grafica del resto dell'app (`Kart*`, cielo, banner).
 
 **Prerequisiti:** C1 unita (usa la sua API).
 
-**Include:** `ui/food/`, `Destination.Food`; nel drawer come sottovoce di Personaggi (stile `SubItem` di "Collezionabili"; un accesso anche dalla schermata Personaggi va proposto all'autore, non aggiunto da sé). Per ogni gruppo di cibo: nome (traduzione non ufficiale), outfit che dà per personaggio (grigio = non ottenuto, colorato = ottenuto, regola dei colori), luoghi divisi in "Sui percorsi" (percorso + luogo) e "Sulle strade" (luogo), luogo nella lingua dell'app (`localizedName`, `relocalizing()`). Filtro per personaggio (`KartDropdown`) e "solo cibi che mi danno outfit mancanti". Grafica `Kart*`, IT/EN.
+**Include:**
+- `ui/food/`, `Destination.Food` (griglia) e `Destination.FoodDetail(foodGroupId)` (dettaglio); nel drawer come sottovoce di Personaggi (stile `SubItem` di "Collezionabili"; un accesso anche dalla schermata Personaggi va proposto all'autore, non aggiunto da sé).
+- **Griglia:** una tessera per gruppo di cibo, come le tessere della Home/le polaroid di Personaggi (`KartPanel`, `OutlinedTitle`, colonne adattive come Personaggi), nome nella lingua dell'app (traduzione non ufficiale) e quanti outfit ti mancano tra quelli che dà (`KartCounterPill`). I cibi **non** si ingrigiscono mai. Immagine del cibo solo se C1 l'ha messa nel seed (vedi C1); altrimenti un segnaposto disegnato, mai file immagine.
+- **Dettaglio:** in cima i luoghi, divisi in "Sui percorsi" (bioma › percorso › luogo dello stand) e "Sulle strade" (bioma se ricavabile dalla fonte, poi luogo), luogo nella lingua dell'app (`localizedName`, `relocalizing()`); sotto, un `KartPanel` per personaggio con avatar e gli outfit che quel cibo gli sblocca (polaroid piccole di `ui/skin/Polaroid.kt`): solo gli **outfit** seguono la regola dei colori dell'app (grigio = non ce l'hai, colorato = ce l'hai), come nel dettaglio di Personaggi. I personaggi a cui il cibo non dà outfit (o che riporta all'abito base) in fondo, in una riga di testo.
+- IT/EN, tema chiaro e scuro.
 
-**Fatto quando:** lint, test JVM e `assembleDebug` verdi; test Robolectric della schermata (anche il `KartDropdown`). **Controlli a schermo:** un cibo con tanti luoghi (hamburger), uno solo su strada (carne con l'osso), filtro per personaggio, tema scuro, IT/EN; in corsa libera, uno stand indicato si trova dove dice la descrizione.
+**Fatto quando:** lint, test JVM e `assembleDebug` verdi; test Robolectric di griglia e dettaglio. **Controlli a schermo:** griglia in tema chiaro e scuro e su schermo stretto; un cibo con tanti luoghi (hamburger), uno solo su strada (carne con l'osso); outfit grigi/colorati coerenti con Personaggi; IT/EN; in corsa libera, uno stand indicato si trova dove dice la descrizione.
 
 ### C3 — Grafica della lista (Sonnet)
 **Obiettivo:** la schermata Consigliami ha la stessa grafica del resto dell'app.
