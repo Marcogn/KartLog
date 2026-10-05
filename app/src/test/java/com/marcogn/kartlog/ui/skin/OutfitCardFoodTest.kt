@@ -18,8 +18,11 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.robolectric.annotation.Config
 
 /** Il cibo di un outfit nel dettaglio personaggio è toccabile e non spunta l'outfit (dati FAKE_FOR_TESTS). */
+// Schermo alto: con quello predefinito (320×470 px) il secondo cibo finirebbe fuori dalla finestra.
+@Config(qualifiers = "w400dp-h900dp")
 @RunWith(AndroidJUnit4::class)
 class OutfitCardFoodTest {
 
@@ -56,7 +59,7 @@ class OutfitCardFoodTest {
                 modifier = Modifier,
             )
         }
-        compose.onNodeWithText("Pane FAKE").performClick()
+        compose.onNodeWithText("Pane FAKE", useUnmergedTree = true).performClick()
         assertEquals("fake_bread", opened)
         assertEquals(false, toggled)
     }
