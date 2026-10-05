@@ -6,6 +6,9 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Consigliami con la grafica del gioco.** Le card degli eventi sono tessere colorate (arancio i Gran
+  Premi, verde i Knockout Tour) con icona, posizione, personaggio consigliato e cibi possibili; filtri,
+  switch e peso dei risultati stanno in una tessera blu e l'avviso sugli stand è dietro la "i".
 - **Nuova sezione Cibi.** Sottovoce di Personaggi nel drawer: una tessera per cibo con quanti outfit ti
   mancano; toccandola vedi le varianti, dove trovarlo (sui percorsi e sulle strade, il sushi diviso per
   variante) e gli outfit che sblocca per ogni personaggio, grigi se non li hai. Luoghi e nomi italiani

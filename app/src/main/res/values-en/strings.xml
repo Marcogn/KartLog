@@ -51,9 +51,13 @@
     <string name="consigliami_foods_maybe">Might be there (keep your eyes open):</string>
     <string name="consigliami_detail_maybe">Outfits that might unlock: these courses have a Yoshi\'s stand with the right food, but it may not be on the race track. Keep your eyes open!</string>
     <string name="consigliami_runners_up">Alternatives</string>
+    <string name="consigliami_info_title">How to read the advice</string>
+    <string name="consigliami_info_cd">About the advice</string>
     <string name="consigliami_banner">The Yoshi\'s stands listed are in each course\'s area, not necessarily on the race track: keep your eyes open. If you turned off Dash Food outfit changes when choosing your vehicle, nothing unlocks.</string>
     <string name="consigliami_group_title_common">%1$d events pass through %2$s · same gain</string>
     <string name="consigliami_group_title_generic">%1$d events tied</string>
+    <string name="consigliami_group_collapse_cd">Collapse tied events</string>
+    <string name="consigliami_group_expand_cd">Show tied events</string>
     <string name="consigliami_no_recommendations">No useful events right now</string>
     <string name="consigliami_type_cup">Cup</string>
     <string name="consigliami_type_rally">Rally</string>

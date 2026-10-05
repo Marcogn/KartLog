@@ -4,11 +4,10 @@ Le prossime fasi di lavoro. Ogni fase ha un **modello assegnato**: una sessione 
 Regola generale: **fuori scope = tutto ciò che appartiene alle fasi successive**, anche se sembra comodo farlo subito.
 
 ## Revisione di Consigliami e sezione Cibi (fasi C1–C4, dal 05/10/2026)
-Richiesta dell'autore dopo una prova in gioco: i consigli non corrispondono agli outfit che si sbloccano davvero correndo i Gran Premi e i Knockout Tour. C1 (dati degli stand) e C2 (sezione Cibi) sono chiuse il 05/10/2026: vedi `docs/decisioni.md` e l'handoff in `CLAUDE.md`. Le fasi C vengono dopo il roadmap 1–8 e hanno un **modello assegnato**: per prima cosa controllalo (passo 0 del protocollo in `CLAUDE.md`).
+Richiesta dell'autore dopo una prova in gioco: i consigli non corrispondono agli outfit che si sbloccano davvero correndo i Gran Premi e i Knockout Tour. C1 (dati degli stand), C2 (sezione Cibi) e C3 (grafica della lista) sono chiuse il 05/10/2026: vedi `docs/decisioni.md` e l'handoff in `CLAUDE.md`. Le fasi C vengono dopo il roadmap 1–8 e hanno un **modello assegnato**: per prima cosa controllalo (passo 0 del protocollo in `CLAUDE.md`).
 
 | Fase | Modello | In breve |
 |---|---|---|
-| C3 Grafica della lista | Sonnet | Lista di Consigliami e controlli con i componenti `Kart*` |
 | C4 Dettaglio evento | Sonnet | Dettaglio con grafica `Kart*` e righe "outfit – cibo – percorso" |
 
 ### Diagnosi (05/10/2026)
@@ -27,19 +26,10 @@ Il calcolo fa quello che dice SPEC §6 (letto in `ConsigliamiUseCase`); il probl
 - "Includi cibi nei dintorni" si toglie (con la sezione Cibi sarebbe ridondante).
 - La sezione Cibi non è un collezionabile: è una sottosezione di Personaggi.
 
-### C3 — Grafica della lista (Sonnet)
-**Obiettivo:** la schermata Consigliami ha la stessa grafica del resto dell'app.
-
-**Include:** card degli eventi come `KartPanel` (icona dell'evento, posizione con `KartBadge`, miglior personaggio con avatar, cibi utili), gruppi a pari merito, switch con `KartSwitchRow`, scelta GP/KO e cilindrata con `KartChoiceButton` (mai in `horizontalScroll`), slider del peso dentro un `KartPanel`, testi informativi con `KartInfoButton`/`KartPopup` (che spiega anche "occhi aperti: gli stand sono nell'area del percorso, non per forza sul tracciato"), tema chiaro e scuro, IT/EN. Nessun cambio di logica.
-
-**Fuori scope:** il dettaglio evento (C4).
-
-**Fatto quando:** lint, test JVM e `assembleDebug` verdi; test Robolectric della lista (niente `BoxWithConstraints` dove servono misure intrinseche, vedi `KartDropdownTest`). **Controlli a schermo:** lista in tema chiaro e scuro, schermo stretto, gruppi a pari merito, switch e slider.
-
 ### C4 — Dettaglio evento (Sonnet)
 **Obiettivo:** toccando un GP o un rally si vede, per ogni personaggio, quali outfit potrebbero sbloccarsi e dove: "Filibustiere – Barbecue – Spiaggia di Peach".
 
-**Prerequisiti:** C2 e C3 unite (riusa i loro componenti: `ui/food/`, `FoodDetail`).
+**Prerequisiti:** C2 e C3 chiuse (riusa i loro componenti: `ui/food/`, `FoodDetail`).
 
 **Include:** `KartPanel` per personaggio con avatar; una riga "outfit – cibo – percorso" per outfit (più percorsi per lo stesso outfit nella stessa riga); avviso "occhi aperti" una volta in cima, non su ogni riga; tocco sul cibo → sezione Cibi su quel cibo; sezione risultati per cilindrata con la grafica di Risultati. IT/EN.
 

@@ -748,7 +748,7 @@ fun KartSwitchRow(label: String, checked: Boolean, onCheckedChange: (Boolean) ->
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(14.dp),
     ) {
-        OutlinedTitle(label, fontSize = 22.sp)
+        OutlinedTitle(label, Modifier.weight(1f, fill = false), fontSize = 22.sp, textAlign = TextAlign.Start, maxLines = 2)
         Switch(
             checked = checked,
             onCheckedChange = onCheckedChange,

@@ -51,9 +51,13 @@
     <string name="consigliami_foods_maybe">Potrebbero esserci (occhi aperti):</string>
     <string name="consigliami_detail_maybe">Outfit che potrebbero sbloccarsi: su questi percorsi c\'è uno stand Yoshi\'s con il cibo giusto, ma potrebbe non essere sul tracciato di gara. Occhi aperti!</string>
     <string name="consigliami_runners_up">Alternative</string>
+    <string name="consigliami_info_title">Come leggere i consigli</string>
+    <string name="consigliami_info_cd">Informazioni sui consigli</string>
     <string name="consigliami_banner">Gli stand Yoshi\'s indicati sono nell\'area dei percorsi, non per forza sul tracciato di gara: occhi aperti. Se nella scelta del veicolo hai disattivato il cambio d\'abito degli snack scatto, non si sblocca nulla.</string>
     <string name="consigliami_group_title_common">%1$d eventi passano da %2$s · stesso guadagno</string>
     <string name="consigliami_group_title_generic">%1$d eventi a pari merito</string>
+    <string name="consigliami_group_collapse_cd">Comprimi gli eventi a pari merito</string>
+    <string name="consigliami_group_expand_cd">Mostra gli eventi a pari merito</string>
     <string name="consigliami_no_recommendations">Nessun evento utile al momento</string>
     <string name="consigliami_type_cup">Cup</string>
     <string name="consigliami_type_rally">Rally</string>
