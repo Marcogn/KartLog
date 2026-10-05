@@ -86,8 +86,6 @@
     <string name="results_section_cup">Gran Premi</string>
     <string name="results_section_rally">Knockout Tour</string>
     <string name="results_no_trophy">Nessun trofeo</string>
-    <string name="results_dialog_clear">Nessun trofeo (cancella)</string>
-    <string name="results_dialog_cancel">Annulla</string>
     <string name="rank_bronze">Bronzo</string>
     <string name="rank_silver">Argento</string>
     <string name="rank_gold">Oro</string>

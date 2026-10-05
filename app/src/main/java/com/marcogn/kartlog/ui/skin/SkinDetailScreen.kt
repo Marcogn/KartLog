@@ -1,6 +1,7 @@
 package com.marcogn.kartlog.ui.skin
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -34,8 +35,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -58,6 +61,7 @@ import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 @Composable
 fun SkinDetailScreen(
     onBack: () -> Unit,
+    onFoodClick: (String) -> Unit = {},
     viewModel: SkinDetailViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
@@ -129,6 +133,7 @@ fun SkinDetailScreen(
                                     outfit,
                                     accent = accent,
                                     onToggle = { owned -> viewModel.onOutfitToggled(outfit.outfitId, owned) },
+                                    onFoodClick = onFoodClick,
                                     modifier = Modifier.weight(1f).fillMaxHeight(),
                                 )
                             }
@@ -147,10 +152,17 @@ fun SkinDetailScreen(
  * bianco contornato e cibi in testo semplice.
  */
 @Composable
-private fun OutfitCard(outfit: OutfitProgress, accent: Color, onToggle: (Boolean) -> Unit, modifier: Modifier) {
+internal fun OutfitCard(
+    outfit: OutfitProgress,
+    accent: Color,
+    onToggle: (Boolean) -> Unit,
+    onFoodClick: (String) -> Unit,
+    modifier: Modifier,
+) {
     val name = outfit.outfitName?.let { localizedName(it, outfit.outfitNameIt) }
         ?: stringResource(R.string.skin_default_outfit_name)
-    val foodLabel = outfit.localizedFoodGroups ?: stringResource(R.string.skin_unknown_food)
+    val foods = outfit.foods
+    val unknownFood = stringResource(R.string.skin_unknown_food)
     // Grigio = non ancora ottenuto, colorato = ottenuto (regola dell'autore, 27/09/2026): anche la
     // cornice passa al grigio, così la differenza si vede senza guardare la spunta.
     val owned = outfit.owned || outfit.isDefault
@@ -185,12 +197,26 @@ private fun OutfitCard(outfit: OutfitProgress, accent: Color, onToggle: (Boolean
             }
         },
     ) {
+        val foodColor = if (outfit.isDefault) MaterialTheme.colorScheme.onSurface else Color.White
         if (outfit.isDefault) {
             PolaroidLabel(accent) { OutlinedTitle(name, fontSize = 17.sp, maxLines = 3) }
-            Text(foodLabel, style = foodStyle, color = MaterialTheme.colorScheme.onSurface)
         } else {
             OutlinedTitle(name, fontSize = 17.sp, maxLines = 3)
-            Text(foodLabel, style = foodStyle, color = Color.White)
+        }
+        if (foods.isEmpty()) {
+            // Nessuna regola nota: testo semplice, non toccabile.
+            Text(unknownFood, style = foodStyle, color = foodColor)
+        } else {
+            // Ogni cibo apre la sua pagina in Cibi; il suo clickable prende il tap prima della polaroid.
+            foods.forEach { food ->
+                Text(
+                    food.name,
+                    style = foodStyle.copy(textDecoration = TextDecoration.Underline),
+                    color = foodColor,
+                    modifier = Modifier.clickable(role = Role.Button) { onFoodClick(food.foodGroupId) }
+                        .padding(vertical = 2.dp),
+                )
+            }
         }
     }
 }

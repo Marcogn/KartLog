@@ -148,7 +148,12 @@ fun KartLogNavGraph(navController: NavHostController = rememberNavController()) 
                 )
             }
             composable<Destination.SkinDetail> { entry ->
-                SkinDetailScreen(onBack = { if (entry.lifecycleIsResumed()) navController.popBackStack() })
+                SkinDetailScreen(
+                    onBack = { if (entry.lifecycleIsResumed()) navController.popBackStack() },
+                    onFoodClick = { foodGroupId ->
+                        if (entry.lifecycleIsResumed()) navController.navigate(Destination.FoodDetail(foodGroupId))
+                    },
+                )
             }
             composable<Destination.Food> { entry ->
                 FoodScreen(
