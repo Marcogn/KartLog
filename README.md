@@ -24,10 +24,9 @@ con chi) per avvicinarsi il più possibile alla collezione completa.
 
 ## Stato del progetto
 
-Il roadmap di [`SPEC.md`](SPEC.md) §8 (vedi anche
-[`docs/PHASES.md`](docs/PHASES.md) per il dettaglio di ogni fase) è
-**completo**, fase 1-8. Segui [`CHANGELOG.md`](CHANGELOG.md) per la
-cronologia di cosa è arrivato in ciascuna fase.
+L'app è usabile e pubblicata (vedi [`CHANGELOG.md`](CHANGELOG.md)). Il
+lavoro in corso è in [`docs/roadmap.md`](docs/roadmap.md): revisione di
+Consigliami e una nuova sezione Cibi.
 
 ## Funzionalità
 
@@ -131,7 +130,7 @@ accesso di rete a mariowiki.com.
 
 Richiede JDK 17 o successivo, l'Android SDK (`compileSdk 37`) e accesso di rete
 al repository Maven di Google. Gradle 9.8 e AGP 9.4 (vedi
-[`docs/AGGIORNAMENTO_DIPENDENZE.md`](docs/AGGIORNAMENTO_DIPENDENZE.md)).
+[`docs/decisioni.md`](docs/decisioni.md), sezione "Toolchain").
 
 **Quale APK installare:** quello del workflow *Build APK* (Actions → Build
 APK → Run workflow) o di una release: è la build di release firmata sempre
@@ -150,8 +149,8 @@ funziona anche offline. A build time la rete serve anche allo script
 
 Kotlin e Jetpack Compose con Material 3, stessa architettura di
 riferimento di [ThePatientGamerHelper](https://github.com/Marcogn/ThePatientGamerHelper)
-(vedi [`docs/ALIGNMENT.md`](docs/ALIGNMENT.md) per il dettaglio
-dell'allineamento):
+(vedi [`docs/decisioni.md`](docs/decisioni.md), sezione "Toolchain",
+per il dettaglio dell'allineamento):
 
 - **Room** come fonte di verità per i dati seed e lo stato utente
 - **Hilt** per la dependency injection
@@ -164,7 +163,7 @@ dell'allineamento):
 ```
 SPEC.md                  specifica funzionale e tecnica completa
 CLAUDE.md                guida operativa per chi (o cosa) sviluppa il progetto
-docs/ALIGNMENT.md        allineamento a ThePatientGamerHelper (fase 1)
+docs/                    roadmap, decisioni di progetto, CI
 seed/                    JSON dei dati di gioco (CC BY-SA 4.0), generati
 tools/seedgen/           script Python che genera seed/ da Super Mario Wiki
 app/src/main/java/com/marcogn/kartlog/
@@ -177,16 +176,16 @@ app/src/main/java/com/marcogn/kartlog/
 ## Documentazione
 
 - [`CHANGELOG.md`](CHANGELOG.md) — cosa è cambiato in ogni release
-- [`SPEC.md`](SPEC.md) — specifica funzionale e tecnica, con la roadmap
-- [`docs/ALIGNMENT.md`](docs/ALIGNMENT.md) — allineamento a
-  ThePatientGamerHelper (Gradle, signing, release, convenzioni)
+- [`SPEC.md`](SPEC.md) — specifica funzionale e tecnica dell'app
+- [`docs/roadmap.md`](docs/roadmap.md) — le prossime fasi di lavoro
+- [`docs/decisioni.md`](docs/decisioni.md) — le scelte di progetto e il
+  loro perché (fonti dei dati, grafica, toolchain, allineamento a
+  ThePatientGamerHelper)
 - [`docs/ci.md`](docs/ci.md) — i workflow di GitHub Actions (CI, Build
   APK, Release, pulizia delle esecuzioni), condivisi con gli altri progetti
   Android dell'autore (in inglese, come il file di riferimento)
-- [`docs/AGGIORNAMENTO_DIPENDENZE.md`](docs/AGGIORNAMENTO_DIPENDENZE.md) —
-  l'aggiornamento di Gradle, AGP, Kotlin e librerie del 2026-10-04
-- [`CLAUDE.md`](CLAUDE.md) — regole operative, comandi, stato e decisioni
-  per chi sviluppa il progetto
+- [`CLAUDE.md`](CLAUDE.md) — regole operative, comandi e stato per chi
+  sviluppa il progetto
 - [`tools/seedgen/README.md`](tools/seedgen/README.md) — uso dello script
   di estrazione dati
 - [`seed/README.md`](seed/README.md) — formato dei file seed

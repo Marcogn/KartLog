@@ -1,4 +1,4 @@
-# KartLog — Specifica tecnica (v0.4)
+# KartLog — Specifica tecnica (v0.5, allineata all'app 1.1.2)
 
 Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), Peach Medallions, P Switch, con un modulo "Consigliami" che suggerisce quale Gran Premio o Knockout Tour correre e con quale personaggio per sbloccare più outfit mancanti.
 
@@ -8,10 +8,10 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 
 ## 0. Regole per chi implementa (leggere prima di tutto)
 
-1. **Non inventare mai dati di gioco.** Personaggi, outfit, cibi, cup, rally, percorsi, medaglie e P Switch arrivano **solo** dai file seed JSON (§5), generati da `tools/seedgen`. Non modificare `seed/` a mano. Se un dato manca, lascialo vuoto o `null` e aggiungi un `TODO` nel JSON. Non usare valori plausibili al suo posto.
-2. **Nessun asset Nintendo nel repository**: niente render, loghi, font o screenshot, né nel repository né nell'APK. Le immagini di personaggi, outfit ed eventi si scaricano **a runtime** dal CDN di Super Mario Wiki (URL `imageUrl` nel seed, estratti da seedgen dalla pagina "Mario Kart World"); finché non ci sono si vede un placeholder con le iniziali. Decisione dell'autore del 26/09/2026, vedi `CLAUDE.md`.
+1. **Non inventare mai dati di gioco.** Personaggi, outfit, cibi, cup, rally, percorsi, medaglie e P Switch arrivano **solo** dai file seed JSON (§5), generati da `tools/seedgen`. Non modificare `seed/` a mano. Se un dato manca, fermati e chiedi all'autore: non usare valori plausibili al suo posto.
+2. **Nessun asset Nintendo nel repository**: niente render, loghi, font o screenshot, né nel repository né nell'APK. Le immagini di personaggi, outfit ed eventi si scaricano **a runtime** dal CDN di Super Mario Wiki (URL `imageUrl` nel seed, estratti da seedgen dalla pagina "Mario Kart World"); finché non ci sono si vede un placeholder con le iniziali. Decisione dell'autore del 26/09/2026, vedi `docs/decisioni.md`.
 3. **Offline tranne le immagini**: il permesso INTERNET serve solo a scaricare le immagini del punto 2; nessuna analytics, nessun altro traffico, e l'app funziona interamente anche senza rete. I dati di gioco si scaricano **solo a build time**, nello script di estrazione dati (§5).
-4. Lavora per fasi (§8). Alla fine di ogni fase il progetto deve compilare e i test devono passare.
+4. Lavora per fasi (`docs/roadmap.md`). Alla fine di ogni fase il progetto deve compilare e i test devono passare. Le scelte non ovvie e il loro perché sono in `docs/decisioni.md`.
 
 ---
 
@@ -25,7 +25,7 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 - Hilt per la DI
 - kotlinx.serialization per il parsing dei seed JSON
 - Architettura MVVM: ViewModel + StateFlow, repository, UseCase per la logica di Consigliami
-- minSdk 26, targetSdk ultimo stabile
+- minSdk 26, `compileSdk` 37, `targetSdk` 36 (resta 36 finché l'app non è provata su Android 17, `docs/decisioni.md`)
 - Test: JUnit per l'algoritmo di raccomandazione e la validazione seed, test Compose UI solo per i flussi principali
 - Keystore fisso per mantenere sempre lo stesso SHA1, varianti debug e release, README e CHANGELOG sempre aggiornati (come nel progetto di riferimento)
 - Python 3 (solo tooling di build, §5) con dipendenze fissate in `tools/seedgen/requirements.txt`
@@ -48,14 +48,14 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 **Schermata lista personaggi** (si chiamava "Skin")
 - `LazyVerticalGrid` adattiva (**3 colonne** su telefono): le immagini sono verticali, nelle proporzioni della schermata di selezione del gioco. Ci sono **tutti i 50 piloti**: i 24 con outfit alternativi e i 26 che ne hanno solo uno (Goomba, Mucca…).
 - Ogni cella mostra l'immagine del personaggio (placeholder con le iniziali finché non è scaricata), il nome e un contatore `ottenuti/totali`; per i piloti senza outfit, "Sbloccato" / "Da sbloccare". Un lucchetto sull'immagine segna chi non è ancora sbloccato.
-- Solo chi ha outfit apre il dettaglio. Per gli altri il tap sulla card segna sbloccato/non.
+- Tap: pilota bloccato → popup con il criterio di sblocco (mariowiki) e l'interruttore; sbloccato con outfit → dettaglio; sbloccabile senza outfit → di nuovo il popup (per poterlo ribloccare); di base senza outfit → niente.
 - Stato iniziale di sblocco dal wiki: i 32 piloti "di base" partono sbloccati, i 18 "sbloccabili" (compresi DK, Daisy, Rosalinda, Lakitu, Bowser Jr., Strutzi, Re Boo) no. Consigliami considera solo i personaggi sbloccati (§6).
 - Il dettaglio mostra gli outfit come griglia di card con la loro immagine (2 per riga su telefono); l'outfit di default usa l'immagine del personaggio.
 - Se il personaggio ha **tutti** gli outfit (per i piloti da sbloccare senza outfit: se è sbloccato) si ordina in fondo; i piloti di base senza outfit non hanno nulla da completare e si ordinano insieme agli altri (il filtro "Incompleti" non li mostra). Colori (regola dell'autore, 27/09/2026): **grigio = ti manca, colorato = ce l'hai**, quindi la cella è grigia solo se il pilota è da sbloccare (con lucchetto e popup del criterio); nel dettaglio sono grigi gli outfit non ancora ottenuti. I piloti di base sono sempre sbloccati. L'ordinamento è configurabile: roster / alfabetico / % completamento. "Roster" è l'ordine di `aliases.yaml` di seedgen (prima i 24 con outfit, poi gli altri), **non** quello della schermata di selezione del gioco: scelta dell'autore, che lo preferisce.
 - Filtro in alto: Tutti / Incompleti.
 
 **Schermata dettaglio personaggio**
-- Header con nome, contatore e switch **"Personaggio sbloccato"**, necessario per Consigliami (§6). Default: quello del seed (`starter`, dalle gallerie "Default drivers"/"Unlockable drivers" del wiki); la scelta dell'utente vince sempre.
+- Header con nome, contatore e, per i piloti da sbloccare, criterio di sblocco e switch **"Personaggio sbloccato"**, necessario per Consigliami (§6). I piloti di base sono sempre sbloccati e non hanno lo switch.
 - Lista outfit: ogni riga ha checkbox, nome outfit e **tutti** i gruppi di cibo che lo sbloccano (es. Mario Touring: "Hamburger · Barbecue · Moo Moo Milk"). Se non ci sono regole note, mostra "cibo sconosciuto".
 - L'outfit di default non è una riga spuntabile: è sempre posseduto e non si conta nei mancanti.
 
@@ -70,8 +70,7 @@ In alto c'è il contatore globale (`x/200`, `x/394`). In basso a destra, in sovr
 - Sezioni collassabili per regione; dentro ogni regione, sottogruppi per percorso (o luogo, es. Chain Chomp Desert).
 - Ogni riga mostra il nome della missione (testo in-game dal wiki) e il percorso. I nomi delle missioni restano in inglese: la lista italiana di mariowiki.it è incompleta e senza una chiave per abbinarla a quella inglese (vedi `tools/seedgen/seedgen/it_wiki.py`).
 - Ricerca testuale sul nome della missione.
-- Finché `p_switches.json` non esiste (seed iniziale, §5.3 "Stato") la schermata mostra "Dati non ancora disponibili" invece di una lista vuota.
-- Sezioni collassabili per le **10 regioni** (`regions.json`, nomi italiani da mariowiki.it), ciascuna con `x/y` e un'azione "segna tutti" che chiede conferma.
+- Le **10 regioni** (`regions.json`, nomi italiani da mariowiki.it) hanno ciascuna `x/y` e un'azione "segna tutti" che chiede conferma.
 
 **Mappa** (voce del drawer, e pulsantone delle due schermate sopra)
 - L'immagine della mappa del mondo di mkworld-checklist, scaricata a runtime come le immagini del wiki (URL in `map.json`, mai nell'APK); senza rete e senza cache resta il mare, e i punti si vedono e si toccano lo stesso.
@@ -112,28 +111,29 @@ Dati seed (read-only, ricaricati a ogni cambio di `seedVersion`):
 Le entità ricalcano i JSON di `seed/` (§5.1), che esistono già nel repository.
 
 ```
-Character(id: String PK, name: String, rosterOrder: Int, imageRes: String?)
-Outfit(id: String PK, characterId: FK, name: String?, isDefault: Boolean)
+Character(id: String PK, name: String, nameIt: String?, rosterOrder: Int, starter: Boolean,
+          unlockCriteria: String?, unlockCriteriaIt: String?, imageUrl: String?)   // 50 piloti; c'è anche imageRes, residuo dello scaffold, sempre null
+Outfit(id: String PK, characterId: FK, name: String?, nameIt: String?, isDefault: Boolean, imageUrl: String?)
     // id = "<character>__<outfit>": i nomi NON sono unici tra personaggi ("Pro Racer").
     // Il default ha id "<character>__default" e name null (il wiki non lo nomina): in UI "Standard".
-FoodGroup(id: String PK, name: String, foods: List<String>, revertsToDefault: Boolean)
+FoodGroup(id: String PK, name: String, nameIt: String?, foods: List<String>, revertsToDefault: Boolean)   // nameIt: traduzione non ufficiale
     // Un gruppo = una cella Outfits distinta della tabella Dash Food (20 gruppi).
     // foods: nomi dei cibi che lo compongono, es. ["Takoyaki","Candy apple","Cheep Cheep taiyaki","Sushi"].
 OutfitFoodRule(outfitId: FK, foodGroupId: FK)              // N:M: lo stesso outfit si ottiene da più gruppi (es. Mario Touring)
 FoodGroupCourse(foodGroupId: FK, courseId: FK, presence: ON_COURSE|NEARBY, listedInDashFood: Boolean)
     // ON_COURSE: stand sul tracciato (List of Yoshi's locations). NEARBY: solo sulle strade vicine (Dash Food). §5.2.1
-Course(id: String PK, name: String, regionId: FK?)            // null solo per Rainbow Road
-Region(id: String PK, name: String, order: Int)               // 10 regioni/biomi
+Course(id: String PK, name: String, nameIt: String?, regionId: FK?)   // regionId null solo per Rainbow Road
+Region(id: String PK, name: String, nameIt: String?, order: Int)     // 10 regioni/biomi
 Area(id: String PK, name: String, regionId: FK)               // luoghi delle missioni che non sono uno dei 30 corsi
 PeachMedallion(id: String PK, index: Int, x: Double, y: Double, hint: String?, youtubeId: String?)   // 200, mkworld-checklist (§5.2)
 QuestionPanel(id: String PK, index: Int, x: Double, y: Double, hint: String?, youtubeId: String?)    // 150, mkworld-checklist
 PSwitch(id: String PK, index: Int, regionId: FK, courseId: FK?, areaId: FK?, name: String, x, y, hint, youtubeId)  // 394, esattamente uno tra courseId e areaId
     // x, y: percentuale dell'immagine della mappa (map.json: imageUrl, width, height, letto dagli asset, nessuna tabella)
-Event(id: String PK, type: CUP|RALLY, name: String, order: Int)
+Event(id: String PK, type: CUP|RALLY, name: String, nameIt: String?, order: Int, imageUrl: String?)
 EventStop(eventId: FK, position: Int, courseId: FK)         // nel JSON è l'array "stops" dell'evento, in ordine
 ```
 
-Previsti per la v2, **non nel seed**: gli stand Yoshi's sulle strade tra i percorsi (`YoshiSpot`, `EventRouteSpot`).
+Le condizioni della modalità specchio (`mirror_mode.json`) e l'immagine della mappa (`map.json`) si leggono dagli asset, senza tabella. Gli stand Yoshi's, compresi quelli sulle strade, entrano con la fase C1 (`docs/roadmap.md`).
 
 Stato utente (mai toccato dal reseed):
 
@@ -165,22 +165,23 @@ In `seed/` alla root del repository (versionati, **già presenti**), copiati neg
 
 | File | Contenuto | Righe attuali |
 |---|---|---|
-| `characters.json` | `id`, `name`, `rosterOrder` | 24 |
-| `outfits.json` | `id`, `characterId`, `name` (null per il default), `isDefault` | 127 (103 + 24 default) |
-| `food_groups.json` | `id`, `name`, `foods`, `revertsToDefault` | 20 |
+| `characters.json` | `id`, `name`, `nameIt`, `rosterOrder`, `starter`, `unlockCriteria`, `unlockCriteriaIt`, `imageUrl` | 50 (24 con outfit, 32 di base) |
+| `outfits.json` | `id`, `characterId`, `name` (null per il default), `nameIt`, `isDefault`, `imageUrl` | 127 (103 + 24 default) |
+| `food_groups.json` | `id`, `name`, `nameIt`, `foods`, `revertsToDefault` | 20 |
 | `outfit_food_rules.json` | `outfitId`, `foodGroupId` | — |
 | `food_group_courses.json` | `foodGroupId`, `courseId`, `presence` (ON_COURSE/NEARBY), `listedInDashFood` | 54 sul percorso + 52 nei dintorni |
-| `courses.json` | `id`, `name`, `regionId` | 30 |
-| `regions.json` | `id`, `name`, `order` | 10 |
-| `areas.json` | `id`, `name`, `regionId` | 1 (cresce se le missioni citano altri luoghi) |
-| `events.json` | `id`, `type` (CUP/RALLY), `name`, `order`, `stops` (courseId in ordine) | 8 cup + 12 rally |
+| `courses.json` | `id`, `name`, `nameIt`, `regionId` | 30 |
+| `regions.json` | `id`, `name`, `nameIt`, `order` | 10 |
+| `areas.json` | `id`, `name`, `regionId` | 2 (cresce se le missioni citano altri luoghi) |
+| `events.json` | `id`, `type` (CUP/RALLY), `name`, `nameIt`, `order`, `stops` (courseId in ordine), `imageUrl` | 8 cup + 12 rally |
+| `mirror_mode.json` | `order`, `text`, `textIt` (traduzione non ufficiale): condizioni di sblocco della modalità specchio | 6 |
 | `peach_medallions.json` | `id`, `index`, `x`, `y`, `hint`, `youtubeId` (mkworld-checklist) | 200 |
 | `question_panels.json` | come `peach_medallions.json` | 150 |
 | `map.json` | un elemento: `imageUrl`, `width`, `height` dell'immagine della mappa | 1 |
-| `p_switches.json` | `id`, `index`, `regionId`, `courseId`, `areaId`, `name`; `x`, `y`, `hint`, `youtubeId` da mkworld-checklist | 394 (**assente nel seed iniziale**, arriva con la prima estrazione) |
+| `p_switches.json` | `id`, `index`, `regionId`, `courseId`, `areaId`, `name`; `x`, `y`, `hint`, `youtubeId` da mkworld-checklist | 394 |
 | `meta.json` | `seedVersion`, `gameVersion`, `extractedOn`, `origin`, `warnings`, `license`, `sources` (titolo, URL, `revid`) | — |
 
-`meta.json.origin` vale `manual-transcription` per il seed iniziale e `api` dopo la prima estrazione via script (§5.3, "Stato").
+`meta.json.origin` vale `api` (estrazione via script); `manual-transcription` era il seed iniziale, trascritto a mano prima della fase 2.
 
 ### 5.2 Fonti
 Tutte da **Super Mario Wiki** (mariowiki.com), contenuti testuali in CC BY-SA 4.0. Le pagine sono fissate per **titolo esatto** in `tools/seedgen/sources.yaml`: lo script non cerca pagine, e se un titolo cambia l'estrazione fallisce.
@@ -191,7 +192,7 @@ Tutte da **Super Mario Wiki** (mariowiki.com), contenuti testuali in CC BY-SA 4.
 | `List of Yoshi's locations` | sezione "Course locations": quali cibi hanno uno stand **sul tracciato** di ogni percorso |
 | `List of Mario Kart World missions` | pulsanti P: bioma (intestazione), nome della missione ("In-game text"), percorso ("Location") |
 | `Template:Mario Kart World` | navbox del gioco: righe "<Nome> Cup" con i 4 corsi; riga "Knockout Tour rallies" (per accorgersi di rally nuovi) |
-| `Golden Rally`, `Ice Rally`, `Moon Rally`, `Spiny Rally`, `Cherry Rally`, `Acorn Rally`, `Cloud Rally`, `Heart Rally`, `Drill Rally`, `Boomerang Rally (Mario Kart World)`, `Propeller Rally`, `Turnip Rally` | tappe del rally, dalla tabella "Starting point / Checkpoint N / Final course" |
+| `Golden Rally`, `Ice Rally`, `Moon Rally`, `Spiny Rally`, `Cherry Rally`, `Acorn Rally`, `Cloud Rally`, `Heart Rally`, `Drill Rally`, `Boomerang Rally (rally)`, `Propeller Rally`, `Turnip Rally` | tappe del rally, dalla tabella "Starting point / Checkpoint N / Final course" |
 
 **Mappa, Peach Medallions e pannelli "?": mkworld-checklist.** Dal 28/09/2026, per scelta dell'autore, le posizioni sulla mappa di Monete Peach, Pulsanti P e pannelli "?", le istruzioni (solo inglese), i video e l'immagine della mappa vengono dal progetto pubblico su GitHub [mkworld-checklist](https://github.com/BamisWasTaken/mkworld-checklist) (mktools.io), letto da `seedgen/checklist.py` a un **commit fissato** in `sources.yaml`, con i crediti in README, `seed/LICENSE` e Impostazioni/Info. Le monete e i pannelli vengono solo da lì; i Pulsanti P restano quelli di mariowiki e prendono la posizione per nome della missione (3 grafie diverse in `manual/checklist_mission_names.yaml`, un nome non abbinato ferma l'estrazione). Supera la fonte precedente dei medaglioni (conteggi per bioma di Nintendo Life, file manuale): le monete di mkworld-checklist non hanno un bioma, e un tentativo di ricavarlo dai Pulsanti P vicini non riproduceva i conteggi di Nintendo Life. Niente scraping automatico di siti commerciali (IGN, Game8, Nintendo Life): contenuti protetti, termini d'uso restrittivi e struttura instabile.
 
@@ -215,7 +216,7 @@ Tutte da **Super Mario Wiki** (mariowiki.com), contenuti testuali in CC BY-SA 4.
 - Per 9 percorsi (Desert Hills, DK Pass, Faraway Oasis, Dino Dino Jungle, Dandelion Depths, Boo Cinema, Choco Mountain, Toad's Factory, Rainbow Road) la pagina non elenca stand sul tracciato: per l'app valgono come "nessuno stand noto sul percorso", non come "nessun cibo". La UI lo dice esplicitamente (§10).
 
 ### 5.3 Script di estrazione (`tools/seedgen/`, già nel repository)
-Lo script **esiste già** ed è coperto da test: non va riscritto, solo verificato sulle pagine reali (fase 2) ed esteso quando servono nuove fonti. Dettagli d'uso in `tools/seedgen/README.md`.
+Lo script **esiste già** ed è coperto da test: non va riscritto, solo esteso quando servono nuove fonti. Dettagli d'uso in `tools/seedgen/README.md`.
 
 **Pipeline:** download (MediaWiki API) → parse → dati grezzi → normalizzazione con `aliases.yaml` → validazione con `expected_counts.yaml` → JSON deterministici.
 
@@ -250,9 +251,8 @@ Lo script **esiste già** ed è coperto da test: non va riscritto, solo verifica
 Exit code: `0` ok/identico · `1` uso o configurazione · `2` dati non validi · `3` validi ma diversi da `seed/` · `4` rete.
 
 **Stato**
-- Parser testato su HTML **sintetici** costruiti sulla struttura delle pagine; non ancora sulle pagine reali (il wiki non era raggiungibile dall'ambiente di scrittura).
-- `seed/` iniziale generato con la stessa pipeline da una trascrizione manuale delle pagine (`tests/golden/raw_manual_2026-09-25.yaml`). La trascrizione non include i 394 pulsanti P: arrivano con la prima estrazione via API.
-- `tests/test_real_fixtures.py` confronta parser e trascrizione non appena esistono le fixture reali: è il test di accettazione della fase 2.
+- Parser testato su HTML sintetici e sulle pagine reali (`tests/fixtures/real/`, committate; `test_real_fixtures.py`). Le pagine dei nomi in altre lingue e la pagina delle immagini si leggono sempre dal vivo (test live saltati senza rete).
+- `seed/` estratto via API (`origin: api`), `seedVersion` 8.
 
 ### 5.4 Integrazione nel build Gradle
 Lo script gira durante la build, con regole diverse per variante:
@@ -366,19 +366,13 @@ I criteri 3–6 ordinano **dentro** il gruppo a pari merito ma non cambiano il n
 ---
 
 ## 8. Fasi di implementazione
+Il roadmap originale è chiuso; alcuni commenti nel codice citano ancora queste fasi. Le prossime sono in `docs/roadmap.md`.
 
-1. **Scaffold**: progetto allineato a ThePatientGamerHelper (Gradle, signing, varianti, README, CHANGELOG), Hilt, Room, navigation, drawer, Home 2×2 con contatori fittizi. Tema Material 3 con palette custom.
-2. **Verifica di seedgen sulle pagine reali**: lo script e il seed iniziale esistono già (§5.3). Impostare lo User-Agent, eseguire `fetch-fixtures`, far passare `test_real_fixtures.py` correggendo il parser se legge male, poi `generate` + `accept` per passare a `origin: api`. Richiede rete verso mariowiki.com: se l'ambiente non ce l'ha, la esegue l'autore in locale.
-3. **Seed nell'app e build**: modelli serializzabili sui JSON reali di `seed/`, loader da assets, reseed con `seedVersion`, test di validazione (§5.6), task Gradle `generateSeed` con le regole di §5.4. Seed fittizio per i test solo in `src/test`, marcato `"source": "FAKE_FOR_TESTS"`.
-4. **Skin**: griglia 2 colonne, dettaglio con checkbox e switch di sblocco, attenuazione dei completati, filtri.
-5. **Monete Peach e Pulsanti P**: liste per regione (§2.4), contatori, ricerca, "segna tutti", link alla guida. I dati sono già nel seed (pulsanti P dopo la fase 2).
-6. **Consigliami**: UseCase con l'algoritmo §6 e test, UI lista e dettaglio.
-7. **Risultati**: form, storico, integrazione del peso.
-8. **Backup**: export/import dello stato utente.
+1. Scaffold · 2. Verifica di seedgen sulle pagine reali · 3. Seed nell'app e build (`generateSeed`, reseed, validazione) · 4. Personaggi (allora "Skin") · 5. Monete Peach e Pulsanti P · 6. Consigliami · 7. Risultati · 8. Backup.
 
 ## 9. Criteri di accettazione
 - L'app parte e funziona offline; l'unico uso della rete è il download delle immagini.
-- Spuntare l'ultimo outfit di un personaggio lo attenua subito nella griglia e aggiorna il contatore in Home.
+- Spuntare l'ultimo outfit di un personaggio lo sposta subito in fondo alla griglia e aggiorna il contatore in Home.
 - Consigliami si aggiorna in tempo reale quando cambia lo stato degli outfit.
 - Un aggiornamento dei seed non perde lo stato utente (test di migrazione).
 - Nessun asset Nintendo nel repository.
@@ -390,7 +384,7 @@ I criteri 3–6 ordinano **dentro** il gruppo a pari merito ma non cambiano il n
 - Totale outfit: 127 con i default, 103 alternativi, su 24 personaggi. Conteggio sulla pagina Dash Food, coerente con Nintendo Life.
 - Update 1.8.0: nessun outfit o personaggio nuovo (confermato dall'autore); ha aggiunto 2 rally, già presenti tra i 12.
 - Tappe dei rally: estratte dalle pagine dei singoli rally.
-- Stato di sblocco dei personaggi: non estraibile; default sbloccato, lo gestisce l'utente (§2.3).
+- Stato di sblocco iniziale dei personaggi: dalle gallerie del wiki (§2.3); poi lo gestisce l'utente.
 - Cibo per percorso: distinzione `ON_COURSE` / `NEARBY` (§5.2.1). La posizione esatta dello stand sul percorso non serve per ora.
 - Pulsanti P: da `List of Mario Kart World missions` (mariowiki).
 - Peach Medallions e ? Panels: da mkworld-checklist, con la mappa (§5.2).
@@ -398,4 +392,4 @@ I criteri 3–6 ordinano **dentro** il gruppo a pari merito ma non cambiano il n
 **Aperte (non bloccano l'implementazione)**
 - **9 percorsi senza stand noti sul tracciato** (§5.2.1): se giocando se ne trova uno, va segnalato su mariowiki; poi la prossima estrazione lo porta nel seed.
 - **Controllo a campione degli outfit su IGN**: manuale, a cura dell'autore. Nintendo Life dà abbinamenti cibo→outfit diversi da mariowiki (es. Mario Aviator), ma mariowiki cita la guida ufficiale giapponese: in caso di dubbio fa fede la prova in gioco.
-- **Stand sulle strade tra i percorsi** (v2).
+- **Stand sulle strade tra i percorsi**: entrano nella sezione Cibi con le fasi C1–C2 (`docs/roadmap.md`).

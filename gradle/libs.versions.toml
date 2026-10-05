@@ -1,6 +1,6 @@
 [versions]
 # Ultime versioni stabili al 2026-10-04, lette dai repository Maven (stesso insieme di PdfToolkit,
-# docs/AGGIORNAMENTO_DIPENDENZE.md); le librerie di terze parti restano nella loro major.
+# docs/decisioni.md); le librerie di terze parti restano nella loro major.
 agp = "9.4.1"
 kotlin = "2.4.20"
 ksp = "2.3.12"
@@ -21,7 +21,7 @@ robolectric = "4.17"
 # Ultima 3.x (stessa major della 3.0.4 di prima; il vincolo su Kotlin 2.1 non vale più con Kotlin 2.4).
 coil = "3.6.3"
 palette = "1.0.0"
-# Selettore lingua e tema, come ThePatientGamerHelper (docs/ALIGNMENT.md); versioni aggiornate.
+# Selettore lingua e tema, come ThePatientGamerHelper (docs/decisioni.md); versioni aggiornate.
 datastorePreferences = "1.2.1"
 appcompat = "1.8.0"
 
