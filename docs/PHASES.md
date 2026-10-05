@@ -158,7 +158,7 @@ Il calcolo fa quello che dice SPEC §6 (letto in `ConsigliamiUseCase`); il probl
 - Conteggio atteso degli stand in `expected_counts.yaml`, contato sulla pagina (commit dedicato che cita la revisione).
 - Seed rigenerato e accettato dall'autore (`check` → diff → conferma → `accept`), `seedVersion` +1, entità e migrazione Room (mai distruttiva) con test; backup invariato (nessuno stato utente nuovo).
 - Consigliami: `foods(E)` dagli stand dei percorsi dell'evento (niente più `NEARBY`); tolti switch, preferenza e stringhe di "Includi cibi nei dintorni"; SPEC §6 e §6.5 aggiornati (via il test `NEARBY`, nuovo test: uno stand su una strada non dà gain a nessun evento); testi di lista e dettaglio riformulati come possibilità ("potrebbe esserci", "occhi aperti"), senza rifare la grafica.
-- Immagini dei cibi per la griglia di C2: le pagine Dash Food ha un'immagine per ogni cibo, ma la decisione del 26/09/2026 copre solo le immagini della pagina "Mario Kart World". **Chiedi all'autore** se estenderla (solo URL nel seed, validati sul prefisso `https://mario.wiki.gallery/images/`, scaricati a runtime); se no, nessuna immagine.
+- Immagini dei cibi per la griglia di C2: la pagina Dash Food ha un'immagine per ogni cibo, ma la decisione del 26/09/2026 copre solo le immagini della pagina "Mario Kart World". **Chiedi all'autore** se estenderla (solo URL nel seed, validati sul prefisso `https://mario.wiki.gallery/images/`, scaricati a runtime); se no, nessuna immagine.
 - Bioma degli stand: per i percorsi da `courses.regionId`; per le strade solo se la fonte lo dice, mai dedotto dalla descrizione.
 - API per C2 e C4: stand per cibo (percorsi e strade, con bioma) e, per evento e personaggio, gli outfit con cibo e percorso.
 
