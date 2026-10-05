@@ -11,9 +11,9 @@ import com.marcogn.kartlog.data.seed.SeedAssetLoader
 import com.marcogn.kartlog.data.seed.SeedRepository
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiCharacter
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiEvent
-import com.marcogn.kartlog.domain.consigliami.ConsigliamiFoodCourse
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiOutfit
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiRule
+import com.marcogn.kartlog.domain.consigliami.ConsigliamiStandFood
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiUseCase
 import com.marcogn.kartlog.domain.consigliami.RecommendationGroup
 import com.marcogn.kartlog.domain.model.Cc
@@ -52,7 +52,6 @@ class ConsigliamiDaoTest {
 
     private suspend fun computeGroups(
         dao: ConsigliamiDao,
-        includeNearby: Boolean = false,
         resultsEnabled: Boolean = false,
         weight: Double = 0.3,
         referenceCc: Cc = Cc.CC_150,
@@ -60,7 +59,7 @@ class ConsigliamiDaoTest {
         val characters = dao.characters().first().map { ConsigliamiCharacter(it.id, it.rosterOrder, it.unlocked) }
         val outfits = dao.outfits().first().map { ConsigliamiOutfit(it.id, it.characterId, it.owned) }
         val rules = dao.rules().first().map { ConsigliamiRule(it.outfitId, it.foodGroupId) }
-        val foodCourses = dao.foodCourses().first().map { ConsigliamiFoodCourse(it.foodGroupId, it.courseId, it.presence) }
+        val standFoods = dao.courseFoods().first().map { ConsigliamiStandFood(it.courseId, it.foodGroupId) }
         val stopsByEvent = dao.eventStops().first().groupBy({ it.eventId }, { it.courseId })
         val events = dao.events().first().map { ConsigliamiEvent(it.id, it.type, it.name, it.order, stopsByEvent[it.id].orEmpty()) }
         // Stesso criterio di ConsigliamiViewModel: solo i trofei alla cilindrata di riferimento.
@@ -68,7 +67,7 @@ class ConsigliamiDaoTest {
             .filter { it.cc == referenceCc }
             .associate { it.eventId to it.rank }
         return ConsigliamiUseCase.compute(
-            characters, outfits, rules, foodCourses, events, includeNearby,
+            characters, outfits, rules, standFoods, events,
             resultsEnabled = resultsEnabled, weight = weight,
             bestRankForEvent = { eventId -> bestRankByEvent[eventId] },
         )
@@ -82,6 +81,21 @@ class ConsigliamiDaoTest {
 
         val outfits = dao.outfitNames().first().filter { it.name == "Explorer" }
         assertTrue("Explorer deve avere almeno una variante italiana tra gli outfit reali", outfits.any { it.nameIt != null })
+    }
+
+    @Test
+    fun `i cibi dei percorsi vengono dagli stand dei percorsi, mai da quelli sulle strade`() = runBlocking {
+        val courseFoods = db.consigliamiDao().courseFoods().first()
+        val foodDao = db.foodDao()
+        val standsByGroup = foodDao.foodGroups().first().associate { it.id to foodDao.stands(it.id).first() }
+        val expected = standsByGroup.flatMap { (group, stands) -> stands.mapNotNull { s -> s.courseId?.let { it to group } } }.toSet()
+
+        assertEquals(expected, courseFoods.map { it.courseId to it.foodGroupId }.toSet())
+        assertEquals("nessuna coppia ripetuta", courseFoods.size, courseFoods.toSet().size)
+        // Il seed reale ha gruppi con stand solo sulle strade: non compaiono mai tra i cibi dei percorsi.
+        val routeOnly = standsByGroup.filterValues { stands -> stands.isNotEmpty() && stands.all { it.courseId == null } }.keys
+        assertTrue("attesi gruppi con stand solo sulle strade", routeOnly.isNotEmpty())
+        assertTrue(courseFoods.none { it.foodGroupId in routeOnly })
     }
 
     @Test
@@ -103,8 +117,8 @@ class ConsigliamiDaoTest {
         val characters = dao.characters().first().map { ConsigliamiCharacter(it.id, it.rosterOrder, it.unlocked) }
         val outfits = dao.outfits().first().map { ConsigliamiOutfit(it.id, it.characterId, it.owned) }
         val rules = dao.rules().first().map { ConsigliamiRule(it.outfitId, it.foodGroupId) }
-        val foodCourses = dao.foodCourses().first().map { ConsigliamiFoodCourse(it.foodGroupId, it.courseId, it.presence) }
-        val detail = ConsigliamiUseCase.detailFor(before.event, characters, outfits, rules, foodCourses, includeNearby = false)
+        val standFoods = dao.courseFoods().first().map { ConsigliamiStandFood(it.courseId, it.foodGroupId) }
+        val detail = ConsigliamiUseCase.detailFor(before.event, characters, outfits, rules, standFoods)
         val outfitToOwn = detail.first { it.characterId == bestCharacterId }.unlockableOutfitIds.first()
 
         db.userStateDao().markOutfitOwned(OwnedOutfitEntity(outfitToOwn))

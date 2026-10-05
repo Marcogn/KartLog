@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.marcogn.kartlog.domain.model.EventType
-import com.marcogn.kartlog.domain.model.Presence
 
 /**
  * Dati seed (SPEC §3): read-only, ricaricati a ogni cambio di [com.marcogn.kartlog.data.local.entity.SeedMetaEntity.seedVersion].
@@ -56,12 +55,54 @@ data class OutfitFoodRuleEntity(
     val foodGroupId: String,
 )
 
-@Entity(tableName = "food_group_courses", primaryKeys = ["foodGroupId", "courseId"])
-data class FoodGroupCourseEntity(
+/**
+ * Un cibo della tabella "List of food" di Dash Food (una riga = una variante del gruppo, fase C1):
+ * in genere tre per gruppo (piccola, media, grande), quattro cibi nel gruppo sushi.
+ * [name] è il cibo preciso ("Canned juice", "Takoyaki"), [nameIt] la sua traduzione NON ufficiale.
+ * [boost]: livelli della colonna "Boost level", valori di [com.marcogn.kartlog.domain.model.BoostLevel]
+ * (il piatto triplo del sushi ne ha tre).
+ */
+@Entity(tableName = "food_variants")
+data class FoodVariantEntity(
+    @PrimaryKey val id: String,
     val foodGroupId: String,
-    val courseId: String,
-    val presence: Presence,
-    val listedInDashFood: Boolean,
+    val order: Int,
+    val name: String,
+    val nameIt: String?,
+    val boost: List<String>,
+    /** Vedi [CharacterEntity.imageUrl]. */
+    val imageUrl: String?,
+)
+
+/**
+ * Uno stand Yoshi's (pagina "List of Yoshi's locations", fase C1). Sui percorsi ([courseId] non
+ * null) è nell'area del percorso, non per forza sul tracciato di gara; sulle strade ([courseId]
+ * null) non appartiene a nessun evento. [regionId]: quello del corso, null sulle strade (la fonte
+ * non lo dice). Luogo e tipo di locale in inglese dal wiki, italiano tradotto a mano (NON ufficiale);
+ * [location] null = il wiki non lo indica.
+ */
+@Entity(tableName = "yoshi_stands")
+data class YoshiStandEntity(
+    @PrimaryKey val id: String,
+    val order: Int,
+    val courseId: String?,
+    val regionId: String?,
+    val establishment: String?,
+    val establishmentIt: String?,
+    val location: String?,
+    val locationIt: String?,
+)
+
+/**
+ * Un gruppo di cibo di uno stand (uno stand di snack ne ha tre). [food] è il cibo preciso solo
+ * dove la fonte lo nomina (gruppo sushi: "Takoyaki"…, uguale a [FoodVariantEntity.name]); null =
+ * tutto il gruppo, perché la fonte non dice quale taglia dà lo stand.
+ */
+@Entity(tableName = "yoshi_stand_foods", primaryKeys = ["standId", "foodGroupId"])
+data class YoshiStandFoodEntity(
+    val standId: String,
+    val foodGroupId: String,
+    val food: String?,
 )
 
 @Entity(tableName = "courses")

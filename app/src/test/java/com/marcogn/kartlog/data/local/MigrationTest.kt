@@ -215,4 +215,44 @@ class MigrationTest {
             assertEquals(0, cursor.getInt(0))
         }
     }
+
+    @Test
+    fun `migrazione 7 a 8 sostituisce i cibi per corso con gli stand e non tocca lo stato utente`() {
+        helper.createDatabase(dbName, 7).apply {
+            execSQL(
+                "INSERT INTO food_group_courses (foodGroupId, courseId, presence, listedInDashFood) " +
+                    "VALUES ('sushi', 'cheep_cheep_falls', 'ON_COURSE', 1)"
+            )
+            execSQL("INSERT INTO owned_outfits (outfitId) VALUES ('mario__touring')")
+            execSQL("INSERT INTO character_unlocks (characterId, unlocked) VALUES ('daisy', 1)")
+            execSQL("INSERT INTO collected_medallions (medallionId) VALUES ('medallion_0001')")
+            execSQL("INSERT INTO completed_p_switches (pSwitchId) VALUES ('pswitch_001')")
+            execSQL("INSERT INTO activated_question_panels (panelId) VALUES ('panel_0001')")
+            execSQL("INSERT INTO best_results (eventId, cc, rank) VALUES ('cup_mushroom', 'CC_150', 'GOLD')")
+            close()
+        }
+
+        val migrated = helper.runMigrationsAndValidate(dbName, 8, true, MIGRATION_7_8)
+
+        migrated.query("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'food_group_courses'").use { cursor ->
+            assertEquals(false, cursor.moveToFirst())
+        }
+        // Tabelle seed nuove, vuote: le riempie il reseed (seedVersion 9).
+        for (table in listOf("food_variants", "yoshi_stands", "yoshi_stand_foods")) {
+            migrated.query("SELECT COUNT(*) FROM $table").use { cursor ->
+                cursor.moveToFirst()
+                assertEquals(0, cursor.getInt(0))
+            }
+        }
+        // Lo stato utente resta tutto com'era.
+        for (table in listOf(
+            "owned_outfits", "character_unlocks", "collected_medallions", "completed_p_switches",
+            "activated_question_panels", "best_results",
+        )) {
+            migrated.query("SELECT COUNT(*) FROM $table").use { cursor ->
+                cursor.moveToFirst()
+                assertEquals("$table", 1, cursor.getInt(0))
+            }
+        }
+    }
 }

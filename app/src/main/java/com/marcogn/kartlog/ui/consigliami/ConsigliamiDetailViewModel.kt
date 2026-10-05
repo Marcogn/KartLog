@@ -8,9 +8,9 @@ import com.marcogn.kartlog.data.local.dao.UserStateDao
 import com.marcogn.kartlog.domain.consigliami.CharacterDetail
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiCharacter
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiEvent
-import com.marcogn.kartlog.domain.consigliami.ConsigliamiFoodCourse
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiOutfit
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiRule
+import com.marcogn.kartlog.domain.consigliami.ConsigliamiStandFood
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiUseCase
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.TrophyRank
@@ -42,14 +42,13 @@ class ConsigliamiDetailViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val eventId: String = checkNotNull(savedStateHandle["eventId"])
-    private val includeNearby: Boolean = checkNotNull(savedStateHandle["includeNearby"])
 
     val uiState: StateFlow<ConsigliamiDetailUiState> = combine(
         combine(dao.characters().relocalizing(), dao.outfits(), dao.rules()) { c, o, r -> Triple(c, o, r) },
-        combine(dao.foodCourses(), dao.events(), dao.eventStops()) { fc, e, es -> Triple(fc, e, es) },
+        combine(dao.courseFoods(), dao.events(), dao.eventStops()) { cf, e, es -> Triple(cf, e, es) },
         dao.outfitNames(),
         userStateDao.bestResultsForEvent(eventId),
-    ) { (characters, outfits, rules), (foodCourses, events, eventStops), outfitNames, results ->
+    ) { (characters, outfits, rules), (courseFoods, events, eventStops), outfitNames, results ->
         val eventEntity = events.firstOrNull { it.id == eventId }
         val courseIds = eventStops.filter { it.eventId == eventId }.map { it.courseId }
         val details = eventEntity?.let { entity ->
@@ -58,8 +57,7 @@ class ConsigliamiDetailViewModel @Inject constructor(
                 characters = characters.map { ConsigliamiCharacter(it.id, it.rosterOrder, it.unlocked) },
                 outfits = outfits.map { ConsigliamiOutfit(it.id, it.characterId, it.owned) },
                 rules = rules.map { ConsigliamiRule(it.outfitId, it.foodGroupId) },
-                foodCourses = foodCourses.map { ConsigliamiFoodCourse(it.foodGroupId, it.courseId, it.presence) },
-                includeNearby = includeNearby,
+                standFoods = courseFoods.map { ConsigliamiStandFood(it.courseId, it.foodGroupId) },
             )
         }.orEmpty()
 

@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Query
 import com.marcogn.kartlog.data.local.entity.EventEntity
 import com.marcogn.kartlog.data.local.entity.EventStopEntity
-import com.marcogn.kartlog.data.local.entity.FoodGroupCourseEntity
 import com.marcogn.kartlog.data.local.entity.OutfitFoodRuleEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -47,8 +46,20 @@ interface ConsigliamiDao {
     @Query("SELECT * FROM outfit_food_rules")
     fun rules(): Flow<List<OutfitFoodRuleEntity>>
 
-    @Query("SELECT * FROM food_group_courses")
-    fun foodCourses(): Flow<List<FoodGroupCourseEntity>>
+    /**
+     * Coppie (corso, gruppo di cibo) degli stand Yoshi's sui percorsi (SPEC §6.1). Gli stand sulle
+     * strade (`courseId` null) restano fuori: non appartengono a nessun evento.
+     */
+    @Query(
+        """
+        SELECT DISTINCT s.courseId AS courseId, f.foodGroupId AS foodGroupId
+        FROM yoshi_stands s
+        JOIN yoshi_stand_foods f ON f.standId = s.id
+        WHERE s.courseId IS NOT NULL
+        ORDER BY s.courseId, f.foodGroupId
+        """
+    )
+    fun courseFoods(): Flow<List<CourseFoodRow>>
 
     @Query("SELECT * FROM events")
     fun events(): Flow<List<EventEntity>>
@@ -69,3 +80,5 @@ data class ConsigliamiCharacterRow(
 data class ConsigliamiOutfitRow(val id: String, val characterId: String, val owned: Boolean)
 
 data class IdNameIt(val id: String, val name: String, val nameIt: String?)
+
+data class CourseFoodRow(val courseId: String, val foodGroupId: String)

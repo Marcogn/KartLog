@@ -42,7 +42,6 @@ import com.marcogn.kartlog.domain.consigliami.EventScore
 import com.marcogn.kartlog.domain.consigliami.RecommendationGroup
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.EventType
-import com.marcogn.kartlog.domain.model.Presence
 import com.marcogn.kartlog.domain.model.TrophyRank
 import com.marcogn.kartlog.ui.common.CharacterAvatar
 import com.marcogn.kartlog.ui.common.EventIcon
@@ -58,7 +57,7 @@ import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 @Composable
 fun ConsigliamiScreen(
     onMenuClick: () -> Unit,
-    onEventClick: (eventId: String, includeNearby: Boolean) -> Unit,
+    onEventClick: (eventId: String) -> Unit,
     viewModel: ConsigliamiViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
@@ -110,11 +109,6 @@ fun ConsigliamiScreen(
                     modifier = Modifier.weight(1f),
                 )
             }
-            SwitchRow(
-                label = stringResource(R.string.consigliami_include_nearby),
-                checked = state.includeNearby,
-                onCheckedChange = viewModel::onIncludeNearbyChanged,
-            )
             SwitchRow(
                 label = stringResource(R.string.consigliami_only_useful),
                 checked = state.onlyUseful,
@@ -169,7 +163,7 @@ fun ConsigliamiScreen(
                             foodGroupNames = state.foodGroupNames,
                             bestRankByEvent = if (state.resultsEnabled) state.bestRankByEvent else emptyMap(),
                             referenceCc = state.referenceCc,
-                            onEventClick = { eventId -> onEventClick(eventId, state.includeNearby) },
+                            onEventClick = onEventClick,
                         )
                     }
                 }
@@ -292,13 +286,16 @@ private fun EventCard(
                 }
                 if (eventScore.relevantFoods.isNotEmpty()) {
                     Column(modifier = Modifier.padding(top = 8.dp)) {
+                        // Possibilità, non promessa: lo stand è nell'area del percorso (fase C1).
+                        Text(
+                            stringResource(R.string.consigliami_foods_maybe),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
                         eventScore.relevantFoods.forEach { food ->
-                            val presenceLabel = stringResource(
-                                if (food.presence == Presence.ON_COURSE) R.string.consigliami_on_course else R.string.consigliami_nearby
-                            )
                             val foodName = foodGroupNames[food.foodGroupId] ?: food.foodGroupId
                             val courseName = courseNames[food.courseId] ?: food.courseId
-                            Text("$foodName · $courseName ($presenceLabel)", style = MaterialTheme.typography.bodySmall)
+                            Text("$foodName · $courseName", style = MaterialTheme.typography.bodySmall)
                         }
                     }
                 }

@@ -189,9 +189,9 @@ fun KartLogNavGraph(navController: NavHostController = rememberNavController()) 
             composable<Destination.Consigliami> { entry ->
                 ConsigliamiScreen(
                     onMenuClick = openDrawer,
-                    onEventClick = { eventId, includeNearby ->
+                    onEventClick = { eventId ->
                         if (entry.lifecycleIsResumed()) {
-                            navController.navigate(Destination.ConsigliamiDetail(eventId, includeNearby))
+                            navController.navigate(Destination.ConsigliamiDetail(eventId))
                         }
                     },
                 )

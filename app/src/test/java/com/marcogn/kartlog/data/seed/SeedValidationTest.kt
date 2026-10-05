@@ -65,6 +65,11 @@ class SeedValidationTest {
         }
 
         assertEquals(ExpectedCounts["question_panels"], assets.readItems<MapPointDto>("question_panels.json").size)
+
+        assertEquals(ExpectedCounts["food_variants"], assets.readItems<FoodVariantDto>("food_variants.json").size)
+        val stands = assets.readItems<YoshiStandDto>("yoshi_stands.json")
+        assertEquals(ExpectedCounts["yoshi_course_stands"], stands.count { it.courseId != null })
+        assertEquals(ExpectedCounts["yoshi_route_stands"], stands.count { it.courseId == null })
     }
 
     @Test
@@ -98,6 +103,8 @@ class SeedValidationTest {
         assertNoDuplicates("peach_medallions", assets.readItems<MapPointDto>("peach_medallions.json").map { it.id })
         assertNoDuplicates("p_switches", assets.readItems<PSwitchDto>("p_switches.json").map { it.id })
         assertNoDuplicates("question_panels", assets.readItems<MapPointDto>("question_panels.json").map { it.id })
+        assertNoDuplicates("food_variants", assets.readItems<FoodVariantDto>("food_variants.json").map { it.id })
+        assertNoDuplicates("yoshi_stands", assets.readItems<YoshiStandDto>("yoshi_stands.json").map { it.id })
     }
 
     @Test
@@ -110,9 +117,20 @@ class SeedValidationTest {
             assertTrue("regola: outfit inesistente ${it.outfitId}", it.outfitId in outfitIds)
             assertTrue("regola: gruppo inesistente ${it.foodGroupId}", it.foodGroupId in foodGroupIds)
         }
-        assets.readItems<FoodGroupCourseDto>("food_group_courses.json").forEach {
-            assertTrue("food_group_courses: corso inesistente ${it.courseId}", it.courseId in courseIds)
-            assertTrue("food_group_courses: gruppo inesistente ${it.foodGroupId}", it.foodGroupId in foodGroupIds)
+        val regionIds = assets.readItems<RegionDto>("regions.json").map { it.id }.toSet()
+        val variants = assets.readItems<FoodVariantDto>("food_variants.json")
+        variants.forEach { assertTrue("cibo ${it.id}: gruppo inesistente", it.foodGroupId in foodGroupIds) }
+        val variantNames = variants.groupBy({ it.foodGroupId }, { it.name })
+        assets.readItems<YoshiStandDto>("yoshi_stands.json").forEach { stand ->
+            stand.courseId?.let { assertTrue("${stand.id}: corso inesistente $it", it in courseIds) }
+            // Bioma solo per gli stand dei percorsi: per le strade la fonte non lo dice (fase C1).
+            if (stand.courseId == null) assertEquals("${stand.id}: bioma su una strada", null, stand.regionId)
+            else assertTrue("${stand.id}: bioma inesistente", stand.regionId in regionIds)
+            assertTrue("${stand.id}: nessun cibo", stand.foods.isNotEmpty())
+            stand.foods.forEach { food ->
+                assertTrue("${stand.id}: gruppo inesistente ${food.foodGroupId}", food.foodGroupId in foodGroupIds)
+                food.food?.let { assertTrue("${stand.id}: $it non è un cibo di ${food.foodGroupId}", it in variantNames[food.foodGroupId].orEmpty()) }
+            }
         }
         assets.readItems<EventDto>("events.json").forEach { event ->
             event.stops.forEach { stop ->
@@ -128,11 +146,12 @@ class SeedValidationTest {
     }
 
     @Test
-    fun `ogni personaggio outfit ed evento ha un URL immagine del CDN del wiki`() {
+    fun `ogni personaggio outfit evento e cibo ha un URL immagine del CDN del wiki`() {
         // Solo URL, mai file impacchettati: l'app li scarica a runtime (vedi CLAUDE.md).
         val urls = assets.readItems<CharacterDto>("characters.json").map { it.id to it.imageUrl } +
             assets.readItems<OutfitDto>("outfits.json").map { it.id to it.imageUrl } +
-            assets.readItems<EventDto>("events.json").map { it.id to it.imageUrl }
+            assets.readItems<EventDto>("events.json").map { it.id to it.imageUrl } +
+            assets.readItems<FoodVariantDto>("food_variants.json").map { it.id to it.imageUrl }
         urls.forEach { (id, url) ->
             assertTrue("$id: imageUrl assente o inatteso ($url)", url?.startsWith("https://mario.wiki.gallery/images/") == true)
         }

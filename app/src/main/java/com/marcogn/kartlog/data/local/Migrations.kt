@@ -136,3 +136,31 @@ val MIGRATION_6_7 = object : Migration(6, 7) {
         db.execSQL("ALTER TABLE p_switches ADD COLUMN youtubeId TEXT")
     }
 }
+
+/**
+ * v8 (fase C1): gli stand Yoshi's e i cibi uno per uno.
+ * - `food_group_courses` (presenza ON_COURSE/NEARBY per corso) è sostituita da `yoshi_stands` +
+ *   `yoshi_stand_foods`, tutti gli stand di "List of Yoshi's locations", anche sulle strade.
+ * - Nuova `food_variants`: ogni cibo della tabella di Dash Food, con livello di boost e immagine.
+ * Solo tabelle seed, nate vuote: le riempie il reseed (seedVersion 9). Nessuno stato utente nuovo
+ * né toccato (il backup resta alla v3).
+ */
+val MIGRATION_7_8 = object : Migration(7, 8) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL("DROP TABLE IF EXISTS food_group_courses")
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS `food_variants` (`id` TEXT NOT NULL, `foodGroupId` TEXT NOT NULL, " +
+                "`order` INTEGER NOT NULL, `name` TEXT NOT NULL, `nameIt` TEXT, `boost` TEXT NOT NULL, " +
+                "`imageUrl` TEXT, PRIMARY KEY(`id`))"
+        )
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS `yoshi_stands` (`id` TEXT NOT NULL, `order` INTEGER NOT NULL, " +
+                "`courseId` TEXT, `regionId` TEXT, `establishment` TEXT, `establishmentIt` TEXT, " +
+                "`location` TEXT, `locationIt` TEXT, PRIMARY KEY(`id`))"
+        )
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS `yoshi_stand_foods` (`standId` TEXT NOT NULL, `foodGroupId` TEXT NOT NULL, " +
+                "`food` TEXT, PRIMARY KEY(`standId`, `foodGroupId`))"
+        )
+    }
+}

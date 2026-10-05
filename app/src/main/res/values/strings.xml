@@ -44,21 +44,20 @@
     <string name="consigliami_filter_cup">Gran Premi</string>
     <string name="consigliami_filter_rally">Knockout Tour</string>
     <string name="consigliami_filter_both">Entrambi</string>
-    <string name="consigliami_include_nearby">Includi cibi nei dintorni</string>
     <string name="consigliami_only_useful">Solo utili</string>
     <string name="consigliami_position_format">#%1$d</string>
     <string name="consigliami_recommended_character">Personaggio consigliato</string>
-    <string name="consigliami_gain_format">+%1$d outfit</string>
+    <string name="consigliami_gain_format">fino a +%1$d outfit</string>
+    <string name="consigliami_foods_maybe">Potrebbero esserci (occhi aperti):</string>
+    <string name="consigliami_detail_maybe">Outfit che potrebbero sbloccarsi: su questi percorsi c\'è uno stand Yoshi\'s con il cibo giusto, ma potrebbe non essere sul tracciato di gara. Occhi aperti!</string>
     <string name="consigliami_runners_up">Alternative</string>
-    <string name="consigliami_on_course">sul percorso</string>
-    <string name="consigliami_nearby">nei dintorni</string>
-    <string name="consigliami_banner">Stima basata sugli stand Yoshi\'s dei percorsi: non garantisce che il bag compaia o che tu riesca a prenderlo.</string>
+    <string name="consigliami_banner">Gli stand Yoshi\'s indicati sono nell\'area dei percorsi, non per forza sul tracciato di gara: occhi aperti. Se nella scelta del veicolo hai disattivato il cambio d\'abito degli snack scatto, non si sblocca nulla.</string>
     <string name="consigliami_group_title_common">%1$d eventi passano da %2$s · stesso guadagno</string>
     <string name="consigliami_group_title_generic">%1$d eventi a pari merito</string>
     <string name="consigliami_no_recommendations">Nessun evento utile al momento</string>
     <string name="consigliami_type_cup">Cup</string>
     <string name="consigliami_type_rally">Rally</string>
-    <string name="consigliami_detail_no_characters">Nessun personaggio guadagna outfit da questo evento</string>
+    <string name="consigliami_detail_no_characters">Su questi percorsi nessuno stand Yoshi\'s noto ha cibi per gli outfit che ti mancano</string>
     <string name="consigliami_weigh_results">Pesa i risultati</string>
     <string name="consigliami_weight_label">Peso dei risultati: %1$d%%</string>
     <string name="consigliami_reference_cc">Cilindrata di riferimento</string>
@@ -77,7 +76,7 @@
     <string name="settings_info_section">Info</string>
     <string name="settings_source_revid_format">%1$s · rev %2$d</string>
     <string name="settings_images_title">Immagini</string>
-    <string name="settings_images_disclaimer">Le immagini di personaggi, outfit, Gran Premi e Knockout Tour vengono da Super Mario Wiki (mariowiki.com) e si scaricano quando c\'è una connessione: non sono incluse nell\'app. Mario Kart World, i suoi personaggi e le relative immagini sono © Nintendo. KartLog è un progetto amatoriale, non affiliato né approvato da Nintendo.</string>
+    <string name="settings_images_disclaimer">Le immagini di personaggi, outfit, cibi, Gran Premi e Knockout Tour vengono da Super Mario Wiki (mariowiki.com) e si scaricano quando c\'è una connessione: non sono incluse nell\'app. Mario Kart World, i suoi personaggi e le relative immagini sono © Nintendo. KartLog è un progetto amatoriale, non affiliato né approvato da Nintendo.</string>
 
     <string name="placeholder_coming_soon">Schermata in arrivo</string>
 
@@ -109,7 +108,7 @@
     <string name="language_system">Sistema</string>
     <string name="language_italian">Italiano</string>
     <string name="language_english">English</string>
-    <string name="settings_food_names_note">I nomi italiani dei cibi sono una traduzione non ufficiale: nessuna fonte li riporta. Lo sono anche le condizioni della modalità specchio, tradotte da mariowiki.com perché la versione italiana del wiki è meno aggiornata.</string>
+    <string name="settings_food_names_note">I nomi italiani dei cibi sono una traduzione non ufficiale: nessuna fonte li riporta. Lo sono anche i luoghi e i tipi di locale degli stand Yoshi\'s, e le condizioni della modalità specchio, tradotte da mariowiki.com perché la versione italiana del wiki è meno aggiornata.</string>
     <string name="results_mirror_info_title">Modalità specchio</string>
     <string name="results_mirror_info_cd">Come sbloccare la modalità specchio</string>
     <string name="skin_unlock_how">Come si sblocca</string>

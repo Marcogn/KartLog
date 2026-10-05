@@ -10,14 +10,16 @@ import com.marcogn.kartlog.data.local.entity.CharacterEntity
 import com.marcogn.kartlog.data.local.entity.CourseEntity
 import com.marcogn.kartlog.data.local.entity.EventEntity
 import com.marcogn.kartlog.data.local.entity.EventStopEntity
-import com.marcogn.kartlog.data.local.entity.FoodGroupCourseEntity
 import com.marcogn.kartlog.data.local.entity.FoodGroupEntity
+import com.marcogn.kartlog.data.local.entity.FoodVariantEntity
 import com.marcogn.kartlog.data.local.entity.OutfitEntity
 import com.marcogn.kartlog.data.local.entity.OutfitFoodRuleEntity
 import com.marcogn.kartlog.data.local.entity.PSwitchEntity
 import com.marcogn.kartlog.data.local.entity.PeachMedallionEntity
 import com.marcogn.kartlog.data.local.entity.QuestionPanelEntity
 import com.marcogn.kartlog.data.local.entity.RegionEntity
+import com.marcogn.kartlog.data.local.entity.YoshiStandEntity
+import com.marcogn.kartlog.data.local.entity.YoshiStandFoodEntity
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -41,7 +43,13 @@ interface SeedDao {
     suspend fun insertOutfitFoodRules(items: List<OutfitFoodRuleEntity>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertFoodGroupCourses(items: List<FoodGroupCourseEntity>)
+    suspend fun insertFoodVariants(items: List<FoodVariantEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertYoshiStands(items: List<YoshiStandEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertYoshiStandFoods(items: List<YoshiStandFoodEntity>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCourses(items: List<CourseEntity>)
@@ -79,8 +87,14 @@ interface SeedDao {
     @Query("DELETE FROM outfit_food_rules")
     suspend fun clearOutfitFoodRules()
 
-    @Query("DELETE FROM food_group_courses")
-    suspend fun clearFoodGroupCourses()
+    @Query("DELETE FROM food_variants")
+    suspend fun clearFoodVariants()
+
+    @Query("DELETE FROM yoshi_stands")
+    suspend fun clearYoshiStands()
+
+    @Query("DELETE FROM yoshi_stand_foods")
+    suspend fun clearYoshiStandFoods()
 
     @Query("DELETE FROM courses")
     suspend fun clearCourses()
@@ -109,7 +123,9 @@ interface SeedDao {
     @Transaction
     suspend fun replaceAll(seed: SeedContent) {
         clearOutfitFoodRules()
-        clearFoodGroupCourses()
+        clearYoshiStandFoods()
+        clearYoshiStands()
+        clearFoodVariants()
         clearEventStops()
         clearOutfits()
         clearPSwitches()
@@ -133,16 +149,19 @@ interface SeedDao {
         insertPSwitches(seed.pSwitches)
         insertOutfits(seed.outfits)
         insertEventStops(seed.eventStops)
-        insertFoodGroupCourses(seed.foodGroupCourses)
+        insertFoodVariants(seed.foodVariants)
+        insertYoshiStands(seed.yoshiStands)
+        insertYoshiStandFoods(seed.yoshiStandFoods)
         insertOutfitFoodRules(seed.outfitFoodRules)
     }
 
-    /** Tutti gli URL delle immagini (personaggi, outfit, eventi), per il prefetch all'avvio. */
+    /** Tutti gli URL delle immagini (personaggi, outfit, eventi, cibi), per il prefetch all'avvio. */
     @Query(
         """
         SELECT imageUrl FROM characters WHERE imageUrl IS NOT NULL
         UNION SELECT imageUrl FROM outfits WHERE imageUrl IS NOT NULL
         UNION SELECT imageUrl FROM events WHERE imageUrl IS NOT NULL
+        UNION SELECT imageUrl FROM food_variants WHERE imageUrl IS NOT NULL
         """
     )
     suspend fun allImageUrls(): List<String>
@@ -166,7 +185,9 @@ data class SeedContent(
     val outfits: List<OutfitEntity>,
     val foodGroups: List<FoodGroupEntity>,
     val outfitFoodRules: List<OutfitFoodRuleEntity>,
-    val foodGroupCourses: List<FoodGroupCourseEntity>,
+    val foodVariants: List<FoodVariantEntity>,
+    val yoshiStands: List<YoshiStandEntity>,
+    val yoshiStandFoods: List<YoshiStandFoodEntity>,
     val courses: List<CourseEntity>,
     val regions: List<RegionEntity>,
     val areas: List<AreaEntity>,
