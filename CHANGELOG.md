@@ -6,6 +6,8 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-10-05
+
 - **Risultati con la grafica del gioco.** Ogni evento è una tessera (arancio i Gran Premi, verde i
   Knockout Tour) con icona dal contorno nero, nome e il trofeo in una pillola (grigia se non ce
   l'hai, gialla se l'hai); la scelta del trofeo è un popup del gioco con un pulsante per trofeo e
