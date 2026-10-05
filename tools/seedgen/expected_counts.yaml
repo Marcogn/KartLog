@@ -40,3 +40,11 @@ p_switches: 394
 # Verifica 28/09/2026: pagina "? Panel" di Super Mario Wiki ("There are 150 ? Panels in total, with ten in
 # Crown City and five in every other course"), stesso numero in mkworld-checklist (commit ee86055).
 question_panels: 150
+
+# Verifica 05/10/2026 (fase C1). Pagina "Dash Food" (revid 5455370): "There are 60 kinds of Dash
+# Food", una riga per cibo nella tabella "List of food" (il gruppo sushi ne ha quattro, l'ultimo è il
+# piatto triplo). Pagina "List of Yoshi's locations" (revid 5263331): 70 righe in "Course locations"
+# (21 percorsi) e 39 in "Route locations", ognuna con la sua foto = uno stand.
+food_variants: 60
+yoshi_course_stands: 70
+yoshi_route_stands: 39
