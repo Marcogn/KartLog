@@ -80,6 +80,7 @@ private fun ImageOverInitials(
     dimmed: Boolean,
     initialsStyle: TextStyle,
     alignment: Alignment,
+    contentScale: ContentScale = ContentScale.Crop,
 ) {
     var loaded by remember(imageUrl) { mutableStateOf(false) }
     if (!loaded) {
@@ -89,7 +90,7 @@ private fun ImageOverInitials(
         AsyncImage(
             model = imageUrl,
             contentDescription = name,
-            contentScale = ContentScale.Crop,
+            contentScale = contentScale,
             alignment = alignment,
             colorFilter = rememberGrayscale(dimmed),
             onSuccess = { loaded = true },
@@ -109,6 +110,14 @@ fun CharacterAvatar(
 ) {
     Box(modifier = modifier.size(size).clip(CircleShape)) {
         ImageOverInitials(name, imageUrl, dimmed, MaterialTheme.typography.titleMedium, Alignment.TopCenter)
+    }
+}
+
+/** Immagine di un cibo (quadrata, intera, senza ritagli) con le iniziali finché non è caricata. */
+@Composable
+fun FoodImage(name: String, imageUrl: String?, modifier: Modifier = Modifier, size: Dp = 72.dp) {
+    Box(modifier = modifier.size(size).clip(RoundedCornerShape(12.dp))) {
+        ImageOverInitials(name, imageUrl, false, MaterialTheme.typography.titleMedium, Alignment.Center, ContentScale.Fit)
     }
 }
 

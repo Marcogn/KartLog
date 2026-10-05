@@ -15,6 +15,14 @@ sealed interface Destination {
     @Serializable
     data class SkinDetail(val characterId: String) : Destination
 
+    /** Sezione Cibi (griglia), sottovoce di Personaggi nel drawer. */
+    @Serializable
+    data object Food : Destination
+
+    /** Dettaglio di un gruppo di cibo: dove si trova e gli outfit che sblocca, raggiunto da [Food]. */
+    @Serializable
+    data class FoodDetail(val foodGroupId: String) : Destination
+
     @Serializable
     data object PeachMedallions : Destination
 

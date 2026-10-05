@@ -6,6 +6,10 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Nuova sezione Cibi.** Sottovoce di Personaggi nel drawer: una tessera per cibo con quanti outfit ti
+  mancano; toccandola vedi le varianti, dove trovarlo (sui percorsi e sulle strade, il sushi diviso per
+  variante) e gli outfit che sblocca per ogni personaggio, grigi se non li hai. Luoghi e nomi italiani
+  sono una traduzione non ufficiale; gli stand dei percorsi sono nell'area, non per forza sul tracciato.
 - **Consigliami parla di possibilità.** Gli stand Yoshi's di un percorso sono nell'area del
   percorso, non per forza sul tracciato di gara: ora i consigli dicono "fino a +N outfit" e
   "potrebbero esserci (occhi aperti)", con un avviso in cima al dettaglio e il promemoria che il

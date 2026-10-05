@@ -25,8 +25,8 @@ con chi) per avvicinarsi il più possibile alla collezione completa.
 ## Stato del progetto
 
 L'app è usabile e pubblicata (vedi [`CHANGELOG.md`](CHANGELOG.md)). Il
-lavoro in corso è in [`docs/roadmap.md`](docs/roadmap.md): revisione di
-Consigliami e una nuova sezione Cibi.
+lavoro in corso è in [`docs/roadmap.md`](docs/roadmap.md): revisione della
+grafica di Consigliami.
 
 ## Funzionalità
 
@@ -36,6 +36,9 @@ Dalla specifica completa ([`SPEC.md`](SPEC.md)):
   outfit per i 24 che ne hanno; per ciascuno, checklist degli outfit
   con i gruppi di cibo che li sbloccano e uno switch per lo stato di
   sblocco. I piloti senza outfit si segnano come sbloccati con un tap.
+- **Cibi**: sottosezione di Personaggi; per ogni cibo le varianti, dove
+  trovarlo (stand Yoshi's sui percorsi e sulle strade) e gli outfit che
+  sblocca per personaggio.
 - **Monete Peach**: le 200 monete una per una, con le istruzioni per
   trovarle e il tasto per vederle sulla mappa.
 - **Pulsanti P**: checklist per bioma e percorso, con ricerca e

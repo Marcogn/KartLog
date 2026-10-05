@@ -73,7 +73,23 @@ interface FoodDao {
         """
     )
     fun outfits(foodGroupId: String): Flow<List<FoodOutfitRow>>
+
+    /**
+     * I personaggi che hanno almeno un outfit oltre a quello di default, in ordine di roster: il
+     * dettaglio di un cibo ne ricava chi non ne ottiene nessuno da quel cibo.
+     */
+    @Query(
+        """
+        SELECT ch.id AS id, ch.name AS name, ch.nameIt AS nameIt, ch.imageUrl AS imageUrl
+        FROM characters ch
+        WHERE EXISTS (SELECT 1 FROM outfits o WHERE o.characterId = ch.id AND o.isDefault = 0)
+        ORDER BY ch.rosterOrder
+        """
+    )
+    fun charactersWithOutfits(): Flow<List<FoodCharacterRow>>
 }
+
+data class FoodCharacterRow(val id: String, val name: String, val nameIt: String?, val imageUrl: String?)
 
 data class FoodGroupSummaryRow(
     val id: String,

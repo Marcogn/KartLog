@@ -95,6 +95,13 @@ class FoodDaoTest {
         assertEquals("Hero", outfits.first().characterName)
     }
 
+    @Test
+    fun `i personaggi con outfit sono quelli che ne hanno oltre al default`() = runBlocking {
+        val characters = db.foodDao().charactersWithOutfits().first()
+
+        assertEquals(listOf("hero", "sidekick"), characters.map { it.id })
+    }
+
     private companion object {
         /** Seed inventato per i test: FAKE_FOR_TESTS, nessun dato di gioco. */
         val FAKE_FOR_TESTS = SeedContent(

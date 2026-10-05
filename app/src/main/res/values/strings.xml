@@ -142,4 +142,23 @@
     <string name="drawer_collectibles">Collezionabili</string>
     <string name="drawer_panels">Pannelli ?</string>
     <string name="panels_title">Pannelli ?</string>
+
+    <string name="drawer_food">Cibi</string>
+    <string name="food_title">Cibi</string>
+    <plurals name="food_missing">
+        <item quantity="one">Ne manca %1$d</item>
+        <item quantity="other">Ne mancano %1$d</item>
+    </plurals>
+    <string name="food_no_outfits">Nessun outfit</string>
+    <string name="food_boost">Boost: %1$s</string>
+    <string name="food_boost_small">piccolo</string>
+    <string name="food_boost_medium">medio</string>
+    <string name="food_boost_large">grande</string>
+    <string name="food_where">Dove si trova</string>
+    <string name="food_on_courses">Sui percorsi</string>
+    <string name="food_on_roads">Sulle strade</string>
+    <string name="food_no_stands">Nessuno stand noto con questo cibo.</string>
+    <string name="food_outfits">Outfit che sblocca</string>
+    <string name="food_no_outfits_given">Questo cibo non sblocca outfit.</string>
+    <string name="food_without_outfit">Nessun outfit da questo cibo per: %1$s.</string>
 </resources>
