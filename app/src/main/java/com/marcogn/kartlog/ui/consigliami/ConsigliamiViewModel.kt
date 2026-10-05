@@ -18,7 +18,7 @@ import com.marcogn.kartlog.domain.consigliami.ConsigliamiOutfit
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiRule
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiStandFood
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiUseCase
-import com.marcogn.kartlog.domain.consigliami.RecommendationGroup
+import com.marcogn.kartlog.domain.consigliami.EventScore
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.EventType
 import com.marcogn.kartlog.domain.model.TrophyRank
@@ -35,9 +35,9 @@ import kotlinx.coroutines.flow.stateIn
 enum class ConsigliamiEventFilter { CUP, RALLY, BOTH }
 
 data class ConsigliamiUiState(
-    val groups: List<RecommendationGroup> = emptyList(),
+    /** In ordine di classifica: la posizione è l'indice + 1 (SPEC §6.4). */
+    val events: List<EventScore> = emptyList(),
     val eventFilter: ConsigliamiEventFilter = ConsigliamiEventFilter.BOTH,
-    val onlyUseful: Boolean = true,
     val resultsEnabled: Boolean = false,
     val weight: Double = 0.3,
     val referenceCc: Cc = Cc.CC_150,
@@ -71,7 +71,6 @@ class ConsigliamiViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val eventFilter = MutableStateFlow(ConsigliamiEventFilter.BOTH)
-    private val onlyUseful = MutableStateFlow(true)
     private val resultsEnabled = MutableStateFlow(false)
     private val weight = MutableStateFlow(0.3)
     private val referenceCc = MutableStateFlow(Cc.CC_150)
@@ -94,9 +93,8 @@ class ConsigliamiViewModel @Inject constructor(
     val uiState: StateFlow<ConsigliamiUiState> = combine(
         rawData,
         eventFilter,
-        onlyUseful,
         resultsSettings,
-    ) { raw, filter, useful, results ->
+    ) { raw, filter, results ->
         val eventStopsByEvent = raw.eventStops.groupBy({ it.eventId }, { it.courseId })
         val events = raw.events
             .filter { filter == ConsigliamiEventFilter.BOTH || it.type == filter.toEventType() }
@@ -110,7 +108,7 @@ class ConsigliamiViewModel @Inject constructor(
             .filter { it.cc == results.cc }
             .associate { it.eventId to it.rank }
 
-        var groups = ConsigliamiUseCase.compute(
+        val ranked = ConsigliamiUseCase.compute(
             characters = raw.characters.map { ConsigliamiCharacter(it.id, it.rosterOrder, it.unlocked) },
             outfits = raw.outfits.map { ConsigliamiOutfit(it.id, it.characterId, it.owned) },
             rules = raw.rules.map { ConsigliamiRule(it.outfitId, it.foodGroupId) },
@@ -121,19 +119,9 @@ class ConsigliamiViewModel @Inject constructor(
             bestRankForEvent = { eventId -> bestRankByEvent[eventId] },
         )
 
-        // Filtro "Solo utili" (SPEC §6.3, default on): nasconde gli eventi a punteggio 0, mai i
-        // gruppi che restano con almeno un evento utile.
-        if (useful) {
-            groups = groups.mapNotNull { group ->
-                val kept = group.events.filter { it.score > 0 }
-                if (kept.isEmpty()) null else group.copy(events = kept)
-            }
-        }
-
         ConsigliamiUiState(
-            groups = groups,
+            events = ranked,
             eventFilter = filter,
-            onlyUseful = useful,
             resultsEnabled = results.enabled,
             weight = results.weight,
             referenceCc = results.cc,
@@ -148,10 +136,6 @@ class ConsigliamiViewModel @Inject constructor(
 
     fun onEventFilterChanged(filter: ConsigliamiEventFilter) {
         eventFilter.value = filter
-    }
-
-    fun onOnlyUsefulChanged(value: Boolean) {
-        onlyUseful.value = value
     }
 
     fun onResultsEnabledChanged(value: Boolean) {

@@ -10,18 +10,34 @@ import org.junit.Test
 class ConsigliamiUseCaseTest {
 
     @Test
-    fun `nessun outfit mancante azzera tutti i gain e la lista e vuota con solo utili`() {
+    fun `nessun outfit mancante lascia la lista vuota`() {
         val characters = listOf(ConsigliamiCharacter("mario", 0, unlocked = true))
         val outfits = listOf(ConsigliamiOutfit("mario_a", "mario", owned = true))
         val rules = listOf(ConsigliamiRule("mario_a", "fg1"))
         val standFoods = listOf(ConsigliamiStandFood("course1", "fg1"))
         val events = listOf(ConsigliamiEvent("cup1", EventType.CUP, "Cup 1", 0, listOf("course1")))
 
-        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
-        val allEvents = groups.flatMap { it.events }
+        assertTrue(ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events).isEmpty())
+    }
 
-        assertTrue(allEvents.all { it.score == 0.0 && it.best == null })
-        assertTrue("il filtro \"Solo utili\" deve svuotare la lista", allEvents.none { it.score > 0 })
+    @Test
+    fun `un evento senza outfit resta fuori anche con i risultati attivi`() {
+        val characters = listOf(ConsigliamiCharacter("mario", 0, unlocked = true))
+        val outfits = listOf(ConsigliamiOutfit("mario_a", "mario", owned = false))
+        val rules = listOf(ConsigliamiRule("mario_a", "fg1"))
+        val standFoods = listOf(ConsigliamiStandFood("course1", "fg1"))
+        val events = listOf(
+            ConsigliamiEvent("useful", EventType.CUP, "Utile", 0, listOf("course1")),
+            // Nessun trofeo: improvement 1, quindi con w > 0 il suo score sarebbe positivo.
+            ConsigliamiEvent("useless", EventType.CUP, "Inutile", 1, listOf("course2")),
+        )
+
+        val ranked = ConsigliamiUseCase.compute(
+            characters, outfits, rules, standFoods, events,
+            resultsEnabled = true, weight = 0.3,
+        )
+
+        assertEquals(listOf("useful"), ranked.map { it.event.id })
     }
 
     @Test
@@ -44,7 +60,7 @@ class ConsigliamiUseCaseTest {
         val events = listOf(ConsigliamiEvent("cup1", EventType.CUP, "Cup 1", 0, listOf("course1")))
 
         val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
-        val event = groups.single().events.single()
+        val event = groups.single()
 
         assertEquals("luigi", event.best?.characterId)
         assertEquals(1, event.score.toInt())
@@ -63,7 +79,7 @@ class ConsigliamiUseCaseTest {
 
         val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
 
-        assertEquals(1, groups.single().events.single().score.toInt())
+        assertEquals(1, groups.single().score.toInt())
     }
 
     @Test
@@ -79,7 +95,7 @@ class ConsigliamiUseCaseTest {
 
         val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
 
-        assertEquals(1, groups.single().events.single().score.toInt())
+        assertEquals(1, groups.single().score.toInt())
     }
 
     @Test
@@ -100,7 +116,7 @@ class ConsigliamiUseCaseTest {
 
         val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
 
-        assertEquals("luigi", groups.single().events.single().best?.characterId)
+        assertEquals("luigi", groups.single().best?.characterId)
     }
 
     @Test
@@ -119,11 +135,11 @@ class ConsigliamiUseCaseTest {
 
         val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
 
-        assertEquals("mario", groups.single().events.single().best?.characterId)
+        assertEquals("mario", groups.single().best?.characterId)
     }
 
     @Test
-    fun `eventi che condividono lo stesso corso ricco finiscono nello stesso gruppo`() {
+    fun `a parita di score e total gli eventi restano tutti in lista uno dopo l'altro`() {
         val characters = listOf(ConsigliamiCharacter("mario", 0, unlocked = true))
         val outfits = listOf(ConsigliamiOutfit("mario_a", "mario", owned = false))
         val rules = listOf(ConsigliamiRule("mario_a", "fg1"))
@@ -134,13 +150,9 @@ class ConsigliamiUseCaseTest {
             ConsigliamiEvent("rally1", EventType.RALLY, "Rally 1", 2, listOf("rich_course", "empty3")),
         )
 
-        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
+        val ranked = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
 
-        assertEquals(1, groups.size)
-        val group = groups.single()
-        assertEquals(1, group.position)
-        assertEquals(3, group.events.size)
-        assertEquals(setOf("rich_course"), group.commonCourseIds)
+        assertEquals(listOf("cup1", "cup2", "rally1"), ranked.map { it.event.id })
     }
 
     @Test
@@ -156,11 +168,11 @@ class ConsigliamiUseCaseTest {
 
         val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
 
-        assertEquals(listOf("cup1", "rally1"), groups.single().events.map { it.event.id })
+        assertEquals(listOf("cup1", "rally1"), groups.map { it.event.id })
     }
 
     @Test
-    fun `più corsi utili precede a parita di posizione`() {
+    fun `più corsi utili precede a parita di score e total`() {
         val characters = listOf(ConsigliamiCharacter("mario", 0, unlocked = true))
         val outfits = listOf(ConsigliamiOutfit("mario_a", "mario", owned = false))
         val rules = listOf(ConsigliamiRule("mario_a", "fg1"))
@@ -169,18 +181,17 @@ class ConsigliamiUseCaseTest {
             ConsigliamiStandFood("courseB", "fg1"),
         )
         val events = listOf(
-            ConsigliamiEvent("manyStops", EventType.CUP, "Many", 0, listOf("courseA", "courseB", "empty")),
-            ConsigliamiEvent("oneStop", EventType.CUP, "One", 1, listOf("courseA", "empty2")),
+            ConsigliamiEvent("oneStop", EventType.CUP, "One", 0, listOf("courseA", "empty2")),
+            ConsigliamiEvent("manyStops", EventType.CUP, "Many", 1, listOf("courseA", "courseB", "empty")),
         )
 
-        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
+        val ranked = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
 
-        assertEquals("stessa posizione (stesso score e total)", 1, groups.size)
-        assertEquals(listOf("manyStops", "oneStop"), groups.single().events.map { it.event.id })
+        assertEquals(listOf("manyStops", "oneStop"), ranked.map { it.event.id })
     }
 
     @Test
-    fun `numerazione competition ranking corretta 1 1 3`() {
+    fun `l'evento con piu outfit viene prima`() {
         val characters = listOf(ConsigliamiCharacter("mario", 0, unlocked = true))
         val outfits = listOf(
             ConsigliamiOutfit("mario_a", "mario", owned = false),
@@ -192,17 +203,15 @@ class ConsigliamiUseCaseTest {
             ConsigliamiStandFood("course2", "fg2"),
         )
         val events = listOf(
-            ConsigliamiEvent("e1", EventType.CUP, "E1", 0, listOf("course1", "course2")),
-            ConsigliamiEvent("e2", EventType.CUP, "E2", 1, listOf("course1", "course2")),
-            ConsigliamiEvent("e3", EventType.CUP, "E3", 2, listOf("course1")),
+            ConsigliamiEvent("e3", EventType.CUP, "E3", 0, listOf("course1")),
+            ConsigliamiEvent("e1", EventType.CUP, "E1", 1, listOf("course1", "course2")),
+            ConsigliamiEvent("e2", EventType.CUP, "E2", 2, listOf("course1", "course2")),
         )
 
-        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
-        val positionById = groups.flatMap { g -> g.events.map { it.event.id to g.position } }.toMap()
+        val ranked = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
 
-        assertEquals(1, positionById["e1"])
-        assertEquals(1, positionById["e2"])
-        assertEquals(3, positionById["e3"])
+        // Posizione = indice + 1: 1, 2, 3 anche se e1 ed e2 hanno lo stesso guadagno.
+        assertEquals(listOf("e1", "e2", "e3"), ranked.map { it.event.id })
     }
 
     @Test
@@ -221,7 +230,7 @@ class ConsigliamiUseCaseTest {
         val event = events.first()
         val details = ConsigliamiUseCase.detailFor(event, characters, outfits, rules, standFoods)
 
-        assertTrue(groups.flatMap { it.events }.all { it.score == 0.0 && it.best == null && it.relevantFoods.isEmpty() })
+        assertTrue(groups.isEmpty())
         assertTrue(details.isEmpty())
     }
 
@@ -233,7 +242,7 @@ class ConsigliamiUseCaseTest {
         val standFoods = List(3) { ConsigliamiStandFood("course1", "fg1") }
         val events = listOf(ConsigliamiEvent("cup1", EventType.CUP, "Cup 1", 0, listOf("course1")))
 
-        val score = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events).single().events.single()
+        val score = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events).single()
 
         assertEquals(1, score.best?.gain)
         assertEquals(listOf(RelevantFood("fg1", "course1")), score.relevantFoods)
@@ -317,7 +326,7 @@ class ConsigliamiUseCaseTest {
             resultsEnabled = true, weight = 1.0, bestRankForEvent = bestRank,
         )
 
-        assertEquals(listOf("e1", "e2"), groups.flatMap { it.events }.map { it.event.id })
+        assertEquals(listOf("e1", "e2"), groups.map { it.event.id })
     }
 
     @Test
@@ -345,7 +354,7 @@ class ConsigliamiUseCaseTest {
             bestRankForEvent = bestRank, // resultsEnabled di default è false
         )
 
-        assertEquals(listOf("e2", "e1"), groups.flatMap { it.events }.map { it.event.id })
+        assertEquals(listOf("e2", "e1"), groups.map { it.event.id })
     }
 
     @Test
@@ -376,7 +385,7 @@ class ConsigliamiUseCaseTest {
         )
 
         // Senza risultati la Cup vincerebbe lo spareggio typeRank; con i trofei vince il Rally.
-        assertEquals(listOf("rally", "cup"), groups.flatMap { it.events }.map { it.event.id })
-        assertEquals(1.0 - 2.0 / 6.0, groups.first().events.single().improvement, 1e-9)
+        assertEquals(listOf("rally", "cup"), groups.map { it.event.id })
+        assertEquals(1.0 - 2.0 / 6.0, groups.first().improvement, 1e-9)
     }
 }

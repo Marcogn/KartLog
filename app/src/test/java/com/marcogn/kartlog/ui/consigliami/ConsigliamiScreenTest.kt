@@ -3,6 +3,9 @@ package com.marcogn.kartlog.ui.consigliami
 import android.content.Context
 import androidx.annotation.StringRes
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasScrollToNodeAction
+import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
@@ -13,7 +16,6 @@ import com.marcogn.kartlog.R
 import com.marcogn.kartlog.domain.consigliami.CharacterGain
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiEvent
 import com.marcogn.kartlog.domain.consigliami.EventScore
-import com.marcogn.kartlog.domain.consigliami.RecommendationGroup
 import com.marcogn.kartlog.domain.consigliami.RelevantFood
 import com.marcogn.kartlog.domain.model.AppLocale
 import com.marcogn.kartlog.domain.model.EventType
@@ -50,20 +52,10 @@ class ConsigliamiScreenTest {
     )
 
     private val state = ConsigliamiUiState(
-        groups = listOf(
-            RecommendationGroup(
-                1,
-                listOf(score("fake_gp", EventType.CUP, "GP FAKE_FOR_TESTS", "fake_char", listOf(RelevantFood("fake_food", "fake_course")))),
-                emptySet(),
-            ),
-            RecommendationGroup(
-                2,
-                listOf(
-                    score("fake_ko1", EventType.RALLY, "KO uno FAKE_FOR_TESTS", "fake_char"),
-                    score("fake_ko2", EventType.RALLY, "KO due FAKE_FOR_TESTS", "fake_char"),
-                ),
-                setOf("fake_course"),
-            ),
+        events = listOf(
+            score("fake_gp", EventType.CUP, "GP FAKE_FOR_TESTS", "fake_char", listOf(RelevantFood("fake_food", "fake_course"))),
+            score("fake_ko1", EventType.RALLY, "KO uno FAKE_FOR_TESTS", "fake_char"),
+            score("fake_ko2", EventType.RALLY, "KO due FAKE_FOR_TESTS", "fake_char"),
         ),
         characterNames = mapOf("fake_char" to "Pilota FAKE_FOR_TESTS"),
         courseNames = mapOf("fake_course" to "Percorso FAKE_FOR_TESTS"),
@@ -80,7 +72,6 @@ class ConsigliamiScreenTest {
             onMenuClick = {},
             onEventClick = onEvent,
             onEventFilterChanged = onFilter,
-            onOnlyUsefulChanged = {},
             onResultsEnabledChanged = {},
             onWeightChanged = {},
             onReferenceCcChanged = {},
@@ -98,16 +89,12 @@ class ConsigliamiScreenTest {
     }
 
     @Test
-    fun `il gruppo a pari merito si apre e si chiude`() {
-        show(state.copy(groups = state.groups.reversed()))
-        compose.onNodeWithText(str(R.string.consigliami_group_title_common, 2, "Percorso FAKE_FOR_TESTS")).assertIsDisplayed()
-        compose.onNodeWithText("KO uno FAKE_FOR_TESTS").assertDoesNotExist()
-        // Chiuso, il gruppo mostra comunque la sua posizione: la classifica non sembra partire dalla card dopo.
-        compose.onNodeWithText(str(R.string.consigliami_position_format, 2), substring = true).assertIsDisplayed()
-        compose.onNodeWithContentDescription(str(R.string.consigliami_group_expand_cd)).performClick()
-        compose.onNodeWithText("KO uno FAKE_FOR_TESTS").assertIsDisplayed()
-        compose.onNodeWithContentDescription(str(R.string.consigliami_group_collapse_cd)).performClick()
-        compose.onNodeWithText("KO uno FAKE_FOR_TESTS").assertDoesNotExist()
+    fun `le posizioni sono progressive anche a pari guadagno`() {
+        show()
+        compose.onNode(hasScrollToNodeAction()).performScrollToNode(hasText("KO due FAKE_FOR_TESTS", substring = true))
+        // La card cliccabile unisce i suoi testi in un solo nodo: si cerca il nome con la sua posizione.
+        compose.onNode(hasText("KO due FAKE_FOR_TESTS", substring = true) and hasText(str(R.string.consigliami_position_format, 3), substring = true))
+            .assertIsDisplayed()
     }
 
     @Test

@@ -9,11 +9,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ExpandLess
-import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -40,7 +38,6 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.marcogn.kartlog.R
 import com.marcogn.kartlog.domain.consigliami.CharacterGain
 import com.marcogn.kartlog.domain.consigliami.EventScore
-import com.marcogn.kartlog.domain.consigliami.RecommendationGroup
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.EventType
 import com.marcogn.kartlog.domain.model.TrophyRank
@@ -78,7 +75,6 @@ fun ConsigliamiScreen(
         onMenuClick = onMenuClick,
         onEventClick = onEventClick,
         onEventFilterChanged = viewModel::onEventFilterChanged,
-        onOnlyUsefulChanged = viewModel::onOnlyUsefulChanged,
         onResultsEnabledChanged = viewModel::onResultsEnabledChanged,
         onWeightChanged = viewModel::onWeightChanged,
         onReferenceCcChanged = viewModel::onReferenceCcChanged,
@@ -92,7 +88,6 @@ internal fun ConsigliamiContent(
     onMenuClick: () -> Unit,
     onEventClick: (eventId: String) -> Unit,
     onEventFilterChanged: (ConsigliamiEventFilter) -> Unit,
-    onOnlyUsefulChanged: (Boolean) -> Unit,
     onResultsEnabledChanged: (Boolean) -> Unit,
     onWeightChanged: (Double) -> Unit,
     onReferenceCcChanged: (Cc) -> Unit,
@@ -122,14 +117,13 @@ internal fun ConsigliamiContent(
                 ControlsPanel(
                     state = state,
                     onEventFilterChanged = onEventFilterChanged,
-                    onOnlyUsefulChanged = onOnlyUsefulChanged,
                     onResultsEnabledChanged = onResultsEnabledChanged,
                     onWeightChanged = onWeightChanged,
                     onReferenceCcChanged = onReferenceCcChanged,
                     onInfoClick = { showInfo = true },
                 )
             }
-            if (state.groups.isEmpty()) {
+            if (state.events.isEmpty()) {
                 item(key = "empty") {
                     OutlinedTitle(
                         stringResource(R.string.consigliami_no_recommendations),
@@ -139,17 +133,18 @@ internal fun ConsigliamiContent(
                     )
                 }
             } else {
-                items(state.groups, key = { it.position }) { group ->
-                    GroupSection(
-                        group = group,
+                itemsIndexed(state.events, key = { _, event -> event.event.id }) { index, event ->
+                    EventCard(
+                        eventScore = event,
+                        position = index + 1,
                         characterNames = state.characterNames,
                         characterImages = state.characterImages,
-                        eventImages = state.eventImages,
+                        eventImageUrl = state.eventImages[event.event.id],
                         courseNames = state.courseNames,
                         foodGroupNames = state.foodGroupNames,
-                        bestRankByEvent = if (state.resultsEnabled) state.bestRankByEvent else emptyMap(),
+                        bestRank = if (state.resultsEnabled) state.bestRankByEvent[event.event.id] else null,
                         referenceCc = state.referenceCc,
-                        onEventClick = onEventClick,
+                        onClick = { onEventClick(event.event.id) },
                     )
                 }
             }
@@ -168,7 +163,6 @@ internal fun ConsigliamiContent(
 private fun ControlsPanel(
     state: ConsigliamiUiState,
     onEventFilterChanged: (ConsigliamiEventFilter) -> Unit,
-    onOnlyUsefulChanged: (Boolean) -> Unit,
     onResultsEnabledChanged: (Boolean) -> Unit,
     onWeightChanged: (Double) -> Unit,
     onReferenceCcChanged: (Cc) -> Unit,
@@ -195,12 +189,6 @@ private fun ControlsPanel(
                 }
                 KartInfoButton(stringResource(R.string.consigliami_info_cd), onClick = onInfoClick)
             }
-            KartSwitchRow(
-                label = stringResource(R.string.consigliami_only_useful),
-                checked = state.onlyUseful,
-                onCheckedChange = onOnlyUsefulChanged,
-                modifier = Modifier.fillMaxWidth(),
-            )
             KartSwitchRow(
                 label = stringResource(R.string.consigliami_weigh_results),
                 checked = state.resultsEnabled,
@@ -240,69 +228,6 @@ private fun ControlsPanel(
                         )
                     }
                 }
-            }
-        }
-    }
-}
-
-@Composable
-private fun GroupSection(
-    group: RecommendationGroup,
-    characterNames: Map<String, String>,
-    characterImages: Map<String, String>,
-    eventImages: Map<String, String>,
-    courseNames: Map<String, String>,
-    foodGroupNames: Map<String, String>,
-    bestRankByEvent: Map<String, TrophyRank>,
-    referenceCc: Cc,
-    onEventClick: (String) -> Unit,
-) {
-    var expanded by rememberSaveable(group.position) { mutableStateOf(group.events.size <= 1) }
-
-    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        if (group.events.size > 1) {
-            val title = if (group.commonCourseIds.isNotEmpty()) {
-                val names = group.commonCourseIds.mapNotNull { courseNames[it] }.sorted().joinToString(", ")
-                stringResource(R.string.consigliami_group_title_common, group.events.size, names)
-            } else {
-                stringResource(R.string.consigliami_group_title_generic, group.events.size)
-            }
-            // Tessera del gruppo con la sua posizione: chiuso, senza il numero sembrerebbe che la
-            // classifica parta dalla card successiva (1, 1, 3: "competition ranking", SPEC §6.4).
-            KartPanel(colors = KartTiles.Pink, onClick = { expanded = !expanded }, modifier = Modifier.fillMaxWidth()) {
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(start = 12.dp, top = 6.dp, bottom = 6.dp, end = 4.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
-                ) {
-                    KartCounterPill(stringResource(R.string.consigliami_position_format, group.position), KartTiles.Pink)
-                    OutlinedTitle(title, Modifier.weight(1f), fontSize = 18.sp, textAlign = TextAlign.Start, maxLines = 3)
-                    IconButton(onClick = { expanded = !expanded }) {
-                        Icon(
-                            if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
-                            contentDescription = stringResource(
-                                if (expanded) R.string.consigliami_group_collapse_cd else R.string.consigliami_group_expand_cd,
-                            ),
-                            tint = Color.White,
-                        )
-                    }
-                }
-            }
-        }
-        if (group.events.size <= 1 || expanded) {
-            group.events.forEach { event ->
-                EventCard(
-                    eventScore = event,
-                    position = group.position,
-                    characterNames = characterNames,
-                    characterImages = characterImages,
-                    eventImageUrl = eventImages[event.event.id],
-                    courseNames = courseNames,
-                    foodGroupNames = foodGroupNames,
-                    bestRank = bestRankByEvent[event.event.id],
-                    referenceCc = referenceCc,
-                    onClick = { onEventClick(event.event.id) },
-                )
             }
         }
     }

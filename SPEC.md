@@ -88,10 +88,9 @@ In alto c'è il contatore globale (`x/200`, `x/394`). In basso a destra, in sovr
 
 ### 2.5 Consigliami
 Vedi §6 per l'algoritmo. UI:
-- Grafica del mockup (fase C3): in cima una tessera blu con i pulsantoni **Gran Premi** / **Knockout Tour** / **Entrambi**, gli switch (`KartSwitchRow`) e, con i risultati attivi, slider del peso e cilindrata di riferimento; l'avviso sugli stand ("occhi aperti", cambio d'abito disattivabile) sta dietro una "i" (`KartInfoButton` + `KartPopup`). Le card sono `KartPanel`: arancio i Gran Premi, verde i Knockout Tour.
+- Grafica del mockup (fase C3): in cima una tessera blu con i pulsantoni **Gran Premi** / **Knockout Tour** / **Entrambi**, lo switch "Pesa i risultati" (`KartSwitchRow`) e, con i risultati attivi, slider del peso e cilindrata di riferimento; l'avviso sugli stand ("occhi aperti", cambio d'abito disattivabile) sta dietro una "i" (`KartInfoButton` + `KartPopup`). Le card sono `KartPanel`: arancio i Gran Premi, verde i Knockout Tour.
 - Toggle: **Gran Premi** / **Knockout Tour** / **Entrambi**.
-- Lista ordinata per punteggio (decrescente), con **posizioni a pari merito** (1, 1, 1, 4…), come da §6.4.
-- Gli eventi a pari merito si raggruppano in **una card espandibile**. Se hanno in comune i corsi che generano il guadagno, il titolo li nomina: "4 eventi passano da Crown City · stesso guadagno". All'interno del gruppo restano ordinati con gli spareggi §6.4. La tessera del gruppo mostra la sua posizione anche chiusa: senza, la classifica sembrerebbe partire dalla card successiva (1, 1, 3).
+- Lista ordinata come da §6.4, una card per evento numerata 1, 2, 3… Solo gli eventi in cui almeno un personaggio sbloccato potrebbe ottenere un outfit: gli altri non compaiono mai (niente filtro "Solo utili", tolto il 05/10/2026).
 - Ogni card evento mostra:
   - nome evento, tipo (Cup/Rally) e posizione in classifica
   - **personaggio consigliato** e numero di outfit nuovi che potrebbe ottenere ("fino a +N")
@@ -338,9 +337,9 @@ Il criterio primario è **sempre** il gain del miglior singolo personaggio, perc
   score(E)       = (1 - w) * normGain(E) + w * improvement(E)
   ```
   La cilindrata di riferimento si seleziona in Consigliami (default 150cc).
-- Eventi con `gain = 0` finiscono in fondo, oppure vengono nascosti con il filtro "Solo utili" (default on).
+- Eventi con `gain(E, best(E)) = 0` esclusi dalla lista, anche con i risultati attivi (dove `w * improvement` darebbe loro uno score positivo).
 
-### 6.4 Pari merito e spareggi
+### 6.4 Ordinamento e posizione
 Metriche di supporto:
 ```
 relevantStops(E) = | { s ∈ EventStop(E) : ∃ f ∈ foods(corso di s) (§6.1) che sblocca un outfit in missing(best(E)) } |
@@ -348,7 +347,7 @@ worstFirst(E)    = improvement(E)            // solo se i risultati sono attivi
 typeRank(E)      = 0 se CUP, 1 se RALLY      // un GP corre un giro intero sul corso; un rally spesso lo attraversa solo in parte
 ```
 
-**Pari merito:** due eventi condividono la posizione quando hanno lo stesso `score(E)` **e** lo stesso `total(E)`. Numerazione "competition ranking": 1, 1, 1, 4. Il confronto sugli score continui usa una tolleranza di 1e-9.
+**Posizione:** l'indice nella lista ordinata + 1 (1, 2, 3…). Nessun numero condiviso a pari merito: fino al 05/10/2026 era "competition ranking" (1, 1, 3) con i pari merito in una card espandibile, ma a schermo sembrava che la classifica saltasse posti (decisione dell'autore).
 
 **Ordinamento completo** (decrescente dove non indicato):
 1. `score(E)`
@@ -358,21 +357,20 @@ typeRank(E)      = 0 se CUP, 1 se RALLY      // un GP corre un giro intero sul c
 5. `typeRank(E)` crescente (Cup prima di Rally)
 6. `Event.order` crescente
 
-I criteri 3–6 ordinano **dentro** il gruppo a pari merito ma non cambiano il numero di posizione.
-
-**Raggruppamento UI:** eventi con la stessa posizione formano un gruppo. `corsiComuni = ∩ dei corsi di E che contengono cibi utili per best(E)`. Se non è vuoto, il titolo del gruppo li elenca. Un gruppo di un solo evento si mostra come card normale.
+I criteri 3–6 decidono l'ordine tra eventi con stesso score e stesso total.
 
 ### 6.5 Test richiesti
-- Nessun outfit mancante: tutti i gain valgono 0 e la lista è vuota con "Solo utili".
+- Nessun outfit mancante: la lista è vuota.
+- Un evento senza outfit possibili resta fuori anche con i risultati attivi.
 - Un personaggio bloccato non viene mai consigliato.
 - Un outfit posseduto non conta.
 - Un cibo presente in due corsi dello stesso evento conta una sola volta per outfit.
 - Con `w = 1`, l'ordinamento dipende solo da `improvement`.
 - Tie-break deterministico.
-- Tre eventi che toccano lo stesso corso "ricco" e nessun altro cibo utile ottengono la stessa posizione e finiscono nello stesso gruppo, con quel corso nel titolo.
+- Tre eventi con stesso score e total restano tutti in lista, uno dopo l'altro.
 - A parità di tutto, una Cup precede un Rally.
-- Un evento con più corsi utili (`relevantStops` maggiore) precede uno con meno, a parità di posizione.
-- Numerazione competition ranking corretta: 1, 1, 3.
+- Un evento con più corsi utili (`relevantStops` maggiore) precede uno con meno, a parità di score e total.
+- L'evento con più outfit viene prima; posizioni progressive anche a pari guadagno.
 - Uno stand su una strada non dà gain a nessun evento (né cibi rilevanti né dettaglio).
 - Più stand con lo stesso cibo sullo stesso percorso contano una volta.
 - Il dettaglio dà, per ogni outfit, i cibi e i percorsi dell'evento da cui potrebbe arrivare, in ordine di tappa.

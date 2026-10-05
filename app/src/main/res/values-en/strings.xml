@@ -44,7 +44,6 @@
     <string name="consigliami_filter_cup">Grand Prix</string>
     <string name="consigliami_filter_rally">Knockout Tour</string>
     <string name="consigliami_filter_both">Both</string>
-    <string name="consigliami_only_useful">Useful only</string>
     <string name="consigliami_position_format">#%1$d</string>
     <string name="consigliami_recommended_character">Recommended character</string>
     <string name="consigliami_gain_format">up to +%1$d outfits</string>
@@ -54,10 +53,6 @@
     <string name="consigliami_info_title">How to read the advice</string>
     <string name="consigliami_info_cd">About the advice</string>
     <string name="consigliami_banner">The Yoshi\'s stands listed are in each course\'s area, not necessarily on the race track: keep your eyes open. If you turned off Dash Food outfit changes when choosing your vehicle, nothing unlocks.</string>
-    <string name="consigliami_group_title_common">%1$d events pass through %2$s · same gain</string>
-    <string name="consigliami_group_title_generic">%1$d events tied</string>
-    <string name="consigliami_group_collapse_cd">Collapse tied events</string>
-    <string name="consigliami_group_expand_cd">Show tied events</string>
     <string name="consigliami_no_recommendations">No useful events right now</string>
     <string name="consigliami_type_cup">Cup</string>
     <string name="consigliami_type_rally">Rally</string>
