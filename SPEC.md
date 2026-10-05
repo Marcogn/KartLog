@@ -60,7 +60,7 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 - L'outfit di default non è una riga spuntabile: è sempre posseduto e non si conta nei mancanti.
 
 ### 2.3.1 Cibi (fase C2)
-Sottosezione di Personaggi, raggiungibile dal drawer; non è un collezionabile e non ha stato utente. Da Personaggi non c'è ancora un accesso diretto (da proporre all'autore).
+Sottosezione di Personaggi, raggiungibile dal drawer; non è un collezionabile e non ha stato utente. Da Personaggi non c'è ancora un accesso diretto (fase R1: cibi toccabili nel dettaglio personaggio).
 
 **Griglia** (`ui/food/`, `Destination.Food`): una tessera `KartPanel` per gruppo di cibo (20, nell'ordine del seed), colonne adattive (min 150 dp), con l'immagine della prima variante (segnaposto con le iniziali finché non è caricata), il nome nella lingua dell'app (traduzione non ufficiale) e una pillola "Ne mancano N" con gli outfit che il cibo dà e che non hai (`outfit_food_rules` senza `owned_outfits`), oppure "Nessun outfit" (lunchbox). I cibi non si ingrigiscono mai.
 
