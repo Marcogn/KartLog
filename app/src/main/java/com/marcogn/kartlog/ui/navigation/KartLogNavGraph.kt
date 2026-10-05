@@ -25,6 +25,8 @@ import androidx.navigation.toRoute
 import com.marcogn.kartlog.domain.model.MapPointType
 import com.marcogn.kartlog.ui.consigliami.ConsigliamiDetailScreen
 import com.marcogn.kartlog.ui.consigliami.ConsigliamiScreen
+import com.marcogn.kartlog.ui.food.FoodDetailScreen
+import com.marcogn.kartlog.ui.food.FoodScreen
 import com.marcogn.kartlog.ui.home.HomeScreen
 import com.marcogn.kartlog.ui.map.MapScreen
 import com.marcogn.kartlog.ui.medallions.PeachMedallionsScreen
@@ -147,6 +149,17 @@ fun KartLogNavGraph(navController: NavHostController = rememberNavController()) 
             }
             composable<Destination.SkinDetail> { entry ->
                 SkinDetailScreen(onBack = { if (entry.lifecycleIsResumed()) navController.popBackStack() })
+            }
+            composable<Destination.Food> { entry ->
+                FoodScreen(
+                    onMenuClick = openDrawer,
+                    onFoodClick = { foodGroupId ->
+                        if (entry.lifecycleIsResumed()) navController.navigate(Destination.FoodDetail(foodGroupId))
+                    },
+                )
+            }
+            composable<Destination.FoodDetail> { entry ->
+                FoodDetailScreen(onBack = { if (entry.lifecycleIsResumed()) navController.popBackStack() })
             }
             composable<Destination.PeachMedallions> { entry ->
                 PeachMedallionsScreen(

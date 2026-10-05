@@ -20,6 +20,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Map
 import androidx.compose.material.icons.filled.QuestionMark
+import androidx.compose.material.icons.filled.Restaurant
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.runtime.Composable
@@ -73,6 +74,10 @@ fun KartDrawerSheet(onNavigate: (Destination) -> Unit) {
                     KartBadge(Icons.Filled.Home, red, KartTiles.Ink, size = BadgeSize)
                 }
                 ImageItem(R.string.drawer_skin, R.drawable.home_banana, KartTiles.Orange) { onNavigate(Destination.Skin) }
+                SubItem(R.string.drawer_food, { onNavigate(Destination.Food) }) {
+                    // Nessuna icona nel mockup: posate disegnate, arancio come Personaggi di cui è sottovoce.
+                    KartBadge(Icons.Filled.Restaurant, KartTiles.Orange, KartTiles.Orange, size = SubBadgeSize)
+                }
                 // Sezione "Collezionabili" (richiesta dell'autore): intestazione non cliccabile e le tre
                 // liste sotto, rientrate e più piccole, sempre visibili.
                 OutlinedTitle(

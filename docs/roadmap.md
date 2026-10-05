@@ -4,11 +4,10 @@ Le prossime fasi di lavoro. Ogni fase ha un **modello assegnato**: una sessione 
 Regola generale: **fuori scope = tutto ciò che appartiene alle fasi successive**, anche se sembra comodo farlo subito.
 
 ## Revisione di Consigliami e sezione Cibi (fasi C1–C4, dal 05/10/2026)
-Richiesta dell'autore dopo una prova in gioco: i consigli non corrispondono agli outfit che si sbloccano davvero correndo i Gran Premi e i Knockout Tour. C1 (dati degli stand) è chiusa il 05/10/2026: vedi `docs/decisioni.md` e l'handoff in `CLAUDE.md`. Le fasi C vengono dopo il roadmap 1–8 e hanno un **modello assegnato**: per prima cosa controllalo (passo 0 del protocollo in `CLAUDE.md`).
+Richiesta dell'autore dopo una prova in gioco: i consigli non corrispondono agli outfit che si sbloccano davvero correndo i Gran Premi e i Knockout Tour. C1 (dati degli stand) e C2 (sezione Cibi) sono chiuse il 05/10/2026: vedi `docs/decisioni.md` e l'handoff in `CLAUDE.md`. Le fasi C vengono dopo il roadmap 1–8 e hanno un **modello assegnato**: per prima cosa controllalo (passo 0 del protocollo in `CLAUDE.md`).
 
 | Fase | Modello | In breve |
 |---|---|---|
-| C2 Sezione Cibi | Sonnet | Griglia di cibi con la grafica dell'app (sottosezione di Personaggi); toccando un cibo: dove si trova e outfit sbloccati per personaggio |
 | C3 Grafica della lista | Sonnet | Lista di Consigliami e controlli con i componenti `Kart*` |
 | C4 Dettaglio evento | Sonnet | Dettaglio con grafica `Kart*` e righe "outfit – cibo – percorso" |
 
@@ -28,19 +27,6 @@ Il calcolo fa quello che dice SPEC §6 (letto in `ConsigliamiUseCase`); il probl
 - "Includi cibi nei dintorni" si toglie (con la sezione Cibi sarebbe ridondante).
 - La sezione Cibi non è un collezionabile: è una sottosezione di Personaggi.
 
-### C2 — Sezione Cibi (Sonnet)
-**Obiettivo:** una griglia di cibi; toccando un cibo si vede dove trovarlo e quali outfit sblocca per ciascun personaggio. Stessa grafica del resto dell'app (`Kart*`, cielo, banner).
-
-**Prerequisiti:** C1 unita (usa la sua API: `FoodDao`, `food_variants`, `yoshi_stands`; vedi l'handoff in `CLAUDE.md`).
-
-**Include:**
-- `ui/food/`, `Destination.Food` (griglia) e `Destination.FoodDetail(foodGroupId)` (dettaglio); nel drawer come sottovoce di Personaggi (stile `SubItem` di "Collezionabili"; un accesso anche dalla schermata Personaggi va proposto all'autore, non aggiunto da sé).
-- **Griglia:** una tessera per gruppo di cibo, come le tessere della Home/le polaroid di Personaggi (`KartPanel`, `OutlinedTitle`, colonne adattive come Personaggi), nome nella lingua dell'app (traduzione non ufficiale) e quanti outfit ti mancano tra quelli che dà (`KartCounterPill`). I cibi **non** si ingrigiscono mai. Immagine della prima variante sulla tessera, caricata con Coil come le altre (`WikiImagePrefetcher`), segnaposto finché non è caricata; mai file immagine.
-- **Dettaglio:** in cima tutte le varianti (immagine, nome, boost); poi i luoghi: per il sushi divisi per variante (takoyaki, mela caramellata, taiyaki, sushi), per gli altri gruppi una volta sola perché la fonte non dice quale taglia dà ciascuno stand. I luoghi sono divisi in "Sui percorsi" (bioma › percorso › luogo dello stand) e "Sulle strade" (bioma se ricavabile dalla fonte, poi luogo), luogo nella lingua dell'app (`localizedName`, `relocalizing()`); sotto, un `KartPanel` per personaggio con avatar e gli outfit che quel cibo gli sblocca (polaroid piccole di `ui/skin/Polaroid.kt`): solo gli **outfit** seguono la regola dei colori dell'app (grigio = non ce l'hai, colorato = ce l'hai), come nel dettaglio di Personaggi. I personaggi a cui il cibo non dà outfit (o che riporta all'abito base) in fondo, in una riga di testo.
-- IT/EN, tema chiaro e scuro.
-
-**Fatto quando:** lint, test JVM e `assembleDebug` verdi; test Robolectric di griglia e dettaglio. **Controlli a schermo:** griglia in tema chiaro e scuro e su schermo stretto; un cibo con tanti luoghi (hamburger), uno solo su strada (carne con l'osso); outfit grigi/colorati coerenti con Personaggi; IT/EN; in corsa libera, uno stand indicato si trova dove dice la descrizione.
-
 ### C3 — Grafica della lista (Sonnet)
 **Obiettivo:** la schermata Consigliami ha la stessa grafica del resto dell'app.
 
@@ -53,7 +39,7 @@ Il calcolo fa quello che dice SPEC §6 (letto in `ConsigliamiUseCase`); il probl
 ### C4 — Dettaglio evento (Sonnet)
 **Obiettivo:** toccando un GP o un rally si vede, per ogni personaggio, quali outfit potrebbero sbloccarsi e dove: "Filibustiere – Barbecue – Spiaggia di Peach".
 
-**Prerequisiti:** C2 e C3 unite (riusa i loro componenti).
+**Prerequisiti:** C2 e C3 unite (riusa i loro componenti: `ui/food/`, `FoodDetail`).
 
 **Include:** `KartPanel` per personaggio con avatar; una riga "outfit – cibo – percorso" per outfit (più percorsi per lo stesso outfit nella stessa riga); avviso "occhi aperti" una volta in cima, non su ogni riga; tocco sul cibo → sezione Cibi su quel cibo; sezione risultati per cilindrata con la grafica di Risultati. IT/EN.
 

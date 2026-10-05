@@ -36,7 +36,7 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 
 ### 2.1 Struttura
 - `ModalNavigationDrawer` con hamburger in alto a sinistra, sempre disponibile.
-- Voci del drawer: **Home**, **Personaggi**, la sezione **Collezionabili** (intestazione non cliccabile con tre voci più piccole e rientrate, sempre visibili: **Monete Peach**, **Pulsanti P**, **Pannelli ?**), **Mappa del mondo** (§2.4), **Consigliami**, **Risultati**, più in fondo **Impostazioni / Info** (crediti e licenze dei dati, §5.5).
+- Voci del drawer: **Home**, **Personaggi** con la sottovoce **Cibi** (§2.3.1, rientrata e più piccola come quelle di Collezionabili), la sezione **Collezionabili** (intestazione non cliccabile con tre voci più piccole e rientrate, sempre visibili: **Monete Peach**, **Pulsanti P**, **Pannelli ?**), **Mappa del mondo** (§2.4), **Consigliami**, **Risultati**, più in fondo **Impostazioni / Info** (crediti e licenze dei dati, §5.5).
 
 ### 2.2 Home
 - Griglia 2×2 di pulsanti grandi (disposizione dell'autore, 28/09/2026): **Personaggi, Risultati** / **Pulsanti P, Mappa del mondo** (§2.4). Monete Peach non ha più una tessera: resta nel menu laterale e sulla mappa.
@@ -58,6 +58,13 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 - Header con nome, contatore e, per i piloti da sbloccare, criterio di sblocco e switch **"Personaggio sbloccato"**, necessario per Consigliami (§6). I piloti di base sono sempre sbloccati e non hanno lo switch.
 - Lista outfit: ogni riga ha checkbox, nome outfit e **tutti** i gruppi di cibo che lo sbloccano (es. Mario Touring: "Hamburger · Barbecue · Moo Moo Milk"). Se non ci sono regole note, mostra "cibo sconosciuto".
 - L'outfit di default non è una riga spuntabile: è sempre posseduto e non si conta nei mancanti.
+
+### 2.3.1 Cibi (fase C2)
+Sottosezione di Personaggi, raggiungibile dal drawer; non è un collezionabile e non ha stato utente. Da Personaggi non c'è ancora un accesso diretto (da proporre all'autore).
+
+**Griglia** (`ui/food/`, `Destination.Food`): una tessera `KartPanel` per gruppo di cibo (20, nell'ordine del seed), colonne adattive (min 150 dp), con l'immagine della prima variante (segnaposto con le iniziali finché non è caricata), il nome nella lingua dell'app (traduzione non ufficiale) e una pillola "Ne mancano N" con gli outfit che il cibo dà e che non hai (`outfit_food_rules` senza `owned_outfits`), oppure "Nessun outfit" (lunchbox). I cibi non si ingrigiscono mai.
+
+**Dettaglio** (`Destination.FoodDetail(foodGroupId)`): in cima le varianti (immagine in un riquadro uniforme, perché quelle del wiki hanno o no una cornice incorporata; nome, boost); "Dove si trova": una sezione per gruppo, divisa per variante solo nel sushi (la fonte nomina il cibo preciso), in pannelli "Sui percorsi" (bioma › percorso e i luoghi) e "Sulle strade" (bioma se la fonte lo dice, poi il luogo); "Outfit che sblocca": un pannello per personaggio, due per riga (un cibo dà al massimo un outfit per personaggio, verificato sul seed), prima i personaggi a cui l'outfit manca e poi gli altri, a parità in ordine di roster, con avatar e polaroid piccola dell'outfit, **grigie se non li hai, colorate se li hai** (non spuntabili da qui); in fondo i personaggi con outfit a cui questo cibo non ne dà. Gli stand dei percorsi sono nell'area, non per forza sul tracciato (§6.1). Logica di raggruppamento pura in `FoodDetailModel.kt`.
 
 ### 2.4 Monete Peach e Pulsanti P
 In alto c'è il contatore globale (`x/200`, `x/394`). In basso a destra, in sovrimpressione, un pulsantone tondo **rosso con l'icona bianca della mappa** apre la Mappa con i soli punti di quella schermata; ogni riga ha anche un'icona "Mostra sulla mappa" che la apre centrata su quel punto.
