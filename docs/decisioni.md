@@ -31,6 +31,7 @@ Una decisione nuova va nella sezione giusta, con la data. Una decisione che ne s
 - **Immagini di gioco scaricate a runtime** (scelta esplicita dell'autore, supera "niente immagini dal wiki"; dal 05/10/2026 anche i cibi, dalla pagina Dash Food, che è una fixture come le altre pagine "core"): solo URL nel seed, originali e non thumbnail, validati sul prefisso `https://mario.wiki.gallery/images/`; seedgen si ferma se un'immagine manca o non si risolve; l'outfit di default usa l'immagine del personaggio; crediti nel README e disclaimer nell'app. Prima l'autore aveva chiesto icone da mario.fandom.com e da un album Imgur anonimo: rifiutate (artwork Nintendo o derivati senza licenza; un disclaimer non risolve il problema). (25–26/09/2026)
 - **Eccezione alla regola 2 voluta dall'autore**: icone della Home (banana, moneta, fungo, stella, trofeo) e logo ritagliati dal suo mockup, "per ora", da sostituire con icone sue; ogni icona è una risorsa separata. Icona dell'app: immagine raster dell'autore (globo con sigla "MKL"), confermata dopo avergli fatto notare che richiama "Mario Kart Log"; artwork al ~64% per la safe zone, `ic_launcher_background` `#139CFC`, nessuna icona `monochrome`. (25–26/09/2026)
 - Font **Lilita One** (OFL), scelto da me come il più simile al mockup in attesa di quello dell'autore. (26/09/2026)
+- **Spazi non separabili nel seed** (R1, 05/10/2026): `nameIt` di "Rovine del blocco ?" arrivava dal wiki con U+00A0, glifo che Lilita One non ha (verificato con fontTools): Android lo disegnava con un font di ripiego. `normalize_spaces` in seedgen li trasforma in spazio normale in ogni testo del seed (`seedVersion` 10); `test_seed_has_no_non_breaking_spaces` lo vieta. Corretto alla fonte, non nel codice dell'app.
 
 ## Personaggi
 
@@ -39,6 +40,7 @@ Una decisione nuova va nella sezione giusta, con la data. Una decisione che ne s
 - Ordinamento: in fondo va solo chi aveva qualcosa da fare e l'ha fatto (`isDone = hasProgress && isComplete`), qualunque ordinamento scelto; "Incompleti" nasconde i piloti di base senza outfit. "Roster" è l'ordine di `aliases.yaml`, non quello del gioco: l'autore ha scelto di tenerlo. (25–27/09/2026)
 - L'outfit di default è una riga vera in `owned_outfits` (`ensureDefaultOutfitsOwned()` a ogni avvio), non un caso speciale nelle query. (25/09/2026)
 - Griglia a colonne adattive (min 104dp, 3 su telefono) con immagini verticali senza ritaglio; negli avatar tondi si ritaglia la parte alta (il volto). (26/09/2026)
+- **Cibi toccabili nel dettaglio personaggio** (R1, 05/10/2026): `SkinDao` aggiunge `foodGroupIds` (stessa sotto-query dei nomi, stesso ordine) e `OutfitProgress.foods` li abbina; se i conteggi non combaciano la lista è vuota e si mostra "cibo sconosciuto". Il `clickable` del cibo dentro la polaroid prende il tocco prima di essa, quindi non spunta l'outfit.
 
 ## Collezionabili e mappa
 
@@ -60,6 +62,7 @@ Una decisione nuova va nella sezione giusta, con la data. Una decisione che ne s
 
 - Un unico **trofeo** per (evento, cilindrata): bronzo < argento < oro < oro ★ < oro ★★ < oro ★★★ (Game Rant; per i KO TheGamer: 1° oro, 2° argento, 3° bronzo, dal 4° nessuno). Si salva solo il migliore. `improvement = 1 - level/6`: scelta di prodotto, non dato di gioco. Schermata dedicata, unico punto di registrazione; Consigliami legge e basta. (25/09/2026)
 - **Nessun riporto tra cilindrate** (Kotaku lo afferma, l'autore non ne è sicuro). La migrazione v2→v3 converte: 1° → oro + stelle, 2° argento, 3° bronzo, il resto nessuna riga. (25/09/2026)
+- **Risultati con i `Kart*`** (R1): niente `ListItem`/`AlertDialog`/`RadioButton`; stesso schema di Consigliami (arancio GP, verde KO). La scelta del trofeo è un `KartPopup`; "Nessun trofeo" cancella. Nessun cambio di logica.
 
 ## Backup e Impostazioni
 

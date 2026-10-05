@@ -56,11 +56,11 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 
 **Schermata dettaglio personaggio**
 - Header con nome, contatore e, per i piloti da sbloccare, criterio di sblocco e switch **"Personaggio sbloccato"**, necessario per Consigliami (§6). I piloti di base sono sempre sbloccati e non hanno lo switch.
-- Lista outfit: ogni riga ha checkbox, nome outfit e **tutti** i gruppi di cibo che lo sbloccano (es. Mario Touring: "Hamburger · Barbecue · Moo Moo Milk"). Se non ci sono regole note, mostra "cibo sconosciuto".
+- Lista outfit: ogni riga ha checkbox, nome outfit e **tutti** i gruppi di cibo che lo sbloccano (es. Mario Touring: "Hamburger · Barbecue · Moo Moo Milk"). Se non ci sono regole note, mostra "cibo sconosciuto". Ogni gruppo di cibo è un testo sottolineato toccabile che apre `Destination.FoodDetail` (§2.3.1); il suo tocco non spunta l'outfit, il resto della polaroid sì.
 - L'outfit di default non è una riga spuntabile: è sempre posseduto e non si conta nei mancanti.
 
 ### 2.3.1 Cibi (fase C2)
-Sottosezione di Personaggi, raggiungibile dal drawer; non è un collezionabile e non ha stato utente. Da Personaggi non c'è ancora un accesso diretto (fase R1: cibi toccabili nel dettaglio personaggio).
+Sottosezione di Personaggi, raggiungibile dal drawer; non è un collezionabile e non ha stato utente. Dal dettaglio personaggio (§2.3) ogni cibo sotto un outfit è toccabile e apre `FoodDetail` (fase R1); "cibo sconosciuto" non lo è.
 
 **Griglia** (`ui/food/`, `Destination.Food`): una tessera `KartPanel` per gruppo di cibo (20, nell'ordine del seed), colonne adattive (min 150 dp), con l'immagine della prima variante (segnaposto con le iniziali finché non è caricata), il nome nella lingua dell'app (traduzione non ufficiale) e una pillola "Ne mancano N" con gli outfit che il cibo dà e che non hai (`outfit_food_rules` senza `owned_outfits`), oppure "Nessun outfit" (lunchbox). I cibi non si ingrigiscono mai.
 
@@ -107,7 +107,7 @@ Vedi §6 per l'algoritmo. UI:
 Schermata dedicata, raggiunta dal pulsante largo in Home e dal drawer. Registra il **miglior risultato** di ogni Gran Premio e Knockout Tour, non uno storico.
 - Il risultato è un **trofeo** su un'unica scala crescente: bronzo, argento, oro, oro ★, oro ★★, oro ★★★. Le stelle esistono solo con l'oro; dal 4° posto in giù non c'è trofeo, quindi equivale a "nessun risultato". Fonti: [Game Rant](https://gamerant.com/mario-kart-world-grand-prix-how-get-three-stars-rank-gold-trophy/) (scala), [TheGamer](https://www.thegamer.com/mario-kart-world-grand-prix-knockout-tour-three-star-guide-how-to/) (Knockout Tour: 1° oro, 2° argento, 3° bronzo, dal 4° nessun trofeo).
 - Un solo trofeo per coppia (evento, cilindrata): sceglierne un altro **sostituisce** il precedente, e "Nessun trofeo" lo cancella.
-- Selettore di cilindrata (50/100/150/Specchio, default 150cc) e lista di tutti gli eventi, divisi in Gran Premi e Knockout Tour, mai filtrata da Consigliami.
+- Selettore di cilindrata (50/100/150/Specchio, default 150cc) e lista di tutti gli eventi, divisi in Gran Premi e Knockout Tour, mai filtrata da Consigliami. Grafica (fase R1): intestazioni di sezione `OutlinedTitle`, ogni evento una `KartPanel` (arancio GP, verde KO) con `EventIcon(outlined = true)`, nome e pillola del trofeo (grigia = nessuno, gialla = registrato); il tocco apre un `KartPopup` con un `KartChoiceButton` per trofeo più "Nessun trofeo".
 - Un trofeo vale **solo** per la cilindrata in cui è registrato: nessun riporto automatico verso le cilindrate inferiori, perché il comportamento del gioco non è confermato con certezza (decisione dell'autore).
 
 ---

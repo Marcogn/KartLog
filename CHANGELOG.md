@@ -6,6 +6,16 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Risultati con la grafica del gioco.** Ogni evento è una tessera (arancio i Gran Premi, verde i
+  Knockout Tour) con icona dal contorno nero, nome e il trofeo in una pillola (grigia se non ce
+  l'hai, gialla se l'hai); la scelta del trofeo è un popup del gioco con un pulsante per trofeo e
+  "Nessun trofeo".
+- **Dal cibo dell'outfit alla sezione Cibi.** Nel dettaglio di un personaggio ogni cibo sotto un
+  outfit è sottolineato e toccabile: apre quel cibo in Cibi (il gesto indietro torna al personaggio).
+  Il tocco sul resto della polaroid continua a spuntare l'outfit.
+- **Corretto il "?" di "Rovine del blocco ?".** Il nome italiano aveva uno spazio non separabile che
+  il font dell'app non disegna: seedgen ora lo trasforma in spazio normale (dati di gioco aggiornati,
+  seedVersion 10; nessun cambio ai dati di gioco veri).
 - **Consigliami con la grafica del gioco.** Le card degli eventi sono tessere colorate (arancio i Gran
   Premi, verde i Knockout Tour) con icona, posizione, personaggio consigliato e cibi possibili; filtri,
   switch e peso dei risultati stanno in una tessera blu e l'avviso sugli stand è dietro la "i".
