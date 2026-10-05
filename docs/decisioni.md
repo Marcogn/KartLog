@@ -1,0 +1,79 @@
+# Decisioni di progetto
+
+Le scelte non ovvie di KartLog e il loro perché, raggruppate per argomento. Riassume il vecchio registro cronologico di `CLAUDE.md` (fino al 05/10/2026), senza le decisioni superate da quelle successive: quelle restano nella cronologia di git.
+Una decisione nuova va nella sezione giusta, con la data. Una decisione che ne supera un'altra la **sostituisce** qui (non si accumulano).
+
+## Dati di gioco e fonti
+
+- **Fonte principale: Super Mario Wiki** (mariowiki.com, CC BY-SA 4.0), pagine fissate per titolo in `tools/seedgen/sources.yaml`. Se un titolo cambia, l'estrazione fallisce e si aggiorna a mano (esempio: 03/10/2026, "Boomerang Rally (Mario Kart World)" → "Boomerang Rally (rally)", stesso rally, `seedVersion` 8). (25/09/2026)
+- **Guide commerciali** (IGN, Game8, Nintendo Life, Gamer Guides): solo per verificare a mano, mai scraping automatico né contenuti copiati (protetti, termini restrittivi, struttura instabile). IGN è il riferimento dell'autore per il controllo a campione degli outfit. (25/09/2026)
+- **mariowiki.it** (CC BY-SA 4.0) come seconda fonte, solo per i nomi italiani che mariowiki.com non ha. Abbinamenti sempre verificabili, mai per posizione: piloti via langlink (o `itWikiPage` in `aliases.yaml`), Trofei/rally per sequenza di tappe, biomi per i corsi citati nell'intro della sezione. Missioni dei Pulsanti P non localizzate: la lista italiana ha ~30 traduzioni su 394 e solo 6 si abbinano con certezza. (26/09/2026)
+- **mkworld-checklist** (BamisWasTaken, mktools.io) per posizioni di Monete Peach, Pulsanti P e pannelli "?", istruzioni (EN), video e immagine della mappa, a un commit fissato in `sources.yaml`, con crediti in README, `seed/LICENSE` e Impostazioni/Info. Il repository non ha un file LICENSE: segnalato all'autore, che ha deciso di usarlo. (28/09/2026)
+- **Conteggi** (`expected_counts.yaml`): 127 outfit (103 + 24 default), 20 gruppi di cibo, 50 piloti di cui 32 di base, 394 Pulsanti P, 200 Monete Peach, 150 pannelli "?" (pagina "? Panel"). Update 1.8.0: nessun outfit nuovo (confermato dall'autore), solo 2 rally già presenti. Lato Kotlin il file si legge con un parser di poche righe (solo `chiave: intero`), senza dipendenza YAML. (25–28/09/2026)
+- **Pulsanti P** dalla pagina "List of Mario Kart World missions", per regione e percorso. Regione di `toads_factory` corretta in `central_grassland` e area "Big Donut" in `volcanic`, verificate sulla pagina reale. Abbinamento con mkworld-checklist per nome: 391 identici, 3 diversi per una parola in `manual/checklist_mission_names.yaml`. (25/09, 28/09/2026)
+- **Monete Peach** una per una da mkworld-checklist, senza bioma: la fonte non lo dà, e assegnarlo con i Pulsanti P vicini non riproduceva i conteggi di Nintendo Life. `MIGRATION_6_7` cancella i vecchi conteggi per bioma e mostra una volta quante monete erano segnate (`pending_notices`). ID `medallion_<indice>`/`panel_<indice>` (indice stabile della fonte). (28/09/2026)
+- **Cibo → outfit** dalla tabella "List of food" della pagina Dash Food (regole di dominio in SPEC §5.2.1).
+- **Fixture reali** di seedgen (`tests/fixtures/real/`, ~1,9 MB) committate: senza, `test_real_fixtures.py` verrebbe saltato in CI. Le pagine dei nomi in altre lingue invece **non** sono fixture (decine di MB per poche righe): si scaricano dal vivo, testate con fixture sintetiche più test live saltati senza rete. `test_versioned_seed_matches_golden` esclude `p_switches.json` (la trascrizione manuale non li ha mai coperti). (25/09/2026)
+- **Stato di sblocco iniziale** dalle gallerie "Default drivers" (`starter`) e "Unlockable drivers" della pagina "Mario Kart World". Effetto accettato dall'autore: DK, Daisy, Rosalinda, Lakitu, Bowser Jr., Strutzi e Re Boo partono bloccati e Consigliami li ignora finché l'utente non li segna. (26/09/2026)
+- **Criteri di sblocco** dalle tabelle "Unlock criteria" (mariowiki.com) e "Criteri di sblocco" (mariowiki.it), abbinate per nome italiano del pilota. (27/09/2026)
+
+## Nomi in italiano
+
+- Nomi ufficiali da mariowiki, pagina per pagina: per i corsi ricorrenti il titolo senza disambiguatore porta spesso a una pagina multi-gioco con la traduzione storica sbagliata, quindi `wikiPage` in `aliases.yaml` punta alla pagina di Mario Kart World. Nelle tabelle "Names in other languages" vale la riga **senza** nota (le righe con nota sono varianti storiche, es. "Ughetto" per Toad). (25/09/2026)
+- Outfit con variante maschile/femminile in italiano (Explorer, Farmer, Sailor, Soft Server, Touring): scelta con `manual/character_genders.yaml`. (25/09/2026)
+- **Traduzioni manuali non ufficiali**, dichiarate in README, `seed/LICENSE` e Impostazioni/Info: nomi dei cibi (`manual/food_names_it.yaml`, nessuna fonte li ha) e modalità specchio (`manual/mirror_mode_it.yaml`, perché mariowiki.it omette il Trofeo Speciale finale). Ogni file manuale contiene il testo EN esatto, così seedgen si ferma se il wiki lo cambia. (26–27/09/2026)
+
+## Immagini e asset
+
+- **Immagini di gioco scaricate a runtime** (scelta esplicita dell'autore, supera "niente immagini dal wiki"): solo URL nel seed, originali e non thumbnail, validati sul prefisso `https://mario.wiki.gallery/images/`; seedgen si ferma se un'immagine manca o non si risolve; l'outfit di default usa l'immagine del personaggio; crediti nel README e disclaimer nell'app. Prima l'autore aveva chiesto icone da mario.fandom.com e da un album Imgur anonimo: rifiutate (artwork Nintendo o derivati senza licenza; un disclaimer non risolve il problema). (25–26/09/2026)
+- **Eccezione alla regola 2 voluta dall'autore**: icone della Home (banana, moneta, fungo, stella, trofeo) e logo ritagliati dal suo mockup, "per ora", da sostituire con icone sue; ogni icona è una risorsa separata. Icona dell'app: immagine raster dell'autore (globo con sigla "MKL"), confermata dopo avergli fatto notare che richiama "Mario Kart Log"; artwork al ~64% per la safe zone, `ic_launcher_background` `#139CFC`, nessuna icona `monochrome`. (25–26/09/2026)
+- Font **Lilita One** (OFL), scelto da me come il più simile al mockup in attesa di quello dell'autore. (26/09/2026)
+
+## Personaggi
+
+- I 32 piloti di base sono **sempre** sbloccati: `character_unlocks` si ignora per loro (righe vecchie comprese, niente migrazione), tap senza effetto, etichetta "Di base". (27/09/2026)
+- **Regola dei colori dell'autore: grigio = ti manca, colorato = ce l'hai** (supera l'"attenuato" originale di SPEC). Lo sbloccabile senza outfit già sbloccato riapre il popup, unico modo per annullare uno sblocco sbagliato. (27/09/2026)
+- Ordinamento: in fondo va solo chi aveva qualcosa da fare e l'ha fatto (`isDone = hasProgress && isComplete`), qualunque ordinamento scelto; "Incompleti" nasconde i piloti di base senza outfit. "Roster" è l'ordine di `aliases.yaml`, non quello del gioco: l'autore ha scelto di tenerlo. (25–27/09/2026)
+- L'outfit di default è una riga vera in `owned_outfits` (`ensureDefaultOutfitsOwned()` a ogni avvio), non un caso speciale nelle query. (25/09/2026)
+- Griglia a colonne adattive (min 104dp, 3 su telefono) con immagini verticali senza ritaglio; negli avatar tondi si ritaglia la parte alta (il volto). (26/09/2026)
+
+## Collezionabili e mappa
+
+- "Segna tutti" segna solo i mancanti, nessun "smarca tutti". Il contatore globale dei Pulsanti P non cambia con la ricerca; le sezioni si aprono da sole durante la ricerca. (25/09/2026)
+- Mappa: marker a forma dell'oggetto (cerchio P blu, moneta rosa con corona, quadrato "?" giallo), raggio che cresce con lo zoom, punti fatti attenuati con spunta verde (sulla mappa vanno evidenziati quelli da trovare). Aperta da una lista mostra solo quel tipo. `KartChoiceButton` mai in `horizontalScroll` (larghezza infinita, `weight` a zero: filtri in griglia 2×2, `MapFiltersTest`). (28/09/2026)
+- Home dell'autore: Personaggi + Risultati, Pulsanti P + Mappa del mondo, Consigliami largo; Monete Peach solo nel menu. Contatore di Risultati = coppie (evento, cilindrata) con un trofeo su eventi × 4. Nel drawer, "Collezionabili" è un'intestazione con Monete Peach, Pulsanti P e Pannelli ? come sottovoci. (28/09/2026)
+
+## Consigliami
+
+- Criterio primario: outfit ottenibili col miglior **singolo** personaggio; pari merito 1,1,1,4 raggruppati in una card (SPEC §6.4). (25/09/2026)
+- Il toggle Gran Premi/KO/Entrambi filtra gli eventi **prima** dell'algoritmo; "Solo utili" si applica nel ViewModel, l'algoritmo restituisce sempre la classifica completa. (25/09/2026)
+- **Revisione del 05/10/2026** (fasi C1–C4 in `docs/roadmap.md`): in gioco i consigli non tornano perché gli stand di "Course locations" sono quelli dell'area del percorso, non per forza sul tracciato di gara, e nessuna fonte dice quali si incontrano in gara. Scelte dell'autore: Consigliami parla di possibilità ("occhi aperti"); nuova sezione Cibi (sottosezione di Personaggi, non collezionabile, griglia con dettaglio) con tutti gli stand di List of Yoshi's locations, anche sulle strade, che però non si associano mai a un evento; fonte mariowiki, non IGN; luoghi EN dal wiki + IT tradotto a mano non ufficiale; via "Includi cibi nei dintorni"; immagini di tutte le varianti dei cibi dalla pagina Dash Food (estende la decisione sulle immagini); luoghi divisi per variante solo dove la fonte nomina il cibo specifico (gruppo sushi), non per le taglie. Fasi con modello assegnato: Opus per i dati (C1), Sonnet per sezione Cibi e grafica (C2–C4).
+
+## Risultati
+
+- Un unico **trofeo** per (evento, cilindrata): bronzo < argento < oro < oro ★ < oro ★★ < oro ★★★ (Game Rant; per i KO TheGamer: 1° oro, 2° argento, 3° bronzo, dal 4° nessuno). Si salva solo il migliore. `improvement = 1 - level/6`: scelta di prodotto, non dato di gioco. Schermata dedicata, unico punto di registrazione; Consigliami legge e basta. (25/09/2026)
+- **Nessun riporto tra cilindrate** (Kotaku lo afferma, l'autore non ne è sicuro). La migrazione v2→v3 converte: 1° → oro + stelle, 2° argento, 3° bronzo, il resto nessuna riga. (25/09/2026)
+
+## Backup e Impostazioni
+
+- L'import **sostituisce** tutto lo stato utente (come il restore di ThePatientGamerHelper) e riporta gli ID sconosciuti invece di scartarli; gli outfit di default rientrano da soli. Attribuzione dei dati nella stessa schermata Impostazioni/Info. (25/09/2026)
+- Selettori di lingua e tema (richiesta dell'autore): AppCompat e DataStore come in ThePatientGamerHelper. In più `AppLocale`/`relocalizing()`, perché qui i nomi di gioco si localizzano nei ViewModel, che sopravvivono alla ricreazione dell'activity. (26/09/2026)
+
+## Navigazione e UI
+
+- Home dal drawer: `popUpTo<Home>{inclusive=true}` + `launchSingleTop`, senza `saveState`/`restoreState` (con lo stesso target per `navigate` e `popUpTo` Navigation Compose non ripristinava Home in modo affidabile). (25/09/2026)
+- Gesto indietro predittivo: Navigation 2.10 usa transizioni separate (`predictivePop*`, default `scaleOut(0.7f)`) e ignora `popEnter/popExit` durante il gesto: passate a `NavHost` le stesse del pop. (04/10/2026)
+- `OutlinedTitle` toglie dalla semantica il testo del contorno (TalkBack leggeva ogni titolo due volte). (27/09/2026)
+- Tema: palette Material 3 custom, colore dinamico disattivato (il look "da gioco" non dipende dal wallpaper). (25/09/2026)
+
+## Toolchain, build e CI
+
+- **Allineamento a ThePatientGamerHelper** (fase 1): stessa struttura Gradle, signing da variabili d'ambiente (4 variabili, release non firmata se assenti), build types, `release.yml` che fa il bump solo dopo la release, `.gitignore` (più asset del seed generati e venv di seedgen), `SECURITY.md`, package per feature, Hilt, Room, navigazione type-safe con drawer, i18n IT/EN, tema da DataStore. Divergenze: README/CHANGELOG in italiano (regola del progetto; stessa convenzione dei bullet, che `release.yml` legge), palette custom, nessun Dependabot (aggiornamenti a mano). `versionCode = 1`, `versionName = "0.1.0"` come partenza dello scaffold.
+- **Aggiornamento delle dipendenze del 04/10/2026**, come PdfToolkit: solo versioni stabili, librerie di terze parti nella stessa major. Gradle 9.8.0 (con `distributionSha256Sum`), AGP 9.4.1 con Kotlin integrato (niente plugin `kotlin-android`, `kotlin { compilerOptions { } }`), Kotlin 2.4.20, KSP 2.3.12, Hilt 2.60.1, Compose BOM 2026.09.00, Navigation 2.10.2, Room 2.8.5, Coil 3.6.3, `compileSdk` 37. **`targetSdk` resta 36** finché l'app non è provata su Android 17 (cambia il comportamento a runtime; lint lo segnala come avviso). Nel codice: `project.exec` (rimosso in Gradle 9) sostituito da `ProcessBuilder` in `generateSeed`; la cartella degli asset del seed passata come `File` (AGP 9 rifiuta i `Provider` nei sourceSet). Avvisi rimasti: `createComposeRule` deprecato nei test Compose, due `!!` superflui.
+- **Workflow generici di PdfToolkit** (`docs/ci.md`, in inglese come l'originale): per progetto cambia solo il blocco `env`. Qui `FORBIDDEN_PERMISSIONS` vuoto (INTERNET serve) e `RELEASE_BUILD_ARGS: -PofflineSeed`: la CI delle PR non interroga mariowiki.com; *Build APK* e *Release* fanno la verifica online. Nessun APK caricato dalla CI. R8 spento (`isMinifyEnabled = false`): accenderlo è una scelta a parte. (04/10/2026)
+- **Build release**: seedgen gira prima degli asset; dati cambiati fermano la build finché non si accettano con `-PacceptSeedChanges`. Debug non usa rete né Python. (25/09/2026)
+- **Schemi Room versionati** in `app/schemas/` (raccomandazione di Room): KSP li scrive come effetto collaterale non dichiarato, e con la build cache `MigrationTest` falliva a intermittenza su checkout puliti; dichiararli output del task farebbe cancellare gli schemi vecchi. In più `mergeDebugAssets` dipende da `kspDebugKotlin`. Migrazioni sempre scritte e testate, mai `fallbackToDestructiveMigration()`. (25/09/2026)
+- **Test**: Robolectric fissato a `sdk=34` (le shadow più recenti chiedono JDK 21); senza emulatore, i flussi UI si coprono con test Robolectric/JVM, e la verifica a schermo la fa l'autore. (25/09/2026)
+- **CHANGELOG** compattato verso la 1.0 in una voce "[0.1.x] - beta" (le release v0.1.x restano, ma i loro link alle sezioni non trovano più l'ancora); workflow manuale `cleanup-runs.yml` per cancellare la cronologia di Actions tenendo l'ultima esecuzione per workflow. (27/09/2026)
+- `SeedFile<T>` non ha il campo `source` (a volte stringa, a volte array); chi lo serve lo legge con un DTO dedicato (`SourceOnlyDto`, `SeedAssetLoader.readSourceUrl()`). (25/09/2026)
+- Agenti per fase: Opus solo dove un errore di progetto costa caro, Sonnet per il resto; ogni sessione controlla il modello all'inizio (protocollo in `CLAUDE.md`). (05/10/2026)
