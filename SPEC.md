@@ -98,9 +98,10 @@ Vedi §6 per l'algoritmo. UI:
   - i 2 personaggi alternativi successivi con i rispettivi numeri
   - i cibi rilevanti che **potrebbero esserci** sull'evento, ciascuno con il percorso: lo stand Yoshi's è nell'area del percorso, non per forza sul tracciato di gara ("occhi aperti", §5.2.1)
   - se i risultati sono attivi, il trofeo registrato alla cilindrata di riferimento (§2.6)
-- Tap sulla card apre il dettaglio: un avviso in cima (outfit che *potrebbero* sbloccarsi), tutti i personaggi con gain > 0, outfit specifici ottenibili per ciascuno (il dominio dà anche cibo e percorso di ogni outfit, per le righe "outfit – cibo – percorso" della fase C4), e il miglior trofeo per ogni cilindrata **in sola lettura**. Consigliami non registra risultati: si fa solo dalla schermata Risultati (§2.6).
+- Tap sulla card apre il dettaglio (fase C4): un avviso in cima, una volta sola (outfit che *potrebbero* sbloccarsi); una tessera per ogni personaggio con gain > 0, del colore del personaggio, con avatar e "fino a +N outfit"; per ogni outfit una riga "Vespone – [Barbecue · Spiaggia di Peach]" in cui il cibo è un pulsante (immagine, nome, percorsi dell'evento con uno stand che lo vende, più percorsi nello stesso pulsante) che apre quel cibo nella sezione Cibi (§2.3.1); in fondo una tessera con il miglior trofeo per ogni cilindrata **in sola lettura**. Consigliami non registra risultati: si fa solo dalla schermata Risultati (§2.6).
 - Sezione "Pesa i risultati": switch on/off più slider del peso (§6.3).
-- Banner fisso in basso: gli stand indicati sono nell'area dei percorsi, non per forza sul tracciato ("occhi aperti"); se nella scelta del veicolo è disattivato il cambio d'abito degli snack scatto, non si sblocca nulla (pagina Dash Food).
+- Avviso dietro la "i" della tessera dei controlli: gli stand indicati sono nell'area dei percorsi, non per forza sul tracciato ("occhi aperti"); se nella scelta del veicolo è disattivato il cambio d'abito degli snack scatto, non si sblocca nulla (pagina Dash Food).
+- Icone degli eventi e avatar dei personaggi con il contorno scuro, in lista e nel dettaglio.
 - Non c'è più lo switch "Includi cibi nei dintorni" (tolto con la fase C1: la sezione Cibi della fase C2 mostra tutti i luoghi).
 
 ### 2.6 Risultati

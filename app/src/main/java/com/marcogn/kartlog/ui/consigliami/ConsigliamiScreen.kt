@@ -1,5 +1,6 @@
 package com.marcogn.kartlog.ui.consigliami
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
@@ -47,6 +49,7 @@ import com.marcogn.kartlog.ui.common.EventIcon
 import com.marcogn.kartlog.ui.common.KartChoiceButton
 import com.marcogn.kartlog.ui.common.KartCounterPill
 import com.marcogn.kartlog.ui.common.KartInfoButton
+import com.marcogn.kartlog.ui.common.KartInk
 import com.marcogn.kartlog.ui.common.KartPanel
 import com.marcogn.kartlog.ui.common.KartPopup
 import com.marcogn.kartlog.ui.common.KartPopupText
@@ -61,7 +64,7 @@ import com.marcogn.kartlog.ui.common.rankLabel
 import com.marcogn.kartlog.ui.theme.KartFont
 import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 
-private val BodyStyle = TextStyle(fontFamily = KartFont, fontSize = 15.sp, lineHeight = 19.sp, color = Color.White)
+internal val ConsigliamiBodyStyle = TextStyle(fontFamily = KartFont, fontSize = 15.sp, lineHeight = 19.sp, color = Color.White)
 
 @Composable
 fun ConsigliamiScreen(
@@ -318,12 +321,12 @@ private fun EventCard(
     KartPanel(colors = colors, onClick = onClick, modifier = Modifier.fillMaxWidth()) {
         Column(Modifier.fillMaxWidth().padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                EventIcon(name = eventScore.event.name, imageUrl = eventImageUrl, size = 48.dp)
+                EventIcon(name = eventScore.event.name, imageUrl = eventImageUrl, size = 52.dp, outlined = true)
                 Column(Modifier.weight(1f)) {
                     OutlinedTitle(eventScore.event.name, fontSize = 20.sp, textAlign = TextAlign.Start, maxLines = 2)
                     Text(
                         text = stringResource(if (isCup) R.string.consigliami_type_cup else R.string.consigliami_type_rally),
-                        style = BodyStyle.copy(fontSize = 13.sp),
+                        style = ConsigliamiBodyStyle.copy(fontSize = 13.sp),
                     )
                 }
                 KartCounterPill(stringResource(R.string.consigliami_position_format, position), colors)
@@ -332,7 +335,7 @@ private fun EventCard(
             if (bestRank != null) {
                 Text(
                     stringResource(R.string.consigliami_best_result_format, ccLabel(referenceCc), rankLabel(bestRank)),
-                    style = BodyStyle.copy(fontSize = 14.sp),
+                    style = ConsigliamiBodyStyle.copy(fontSize = 14.sp),
                 )
             }
 
@@ -350,7 +353,7 @@ private fun EventCard(
                     eventScore.relevantFoods.forEach { food ->
                         val foodName = foodGroupNames[food.foodGroupId] ?: food.foodGroupId
                         val courseName = courseNames[food.courseId] ?: food.courseId
-                        Text("$foodName · $courseName", style = BodyStyle)
+                        Text("$foodName · $courseName", style = ConsigliamiBodyStyle)
                     }
                 }
             }
@@ -359,7 +362,7 @@ private fun EventCard(
 }
 
 @Composable
-private fun SubTitle(text: String) {
+internal fun SubTitle(text: String) {
     OutlinedTitle(text, fontSize = 15.sp, textAlign = TextAlign.Start, maxLines = 2, modifier = Modifier.padding(top = 4.dp))
 }
 
@@ -376,7 +379,12 @@ private fun CharacterGainRow(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        CharacterAvatar(name = name, imageUrl = characterImages[gain.characterId], size = if (emphasized) 40.dp else 28.dp)
+        CharacterAvatar(
+            name = name,
+            imageUrl = characterImages[gain.characterId],
+            size = if (emphasized) 44.dp else 32.dp,
+            modifier = Modifier.border(2.dp, KartInk, CircleShape),
+        )
         OutlinedTitle(
             text = name,
             modifier = Modifier.weight(1f),
@@ -386,7 +394,7 @@ private fun CharacterGainRow(
         )
         Text(
             text = stringResource(R.string.consigliami_gain_format, gain.gain),
-            style = BodyStyle.copy(fontSize = if (emphasized) 16.sp else 14.sp),
+            style = ConsigliamiBodyStyle.copy(fontSize = if (emphasized) 16.sp else 14.sp),
         )
     }
 }

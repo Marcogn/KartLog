@@ -28,6 +28,14 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import coil3.compose.rememberAsyncImagePainter
+import androidx.compose.foundation.Canvas
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.geometry.isSpecified
+import androidx.compose.ui.graphics.drawscope.translate
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import kotlin.math.min
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.palette.graphics.Palette
@@ -179,14 +187,45 @@ fun rememberImageAccentColor(imageUrl: String?): Color? {
     return color
 }
 
-/** Icona di una cup o di un rally. Senza immagine non mostra nulla (il nome è sempre accanto). */
+/**
+ * Icona di una cup o di un rally. Senza immagine non mostra nulla (il nome è sempre accanto).
+ * Con [outlined] la sagoma ha un contorno scuro come i titoli: l'immagine si ridisegna in nero
+ * spostata nelle otto direzioni e poi a colori sopra (gli stemmi delle cup sono ritagliati, i
+ * rally quadrati: il contorno segue la forma).
+ */
 @Composable
-fun EventIcon(name: String, imageUrl: String?, modifier: Modifier = Modifier, size: Dp = 40.dp) {
+fun EventIcon(name: String, imageUrl: String?, modifier: Modifier = Modifier, size: Dp = 40.dp, outlined: Boolean = false) {
     if (imageUrl == null) return
-    AsyncImage(
-        model = imageUrl,
-        contentDescription = name,
-        contentScale = ContentScale.Fit,
-        modifier = modifier.size(size),
-    )
+    if (!outlined) {
+        AsyncImage(
+            model = imageUrl,
+            contentDescription = name,
+            contentScale = ContentScale.Fit,
+            modifier = modifier.size(size),
+        )
+        return
+    }
+    val painter = rememberAsyncImagePainter(imageUrl)
+    Canvas(modifier.size(size).semantics { contentDescription = name }) {
+        val stroke = OUTLINE_WIDTH.toPx()
+        val box = Size(this.size.width - 2 * stroke, this.size.height - 2 * stroke)
+        val intrinsic = painter.intrinsicSize
+        val drawSize = if (intrinsic.isSpecified && intrinsic.width > 0f && intrinsic.height > 0f) {
+            val scale = min(box.width / intrinsic.width, box.height / intrinsic.height)
+            Size(intrinsic.width * scale, intrinsic.height * scale)
+        } else {
+            box
+        }
+        val left = (this.size.width - drawSize.width) / 2
+        val top = (this.size.height - drawSize.height) / 2
+        val ink = ColorFilter.tint(OutlineInk)
+        for (dx in -1..1) for (dy in -1..1) {
+            if (dx == 0 && dy == 0) continue
+            translate(left + dx * stroke, top + dy * stroke) { with(painter) { draw(drawSize, colorFilter = ink) } }
+        }
+        translate(left, top) { with(painter) { draw(drawSize) } }
+    }
 }
+
+private val OUTLINE_WIDTH = 2.dp
+private val OutlineInk = Color(0xFF1B1B1F)
