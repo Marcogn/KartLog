@@ -5,18 +5,18 @@ import androidx.lifecycle.viewModelScope
 import com.marcogn.kartlog.data.local.dao.ConsigliamiCharacterRow
 import com.marcogn.kartlog.data.local.dao.ConsigliamiDao
 import com.marcogn.kartlog.data.local.dao.ConsigliamiOutfitRow
+import com.marcogn.kartlog.data.local.dao.CourseFoodRow
 import com.marcogn.kartlog.data.local.dao.IdNameIt
 import com.marcogn.kartlog.data.local.dao.UserStateDao
 import com.marcogn.kartlog.data.local.entity.BestResultEntity
 import com.marcogn.kartlog.data.local.entity.EventEntity
 import com.marcogn.kartlog.data.local.entity.EventStopEntity
-import com.marcogn.kartlog.data.local.entity.FoodGroupCourseEntity
 import com.marcogn.kartlog.data.local.entity.OutfitFoodRuleEntity
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiCharacter
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiEvent
-import com.marcogn.kartlog.domain.consigliami.ConsigliamiFoodCourse
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiOutfit
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiRule
+import com.marcogn.kartlog.domain.consigliami.ConsigliamiStandFood
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiUseCase
 import com.marcogn.kartlog.domain.consigliami.RecommendationGroup
 import com.marcogn.kartlog.domain.model.Cc
@@ -37,7 +37,6 @@ enum class ConsigliamiEventFilter { CUP, RALLY, BOTH }
 data class ConsigliamiUiState(
     val groups: List<RecommendationGroup> = emptyList(),
     val eventFilter: ConsigliamiEventFilter = ConsigliamiEventFilter.BOTH,
-    val includeNearby: Boolean = false,
     val onlyUseful: Boolean = true,
     val resultsEnabled: Boolean = false,
     val weight: Double = 0.3,
@@ -56,7 +55,7 @@ private data class RawSeedData(
     val characters: List<ConsigliamiCharacterRow>,
     val outfits: List<ConsigliamiOutfitRow>,
     val rules: List<OutfitFoodRuleEntity>,
-    val foodCourses: List<FoodGroupCourseEntity>,
+    val courseFoods: List<CourseFoodRow>,
     val events: List<EventEntity>,
     val eventStops: List<EventStopEntity>,
     val courseNames: Map<String, String>,
@@ -72,7 +71,6 @@ class ConsigliamiViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val eventFilter = MutableStateFlow(ConsigliamiEventFilter.BOTH)
-    private val includeNearby = MutableStateFlow(false)
     private val onlyUseful = MutableStateFlow(true)
     private val resultsEnabled = MutableStateFlow(false)
     private val weight = MutableStateFlow(0.3)
@@ -80,10 +78,10 @@ class ConsigliamiViewModel @Inject constructor(
 
     private val rawData = combine(
         combine(dao.characters(), dao.outfits(), dao.rules()) { c, o, r -> Triple(c, o, r) },
-        combine(dao.foodCourses(), dao.events(), dao.eventStops()) { fc, e, es -> Triple(fc, e, es) },
+        combine(dao.courseFoods(), dao.events(), dao.eventStops()) { cf, e, es -> Triple(cf, e, es) },
         combine(dao.courseNames().relocalizing(), dao.foodGroupNames()) { cn, fgn -> cn.toLocalizedNameMap() to fgn.toLocalizedNameMap() },
-    ) { (characters, outfits, rules), (foodCourses, events, eventStops), (courseNames, foodGroupNames) ->
-        RawSeedData(characters, outfits, rules, foodCourses, events, eventStops, courseNames, foodGroupNames)
+    ) { (characters, outfits, rules), (courseFoods, events, eventStops), (courseNames, foodGroupNames) ->
+        RawSeedData(characters, outfits, rules, courseFoods, events, eventStops, courseNames, foodGroupNames)
     }
 
     private val resultsSettings = combine(
@@ -96,10 +94,9 @@ class ConsigliamiViewModel @Inject constructor(
     val uiState: StateFlow<ConsigliamiUiState> = combine(
         rawData,
         eventFilter,
-        includeNearby,
         onlyUseful,
         resultsSettings,
-    ) { raw, filter, nearby, useful, results ->
+    ) { raw, filter, useful, results ->
         val eventStopsByEvent = raw.eventStops.groupBy({ it.eventId }, { it.courseId })
         val events = raw.events
             .filter { filter == ConsigliamiEventFilter.BOTH || it.type == filter.toEventType() }
@@ -117,9 +114,8 @@ class ConsigliamiViewModel @Inject constructor(
             characters = raw.characters.map { ConsigliamiCharacter(it.id, it.rosterOrder, it.unlocked) },
             outfits = raw.outfits.map { ConsigliamiOutfit(it.id, it.characterId, it.owned) },
             rules = raw.rules.map { ConsigliamiRule(it.outfitId, it.foodGroupId) },
-            foodCourses = raw.foodCourses.map { ConsigliamiFoodCourse(it.foodGroupId, it.courseId, it.presence) },
+            standFoods = raw.courseFoods.map { ConsigliamiStandFood(it.courseId, it.foodGroupId) },
             events = events,
-            includeNearby = nearby,
             resultsEnabled = results.enabled,
             weight = results.weight,
             bestRankForEvent = { eventId -> bestRankByEvent[eventId] },
@@ -137,7 +133,6 @@ class ConsigliamiViewModel @Inject constructor(
         ConsigliamiUiState(
             groups = groups,
             eventFilter = filter,
-            includeNearby = nearby,
             onlyUseful = useful,
             resultsEnabled = results.enabled,
             weight = results.weight,
@@ -153,10 +148,6 @@ class ConsigliamiViewModel @Inject constructor(
 
     fun onEventFilterChanged(filter: ConsigliamiEventFilter) {
         eventFilter.value = filter
-    }
-
-    fun onIncludeNearbyChanged(value: Boolean) {
-        includeNearby.value = value
     }
 
     fun onOnlyUsefulChanged(value: Boolean) {

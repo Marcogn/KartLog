@@ -1,13 +1,15 @@
 package com.marcogn.kartlog.domain.consigliami
 
 import com.marcogn.kartlog.domain.model.EventType
-import com.marcogn.kartlog.domain.model.Presence
 import com.marcogn.kartlog.domain.model.TrophyRank
 import kotlin.math.abs
 
 /**
  * Algoritmo Consigliami (SPEC §6). Con i risultati disattivati (default, fase 6) il punteggio è
  * sempre `score(E) = gain(E, best(E))`; con i risultati attivati (fase 7) entra il peso `w` (§6.3).
+ *
+ * I cibi di un evento sono quelli degli stand Yoshi's dei suoi percorsi (fase C1): stand nell'area
+ * del percorso, non per forza sul tracciato di gara, quindi ogni guadagno è una possibilità.
  */
 object ConsigliamiUseCase {
 
@@ -32,14 +34,13 @@ object ConsigliamiUseCase {
         characters: List<ConsigliamiCharacter>,
         outfits: List<ConsigliamiOutfit>,
         rules: List<ConsigliamiRule>,
-        foodCourses: List<ConsigliamiFoodCourse>,
+        standFoods: List<ConsigliamiStandFood>,
         events: List<ConsigliamiEvent>,
-        includeNearby: Boolean,
         resultsEnabled: Boolean = false,
         weight: Double = 0.3,
         bestRankForEvent: (eventId: String) -> TrophyRank? = { null },
     ): List<RecommendationGroup> {
-        val presences = if (includeNearby) setOf(Presence.ON_COURSE, Presence.NEARBY) else setOf(Presence.ON_COURSE)
+        val courseFoods = courseFoods(standFoods)
         val rulesByOutfit: Map<String, Set<String>> =
             rules.groupBy({ it.outfitId }, { it.foodGroupId }).mapValues { it.value.toSet() }
         val missingByCharacter: Map<String, List<ConsigliamiOutfit>> =
@@ -47,7 +48,7 @@ object ConsigliamiUseCase {
         val unlocked = characters.filter { it.unlocked }
 
         val raw = events.map { event ->
-            scoreEventRaw(event, unlocked, missingByCharacter, rulesByOutfit, foodCourses, presences, bestRankForEvent)
+            scoreEventRaw(event, unlocked, missingByCharacter, rulesByOutfit, courseFoods, bestRankForEvent)
         }
         val maxGain = raw.maxOfOrNull { it.best?.gain ?: 0 } ?: 0
 
@@ -78,17 +79,12 @@ object ConsigliamiUseCase {
         unlocked: List<ConsigliamiCharacter>,
         missingByCharacter: Map<String, List<ConsigliamiOutfit>>,
         rulesByOutfit: Map<String, Set<String>>,
-        foodCourses: List<ConsigliamiFoodCourse>,
-        presences: Set<Presence>,
+        courseFoods: List<RelevantFood>,
         bestRankForEvent: (eventId: String) -> TrophyRank?,
     ): RawEventScore {
         // foods(E) (SPEC §6.1): un cibo presente su più corsi dello stesso evento resta un solo
         // elemento dell'insieme, quindi conta una sola volta per outfit (Set, non lista).
-        val foods = foodCourses
-            .asSequence()
-            .filter { it.courseId in event.courseIds && it.presence in presences }
-            .map { it.foodGroupId }
-            .toSet()
+        val foods = foodsOf(event, courseFoods)
 
         val gains = unlocked.map { character ->
             val missing = missingByCharacter[character.id].orEmpty()
@@ -112,10 +108,7 @@ object ConsigliamiUseCase {
                 .flatten()
                 .filter { it in foods }
                 .toSet()
-            foodCourses
-                .filter { it.courseId in event.courseIds && it.presence in presences && it.foodGroupId in usefulFoodGroups }
-                .map { RelevantFood(it.foodGroupId, it.courseId, it.presence) }
-                .distinct()
+            courseFoods.filter { it.courseId in event.courseIds && it.foodGroupId in usefulFoodGroups }
         } else {
             emptyList()
         }
@@ -128,30 +121,43 @@ object ConsigliamiUseCase {
 
     /**
      * Dettaglio di un evento (SPEC §2.5): tutti i personaggi sbloccati con gain > 0, con gli
-     * outfit specifici che quell'evento permette di ottenere. Ordinato per gain decrescente.
+     * outfit che quell'evento potrebbe far ottenere e, per ciascuno, i cibi e i percorsi dove
+     * si trovano. Ordinato per gain decrescente.
      */
     fun detailFor(
         event: ConsigliamiEvent,
         characters: List<ConsigliamiCharacter>,
         outfits: List<ConsigliamiOutfit>,
         rules: List<ConsigliamiRule>,
-        foodCourses: List<ConsigliamiFoodCourse>,
-        includeNearby: Boolean,
+        standFoods: List<ConsigliamiStandFood>,
     ): List<CharacterDetail> {
-        val presences = if (includeNearby) setOf(Presence.ON_COURSE, Presence.NEARBY) else setOf(Presence.ON_COURSE)
-        val foods = foodCourses
-            .filter { it.courseId in event.courseIds && it.presence in presences }
-            .map { it.foodGroupId }
-            .toSet()
+        val eventFoods = courseFoods(standFoods)
+            .filter { it.courseId in event.courseIds }
+            .sortedBy { event.courseIds.indexOf(it.courseId) }
+        val foods = eventFoods.map { it.foodGroupId }.toSet()
         val rulesByOutfit = rules.groupBy({ it.outfitId }, { it.foodGroupId }).mapValues { it.value.toSet() }
         val missingByCharacter = outfits.filterNot { it.owned }.groupBy { it.characterId }
 
         return characters.filter { it.unlocked }.mapNotNull { character ->
             val unlockable = missingByCharacter[character.id].orEmpty()
                 .filter { outfit -> rulesByOutfit[outfit.id].orEmpty().any { it in foods } }
-            if (unlockable.isEmpty()) null else CharacterDetail(character.id, unlockable.size, unlockable.map { it.id })
+                .map { outfit ->
+                    val outfitFoods = rulesByOutfit[outfit.id].orEmpty()
+                    UnlockableOutfit(outfit.id, eventFoods.filter { it.foodGroupId in outfitFoods })
+                }
+            if (unlockable.isEmpty()) null else CharacterDetail(character.id, unlockable.size, unlockable)
         }.sortedByDescending { it.gain }
     }
+
+    /**
+     * Coppie (corso, cibo) distinte dagli stand dei percorsi. Gli stand sulle strade ([ConsigliamiStandFood.courseId]
+     * null) restano fuori: nessuna fonte dice in quale tratto di un rally si incontrano.
+     */
+    private fun courseFoods(standFoods: List<ConsigliamiStandFood>): List<RelevantFood> =
+        standFoods.mapNotNull { s -> s.courseId?.let { RelevantFood(s.foodGroupId, it) } }.distinct()
+
+    private fun foodsOf(event: ConsigliamiEvent, courseFoods: List<RelevantFood>): Set<String> =
+        courseFoods.asSequence().filter { it.courseId in event.courseIds }.map { it.foodGroupId }.toSet()
 
     private fun typeRank(type: EventType): Int = if (type == EventType.CUP) 0 else 1
 

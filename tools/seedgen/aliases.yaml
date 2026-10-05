@@ -152,6 +152,18 @@ food_groups:
 # Etichette della colonna "Dash Food" nella pagina "List of Yoshi's locations" -> gruppi.
 # Una cella può contenere più etichette, separate da <br> o virgole (es. "Chips, soft drinks, chocolate bars").
 # Gli snack stanno negli stessi chioschi, quindi un'etichetta di snack vale per tutti e tre i gruppi.
+# `food`: il cibo preciso della tabella List of food (seconda colonna Name), solo dove l'etichetta
+# lo nomina: le etichette del gruppo sushi (takoyaki, mela caramellata, taiyaki, sushi). Le altre
+# nominano il gruppo, non la taglia ("Burgers"), e valgono per tutte le sue varianti.
+#
+# Verifica del 05/10/2026 (Dash Food revid 5455370, List of Yoshi's locations revid 5263331):
+# le etichette sono i nomi dei file immagine dei cibi su Dash Food (MKWorld_Kebab_1 = Barbecue,
+# MKWorld_Flatbread_1 = Spicy curry, MKWorld_Baked_goods_2 = Bread, MKWorld_Fish_and_chips_1 =
+# Fritters & potatoes, MKWorld_Fruit_1 = Fruit barrel, MKWorld_Curry_2 = Magma curry,
+# MKWorld_Meat_1 = Wild bone). "Meat" (unico stand, "East gate of Crown Bridge, north booth") è
+# coerente anche con Dash Food, che mette il Wild bone a Faraway Oasis: Crown Bridge collega Crown
+# City e Faraway Oasis (pagina Faraway Oasis). "Popcorn" è il nome stesso del cibo su Dash Food, e
+# l'unico stand ("North of Dandelion Depths") è vicino a un corso della sua colonna Locations.
 yoshi_food_labels:
   "Burgers":        [hamburger]
   "Donuts":         [donut]
@@ -167,10 +179,10 @@ yoshi_food_labels:
   "Baked goods":    [bread]
   "Pizza":          [pizza]
   "Fish and chips": [fritters]
-  "Sushi":          [sushi]
-  "Takoyaki":       [sushi]
-  "Candy apples":   [sushi]
-  "Taiyaki":        [sushi]
+  "Sushi":          { groups: [sushi], food: "Sushi" }
+  "Takoyaki":       { groups: [sushi], food: "Takoyaki" }
+  "Candy apples":   { groups: [sushi], food: "Candy apple" }
+  "Taiyaki":        { groups: [sushi], food: "Cheep Cheep taiyaki" }
   "Popcorn":        [popcorn]
   "Lunchboxes":     [lunchbox]
   "Chips":          [snacks_1, snacks_2, snacks_3]

@@ -5,6 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.marcogn.kartlog.data.local.dao.BackupDao
 import com.marcogn.kartlog.data.local.dao.ConsigliamiDao
+import com.marcogn.kartlog.data.local.dao.FoodDao
 import com.marcogn.kartlog.data.local.dao.MapDao
 import com.marcogn.kartlog.data.local.dao.MedallionsDao
 import com.marcogn.kartlog.data.local.dao.PSwitchesDao
@@ -23,8 +24,8 @@ import com.marcogn.kartlog.data.local.entity.CompletedPSwitchEntity
 import com.marcogn.kartlog.data.local.entity.CourseEntity
 import com.marcogn.kartlog.data.local.entity.EventEntity
 import com.marcogn.kartlog.data.local.entity.EventStopEntity
-import com.marcogn.kartlog.data.local.entity.FoodGroupCourseEntity
 import com.marcogn.kartlog.data.local.entity.FoodGroupEntity
+import com.marcogn.kartlog.data.local.entity.FoodVariantEntity
 import com.marcogn.kartlog.data.local.entity.OutfitEntity
 import com.marcogn.kartlog.data.local.entity.OutfitFoodRuleEntity
 import com.marcogn.kartlog.data.local.entity.OwnedOutfitEntity
@@ -34,6 +35,8 @@ import com.marcogn.kartlog.data.local.entity.PendingNoticeEntity
 import com.marcogn.kartlog.data.local.entity.QuestionPanelEntity
 import com.marcogn.kartlog.data.local.entity.RegionEntity
 import com.marcogn.kartlog.data.local.entity.SeedMetaEntity
+import com.marcogn.kartlog.data.local.entity.YoshiStandEntity
+import com.marcogn.kartlog.data.local.entity.YoshiStandFoodEntity
 
 const val DATABASE_NAME = "kartlog.db"
 
@@ -43,7 +46,9 @@ const val DATABASE_NAME = "kartlog.db"
         OutfitEntity::class,
         FoodGroupEntity::class,
         OutfitFoodRuleEntity::class,
-        FoodGroupCourseEntity::class,
+        FoodVariantEntity::class,
+        YoshiStandEntity::class,
+        YoshiStandFoodEntity::class,
         CourseEntity::class,
         RegionEntity::class,
         AreaEntity::class,
@@ -61,7 +66,7 @@ const val DATABASE_NAME = "kartlog.db"
         ActivatedQuestionPanelEntity::class,
         PendingNoticeEntity::class,
     ],
-    version = 7,
+    version = 8,
     exportSchema = true,
 )
 @TypeConverters(Converters::class)
@@ -76,4 +81,5 @@ abstract class KartLogDatabase : RoomDatabase() {
     abstract fun questionPanelsDao(): QuestionPanelsDao
     abstract fun consigliamiDao(): ConsigliamiDao
     abstract fun backupDao(): BackupDao
+    abstract fun foodDao(): FoodDao
 }

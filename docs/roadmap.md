@@ -4,18 +4,17 @@ Le prossime fasi di lavoro. Ogni fase ha un **modello assegnato**: una sessione 
 Regola generale: **fuori scope = tutto ciò che appartiene alle fasi successive**, anche se sembra comodo farlo subito.
 
 ## Revisione di Consigliami e sezione Cibi (fasi C1–C4, dal 05/10/2026)
-Richiesta dell'autore dopo una prova in gioco: i consigli non corrispondono agli outfit che si sbloccano davvero correndo i Gran Premi e i Knockout Tour. Le fasi C vengono dopo il roadmap 1–8 e hanno un **modello assegnato**: per prima cosa controllalo (passo 0 del protocollo in `CLAUDE.md`).
+Richiesta dell'autore dopo una prova in gioco: i consigli non corrispondono agli outfit che si sbloccano davvero correndo i Gran Premi e i Knockout Tour. C1 (dati degli stand) è chiusa il 05/10/2026: vedi `docs/decisioni.md` e l'handoff in `CLAUDE.md`. Le fasi C vengono dopo il roadmap 1–8 e hanno un **modello assegnato**: per prima cosa controllalo (passo 0 del protocollo in `CLAUDE.md`).
 
 | Fase | Modello | In breve |
 |---|---|---|
-| C1 Dati degli stand | **Opus** | seedgen estrae ogni stand Yoshi's (percorso o strada, cibo, luogo EN + traduzione IT manuale); tabella Room e migrazione; Consigliami solo sugli stand dei percorsi, con testi "potrebbe esserci", senza "Includi cibi nei dintorni" |
 | C2 Sezione Cibi | Sonnet | Griglia di cibi con la grafica dell'app (sottosezione di Personaggi); toccando un cibo: dove si trova e outfit sbloccati per personaggio |
 | C3 Grafica della lista | Sonnet | Lista di Consigliami e controlli con i componenti `Kart*` |
 | C4 Dettaglio evento | Sonnet | Dettaglio con grafica `Kart*` e righe "outfit – cibo – percorso" |
 
 ### Diagnosi (05/10/2026)
 Il calcolo fa quello che dice SPEC §6 (letto in `ConsigliamiUseCase`); il problema è che §6.1 presenta come certo ciò che i dati non sanno. Fatti verificati sul wiki il 05/10/2026:
-- Il cibo → outfit è deterministico: "Outfits the player obtains are based on the food item that was consumed" (pagina [Dash Food](https://www.mariowiki.com/Dash_Food)). Le regole in `outfit_food_rules.json` non sono il sospettato principale (C1 le ricontrolla a campione).
+- Il cibo → outfit è deterministico: "Outfits the player obtains are based on the food item that was consumed" (pagina [Dash Food](https://www.mariowiki.com/Dash_Food)). Le regole in `outfit_food_rules.json` non erano il sospettato principale (ricontrollate a campione in C1: coincidono con la pagina).
 - La stessa pagina: dalla selezione del veicolo si può **disattivare** il cambio d'abito da Dash Food; in quel caso nessun outfit si sblocca.
 - In un Gran Premio solo la prima gara è a giri; le altre tre partono dalla strada (route) dal percorso precedente. Il Knockout Tour "focuses primarily on the routes between the courses" (pagina [Mario Kart World](https://www.mariowiki.com/Mario_Kart_World), sezioni Grand Prix e Knockout Tour).
 - Gli stand di "Course locations" ([List of Yoshi's locations](https://www.mariowiki.com/List_of_Yoshi%27s_locations)) sono quelli **dell'area** del percorso, anche fuori dal tracciato di gara (Crown City: dieci, alcuni "in an alley next to Bank Coin Coffer"). La pagina non dice quali si incontrano in gara (todo "Add descriptions of exact course locations"), e lo stesso percorso ha tracciati diversi a seconda dell'evento (pagina [Crown City](https://www.mariowiki.com/Crown_City)).
@@ -29,31 +28,10 @@ Il calcolo fa quello che dice SPEC §6 (letto in `ConsigliamiUseCase`); il probl
 - "Includi cibi nei dintorni" si toglie (con la sezione Cibi sarebbe ridondante).
 - La sezione Cibi non è un collezionabile: è una sottosezione di Personaggi.
 
-### C1 — Dati degli stand (Opus)
-**Obiettivo:** il seed conosce ogni stand Yoshi's con il suo luogo; Consigliami dice solo ciò che i dati sanno.
-
-**Prerequisiti:** PR del piano unita; rete verso mariowiki.com (se manca, fermati).
-
-**Include:**
-- Confermare la diagnosi e ricontrollare a campione `outfit_food_rules.json` contro la pagina Dash Food (equivalenze Toad/Toadette e bebè, cibi che riportano all'abito base, mappatura delle etichette degli stand ai gruppi, p. es. "Kebabs" → `barbecue`, "Fish and chips" → `fritters`, "Baked goods" → `bread`; i "Meat" → `wild_bone` e "Popcorn" vanno verificati, non dedotti).
-- seedgen: estrazione di **tutti** gli stand di List of Yoshi's locations, sia "Course locations" sia "Route locations": id stabile, gruppo di cibo, percorso (`courseId`) oppure strada, tipo di locale (snack bar, drive-through, food truck…), luogo in inglese, fonte. Le celle con `rowspan` e le celle Location vuote vanno gestite (luogo assente ≠ inventato). Fixture reale aggiornata e test sintetici.
-- `manual/stand_locations_it.yaml`: traduzione italiana non ufficiale di ogni luogo (e del tipo di locale), con il testo EN esatto come chiave, così seedgen si ferma se il wiki lo cambia (stesso schema di `manual/mirror_mode_it.yaml`). Dichiarata in README, `seed/LICENSE` e Impostazioni/Info.
-- Conteggio atteso degli stand in `expected_counts.yaml`, contato sulla pagina (commit dedicato che cita la revisione).
-- Seed rigenerato e accettato dall'autore (`check` → diff → conferma → `accept`), `seedVersion` +1, entità e migrazione Room (mai distruttiva) con test; backup invariato (nessuno stato utente nuovo).
-- Consigliami: `foods(E)` dagli stand dei percorsi dell'evento (niente più `NEARBY`); tolti switch, preferenza e stringhe di "Includi cibi nei dintorni"; SPEC §6 e §6.5 aggiornati (via il test `NEARBY`, nuovo test: uno stand su una strada non dà gain a nessun evento); testi di lista e dettaglio riformulati come possibilità ("potrebbe esserci", "occhi aperti"), senza rifare la grafica.
-- Immagini dei cibi (deciso dall'autore il 05/10/2026, estende la decisione del 26/09/2026): dalla pagina Dash Food di mariowiki, solo URL nel seed (originali, non thumbnail, validati sul prefisso `https://mario.wiki.gallery/images/`), scaricati a runtime come le altre, seedgen si ferma se un'immagine manca o non si risolve. **Tutte le varianti** di ogni gruppo (in genere tre, piccola/media/grande, col livello di boost della tabella; il sushi ne ha quattro), con nome EN e IT (nomi delle varianti: traduzione manuale non ufficiale se servono). Crediti: aggiorna README e disclaimer se nominano solo la pagina "Mario Kart World".
-- Luoghi per variante, scelta dell'autore "dividi i luoghi per variante": si può fare **solo dove la fonte nomina il cibo specifico**. Verificato il 05/10/2026: List of Yoshi's locations nomina il gruppo per le varianti di taglia ("Burgers", "Kebabs"), quindi per quelle i luoghi restano del gruppo e nessuno stand si assegna a una taglia; nomina invece i cibi distinti del gruppo sushi ("Takoyaki", "Candy apples", "Taiyaki", "Sushi"), e lì ogni stand va alla sua variante. Gli stand "Chips, soft drinks, chocolate bars" (gruppi `snacks_1..3`) restano su tutti e tre come oggi. Outfit invariati per variante ("All food within the same group provides the same outfit", pagina Dash Food).
-- Bioma degli stand: per i percorsi da `courses.regionId`; per le strade solo se la fonte lo dice, mai dedotto dalla descrizione.
-- API per C2 e C4: stand per cibo (percorsi e strade, con bioma) e, per evento e personaggio, gli outfit con cibo e percorso.
-
-**Fuori scope:** la schermata Cibi (C2) e la grafica (C3, C4).
-
-**Fatto quando:** pytest, test JVM, lint, `assembleDebug` e `assembleRelease -PofflineSeed` verdi; **handoff** (max 15 righe) per C2–C4 in "Stato attuale". **Controlli a schermo:** il testo di Consigliami parla di possibilità; lo switch dei dintorni non c'è più; un utente con dati vecchi apre l'app senza perdere nulla.
-
 ### C2 — Sezione Cibi (Sonnet)
 **Obiettivo:** una griglia di cibi; toccando un cibo si vede dove trovarlo e quali outfit sblocca per ciascun personaggio. Stessa grafica del resto dell'app (`Kart*`, cielo, banner).
 
-**Prerequisiti:** C1 unita (usa la sua API).
+**Prerequisiti:** C1 unita (usa la sua API: `FoodDao`, `food_variants`, `yoshi_stands`; vedi l'handoff in `CLAUDE.md`).
 
 **Include:**
 - `ui/food/`, `Destination.Food` (griglia) e `Destination.FoodDetail(foodGroupId)` (dettaglio); nel drawer come sottovoce di Personaggi (stile `SubItem` di "Collezionabili"; un accesso anche dalla schermata Personaggi va proposto all'autore, non aggiunto da sé).

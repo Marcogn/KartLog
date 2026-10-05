@@ -1,7 +1,6 @@
 package com.marcogn.kartlog.domain.consigliami
 
 import com.marcogn.kartlog.domain.model.EventType
-import com.marcogn.kartlog.domain.model.Presence
 import com.marcogn.kartlog.domain.model.TrophyRank
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -15,10 +14,10 @@ class ConsigliamiUseCaseTest {
         val characters = listOf(ConsigliamiCharacter("mario", 0, unlocked = true))
         val outfits = listOf(ConsigliamiOutfit("mario_a", "mario", owned = true))
         val rules = listOf(ConsigliamiRule("mario_a", "fg1"))
-        val foodCourses = listOf(ConsigliamiFoodCourse("fg1", "course1", Presence.ON_COURSE))
+        val standFoods = listOf(ConsigliamiStandFood("course1", "fg1"))
         val events = listOf(ConsigliamiEvent("cup1", EventType.CUP, "Cup 1", 0, listOf("course1")))
 
-        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, foodCourses, events, includeNearby = false)
+        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
         val allEvents = groups.flatMap { it.events }
 
         assertTrue(allEvents.all { it.score == 0.0 && it.best == null })
@@ -41,10 +40,10 @@ class ConsigliamiUseCaseTest {
             ConsigliamiRule("mario_b", "fg1"),
             ConsigliamiRule("luigi_a", "fg1"),
         )
-        val foodCourses = listOf(ConsigliamiFoodCourse("fg1", "course1", Presence.ON_COURSE))
+        val standFoods = listOf(ConsigliamiStandFood("course1", "fg1"))
         val events = listOf(ConsigliamiEvent("cup1", EventType.CUP, "Cup 1", 0, listOf("course1")))
 
-        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, foodCourses, events, includeNearby = false)
+        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
         val event = groups.single().events.single()
 
         assertEquals("luigi", event.best?.characterId)
@@ -59,10 +58,10 @@ class ConsigliamiUseCaseTest {
             ConsigliamiOutfit("mario_b", "mario", owned = false),
         )
         val rules = listOf(ConsigliamiRule("mario_a", "fg1"), ConsigliamiRule("mario_b", "fg1"))
-        val foodCourses = listOf(ConsigliamiFoodCourse("fg1", "course1", Presence.ON_COURSE))
+        val standFoods = listOf(ConsigliamiStandFood("course1", "fg1"))
         val events = listOf(ConsigliamiEvent("cup1", EventType.CUP, "Cup 1", 0, listOf("course1")))
 
-        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, foodCourses, events, includeNearby = false)
+        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
 
         assertEquals(1, groups.single().events.single().score.toInt())
     }
@@ -72,13 +71,13 @@ class ConsigliamiUseCaseTest {
         val characters = listOf(ConsigliamiCharacter("mario", 0, unlocked = true))
         val outfits = listOf(ConsigliamiOutfit("mario_a", "mario", owned = false))
         val rules = listOf(ConsigliamiRule("mario_a", "fg1"))
-        val foodCourses = listOf(
-            ConsigliamiFoodCourse("fg1", "course1", Presence.ON_COURSE),
-            ConsigliamiFoodCourse("fg1", "course2", Presence.ON_COURSE),
+        val standFoods = listOf(
+            ConsigliamiStandFood("course1", "fg1"),
+            ConsigliamiStandFood("course2", "fg1"),
         )
         val events = listOf(ConsigliamiEvent("cup1", EventType.CUP, "Cup 1", 0, listOf("course1", "course2")))
 
-        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, foodCourses, events, includeNearby = false)
+        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
 
         assertEquals(1, groups.single().events.single().score.toInt())
     }
@@ -96,10 +95,10 @@ class ConsigliamiUseCaseTest {
             ConsigliamiOutfit("luigi_b", "luigi", owned = false),
         )
         val rules = listOf(ConsigliamiRule("mario_a", "fg1"), ConsigliamiRule("luigi_a", "fg1"))
-        val foodCourses = listOf(ConsigliamiFoodCourse("fg1", "course1", Presence.ON_COURSE))
+        val standFoods = listOf(ConsigliamiStandFood("course1", "fg1"))
         val events = listOf(ConsigliamiEvent("cup1", EventType.CUP, "Cup 1", 0, listOf("course1")))
 
-        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, foodCourses, events, includeNearby = false)
+        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
 
         assertEquals("luigi", groups.single().events.single().best?.characterId)
     }
@@ -115,10 +114,10 @@ class ConsigliamiUseCaseTest {
             ConsigliamiOutfit("luigi_a", "luigi", owned = false),
         )
         val rules = listOf(ConsigliamiRule("mario_a", "fg1"), ConsigliamiRule("luigi_a", "fg1"))
-        val foodCourses = listOf(ConsigliamiFoodCourse("fg1", "course1", Presence.ON_COURSE))
+        val standFoods = listOf(ConsigliamiStandFood("course1", "fg1"))
         val events = listOf(ConsigliamiEvent("cup1", EventType.CUP, "Cup 1", 0, listOf("course1")))
 
-        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, foodCourses, events, includeNearby = false)
+        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
 
         assertEquals("mario", groups.single().events.single().best?.characterId)
     }
@@ -128,14 +127,14 @@ class ConsigliamiUseCaseTest {
         val characters = listOf(ConsigliamiCharacter("mario", 0, unlocked = true))
         val outfits = listOf(ConsigliamiOutfit("mario_a", "mario", owned = false))
         val rules = listOf(ConsigliamiRule("mario_a", "fg1"))
-        val foodCourses = listOf(ConsigliamiFoodCourse("fg1", "rich_course", Presence.ON_COURSE))
+        val standFoods = listOf(ConsigliamiStandFood("rich_course", "fg1"))
         val events = listOf(
             ConsigliamiEvent("cup1", EventType.CUP, "Cup 1", 0, listOf("rich_course", "empty1")),
             ConsigliamiEvent("cup2", EventType.CUP, "Cup 2", 1, listOf("rich_course", "empty2")),
             ConsigliamiEvent("rally1", EventType.RALLY, "Rally 1", 2, listOf("rich_course", "empty3")),
         )
 
-        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, foodCourses, events, includeNearby = false)
+        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
 
         assertEquals(1, groups.size)
         val group = groups.single()
@@ -149,13 +148,13 @@ class ConsigliamiUseCaseTest {
         val characters = listOf(ConsigliamiCharacter("mario", 0, unlocked = true))
         val outfits = listOf(ConsigliamiOutfit("mario_a", "mario", owned = false))
         val rules = listOf(ConsigliamiRule("mario_a", "fg1"))
-        val foodCourses = listOf(ConsigliamiFoodCourse("fg1", "rich_course", Presence.ON_COURSE))
+        val standFoods = listOf(ConsigliamiStandFood("rich_course", "fg1"))
         val events = listOf(
             ConsigliamiEvent("rally1", EventType.RALLY, "Rally 1", 0, listOf("rich_course")),
             ConsigliamiEvent("cup1", EventType.CUP, "Cup 1", 1, listOf("rich_course")),
         )
 
-        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, foodCourses, events, includeNearby = false)
+        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
 
         assertEquals(listOf("cup1", "rally1"), groups.single().events.map { it.event.id })
     }
@@ -165,16 +164,16 @@ class ConsigliamiUseCaseTest {
         val characters = listOf(ConsigliamiCharacter("mario", 0, unlocked = true))
         val outfits = listOf(ConsigliamiOutfit("mario_a", "mario", owned = false))
         val rules = listOf(ConsigliamiRule("mario_a", "fg1"))
-        val foodCourses = listOf(
-            ConsigliamiFoodCourse("fg1", "courseA", Presence.ON_COURSE),
-            ConsigliamiFoodCourse("fg1", "courseB", Presence.ON_COURSE),
+        val standFoods = listOf(
+            ConsigliamiStandFood("courseA", "fg1"),
+            ConsigliamiStandFood("courseB", "fg1"),
         )
         val events = listOf(
             ConsigliamiEvent("manyStops", EventType.CUP, "Many", 0, listOf("courseA", "courseB", "empty")),
             ConsigliamiEvent("oneStop", EventType.CUP, "One", 1, listOf("courseA", "empty2")),
         )
 
-        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, foodCourses, events, includeNearby = false)
+        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
 
         assertEquals("stessa posizione (stesso score e total)", 1, groups.size)
         assertEquals(listOf("manyStops", "oneStop"), groups.single().events.map { it.event.id })
@@ -188,9 +187,9 @@ class ConsigliamiUseCaseTest {
             ConsigliamiOutfit("mario_b", "mario", owned = false),
         )
         val rules = listOf(ConsigliamiRule("mario_a", "fg1"), ConsigliamiRule("mario_b", "fg2"))
-        val foodCourses = listOf(
-            ConsigliamiFoodCourse("fg1", "course1", Presence.ON_COURSE),
-            ConsigliamiFoodCourse("fg2", "course2", Presence.ON_COURSE),
+        val standFoods = listOf(
+            ConsigliamiStandFood("course1", "fg1"),
+            ConsigliamiStandFood("course2", "fg2"),
         )
         val events = listOf(
             ConsigliamiEvent("e1", EventType.CUP, "E1", 0, listOf("course1", "course2")),
@@ -198,7 +197,7 @@ class ConsigliamiUseCaseTest {
             ConsigliamiEvent("e3", EventType.CUP, "E3", 2, listOf("course1")),
         )
 
-        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, foodCourses, events, includeNearby = false)
+        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
         val positionById = groups.flatMap { g -> g.events.map { it.event.id to g.position } }.toMap()
 
         assertEquals(1, positionById["e1"])
@@ -207,18 +206,37 @@ class ConsigliamiUseCaseTest {
     }
 
     @Test
-    fun `un cibo nearby genera gain solo se includeNearby e attivo`() {
+    fun `uno stand su una strada non da gain a nessun evento`() {
         val characters = listOf(ConsigliamiCharacter("mario", 0, unlocked = true))
         val outfits = listOf(ConsigliamiOutfit("mario_a", "mario", owned = false))
         val rules = listOf(ConsigliamiRule("mario_a", "fg1"))
-        val foodCourses = listOf(ConsigliamiFoodCourse("fg1", "course1", Presence.NEARBY))
+        // Lo stand è sulla strada tra i due percorsi dell'evento: nessun percorso lo "possiede".
+        val standFoods = listOf(ConsigliamiStandFood(courseId = null, foodGroupId = "fg1"))
+        val events = listOf(
+            ConsigliamiEvent("cup1", EventType.CUP, "Cup 1", 0, listOf("course1", "course2")),
+            ConsigliamiEvent("rally1", EventType.RALLY, "Rally 1", 1, listOf("course1", "course2")),
+        )
+
+        val groups = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events)
+        val event = events.first()
+        val details = ConsigliamiUseCase.detailFor(event, characters, outfits, rules, standFoods)
+
+        assertTrue(groups.flatMap { it.events }.all { it.score == 0.0 && it.best == null && it.relevantFoods.isEmpty() })
+        assertTrue(details.isEmpty())
+    }
+
+    @Test
+    fun `piu stand con lo stesso cibo sullo stesso percorso contano una volta`() {
+        val characters = listOf(ConsigliamiCharacter("mario", 0, unlocked = true))
+        val outfits = listOf(ConsigliamiOutfit("mario_a", "mario", owned = false))
+        val rules = listOf(ConsigliamiRule("mario_a", "fg1"))
+        val standFoods = List(3) { ConsigliamiStandFood("course1", "fg1") }
         val events = listOf(ConsigliamiEvent("cup1", EventType.CUP, "Cup 1", 0, listOf("course1")))
 
-        val withoutNearby = ConsigliamiUseCase.compute(characters, outfits, rules, foodCourses, events, includeNearby = false)
-        val withNearby = ConsigliamiUseCase.compute(characters, outfits, rules, foodCourses, events, includeNearby = true)
+        val score = ConsigliamiUseCase.compute(characters, outfits, rules, standFoods, events).single().events.single()
 
-        assertEquals(0, withoutNearby.single().events.single().score.toInt())
-        assertEquals(1, withNearby.single().events.single().score.toInt())
+        assertEquals(1, score.best?.gain)
+        assertEquals(listOf(RelevantFood("fg1", "course1")), score.relevantFoods)
     }
 
     @Test
@@ -240,17 +258,38 @@ class ConsigliamiUseCaseTest {
             ConsigliamiRule("luigi_a", "fg_altro"),
             ConsigliamiRule("peach_a", "fg1"),
         )
-        val foodCourses = listOf(
-            ConsigliamiFoodCourse("fg1", "course1", Presence.ON_COURSE),
-            ConsigliamiFoodCourse("fg2", "course1", Presence.ON_COURSE),
+        val standFoods = listOf(
+            ConsigliamiStandFood("course1", "fg1"),
+            ConsigliamiStandFood("course1", "fg2"),
         )
         val event = ConsigliamiEvent("cup1", EventType.CUP, "Cup 1", 0, listOf("course1"))
 
-        val details = ConsigliamiUseCase.detailFor(event, characters, outfits, rules, foodCourses, includeNearby = false)
+        val details = ConsigliamiUseCase.detailFor(event, characters, outfits, rules, standFoods)
 
         assertEquals(listOf("mario"), details.map { it.characterId })
         assertEquals(2, details.single().gain)
         assertEquals(setOf("mario_a", "mario_b"), details.single().unlockableOutfitIds.toSet())
+    }
+
+    @Test
+    fun `il dettaglio dice per ogni outfit con quali cibi e su quali percorsi in ordine di tappa`() {
+        val characters = listOf(ConsigliamiCharacter("mario", 0, unlocked = true))
+        val outfits = listOf(ConsigliamiOutfit("mario_a", "mario", owned = false))
+        // mario_a si ottiene da due cibi diversi (come Mario Touring).
+        val rules = listOf(ConsigliamiRule("mario_a", "fg1"), ConsigliamiRule("mario_a", "fg2"))
+        val standFoods = listOf(
+            ConsigliamiStandFood("course2", "fg1"),
+            ConsigliamiStandFood("course1", "fg2"),
+            ConsigliamiStandFood("course1", "fg_altro"),
+            ConsigliamiStandFood("course3", "fg1"),     // percorso fuori dall'evento
+            ConsigliamiStandFood(null, "fg1"),          // strada
+        )
+        val event = ConsigliamiEvent("cup1", EventType.CUP, "Cup 1", 0, listOf("course1", "course2"))
+
+        val outfit = ConsigliamiUseCase.detailFor(event, characters, outfits, rules, standFoods).single().outfits.single()
+
+        assertEquals("mario_a", outfit.outfitId)
+        assertEquals(listOf(RelevantFood("fg2", "course1"), RelevantFood("fg1", "course2")), outfit.sources)
     }
 
     @Test
@@ -261,9 +300,9 @@ class ConsigliamiUseCaseTest {
             ConsigliamiOutfit("mario_b", "mario", owned = false),
         )
         val rules = listOf(ConsigliamiRule("mario_a", "fg1"), ConsigliamiRule("mario_b", "fg2"))
-        val foodCourses = listOf(
-            ConsigliamiFoodCourse("fg1", "course1", Presence.ON_COURSE),
-            ConsigliamiFoodCourse("fg2", "course2", Presence.ON_COURSE),
+        val standFoods = listOf(
+            ConsigliamiStandFood("course1", "fg1"),
+            ConsigliamiStandFood("course2", "fg2"),
         )
         // e1: gain più alto (2) ma nessun risultato (improvement = 1). e2: gain più basso (1) ma
         // già oro 3 stelle (improvement = 1 - 6/6 = 0). Con w=1 conta solo improvement.
@@ -274,7 +313,7 @@ class ConsigliamiUseCaseTest {
         val bestRank: (String) -> TrophyRank? = { id -> if (id == "e2") TrophyRank.GOLD_3_STARS else null }
 
         val groups = ConsigliamiUseCase.compute(
-            characters, outfits, rules, foodCourses, events, includeNearby = false,
+            characters, outfits, rules, standFoods, events,
             resultsEnabled = true, weight = 1.0, bestRankForEvent = bestRank,
         )
 
@@ -289,9 +328,9 @@ class ConsigliamiUseCaseTest {
             ConsigliamiOutfit("mario_b", "mario", owned = false),
         )
         val rules = listOf(ConsigliamiRule("mario_a", "fg1"), ConsigliamiRule("mario_b", "fg2"))
-        val foodCourses = listOf(
-            ConsigliamiFoodCourse("fg1", "course1", Presence.ON_COURSE),
-            ConsigliamiFoodCourse("fg2", "course2", Presence.ON_COURSE),
+        val standFoods = listOf(
+            ConsigliamiStandFood("course1", "fg1"),
+            ConsigliamiStandFood("course2", "fg2"),
         )
         // e1: gain minore (1) ma oro 3 stelle. e2: gain maggiore (2) ma solo bronzo.
         // Risultati disattivati (default): deve vincere il gain, non le stelle.
@@ -302,7 +341,7 @@ class ConsigliamiUseCaseTest {
         val bestRank: (String) -> TrophyRank? = { id -> if (id == "e1") TrophyRank.GOLD_3_STARS else TrophyRank.BRONZE }
 
         val groups = ConsigliamiUseCase.compute(
-            characters, outfits, rules, foodCourses, events, includeNearby = false,
+            characters, outfits, rules, standFoods, events,
             bestRankForEvent = bestRank, // resultsEnabled di default è false
         )
 
@@ -319,9 +358,9 @@ class ConsigliamiUseCaseTest {
             ConsigliamiOutfit("wario_b", "wario", owned = false),
         )
         val rules = listOf(ConsigliamiRule("wario_a", "fg1"), ConsigliamiRule("wario_b", "fg2"))
-        val foodCourses = listOf(
-            ConsigliamiFoodCourse("fg1", "course1", Presence.ON_COURSE),
-            ConsigliamiFoodCourse("fg2", "course2", Presence.ON_COURSE),
+        val standFoods = listOf(
+            ConsigliamiStandFood("course1", "fg1"),
+            ConsigliamiStandFood("course2", "fg2"),
         )
         val events = listOf(
             ConsigliamiEvent("cup", EventType.CUP, "Cup", 0, listOf("course1")),
@@ -332,7 +371,7 @@ class ConsigliamiUseCaseTest {
         }
 
         val groups = ConsigliamiUseCase.compute(
-            characters, outfits, rules, foodCourses, events, includeNearby = false,
+            characters, outfits, rules, standFoods, events,
             resultsEnabled = true, weight = 0.3, bestRankForEvent = bestRank,
         )
 

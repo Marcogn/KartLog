@@ -44,21 +44,20 @@
     <string name="consigliami_filter_cup">Grand Prix</string>
     <string name="consigliami_filter_rally">Knockout Tour</string>
     <string name="consigliami_filter_both">Both</string>
-    <string name="consigliami_include_nearby">Include nearby food</string>
     <string name="consigliami_only_useful">Useful only</string>
     <string name="consigliami_position_format">#%1$d</string>
     <string name="consigliami_recommended_character">Recommended character</string>
-    <string name="consigliami_gain_format">+%1$d outfits</string>
+    <string name="consigliami_gain_format">up to +%1$d outfits</string>
+    <string name="consigliami_foods_maybe">Might be there (keep your eyes open):</string>
+    <string name="consigliami_detail_maybe">Outfits that might unlock: these courses have a Yoshi\'s stand with the right food, but it may not be on the race track. Keep your eyes open!</string>
     <string name="consigliami_runners_up">Alternatives</string>
-    <string name="consigliami_on_course">on course</string>
-    <string name="consigliami_nearby">nearby</string>
-    <string name="consigliami_banner">Estimate based on each course\'s Yoshi stands: it doesn\'t guarantee the item will appear or that you\'ll manage to grab it.</string>
+    <string name="consigliami_banner">The Yoshi\'s stands listed are in each course\'s area, not necessarily on the race track: keep your eyes open. If you turned off Dash Food outfit changes when choosing your vehicle, nothing unlocks.</string>
     <string name="consigliami_group_title_common">%1$d events pass through %2$s · same gain</string>
     <string name="consigliami_group_title_generic">%1$d events tied</string>
     <string name="consigliami_no_recommendations">No useful events right now</string>
     <string name="consigliami_type_cup">Cup</string>
     <string name="consigliami_type_rally">Rally</string>
-    <string name="consigliami_detail_no_characters">No character gains an outfit from this event</string>
+    <string name="consigliami_detail_no_characters">No known Yoshi\'s stand on these courses has food for the outfits you\'re missing</string>
     <string name="consigliami_weigh_results">Weigh results</string>
     <string name="consigliami_weight_label">Results weight: %1$d%%</string>
     <string name="consigliami_reference_cc">Reference cc</string>
@@ -77,7 +76,7 @@
     <string name="settings_info_section">Info</string>
     <string name="settings_source_revid_format">%1$s · rev %2$d</string>
     <string name="settings_images_title">Images</string>
-    <string name="settings_images_disclaimer">Character, outfit, Grand Prix and Knockout Tour images come from Super Mario Wiki (mariowiki.com) and are downloaded when a connection is available: they are not bundled with the app. Mario Kart World, its characters and related images are © Nintendo. KartLog is a fan project, not affiliated with or endorsed by Nintendo.</string>
+    <string name="settings_images_disclaimer">Character, outfit, food, Grand Prix and Knockout Tour images come from Super Mario Wiki (mariowiki.com) and are downloaded when a connection is available: they are not bundled with the app. Mario Kart World, its characters and related images are © Nintendo. KartLog is a fan project, not affiliated with or endorsed by Nintendo.</string>
 
     <string name="placeholder_coming_soon">Screen coming soon</string>
 
@@ -109,7 +108,7 @@
     <string name="language_system">System</string>
     <string name="language_italian">Italiano</string>
     <string name="language_english">English</string>
-    <string name="settings_food_names_note">Italian food names are an unofficial translation: no source lists them. So are the Italian Mirror Mode conditions, translated from mariowiki.com because the Italian wiki is less up to date.</string>
+    <string name="settings_food_names_note">Italian food names are an unofficial translation: no source lists them. So are the Italian Yoshi\'s stand locations and establishment types, and the Italian Mirror Mode conditions, translated from mariowiki.com because the Italian wiki is less up to date.</string>
     <string name="results_mirror_info_title">Mirror Mode</string>
     <string name="results_mirror_info_cd">How to unlock Mirror Mode</string>
     <string name="skin_unlock_how">How to unlock</string>

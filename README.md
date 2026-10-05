@@ -47,8 +47,9 @@ Dalla specifica completa ([`SPEC.md`](SPEC.md)):
   Si apre dal menu o dal pulsantone rosso di Monete Peach e Pulsanti P.
 - **Consigliami**: classifica dei Gran Premi/Knockout Tour da correre in
   base agli outfit ancora mancanti, con personaggio consigliato, le due
-  alternative successive e i cibi rilevanti sul percorso (o nei
-  dintorni, se attivato).
+  alternative successive e i cibi che potrebbero esserci: gli stand
+  Yoshi's sono nell'area dei percorsi, non per forza sul tracciato di
+  gara, quindi ogni consiglio è una possibilità ("occhi aperti").
 - **Risultati**: schermata dedicata, raggiungibile dalla Home, dove si
   registra il miglior trofeo (bronzo … oro ★★★) di ogni Gran Premio e
   Knockout Tour per cilindrata; peso opzionale nel punteggio di
@@ -75,7 +76,8 @@ inglese (la lista italiana è incompleta), e i nomi italiani dei **cibi**
 sono una **traduzione non ufficiale** fatta a mano, perché nessuna fonte
 li riporta. Lo stesso vale per le **condizioni della modalità specchio** in
 italiano: tradotte a mano dal testo di mariowiki.com, perché quello della
-wiki italiana è meno aggiornato. I criteri di sblocco dei piloti vengono
+wiki italiana è meno aggiornato, e per i **luoghi e i tipi di locale degli
+stand Yoshi's** (pagina "List of Yoshi's locations"). I criteri di sblocco dei piloti vengono
 invece dalle due wiki, ciascuno nella sua lingua.
 
 ## Mappa dei collezionabili
@@ -93,7 +95,9 @@ le immagini del wiki.
 
 Le immagini di personaggi, outfit, Gran Premi e Knockout Tour vengono da
 [**Super Mario Wiki**](https://www.mariowiki.com/Mario_Kart_World)
-(pagina "Mario Kart World"), servite dal suo CDN `mario.wiki.gallery`.
+(pagina "Mario Kart World"), quelle dei cibi dalla pagina
+[Dash Food](https://www.mariowiki.com/Dash_Food), servite dal suo CDN
+`mario.wiki.gallery`.
 
 - **Non sono nel repository né nell'APK.** `tools/seedgen` ne registra
   solo l'URL in `seed/` (`imageUrl`); l'app le scarica all'avvio e le

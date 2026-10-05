@@ -92,16 +92,54 @@ def test_unknown_names_fail(cfg):
         cfg.courses.resolve("Coconut Mall")
 
 
-def test_yoshis_only_course_section_and_rowspans():
-    stands = {s.course: s.foods for s in parse_yoshis(synthetic_page("yoshis.html", "List of Yoshi's locations"))}
-    assert list(stands) == ["Crown City", "Wario Stadium"]          # la sezione Route locations è ignorata
-    assert stands["Crown City"] == ["Pizza", "Chips", "soft drinks", "chocolate bars", "Kebabs", ""]
-    assert stands["Wario Stadium"] == ["Curry"]
+def test_yoshis_one_stand_per_row_with_rowspans():
+    stands = parse_yoshis(synthetic_page("yoshis.html", "List of Yoshi's locations"))
+    assert len(stands) == 10                                        # 8 sui percorsi + 2 sulle strade, navbox ignorata
+    crown = [s for s in stands if s.course == "Crown City"]
+    assert [s.foods for s in crown] == [["Pizza"], ["Chips", "soft drinks", "chocolate bars"], ["Kebabs"], ["Kebabs"],
+                                        ["Burgers"]]
+    assert [s.establishment for s in crown] == ["Snack bar", "Snack bar", "Food truck", "Food truck", "Food truck"]
+    # Cella vuota = luogo non indicato, mai inventato; la nota [1] non sporca il testo.
+    assert [s.location for s in crown] == [None, None, None, "West gate", "West exit"]
+    wario = [s for s in stands if s.course == "Wario Stadium"]
+    assert [s.location for s in wario] == ["West side", "West side"]  # rowspan sul luogo
+    assert wario[1].foods == ["Snacks", "Soft drinks", "Chocolate bars"]  # etichette separate da <br>
+    routes = [s for s in stands if s.course is None]
+    assert [(s.foods, s.establishment, s.location) for s in routes] == [
+        (["Sushi"], None, "South of Cheep Cheep Falls"), (["Meat"], None, "East gate of Crown Bridge")]
+
+
+def test_yoshis_requires_both_sections():
+    html = synthetic_page("yoshis.html", "List of Yoshi's locations").html.replace("Route locations", "Other")
+    from seedgen.wiki import WikiPage
+    with pytest.raises(ParseError, match="route locations"):
+        parse_yoshis(WikiPage("List of Yoshi's locations", 0, html))
+
+
+def test_dash_food_variants():
+    groups = {g.names[0]: g for g in parse_dash_food(synthetic_page("dash_food.html", "Dash Food"))}
+    burger = groups["Hamburger"].variants
+    assert [(v.name, v.boost) for v in burger] == [("Hamburger", "Small"), ("Hamburger", "Medium"), ("Hamburger", "Large")]
+    # URL del file originale, non del thumbnail
+    assert burger[0].image_url == "https://mario.wiki.gallery/images/a/a1/Food_1.png"
+    assert [v.name for v in groups["Takoyaki"].variants] == ["Takoyaki", "Sushi", "Sushi"]
+    assert [v.name for v in groups["Snacks 1"].variants] == ["Canned juice", "Dark chocolate"]  # seconda colonna Name
+    assert [v.name for v in groups["Lunchbox"].variants] == ["Lunchbox"]
+
+
+def test_dash_food_variant_without_image_is_rejected():
+    html = synthetic_page("dash_food.html", "Dash Food").html.replace(
+        '<img src="https://mario.wiki.gallery/images/thumb/a/a2/Food_2.png/100px-Food_2.png">', "")
+    from seedgen.wiki import WikiPage
+    with pytest.raises(ParseError, match="senza immagine"):
+        parse_dash_food(WikiPage("Dash Food", 0, html))
 
 
 def test_yoshi_labels_map_to_groups(cfg):
     assert cfg.yoshi_label_groups("soft drinks") == ["snacks_1", "snacks_2", "snacks_3"]
     assert cfg.yoshi_label_groups("Candy apples") == ["sushi"]
+    assert cfg.yoshi_label("Candy apples") == (["sushi"], "Candy apple")   # cibo preciso del gruppo sushi
+    assert cfg.yoshi_label("Burgers") == (["hamburger"], None)              # il gruppo, non una taglia
     with pytest.raises(UnknownNameError):
         cfg.yoshi_label_groups("Ramen")
 

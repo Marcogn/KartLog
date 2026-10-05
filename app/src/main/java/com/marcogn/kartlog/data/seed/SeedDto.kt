@@ -56,13 +56,33 @@ data class FoodGroupDto(
 @Serializable
 data class OutfitFoodRuleDto(val outfitId: String, val foodGroupId: String)
 
+/** Un cibo della tabella di Dash Food (`food_variants.json`); `nameIt` è una traduzione NON ufficiale. */
 @Serializable
-data class FoodGroupCourseDto(
+data class FoodVariantDto(
+    val id: String,
     val foodGroupId: String,
-    val courseId: String,
-    val presence: String,
-    val listedInDashFood: Boolean,
+    val order: Int,
+    val name: String,
+    val nameIt: String? = null,
+    val boost: List<String>,
+    val imageUrl: String? = null,
 )
+
+/** Uno stand Yoshi's (`yoshi_stands.json`); `courseId` null = su una strada. Italiano NON ufficiale. */
+@Serializable
+data class YoshiStandDto(
+    val id: String,
+    val courseId: String? = null,
+    val regionId: String? = null,
+    val establishment: String? = null,
+    val establishmentIt: String? = null,
+    val location: String? = null,
+    val locationIt: String? = null,
+    val foods: List<YoshiStandFoodDto>,
+)
+
+@Serializable
+data class YoshiStandFoodDto(val foodGroupId: String, val food: String? = null)
 
 @Serializable
 data class CourseDto(val id: String, val name: String, val nameIt: String? = null, val regionId: String? = null)

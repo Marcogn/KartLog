@@ -1,4 +1,4 @@
-# KartLog — Specifica tecnica (v0.5, allineata all'app 1.1.2)
+# KartLog — Specifica tecnica (v0.6, allineata all'app 1.1.2 più la fase C1)
 
 Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), Peach Medallions, P Switch, con un modulo "Consigliami" che suggerisce quale Gran Premio o Knockout Tour correre e con quale personaggio per sbloccare più outfit mancanti.
 
@@ -86,14 +86,14 @@ Vedi §6 per l'algoritmo. UI:
 - Gli eventi a pari merito si raggruppano in **una card espandibile**. Se hanno in comune i corsi che generano il guadagno, il titolo li nomina: "4 eventi passano da Crown City · stesso guadagno". All'interno del gruppo restano ordinati con gli spareggi §6.4.
 - Ogni card evento mostra:
   - nome evento, tipo (Cup/Rally) e posizione in classifica
-  - **personaggio consigliato** e numero di outfit nuovi ottenibili con lui
+  - **personaggio consigliato** e numero di outfit nuovi che potrebbe ottenere ("fino a +N")
   - i 2 personaggi alternativi successivi con i rispettivi numeri
-  - i cibi rilevanti disponibili sull'evento, ciascuno con il percorso e l'indicazione **sul percorso** / **nei dintorni** (§5.2.1)
+  - i cibi rilevanti che **potrebbero esserci** sull'evento, ciascuno con il percorso: lo stand Yoshi's è nell'area del percorso, non per forza sul tracciato di gara ("occhi aperti", §5.2.1)
   - se i risultati sono attivi, il trofeo registrato alla cilindrata di riferimento (§2.6)
-- Tap sulla card apre il dettaglio: tutti i personaggi con gain > 0, outfit specifici ottenibili per ciascuno, e il miglior trofeo per ogni cilindrata **in sola lettura**. Consigliami non registra risultati: si fa solo dalla schermata Risultati (§2.6).
+- Tap sulla card apre il dettaglio: un avviso in cima (outfit che *potrebbero* sbloccarsi), tutti i personaggi con gain > 0, outfit specifici ottenibili per ciascuno (il dominio dà anche cibo e percorso di ogni outfit, per le righe "outfit – cibo – percorso" della fase C4), e il miglior trofeo per ogni cilindrata **in sola lettura**. Consigliami non registra risultati: si fa solo dalla schermata Risultati (§2.6).
 - Sezione "Pesa i risultati": switch on/off più slider del peso (§6.3).
-- Switch **"Includi cibi nei dintorni"** (default off): se attivo, il calcolo usa anche la presenza `NEARBY` (§6.1).
-- Banner fisso in basso: "Stima basata sugli stand Yoshi's dei percorsi: non garantisce che il bag compaia o che tu riesca a prenderlo."
+- Banner fisso in basso: gli stand indicati sono nell'area dei percorsi, non per forza sul tracciato ("occhi aperti"); se nella scelta del veicolo è disattivato il cambio d'abito degli snack scatto, non si sblocca nulla (pagina Dash Food).
+- Non c'è più lo switch "Includi cibi nei dintorni" (tolto con la fase C1: la sezione Cibi della fase C2 mostra tutti i luoghi).
 
 ### 2.6 Risultati
 Schermata dedicata, raggiunta dal pulsante largo in Home e dal drawer. Registra il **miglior risultato** di ogni Gran Premio e Knockout Tour, non uno storico.
@@ -120,8 +120,17 @@ FoodGroup(id: String PK, name: String, nameIt: String?, foods: List<String>, rev
     // Un gruppo = una cella Outfits distinta della tabella Dash Food (20 gruppi).
     // foods: nomi dei cibi che lo compongono, es. ["Takoyaki","Candy apple","Cheep Cheep taiyaki","Sushi"].
 OutfitFoodRule(outfitId: FK, foodGroupId: FK)              // N:M: lo stesso outfit si ottiene da più gruppi (es. Mario Touring)
-FoodGroupCourse(foodGroupId: FK, courseId: FK, presence: ON_COURSE|NEARBY, listedInDashFood: Boolean)
-    // ON_COURSE: stand sul tracciato (List of Yoshi's locations). NEARBY: solo sulle strade vicine (Dash Food). §5.2.1
+FoodVariant(id: String PK, foodGroupId: FK, order: Int, name: String, nameIt: String?, boost: List<SMALL|MEDIUM|LARGE>, imageUrl: String?)
+    // Una riga della tabella "List of food" di Dash Food (60): in genere 3 per gruppo; il sushi ha 4 cibi
+    // (takoyaki, mela caramellata, taiyaki, sushi), il piatto triplo ha boost [SMALL, MEDIUM, LARGE].
+    // id "<gruppo>_<n>"; nameIt: traduzione NON ufficiale.
+YoshiStand(id: String PK, order: Int, courseId: FK?, regionId: FK?, establishment: String?, establishmentIt: String?,
+           location: String?, locationIt: String?)
+    // Uno stand di "List of Yoshi's locations" (una riga = una foto = uno stand): 70 nell'area di 21 percorsi,
+    // 39 sulle strade (courseId null). regionId = quello del corso; null sulle strade (la fonte non lo dice).
+    // location null = il wiki non lo indica. *It: traduzione NON ufficiale. id "stand_<corso>_<nn>" / "stand_route_<nn>".
+YoshiStandFood(standId: FK, foodGroupId: FK, food: String?)    // PK (standId, foodGroupId)
+    // food = cibo preciso solo dove la fonte lo nomina (gruppo sushi, = FoodVariant.name); null = tutto il gruppo.
 Course(id: String PK, name: String, nameIt: String?, regionId: FK?)   // regionId null solo per Rainbow Road
 Region(id: String PK, name: String, nameIt: String?, order: Int)     // 10 regioni/biomi
 Area(id: String PK, name: String, regionId: FK)               // luoghi delle missioni che non sono uno dei 30 corsi
@@ -133,7 +142,7 @@ Event(id: String PK, type: CUP|RALLY, name: String, nameIt: String?, order: Int,
 EventStop(eventId: FK, position: Int, courseId: FK)         // nel JSON è l'array "stops" dell'evento, in ordine
 ```
 
-Le condizioni della modalità specchio (`mirror_mode.json`) e l'immagine della mappa (`map.json`) si leggono dagli asset, senza tabella. Gli stand Yoshi's, compresi quelli sulle strade, entrano con la fase C1 (`docs/roadmap.md`).
+Le condizioni della modalità specchio (`mirror_mode.json`) e l'immagine della mappa (`map.json`) si leggono dagli asset, senza tabella. Room v8: `food_group_courses` (fino alla v7) è sostituita dagli stand (`MIGRATION_7_8`).
 
 Stato utente (mai toccato dal reseed):
 
@@ -169,7 +178,8 @@ In `seed/` alla root del repository (versionati, **già presenti**), copiati neg
 | `outfits.json` | `id`, `characterId`, `name` (null per il default), `nameIt`, `isDefault`, `imageUrl` | 127 (103 + 24 default) |
 | `food_groups.json` | `id`, `name`, `nameIt`, `foods`, `revertsToDefault` | 20 |
 | `outfit_food_rules.json` | `outfitId`, `foodGroupId` | — |
-| `food_group_courses.json` | `foodGroupId`, `courseId`, `presence` (ON_COURSE/NEARBY), `listedInDashFood` | 54 sul percorso + 52 nei dintorni |
+| `food_variants.json` | `id`, `foodGroupId`, `order`, `name`, `nameIt` (traduzione non ufficiale), `boost`, `imageUrl` | 60 |
+| `yoshi_stands.json` | `id`, `courseId` (null = strada), `regionId`, `establishment`, `establishmentIt`, `location`, `locationIt`, `foods` (`foodGroupId`, `food`) | 70 sui percorsi + 39 sulle strade |
 | `courses.json` | `id`, `name`, `nameIt`, `regionId` | 30 |
 | `regions.json` | `id`, `name`, `nameIt`, `order` | 10 |
 | `areas.json` | `id`, `name`, `regionId` | 2 (cresce se le missioni citano altri luoghi) |
@@ -188,8 +198,8 @@ Tutte da **Super Mario Wiki** (mariowiki.com), contenuti testuali in CC BY-SA 4.
 
 | Titolo pagina | Cosa se ne estrae |
 |---|---|
-| `Dash Food` | tabella "List of food": gruppi di cibo → outfit per personaggio; gruppi → corsi **e strade vicine** (colonna Locations) |
-| `List of Yoshi's locations` | sezione "Course locations": quali cibi hanno uno stand **sul tracciato** di ogni percorso |
+| `Dash Food` | tabella "List of food": gruppi di cibo → outfit per personaggio; ogni cibo (riga) con livello di boost e immagine; colonna Locations (corsi **e strade vicine**) solo come controllo incrociato |
+| `List of Yoshi's locations` | tutti gli stand: "Course locations" (nell'area di un percorso: locale, cibo, luogo) e "Route locations" (sulle strade: cibo, luogo) |
 | `List of Mario Kart World missions` | pulsanti P: bioma (intestazione), nome della missione ("In-game text"), percorso ("Location") |
 | `Template:Mario Kart World` | navbox del gioco: righe "<Nome> Cup" con i 4 corsi; riga "Knockout Tour rallies" (per accorgersi di rally nuovi) |
 | `Golden Rally`, `Ice Rally`, `Moon Rally`, `Spiny Rally`, `Cherry Rally`, `Acorn Rally`, `Cloud Rally`, `Heart Rally`, `Drill Rally`, `Boomerang Rally (rally)`, `Propeller Rally`, `Turnip Rally` | tappe del rally, dalla tabella "Starting point / Checkpoint N / Final course" |
@@ -197,7 +207,7 @@ Tutte da **Super Mario Wiki** (mariowiki.com), contenuti testuali in CC BY-SA 4.
 **Mappa, Peach Medallions e pannelli "?": mkworld-checklist.** Dal 28/09/2026, per scelta dell'autore, le posizioni sulla mappa di Monete Peach, Pulsanti P e pannelli "?", le istruzioni (solo inglese), i video e l'immagine della mappa vengono dal progetto pubblico su GitHub [mkworld-checklist](https://github.com/BamisWasTaken/mkworld-checklist) (mktools.io), letto da `seedgen/checklist.py` a un **commit fissato** in `sources.yaml`, con i crediti in README, `seed/LICENSE` e Impostazioni/Info. Le monete e i pannelli vengono solo da lì; i Pulsanti P restano quelli di mariowiki e prendono la posizione per nome della missione (3 grafie diverse in `manual/checklist_mission_names.yaml`, un nome non abbinato ferma l'estrazione). Supera la fonte precedente dei medaglioni (conteggi per bioma di Nintendo Life, file manuale): le monete di mkworld-checklist non hanno un bioma, e un tentativo di ricavarlo dai Pulsanti P vicini non riproduceva i conteggi di Nintendo Life. Niente scraping automatico di siti commerciali (IGN, Game8, Nintendo Life): contenuti protetti, termini d'uso restrittivi e struttura instabile.
 
 - Le guide commerciali (IGN, Game8, Nintendo Life, Gamer Guides) servono **solo per verificare** i dati, non per copiarne i contenuti. IGN è il riferimento dell'autore per il controllo a campione degli outfit (manuale, non automatizzato).
-- Le immagini di mariowiki **non** sono CC BY-SA: sono asset Nintendo. seedgen ne registra solo l'URL (`imageUrl` su personaggi, outfit, eventi; pagina `Mario Kart World`, sempre dal vivo come le pagine dei nomi in italiano); l'app le scarica a runtime e non entrano mai nel repository o nell'APK.
+- Le immagini di mariowiki **non** sono CC BY-SA: sono asset Nintendo. seedgen ne registra solo l'URL (`imageUrl` su personaggi, outfit, eventi dalla pagina `Mario Kart World`, sempre dal vivo come le pagine dei nomi in italiano; sui cibi dalla pagina `Dash Food`); l'app le scarica a runtime e non entrano mai nel repository o nell'APK.
 
 ### 5.2.1 Regole di dominio verificate sulla pagina Dash Food
 - **Tutti i cibi di uno stesso gruppo danno lo stesso outfit**: gli snack non sono combinazioni. Il wiki parla di 18 gruppi ufficiali; per l'app conta la cella Outfits distinta, che dà **20 gruppi** (19 con outfit + Lunchbox).
@@ -208,12 +218,13 @@ Tutte da **Super Mario Wiki** (mariowiki.com), contenuti testuali in CC BY-SA 4.
 - Baby Peach, Baby Daisy e Baby Rosalina ricevono sempre gli stessi outfit tra loro; così anche Toad e Toadette (Burger Bud ≡ Soft Server, Engineer ≡ Conductor). Non serve logica speciale in app: è un controllo di coerenza dello script.
 - Solo i 24 personaggi del roster principale hanno outfit; gli NPC no.
 
-**Dove si trova un cibo: "sul percorso" o "nei dintorni".** La colonna Locations di Dash Food elenca i percorsi *più le strade vicine* (la pagina dice "courses or surrounding routes"). Esempio: lo Spicy curry risulta a Mario Bros. Circuit, ma lo stand è alla stazione a nord del circuito. Per affermare "il sushi sta su Great ? Block Ruins" serve la pagina `List of Yoshi's locations`, che separa gli stand sul tracciato da quelli sulle strade. Quindi:
-- `ON_COURSE`: il gruppo ha uno stand sul tracciato del percorso (sezione Course locations).
-- `NEARBY`: il percorso compare solo nella colonna Locations di Dash Food.
-- Controllo incrociato: ogni coppia `ON_COURSE` deve comparire anche in Dash Food. Sul seed iniziale lo è per tutte le 54 coppie.
-- Le etichette di cibo della pagina Yoshi's ("Kebabs", "Fish and chips", "Chips, soft drinks, chocolate bars"…) si mappano ai gruppi con `yoshi_food_labels` in `aliases.yaml`. Uno stand di snack vale per Snacks 1, 2 e 3.
-- Per 9 percorsi (Desert Hills, DK Pass, Faraway Oasis, Dino Dino Jungle, Dandelion Depths, Boo Cinema, Choco Mountain, Toad's Factory, Rainbow Road) la pagina non elenca stand sul tracciato: per l'app valgono come "nessuno stand noto sul percorso", non come "nessun cibo". La UI lo dice esplicitamente (§10).
+**Dove si trova un cibo: gli stand Yoshi's** (fase C1, verifiche del 05/10/2026).
+- La colonna Locations di Dash Food elenca i percorsi *più le strade vicine* ("courses or surrounding routes"): non basta per dire dove sta uno stand.
+- `List of Yoshi's locations` elenca ogni stand: "Course locations" dà quelli **dell'area** di un percorso, anche fuori dal tracciato di gara (Crown City ne ha nove, alcuni "in an alley next to Bank Coin Coffer"), e nessuna fonte dice quali si incontrano in gara; "Route locations" dà quelli sulle strade tra i percorsi. Per questo Consigliami parla di possibilità e gli stand sulle strade non si associano mai a un evento (collegarli a un tratto di rally vorrebbe dire indovinare da una descrizione testuale).
+- Controllo incrociato: ogni cibo di uno stand su un percorso compare anche nella colonna Locations di Dash Food per quel corso (vale per tutte le coppie), altrimenti seedgen si ferma.
+- Le etichette di cibo della pagina Yoshi's ("Kebabs", "Fish and chips", "Chips, soft drinks, chocolate bars"…) si mappano ai gruppi con `yoshi_food_labels` in `aliases.yaml` (verificate sui nomi dei file immagine di Dash Food, es. MKWorld_Kebab_1 = Barbecue). Uno stand di snack vale per Snacks 1, 2 e 3. Le etichette del gruppo sushi nominano il cibo preciso (takoyaki, mela caramellata, taiyaki, sushi) e lo stand va a quel cibo; le altre nominano il gruppo, non la taglia.
+- Per 9 percorsi (Desert Hills, DK Pass, Faraway Oasis, Dino Dino Jungle, Dandelion Depths, Boo Cinema, Choco Mountain, Toad's Factory, Rainbow Road) la pagina non elenca stand: per l'app valgono come "nessuno stand noto", non come "nessun cibo". Carne con l'osso e popcorn hanno stand solo sulle strade, quindi Consigliami non li suggerisce mai.
+- Dalla selezione del veicolo si può **disattivare** il cambio d'abito da Dash Food: in quel caso non si sblocca nessun outfit (pagina Dash Food). Lo dice il banner di Consigliami.
 
 ### 5.3 Script di estrazione (`tools/seedgen/`, già nel repository)
 Lo script **esiste già** ed è coperto da test: non va riscritto, solo esteso quando servono nuove fonti. Dettagli d'uso in `tools/seedgen/README.md`.
@@ -230,9 +241,10 @@ Lo script **esiste già** ed è coperto da test: non va riscritto, solo esteso q
 - Se la navbox elenca un rally non presente in `sources.yaml`, l'estrazione fallisce: i rally nuovi si aggiungono consapevolmente.
 
 **Validazione (exit code 2 se una fallisce)**
-- Conteggi in `expected_counts.yaml`: 24 personaggi con outfit, 103 outfit alternativi, 127 totali, 20 gruppi di cibo (1 che riporta al default), 30 corsi, 8 cup da 4 corsi, 12 rally da 6 tappe. Se un update del gioco cambia i numeri, si aggiornano **a mano** in un commit dedicato, mai rilassati per far passare la build.
-- Integrità referenziale, ID unici, nessun outfit senza cibo, ogni gruppo con almeno un corso, le 8 cup coprono tutti i 30 corsi.
-- Equivalenze di §5.2.1 e controllo incrociato `ON_COURSE` ⊆ Dash Food.
+- Conteggi in `expected_counts.yaml`: 24 personaggi con outfit, 103 outfit alternativi, 127 totali, 20 gruppi di cibo (1 che riporta al default), 60 cibi, 70 stand sui percorsi e 39 sulle strade, 30 corsi, 8 cup da 4 corsi, 12 rally da 6 tappe. Se un update del gioco cambia i numeri, si aggiornano **a mano** in un commit dedicato, mai rilassati per far passare la build.
+- Integrità referenziale, ID unici, nessun outfit senza cibo, ogni gruppo con almeno uno stand e una variante, le 8 cup coprono tutti i 30 corsi.
+- Equivalenze di §5.2.1 e controllo incrociato stand dei percorsi ⊆ colonna Locations di Dash Food (nel build).
+- Stand: bioma uguale a quello del corso, nessun bioma sulle strade, ogni luogo e tipo di locale con la sua traduzione (`manual/stand_locations_it.yaml`: un testo senza voce o una voce inutilizzata fermano seedgen). Cibi: livello di boost riconosciuto, immagine sul CDN del wiki (file originale).
 - 10 regioni; ogni corso tranne Rainbow Road in esattamente una regione.
 - Mappa (se presente, tutti o nessuno tra `peach_medallions.json`, `question_panels.json`, `map.json`): 200 monete, 150 pannelli, ID unici, ogni punto con `x`/`y` tra 0 e 100, immagine solo su `raw.githubusercontent.com/BamisWasTaken/mkworld-checklist/`.
 - Pulsanti P (se presenti): esattamente 394, e ogni missione sta nella regione del proprio percorso. Questo controllo verifica anche l'assegnazione corso→regione in `aliases.yaml`, che per 7 regioni su 10 è ricavata dalla guida Nintendo Life.
@@ -252,7 +264,7 @@ Exit code: `0` ok/identico · `1` uso o configurazione · `2` dati non validi ·
 
 **Stato**
 - Parser testato su HTML sintetici e sulle pagine reali (`tests/fixtures/real/`, committate; `test_real_fixtures.py`). Le pagine dei nomi in altre lingue e la pagina delle immagini si leggono sempre dal vivo (test live saltati senza rete).
-- `seed/` estratto via API (`origin: api`), `seedVersion` 8.
+- `seed/` estratto via API (`origin: api`), `seedVersion` 9.
 
 ### 5.4 Integrazione nel build Gradle
 Lo script gira durante la build, con regole diverse per variante:
@@ -276,12 +288,12 @@ Requisiti:
 - Documentare nel README: prerequisiti Python, flag disponibili, come aggiornare `expected_counts.yaml` e `sources.yaml`.
 
 ### 5.5 Attribuzione
-La schermata Info deve riportare: "Dati di gioco tratti da Super Mario Wiki (mariowiki.com) e Super Mario Wiki italiana (mariowiki.it), licenza CC BY-SA 4.0" con link e i `revid` usati (letti da `meta.json`), più la nota che i nomi italiani dei cibi sono una traduzione non ufficiale e il credito a mkworld-checklist (mktools.io) di BamisWasTaken per la mappa. I file in `seed/` restano sotto CC BY-SA, separati dalla licenza del codice (file `seed/LICENSE`).
+La schermata Info deve riportare: "Dati di gioco tratti da Super Mario Wiki (mariowiki.com) e Super Mario Wiki italiana (mariowiki.it), licenza CC BY-SA 4.0" con link e i `revid` usati (letti da `meta.json`), più la nota che i nomi italiani dei cibi e i luoghi degli stand Yoshi's sono una traduzione non ufficiale e il credito a mkworld-checklist (mktools.io) di BamisWasTaken per la mappa. I file in `seed/` restano sotto CC BY-SA, separati dalla licenza del codice (file `seed/LICENSE`).
 
 ### 5.6 Validazione lato app (unit test Kotlin)
 Doppio controllo sui JSON effettivamente impacchettati, indipendente dallo script:
 - Conteggi letti da `expected_counts.yaml` (stessa fonte di verità dello script).
-- Ogni `OutfitFoodRule` punta a outfit e gruppo esistenti; ogni `EventStop` e `FoodGroupCourse` a un corso esistente.
+- Ogni `OutfitFoodRule` punta a outfit e gruppo esistenti; ogni `EventStop` e ogni stand di un percorso a un corso esistente; stand sulle strade senza bioma; i cibi precisi degli stand esistono tra le varianti del gruppo.
 - Nessun ID duplicato.
 - Se una sorgente non è ancora implementata (es. medaglie), il test relativo viene saltato con un messaggio esplicito, non passa in silenzio.
 
@@ -289,13 +301,11 @@ Doppio controllo sui JSON effettivamente impacchettati, indipendente dallo scrip
 
 ## 6. Algoritmo Consigliami
 
-### 6.1 Cibi disponibili per evento
+### 6.1 Cibi che potrebbero esserci in un evento
 ```
-presenze = {ON_COURSE}                       // default
-presenze = {ON_COURSE, NEARBY}               // se "Includi cibi nei dintorni" è attivo
-foods(E) = { fgc.foodGroupId | fgc ∈ FoodGroupCourse, fgc.courseId ∈ corsi di EventStop(E), fgc.presence ∈ presenze }
+foods(E) = { f.foodGroupId | f ∈ YoshiStandFood, stand(f).courseId ∈ corsi di EventStop(E) }
 ```
-`foods(E)` è un insieme di **gruppi** di cibo. Di default conta solo ciò che sta sul tracciato dei percorsi toccati, così un consiglio come "il sushi sta su Great ? Block Ruins" è sempre vero. Gli stand sulle strade tra i percorsi sono v2.
+`foods(E)` è un insieme di **gruppi** di cibo, presi dagli stand Yoshi's nell'area dei percorsi toccati (fase C1). Lo stand può non essere sul tracciato di gara, quindi ogni guadagno è una **possibilità** e i testi lo dicono ("potrebbe esserci", "occhi aperti"). Gli stand sulle strade (`courseId` null) non entrano mai in `foods(E)`.
 
 ### 6.2 Guadagno per personaggio
 Per ogni personaggio C **sbloccato** e ogni evento E:
@@ -324,7 +334,7 @@ Il criterio primario è **sempre** il gain del miglior singolo personaggio, perc
 ### 6.4 Pari merito e spareggi
 Metriche di supporto:
 ```
-relevantStops(E) = | { s ∈ EventStop(E) : ∃ f ∈ foods(corso di s), con le stesse presenze di §6.1, che sblocca un outfit in missing(best(E)) } |
+relevantStops(E) = | { s ∈ EventStop(E) : ∃ f ∈ foods(corso di s) (§6.1) che sblocca un outfit in missing(best(E)) } |
 worstFirst(E)    = improvement(E)            // solo se i risultati sono attivi
 typeRank(E)      = 0 se CUP, 1 se RALLY      // un GP corre un giro intero sul corso; un rally spesso lo attraversa solo in parte
 ```
@@ -354,7 +364,9 @@ I criteri 3–6 ordinano **dentro** il gruppo a pari merito ma non cambiano il n
 - A parità di tutto, una Cup precede un Rally.
 - Un evento con più corsi utili (`relevantStops` maggiore) precede uno con meno, a parità di posizione.
 - Numerazione competition ranking corretta: 1, 1, 3.
-- Un cibo presente solo `NEARBY` su un percorso non genera gain con "Includi cibi nei dintorni" spento, e lo genera se acceso.
+- Uno stand su una strada non dà gain a nessun evento (né cibi rilevanti né dettaglio).
+- Più stand con lo stesso cibo sullo stesso percorso contano una volta.
+- Il dettaglio dà, per ogni outfit, i cibi e i percorsi dell'evento da cui potrebbe arrivare, in ordine di tappa.
 
 ---
 
@@ -385,11 +397,11 @@ Il roadmap originale è chiuso; alcuni commenti nel codice citano ancora queste 
 - Update 1.8.0: nessun outfit o personaggio nuovo (confermato dall'autore); ha aggiunto 2 rally, già presenti tra i 12.
 - Tappe dei rally: estratte dalle pagine dei singoli rally.
 - Stato di sblocco iniziale dei personaggi: dalle gallerie del wiki (§2.3); poi lo gestisce l'utente.
-- Cibo per percorso: distinzione `ON_COURSE` / `NEARBY` (§5.2.1). La posizione esatta dello stand sul percorso non serve per ora.
+- Cibo per percorso: dagli stand di List of Yoshi's locations, con il loro luogo (§5.2.1, fase C1). Quali stand si incontrano in gara non lo dice nessuna fonte: Consigliami parla di possibilità.
 - Pulsanti P: da `List of Mario Kart World missions` (mariowiki).
 - Peach Medallions e ? Panels: da mkworld-checklist, con la mappa (§5.2).
 
 **Aperte (non bloccano l'implementazione)**
-- **9 percorsi senza stand noti sul tracciato** (§5.2.1): se giocando se ne trova uno, va segnalato su mariowiki; poi la prossima estrazione lo porta nel seed.
+- **9 percorsi senza stand noti** (§5.2.1): se giocando se ne trova uno, va segnalato su mariowiki; poi la prossima estrazione lo porta nel seed.
 - **Controllo a campione degli outfit su IGN**: manuale, a cura dell'autore. Nintendo Life dà abbinamenti cibo→outfit diversi da mariowiki (es. Mario Aviator), ma mariowiki cita la guida ufficiale giapponese: in caso di dubbio fa fede la prova in gioco.
-- **Stand sulle strade tra i percorsi**: entrano nella sezione Cibi con le fasi C1–C2 (`docs/roadmap.md`).
+- **Stand sulle strade tra i percorsi**: nel seed dalla fase C1; si vedranno nella sezione Cibi (fase C2, `docs/roadmap.md`), mai associati a un evento.

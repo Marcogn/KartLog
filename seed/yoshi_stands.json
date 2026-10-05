@@ -1,0 +1,1705 @@
+{
+  "items": [
+    {
+      "courseId": "mario_bros_circuit",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "hamburger"
+        }
+      ],
+      "id": "stand_mario_bros_circuit_01",
+      "location": "Next to the finish line",
+      "locationIt": "Accanto al traguardo",
+      "regionId": "mesa"
+    },
+    {
+      "courseId": "mario_bros_circuit",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "hamburger"
+        }
+      ],
+      "id": "stand_mario_bros_circuit_02",
+      "location": "Diner building",
+      "locationIt": "Edificio della tavola calda",
+      "regionId": "mesa"
+    },
+    {
+      "courseId": "mario_bros_circuit",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "lunchbox"
+        }
+      ],
+      "id": "stand_mario_bros_circuit_03",
+      "location": "East of the Fire Flower Gas Station",
+      "locationIt": "A est della stazione di servizio Fire Flower",
+      "regionId": "mesa"
+    },
+    {
+      "courseId": "crown_city",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "pizza"
+        }
+      ],
+      "id": "stand_crown_city_01",
+      "location": null,
+      "locationIt": null,
+      "regionId": "southern_sea"
+    },
+    {
+      "courseId": "crown_city",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "snacks_1"
+        },
+        {
+          "food": null,
+          "foodGroupId": "snacks_2"
+        },
+        {
+          "food": null,
+          "foodGroupId": "snacks_3"
+        }
+      ],
+      "id": "stand_crown_city_02",
+      "location": null,
+      "locationIt": null,
+      "regionId": "southern_sea"
+    },
+    {
+      "courseId": "crown_city",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "pancakes"
+        }
+      ],
+      "id": "stand_crown_city_03",
+      "location": "Across Pipeline Hotel",
+      "locationIt": "Di fronte al Pipeline Hotel",
+      "regionId": "southern_sea"
+    },
+    {
+      "courseId": "crown_city",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "cake"
+        }
+      ],
+      "id": "stand_crown_city_04",
+      "location": "In an alley next to Bank Coin Coffer",
+      "locationIt": "In un vicolo accanto alla Bank Coin Coffer",
+      "regionId": "southern_sea"
+    },
+    {
+      "courseId": "crown_city",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "ice_cream"
+        }
+      ],
+      "id": "stand_crown_city_05",
+      "location": "Roy Smooth Sounds building",
+      "locationIt": "Edificio di Roy Smooth Sounds",
+      "regionId": "southern_sea"
+    },
+    {
+      "courseId": "crown_city",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "barbecue"
+        }
+      ],
+      "id": "stand_crown_city_06",
+      "location": null,
+      "locationIt": null,
+      "regionId": "southern_sea"
+    },
+    {
+      "courseId": "crown_city",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "fritters"
+        }
+      ],
+      "id": "stand_crown_city_07",
+      "location": "West gate of Crown Bridge, south booth",
+      "locationIt": "Ingresso ovest di Crown Bridge, chiosco sud",
+      "regionId": "southern_sea"
+    },
+    {
+      "courseId": "crown_city",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "hamburger"
+        }
+      ],
+      "id": "stand_crown_city_08",
+      "location": "West gate of Crown Bridge, north booth",
+      "locationIt": "Ingresso ovest di Crown Bridge, chiosco nord",
+      "regionId": "southern_sea"
+    },
+    {
+      "courseId": "crown_city",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "hamburger"
+        }
+      ],
+      "id": "stand_crown_city_09",
+      "location": "West exit of Crown City across West Greens Park",
+      "locationIt": "Uscita ovest di Trofea, di fronte al West Greens Park",
+      "regionId": "southern_sea"
+    },
+    {
+      "courseId": "whistlestop_summit",
+      "establishment": "Drive-through",
+      "establishmentIt": "Drive-in",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "barbecue"
+        }
+      ],
+      "id": "stand_whistlestop_summit_01",
+      "location": "South of Wilderness Coast Station",
+      "locationIt": "A sud della stazione Wilderness Coast",
+      "regionId": "mesa"
+    },
+    {
+      "courseId": "whistlestop_summit",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "snacks_1"
+        },
+        {
+          "food": null,
+          "foodGroupId": "snacks_2"
+        },
+        {
+          "food": null,
+          "foodGroupId": "snacks_3"
+        }
+      ],
+      "id": "stand_whistlestop_summit_02",
+      "location": "Inside Wilderness Coast Station",
+      "locationIt": "Dentro la stazione Wilderness Coast",
+      "regionId": "mesa"
+    },
+    {
+      "courseId": "whistlestop_summit",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "snacks_1"
+        },
+        {
+          "food": null,
+          "foodGroupId": "snacks_2"
+        },
+        {
+          "food": null,
+          "foodGroupId": "snacks_3"
+        }
+      ],
+      "id": "stand_whistlestop_summit_03",
+      "location": "North of the course behind the maintenance shed",
+      "locationIt": "A nord del percorso, dietro il capannone della manutenzione",
+      "regionId": "mesa"
+    },
+    {
+      "courseId": "whistlestop_summit",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "donut"
+        }
+      ],
+      "id": "stand_whistlestop_summit_04",
+      "location": "Atop the summits peak",
+      "locationIt": "In cima alla vetta",
+      "regionId": "mesa"
+    },
+    {
+      "courseId": "dk_spaceport",
+      "establishment": "Drive-through",
+      "establishmentIt": "Drive-in",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "fruit_barrel"
+        }
+      ],
+      "id": "stand_dk_spaceport_01",
+      "location": "Under the starting line",
+      "locationIt": "Sotto la linea di partenza",
+      "regionId": "southern_sea"
+    },
+    {
+      "courseId": "dk_spaceport",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "fruit_barrel"
+        }
+      ],
+      "id": "stand_dk_spaceport_02",
+      "location": "Underneath the launch pad",
+      "locationIt": "Sotto la rampa di lancio",
+      "regionId": "southern_sea"
+    },
+    {
+      "courseId": "dk_spaceport",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "fruit_barrel"
+        }
+      ],
+      "id": "stand_dk_spaceport_03",
+      "location": "Next to the rocket",
+      "locationIt": "Accanto al razzo",
+      "regionId": "southern_sea"
+    },
+    {
+      "courseId": "shy_guy_bazaar",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "spicy_curry"
+        }
+      ],
+      "id": "stand_shy_guy_bazaar_01",
+      "location": null,
+      "locationIt": null,
+      "regionId": "desert"
+    },
+    {
+      "courseId": "wario_stadium",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "magma_curry"
+        }
+      ],
+      "id": "stand_wario_stadium_01",
+      "location": "West side of the arena",
+      "locationIt": "Lato ovest dell'arena",
+      "regionId": "mesa"
+    },
+    {
+      "courseId": "wario_stadium",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "magma_curry"
+        }
+      ],
+      "id": "stand_wario_stadium_02",
+      "location": "Northwest in the arena",
+      "locationIt": "A nord-ovest nell'arena",
+      "regionId": "mesa"
+    },
+    {
+      "courseId": "airship_fortress",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "lunchbox"
+        }
+      ],
+      "id": "stand_airship_fortress_01",
+      "location": "At the stern of the main airship",
+      "locationIt": "A poppa della nave volante principale",
+      "regionId": "volcanic"
+    },
+    {
+      "courseId": "airship_fortress",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "magma_curry"
+        }
+      ],
+      "id": "stand_airship_fortress_02",
+      "location": "At the stern of the main airship",
+      "locationIt": "A poppa della nave volante principale",
+      "regionId": "volcanic"
+    },
+    {
+      "courseId": "airship_fortress",
+      "establishment": "Drive-through",
+      "establishmentIt": "Drive-in",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "bread"
+        }
+      ],
+      "id": "stand_airship_fortress_03",
+      "location": "Atop the tower",
+      "locationIt": "In cima alla torre",
+      "regionId": "volcanic"
+    },
+    {
+      "courseId": "starview_peak",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "bread"
+        }
+      ],
+      "id": "stand_starview_peak_01",
+      "location": "Inside the library",
+      "locationIt": "Dentro la biblioteca",
+      "regionId": "snow"
+    },
+    {
+      "courseId": "starview_peak",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "ice_cream"
+        }
+      ],
+      "id": "stand_starview_peak_02",
+      "location": "Inside the library",
+      "locationIt": "Dentro la biblioteca",
+      "regionId": "snow"
+    },
+    {
+      "courseId": "sky_high_sundae",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "ice_cream"
+        }
+      ],
+      "id": "stand_sky_high_sundae_01",
+      "location": "Near the southern exit",
+      "locationIt": "Vicino all'uscita sud",
+      "regionId": "snow"
+    },
+    {
+      "courseId": "sky_high_sundae",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "ice_cream"
+        }
+      ],
+      "id": "stand_sky_high_sundae_02",
+      "location": "Under the rising split path",
+      "locationIt": "Sotto la biforcazione in salita",
+      "regionId": "snow"
+    },
+    {
+      "courseId": "sky_high_sundae",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "ice_cream"
+        }
+      ],
+      "id": "stand_sky_high_sundae_03",
+      "location": "Under the finish line",
+      "locationIt": "Sotto il traguardo",
+      "regionId": "snow"
+    },
+    {
+      "courseId": "wario_shipyard",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "barbecue"
+        }
+      ],
+      "id": "stand_wario_shipyard_01",
+      "location": "Left of the finish line",
+      "locationIt": "A sinistra del traguardo",
+      "regionId": "eastern_sea"
+    },
+    {
+      "courseId": "wario_shipyard",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "barbecue"
+        }
+      ],
+      "id": "stand_wario_shipyard_02",
+      "location": "On an island left of the main ship",
+      "locationIt": "Su un'isola a sinistra della nave principale",
+      "regionId": "eastern_sea"
+    },
+    {
+      "courseId": "koopa_troopa_beach",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "fritters"
+        }
+      ],
+      "id": "stand_koopa_troopa_beach_01",
+      "location": "On the right of the finish line",
+      "locationIt": "A destra del traguardo",
+      "regionId": "southern_sea"
+    },
+    {
+      "courseId": "peach_stadium",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "cake"
+        }
+      ],
+      "id": "stand_peach_stadium_01",
+      "location": "Peach Stadium Terminal",
+      "locationIt": "Terminal dello Stadio di Peach",
+      "regionId": "central_grassland"
+    },
+    {
+      "courseId": "peach_stadium",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "lunchbox"
+        }
+      ],
+      "id": "stand_peach_stadium_02",
+      "location": "Peach Stadium Terminal",
+      "locationIt": "Terminal dello Stadio di Peach",
+      "regionId": "central_grassland"
+    },
+    {
+      "courseId": "peach_stadium",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "pancakes"
+        }
+      ],
+      "id": "stand_peach_stadium_03",
+      "location": "Peach Stadium Terminal",
+      "locationIt": "Terminal dello Stadio di Peach",
+      "regionId": "central_grassland"
+    },
+    {
+      "courseId": "peach_stadium",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "donut"
+        }
+      ],
+      "id": "stand_peach_stadium_04",
+      "location": "Peach Stadium Terminal",
+      "locationIt": "Terminal dello Stadio di Peach",
+      "regionId": "central_grassland"
+    },
+    {
+      "courseId": "peach_beach",
+      "establishment": "Drive-through",
+      "establishmentIt": "Drive-in",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "fritters"
+        }
+      ],
+      "id": "stand_peach_beach_01",
+      "location": "On the beach",
+      "locationIt": "Sulla spiaggia",
+      "regionId": "eastern_sea"
+    },
+    {
+      "courseId": "peach_beach",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "fritters"
+        }
+      ],
+      "id": "stand_peach_beach_02",
+      "location": "Near the observation tower",
+      "locationIt": "Vicino alla torre di osservazione",
+      "regionId": "eastern_sea"
+    },
+    {
+      "courseId": "peach_beach",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "fritters"
+        }
+      ],
+      "id": "stand_peach_beach_03",
+      "location": "Peach Resort Royal Beach Hotel",
+      "locationIt": "Peach Resort Royal Beach Hotel",
+      "regionId": "eastern_sea"
+    },
+    {
+      "courseId": "peach_beach",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "cake"
+        }
+      ],
+      "id": "stand_peach_beach_04",
+      "location": "Peach Resort Royal Beach Hotel",
+      "locationIt": "Peach Resort Royal Beach Hotel",
+      "regionId": "eastern_sea"
+    },
+    {
+      "courseId": "peach_beach",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "barbecue"
+        }
+      ],
+      "id": "stand_peach_beach_05",
+      "location": "South of the beach",
+      "locationIt": "A sud della spiaggia",
+      "regionId": "eastern_sea"
+    },
+    {
+      "courseId": "salty_salty_speedway",
+      "establishment": "Drive-through",
+      "establishmentIt": "Drive-in",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "pizza"
+        }
+      ],
+      "id": "stand_salty_salty_speedway_01",
+      "location": null,
+      "locationIt": null,
+      "regionId": "eastern_sea"
+    },
+    {
+      "courseId": "salty_salty_speedway",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "pizza"
+        }
+      ],
+      "id": "stand_salty_salty_speedway_02",
+      "location": "On the course after the 270° turn",
+      "locationIt": "Sul percorso dopo la curva a 270°",
+      "regionId": "eastern_sea"
+    },
+    {
+      "courseId": "salty_salty_speedway",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "pizza"
+        }
+      ],
+      "id": "stand_salty_salty_speedway_03",
+      "location": null,
+      "locationIt": null,
+      "regionId": "eastern_sea"
+    },
+    {
+      "courseId": "salty_salty_speedway",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "pizza"
+        }
+      ],
+      "id": "stand_salty_salty_speedway_04",
+      "location": null,
+      "locationIt": null,
+      "regionId": "eastern_sea"
+    },
+    {
+      "courseId": "salty_salty_speedway",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "fritters"
+        }
+      ],
+      "id": "stand_salty_salty_speedway_05",
+      "location": null,
+      "locationIt": null,
+      "regionId": "eastern_sea"
+    },
+    {
+      "courseId": "salty_salty_speedway",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "fritters"
+        }
+      ],
+      "id": "stand_salty_salty_speedway_06",
+      "location": "On the Fish Market",
+      "locationIt": "Al mercato del pesce (Fish Market)",
+      "regionId": "eastern_sea"
+    },
+    {
+      "courseId": "great_q_block_ruins",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": "Sushi",
+          "foodGroupId": "sushi"
+        }
+      ],
+      "id": "stand_great_q_block_ruins_01",
+      "location": "On top of the ? Block temple",
+      "locationIt": "In cima al tempio del blocco ?",
+      "regionId": "savanna_jungle"
+    },
+    {
+      "courseId": "great_q_block_ruins",
+      "establishment": "Drive-through",
+      "establishmentIt": "Drive-in",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "pancakes"
+        }
+      ],
+      "id": "stand_great_q_block_ruins_02",
+      "location": "On a floating island north of the finish line",
+      "locationIt": "Su un'isola sospesa a nord del traguardo",
+      "regionId": "savanna_jungle"
+    },
+    {
+      "courseId": "great_q_block_ruins",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "fruit_barrel"
+        }
+      ],
+      "id": "stand_great_q_block_ruins_03",
+      "location": "On a floating island south of the finish line",
+      "locationIt": "Su un'isola sospesa a sud del traguardo",
+      "regionId": "savanna_jungle"
+    },
+    {
+      "courseId": "cheep_cheep_falls",
+      "establishment": "Yatai",
+      "establishmentIt": "Yatai (bancarella)",
+      "foods": [
+        {
+          "food": "Takoyaki",
+          "foodGroupId": "sushi"
+        }
+      ],
+      "id": "stand_cheep_cheep_falls_01",
+      "location": "On the left to the finish line",
+      "locationIt": "A sinistra del traguardo",
+      "regionId": "autumnal_highland"
+    },
+    {
+      "courseId": "cheep_cheep_falls",
+      "establishment": "Yatai",
+      "establishmentIt": "Yatai (bancarella)",
+      "foods": [
+        {
+          "food": "Candy apple",
+          "foodGroupId": "sushi"
+        }
+      ],
+      "id": "stand_cheep_cheep_falls_02",
+      "location": "On the left to the finish line",
+      "locationIt": "A sinistra del traguardo",
+      "regionId": "autumnal_highland"
+    },
+    {
+      "courseId": "cheep_cheep_falls",
+      "establishment": "Yatai",
+      "establishmentIt": "Yatai (bancarella)",
+      "foods": [
+        {
+          "food": "Candy apple",
+          "foodGroupId": "sushi"
+        }
+      ],
+      "id": "stand_cheep_cheep_falls_03",
+      "location": "On the right to the finish line",
+      "locationIt": "A destra del traguardo",
+      "regionId": "autumnal_highland"
+    },
+    {
+      "courseId": "cheep_cheep_falls",
+      "establishment": "Yatai",
+      "establishmentIt": "Yatai (bancarella)",
+      "foods": [
+        {
+          "food": "Cheep Cheep taiyaki",
+          "foodGroupId": "sushi"
+        }
+      ],
+      "id": "stand_cheep_cheep_falls_04",
+      "location": "On the right to the finish line",
+      "locationIt": "A destra del traguardo",
+      "regionId": "autumnal_highland"
+    },
+    {
+      "courseId": "dry_bones_burnout",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "snacks_1"
+        },
+        {
+          "food": null,
+          "foodGroupId": "snacks_2"
+        },
+        {
+          "food": null,
+          "foodGroupId": "snacks_3"
+        }
+      ],
+      "id": "stand_dry_bones_burnout_01",
+      "location": "To the right of the finish line",
+      "locationIt": "A destra del traguardo",
+      "regionId": "volcanic"
+    },
+    {
+      "courseId": "dry_bones_burnout",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "snacks_1"
+        },
+        {
+          "food": null,
+          "foodGroupId": "snacks_2"
+        },
+        {
+          "food": null,
+          "foodGroupId": "snacks_3"
+        }
+      ],
+      "id": "stand_dry_bones_burnout_02",
+      "location": "To the left of the large skeletal structure",
+      "locationIt": "A sinistra del grande scheletro",
+      "regionId": "volcanic"
+    },
+    {
+      "courseId": "dry_bones_burnout",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "snacks_1"
+        },
+        {
+          "food": null,
+          "foodGroupId": "snacks_2"
+        },
+        {
+          "food": null,
+          "foodGroupId": "snacks_3"
+        }
+      ],
+      "id": "stand_dry_bones_burnout_03",
+      "location": "To the right of the large skeletal structure across the lavafall",
+      "locationIt": "A destra del grande scheletro, oltre la cascata di lava",
+      "regionId": "volcanic"
+    },
+    {
+      "courseId": "moo_moo_meadows",
+      "establishment": "Drive-through",
+      "establishmentIt": "Drive-in",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "moo_moo_milk"
+        }
+      ],
+      "id": "stand_moo_moo_meadows_01",
+      "location": "South of the starting line",
+      "locationIt": "A sud della linea di partenza",
+      "regionId": "central_grassland"
+    },
+    {
+      "courseId": "moo_moo_meadows",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "moo_moo_milk"
+        }
+      ],
+      "id": "stand_moo_moo_meadows_02",
+      "location": "West of the main barn, behind a windmill",
+      "locationIt": "A ovest del fienile principale, dietro un mulino a vento",
+      "regionId": "central_grassland"
+    },
+    {
+      "courseId": "moo_moo_meadows",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "moo_moo_milk"
+        }
+      ],
+      "id": "stand_moo_moo_meadows_03",
+      "location": "North of the main barn",
+      "locationIt": "A nord del fienile principale",
+      "regionId": "central_grassland"
+    },
+    {
+      "courseId": "bowsers_castle",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "magma_curry"
+        }
+      ],
+      "id": "stand_bowsers_castle_01",
+      "location": "Above the control room",
+      "locationIt": "Sopra la sala di controllo",
+      "regionId": "volcanic"
+    },
+    {
+      "courseId": "bowsers_castle",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "magma_curry"
+        }
+      ],
+      "id": "stand_bowsers_castle_02",
+      "location": "Above the control room",
+      "locationIt": "Sopra la sala di controllo",
+      "regionId": "volcanic"
+    },
+    {
+      "courseId": "bowsers_castle",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "lunchbox"
+        }
+      ],
+      "id": "stand_bowsers_castle_03",
+      "location": "Above the control room",
+      "locationIt": "Sopra la sala di controllo",
+      "regionId": "volcanic"
+    },
+    {
+      "courseId": "bowsers_castle",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "bread"
+        }
+      ],
+      "id": "stand_bowsers_castle_04",
+      "location": "Above the control room",
+      "locationIt": "Sopra la sala di controllo",
+      "regionId": "volcanic"
+    },
+    {
+      "courseId": "acorn_heights",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "pancakes"
+        }
+      ],
+      "id": "stand_acorn_heights_01",
+      "location": "In the village by the pond",
+      "locationIt": "Nel villaggio vicino allo stagno",
+      "regionId": "forest"
+    },
+    {
+      "courseId": "acorn_heights",
+      "establishment": "Food truck",
+      "establishmentIt": "Food truck",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "pancakes"
+        }
+      ],
+      "id": "stand_acorn_heights_02",
+      "location": "In the tree top after the 180° turn",
+      "locationIt": "In cima all'albero dopo la curva a 180°",
+      "regionId": "forest"
+    },
+    {
+      "courseId": "mario_circuit",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "lunchbox"
+        }
+      ],
+      "id": "stand_mario_circuit_01",
+      "location": "Inside the main building",
+      "locationIt": "Dentro l'edificio principale",
+      "regionId": "forest"
+    },
+    {
+      "courseId": "mario_circuit",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "snacks_1"
+        },
+        {
+          "food": null,
+          "foodGroupId": "snacks_2"
+        },
+        {
+          "food": null,
+          "foodGroupId": "snacks_3"
+        }
+      ],
+      "id": "stand_mario_circuit_02",
+      "location": "Inside the main building",
+      "locationIt": "Dentro l'edificio principale",
+      "regionId": "forest"
+    },
+    {
+      "courseId": "mario_circuit",
+      "establishment": "Snack bar",
+      "establishmentIt": "Snack bar",
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "donut"
+        }
+      ],
+      "id": "stand_mario_circuit_03",
+      "location": "Inside the main building",
+      "locationIt": "Dentro l'edificio principale",
+      "regionId": "forest"
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "hamburger"
+        }
+      ],
+      "id": "stand_route_01",
+      "location": "Southeast of Mario Bros. Circuit",
+      "locationIt": "A sud-est del Circuito Mario Bros.",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "hamburger"
+        }
+      ],
+      "id": "stand_route_02",
+      "location": "Southwest of Mario Bros. Circuit",
+      "locationIt": "A sud-ovest del Circuito Mario Bros.",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "hamburger"
+        }
+      ],
+      "id": "stand_route_03",
+      "location": "Between Mario Bros. Circuit and Whistlestop Summit",
+      "locationIt": "Tra il Circuito Mario Bros. e Monte Rotaia",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "hamburger"
+        }
+      ],
+      "id": "stand_route_04",
+      "location": "Train station north of Mario Bros. Circuit",
+      "locationIt": "Stazione ferroviaria a nord del Circuito Mario Bros.",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "spicy_curry"
+        }
+      ],
+      "id": "stand_route_05",
+      "location": "Train station north of Mario Bros. Circuit",
+      "locationIt": "Stazione ferroviaria a nord del Circuito Mario Bros.",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "spicy_curry"
+        }
+      ],
+      "id": "stand_route_06",
+      "location": "North of Mario Bros. Circuit",
+      "locationIt": "A nord del Circuito Mario Bros.",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "fruit_barrel"
+        }
+      ],
+      "id": "stand_route_07",
+      "location": "In the middle of Desert Hills, Mario Bros. Circuit, and Whistlestop Summit",
+      "locationIt": "In mezzo tra Deserto Picchiasol, Circuito Mario Bros. e Monte Rotaia",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "donut"
+        }
+      ],
+      "id": "stand_route_08",
+      "location": "Plaza just north of Peach Stadium",
+      "locationIt": "Piazza appena a nord dello Stadio di Peach",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "cake"
+        }
+      ],
+      "id": "stand_route_09",
+      "location": "Plaza just north of Peach Stadium",
+      "locationIt": "Piazza appena a nord dello Stadio di Peach",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "pancakes"
+        }
+      ],
+      "id": "stand_route_10",
+      "location": "Plaza just north of Peach Stadium",
+      "locationIt": "Piazza appena a nord dello Stadio di Peach",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "ice_cream"
+        }
+      ],
+      "id": "stand_route_11",
+      "location": "Plaza just north of Peach Stadium",
+      "locationIt": "Piazza appena a nord dello Stadio di Peach",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "donut"
+        }
+      ],
+      "id": "stand_route_12",
+      "location": "Train station northwest of Peach Stadium",
+      "locationIt": "Stazione ferroviaria a nord-ovest dello Stadio di Peach",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "moo_moo_milk"
+        }
+      ],
+      "id": "stand_route_13",
+      "location": "Train station northwest of Peach Stadium",
+      "locationIt": "Stazione ferroviaria a nord-ovest dello Stadio di Peach",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "lunchbox"
+        }
+      ],
+      "id": "stand_route_14",
+      "location": "Between Peach Stadium and Moo Moo Meadows, by the lake",
+      "locationIt": "Tra lo Stadio di Peach e Prateria Verde, vicino al lago",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "cake"
+        }
+      ],
+      "id": "stand_route_15",
+      "location": "West of Crown City",
+      "locationIt": "A ovest di Trofea",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "donut"
+        }
+      ],
+      "id": "stand_route_16",
+      "location": "Between Crown City and Choco Mountain",
+      "locationIt": "Tra Trofea e Cioccocanyon",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "fritters"
+        }
+      ],
+      "id": "stand_route_17",
+      "location": "West of Koopa Troopa Beach",
+      "locationIt": "A ovest di Spiaggia Koopa",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "moo_moo_milk"
+        }
+      ],
+      "id": "stand_route_18",
+      "location": "Between Moo Moo Meadows and Choco Mountain",
+      "locationIt": "Tra Prateria Verde e Cioccocanyon",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "donut"
+        }
+      ],
+      "id": "stand_route_19",
+      "location": "Northwest of Choco Mountain",
+      "locationIt": "A nord-ovest di Cioccocanyon",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "pizza"
+        }
+      ],
+      "id": "stand_route_20",
+      "location": "Northeast of Toad's Factory",
+      "locationIt": "A nord-est della Fabbrica di Toad",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "snacks_1"
+        },
+        {
+          "food": null,
+          "foodGroupId": "snacks_2"
+        },
+        {
+          "food": null,
+          "foodGroupId": "snacks_3"
+        }
+      ],
+      "id": "stand_route_21",
+      "location": "South of Choco Mountain",
+      "locationIt": "A sud di Cioccocanyon",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "donut"
+        }
+      ],
+      "id": "stand_route_22",
+      "location": "Southeast of Choco Mountain",
+      "locationIt": "A sud-est di Cioccocanyon",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "popcorn"
+        }
+      ],
+      "id": "stand_route_23",
+      "location": "North of Dandelion Depths",
+      "locationIt": "A nord del Lago dei soffioni",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "hamburger"
+        }
+      ],
+      "id": "stand_route_24",
+      "location": "East of Dandelion Depths",
+      "locationIt": "A est del Lago dei soffioni",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "bread"
+        }
+      ],
+      "id": "stand_route_25",
+      "location": "Southeast of Dandelion Depths",
+      "locationIt": "A sud-est del Lago dei soffioni",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "ice_cream"
+        }
+      ],
+      "id": "stand_route_26",
+      "location": "Between Mario Circuit and Dandelion Depths",
+      "locationIt": "Tra il Circuito di Mario e il Lago dei soffioni",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "magma_curry"
+        }
+      ],
+      "id": "stand_route_27",
+      "location": "North of Wario Stadium",
+      "locationIt": "A nord dello Stadio di Wario",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "magma_curry"
+        }
+      ],
+      "id": "stand_route_28",
+      "location": "South of Wario Stadium",
+      "locationIt": "A sud dello Stadio di Wario",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": "Sushi",
+          "foodGroupId": "sushi"
+        }
+      ],
+      "id": "stand_route_29",
+      "location": "South of Cheep Cheep Falls",
+      "locationIt": "A sud delle Cascate Smack",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "pancakes"
+        }
+      ],
+      "id": "stand_route_30",
+      "location": "Southwest of Acorn Heights",
+      "locationIt": "A sud-ovest di Ghiand Prix",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "pizza"
+        }
+      ],
+      "id": "stand_route_31",
+      "location": "Train station southwest of Peach Beach",
+      "locationIt": "Stazione ferroviaria a sud-ovest della Spiaggia di Peach",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": "Sushi",
+          "foodGroupId": "sushi"
+        }
+      ],
+      "id": "stand_route_32",
+      "location": "Train station southwest of Peach Beach",
+      "locationIt": "Stazione ferroviaria a sud-ovest della Spiaggia di Peach",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "fruit_barrel"
+        }
+      ],
+      "id": "stand_route_33",
+      "location": "East of Koopa Troopa Beach",
+      "locationIt": "A est di Spiaggia Koopa",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "pizza"
+        }
+      ],
+      "id": "stand_route_34",
+      "location": "East of Koopa Troopa Beach",
+      "locationIt": "A est di Spiaggia Koopa",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "wild_bone"
+        }
+      ],
+      "id": "stand_route_35",
+      "location": "East gate of Crown Bridge, north booth",
+      "locationIt": "Ingresso est di Crown Bridge, chiosco nord",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "fruit_barrel"
+        }
+      ],
+      "id": "stand_route_36",
+      "location": "East gate of Crown Bridge, south booth",
+      "locationIt": "Ingresso est di Crown Bridge, chiosco sud",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "magma_curry"
+        }
+      ],
+      "id": "stand_route_37",
+      "location": "Northeast of Airship Fortress",
+      "locationIt": "A nord-est della Fortezza Volante",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "bread"
+        }
+      ],
+      "id": "stand_route_38",
+      "location": "Vanilla Lake tribute",
+      "locationIt": "Omaggio a Vanilla Lake",
+      "regionId": null
+    },
+    {
+      "courseId": null,
+      "establishment": null,
+      "establishmentIt": null,
+      "foods": [
+        {
+          "food": null,
+          "foodGroupId": "barbecue"
+        }
+      ],
+      "id": "stand_route_39",
+      "location": "Vanilla Lake tribute",
+      "locationIt": "Omaggio a Vanilla Lake",
+      "regionId": null
+    }
+  ],
+  "source": "https://www.mariowiki.com/List_of_Yoshi's_locations",
+  "translationIt": "manual/stand_locations_it.yaml (traduzione NON ufficiale)"
+}

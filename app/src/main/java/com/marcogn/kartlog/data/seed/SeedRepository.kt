@@ -9,8 +9,8 @@ import com.marcogn.kartlog.data.local.entity.CharacterEntity
 import com.marcogn.kartlog.data.local.entity.CourseEntity
 import com.marcogn.kartlog.data.local.entity.EventEntity
 import com.marcogn.kartlog.data.local.entity.EventStopEntity
-import com.marcogn.kartlog.data.local.entity.FoodGroupCourseEntity
 import com.marcogn.kartlog.data.local.entity.FoodGroupEntity
+import com.marcogn.kartlog.data.local.entity.FoodVariantEntity
 import com.marcogn.kartlog.data.local.entity.OutfitEntity
 import com.marcogn.kartlog.data.local.entity.OutfitFoodRuleEntity
 import com.marcogn.kartlog.data.local.entity.PSwitchEntity
@@ -18,8 +18,9 @@ import com.marcogn.kartlog.data.local.entity.PeachMedallionEntity
 import com.marcogn.kartlog.data.local.entity.QuestionPanelEntity
 import com.marcogn.kartlog.data.local.entity.RegionEntity
 import com.marcogn.kartlog.data.local.entity.SeedMetaEntity
+import com.marcogn.kartlog.data.local.entity.YoshiStandEntity
+import com.marcogn.kartlog.data.local.entity.YoshiStandFoodEntity
 import com.marcogn.kartlog.domain.model.EventType
-import com.marcogn.kartlog.domain.model.Presence
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -51,7 +52,9 @@ class SeedRepository @Inject constructor(
         userStateDao.ensureDefaultOutfitsOwned()
     }
 
-    private fun buildSeedContent(): SeedContent = SeedContent(
+    private fun buildSeedContent(
+        stands: List<YoshiStandDto> = assets.readItems<YoshiStandDto>("yoshi_stands.json"),
+    ): SeedContent = SeedContent(
         characters = assets.readItems<CharacterDto>("characters.json").map {
             CharacterEntity(
                 id = it.id,
@@ -86,13 +89,32 @@ class SeedRepository @Inject constructor(
         outfitFoodRules = assets.readItems<OutfitFoodRuleDto>("outfit_food_rules.json").map {
             OutfitFoodRuleEntity(outfitId = it.outfitId, foodGroupId = it.foodGroupId)
         },
-        foodGroupCourses = assets.readItems<FoodGroupCourseDto>("food_group_courses.json").map {
-            FoodGroupCourseEntity(
+        foodVariants = assets.readItems<FoodVariantDto>("food_variants.json").map {
+            FoodVariantEntity(
+                id = it.id,
                 foodGroupId = it.foodGroupId,
-                courseId = it.courseId,
-                presence = Presence.valueOf(it.presence),
-                listedInDashFood = it.listedInDashFood,
+                order = it.order,
+                name = it.name,
+                nameIt = it.nameIt,
+                boost = it.boost,
+                imageUrl = it.imageUrl,
             )
+        },
+        // L'ordine della pagina del wiki (percorsi, poi strade) è quello in cui si mostrano.
+        yoshiStands = stands.mapIndexed { order, it ->
+            YoshiStandEntity(
+                id = it.id,
+                order = order,
+                courseId = it.courseId,
+                regionId = it.regionId,
+                establishment = it.establishment,
+                establishmentIt = it.establishmentIt,
+                location = it.location,
+                locationIt = it.locationIt,
+            )
+        },
+        yoshiStandFoods = stands.flatMap { stand ->
+            stand.foods.map { YoshiStandFoodEntity(standId = stand.id, foodGroupId = it.foodGroupId, food = it.food) }
         },
         courses = assets.readItems<CourseDto>("courses.json").map {
             CourseEntity(id = it.id, name = it.name, nameIt = it.nameIt, regionId = it.regionId)

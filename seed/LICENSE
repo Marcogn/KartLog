@@ -6,7 +6,9 @@ sono distribuiti con licenza Creative Commons Attribution-ShareAlike 4.0 Interna
 I nomi italiani dei cibi (food_groups.json, campo nameIt) non vengono da nessuna fonte: sono una traduzione
 non ufficiale fatta a mano (tools/seedgen/manual/food_names_it.yaml). Lo stesso vale per le condizioni della
 modalità specchio in italiano (mirror_mode.json, campo textIt; tools/seedgen/manual/mirror_mode_it.yaml),
-tradotte dal testo di mariowiki.com.
+tradotte dal testo di mariowiki.com, ai nomi italiani dei singoli cibi (food_variants.json, campo nameIt) e ai
+luoghi e tipi di locale degli stand Yoshi's in italiano (yoshi_stands.json, campi locationIt ed establishmentIt;
+tools/seedgen/manual/stand_locations_it.yaml), tradotti dal testo di mariowiki.com.
 
 Fanno eccezione i dati della mappa dei collezionabili: peach_medallions.json, question_panels.json, map.json
 e i campi x, y, hint e youtubeId di p_switches.json vengono dal progetto mkworld-checklist (mktools.io) di

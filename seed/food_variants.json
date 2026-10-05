@@ -1,0 +1,668 @@
+{
+  "items": [
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "hamburger",
+      "id": "hamburger_1",
+      "imageUrl": "https://mario.wiki.gallery/images/7/72/MKWorld_Burger_1.jpg",
+      "name": "Hamburger",
+      "nameIt": "Hamburger",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "hamburger",
+      "id": "hamburger_2",
+      "imageUrl": "https://mario.wiki.gallery/images/6/6e/MKWorld_NSO_icon_Burger_2.png",
+      "name": "Hamburger",
+      "nameIt": "Hamburger",
+      "order": 2
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "hamburger",
+      "id": "hamburger_3",
+      "imageUrl": "https://mario.wiki.gallery/images/8/8a/MKWorld_Burger_3.jpg",
+      "name": "Hamburger",
+      "nameIt": "Hamburger",
+      "order": 3
+    },
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "donut",
+      "id": "donut_1",
+      "imageUrl": "https://mario.wiki.gallery/images/b/b1/MKWorld_NSO_icon_Donut_1.png",
+      "name": "Donut",
+      "nameIt": "Ciambella",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "donut",
+      "id": "donut_2",
+      "imageUrl": "https://mario.wiki.gallery/images/f/fc/MKWorld_Donut_2.jpg",
+      "name": "Donut",
+      "nameIt": "Ciambella",
+      "order": 2
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "donut",
+      "id": "donut_3",
+      "imageUrl": "https://mario.wiki.gallery/images/8/88/MKWorld_Donut_3.jpg",
+      "name": "Donut",
+      "nameIt": "Ciambella",
+      "order": 3
+    },
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "spicy_curry",
+      "id": "spicy_curry_1",
+      "imageUrl": "https://mario.wiki.gallery/images/0/0f/MKWorld_Flatbread_1.jpg",
+      "name": "Spicy curry",
+      "nameIt": "Curry piccante",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "spicy_curry",
+      "id": "spicy_curry_2",
+      "imageUrl": "https://mario.wiki.gallery/images/2/27/MKWorld_NSO_icon_Spicy_Curry_2.png",
+      "name": "Spicy curry",
+      "nameIt": "Curry piccante",
+      "order": 2
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "spicy_curry",
+      "id": "spicy_curry_3",
+      "imageUrl": "https://mario.wiki.gallery/images/f/fc/MKWorld_Flatbread_3.jpg",
+      "name": "Spicy curry",
+      "nameIt": "Curry piccante",
+      "order": 3
+    },
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "barbecue",
+      "id": "barbecue_1",
+      "imageUrl": "https://mario.wiki.gallery/images/7/74/MKWorld_Kebab_1.jpg",
+      "name": "Barbecue",
+      "nameIt": "Barbecue",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "barbecue",
+      "id": "barbecue_2",
+      "imageUrl": "https://mario.wiki.gallery/images/0/04/MKWorld_Kebab_2.jpg",
+      "name": "Barbecue",
+      "nameIt": "Barbecue",
+      "order": 2
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "barbecue",
+      "id": "barbecue_3",
+      "imageUrl": "https://mario.wiki.gallery/images/7/70/MKWorld_NSO_icon_Barbecue_3.png",
+      "name": "Barbecue",
+      "nameIt": "Barbecue",
+      "order": 3
+    },
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "wild_bone",
+      "id": "wild_bone_1",
+      "imageUrl": "https://mario.wiki.gallery/images/7/76/MKWorld_Meat_1.jpg",
+      "name": "Wild bone",
+      "nameIt": "Carne con l'osso",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "wild_bone",
+      "id": "wild_bone_2",
+      "imageUrl": "https://mario.wiki.gallery/images/2/23/MKWorld_Meat_2.jpg",
+      "name": "Wild bone",
+      "nameIt": "Carne con l'osso",
+      "order": 2
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "wild_bone",
+      "id": "wild_bone_3",
+      "imageUrl": "https://mario.wiki.gallery/images/2/22/MKWorld_NSO_icon_Meat_3.png",
+      "name": "Wild bone",
+      "nameIt": "Carne con l'osso",
+      "order": 3
+    },
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "pancakes",
+      "id": "pancakes_1",
+      "imageUrl": "https://mario.wiki.gallery/images/0/08/MKWorld_Pancakes_1.jpg",
+      "name": "Pancakes",
+      "nameIt": "Pancake",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "pancakes",
+      "id": "pancakes_2",
+      "imageUrl": "https://mario.wiki.gallery/images/2/25/MKWorld_NSO_icon_Pancake_2.png",
+      "name": "Pancakes",
+      "nameIt": "Pancake",
+      "order": 2
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "pancakes",
+      "id": "pancakes_3",
+      "imageUrl": "https://mario.wiki.gallery/images/c/c3/MKWorld_Pancakes_3.jpg",
+      "name": "Pancakes",
+      "nameIt": "Pancake",
+      "order": 3
+    },
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "ice_cream",
+      "id": "ice_cream_1",
+      "imageUrl": "https://mario.wiki.gallery/images/7/76/MKWorld_NSO_icon_Ice_Cream_1.png",
+      "name": "Ice cream",
+      "nameIt": "Gelato",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "ice_cream",
+      "id": "ice_cream_2",
+      "imageUrl": "https://mario.wiki.gallery/images/7/7d/MKWorld_Ice_cream_2.jpg",
+      "name": "Ice cream",
+      "nameIt": "Gelato",
+      "order": 2
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "ice_cream",
+      "id": "ice_cream_3",
+      "imageUrl": "https://mario.wiki.gallery/images/2/2f/MKWorld_Ice_cream_3.jpg",
+      "name": "Ice cream",
+      "nameIt": "Gelato",
+      "order": 3
+    },
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "magma_curry",
+      "id": "magma_curry_1",
+      "imageUrl": "https://mario.wiki.gallery/images/4/45/MKWorld_NSO_icon_Magma_Curry_1.png",
+      "name": "Magma curry",
+      "nameIt": "Curry magma",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "magma_curry",
+      "id": "magma_curry_2",
+      "imageUrl": "https://mario.wiki.gallery/images/9/96/MKWorld_Curry_2.jpg",
+      "name": "Magma curry",
+      "nameIt": "Curry magma",
+      "order": 2
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "magma_curry",
+      "id": "magma_curry_3",
+      "imageUrl": "https://mario.wiki.gallery/images/4/41/MKWorld_Curry_3.jpg",
+      "name": "Magma curry",
+      "nameIt": "Curry magma",
+      "order": 3
+    },
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "fruit_barrel",
+      "id": "fruit_barrel_1",
+      "imageUrl": "https://mario.wiki.gallery/images/9/96/MKWorld_Fruit_1.jpg",
+      "name": "Fruit barrel",
+      "nameIt": "Barile di frutta",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "fruit_barrel",
+      "id": "fruit_barrel_2",
+      "imageUrl": "https://mario.wiki.gallery/images/1/1e/MKWorld_NSO_icon_Fruit_Barrel_2.png",
+      "name": "Fruit barrel",
+      "nameIt": "Barile di frutta",
+      "order": 2
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "fruit_barrel",
+      "id": "fruit_barrel_3",
+      "imageUrl": "https://mario.wiki.gallery/images/8/81/MKWorld_Fruit_3.jpg",
+      "name": "Fruit barrel",
+      "nameIt": "Barile di frutta",
+      "order": 3
+    },
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "moo_moo_milk",
+      "id": "moo_moo_milk_1",
+      "imageUrl": "https://mario.wiki.gallery/images/e/e8/MKWorld_NSO_icon_Moo_Moo_Milk_1.png",
+      "name": "Moo Moo Milk",
+      "nameIt": "Latte Muu Muu",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "moo_moo_milk",
+      "id": "moo_moo_milk_2",
+      "imageUrl": "https://mario.wiki.gallery/images/0/04/MKWorld_Milk_2.jpg",
+      "name": "Moo Moo Milk",
+      "nameIt": "Latte Muu Muu",
+      "order": 2
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "moo_moo_milk",
+      "id": "moo_moo_milk_3",
+      "imageUrl": "https://mario.wiki.gallery/images/8/8b/MKWorld_Milk_3.jpg",
+      "name": "Moo Moo Milk",
+      "nameIt": "Latte Muu Muu",
+      "order": 3
+    },
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "cake",
+      "id": "cake_1",
+      "imageUrl": "https://mario.wiki.gallery/images/9/9e/MKWorld_NSO_icon_Cake_1.png",
+      "name": "Cake",
+      "nameIt": "Torta",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "cake",
+      "id": "cake_2",
+      "imageUrl": "https://mario.wiki.gallery/images/3/35/MKWorld_Cake_2.jpg",
+      "name": "Cake",
+      "nameIt": "Torta",
+      "order": 2
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "cake",
+      "id": "cake_3",
+      "imageUrl": "https://mario.wiki.gallery/images/0/06/MKWorld_Cake_3.jpg",
+      "name": "Cake",
+      "nameIt": "Torta",
+      "order": 3
+    },
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "bread",
+      "id": "bread_1",
+      "imageUrl": "https://mario.wiki.gallery/images/e/e6/MKWorld_NSO_icon_Pastry_1.png",
+      "name": "Bread",
+      "nameIt": "Pane",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "bread",
+      "id": "bread_2",
+      "imageUrl": "https://mario.wiki.gallery/images/0/06/MKWorld_Baked_goods_2.jpg",
+      "name": "Bread",
+      "nameIt": "Pane",
+      "order": 2
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "bread",
+      "id": "bread_3",
+      "imageUrl": "https://mario.wiki.gallery/images/d/d3/MKWorld_Baked_goods_3.jpg",
+      "name": "Bread",
+      "nameIt": "Pane",
+      "order": 3
+    },
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "pizza",
+      "id": "pizza_1",
+      "imageUrl": "https://mario.wiki.gallery/images/e/e5/MKWorld_Pizza_1.jpg",
+      "name": "Pizza",
+      "nameIt": "Pizza",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "pizza",
+      "id": "pizza_2",
+      "imageUrl": "https://mario.wiki.gallery/images/f/fa/MKWorld_Pizza_2.jpg",
+      "name": "Pizza",
+      "nameIt": "Pizza",
+      "order": 2
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "pizza",
+      "id": "pizza_3",
+      "imageUrl": "https://mario.wiki.gallery/images/3/31/MKWorld_NSO_icon_Pizza_3.png",
+      "name": "Pizza",
+      "nameIt": "Pizza",
+      "order": 3
+    },
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "fritters",
+      "id": "fritters_1",
+      "imageUrl": "https://mario.wiki.gallery/images/0/02/MKWorld_Fish_and_chips_1.jpg",
+      "name": "Fritters & potatoes",
+      "nameIt": "Frittelle e patate",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "fritters",
+      "id": "fritters_2",
+      "imageUrl": "https://mario.wiki.gallery/images/8/8e/MKWorld_Fish_and_chips_2.jpg",
+      "name": "Fritters & potatoes",
+      "nameIt": "Frittelle e patate",
+      "order": 2
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "fritters",
+      "id": "fritters_3",
+      "imageUrl": "https://mario.wiki.gallery/images/b/b9/MKWorld_NSO_icon_Fish_and_Chips_3.png",
+      "name": "Fritters & potatoes",
+      "nameIt": "Frittelle e patate",
+      "order": 3
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "sushi",
+      "id": "sushi_1",
+      "imageUrl": "https://mario.wiki.gallery/images/5/5f/MKWorld_NSO_icon_Takoyaki.png",
+      "name": "Takoyaki",
+      "nameIt": "Takoyaki",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "sushi",
+      "id": "sushi_2",
+      "imageUrl": "https://mario.wiki.gallery/images/7/71/MKWorld_NSO_icon_Candy_Apple.png",
+      "name": "Candy apple",
+      "nameIt": "Mela caramellata",
+      "order": 2
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "sushi",
+      "id": "sushi_3",
+      "imageUrl": "https://mario.wiki.gallery/images/d/d0/MKWorld_NSO_icon_Taiyaki.png",
+      "name": "Cheep Cheep taiyaki",
+      "nameIt": "Taiyaki Pesce Smack",
+      "order": 3
+    },
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "sushi",
+      "id": "sushi_4",
+      "imageUrl": "https://mario.wiki.gallery/images/d/d9/MKWorld_NSO_icon_Sushi_Platter_1.png",
+      "name": "Sushi",
+      "nameIt": "Sushi",
+      "order": 4
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "sushi",
+      "id": "sushi_5",
+      "imageUrl": "https://mario.wiki.gallery/images/c/c9/MKWorld_Sushi_2.jpg",
+      "name": "Sushi",
+      "nameIt": "Sushi",
+      "order": 5
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "sushi",
+      "id": "sushi_6",
+      "imageUrl": "https://mario.wiki.gallery/images/8/8e/MKWorld_Sushi_3.jpg",
+      "name": "Sushi",
+      "nameIt": "Sushi",
+      "order": 6
+    },
+    {
+      "boost": [
+        "SMALL",
+        "MEDIUM",
+        "LARGE"
+      ],
+      "foodGroupId": "sushi",
+      "id": "sushi_7",
+      "imageUrl": "https://mario.wiki.gallery/images/a/a4/MKWorld_NSO_icon_Sushi.png",
+      "name": "Sushi",
+      "nameIt": "Sushi",
+      "order": 7
+    },
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "snacks_1",
+      "id": "snacks_1_1",
+      "imageUrl": "https://mario.wiki.gallery/images/0/0d/MKWorld_Fruit_drink.jpg",
+      "name": "Canned juice",
+      "nameIt": "Succo in lattina",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "snacks_1",
+      "id": "snacks_1_2",
+      "imageUrl": "https://mario.wiki.gallery/images/d/d5/MKWorld_NSO_icon_Chocolate_Bar.png",
+      "name": "Dark chocolate",
+      "nameIt": "Cioccolato fondente",
+      "order": 2
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "snacks_1",
+      "id": "snacks_1_3",
+      "imageUrl": "https://mario.wiki.gallery/images/2/21/MKWorld_Plain_chips.jpg",
+      "name": "Potato chips",
+      "nameIt": "Patatine",
+      "order": 3
+    },
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "snacks_2",
+      "id": "snacks_2_1",
+      "imageUrl": "https://mario.wiki.gallery/images/0/00/MKWorld_NSO_icon_Soda_Can.png",
+      "name": "Canned soda",
+      "nameIt": "Bibita in lattina",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "snacks_2",
+      "id": "snacks_2_2",
+      "imageUrl": "https://mario.wiki.gallery/images/f/f5/MKWorld_Strawberry_chocolate.jpg",
+      "name": "Strawberry chocolate",
+      "nameIt": "Cioccolato alla fragola",
+      "order": 2
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "snacks_2",
+      "id": "snacks_2_3",
+      "imageUrl": "https://mario.wiki.gallery/images/4/42/MKWorld_NSO_icon_Banana_Chips.png",
+      "name": "Banana chips",
+      "nameIt": "Chips di banana",
+      "order": 3
+    },
+    {
+      "boost": [
+        "SMALL"
+      ],
+      "foodGroupId": "snacks_3",
+      "id": "snacks_3_1",
+      "imageUrl": "https://mario.wiki.gallery/images/0/06/MKWorld_NSO_icon_Coffee_Can.png",
+      "name": "Canned coffee",
+      "nameIt": "Caffè in lattina",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "snacks_3",
+      "id": "snacks_3_2",
+      "imageUrl": "https://mario.wiki.gallery/images/6/67/MKWorld_White_chocolate.jpg",
+      "name": "White chocolate",
+      "nameIt": "Cioccolato bianco",
+      "order": 2
+    },
+    {
+      "boost": [
+        "LARGE"
+      ],
+      "foodGroupId": "snacks_3",
+      "id": "snacks_3_3",
+      "imageUrl": "https://mario.wiki.gallery/images/a/a1/MKWorld_Spicy_chips.jpg",
+      "name": "Super-spicy chips",
+      "nameIt": "Patatine superpiccanti",
+      "order": 3
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "popcorn",
+      "id": "popcorn_1",
+      "imageUrl": "https://mario.wiki.gallery/images/5/5d/MKWorld_NSO_icon_Popcorn.png",
+      "name": "Popcorn",
+      "nameIt": "Popcorn",
+      "order": 1
+    },
+    {
+      "boost": [
+        "MEDIUM"
+      ],
+      "foodGroupId": "lunchbox",
+      "id": "lunchbox_1",
+      "imageUrl": "https://mario.wiki.gallery/images/d/dd/MKWorld_NSO_icon_Lunchbox.png",
+      "name": "Lunchbox",
+      "nameIt": "Pranzo al sacco",
+      "order": 1
+    }
+  ],
+  "source": "https://www.mariowiki.com/Dash_Food",
+  "translationIt": "manual/food_names_it.yaml (traduzione NON ufficiale)"
+}

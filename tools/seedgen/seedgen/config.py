@@ -29,6 +29,13 @@ def _load_list(path: Path) -> list:
     return data
 
 
+def _yoshi_label(spec) -> tuple[list[str], str | None]:
+    """Voce di `yoshi_food_labels`: una lista di gruppi, oppure {groups, food} per un cibo preciso."""
+    if isinstance(spec, list):
+        return spec, None
+    return list(spec["groups"]), spec.get("food")
+
+
 @dataclass(frozen=True)
 class Entity:
     id: str
@@ -91,7 +98,7 @@ class Config:
     expected: dict
     equivalences: list
     food_groups: AliasTable
-    yoshi_labels: dict[str, list[str]]
+    yoshi_labels: dict[str, tuple[list[str], str | None]]  # etichetta -> (gruppi, cibo preciso o None)
     regions: AliasTable
     region_of: dict[str, str]          # courseId / areaId -> regionId
     areas: AliasTable
@@ -99,6 +106,7 @@ class Config:
     character_genders: dict[str, str]  # characterId -> "M"/"F", solo per seedgen/i18n.py
     food_names_it: dict[str, str]      # nome inglese del cibo -> traduzione NON ufficiale
     mirror_mode_it: list[dict]         # [{en, it}]: condizioni della modalità specchio, traduzione NON ufficiale
+    stand_places_it: dict              # {establishments: [{en, it}], locations: [{en, it}]}, traduzione NON ufficiale
 
     def all_drivers(self) -> list[Entity]:
         """Tutti i piloti, in ordine di roster: prima i 24 con outfit, poi gli altri."""
@@ -111,6 +119,11 @@ class Config:
         return self.drivers.resolve(name, context) if self.drivers.knows(name) else self.characters.resolve(name, context)
 
     def yoshi_label_groups(self, label: str, context: str = "") -> list[str]:
+        return self.yoshi_label(label, context)[0]
+
+    def yoshi_label(self, label: str, context: str = "") -> tuple[list[str], str | None]:
+        """(gruppi, cibo preciso) di un'etichetta di List of Yoshi's locations; il cibo è None se
+        l'etichetta nomina il gruppo e non un cibo della tabella List of food."""
         key = AliasTable._key(label)
         if key not in self.yoshi_labels:
             where = f" (in {context})" if context else ""
@@ -140,7 +153,7 @@ class Config:
             expected=expected,
             equivalences=aliases.get("equivalences", []),
             food_groups=AliasTable("Gruppo di cibo", aliases["food_groups"]),
-            yoshi_labels={AliasTable._key(k): v for k, v in aliases["yoshi_food_labels"].items()},
+            yoshi_labels={AliasTable._key(k): _yoshi_label(v) for k, v in aliases["yoshi_food_labels"].items()},
             regions=AliasTable("Regione", aliases["regions"]),
             region_of=region_of,
             areas=AliasTable("Luogo", aliases.get("areas", {})),
@@ -148,4 +161,5 @@ class Config:
             character_genders=_load_yaml(tool_dir / "manual" / "character_genders.yaml"),
             food_names_it=_load_yaml(tool_dir / "manual" / "food_names_it.yaml"),
             mirror_mode_it=_load_list(tool_dir / "manual" / "mirror_mode_it.yaml"),
+            stand_places_it=_load_yaml(tool_dir / "manual" / "stand_locations_it.yaml"),
         )

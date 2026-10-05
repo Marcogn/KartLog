@@ -68,6 +68,15 @@ fun ConsigliamiDetailScreen(
         },
     ) { padding ->
         LazyColumn(modifier = Modifier.padding(padding).fillMaxSize(), contentPadding = PaddingValues(16.dp)) {
+            // Avviso una volta in cima (fase C1): gli outfit sotto sono possibilità, non certezze.
+            item {
+                Text(
+                    text = stringResource(R.string.consigliami_detail_maybe),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(bottom = 8.dp),
+                )
+            }
             if (state.details.isEmpty()) {
                 item {
                     Text(
