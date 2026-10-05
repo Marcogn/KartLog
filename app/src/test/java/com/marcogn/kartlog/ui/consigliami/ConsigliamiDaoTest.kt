@@ -15,7 +15,7 @@ import com.marcogn.kartlog.domain.consigliami.ConsigliamiOutfit
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiRule
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiStandFood
 import com.marcogn.kartlog.domain.consigliami.ConsigliamiUseCase
-import com.marcogn.kartlog.domain.consigliami.RecommendationGroup
+import com.marcogn.kartlog.domain.consigliami.EventScore
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.TrophyRank
 import kotlinx.coroutines.flow.first
@@ -50,12 +50,12 @@ class ConsigliamiDaoTest {
         db.close()
     }
 
-    private suspend fun computeGroups(
+    private suspend fun computeRanked(
         dao: ConsigliamiDao,
         resultsEnabled: Boolean = false,
         weight: Double = 0.3,
         referenceCc: Cc = Cc.CC_150,
-    ): List<RecommendationGroup> {
+    ): List<EventScore> {
         val characters = dao.characters().first().map { ConsigliamiCharacter(it.id, it.rosterOrder, it.unlocked) }
         val outfits = dao.outfits().first().map { ConsigliamiOutfit(it.id, it.characterId, it.owned) }
         val rules = dao.rules().first().map { ConsigliamiRule(it.outfitId, it.foodGroupId) }
@@ -100,8 +100,7 @@ class ConsigliamiDaoTest {
 
     @Test
     fun `sul seed reale a stato utente vuoto ci sono raccomandazioni utili`() = runBlocking {
-        val groups = computeGroups(db.consigliamiDao())
-        val top = groups.first().events.first()
+        val top = computeRanked(db.consigliamiDao()).first()
 
         assertTrue("con nessun outfit posseduto ci deve essere almeno un evento utile", top.score > 0)
         assertTrue(top.best != null)
@@ -110,7 +109,7 @@ class ConsigliamiDaoTest {
     @Test
     fun `possedere l'outfit consigliato riduce subito il suo gain (SPEC §9)`() = runBlocking {
         val dao = db.consigliamiDao()
-        val before = computeGroups(dao).first().events.first()
+        val before = computeRanked(dao).first()
         val bestCharacterId = requireNotNull(before.best).characterId
         val gainBefore = before.best!!.gain
 
@@ -123,9 +122,10 @@ class ConsigliamiDaoTest {
 
         db.userStateDao().markOutfitOwned(OwnedOutfitEntity(outfitToOwn))
 
-        val after = computeGroups(dao).flatMap { it.events }.first { it.event.id == before.event.id }
-        val gainAfter = after.best?.takeIf { it.characterId == bestCharacterId }?.gain
-            ?: after.runnersUp.firstOrNull { it.characterId == bestCharacterId }?.gain
+        // Senza più outfit possibili l'evento esce dalla lista: gain 0.
+        val after = computeRanked(dao).firstOrNull { it.event.id == before.event.id }
+        val gainAfter = after?.best?.takeIf { it.characterId == bestCharacterId }?.gain
+            ?: after?.runnersUp?.firstOrNull { it.characterId == bestCharacterId }?.gain
             ?: 0
 
         assertTrue("il gain di $bestCharacterId per ${before.event.id} deve calare dopo aver posseduto l'outfit", gainAfter < gainBefore)
@@ -134,7 +134,7 @@ class ConsigliamiDaoTest {
     @Test
     fun `sul seed reale con w=1 l'ordinamento dipende solo da improvement (fase 7)`() = runBlocking {
         val dao = db.consigliamiDao()
-        val disabled = computeGroups(dao).flatMap { it.events }
+        val disabled = computeRanked(dao)
         val highGainEvent = disabled.maxBy { it.score }
         // Un evento con gain minore del migliore, per verificare che con w=1 il gain smetta di contare.
         val lowGainEvent = disabled.filter { it.event.id != highGainEvent.event.id && it.score < highGainEvent.score }
@@ -143,7 +143,7 @@ class ConsigliamiDaoTest {
         // Oro 3 stelle sull'evento col gain più alto -> improvement 0. Nessun risultato sull'altro -> improvement 1.
         db.userStateDao().upsertBestResult(BestResultEntity(highGainEvent.event.id, Cc.CC_150, TrophyRank.GOLD_3_STARS))
 
-        val weighted = computeGroups(dao, resultsEnabled = true, weight = 1.0, referenceCc = Cc.CC_150).flatMap { it.events }
+        val weighted = computeRanked(dao, resultsEnabled = true, weight = 1.0, referenceCc = Cc.CC_150)
         val positionOf = { eventId: String -> weighted.indexOfFirst { it.event.id == eventId } }
 
         assertTrue(
@@ -156,12 +156,12 @@ class ConsigliamiDaoTest {
     @Test
     fun `un trofeo vale solo per la cilindrata in cui e registrato`() = runBlocking {
         val dao = db.consigliamiDao()
-        val eventId = computeGroups(dao).flatMap { it.events }.first().event.id
+        val eventId = computeRanked(dao).first().event.id
 
         // Oro 3 stelle allo Specchio: nessun effetto sul calcolo a 150cc, pieno effetto allo Specchio.
         db.userStateDao().upsertBestResult(BestResultEntity(eventId, Cc.MIRROR, TrophyRank.GOLD_3_STARS))
         suspend fun improvementAt(cc: Cc) =
-            computeGroups(dao, resultsEnabled = true, referenceCc = cc).flatMap { it.events }.first { it.event.id == eventId }.improvement
+            computeRanked(dao, resultsEnabled = true, referenceCc = cc).first { it.event.id == eventId }.improvement
 
         assertEquals(1.0, improvementAt(Cc.CC_150), 1e-9)
         assertEquals(0.0, improvementAt(Cc.MIRROR), 1e-9)

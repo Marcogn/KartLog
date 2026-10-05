@@ -1,5 +1,6 @@
 package com.marcogn.kartlog.ui.consigliami
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -8,20 +9,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ExpandLess
-import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Switch
+import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -33,27 +30,39 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.marcogn.kartlog.R
 import com.marcogn.kartlog.domain.consigliami.CharacterGain
 import com.marcogn.kartlog.domain.consigliami.EventScore
-import com.marcogn.kartlog.domain.consigliami.RecommendationGroup
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.EventType
 import com.marcogn.kartlog.domain.model.TrophyRank
 import com.marcogn.kartlog.ui.common.CharacterAvatar
 import com.marcogn.kartlog.ui.common.EventIcon
 import com.marcogn.kartlog.ui.common.KartChoiceButton
+import com.marcogn.kartlog.ui.common.KartCounterPill
+import com.marcogn.kartlog.ui.common.KartInfoButton
+import com.marcogn.kartlog.ui.common.KartInk
+import com.marcogn.kartlog.ui.common.KartPanel
+import com.marcogn.kartlog.ui.common.KartPopup
+import com.marcogn.kartlog.ui.common.KartPopupText
+import com.marcogn.kartlog.ui.common.KartSwitchRow
+import com.marcogn.kartlog.ui.common.KartTiles
 import com.marcogn.kartlog.ui.common.KartTitle
 import com.marcogn.kartlog.ui.common.KartTopBar
+import com.marcogn.kartlog.ui.common.OutlinedTitle
 import com.marcogn.kartlog.ui.common.ccLabel
 import com.marcogn.kartlog.ui.common.kartSky
 import com.marcogn.kartlog.ui.common.rankLabel
+import com.marcogn.kartlog.ui.theme.KartFont
 import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 
-@OptIn(ExperimentalMaterial3Api::class)
+internal val ConsigliamiBodyStyle = TextStyle(fontFamily = KartFont, fontSize = 15.sp, lineHeight = 19.sp, color = Color.White)
+
 @Composable
 fun ConsigliamiScreen(
     onMenuClick: () -> Unit,
@@ -61,6 +70,29 @@ fun ConsigliamiScreen(
     viewModel: ConsigliamiViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
+    ConsigliamiContent(
+        state = state,
+        onMenuClick = onMenuClick,
+        onEventClick = onEventClick,
+        onEventFilterChanged = viewModel::onEventFilterChanged,
+        onResultsEnabledChanged = viewModel::onResultsEnabledChanged,
+        onWeightChanged = viewModel::onWeightChanged,
+        onReferenceCcChanged = viewModel::onReferenceCcChanged,
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun ConsigliamiContent(
+    state: ConsigliamiUiState,
+    onMenuClick: () -> Unit,
+    onEventClick: (eventId: String) -> Unit,
+    onEventFilterChanged: (ConsigliamiEventFilter) -> Unit,
+    onResultsEnabledChanged: (Boolean) -> Unit,
+    onWeightChanged: (Double) -> Unit,
+    onReferenceCcChanged: (Cc) -> Unit,
+) {
+    var showInfo by rememberSaveable { mutableStateOf(false) }
 
     Scaffold(
         modifier = Modifier.kartSky(isKartDarkTheme()),
@@ -75,154 +107,129 @@ fun ConsigliamiScreen(
                 },
             )
         },
-        bottomBar = {
-            Surface(tonalElevation = 3.dp) {
-                Text(
-                    text = stringResource(R.string.consigliami_banner),
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier.padding(12.dp),
-                )
-            }
-        },
     ) { padding ->
-        Column(modifier = Modifier.padding(padding).fillMaxSize()) {
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                KartChoiceButton(
-                    text = stringResource(R.string.consigliami_filter_cup),
-                    selected = state.eventFilter == ConsigliamiEventFilter.CUP,
-                    onClick = { viewModel.onEventFilterChanged(ConsigliamiEventFilter.CUP) },
-                    modifier = Modifier.weight(1f),
-                )
-                KartChoiceButton(
-                    text = stringResource(R.string.consigliami_filter_rally),
-                    selected = state.eventFilter == ConsigliamiEventFilter.RALLY,
-                    onClick = { viewModel.onEventFilterChanged(ConsigliamiEventFilter.RALLY) },
-                    modifier = Modifier.weight(1f),
-                )
-                KartChoiceButton(
-                    text = stringResource(R.string.consigliami_filter_both),
-                    selected = state.eventFilter == ConsigliamiEventFilter.BOTH,
-                    onClick = { viewModel.onEventFilterChanged(ConsigliamiEventFilter.BOTH) },
-                    modifier = Modifier.weight(1f),
+        LazyColumn(
+            modifier = Modifier.padding(padding).fillMaxSize(),
+            contentPadding = PaddingValues(start = 12.dp, end = 12.dp, top = 12.dp, bottom = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            item(key = "controls") {
+                ControlsPanel(
+                    state = state,
+                    onEventFilterChanged = onEventFilterChanged,
+                    onResultsEnabledChanged = onResultsEnabledChanged,
+                    onWeightChanged = onWeightChanged,
+                    onReferenceCcChanged = onReferenceCcChanged,
+                    onInfoClick = { showInfo = true },
                 )
             }
-            SwitchRow(
-                label = stringResource(R.string.consigliami_only_useful),
-                checked = state.onlyUseful,
-                onCheckedChange = viewModel::onOnlyUsefulChanged,
-            )
-            SwitchRow(
-                label = stringResource(R.string.consigliami_weigh_results),
-                checked = state.resultsEnabled,
-                onCheckedChange = viewModel::onResultsEnabledChanged,
-            )
-            if (state.resultsEnabled) {
-                Column(modifier = Modifier.padding(horizontal = 16.dp)) {
-                    Text(
-                        stringResource(R.string.consigliami_weight_label, (state.weight * 100).toInt()),
-                        style = MaterialTheme.typography.bodySmall,
+            if (state.events.isEmpty()) {
+                item(key = "empty") {
+                    OutlinedTitle(
+                        stringResource(R.string.consigliami_no_recommendations),
+                        fontSize = 19.sp,
+                        maxLines = 3,
+                        modifier = Modifier.fillMaxWidth().padding(24.dp),
                     )
-                    Slider(
-                        value = state.weight.toFloat(),
-                        onValueChange = { viewModel.onWeightChanged(it.toDouble()) },
-                        valueRange = 0f..1f,
+                }
+            } else {
+                itemsIndexed(state.events, key = { _, event -> event.event.id }) { index, event ->
+                    EventCard(
+                        eventScore = event,
+                        position = index + 1,
+                        characterNames = state.characterNames,
+                        characterImages = state.characterImages,
+                        eventImageUrl = state.eventImages[event.event.id],
+                        courseNames = state.courseNames,
+                        foodGroupNames = state.foodGroupNames,
+                        bestRank = if (state.resultsEnabled) state.bestRankByEvent[event.event.id] else null,
+                        referenceCc = state.referenceCc,
+                        onClick = { onEventClick(event.event.id) },
                     )
-                    Text(stringResource(R.string.consigliami_reference_cc), style = MaterialTheme.typography.labelMedium)
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth().padding(top = 4.dp, bottom = 8.dp)) {
-                        Cc.entries.forEach { cc ->
-                            KartChoiceButton(
-                                text = ccLabel(cc),
-                                selected = state.referenceCc == cc,
-                                onClick = { viewModel.onReferenceCcChanged(cc) },
-                                modifier = Modifier.weight(1f),
-                            )
-                        }
-                    }
                 }
             }
+        }
+    }
 
-            if (state.groups.isEmpty()) {
-                Text(
-                    text = stringResource(R.string.consigliami_no_recommendations),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(24.dp),
+    if (showInfo) {
+        KartPopup(title = stringResource(R.string.consigliami_info_title), onDismiss = { showInfo = false }) {
+            KartPopupText(stringResource(R.string.consigliami_banner))
+        }
+    }
+}
+
+/** Filtri, switch e peso dei risultati in un'unica tessera blu; la "i" apre l'avviso sugli stand. */
+@Composable
+private fun ControlsPanel(
+    state: ConsigliamiUiState,
+    onEventFilterChanged: (ConsigliamiEventFilter) -> Unit,
+    onResultsEnabledChanged: (Boolean) -> Unit,
+    onWeightChanged: (Double) -> Unit,
+    onReferenceCcChanged: (Cc) -> Unit,
+    onInfoClick: () -> Unit,
+) {
+    KartPanel(colors = KartTiles.Blue, modifier = Modifier.fillMaxWidth()) {
+        Column(Modifier.fillMaxWidth().padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Row(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    ConsigliamiEventFilter.entries.forEach { filter ->
+                        KartChoiceButton(
+                            text = stringResource(
+                                when (filter) {
+                                    ConsigliamiEventFilter.CUP -> R.string.consigliami_filter_cup
+                                    ConsigliamiEventFilter.RALLY -> R.string.consigliami_filter_rally
+                                    ConsigliamiEventFilter.BOTH -> R.string.consigliami_filter_both
+                                },
+                            ),
+                            selected = state.eventFilter == filter,
+                            onClick = { onEventFilterChanged(filter) },
+                            modifier = Modifier.weight(1f),
+                        )
+                    }
+                }
+                KartInfoButton(stringResource(R.string.consigliami_info_cd), onClick = onInfoClick)
+            }
+            KartSwitchRow(
+                label = stringResource(R.string.consigliami_weigh_results),
+                checked = state.resultsEnabled,
+                onCheckedChange = onResultsEnabledChanged,
+                modifier = Modifier.fillMaxWidth(),
+            )
+            if (state.resultsEnabled) {
+                OutlinedTitle(
+                    stringResource(R.string.consigliami_weight_label, (state.weight * 100).toInt()),
+                    fontSize = 17.sp,
+                    textAlign = TextAlign.Start,
+                    maxLines = 2,
                 )
-            } else {
-                LazyColumn(contentPadding = PaddingValues(bottom = 16.dp)) {
-                    items(state.groups, key = { it.position }) { group ->
-                        GroupSection(
-                            group = group,
-                            characterNames = state.characterNames,
-                            characterImages = state.characterImages,
-                            eventImages = state.eventImages,
-                            courseNames = state.courseNames,
-                            foodGroupNames = state.foodGroupNames,
-                            bestRankByEvent = if (state.resultsEnabled) state.bestRankByEvent else emptyMap(),
-                            referenceCc = state.referenceCc,
-                            onEventClick = onEventClick,
+                Slider(
+                    value = state.weight.toFloat(),
+                    onValueChange = { onWeightChanged(it.toDouble()) },
+                    valueRange = 0f..1f,
+                    colors = SliderDefaults.colors(
+                        thumbColor = Color.White,
+                        activeTrackColor = KartTiles.Green.base,
+                        inactiveTrackColor = KartTiles.Blue.dark,
+                    ),
+                )
+                OutlinedTitle(
+                    stringResource(R.string.consigliami_reference_cc),
+                    fontSize = 17.sp,
+                    textAlign = TextAlign.Start,
+                    maxLines = 2,
+                )
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
+                    Cc.entries.forEach { cc ->
+                        KartChoiceButton(
+                            text = ccLabel(cc),
+                            selected = state.referenceCc == cc,
+                            onClick = { onReferenceCcChanged(cc) },
+                            modifier = Modifier.weight(1f),
                         )
                     }
                 }
             }
         }
-    }
-}
-
-@Composable
-private fun SwitchRow(label: String, checked: Boolean, onCheckedChange: (Boolean) -> Unit) {
-    Row(
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween,
-    ) {
-        Text(label, style = MaterialTheme.typography.bodyMedium)
-        Switch(checked = checked, onCheckedChange = onCheckedChange)
-    }
-}
-
-@Composable
-private fun GroupSection(
-    group: RecommendationGroup,
-    characterNames: Map<String, String>,
-    characterImages: Map<String, String>,
-    eventImages: Map<String, String>,
-    courseNames: Map<String, String>,
-    foodGroupNames: Map<String, String>,
-    bestRankByEvent: Map<String, TrophyRank>,
-    referenceCc: Cc,
-    onEventClick: (String) -> Unit,
-) {
-    var expanded by rememberSaveable(group.position) { mutableStateOf(group.events.size <= 1) }
-
-    if (group.events.size > 1) {
-        val title = if (group.commonCourseIds.isNotEmpty()) {
-            val names = group.commonCourseIds.mapNotNull { courseNames[it] }.sorted().joinToString(", ")
-            stringResource(R.string.consigliami_group_title_common, group.events.size, names)
-        } else {
-            stringResource(R.string.consigliami_group_title_generic, group.events.size)
-        }
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
-        ) {
-            Text(title, style = MaterialTheme.typography.titleSmall, modifier = Modifier.weight(1f))
-            IconButton(onClick = { expanded = !expanded }) {
-                Icon(if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore, contentDescription = null)
-            }
-        }
-        if (expanded) {
-            group.events.forEach { event ->
-                EventCard(event, group.position, characterNames, characterImages, eventImages[event.event.id], courseNames, foodGroupNames, bestRankByEvent[event.event.id], referenceCc, onClick = { onEventClick(event.event.id) })
-            }
-        }
-    } else {
-        val event = group.events.single()
-        EventCard(event, group.position, characterNames, characterImages, eventImages[event.event.id], courseNames, foodGroupNames, bestRankByEvent[event.event.id], referenceCc, onClick = { onEventClick(event.event.id) })
     }
 }
 
@@ -239,69 +246,54 @@ private fun EventCard(
     referenceCc: Cc,
     onClick: () -> Unit,
 ) {
-    Card(onClick = onClick, modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp)) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                EventIcon(name = eventScore.event.name, imageUrl = eventImageUrl)
-                Text(eventScore.event.name, style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
-                Text(
-                    text = stringResource(if (eventScore.event.type == EventType.CUP) R.string.consigliami_type_cup else R.string.consigliami_type_rally),
-                    style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-                Text(
-                    text = stringResource(R.string.consigliami_position_format, position),
-                    style = MaterialTheme.typography.labelMedium,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.primary,
-                )
+    val isCup = eventScore.event.type == EventType.CUP
+    val colors = if (isCup) KartTiles.Orange else KartTiles.Green
+    KartPanel(colors = colors, onClick = onClick, modifier = Modifier.fillMaxWidth()) {
+        Column(Modifier.fillMaxWidth().padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                EventIcon(name = eventScore.event.name, imageUrl = eventImageUrl, size = 52.dp, outlined = true)
+                Column(Modifier.weight(1f)) {
+                    OutlinedTitle(eventScore.event.name, fontSize = 20.sp, textAlign = TextAlign.Start, maxLines = 2)
+                    Text(
+                        text = stringResource(if (isCup) R.string.consigliami_type_cup else R.string.consigliami_type_rally),
+                        style = ConsigliamiBodyStyle.copy(fontSize = 13.sp),
+                    )
+                }
+                KartCounterPill(stringResource(R.string.consigliami_position_format, position), colors)
             }
 
             if (bestRank != null) {
                 Text(
                     stringResource(R.string.consigliami_best_result_format, ccLabel(referenceCc), rankLabel(bestRank)),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(top = 4.dp),
+                    style = ConsigliamiBodyStyle.copy(fontSize = 14.sp),
                 )
             }
 
             val best = eventScore.best
             if (best != null) {
-                Text(
-                    stringResource(R.string.consigliami_recommended_character),
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(top = 8.dp),
-                )
+                SubTitle(stringResource(R.string.consigliami_recommended_character))
                 CharacterGainRow(best, characterNames, characterImages, emphasized = true)
                 if (eventScore.runnersUp.isNotEmpty()) {
-                    Text(
-                        stringResource(R.string.consigliami_runners_up),
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(top = 8.dp),
-                    )
+                    SubTitle(stringResource(R.string.consigliami_runners_up))
                     eventScore.runnersUp.forEach { CharacterGainRow(it, characterNames, characterImages, emphasized = false) }
                 }
                 if (eventScore.relevantFoods.isNotEmpty()) {
-                    Column(modifier = Modifier.padding(top = 8.dp)) {
-                        // Possibilità, non promessa: lo stand è nell'area del percorso (fase C1).
-                        Text(
-                            stringResource(R.string.consigliami_foods_maybe),
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                        eventScore.relevantFoods.forEach { food ->
-                            val foodName = foodGroupNames[food.foodGroupId] ?: food.foodGroupId
-                            val courseName = courseNames[food.courseId] ?: food.courseId
-                            Text("$foodName · $courseName", style = MaterialTheme.typography.bodySmall)
-                        }
+                    // Possibilità, non promessa: lo stand è nell'area del percorso (fase C1).
+                    SubTitle(stringResource(R.string.consigliami_foods_maybe))
+                    eventScore.relevantFoods.forEach { food ->
+                        val foodName = foodGroupNames[food.foodGroupId] ?: food.foodGroupId
+                        val courseName = courseNames[food.courseId] ?: food.courseId
+                        Text("$foodName · $courseName", style = ConsigliamiBodyStyle)
                     }
                 }
             }
         }
     }
+}
+
+@Composable
+internal fun SubTitle(text: String) {
+    OutlinedTitle(text, fontSize = 15.sp, textAlign = TextAlign.Start, maxLines = 2, modifier = Modifier.padding(top = 4.dp))
 }
 
 @Composable
@@ -317,16 +309,22 @@ private fun CharacterGainRow(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        CharacterAvatar(name = name, imageUrl = characterImages[gain.characterId], size = if (emphasized) 40.dp else 28.dp)
-        Text(
+        CharacterAvatar(
+            name = name,
+            imageUrl = characterImages[gain.characterId],
+            size = if (emphasized) 44.dp else 32.dp,
+            modifier = Modifier.border(2.dp, KartInk, CircleShape),
+        )
+        OutlinedTitle(
             text = name,
-            style = if (emphasized) MaterialTheme.typography.titleMedium else MaterialTheme.typography.bodyMedium,
             modifier = Modifier.weight(1f),
+            fontSize = if (emphasized) 18.sp else 15.sp,
+            textAlign = TextAlign.Start,
+            maxLines = 2,
         )
         Text(
             text = stringResource(R.string.consigliami_gain_format, gain.gain),
-            style = if (emphasized) MaterialTheme.typography.titleMedium else MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.primary,
+            style = ConsigliamiBodyStyle.copy(fontSize = if (emphasized) 16.sp else 14.sp),
         )
     }
 }

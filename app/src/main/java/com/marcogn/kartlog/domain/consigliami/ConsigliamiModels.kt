@@ -38,9 +38,6 @@ data class EventScore(
     val improvement: Double,
 )
 
-/** Un gruppo di eventi a pari merito (SPEC §6.4): `commonCourseIds` è vuoto se [events] ha un solo elemento. */
-data class RecommendationGroup(val position: Int, val events: List<EventScore>, val commonCourseIds: Set<String>)
-
 /**
  * Dettaglio evento (SPEC §2.5, "tap sulla card apre il dettaglio"): un personaggio con gain > 0 e
  * gli outfit che potrebbe sbloccare, ciascuno con i cibi e i percorsi dove si trovano (righe

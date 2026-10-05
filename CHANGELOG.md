@@ -6,6 +6,17 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Consigliami con la grafica del gioco.** Le card degli eventi sono tessere colorate (arancio i Gran
+  Premi, verde i Knockout Tour) con icona, posizione, personaggio consigliato e cibi possibili; filtri,
+  switch e peso dei risultati stanno in una tessera blu e l'avviso sugli stand è dietro la "i".
+  Icone degli eventi e avatar con il contorno nero.
+- **Classifica di Consigliami numerata 1, 2, 3.** Niente più numeri condivisi a pari merito (1, 1, 3)
+  né card che raggruppano gli eventi: ogni evento ha la sua card e il suo numero.
+- **Tolto "Solo utili".** Gli eventi in cui non si può sbloccare nessun outfit non compaiono mai,
+  anche con "Pesa i risultati" attivo (prima lì restavano in lista).
+- **Dettaglio dell'evento rifatto.** Una tessera per personaggio con una riga per outfit e il cibo
+  che serve accanto ("Vespone – Barbecue"), con i percorsi dell'evento dove potrebbe esserci lo
+  stand; toccando il cibo si apre nella sezione Cibi. Migliori trofei in una tessera in fondo.
 - **Nuova sezione Cibi.** Sottovoce di Personaggi nel drawer: una tessera per cibo con quanti outfit ti
   mancano; toccandola vedi le varianti, dove trovarlo (sui percorsi e sulle strade, il sushi diviso per
   variante) e gli outfit che sblocca per ogni personaggio, grigi se non li hai. Luoghi e nomi italiani

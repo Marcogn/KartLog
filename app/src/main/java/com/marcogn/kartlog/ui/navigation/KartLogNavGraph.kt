@@ -210,7 +210,12 @@ fun KartLogNavGraph(navController: NavHostController = rememberNavController()) 
                 )
             }
             composable<Destination.ConsigliamiDetail> { entry ->
-                ConsigliamiDetailScreen(onBack = { if (entry.lifecycleIsResumed()) navController.popBackStack() })
+                ConsigliamiDetailScreen(
+                    onBack = { if (entry.lifecycleIsResumed()) navController.popBackStack() },
+                    onFoodClick = { foodGroupId ->
+                        if (entry.lifecycleIsResumed()) navController.navigate(Destination.FoodDetail(foodGroupId))
+                    },
+                )
             }
             composable<Destination.Results> {
                 ResultsScreen(onMenuClick = openDrawer)

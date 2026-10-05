@@ -28,6 +28,16 @@ interface ConsigliamiDao {
     @Query("SELECT id, name, nameIt FROM food_groups")
     fun foodGroupNames(): Flow<List<IdNameIt>>
 
+    /** Immagine della prima variante di ogni cibo, per il promemoria "outfit – cibo" del dettaglio. */
+    @Query(
+        """
+        SELECT g.id AS id,
+               (SELECT v.imageUrl FROM food_variants v WHERE v.foodGroupId = g.id ORDER BY v.`order` LIMIT 1) AS imageUrl
+        FROM food_groups g
+        """
+    )
+    fun foodGroupImages(): Flow<List<IdImageUrl>>
+
     /** Solo outfit non default: hanno sempre un nome (SPEC §3, validato in fase 3). */
     @Query("SELECT id, name, nameIt FROM outfits WHERE isDefault = 0")
     fun outfitNames(): Flow<List<IdNameIt>>
@@ -80,5 +90,7 @@ data class ConsigliamiCharacterRow(
 data class ConsigliamiOutfitRow(val id: String, val characterId: String, val owned: Boolean)
 
 data class IdNameIt(val id: String, val name: String, val nameIt: String?)
+
+data class IdImageUrl(val id: String, val imageUrl: String?)
 
 data class CourseFoodRow(val courseId: String, val foodGroupId: String)

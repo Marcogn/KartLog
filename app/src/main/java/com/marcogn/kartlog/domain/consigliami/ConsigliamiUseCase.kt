@@ -2,7 +2,6 @@ package com.marcogn.kartlog.domain.consigliami
 
 import com.marcogn.kartlog.domain.model.EventType
 import com.marcogn.kartlog.domain.model.TrophyRank
-import kotlin.math.abs
 
 /**
  * Algoritmo Consigliami (SPEC §6). Con i risultati disattivati (default, fase 6) il punteggio è
@@ -12,8 +11,6 @@ import kotlin.math.abs
  * del percorso, non per forza sul tracciato di gara, quindi ogni guadagno è una possibilità.
  */
 object ConsigliamiUseCase {
-
-    private const val SCORE_EPSILON = 1e-9
 
     private data class RawEventScore(
         val event: ConsigliamiEvent,
@@ -26,6 +23,11 @@ object ConsigliamiUseCase {
     )
 
     /**
+     * Gli eventi in cui almeno un personaggio sbloccato potrebbe ottenere un outfit (gain > 0),
+     * ordinati come in SPEC §6.4: la posizione in classifica è l'indice + 1 (1, 2, 3…, niente
+     * pari merito a numero condiviso, decisione dell'autore del 05/10/2026). Gli eventi con gain 0
+     * non compaiono mai, nemmeno con i risultati attivi (dove il trofeo darebbe loro un punteggio).
+     *
      * @param bestRankForEvent miglior trofeo registrato per un evento alla cilindrata di
      * riferimento scelta in Consigliami; null se nessun risultato (SPEC §6.3,
      * "nessun risultato -> improvement 1"). Ignorato se [resultsEnabled] è false.
@@ -39,7 +41,7 @@ object ConsigliamiUseCase {
         resultsEnabled: Boolean = false,
         weight: Double = 0.3,
         bestRankForEvent: (eventId: String) -> TrophyRank? = { null },
-    ): List<RecommendationGroup> {
+    ): List<EventScore> {
         val courseFoods = courseFoods(standFoods)
         val rulesByOutfit: Map<String, Set<String>> =
             rules.groupBy({ it.outfitId }, { it.foodGroupId }).mapValues { it.value.toSet() }
@@ -71,7 +73,7 @@ object ConsigliamiUseCase {
         }
         comparator = comparator.thenBy { typeRank(it.event.type) }.thenBy { it.event.order }
 
-        return assignGroups(scored.sortedWith(comparator))
+        return scored.filter { it.best != null }.sortedWith(comparator)
     }
 
     private fun scoreEventRaw(
@@ -160,28 +162,4 @@ object ConsigliamiUseCase {
         courseFoods.asSequence().filter { it.courseId in event.courseIds }.map { it.foodGroupId }.toSet()
 
     private fun typeRank(type: EventType): Int = if (type == EventType.CUP) 0 else 1
-
-    /** Numerazione "competition ranking" (1, 1, 1, 4...): pari merito = stesso score (tolleranza) e stesso total. */
-    private fun assignGroups(sorted: List<EventScore>): List<RecommendationGroup> {
-        val groups = mutableListOf<RecommendationGroup>()
-        var index = 0
-        var position = 1
-        while (index < sorted.size) {
-            val head = sorted[index]
-            var end = index
-            while (end < sorted.size && scoreEquals(sorted[end].score, head.score) && sorted[end].total == head.total) end++
-            val members = sorted.subList(index, end)
-            val commonCourseIds = if (members.size > 1) {
-                members.map { it.relevantFoods.map { food -> food.courseId }.toSet() }.reduce { a, b -> a intersect b }
-            } else {
-                emptySet()
-            }
-            groups += RecommendationGroup(position, members, commonCourseIds)
-            position += members.size
-            index = end
-        }
-        return groups
-    }
-
-    private fun scoreEquals(a: Double, b: Double): Boolean = abs(a - b) < SCORE_EPSILON
 }
