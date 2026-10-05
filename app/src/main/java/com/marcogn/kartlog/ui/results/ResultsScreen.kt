@@ -1,6 +1,5 @@
 package com.marcogn.kartlog.ui.results
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -13,18 +12,10 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.ListItem
-import androidx.compose.material3.ListItemDefaults
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -37,29 +28,51 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.marcogn.kartlog.R
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.TrophyRank
 import com.marcogn.kartlog.ui.common.EventIcon
+import com.marcogn.kartlog.ui.common.KartChoiceButton
+import com.marcogn.kartlog.ui.common.KartColors
+import com.marcogn.kartlog.ui.common.KartCounterPill
 import com.marcogn.kartlog.ui.common.KartInfoButton
+import com.marcogn.kartlog.ui.common.KartPanel
 import com.marcogn.kartlog.ui.common.KartPopup
 import com.marcogn.kartlog.ui.common.KartPopupText
 import com.marcogn.kartlog.ui.common.KartTabs
+import com.marcogn.kartlog.ui.common.KartTiles
 import com.marcogn.kartlog.ui.common.KartTitle
 import com.marcogn.kartlog.ui.common.KartTopBar
+import com.marcogn.kartlog.ui.common.OutlinedTitle
 import com.marcogn.kartlog.ui.common.ccLabel
 import com.marcogn.kartlog.ui.common.kartSky
 import com.marcogn.kartlog.ui.common.rankLabel
 import com.marcogn.kartlog.ui.theme.isKartDarkTheme
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ResultsScreen(
     onMenuClick: () -> Unit,
     viewModel: ResultsViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
+    ResultsContent(
+        state = state,
+        onMenuClick = onMenuClick,
+        onCcChanged = viewModel::onCcChanged,
+        onRankChanged = viewModel::onRankChanged,
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun ResultsContent(
+    state: ResultsUiState,
+    onMenuClick: () -> Unit,
+    onCcChanged: (Cc) -> Unit,
+    onRankChanged: (String, TrophyRank?) -> Unit,
+) {
     var editingEventId by rememberSaveable { mutableStateOf<String?>(null) }
     var showMirrorInfo by rememberSaveable { mutableStateOf(false) }
 
@@ -89,7 +102,7 @@ fun ResultsScreen(
             options = Cc.entries,
             selected = state.cc,
             label = { ccLabel(it) },
-            onSelected = viewModel::onCcChanged,
+            onSelected = onCcChanged,
             tabTrailing = { cc ->
                 if (cc == Cc.MIRROR && state.mirrorSteps.isNotEmpty()) {
                     KartInfoButton(stringResource(R.string.results_mirror_info_cd), onClick = { showMirrorInfo = true })
@@ -97,20 +110,24 @@ fun ResultsScreen(
             },
             modifier = Modifier.padding(padding).fillMaxSize().padding(start = 8.dp, end = 8.dp, top = 8.dp),
         ) {
-            LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(top = 4.dp, bottom = 16.dp)) {
-                resultsSection(R.string.results_section_cup, state.cups, onClick = { editingEventId = it })
-                resultsSection(R.string.results_section_rally, state.rallies, onClick = { editingEventId = it })
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                contentPadding = PaddingValues(start = 4.dp, end = 4.dp, top = 4.dp, bottom = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+            ) {
+                resultsSection(R.string.results_section_cup, state.cups, KartTiles.Orange, onClick = { editingEventId = it })
+                resultsSection(R.string.results_section_rally, state.rallies, KartTiles.Green, onClick = { editingEventId = it })
             }
         }
     }
 
     val editing = editingEventId?.let { id -> (state.cups + state.rallies).firstOrNull { it.eventId == id } }
     if (editing != null) {
-        RankPickerDialog(
+        RankPickerPopup(
             title = "${editing.eventName} · ${ccLabel(state.cc)}",
             selected = editing.rank,
             onSelected = { rank ->
-                viewModel.onRankChanged(editing.eventId, rank)
+                onRankChanged(editing.eventId, rank)
                 editingEventId = null
             },
             onDismiss = { editingEventId = null },
@@ -121,64 +138,60 @@ fun ResultsScreen(
 private fun LazyListScope.resultsSection(
     titleRes: Int,
     rows: List<ResultRow>,
+    colors: KartColors,
     onClick: (String) -> Unit,
 ) {
     item(key = "header_$titleRes") {
-        Text(
+        OutlinedTitle(
             stringResource(titleRes),
-            style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 4.dp),
+            Modifier.fillMaxWidth().padding(start = 8.dp, top = 10.dp),
+            fontSize = 24.sp,
+            textAlign = TextAlign.Start,
         )
-        HorizontalDivider()
     }
     items(rows, key = { it.eventId }) { row ->
-        ListItem(
-            headlineContent = { Text(row.eventName) },
-            leadingContent = { EventIcon(name = row.eventName, imageUrl = row.imageUrl) },
-            trailingContent = {
-                Text(
+        // Grigio = nessun trofeo, giallo = registrato (stessa regola del resto dell'app).
+        KartPanel(colors = colors, modifier = Modifier.fillMaxWidth(), onClick = { onClick(row.eventId) }) {
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 10.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+            ) {
+                EventIcon(name = row.eventName, imageUrl = row.imageUrl, outlined = true)
+                OutlinedTitle(row.eventName, Modifier.weight(1f), fontSize = 19.sp, textAlign = TextAlign.Start, maxLines = 2)
+                KartCounterPill(
                     text = row.rank?.let { rankLabel(it) } ?: stringResource(R.string.results_no_trophy),
-                    color = if (row.rank == null) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.primary,
+                    colors = if (row.rank == null) KartTiles.Gray else KartTiles.Yellow,
                 )
-            },
-            // Trasparente: sotto si vede il cielo attenuato dello sfondo, non un bianco pieno.
-            colors = ListItemDefaults.colors(containerColor = Color.Transparent),
-            modifier = Modifier.clickable { onClick(row.eventId) },
-        )
+            }
+        }
     }
 }
 
 /** Un solo valore per (evento, cilindrata): scegliere un trofeo sostituisce quello registrato (SPEC §2.6). */
 @Composable
-private fun RankPickerDialog(
+private fun RankPickerPopup(
     title: String,
     selected: TrophyRank?,
     onSelected: (TrophyRank?) -> Unit,
     onDismiss: () -> Unit,
 ) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(title) },
-        text = {
-            Column {
-                RankOption(stringResource(R.string.results_dialog_clear), selected == null) { onSelected(null) }
-                TrophyRank.entries.forEach { rank ->
-                    RankOption(rankLabel(rank), selected == rank) { onSelected(rank) }
-                }
+    KartPopup(title = title, onDismiss = onDismiss) {
+        Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            KartChoiceButton(
+                text = stringResource(R.string.results_no_trophy),
+                selected = selected == null,
+                onClick = { onSelected(null) },
+                modifier = Modifier.fillMaxWidth(),
+            )
+            TrophyRank.entries.forEach { rank ->
+                KartChoiceButton(
+                    text = rankLabel(rank),
+                    selected = selected == rank,
+                    onClick = { onSelected(rank) },
+                    modifier = Modifier.fillMaxWidth(),
+                )
             }
-        },
-        confirmButton = {},
-        dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.results_dialog_cancel)) } },
-    )
-}
-
-@Composable
-private fun RankOption(label: String, selected: Boolean, onClick: () -> Unit) {
-    Row(
-        modifier = Modifier.fillMaxWidth().clickable(onClick = onClick).padding(vertical = 4.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        RadioButton(selected = selected, onClick = onClick)
-        Text(label, style = MaterialTheme.typography.bodyLarge)
+        }
     }
 }

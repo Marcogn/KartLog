@@ -56,7 +56,13 @@ interface SkinDao {
                    FROM outfit_food_rules ofr
                    JOIN food_groups fg ON fg.id = ofr.foodGroupId
                    WHERE ofr.outfitId = o.id
-               ) AS foodGroupsIt
+               ) AS foodGroupsIt,
+               (
+                   SELECT GROUP_CONCAT(fg.id, ' · ')
+                   FROM outfit_food_rules ofr
+                   JOIN food_groups fg ON fg.id = ofr.foodGroupId
+                   WHERE ofr.outfitId = o.id
+               ) AS foodGroupIds
         FROM outfits o
         LEFT JOIN owned_outfits oo ON oo.outfitId = o.id
         WHERE o.characterId = :characterId
@@ -113,6 +119,20 @@ data class OutfitProgress(
     val foodGroups: String?,
     /** Stessa lista con i nomi italiani (traduzione NON ufficiale dei cibi, vedi il seed). */
     val foodGroupsIt: String?,
+    /** Gli ID dei gruppi, uniti con " · " nello stesso ordine di [foodGroups] (stesse sotto-query). */
+    val foodGroupIds: String? = null,
 ) {
     val localizedFoodGroups: String? get() = foodGroups?.let { localizedName(it, foodGroupsIt) }
+
+    /** I cibi dell'outfit uno per uno, con l'ID per aprire la sezione Cibi; vuota se non ci sono regole note. */
+    val foods: List<OutfitFood>
+        get() {
+            val ids = foodGroupIds?.split(" · ") ?: return emptyList()
+            val names = foodGroups?.split(" · ").orEmpty()
+            val namesIt = foodGroupsIt?.split(" · ").orEmpty()
+            if (ids.size != names.size) return emptyList()
+            return ids.mapIndexed { i, id -> OutfitFood(id, localizedName(names[i], namesIt.getOrNull(i))) }
+        }
 }
+
+data class OutfitFood(val foodGroupId: String, val name: String)

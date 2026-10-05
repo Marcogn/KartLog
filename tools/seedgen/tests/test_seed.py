@@ -6,7 +6,7 @@ import copy
 import pytest
 
 from conftest import GOLDEN, SEED_DIR
-from seedgen.build import build
+from seedgen.build import build, normalize_spaces
 from seedgen.cli import main
 from seedgen.errors import EXIT_CHANGED, EXIT_OK, ParseError, ValidationError
 from seedgen.output import COMPARED_FILES, diff, read_seed, write_seed
@@ -227,3 +227,25 @@ def test_build_cross_checks_course_stands_with_dash_food(cfg):
                                 "location": "Top"}])
     with pytest.raises(ParseError, match="Dash Food non li elenca"):
         build(raw, _places(cfg, {"Top": "In cima"}))
+
+
+def test_normalize_spaces_replaces_nbsp_everywhere():
+    seed = {"items": [{"nameIt": "Rovine del blocco\xa0?", "n": 3, "tags": ["a\xa0b", None]}]}
+    assert normalize_spaces(seed) == {"items": [{"nameIt": "Rovine del blocco ?", "n": 3, "tags": ["a b", None]}]}
+
+
+def _strings(value):
+    if isinstance(value, str):
+        yield value
+    elif isinstance(value, list):
+        for v in value:
+            yield from _strings(v)
+    elif isinstance(value, dict):
+        for v in value.values():
+            yield from _strings(v)
+
+
+def test_seed_has_no_non_breaking_spaces(golden_seed):
+    # Lilita One non ha U+00A0 (verificato con fontTools): nel seed non deve arrivare.
+    for seed in (golden_seed, read_seed(SEED_DIR)):
+        assert not [t for t in _strings(seed) if "\xa0" in t]

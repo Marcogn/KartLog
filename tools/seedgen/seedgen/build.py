@@ -444,7 +444,20 @@ def build(
             seed["p_switches.json"]["mapSource"] = checklist.source_url
     if checklist:
         seed.update(_checklist_files(checklist))
-    return seed
+    return normalize_spaces(seed)
+
+
+def normalize_spaces(value):
+    """Spazio non separabile (U+00A0) -> spazio normale in ogni testo del seed: il wiki italiano scrive
+    "Rovine del blocco\xa0?" e il font dell'app (Lilita One) non ha quel glifo, quindi Android
+    disegnava il "?" con un font di ripiego."""
+    if isinstance(value, str):
+        return value.replace("\xa0", " ")
+    if isinstance(value, list):
+        return [normalize_spaces(v) for v in value]
+    if isinstance(value, dict):
+        return {k: normalize_spaces(v) for k, v in value.items()}
+    return value
 
 
 def _point_fields(p: MapPoint) -> dict:

@@ -8,7 +8,7 @@
   },
   "note": "",
   "origin": "api",
-  "seedVersion": 9,
+  "seedVersion": 10,
   "sources": [
     {
       "revid": 5455370,
@@ -101,7 +101,7 @@
       "url": "https://www.mariowiki.it/Lista_delle_missioni_di_Mario_Kart_World"
     },
     {
-      "revid": 5507571,
+      "revid": 5509107,
       "title": "Mario Kart World",
       "url": "https://www.mariowiki.com/Mario_Kart_World"
     },

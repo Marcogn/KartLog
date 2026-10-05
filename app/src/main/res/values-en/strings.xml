@@ -86,8 +86,6 @@
     <string name="results_section_cup">Grand Prix</string>
     <string name="results_section_rally">Knockout Tour</string>
     <string name="results_no_trophy">No trophy</string>
-    <string name="results_dialog_clear">No trophy (clear)</string>
-    <string name="results_dialog_cancel">Cancel</string>
     <string name="rank_bronze">Bronze</string>
     <string name="rank_silver">Silver</string>
     <string name="rank_gold">Gold</string>
