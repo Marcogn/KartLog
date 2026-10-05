@@ -58,9 +58,17 @@ Flag della build release: `-PacceptSeedChanges`, `-PofflineSeed`, `-PpythonExec=
 - **Backup** (`data/backup/`): l'import sostituisce tutto lo stato utente e riporta gli ID sconosciuti.
 
 ## Stato attuale
-- **App alla 1.1.2** (roadmap originale chiuso, poi immagini, grafica dal mockup, mappa dei collezionabili, toolchain aggiornata). `seedVersion` 8, Room v7, backup v3. `versionCode`/`versionName` li aggiorna `release.yml`. Secret GitHub presenti.
-- **Prossima fase: C1 Dati degli stand (Opus)**, poi C2 sezione Cibi, C3 e C4 grafica di Consigliami (Sonnet): `docs/roadmap.md`. Motivo: in gioco i consigli non corrispondono agli outfit sbloccati, perché SPEC §6.1 dà per certi stand che sono solo nell'area dei percorsi.
-- **Da verificare a schermo** (nessun emulatore qui; screenshot Robolectric impossibili: `captureToImage` va in timeout, il disegno manuale crasha): grafica del mockup (tessere, contorno dei titoli, bagliore nel tema scuro, banner su schermi stretti), fluidità e memoria della mappa (immagine 2580×2322, ~24 MB), gesto indietro, immagini con Coil 3.6, lingua/tema, backup. `targetSdk` resta 36 finché l'app non è provata su Android 17.
+- **App alla 1.1.2 + fase C1** (roadmap originale chiuso, poi immagini, grafica dal mockup, mappa dei collezionabili, toolchain aggiornata, dati degli stand). `seedVersion` 9, Room v8, backup v3. `versionCode`/`versionName` li aggiorna `release.yml`. Secret GitHub presenti.
+- **Prossima fase: C2 Sezione Cibi (Sonnet)**, poi C3 e C4 grafica di Consigliami (Sonnet): `docs/roadmap.md`.
+- **Handoff di C1 per C2–C4:**
+  - Seed: `food_variants.json` (60 cibi, `boost` = lista di `SMALL/MEDIUM/LARGE`, `imageUrl` originale) e `yoshi_stands.json` (109: 70 con `courseId`, 39 sulle strade con `courseId`/`regionId` null); `food_group_courses.json` e `Presence` non esistono più.
+  - Room v8: `food_variants`, `yoshi_stands` (con `order` = ordine della pagina), `yoshi_stand_foods` (`food` non null solo nel gruppo sushi, uguale a `FoodVariantEntity.name`: è così che i luoghi si dividono per variante; per gli altri gruppi i luoghi valgono per tutte le taglie).
+  - API per C2: `FoodDao` (`foodGroups()` con prima immagine e outfit mancanti/totali, `variants(id)`, `stands(id)` con nomi di corso e bioma, `outfits(id)` con `owned`), testato in `FoodDaoTest` su un seed FAKE_FOR_TESTS. I personaggi senza outfit da un cibo vanno ricavati in C2 (non c'è una query apposta).
+  - Immagini dei cibi già nel prefetch (`SeedDao.allImageUrls`). Testi `*It` di luoghi, locali e cibi: traduzione non ufficiale, già dichiarata in Impostazioni (`settings_food_names_note`).
+  - API per C4: `ConsigliamiUseCase.detailFor` dà `CharacterDetail.outfits`, ogni `UnlockableOutfit` con `sources` = (cibo, percorso) dell'evento in ordine di tappa; il ViewModel del dettaglio oggi usa solo `unlockableOutfitIds`.
+  - Consigliami: testi riformulati come possibilità (`consigliami_foods_maybe`, `consigliami_detail_maybe`, banner) ma grafica invariata (C3/C4). `Destination.ConsigliamiDetail` ha solo `eventId`.
+  - Gli stand nascono per posizione nella pagina del wiki: non usarne gli ID nello stato utente.
+- **Da verificare a schermo** (nessun emulatore qui; screenshot Robolectric impossibili: `captureToImage` va in timeout, il disegno manuale crasha): testi di Consigliami (possibilità, niente switch dei dintorni), aggiornamento da una versione con dati vecchi senza perdere nulla; e restano grafica del mockup (tessere, contorno dei titoli, bagliore nel tema scuro, banner su schermi stretti), fluidità e memoria della mappa (immagine 2580×2322, ~24 MB), gesto indietro, immagini con Coil 3.6, lingua/tema, backup. `targetSdk` resta 36 finché l'app non è provata su Android 17.
 
 ## Manutenzione di questo file
 - A fine sessione: aggiorna **Stato attuale**; le scelte non ovvie vanno in `docs/decisioni.md`, nella sezione giusta (una decisione che ne supera un'altra la sostituisce).

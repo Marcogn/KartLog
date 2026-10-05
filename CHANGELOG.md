@@ -6,6 +6,17 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Consigliami parla di possibilità.** Gli stand Yoshi's di un percorso sono nell'area del
+  percorso, non per forza sul tracciato di gara: ora i consigli dicono "fino a +N outfit" e
+  "potrebbero esserci (occhi aperti)", con un avviso in cima al dettaglio e il promemoria che il
+  cambio d'abito si può disattivare nella scelta del veicolo.
+- **Tolto "Includi cibi nei dintorni".** I cibi di un evento vengono solo dagli stand dei suoi
+  percorsi; gli stand sulle strade tra i percorsi arriveranno nella sezione Cibi.
+- **Tutti gli stand Yoshi's e i cibi uno per uno nei dati (seedVersion 9).** 109 stand (70 nell'area
+  dei percorsi, 39 sulle strade) con luogo in inglese e italiano (traduzione non ufficiale) e i 60
+  cibi della pagina Dash Food con livello di boost e immagine, scaricata a runtime come le altre.
+  Database aggiornato senza perdere nulla dei dati dell'utente.
+
 ## [1.1.2] - 2026-10-04
 
 - **Gesto indietro di nuovo con lo scorrimento laterale.** Dalla 1.1.1, tornando indietro la
