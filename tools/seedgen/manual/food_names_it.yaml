@@ -30,3 +30,15 @@ Snacks 2: "Snack 2"
 Snacks 3: "Snack 3"
 Popcorn: "Popcorn"
 Lunchbox: "Pranzo al sacco"
+
+# Nomi dei singoli cibi degli snack (seconda colonna Name di List of food): le varianti dei gruppi
+# Snacks 1/2/3. Stessa traduzione non ufficiale (05/10/2026); gli altri cibi hanno il nome del gruppo.
+Canned juice: "Succo in lattina"
+Dark chocolate: "Cioccolato fondente"
+Potato chips: "Patatine"
+Canned soda: "Bibita in lattina"
+Strawberry chocolate: "Cioccolato alla fragola"
+Banana chips: "Chips di banana"
+Canned coffee: "Caffè in lattina"
+White chocolate: "Cioccolato bianco"
+Super-spicy chips: "Patatine superpiccanti"

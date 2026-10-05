@@ -23,8 +23,8 @@ pages:
   # Tabella "List of food": gruppi di cibo -> outfit per personaggio, e gruppi -> corsi (colonna Locations).
   dash_food: "Dash Food"
 
-  # Stand Yoshi's divisi in "Course locations" (sul percorso) e "Route locations" (sulle strade).
-  # Si usa la sezione Course locations: dice con precisione quale cibo si trova SUL percorso.
+  # Stand Yoshi's divisi in "Course locations" (nell'area di un percorso) e "Route locations" (sulle
+  # strade tra i percorsi): si leggono tutti, uno per riga, con cibo, luogo e tipo di locale (fase C1).
   yoshis: "List of Yoshi's locations"
 
   # Pulsanti P: una sezione h2 per bioma, tabelle con colonne "In-game text" e "Location".

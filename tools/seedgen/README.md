@@ -8,8 +8,8 @@ Le pagine sono elencate **per titolo esatto** in `sources.yaml`: lo script non c
 
 | Pagina | Cosa se ne ricava |
 |---|---|
-| `Dash Food` | tabella "List of food": gruppi di cibo → outfit per personaggio; gruppi → corsi e strade vicine (colonna Locations) |
-| `List of Yoshi's locations` | sezione "Course locations": cibi con uno stand sul tracciato di ogni percorso |
+| `Dash Food` | tabella "List of food": gruppi di cibo → outfit per personaggio; ogni cibo (una riga = una variante, con livello di boost e URL dell'immagine); colonna Locations solo come controllo incrociato degli stand |
+| `List of Yoshi's locations` | tutti gli stand Yoshi's, uno per riga: "Course locations" (percorso, tipo di locale, cibo, luogo) e "Route locations" (strade tra i percorsi: cibo e luogo) |
 | `List of Mario Kart World missions` | pulsanti P: bioma, nome della missione, percorso |
 | `Template:Mario Kart World` | navbox: gli 8 cup con i loro 4 corsi, e l'elenco dei rally (per accorgersi di rally nuovi) |
 | `Golden Rally`, `Ice Rally`, … (12 pagine) | tappe di ogni Knockout Tour, dalla tabella "Starting point … Final course" |
@@ -17,7 +17,7 @@ Le pagine sono elencate **per titolo esatto** in `sources.yaml`: lo script non c
 | mkworld-checklist (GitHub, commit fissato in `sources.yaml`): `checklist-data.json`, `i18n/en.json`, intestazione di `map.webp` | posizioni di Monete Peach, Pulsanti P e pannelli "?", istruzioni in inglese, video YouTube, URL e misure della mappa (`seedgen/checklist.py`); sempre dal vivo. I Pulsanti P si abbinano a quelli di mariowiki per nome della missione |
 | mariowiki.it: `Mario Kart World`, `Lista delle missioni di Mario Kart World` | nomi italiani che mariowiki.com non ha: piloti senza outfit, biomi, Trofei e rally, e la tabella "Criteri di sblocco" (`seedgen/it_wiki.py`); sempre dal vivo |
 
-`manual/food_names_it.yaml` contiene i nomi italiani dei cibi: **traduzione non ufficiale**, scelta dell'autore perché nessuna fonte li riporta. `manual/mirror_mode_it.yaml` traduce allo stesso modo le condizioni della modalità specchio (mariowiki.it ne ha una versione meno aggiornata). Ogni voce riporta anche il testo inglese esatto: se sul wiki cambia, seedgen si ferma finché la traduzione non viene aggiornata.
+`manual/food_names_it.yaml` contiene i nomi italiani dei cibi (gruppi e singoli cibi): **traduzione non ufficiale**, scelta dell'autore perché nessuna fonte li riporta. `manual/stand_locations_it.yaml` traduce allo stesso modo luoghi e tipi di locale degli stand Yoshi's. `manual/mirror_mode_it.yaml` traduce allo stesso modo le condizioni della modalità specchio (mariowiki.it ne ha una versione meno aggiornata). Ogni voce riporta anche il testo inglese esatto: se sul wiki cambia, seedgen si ferma finché la traduzione non viene aggiornata.
 
 Le pagine si scaricano con la MediaWiki API (`https://www.mariowiki.com/api.php?action=parse&prop=text|revid`). Ogni estrazione registra il `revid` di ogni pagina in `seed/meta.json`. Le immagini non vengono mai scaricate: seedgen ne salva solo l'URL (`imageUrl`), l'app le scarica a runtime.
 
@@ -65,4 +65,4 @@ python -m seedgen release --seed ../../seed --work ../../app/build/seedgen/candi
 - Il parser è stato verificato sia su HTML sintetici (`tests/fixtures/synthetic/`) sia sulle 16 pagine reali del wiki (`tests/fixtures/real/`, committate — vedi `test_real_fixtures.py`).
 - `seed/` viene da un'estrazione reale via API (`origin: api` in `meta.json`, `seedVersion 2`). La trascrizione manuale (`tests/golden/raw_manual_2026-09-25.yaml`) resta come riferimento storico e come fixture per `test_seed.py` (esclusi i pulsanti P, che non copriva).
 - `seed/p_switches.json` esiste con le 394 voci.
-- Non implementati: stand Yoshi's sulle strade tra i percorsi (v2).
+- Stand Yoshi's (`yoshi_stands.json`, anche sulle strade) e cibi uno per uno (`food_variants.json`) dalla fase C1 (`seedVersion 9`): sostituiscono `food_group_courses.json`, che `accept` cancella da `seed/`.

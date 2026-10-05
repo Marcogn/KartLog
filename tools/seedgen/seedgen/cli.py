@@ -26,7 +26,7 @@ from .errors import EXIT_CHANGED, EXIT_OK, SeedgenError, ValidationError
 from .i18n import Translations
 from .images import Images, extract_images
 from .it_wiki import ItNames
-from .output import COMPARED_FILES, diff, read_seed, write_seed
+from .output import COMPARED_FILES, OBSOLETE_FILES, diff, read_seed, write_seed
 from .parse import parse_all, parse_translations
 from .raw import RawData, RawSource
 from .validate import validate
@@ -134,8 +134,8 @@ def cmd_accept(args, cfg: Config) -> int:
     changes = diff(read_seed(seed_dir), new) if seed_dir.exists() else ["seed iniziale"]
     new["meta.json"]["seedVersion"] = _current_version(seed_dir) + (1 if changes else 0)
     seed_dir.mkdir(parents=True, exist_ok=True)
-    for name in [*COMPARED_FILES, "meta.json"]:
-        if (candidate / name).is_file():
+    for name in [*COMPARED_FILES, *OBSOLETE_FILES, "meta.json"]:
+        if (candidate / name).is_file() and name not in OBSOLETE_FILES:
             shutil.copyfile(candidate / name, seed_dir / name)
         elif (seed_dir / name).is_file():
             (seed_dir / name).unlink()

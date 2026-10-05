@@ -12,7 +12,7 @@ from .errors import ParseError
 from .i18n import Translations
 from .images import Images
 from .it_wiki import ItNames, norm
-from .raw import RawData
+from .raw import RawData, RawFoodGroup
 
 LICENSE = {
     "name": "CC BY-SA 4.0",
@@ -122,6 +122,109 @@ def _mirror_mode(images: Images, cfg: Config) -> list[dict]:
     return [{"order": i, "text": e["en"], "textIt": e["it"]} for i, e in enumerate(cfg.mirror_mode_it)]
 
 
+BOOST_LEVELS = {"small": "SMALL", "medium": "MEDIUM", "large": "LARGE"}
+
+
+def _boost(text: str, context: str) -> list[str]:
+    """Colonna "Boost level": "Small" -> [SMALL]; il piatto triplo del sushi, "Small, Medium, and
+    Large (respectively)", -> [SMALL, MEDIUM, LARGE]. Qualsiasi altro testo ferma l'estrazione."""
+    words = re.split(r",\s*(?:and\s+)?|\s+and\s+", re.sub(r"\s*\(respectively\)\s*$", "", text.strip()))
+    levels = [BOOST_LEVELS.get(w.strip().casefold()) for w in words]
+    if not levels or None in levels:
+        raise ParseError(f"Dash Food / {context}: livello di boost non riconosciuto {text!r}")
+    return levels
+
+
+def _variants(gid: str, group: RawFoodGroup, cfg: Config) -> list[dict]:
+    """Ogni riga della tabella List of food del gruppo, in ordine: id `<gruppo>_<n>`. Il nome italiano
+    è la traduzione NON ufficiale di manual/food_names_it.yaml, obbligatoria per ogni cibo."""
+    result = []
+    for n, v in enumerate(group.variants, start=1):
+        if v.name not in cfg.food_names_it:
+            raise ParseError(f"Dash Food: manca la traduzione di {v.name!r} in manual/food_names_it.yaml")
+        result.append({
+            "id": f"{gid}_{n}", "foodGroupId": gid, "order": n, "name": v.name, "nameIt": cfg.food_names_it[v.name],
+            "boost": _boost(v.boost, v.name), "imageUrl": v.image_url,
+        })
+    return result
+
+
+def _place_translations(cfg: Config) -> tuple[dict[str, str], dict[str, str]]:
+    places = cfg.stand_places_it or {}
+    return ({e["en"]: e["it"] for e in places.get("establishments", [])},
+            {e["en"]: e["it"] for e in places.get("locations", [])})
+
+
+def _stands(raw: RawData, cfg: Config, dash_pairs: set[tuple[str, str]], variant_names: set[str],
+            warnings: list[str]) -> list[dict]:
+    """Stand Yoshi's (List of Yoshi's locations), uno per riga: id `stand_<corso>_<n>` sui percorsi,
+    `stand_route_<n>` sulle strade, numerati nell'ordine della pagina.
+
+    - Bioma: per i percorsi quello del corso; per le strade None, perché la pagina non lo dice (non
+      si ricava dalla descrizione del luogo).
+    - Luogo e tipo di locale: testo del wiki + traduzione manuale; una cella vuota resta None.
+    - Controllo incrociato: ogni cibo di uno stand su un percorso deve comparire anche nella colonna
+      Locations di Dash Food per quel corso (che elenca "courses or surrounding routes").
+    """
+    if not raw.stands:
+        return []
+    est_it, loc_it = _place_translations(cfg)
+    used_est, used_loc, missing = set(), set(), []
+
+    def translate(text: str | None, table: dict[str, str], used: set[str]) -> str | None:
+        if text is None:
+            return None
+        if text not in table:
+            missing.append(text)
+            return None
+        used.add(text)
+        return table[text]
+
+    result, per_course, routes = [], {}, 0
+    for s in raw.stands:
+        cid = cfg.courses.resolve(s.course, "List of Yoshi's locations") if s.course else None
+        if cid:
+            per_course[cid] = per_course.get(cid, 0) + 1
+            sid = f"stand_{cid}_{per_course[cid]:02d}"
+        else:
+            routes += 1
+            sid = f"stand_route_{routes:02d}"
+        where = s.course or s.location or sid
+        foods: dict[str, str | None] = {}
+        for label in s.foods:
+            groups, food = cfg.yoshi_label(label, f"Yoshi's / {where}")
+            if food is not None and food not in variant_names and variant_names:
+                raise ParseError(f"aliases.yaml: il cibo {food!r} dell'etichetta {label!r} non è in List of food")
+            for gid in groups:
+                if gid in foods and foods[gid] != food:
+                    raise ParseError(f"Yoshi's / {where}: il gruppo {gid} compare con cibi diversi nello stesso stand")
+                foods[gid] = food
+        if not foods:
+            warnings.append(f"Yoshi's {sid} ({where}): stand senza cibo indicato sul wiki")
+        if cid:
+            outside = sorted(g for g in foods if (g, cid) not in dash_pairs)
+            if outside:
+                raise ParseError(f"List of Yoshi's locations mette {outside} su {cid}, ma Dash Food non li elenca lì")
+        result.append({
+            "id": sid,
+            "courseId": cid,
+            "regionId": cfg.region_of.get(cid) if cid else None,
+            "establishment": s.establishment,
+            "establishmentIt": translate(s.establishment, est_it, used_est),
+            "location": s.location,
+            "locationIt": translate(s.location, loc_it, used_loc),
+            "foods": [{"foodGroupId": g, "food": f} for g, f in foods.items()],
+        })
+    if missing:
+        raise ParseError("List of Yoshi's locations: testi senza traduzione in manual/stand_locations_it.yaml: "
+                         f"{sorted(set(missing))}")
+    unused = sorted((set(est_it) - used_est) | (set(loc_it) - used_loc))
+    if unused:
+        raise ParseError("manual/stand_locations_it.yaml: voci che non corrispondono più a nessuno stand "
+                         f"(il wiki le ha cambiate?): {unused}")
+    return result
+
+
 def build(
     raw: RawData,
     cfg: Config,
@@ -187,7 +290,7 @@ def build(
             "imageUrl": image_of_character.get(e.id),
         }
 
-    food_groups, rules, dash_pairs = [], set(), set()
+    food_groups, rules, dash_pairs, variants = [], set(), set(), []
     for group in raw.food_groups:
         label = " / ".join(group.names)
         ids = {cfg.food_groups.resolve(n, "Dash Food") for n in group.names}
@@ -202,6 +305,7 @@ def build(
             "foods": group.names,
             "revertsToDefault": group.reverts_to_default,
         })
+        variants += _variants(gid, group, cfg)
         for o in group.outfits:
             cid = cfg.characters.resolve(o.character, f"Dash Food / {label}")
             oid = f"{cid}__{slugify(o.outfit)}"
@@ -219,24 +323,7 @@ def build(
                 continue
             dash_pairs.add((gid, cfg.courses.resolve(title, f"Dash Food / {label} / Locations")))
 
-    # Presenza di un gruppo di cibo su un corso:
-    #   ON_COURSE = stand sul percorso secondo "List of Yoshi's locations" (sezione Course locations)
-    #   NEARBY    = solo nella colonna Locations di Dash Food, che include le strade vicine
-    on_course: set[tuple[str, str]] = set()
-    for stand in raw.course_stands:
-        cid = cfg.courses.resolve(stand.course, "List of Yoshi's locations")
-        for label in stand.foods:
-            if not label:
-                warnings.append(f"Yoshi's su {stand.course}: stand senza cibo indicato sul wiki")
-                continue
-            for gid in cfg.yoshi_label_groups(label, f"Yoshi's / {stand.course}"):
-                on_course.add((gid, cid))
-    group_courses = [
-        {"foodGroupId": g, "courseId": c,
-         "presence": "ON_COURSE" if (g, c) in on_course else "NEARBY",
-         "listedInDashFood": (g, c) in dash_pairs}
-        for g, c in sorted(on_course | dash_pairs)
-    ]
+    stands = _stands(raw, cfg, dash_pairs, {v["name"] for v in variants} if variants else set(), warnings)
 
     events = []
     for order, cup in enumerate(raw.cups):
@@ -316,10 +403,6 @@ def build(
             "source": dash_url,
             "items": [{"outfitId": o, "foodGroupId": g} for o, g in sorted(rules)],
         },
-        "food_group_courses.json": {
-            "source": [dash_url, _page_url(cfg, pages["yoshis"])],
-            "items": group_courses,
-        },
         "courses.json": {"source": navbox_url, "items": courses},
         "regions.json": {"source": _page_url(cfg, pages["missions"]), "items": regions},
         "areas.json": {"source": _page_url(cfg, pages["missions"]), "items": areas},
@@ -337,6 +420,18 @@ def build(
             ],
         },
     }
+    if variants:
+        seed["food_variants.json"] = {
+            "source": dash_url,
+            "translationIt": "manual/food_names_it.yaml (traduzione NON ufficiale)",
+            "items": variants,
+        }
+    if stands:
+        seed["yoshi_stands.json"] = {
+            "source": _page_url(cfg, pages["yoshis"]),
+            "translationIt": "manual/stand_locations_it.yaml (traduzione NON ufficiale)",
+            "items": stands,
+        }
     if mirror:
         seed["mirror_mode.json"] = {
             "source": _page_url(cfg, pages["images"]),

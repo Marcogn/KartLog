@@ -20,11 +20,19 @@ class RawOutfit:
 
 
 @dataclass
+class RawFoodVariant:
+    name: str                             # seconda colonna Name ("Hamburger", "Canned juice", "Sushi")
+    boost: str                            # colonna "Boost level" ("Small", "Small, Medium, and Large (respectively)")
+    image_url: str                        # file originale sul CDN del wiki (seedgen/images.py, original_url)
+
+
+@dataclass
 class RawFoodGroup:
     names: list[str]                      # nomi dei cibi nella cella Name (1 o più, es. Takoyaki/.../Sushi)
     outfits: list[RawOutfit]
     courses: list[str]                    # titoli dei link nella colonna Locations
     reverts_to_default: bool = False
+    variants: list[RawFoodVariant] = field(default_factory=list)   # una per riga della tabella, in ordine
 
 
 @dataclass
@@ -35,8 +43,11 @@ class RawEvent:
 
 @dataclass
 class RawStand:
-    course: str                           # intestazione h3 in "Course locations"
-    foods: list[str]                      # etichette della colonna Dash Food ("" = cella vuota)
+    """Uno stand Yoshi's = una riga (con la sua foto) di "List of Yoshi's locations"."""
+    course: str | None                    # intestazione h3 in "Course locations"; None = "Route locations"
+    foods: list[str]                      # etichette della colonna Dash Food ([] = cella vuota)
+    establishment: str | None = None      # "Snack bar", "Food truck"…; le strade non hanno la colonna
+    location: str | None = None           # colonna Location; None = cella vuota (luogo non indicato)
 
 
 @dataclass
@@ -58,7 +69,7 @@ class RawData:
     food_groups: list[RawFoodGroup] = field(default_factory=list)
     cups: list[RawEvent] = field(default_factory=list)
     rallies: list[RawEvent] = field(default_factory=list)
-    course_stands: list[RawStand] = field(default_factory=list)
+    stands: list[RawStand] = field(default_factory=list)
     missions: list[RawMission] = field(default_factory=list)
     sources: list[RawSource] = field(default_factory=list)
     origin: str = "api"                   # "api" | "manual-transcription"
@@ -80,12 +91,15 @@ class RawData:
                     outfits=[RawOutfit(**o) for o in g["outfits"]],
                     courses=g["courses"],
                     reverts_to_default=g.get("reverts_to_default", False),
+                    variants=[RawFoodVariant(**v) for v in g.get("variants", [])],
                 )
                 for g in data["food_groups"]
             ],
             cups=[RawEvent(**e) for e in data["cups"]],
             rallies=[RawEvent(**e) for e in data["rallies"]],
-            course_stands=[RawStand(**x) for x in data.get("course_stands", [])],
+            # La trascrizione manuale del 25/09/2026 ha `course_stands` nel formato di allora (cibi per
+            # corso, senza righe né luoghi): non si converte, gli stand si verificano sulle fixture reali.
+            stands=[RawStand(**x) for x in data.get("stands", [])],
             missions=[RawMission(**x) for x in data.get("missions", [])],
             sources=[RawSource(**s) for s in data.get("sources", [])],
             origin=data.get("origin", "api"),

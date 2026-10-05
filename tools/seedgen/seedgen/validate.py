@@ -36,7 +36,6 @@ def validate(seed: dict, cfg: Config) -> None:
     outfits = _items(seed, "outfits.json")
     groups = _items(seed, "food_groups.json")
     rules = _items(seed, "outfit_food_rules.json")
-    group_courses = _items(seed, "food_group_courses.json")
     courses = _items(seed, "courses.json")
     events = _items(seed, "events.json")
 
@@ -83,9 +82,6 @@ def validate(seed: dict, cfg: Config) -> None:
     for r in rules:
         check(r["outfitId"] in outfit_ids, f"regola: outfit inesistente {r['outfitId']}")
         check(r["foodGroupId"] in group_ids, f"regola: gruppo inesistente {r['foodGroupId']}")
-    for gc in group_courses:
-        check(gc["foodGroupId"] in group_ids, f"food_group_courses: gruppo inesistente {gc['foodGroupId']}")
-        check(gc["courseId"] in course_ids, f"food_group_courses: corso inesistente {gc['courseId']}")
     for e in events:
         for s in e["stops"]:
             check(s in course_ids, f"{e['name']}: corso inesistente {s}")
@@ -100,7 +96,6 @@ def validate(seed: dict, cfg: Config) -> None:
             check(not has_rules, f"gruppo {g['id']}: riporta al default ma ha regole outfit")
         else:
             check(has_rules, f"gruppo {g['id']}: nessun outfit")
-        check(any(gc["foodGroupId"] == g["id"] for gc in group_courses), f"gruppo {g['id']}: nessun corso in Locations")
     covered = {s for e in cups for s in e["stops"]}
     check(covered == course_ids, f"corsi non coperti da nessuna cup: {sorted(course_ids - covered)}")
 
@@ -116,13 +111,6 @@ def validate(seed: dict, cfg: Config) -> None:
         for gid, by_char in per_group.items():
             seen = {c: mapping.get(by_char[c], by_char[c]) if c in by_char else None for c in chars}
             check(len(set(seen.values())) == 1, f"gruppo {gid}: equivalenza violata {seen}")
-
-    # --- Cibo sul percorso: la fonte precisa deve essere coerente con Dash Food ------------------
-    for gc in group_courses:
-        check(gc["presence"] in ("ON_COURSE", "NEARBY"), f"presenza non valida: {gc}")
-        if gc["presence"] == "ON_COURSE":
-            check(gc["listedInDashFood"],
-                  f"{gc['foodGroupId']} su {gc['courseId']}: presente per List of Yoshi's locations ma non per Dash Food")
 
     # --- Regioni ------------------------------------------------------------------------------
     regions = _items(seed, "regions.json")
@@ -183,6 +171,49 @@ def validate(seed: dict, cfg: Config) -> None:
         steps = _items(seed, "mirror_mode.json")
         check(bool(steps), "mirror_mode.json: nessuna condizione")
         check(all(s.get("text") and s.get("textIt") for s in steps), "mirror_mode.json: condizione senza testo EN o IT")
+
+    # --- Varianti dei cibi e stand Yoshi's (assenti solo nella trascrizione golden) ---------------
+    variant_names: dict[str, set[str]] = defaultdict(set)
+    if "food_variants.json" in seed:
+        variants = _items(seed, "food_variants.json")
+        check(len(variants) == exp["food_variants"], f"varianti dei cibi: {len(variants)}, attese {exp['food_variants']}")
+        check(len({v["id"] for v in variants}) == len(variants), "food_variants.json: ID duplicati")
+        for v in variants:
+            check(v["foodGroupId"] in group_ids, f"variante {v['id']}: gruppo inesistente")
+            check(bool(v.get("name")) and bool(v.get("nameIt")), f"variante {v['id']}: nome EN o IT mancante")
+            check(bool(v.get("boost")) and set(v["boost"]) <= {"SMALL", "MEDIUM", "LARGE"},
+                  f"variante {v['id']}: boost non valido {v.get('boost')!r}")
+            url = v.get("imageUrl")
+            check(bool(url) and url.startswith(IMAGE_URL_PREFIX), f"variante {v['id']}: imageUrl inatteso {url!r}")
+            variant_names[v["foodGroupId"]].add(v["name"])
+        check(set(variant_names) == group_ids, f"gruppi senza varianti: {sorted(group_ids - set(variant_names))}")
+    if "yoshi_stands.json" in seed:
+        stands = _items(seed, "yoshi_stands.json")
+        on_courses = [st for st in stands if st["courseId"]]
+        check(len(on_courses) == exp["yoshi_course_stands"],
+              f"stand Yoshi's sui percorsi: {len(on_courses)}, attesi {exp['yoshi_course_stands']}")
+        check(len(stands) - len(on_courses) == exp["yoshi_route_stands"],
+              f"stand Yoshi's sulle strade: {len(stands) - len(on_courses)}, attesi {exp['yoshi_route_stands']}")
+        check(len({st["id"] for st in stands}) == len(stands), "yoshi_stands.json: ID duplicati")
+        region_by_course = {c["id"]: c.get("regionId") for c in courses}
+        with_stand = set()
+        for st in stands:
+            if st["courseId"]:
+                check(st["courseId"] in course_ids, f"stand {st['id']}: corso inesistente {st['courseId']}")
+                check(st["regionId"] == region_by_course.get(st["courseId"]), f"stand {st['id']}: bioma diverso dal corso")
+            else:
+                # Le strade non hanno un bioma nella fonte: mai dedotto dalla descrizione.
+                check(st["regionId"] is None, f"stand {st['id']} su una strada con bioma {st['regionId']!r}")
+                check(bool(st["location"]), f"stand {st['id']} su una strada senza luogo")
+            for text, it in (("establishment", "establishmentIt"), ("location", "locationIt")):
+                check((st.get(text) is None) == (st.get(it) is None), f"stand {st['id']}: {text} senza traduzione o viceversa")
+            for f in st["foods"]:
+                check(f["foodGroupId"] in group_ids, f"stand {st['id']}: gruppo inesistente {f['foodGroupId']}")
+                if f["food"] is not None and variant_names:
+                    check(f["food"] in variant_names[f["foodGroupId"]],
+                          f"stand {st['id']}: {f['food']!r} non è un cibo del gruppo {f['foodGroupId']}")
+                with_stand.add(f["foodGroupId"])
+        check(with_stand == group_ids, f"gruppi di cibo senza stand Yoshi's: {sorted(group_ids - with_stand)}")
 
     # --- Immagini (seedgen/images.py): solo URL del CDN del wiki, mai file locali ----------------
     for name, items in [("characters", characters), ("outfits", outfits), ("events", events)]:

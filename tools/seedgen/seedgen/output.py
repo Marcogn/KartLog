@@ -9,9 +9,14 @@ from pathlib import Path
 # quindi NON entra nel confronto.
 COMPARED_FILES = [
     "characters.json", "outfits.json", "food_groups.json", "outfit_food_rules.json",
-    "food_group_courses.json", "courses.json", "events.json", "regions.json", "areas.json",
+    "food_variants.json", "yoshi_stands.json", "courses.json", "events.json", "regions.json", "areas.json",
     "peach_medallions.json", "p_switches.json", "mirror_mode.json", "question_panels.json", "map.json",
 ]
+
+
+# File che il seed non ha più: `accept` li cancella da seed/. food_group_courses.json è sostituito da
+# yoshi_stands.json dal seedVersion 9 (fase C1).
+OBSOLETE_FILES = ["food_group_courses.json"]
 
 
 def dumps(data: dict) -> str:
@@ -52,6 +57,11 @@ def diff(old: dict[str, dict], new: dict[str, dict]) -> list[str]:
     added_removed("regola", _ids(old, "outfit_food_rules.json", rule), _ids(new, "outfit_food_rules.json", rule))
     loc = lambda i: f"{i['foodGroupId']} @ {i['courseId']} [{i.get('presence', '?')}]"
     added_removed("cibo sul corso", _ids(old, "food_group_courses.json", loc), _ids(new, "food_group_courses.json", loc))
+    variant = lambda i: f"{i['id']} {i['name']!r} {'/'.join(i['boost'])}"
+    added_removed("cibo", _ids(old, "food_variants.json", variant), _ids(new, "food_variants.json", variant))
+    stand = lambda i: (f"{i['id']} {'+'.join(f['food'] or f['foodGroupId'] for f in i['foods'])} @ "
+                       f"{i['courseId'] or 'strada'}: {i['location'] or '(luogo non indicato)'}")
+    added_removed("stand Yoshi's", _ids(old, "yoshi_stands.json", stand), _ids(new, "yoshi_stands.json", stand))
     added_removed("corso", _ids(old, "courses.json"), _ids(new, "courses.json"))
     added_removed("evento", _ids(old, "events.json"), _ids(new, "events.json"))
     added_removed("regione", _ids(old, "regions.json"), _ids(new, "regions.json"))
