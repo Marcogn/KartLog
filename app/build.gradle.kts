@@ -40,6 +40,11 @@ android {
     }
 
     buildTypes {
+        debug {
+            // JaCoCo coverage of the JVM unit tests, only when asked (`-Pcoverage`), since it slows
+            // the tests: `./gradlew testDebugUnitTest createDebugUnitTestCoverageReport -Pcoverage`.
+            enableUnitTestCoverage = providers.gradleProperty("coverage").isPresent
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(

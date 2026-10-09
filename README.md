@@ -191,6 +191,8 @@ app/src/main/java/com/marcogn/kartlog/
 - [`docs/ci.md`](docs/ci.md) — i workflow di GitHub Actions (CI, Build
   APK, Release, pulizia delle esecuzioni), condivisi con gli altri progetti
   Android dell'autore (in inglese, come il file di riferimento)
+- [`docs/claude.md`](docs/claude.md) — come è impostato Claude Code (skill,
+  agente revisore, hook), dal kit condiviso con gli altri progetti Android
 - [`CLAUDE.md`](CLAUDE.md) — regole operative, comandi e stato per chi
   sviluppa il progetto
 - [`tools/seedgen/README.md`](tools/seedgen/README.md) — uso dello script
