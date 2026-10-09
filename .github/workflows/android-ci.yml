@@ -21,8 +21,7 @@ jobs:
       # KartLog: INTERNET is needed (images downloaded at runtime), nothing to forbid.
       forbidden-permissions: ''
       coverage: true
-    # KartLog: offlineSeed validates seed/ without network, so a pull request never fails (or hits
-    # mariowiki.com) because the wiki changed. Gradle reads ORG_GRADLE_PROJECT_<name> as -P<name>
-    # (the build only tests hasProperty("offlineSeed")). Build APK and Release stay online.
-    secrets:
-      BUILD_ENV: "ORG_GRADLE_PROJECT_offlineSeed=true"
+      # Extra Gradle arguments for the release build only.
+      # KartLog: -PofflineSeed validates seed/ without network, so a pull request never fails (or hits
+      # mariowiki.com) because the wiki changed; Build APK and Release still run the online check.
+      release-build-args: -PofflineSeed
