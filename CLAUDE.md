@@ -8,7 +8,8 @@ Questo file contiene regole, protocollo, comandi, convenzioni e stato. Non ripet
 | `SPEC.md` | Specifica funzionale e tecnica dell'app com'è (UI, modello dati, seed, algoritmo Consigliami) |
 | `docs/roadmap.md` | Le prossime fasi, con modello assegnato, scope e "Fatto quando" |
 | `docs/decisioni.md` | Ogni scelta non ovvia e il suo perché, per argomento. **Leggila prima di cambiare dati, fonti o grafica** |
-| `docs/ci.md` | I workflow di GitHub Actions (condivisi con gli altri progetti Android dell'autore) |
+| `docs/ci.md` | I workflow di GitHub Actions: caller brevi dei workflow riusabili del kit (condivisi con gli altri progetti Android dell'autore) |
+| `docs/claude.md`, `.claude/` | Come è impostato Claude Code (skill, agente revisore, hook per l'SDK), dal kit [claude-skill-android-kit](https://github.com/Marcogn/claude-skill-android-kit); `REVIEW.md` = cosa controllare sempre in una revisione |
 | `tools/seedgen/README.md` | Uso dello script che genera `seed/` |
 
 ## Regole non negoziabili
@@ -33,6 +34,7 @@ Quando l'autore scrive "vai avanti con la prossima fase" (o simile):
 ./gradlew assembleDebug       # APK debug: nessuna rete, nessun Python
 ./gradlew testDebugUnitTest   # test JVM (Robolectric sdk=34)
 ./gradlew lint                # Android Lint
+./gradlew testDebugUnitTest createDebugUnitTestCoverageReport -Pcoverage   # copertura JaCoCo, solo su richiesta
 
 cd tools/seedgen && python -m pytest                    # test dello script, senza rete
 python -m seedgen validate --seed ../../seed            # valida seed/
@@ -42,10 +44,10 @@ python -m seedgen release --seed ../../seed --work ../../app/build/seedgen/candi
 ./gradlew assembleRelease -PacceptSeedChanges # accetta i dati cambiati e aggiorna da solo il CHANGELOG
 ```
 Flag della build release: `-PacceptSeedChanges`, `-PofflineSeed`, `-PpythonExec=<path>` (SPEC §5.4).
-**Ambiente cloud:** Android SDK da installare in `/opt/android-sdk` con `sdkmanager` (piattaforma `android-37.0`; `local.properties` è gitignorato); Gradle con `LC_ALL=C.UTF-8` (nomi di test accentati); Maven Central può rispondere 429, basta ritentare; seedgen funziona col `python3` di sistema (a volte la venv di Gradle non si crea per `ensurepip` mancante).
+**Ambiente cloud:** l'Android SDK lo installa l'hook `.claude/hooks/android-sdk.sh` (`docs/claude.md`); Gradle con `LC_ALL=C.UTF-8` (nomi di test accentati); Maven Central può rispondere 429, basta ritentare; seedgen funziona col `python3` di sistema (a volte la venv di Gradle non si crea per `ensurepip` mancante).
 
 ## Convenzioni
-- UI e documentazione in italiano (eccetto `docs/ci.md`, copiato da PdfToolkit), identificatori in inglese. UI IT (`values/`) + EN (`values-en/`). CHANGELOG: ogni modifica visibile sotto `## [Unreleased]` come `- **Sintesi.** dettaglio` (`release.yml` legge i grassetti).
+- UI e documentazione in italiano (eccetto `docs/ci.md` e `docs/claude.md`, copiati dal kit), identificatori in inglese. UI IT (`values/`) + EN (`values-en/`). CHANGELOG: ogni modifica visibile sotto `## [Unreleased]` come `- **Sintesi.** dettaglio` (`release.yml` legge i grassetti).
 - Stack e struttura ricalcano **ThePatientGamerHelper** (l'autore lo mette nel contesto, non va cercato online): Kotlin, Compose, Material 3, Room, Hilt, MVVM con `StateFlow`. Package `com.marcogn.kartlog`: `ui/<feature>/` (`home`, `skin` = Personaggi, `food` = Cibi, `medallions`, `pswitches`, `panels`, `map`, `consigliami`, `results`, `settings`, più `theme`, `navigation`, `common`), `data/`, `domain/`, `di/`.
 - ID dei dati di gioco: slug stabili di seedgen (`mario__touring`, `cup_mushroom`), mai autoincrement.
 - **Dati:** le entità Room (SPEC §3) sono la fonte di verità; `SeedRepository` fa il reseed confrontando `seedVersion` senza toccare lo stato utente. A runtime solo gli asset `assets/seed/*.json` copiati da `copySeedAssets`, mai `seed/`. Un DAO per schermata con query SQL dirette (JOIN, GROUP_CONCAT) e un solo `Flow`. Schemi Room versionati in `app/schemas/`.
