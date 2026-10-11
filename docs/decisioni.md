@@ -68,6 +68,8 @@ Una decisione nuova va nella sezione giusta, con la data. Una decisione che ne s
 
 - L'import **sostituisce** tutto lo stato utente (come il restore di ThePatientGamerHelper) e riporta gli ID sconosciuti invece di scartarli; gli outfit di default rientrano da soli. Attribuzione dei dati nella stessa schermata Impostazioni/Info. (25/09/2026)
 - Selettori di lingua e tema (richiesta dell'autore): AppCompat e DataStore come in ThePatientGamerHelper. In più `AppLocale`/`relocalizing()`, perché qui i nomi di gioco si localizzano nei ViewModel, che sopravvivono alla ricreazione dell'activity. (26/09/2026)
+- **Aggiornamenti dall'app** (richiesta dell'autore, fase A1): controllo delle GitHub Releases di questo repository solo all'avvio, frequenza Mai / A ogni avvio / Ogni giorno / Ogni settimana (predefinita ogni settimana), "Non ora" chiude e basta, il dialogo mostra il corpo della release (i grassetti del CHANGELOG) e il link al changelog completo; installazione con `PackageInstaller` e conferma di sistema. Codice copiato da ThePatientGamerHelper (pilota per tutte e sei le app), non una libreria comune. Versione, "fatto con ❤ da marcogn" e controllo manuale nella sezione Info. (11/10/2026)
+- **INTERNET anche per gli aggiornamenti** (fase A1): la regola "offline tranne le immagini" si allarga al solo controllo e download delle release da GitHub; si spegne con "Mai". Da aggiornare in A1: regola 3 di `CLAUDE.md`, `SPEC.md` §0 punto 3, commento del manifest. (11/10/2026)
 
 ## Navigazione e UI
 
