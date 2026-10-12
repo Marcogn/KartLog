@@ -6,6 +6,8 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-10-12
+
 - **Dati di gioco aggiornati da Super Mario Wiki e mkworld-checklist (seedVersion 11).** Dash Food@5455370, List of Yoshi's locations@5263331, List of Mario Kart World missions@5514472, Template:Mario Kart World@5513200, Golden Rally@5489159, Ice Rally@5479135, Moon Rally@5479138, Spiny Rally@5479139, Cherry Rally@5507581, Acorn Rally@5479142, Cloud Rally@5479143, Heart Rally@5479144, Drill Rally@5507592, Boomerang Rally (rally)@5507540, Propeller Rally@5514737, Turnip Rally@5488553, Mario Kart World@698015, Lista delle missioni di Mario Kart World@686389, Mario Kart World@5514814, mkworld-checklist@ee86055
 - **Pulsanti P spuntati al sicuro dai cambi del wiki.** Ogni Pulsante P ora è identificato dal nome della missione, non dalla posizione nella lista del wiki: lo spostamento di una missione ("Gather the blue coins around the control tower!", ora a Peach Stadium) avrebbe fatto slittare le spunte di 97 missioni. Le spunte già salvate e i backup fatti prima vengono portati sui nuovi ID senza perdere nulla.
 - **Aggiornamenti dall'app.** All'avvio KartLog controlla le release di GitHub; se ce n'è una nuova mostra le novità, chiede se scaricarla e poi di installarla con la conferma di sistema.
