@@ -154,3 +154,13 @@ data class SeedMetaDto(
 /** Vedi [SeedAssetLoader.readSourceUrl]. */
 @Serializable
 data class SourceOnlyDto(val source: String? = null)
+
+/**
+ * `p_switch_legacy_ids.json` (fase P1): ID posizionale dei Pulsanti P fino a seedVersion 10 -> ID
+ * stabile dal nome della missione. Serve a portare sui nuovi ID lo stato salvato e i backup vecchi.
+ */
+@Serializable
+data class PSwitchLegacyIdDto(
+    val legacyId: String,
+    val id: String,
+)

@@ -4,7 +4,7 @@ Le prossime fasi di lavoro. Ogni fase ha un **modello assegnato**: una sessione 
 Regola generale: **fuori scope = tutto ciò che appartiene alle fasi successive**, anche se sembra comodo farlo subito.
 
 ## Fasi aperte
-Nessuna. L'ultima chiusa è A1 (aggiornamenti dall'app e Info, 12/10/2026): resta nella cronologia di git, in `SPEC.md` §4.1 e in `docs/decisioni.md`.
+Nessuna. Le ultime chiuse sono A1 (aggiornamenti dall'app e Info, 12/10/2026; `SPEC.md` §4.1) e P1 (ID stabili dei Pulsanti P, Opus, 12/10/2026, nata dalla release fallita: `SPEC.md` §5.1): restano nella cronologia di git e in `docs/decisioni.md`.
 
 ---
 

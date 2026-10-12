@@ -1,0 +1,1581 @@
+{
+  "items": [
+    {
+      "id": "pswitch_aim_for_the_goal_pole_atop_the_massive_mushroom",
+      "legacyId": "pswitch_001"
+    },
+    {
+      "id": "pswitch_bring_an_appetite_and_race_to_the_goal",
+      "legacyId": "pswitch_002"
+    },
+    {
+      "id": "pswitch_charge_through_the_defensive_line",
+      "legacyId": "pswitch_003"
+    },
+    {
+      "id": "pswitch_collect_blue_coins_spanning_the_bridge",
+      "legacyId": "pswitch_004"
+    },
+    {
+      "id": "pswitch_collect_coins_while_pulling_off_high_flying_stunts",
+      "legacyId": "pswitch_005"
+    },
+    {
+      "id": "pswitch_do_tricks_off_the_cacti_for_extra_height",
+      "legacyId": "pswitch_006"
+    },
+    {
+      "id": "pswitch_drop_in_on_the_racers_atop_the_rocks",
+      "legacyId": "pswitch_007"
+    },
+    {
+      "id": "pswitch_evade_the_armadillos_on_your_way_to_the_goal",
+      "legacyId": "pswitch_008"
+    },
+    {
+      "id": "pswitch_fly_over_to_yoshi_s_for_a_quick_bite",
+      "legacyId": "pswitch_009"
+    },
+    {
+      "id": "pswitch_follow_that_helicopter",
+      "legacyId": "pswitch_010"
+    },
+    {
+      "id": "pswitch_gather_blue_coins_and_dodge_the_goombas",
+      "legacyId": "pswitch_011"
+    },
+    {
+      "id": "pswitch_hop_along_the_blocky_shortcut_to_wario_stadium",
+      "legacyId": "pswitch_012"
+    },
+    {
+      "id": "pswitch_mush_zoom_to_the_goal_and_don_t_sink",
+      "legacyId": "pswitch_013"
+    },
+    {
+      "id": "pswitch_race_over_ramps_and_beams_to_reach_the_goal",
+      "legacyId": "pswitch_014"
+    },
+    {
+      "id": "pswitch_race_through_the_stands_to_the_goal",
+      "legacyId": "pswitch_015"
+    },
+    {
+      "id": "pswitch_rail_ride_to_gather_the_burger_s_blue_coins",
+      "legacyId": "pswitch_016"
+    },
+    {
+      "id": "pswitch_ramp_up_over_the_cliff_edge_to_the_goal",
+      "legacyId": "pswitch_017"
+    },
+    {
+      "id": "pswitch_rely_on_tornado_tailwinds_to_reach_the_goal_pole",
+      "legacyId": "pswitch_018"
+    },
+    {
+      "id": "pswitch_roar_down_the_road_in_an_explosive_action_scene",
+      "legacyId": "pswitch_019"
+    },
+    {
+      "id": "pswitch_soar_through_the_air_and_through_the_bridge",
+      "legacyId": "pswitch_020"
+    },
+    {
+      "id": "pswitch_soar_up_to_the_train_station_s_goal_pole",
+      "legacyId": "pswitch_021"
+    },
+    {
+      "id": "pswitch_take_the_offroad_shortcut_to_mario_bros_circuit",
+      "legacyId": "pswitch_022"
+    },
+    {
+      "id": "pswitch_use_items_to_blitz_across_the_desert_sands",
+      "legacyId": "pswitch_023"
+    },
+    {
+      "id": "pswitch_inspect_the_railroad_yard_for_blue_coins",
+      "legacyId": "pswitch_024"
+    },
+    {
+      "id": "pswitch_join_in_on_a_daredevil_canyon_loop",
+      "legacyId": "pswitch_025"
+    },
+    {
+      "id": "pswitch_join_the_spontaneous_race_in_the_canyon",
+      "legacyId": "pswitch_026"
+    },
+    {
+      "id": "pswitch_launch_from_pipe_to_pipe_up_the_plateaus",
+      "legacyId": "pswitch_027"
+    },
+    {
+      "id": "pswitch_make_a_path_through_the_back_road_route",
+      "legacyId": "pswitch_028"
+    },
+    {
+      "id": "pswitch_perform_stunt_after_stunt_across_the_bridge",
+      "legacyId": "pswitch_029"
+    },
+    {
+      "id": "pswitch_prove_yourself_in_a_special_test_of_skill_6",
+      "legacyId": "pswitch_030"
+    },
+    {
+      "id": "pswitch_race_to_the_top_of_whistlestop_summit",
+      "legacyId": "pswitch_031"
+    },
+    {
+      "id": "pswitch_race_upstream_through_the_river_valley",
+      "legacyId": "pswitch_032"
+    },
+    {
+      "id": "pswitch_ramp_up_and_over_the_suspension_bridge",
+      "legacyId": "pswitch_033"
+    },
+    {
+      "id": "pswitch_show_off_your_wall_riding_skills",
+      "legacyId": "pswitch_034"
+    },
+    {
+      "id": "pswitch_show_the_train_how_fast_you_can_go",
+      "legacyId": "pswitch_035"
+    },
+    {
+      "id": "pswitch_soar_from_plateau_to_plateau_using_steel_ramps",
+      "legacyId": "pswitch_036"
+    },
+    {
+      "id": "pswitch_turn_up_the_tricks_to_collect_all_the_blue_coins",
+      "legacyId": "pswitch_037"
+    },
+    {
+      "id": "pswitch_borrow_the_truck_and_smash_through",
+      "legacyId": "pswitch_038"
+    },
+    {
+      "id": "pswitch_cross_the_beams_of_the_busted_bridge",
+      "legacyId": "pswitch_039"
+    },
+    {
+      "id": "pswitch_drive_through_the_treaded_grrrol_crossing",
+      "legacyId": "pswitch_040"
+    },
+    {
+      "id": "pswitch_follow_the_rings_along_the_rooftops",
+      "legacyId": "pswitch_041"
+    },
+    {
+      "id": "pswitch_gather_blue_coins_from_the_rooftops",
+      "legacyId": "pswitch_042"
+    },
+    {
+      "id": "pswitch_overtake_the_train_crossing_the_truss_bridge",
+      "legacyId": "pswitch_043"
+    },
+    {
+      "id": "pswitch_race_through_a_treacherous_tire_trial",
+      "legacyId": "pswitch_044"
+    },
+    {
+      "id": "pswitch_ramp_through_rings_and_over_flames",
+      "legacyId": "pswitch_045"
+    },
+    {
+      "id": "pswitch_show_off_serious_tightrope_riding_skills",
+      "legacyId": "pswitch_046"
+    },
+    {
+      "id": "pswitch_show_shy_guys_how_to_race_downriver",
+      "legacyId": "pswitch_047"
+    },
+    {
+      "id": "pswitch_survive_the_spicy_fire_piranha_plant_gauntlet",
+      "legacyId": "pswitch_048"
+    },
+    {
+      "id": "pswitch_tackle_an_endurance_challenge_in_the_wasteland",
+      "legacyId": "pswitch_049"
+    },
+    {
+      "id": "pswitch_thread_the_gaps_in_the_steel_supports",
+      "legacyId": "pswitch_050"
+    },
+    {
+      "id": "pswitch_bounce_bounce_bounce_to_a_grand_vantage_point",
+      "legacyId": "pswitch_051"
+    },
+    {
+      "id": "pswitch_collect_blue_coins_in_a_tricky_rail_riding_challenge",
+      "legacyId": "pswitch_052"
+    },
+    {
+      "id": "pswitch_dash_through_traffic_on_the_covered_roads",
+      "legacyId": "pswitch_053"
+    },
+    {
+      "id": "pswitch_dodge_bowser_s_minions_on_your_way_to_the_goal",
+      "legacyId": "pswitch_054"
+    },
+    {
+      "id": "pswitch_drift_through_the_parking_garage_like_a_legend",
+      "legacyId": "pswitch_055"
+    },
+    {
+      "id": "pswitch_figure_out_a_figure_eight_to_grab_the_blue_coins",
+      "legacyId": "pswitch_056"
+    },
+    {
+      "id": "pswitch_gather_blue_coins_on_the_park_s_twists_and_turns",
+      "legacyId": "pswitch_057"
+    },
+    {
+      "id": "pswitch_grab_that_parking_spot_fast",
+      "legacyId": "pswitch_058"
+    },
+    {
+      "id": "pswitch_hit_the_beach",
+      "legacyId": "pswitch_059"
+    },
+    {
+      "id": "pswitch_pick_up_blue_coins_and_maybe_a_donut_at_the_end_q",
+      "legacyId": "pswitch_060"
+    },
+    {
+      "id": "pswitch_race_through_dinosaur_filled_streets",
+      "legacyId": "pswitch_061"
+    },
+    {
+      "id": "pswitch_ride_the_urban_railings_to_collect_blue_coins",
+      "legacyId": "pswitch_062"
+    },
+    {
+      "id": "pswitch_take_a_parkour_tour_of_crown_city",
+      "legacyId": "pswitch_063"
+    },
+    {
+      "id": "pswitch_take_a_somewhat_leisurely_path_to_the_goal",
+      "legacyId": "pswitch_064"
+    },
+    {
+      "id": "pswitch_take_the_river_route_to_the_city",
+      "legacyId": "pswitch_065"
+    },
+    {
+      "id": "pswitch_test_your_endurance_in_a_race_all_over_town",
+      "legacyId": "pswitch_066"
+    },
+    {
+      "id": "pswitch_vined_a_way_to_the_trophy_of_trophies",
+      "legacyId": "pswitch_067"
+    },
+    {
+      "id": "pswitch_board_your_chartered_flight_to_the_city",
+      "legacyId": "pswitch_068"
+    },
+    {
+      "id": "pswitch_borrow_some_upgrades_to_reach_the_goal",
+      "legacyId": "pswitch_069"
+    },
+    {
+      "id": "pswitch_check_out_the_secret_back_road_barrel_shortcut",
+      "legacyId": "pswitch_070"
+    },
+    {
+      "id": "pswitch_honk_if_you_like_to_gather_blue_coins",
+      "legacyId": "pswitch_071"
+    },
+    {
+      "id": "pswitch_practice_precision_driving_in_pursuit_of_blue_coins",
+      "legacyId": "pswitch_072"
+    },
+    {
+      "id": "pswitch_race_back_through_dk_spaceport",
+      "legacyId": "pswitch_073"
+    },
+    {
+      "id": "pswitch_race_to_get_ahead_of_the_explosives",
+      "legacyId": "pswitch_074"
+    },
+    {
+      "id": "pswitch_remember_the_classic_donkey_kong",
+      "legacyId": "pswitch_075"
+    },
+    {
+      "id": "pswitch_ride_the_pipes_to_get_the_launchpad_s_blue_coins",
+      "legacyId": "pswitch_076"
+    },
+    {
+      "id": "pswitch_trick_off_vehicles_on_the_way_to_the_spaceport",
+      "legacyId": "pswitch_077"
+    },
+    {
+      "id": "pswitch_bounce_your_way_to_koopa_troopa_beach",
+      "legacyId": "pswitch_078"
+    },
+    {
+      "id": "pswitch_brave_sand_and_surf_in_a_beachside_race",
+      "legacyId": "pswitch_079"
+    },
+    {
+      "id": "pswitch_collect_blue_coins_on_the_floating_obstacle_course",
+      "legacyId": "pswitch_080"
+    },
+    {
+      "id": "pswitch_navigate_the_schools_of_fish_to_reach_the_goal",
+      "legacyId": "pswitch_081"
+    },
+    {
+      "id": "pswitch_race_around_a_tribute_to_koopa_beach_1",
+      "legacyId": "pswitch_082"
+    },
+    {
+      "id": "pswitch_rail_ride_the_ropes_to_the_top",
+      "legacyId": "pswitch_083"
+    },
+    {
+      "id": "pswitch_receive_a_whale_of_a_welcome_to_peach_stadium",
+      "legacyId": "pswitch_084"
+    },
+    {
+      "id": "pswitch_take_a_dangerous_voyage_to_the_distant_city",
+      "legacyId": "pswitch_085"
+    },
+    {
+      "id": "pswitch_trick_your_heart_out_in_this_challenging_trial",
+      "legacyId": "pswitch_086"
+    },
+    {
+      "id": "pswitch_avoid_the_fire_snakes_in_the_tunnel",
+      "legacyId": "pswitch_087"
+    },
+    {
+      "id": "pswitch_chase_each_tokotoko_to_the_next",
+      "legacyId": "pswitch_088"
+    },
+    {
+      "id": "pswitch_dodge_tokotokos_on_the_way_uphill",
+      "legacyId": "pswitch_089"
+    },
+    {
+      "id": "pswitch_follow_the_rope_for_the_ruin_s_blue_coins",
+      "legacyId": "pswitch_090"
+    },
+    {
+      "id": "pswitch_launch_from_pipe_to_pipe_to_reach_the_goal",
+      "legacyId": "pswitch_091"
+    },
+    {
+      "id": "pswitch_pull_off_tricky_jumps_from_column_to_column",
+      "legacyId": "pswitch_092"
+    },
+    {
+      "id": "pswitch_sprint_to_the_goal_through_a_sea_of_sand",
+      "legacyId": "pswitch_093"
+    },
+    {
+      "id": "pswitch_tackle_a_sandy_test_of_endurance",
+      "legacyId": "pswitch_094"
+    },
+    {
+      "id": "pswitch_take_to_the_skies_to_escape_the_desert",
+      "legacyId": "pswitch_095"
+    },
+    {
+      "id": "pswitch_traverse_desert_skies_and_grassy_hills_to_the_goal",
+      "legacyId": "pswitch_096"
+    },
+    {
+      "id": "pswitch_zip_forward_and_spring_up_to_the_goal_pole",
+      "legacyId": "pswitch_097"
+    },
+    {
+      "id": "pswitch_break_through_the_hammer_bros_blockade",
+      "legacyId": "pswitch_098"
+    },
+    {
+      "id": "pswitch_bust_a_path_through_the_maze_of_blocks",
+      "legacyId": "pswitch_099"
+    },
+    {
+      "id": "pswitch_collect_blue_coins_in_the_dried_up_oasis",
+      "legacyId": "pswitch_100"
+    },
+    {
+      "id": "pswitch_cool_off_at_the_oasis_while_grabbing_blue_coins",
+      "legacyId": "pswitch_101"
+    },
+    {
+      "id": "pswitch_cruise_along_the_curving_route_to_reach_the_goal",
+      "legacyId": "pswitch_102"
+    },
+    {
+      "id": "pswitch_dash_wisely_to_reach_the_goal_in_time",
+      "legacyId": "pswitch_103"
+    },
+    {
+      "id": "pswitch_dash_dash_dash_to_the_goal",
+      "legacyId": "pswitch_104"
+    },
+    {
+      "id": "pswitch_dodge_the_chain_chomps_as_you_ascend",
+      "legacyId": "pswitch_105"
+    },
+    {
+      "id": "pswitch_harness_18_wheels_of_power_to_reach_the_goal",
+      "legacyId": "pswitch_106"
+    },
+    {
+      "id": "pswitch_hitch_a_ride_to_collect_the_airborne_blue_coins",
+      "legacyId": "pswitch_107"
+    },
+    {
+      "id": "pswitch_overtake_shy_guys_in_an_upriver_race",
+      "legacyId": "pswitch_108"
+    },
+    {
+      "id": "pswitch_pass_by_plenty_of_pokeys_partying_on_the_path",
+      "legacyId": "pswitch_109"
+    },
+    {
+      "id": "pswitch_race_down_the_river_and_escape_to_the_sea",
+      "legacyId": "pswitch_110"
+    },
+    {
+      "id": "pswitch_race_through_a_storm_of_rain_and_coins",
+      "legacyId": "pswitch_111"
+    },
+    {
+      "id": "pswitch_ride_along_the_outer_wall_to_sneak_in",
+      "legacyId": "pswitch_112"
+    },
+    {
+      "id": "pswitch_salvage_the_scattered_blue_coins",
+      "legacyId": "pswitch_113"
+    },
+    {
+      "id": "pswitch_scope_out_the_bazaar_and_scoop_up_blue_coins",
+      "legacyId": "pswitch_114"
+    },
+    {
+      "id": "pswitch_slip_past_the_batadon_blockades",
+      "legacyId": "pswitch_115"
+    },
+    {
+      "id": "pswitch_tackle_shy_guy_challenge_1",
+      "legacyId": "pswitch_116"
+    },
+    {
+      "id": "pswitch_tackle_shy_guy_challenge_2",
+      "legacyId": "pswitch_117"
+    },
+    {
+      "id": "pswitch_tackle_shy_guy_challenge_3",
+      "legacyId": "pswitch_118"
+    },
+    {
+      "id": "pswitch_take_a_long_distance_rail_ride_to_the_goal",
+      "legacyId": "pswitch_119"
+    },
+    {
+      "id": "pswitch_take_a_tricky_tour_through_shy_guy_bazaar",
+      "legacyId": "pswitch_120"
+    },
+    {
+      "id": "pswitch_travel_across_the_bridge_tricking_all_the_way",
+      "legacyId": "pswitch_121"
+    },
+    {
+      "id": "pswitch_use_the_ancient_shipwrecks_to_get_a_boost",
+      "legacyId": "pswitch_122"
+    },
+    {
+      "id": "pswitch_weave_around_the_treacherous_tornadoes",
+      "legacyId": "pswitch_123"
+    },
+    {
+      "id": "pswitch_grab_the_blue_coins_and_don_t_sink",
+      "legacyId": "pswitch_124"
+    },
+    {
+      "id": "pswitch_rescue_blue_coins_from_the_sands",
+      "legacyId": "pswitch_125"
+    },
+    {
+      "id": "pswitch_drift_to_the_top_of_the_twisting_tower",
+      "legacyId": "pswitch_126"
+    },
+    {
+      "id": "pswitch_make_a_connecting_flight_to_the_airship_fortress",
+      "legacyId": "pswitch_127"
+    },
+    {
+      "id": "pswitch_scoop_up_blue_coins_while_riding_the_rails",
+      "legacyId": "pswitch_128"
+    },
+    {
+      "id": "pswitch_show_your_stuff_in_this_airship_fortress_time_trial",
+      "legacyId": "pswitch_129"
+    },
+    {
+      "id": "pswitch_slip_by_line_after_line_of_rocky_wrenches",
+      "legacyId": "pswitch_130"
+    },
+    {
+      "id": "pswitch_take_a_long_flight_for_a_hole_in_one",
+      "legacyId": "pswitch_131"
+    },
+    {
+      "id": "pswitch_weave_your_way_through_the_whamps",
+      "legacyId": "pswitch_132"
+    },
+    {
+      "id": "pswitch_balance_on_the_tightrope_to_gather_blue_coins",
+      "legacyId": "pswitch_133"
+    },
+    {
+      "id": "pswitch_collect_blue_coins_in_the_hot_springs",
+      "legacyId": "pswitch_134"
+    },
+    {
+      "id": "pswitch_dodge_the_fireballs_and_collect_blue_coins",
+      "legacyId": "pswitch_135"
+    },
+    {
+      "id": "pswitch_grab_the_blue_coins_around_the_spooky_graveyard",
+      "legacyId": "pswitch_136"
+    },
+    {
+      "id": "pswitch_ride_geysers_and_shoot_through_rings_to_the_goal",
+      "legacyId": "pswitch_137"
+    },
+    {
+      "id": "pswitch_show_everyone_how_to_ride_the_wall",
+      "legacyId": "pswitch_138"
+    },
+    {
+      "id": "pswitch_slip_past_shocking_sumo_stomps",
+      "legacyId": "pswitch_139"
+    },
+    {
+      "id": "pswitch_weave_through_the_road_crowded_with_dry_bones",
+      "legacyId": "pswitch_140"
+    },
+    {
+      "id": "pswitch_zip_by_fish_bones_on_the_way_to_the_hot_springs",
+      "legacyId": "pswitch_141"
+    },
+    {
+      "id": "pswitch_bullet_bill_through_the_fiery_barrage",
+      "legacyId": "pswitch_142"
+    },
+    {
+      "id": "pswitch_gather_blue_coins_and_watch_out_for_thwomps",
+      "legacyId": "pswitch_143"
+    },
+    {
+      "id": "pswitch_gather_blue_coins_around_the_spicy_food_court",
+      "legacyId": "pswitch_144"
+    },
+    {
+      "id": "pswitch_hitch_a_ride_in_the_helicopter_and_flee_a_fiery_fate",
+      "legacyId": "pswitch_145"
+    },
+    {
+      "id": "pswitch_hop_along_the_walls_of_bowser_s_castle",
+      "legacyId": "pswitch_146"
+    },
+    {
+      "id": "pswitch_navigate_a_path_of_pipes_and_rings",
+      "legacyId": "pswitch_147"
+    },
+    {
+      "id": "pswitch_perform_tricks_without_plunging_into_lava_pools",
+      "legacyId": "pswitch_148"
+    },
+    {
+      "id": "pswitch_race_along_a_course_filled_with_bowser_s_minions",
+      "legacyId": "pswitch_149"
+    },
+    {
+      "id": "pswitch_slide_by_waves_of_fireballs_don_t_get_singed",
+      "legacyId": "pswitch_150"
+    },
+    {
+      "id": "pswitch_use_mushrooms_to_zip_up_the_right_hand_path",
+      "legacyId": "pswitch_151"
+    },
+    {
+      "id": "pswitch_zip_up_the_left_hand_path_mushroom_free",
+      "legacyId": "pswitch_152"
+    },
+    {
+      "id": "pswitch_blitz_past_bullies_while_gathering_blue_coins",
+      "legacyId": "pswitch_153"
+    },
+    {
+      "id": "pswitch_fly_safely_above_the_lake_of_lava",
+      "legacyId": "pswitch_154"
+    },
+    {
+      "id": "pswitch_gather_blue_coins_along_a_narrow_road",
+      "legacyId": "pswitch_155"
+    },
+    {
+      "id": "pswitch_race_to_the_top_of_the_castle_wall",
+      "legacyId": "pswitch_156"
+    },
+    {
+      "id": "pswitch_show_the_lava_that_you_re_a_super_star",
+      "legacyId": "pswitch_157"
+    },
+    {
+      "id": "pswitch_snag_a_couple_snacks_in_a_race_around_big_donut",
+      "legacyId": "pswitch_158"
+    },
+    {
+      "id": "pswitch_tear_up_the_track_with_trick_after_trick",
+      "legacyId": "pswitch_159"
+    },
+    {
+      "id": "pswitch_c_c_c_collect_the_blue_coins_at_dk_pass",
+      "legacyId": "pswitch_160"
+    },
+    {
+      "id": "pswitch_clear_your_path_with_some_fireballs",
+      "legacyId": "pswitch_161"
+    },
+    {
+      "id": "pswitch_collect_blue_coins_among_the_snow_pokeys",
+      "legacyId": "pswitch_162"
+    },
+    {
+      "id": "pswitch_crash_through_traffic_to_reach_the_slopes",
+      "legacyId": "pswitch_163"
+    },
+    {
+      "id": "pswitch_drop_into_the_shy_guy_snowboarding_competition",
+      "legacyId": "pswitch_164"
+    },
+    {
+      "id": "pswitch_grab_blue_coins_as_snowballs_descend_the_slopes",
+      "legacyId": "pswitch_165"
+    },
+    {
+      "id": "pswitch_hitch_a_ride_on_the_train_to_reach_the_goal",
+      "legacyId": "pswitch_166"
+    },
+    {
+      "id": "pswitch_hustle_up_and_down_to_gather_the_blue_coins",
+      "legacyId": "pswitch_167"
+    },
+    {
+      "id": "pswitch_join_the_snowballs_in_a_race_downhill",
+      "legacyId": "pswitch_168"
+    },
+    {
+      "id": "pswitch_power_past_fuzzies_while_gathering_blue_coins",
+      "legacyId": "pswitch_169"
+    },
+    {
+      "id": "pswitch_prove_yourself_in_a_special_test_of_skill_5",
+      "legacyId": "pswitch_170"
+    },
+    {
+      "id": "pswitch_race_through_the_empty_stands_to_the_goal",
+      "legacyId": "pswitch_171"
+    },
+    {
+      "id": "pswitch_sail_through_the_sky_and_rush_to_the_goal",
+      "legacyId": "pswitch_172"
+    },
+    {
+      "id": "pswitch_show_your_skill_by_gliding_a_really_long_way",
+      "legacyId": "pswitch_173"
+    },
+    {
+      "id": "pswitch_slalom_downhill_and_scoop_up_the_blue_coins",
+      "legacyId": "pswitch_174"
+    },
+    {
+      "id": "pswitch_squeeze_through_traffic_jams_to_reach_the_goal",
+      "legacyId": "pswitch_175"
+    },
+    {
+      "id": "pswitch_tackle_the_chilly_course_on_the_lake",
+      "legacyId": "pswitch_176"
+    },
+    {
+      "id": "pswitch_take_some_green_shells_for_luck",
+      "legacyId": "pswitch_177"
+    },
+    {
+      "id": "pswitch_boost_through_a_rugged_cross_country_route",
+      "legacyId": "pswitch_178"
+    },
+    {
+      "id": "pswitch_brave_the_unfinished_shortcut",
+      "legacyId": "pswitch_179"
+    },
+    {
+      "id": "pswitch_grab_all_the_snowmen_s_blue_coins",
+      "legacyId": "pswitch_180"
+    },
+    {
+      "id": "pswitch_loop_around_the_observatory_and_grab_blue_coins",
+      "legacyId": "pswitch_181"
+    },
+    {
+      "id": "pswitch_put_the_pedal_to_the_metal_go_go_go",
+      "legacyId": "pswitch_182"
+    },
+    {
+      "id": "pswitch_race_against_the_icy_avian_assault",
+      "legacyId": "pswitch_183"
+    },
+    {
+      "id": "pswitch_scale_the_slippery_slope_to_reach_the_goal",
+      "legacyId": "pswitch_184"
+    },
+    {
+      "id": "pswitch_show_off_rail_tricks_while_gathering_blue_coins",
+      "legacyId": "pswitch_185"
+    },
+    {
+      "id": "pswitch_soar_high_above_the_slopes",
+      "legacyId": "pswitch_186"
+    },
+    {
+      "id": "pswitch_use_the_mushrooms_to_blitz_to_the_station",
+      "legacyId": "pswitch_187"
+    },
+    {
+      "id": "pswitch_watch_out_for_attacks_from_ice_bros",
+      "legacyId": "pswitch_188"
+    },
+    {
+      "id": "pswitch_weave_past_frost_piranha_attacks_for_blue_coins",
+      "legacyId": "pswitch_189"
+    },
+    {
+      "id": "pswitch_gather_blue_coins_while_penguins_put_on_a_parade",
+      "legacyId": "pswitch_190"
+    },
+    {
+      "id": "pswitch_grab_blue_coins_between_frost_piranha_attacks",
+      "legacyId": "pswitch_191"
+    },
+    {
+      "id": "pswitch_hurry_to_the_frozen_peak",
+      "legacyId": "pswitch_192"
+    },
+    {
+      "id": "pswitch_note_the_wind_on_the_way_to_the_goal",
+      "legacyId": "pswitch_193"
+    },
+    {
+      "id": "pswitch_perform_a_bold_escape_through_the_ice_cream_ravine",
+      "legacyId": "pswitch_194"
+    },
+    {
+      "id": "pswitch_race_around_a_tribute_to_vanilla_lake",
+      "legacyId": "pswitch_195"
+    },
+    {
+      "id": "pswitch_reach_the_top_of_the_rotating_ice_cream_cone",
+      "legacyId": "pswitch_196"
+    },
+    {
+      "id": "pswitch_slice_through_ice_skating_practice",
+      "legacyId": "pswitch_197"
+    },
+    {
+      "id": "pswitch_time_your_mushroom_to_bust_through_to_the_goal",
+      "legacyId": "pswitch_198"
+    },
+    {
+      "id": "pswitch_watch_for_the_snowball_hazards_ahead",
+      "legacyId": "pswitch_199"
+    },
+    {
+      "id": "pswitch_brave_the_storm_and_gather_blue_coins",
+      "legacyId": "pswitch_200"
+    },
+    {
+      "id": "pswitch_dare_to_hitch_a_ride_on_the_dragoneels",
+      "legacyId": "pswitch_201"
+    },
+    {
+      "id": "pswitch_follow_the_coin_strewn_path_to_the_goal",
+      "legacyId": "pswitch_202"
+    },
+    {
+      "id": "pswitch_put_your_trust_in_waterspout_winds",
+      "legacyId": "pswitch_203"
+    },
+    {
+      "id": "pswitch_rescue_blue_coins_from_the_whirlpool",
+      "legacyId": "pswitch_204"
+    },
+    {
+      "id": "pswitch_scale_the_shipwrecks_for_blue_coins",
+      "legacyId": "pswitch_205"
+    },
+    {
+      "id": "pswitch_soar_to_salty_salty_speedway",
+      "legacyId": "pswitch_206"
+    },
+    {
+      "id": "pswitch_surf_the_waves_as_bulbers_look_on",
+      "legacyId": "pswitch_207"
+    },
+    {
+      "id": "pswitch_take_a_nonstop_flight_from_tower_to_tower",
+      "legacyId": "pswitch_208"
+    },
+    {
+      "id": "pswitch_carefully_nab_blue_coins_and_enjoy_some_sea_air",
+      "legacyId": "pswitch_209"
+    },
+    {
+      "id": "pswitch_catch_major_air_to_get_to_the_goal",
+      "legacyId": "pswitch_210"
+    },
+    {
+      "id": "pswitch_cut_through_the_shy_guy_water_show",
+      "legacyId": "pswitch_211"
+    },
+    {
+      "id": "pswitch_mush_zoom_through_town_and_to_the_goal",
+      "legacyId": "pswitch_212"
+    },
+    {
+      "id": "pswitch_put_the_flower_petal_to_the_metal",
+      "legacyId": "pswitch_213"
+    },
+    {
+      "id": "pswitch_seek_the_sea_breeze_past_those_windmills",
+      "legacyId": "pswitch_214"
+    },
+    {
+      "id": "pswitch_soar_to_the_vip_seating_tower",
+      "legacyId": "pswitch_215"
+    },
+    {
+      "id": "pswitch_zigzag_downhill_to_reach_the_goal",
+      "legacyId": "pswitch_216"
+    },
+    {
+      "id": "pswitch_bash_through_certain_boxes_for_a_boost",
+      "legacyId": "pswitch_217"
+    },
+    {
+      "id": "pswitch_blitz_to_the_beach_go_go_go",
+      "legacyId": "pswitch_218"
+    },
+    {
+      "id": "pswitch_brave_the_waterspouts_on_the_high_seas",
+      "legacyId": "pswitch_219"
+    },
+    {
+      "id": "pswitch_bust_the_boomerang_bros_blockade",
+      "legacyId": "pswitch_220"
+    },
+    {
+      "id": "pswitch_clear_the_windmill",
+      "legacyId": "pswitch_221"
+    },
+    {
+      "id": "pswitch_crash_the_seaside_blue_coin_party",
+      "legacyId": "pswitch_222"
+    },
+    {
+      "id": "pswitch_cross_treacherous_bluffs_to_reach_the_goal_pole",
+      "legacyId": "pswitch_223"
+    },
+    {
+      "id": "pswitch_display_precision_driving_to_gather_the_blue_coins",
+      "legacyId": "pswitch_224"
+    },
+    {
+      "id": "pswitch_follow_the_pipes_and_slender_paths_to_the_goal",
+      "legacyId": "pswitch_225"
+    },
+    {
+      "id": "pswitch_gather_the_blue_coins_of_the_enchanting_mermaid",
+      "legacyId": "pswitch_226"
+    },
+    {
+      "id": "pswitch_hop_for_boosts_as_cheep_cheeps_cheer_you_on",
+      "legacyId": "pswitch_227"
+    },
+    {
+      "id": "pswitch_join_in_on_the_race_around_the_deserted_island",
+      "legacyId": "pswitch_228"
+    },
+    {
+      "id": "pswitch_master_the_feather_to_make_it_to_the_goal",
+      "legacyId": "pswitch_229"
+    },
+    {
+      "id": "pswitch_nab_blue_coins_from_the_goombas_vacation_spot",
+      "legacyId": "pswitch_230"
+    },
+    {
+      "id": "pswitch_parkour_across_salty_salty_speedway_s_rooftops",
+      "legacyId": "pswitch_231"
+    },
+    {
+      "id": "pswitch_reach_the_mermaid_calling_from_across_the_sea",
+      "legacyId": "pswitch_232"
+    },
+    {
+      "id": "pswitch_tackle_some_advanced_training_in_water_steering",
+      "legacyId": "pswitch_233"
+    },
+    {
+      "id": "pswitch_take_a_shortcut_to_stay_dry_and_reach_the_goal",
+      "legacyId": "pswitch_234"
+    },
+    {
+      "id": "pswitch_tour_the_islands_on_the_way_to_the_goal",
+      "legacyId": "pswitch_235"
+    },
+    {
+      "id": "pswitch_brave_the_buffalo_stampedes_from_both_sides",
+      "legacyId": "pswitch_236"
+    },
+    {
+      "id": "pswitch_collect_blue_coins_around_the_geyser_field",
+      "legacyId": "pswitch_237"
+    },
+    {
+      "id": "pswitch_do_a_tricky_u_turn_to_collect_the_blue_coins_in_time",
+      "legacyId": "pswitch_238"
+    },
+    {
+      "id": "pswitch_dodge_debris_and_drift_across_the_waterfall",
+      "legacyId": "pswitch_239"
+    },
+    {
+      "id": "pswitch_drop_in_and_out_of_the_downriver_tours",
+      "legacyId": "pswitch_240"
+    },
+    {
+      "id": "pswitch_gather_up_blue_coins_at_the_riverside_safari",
+      "legacyId": "pswitch_241"
+    },
+    {
+      "id": "pswitch_hitch_a_ride_on_the_runaway_truck",
+      "legacyId": "pswitch_242"
+    },
+    {
+      "id": "pswitch_join_the_endurance_race_in_the_savanna",
+      "legacyId": "pswitch_243"
+    },
+    {
+      "id": "pswitch_launch_up_up_up_into_the_clouds",
+      "legacyId": "pswitch_244"
+    },
+    {
+      "id": "pswitch_make_good_use_of_feathers_to_reach_the_goal",
+      "legacyId": "pswitch_245"
+    },
+    {
+      "id": "pswitch_mind_the_giraffes_as_you_rocket_toward_blue_coins",
+      "legacyId": "pswitch_246"
+    },
+    {
+      "id": "pswitch_reach_blue_coins_with_the_crocodiles_help",
+      "legacyId": "pswitch_247"
+    },
+    {
+      "id": "pswitch_ride_the_lines_and_collect_the_blue_coins",
+      "legacyId": "pswitch_248"
+    },
+    {
+      "id": "pswitch_rush_from_rock_to_rock_through_a_busy_savanna",
+      "legacyId": "pswitch_249"
+    },
+    {
+      "id": "pswitch_save_blue_coins_from_the_waves_of_the_whirlpool",
+      "legacyId": "pswitch_250"
+    },
+    {
+      "id": "pswitch_soar_above_the_falls",
+      "legacyId": "pswitch_251"
+    },
+    {
+      "id": "pswitch_take_to_the_sky_and_glide_along_the_river_valley",
+      "legacyId": "pswitch_252"
+    },
+    {
+      "id": "pswitch_thank_the_crocodiles_for_their_notable_help",
+      "legacyId": "pswitch_253"
+    },
+    {
+      "id": "pswitch_use_the_herd_s_help_to_reach_the_goal",
+      "legacyId": "pswitch_254"
+    },
+    {
+      "id": "pswitch_wall_ride_a_waterfall_q_that_just_might_work",
+      "legacyId": "pswitch_255"
+    },
+    {
+      "id": "pswitch_zigzag_through_the_zebra_rush",
+      "legacyId": "pswitch_256"
+    },
+    {
+      "id": "pswitch_brave_the_dino_dome_in_pursuit_of_blue_coins",
+      "legacyId": "pswitch_257"
+    },
+    {
+      "id": "pswitch_get_a_lift_from_the_brachiosauruses",
+      "legacyId": "pswitch_258"
+    },
+    {
+      "id": "pswitch_glide_with_gusto_don_t_let_the_t_rex_scare_you",
+      "legacyId": "pswitch_259"
+    },
+    {
+      "id": "pswitch_prove_yourself_in_a_special_test_of_skill_4",
+      "legacyId": "pswitch_260"
+    },
+    {
+      "id": "pswitch_race_offroad_through_a_dinosaur_filled_jungle",
+      "legacyId": "pswitch_261"
+    },
+    {
+      "id": "pswitch_ramp_off_the_triceratops",
+      "legacyId": "pswitch_262"
+    },
+    {
+      "id": "pswitch_tackle_the_tricky_path_up_the_mountain",
+      "legacyId": "pswitch_263"
+    },
+    {
+      "id": "pswitch_take_a_flying_tour_through_the_dome_and_beyond",
+      "legacyId": "pswitch_264"
+    },
+    {
+      "id": "pswitch_travel_the_savanna_and_visit_the_giant_waterfalls",
+      "legacyId": "pswitch_265"
+    },
+    {
+      "id": "pswitch_trust_their_backs_to_get_you_there",
+      "legacyId": "pswitch_266"
+    },
+    {
+      "id": "pswitch_zip_past_and_over_the_wild_dinosaurs",
+      "legacyId": "pswitch_267"
+    },
+    {
+      "id": "pswitch_bounce_along_the_cloud_tops",
+      "legacyId": "pswitch_268"
+    },
+    {
+      "id": "pswitch_bound_from_block_to_cloud_to_reach_the_goal",
+      "legacyId": "pswitch_269"
+    },
+    {
+      "id": "pswitch_climb_to_great_heights_to_reach_the_sky_block",
+      "legacyId": "pswitch_270"
+    },
+    {
+      "id": "pswitch_follow_the_ivy_piranha_plants_to_blue_coins",
+      "legacyId": "pswitch_271"
+    },
+    {
+      "id": "pswitch_gather_blue_coins_among_the_gold_of_the_ruins",
+      "legacyId": "pswitch_272"
+    },
+    {
+      "id": "pswitch_grab_the_blue_coins_the_piranha_plants_want",
+      "legacyId": "pswitch_273"
+    },
+    {
+      "id": "pswitch_pluck_the_blue_coins_from_the_savanna_sky",
+      "legacyId": "pswitch_274"
+    },
+    {
+      "id": "pswitch_race_along_a_tricky_path_over_ancient_ruins",
+      "legacyId": "pswitch_275"
+    },
+    {
+      "id": "pswitch_ride_ivy_piranha_plant_vines_to_grab_blue_coins",
+      "legacyId": "pswitch_276"
+    },
+    {
+      "id": "pswitch_ride_the_rails_in_the_jungle_to_grab_blue_coins",
+      "legacyId": "pswitch_277"
+    },
+    {
+      "id": "pswitch_take_a_leap_of_faith_over_the_waterfall_s_edge",
+      "legacyId": "pswitch_278"
+    },
+    {
+      "id": "pswitch_catch_the_express_train_to_the_city",
+      "legacyId": "pswitch_279"
+    },
+    {
+      "id": "pswitch_clear_the_lake_don_t_become_fish_food",
+      "legacyId": "pswitch_280"
+    },
+    {
+      "id": "pswitch_collect_blue_coins_along_a_scenic_back_route",
+      "legacyId": "pswitch_281"
+    },
+    {
+      "id": "pswitch_crash_through_the_hermity_cone_hideouts",
+      "legacyId": "pswitch_282"
+    },
+    {
+      "id": "pswitch_grab_blue_coins_among_the_para_biddybuds",
+      "legacyId": "pswitch_283"
+    },
+    {
+      "id": "pswitch_hit_the_ramps_and_reach_the_goal",
+      "legacyId": "pswitch_284"
+    },
+    {
+      "id": "pswitch_jump_into_a_local_amateur_race",
+      "legacyId": "pswitch_285"
+    },
+    {
+      "id": "pswitch_note_the_shortcut_through_the_stadium_s_garden",
+      "legacyId": "pswitch_286"
+    },
+    {
+      "id": "pswitch_play_some_tunes_while_gathering_blue_coins",
+      "legacyId": "pswitch_287"
+    },
+    {
+      "id": "pswitch_prove_yourself_in_a_special_test_of_skill_1",
+      "legacyId": "pswitch_288"
+    },
+    {
+      "id": "pswitch_race_through_the_figure_eight_time_trial",
+      "legacyId": "pswitch_289"
+    },
+    {
+      "id": "pswitch_steer_the_ivy_piranha_plant_vine_toward_the_goal",
+      "legacyId": "pswitch_290"
+    },
+    {
+      "id": "pswitch_take_to_the_skies_high_above_peach_stadium",
+      "legacyId": "pswitch_291"
+    },
+    {
+      "id": "pswitch_trick_your_way_to_the_top_of_the_gate",
+      "legacyId": "pswitch_292"
+    },
+    {
+      "id": "pswitch_use_a_delicate_touch_to_reach_the_goal_pole",
+      "legacyId": "pswitch_293"
+    },
+    {
+      "id": "pswitch_weave_a_route_through_a_pack_of_chain_chomps",
+      "legacyId": "pswitch_294"
+    },
+    {
+      "id": "pswitch_bounce_up_drop_down_grab_blue_coins",
+      "legacyId": "pswitch_295"
+    },
+    {
+      "id": "pswitch_chase_whoever_is_tearing_up_the_yard",
+      "legacyId": "pswitch_296"
+    },
+    {
+      "id": "pswitch_dash_up_the_river_and_reach_the_goal",
+      "legacyId": "pswitch_297"
+    },
+    {
+      "id": "pswitch_grab_some_easy_blue_coins_and_one_tricky_one",
+      "legacyId": "pswitch_298"
+    },
+    {
+      "id": "pswitch_hop_over_the_meadows_and_launch_to_the_goal",
+      "legacyId": "pswitch_299"
+    },
+    {
+      "id": "pswitch_mooove_through_the_herd_of_cows",
+      "legacyId": "pswitch_300"
+    },
+    {
+      "id": "pswitch_pass_beneath_the_signal_bugs_at_the_right_time",
+      "legacyId": "pswitch_301"
+    },
+    {
+      "id": "pswitch_race_downhill_to_reach_the_lake_in_time",
+      "legacyId": "pswitch_302"
+    },
+    {
+      "id": "pswitch_search_fields_abduct_blue_coins",
+      "legacyId": "pswitch_303"
+    },
+    {
+      "id": "pswitch_show_everyone_the_slopes_aren_t_off_limits",
+      "legacyId": "pswitch_304"
+    },
+    {
+      "id": "pswitch_tear_up_the_mountain_pass_before_time_runs_out",
+      "legacyId": "pswitch_305"
+    },
+    {
+      "id": "pswitch_to_the_air_to_the_water",
+      "legacyId": "pswitch_306"
+    },
+    {
+      "id": "pswitch_trust_that_there_s_a_blue_coin_reason_for_the_pipe",
+      "legacyId": "pswitch_307"
+    },
+    {
+      "id": "pswitch_dash_dash_dash_through_the_thick_chocolate",
+      "legacyId": "pswitch_308"
+    },
+    {
+      "id": "pswitch_focus_on_the_blue_coins_in_a_sea_of_gold",
+      "legacyId": "pswitch_309"
+    },
+    {
+      "id": "pswitch_race_along_a_risky_shortcut",
+      "legacyId": "pswitch_310"
+    },
+    {
+      "id": "pswitch_race_around_a_tribute_to_choco_island_1",
+      "legacyId": "pswitch_311"
+    },
+    {
+      "id": "pswitch_race_around_a_tribute_to_choco_island_2",
+      "legacyId": "pswitch_312"
+    },
+    {
+      "id": "pswitch_shine_bright_with_super_star_power",
+      "legacyId": "pswitch_313"
+    },
+    {
+      "id": "pswitch_take_an_offroad_route_to_choco_mountain",
+      "legacyId": "pswitch_314"
+    },
+    {
+      "id": "pswitch_watch_out_for_falling_chocolate_and_rocks",
+      "legacyId": "pswitch_315"
+    },
+    {
+      "id": "pswitch_borrow_a_boat_and_become_unstoppable",
+      "legacyId": "pswitch_316"
+    },
+    {
+      "id": "pswitch_climb_one_crane_then_dodge_the_other",
+      "legacyId": "pswitch_317"
+    },
+    {
+      "id": "pswitch_cut_across_traffic_and_grab_the_blue_coins",
+      "legacyId": "pswitch_318"
+    },
+    {
+      "id": "pswitch_forgive_the_messy_nature_of_prototype_testing",
+      "legacyId": "pswitch_319"
+    },
+    {
+      "id": "pswitch_gather_the_scattered_blue_coins",
+      "legacyId": "pswitch_320"
+    },
+    {
+      "id": "pswitch_hop_from_rail_to_rail_to_grab_the_blue_coins",
+      "legacyId": "pswitch_321"
+    },
+    {
+      "id": "pswitch_note_the_timing_of_your_jumps",
+      "legacyId": "pswitch_322"
+    },
+    {
+      "id": "pswitch_prove_yourself_in_a_special_test_of_skill_2",
+      "legacyId": "pswitch_323"
+    },
+    {
+      "id": "pswitch_race_up_to_the_very_top_of_the_crane",
+      "legacyId": "pswitch_324"
+    },
+    {
+      "id": "pswitch_take_a_tour_of_toad_s_factory",
+      "legacyId": "pswitch_325"
+    },
+    {
+      "id": "pswitch_barrel_through_hay_bales_to_bag_blue_coins",
+      "legacyId": "pswitch_326"
+    },
+    {
+      "id": "pswitch_gather_blue_coins_on_the_thwompy_whampy_wall",
+      "legacyId": "pswitch_327"
+    },
+    {
+      "id": "pswitch_gracefully_grab_blue_coins_amongst_falling_leaves",
+      "legacyId": "pswitch_328"
+    },
+    {
+      "id": "pswitch_harmonize_with_the_world_by_ringing_the_bell",
+      "legacyId": "pswitch_329"
+    },
+    {
+      "id": "pswitch_look_out_look_out_again_look_out_some_more",
+      "legacyId": "pswitch_330"
+    },
+    {
+      "id": "pswitch_pursue_zen_by_collecting_blue_coins",
+      "legacyId": "pswitch_331"
+    },
+    {
+      "id": "pswitch_scoop_up_what_the_super_koopas_drop",
+      "legacyId": "pswitch_332"
+    },
+    {
+      "id": "pswitch_seek_peace_by_climbing_the_falls",
+      "legacyId": "pswitch_333"
+    },
+    {
+      "id": "pswitch_show_off_a_very_dangerous_way_to_board_a_train",
+      "legacyId": "pswitch_334"
+    },
+    {
+      "id": "pswitch_soar_along_a_secret_route_to_cheep_cheep_falls",
+      "legacyId": "pswitch_335"
+    },
+    {
+      "id": "pswitch_watch_for_dragoneels_while_racing_on_the_lake",
+      "legacyId": "pswitch_336"
+    },
+    {
+      "id": "pswitch_avoid_the_piranha_plants_as_you_go",
+      "legacyId": "pswitch_337"
+    },
+    {
+      "id": "pswitch_collect_blue_coins_on_the_slackline_course",
+      "legacyId": "pswitch_338"
+    },
+    {
+      "id": "pswitch_collect_the_blue_coins_in_the_mysterious_caverns",
+      "legacyId": "pswitch_339"
+    },
+    {
+      "id": "pswitch_go_with_the_flow_to_collect_blue_coins",
+      "legacyId": "pswitch_340"
+    },
+    {
+      "id": "pswitch_grab_the_truck_to_barrel_through_the_shortcuts",
+      "legacyId": "pswitch_341"
+    },
+    {
+      "id": "pswitch_jump_jump_jump_jump_jump_jump_jump_jump",
+      "legacyId": "pswitch_342"
+    },
+    {
+      "id": "pswitch_make_use_of_the_vehicles_along_the_riverbanks",
+      "legacyId": "pswitch_343"
+    },
+    {
+      "id": "pswitch_prove_yourself_in_a_special_test_of_skill_3",
+      "legacyId": "pswitch_344"
+    },
+    {
+      "id": "pswitch_race_up_the_para_biddybud_covered_bridge",
+      "legacyId": "pswitch_345"
+    },
+    {
+      "id": "pswitch_take_a_yoshi_s_to_go_bag_or_seven_or_eleven",
+      "legacyId": "pswitch_346"
+    },
+    {
+      "id": "pswitch_trick_your_heart_out_to_reach_the_mountaintop",
+      "legacyId": "pswitch_347"
+    },
+    {
+      "id": "pswitch_weave_through_the_most_dangerous_traffic_ever",
+      "legacyId": "pswitch_348"
+    },
+    {
+      "id": "pswitch_climb_up_up_up_on_ivy_piranha_plants",
+      "legacyId": "pswitch_349"
+    },
+    {
+      "id": "pswitch_collect_blue_coins_as_you_descend_the_lily_valley",
+      "legacyId": "pswitch_350"
+    },
+    {
+      "id": "pswitch_collect_blue_coins_on_a_figure_eight_path",
+      "legacyId": "pswitch_351"
+    },
+    {
+      "id": "pswitch_collect_the_blue_coins_the_wigglers_have_hoarded",
+      "legacyId": "pswitch_352"
+    },
+    {
+      "id": "pswitch_endure_a_storm_of_acorns",
+      "legacyId": "pswitch_353"
+    },
+    {
+      "id": "pswitch_hurry_upstream_and_reach_the_goal",
+      "legacyId": "pswitch_354"
+    },
+    {
+      "id": "pswitch_maneuver_through_the_leisurely_moose_herd",
+      "legacyId": "pswitch_355"
+    },
+    {
+      "id": "pswitch_round_up_blue_coins_at_the_riverside_campsite",
+      "legacyId": "pswitch_356"
+    },
+    {
+      "id": "pswitch_scoop_up_blue_coins_in_the_skeeters_water_hole",
+      "legacyId": "pswitch_357"
+    },
+    {
+      "id": "pswitch_use_the_flower_petals_to_reach_the_giant_apple",
+      "legacyId": "pswitch_358"
+    },
+    {
+      "id": "pswitch_wiggle_past_the_wigglers_on_your_way_to_the_goal",
+      "legacyId": "pswitch_359"
+    },
+    {
+      "id": "pswitch_brave_the_haunted_forest",
+      "legacyId": "pswitch_360"
+    },
+    {
+      "id": "pswitch_brave_the_spooky_forest_in_pursuit_of_blue_coins",
+      "legacyId": "pswitch_361"
+    },
+    {
+      "id": "pswitch_climb_the_camera_cranes_ready_action",
+      "legacyId": "pswitch_362"
+    },
+    {
+      "id": "pswitch_glide_through_the_tree_canopy",
+      "legacyId": "pswitch_363"
+    },
+    {
+      "id": "pswitch_navigate_the_jumps_of_the_narrow_back_roads",
+      "legacyId": "pswitch_364"
+    },
+    {
+      "id": "pswitch_overcome_the_sinking_feeling_to_collect_blue_coins",
+      "legacyId": "pswitch_365"
+    },
+    {
+      "id": "pswitch_race_around_a_tribute_to_ghost_valley_1",
+      "legacyId": "pswitch_366"
+    },
+    {
+      "id": "pswitch_race_around_a_tribute_to_ghost_valley_2",
+      "legacyId": "pswitch_367"
+    },
+    {
+      "id": "pswitch_race_around_a_tribute_to_ghost_valley_3",
+      "legacyId": "pswitch_368"
+    },
+    {
+      "id": "pswitch_race_during_a_truly_immersive_movie_experience",
+      "legacyId": "pswitch_369"
+    },
+    {
+      "id": "pswitch_race_from_bridge_to_bridge_in_the_haunted_swamp",
+      "legacyId": "pswitch_370"
+    },
+    {
+      "id": "pswitch_ride_the_rail_ride_the_line_get_to_the_goal",
+      "legacyId": "pswitch_371"
+    },
+    {
+      "id": "pswitch_ride_the_rails_out_to_the_theater_lobby",
+      "legacyId": "pswitch_372"
+    },
+    {
+      "id": "pswitch_show_the_swamp_the_power_of_super_stars",
+      "legacyId": "pswitch_373"
+    },
+    {
+      "id": "pswitch_take_a_peek_into_a_ghostly_cinematic_universe",
+      "legacyId": "pswitch_374"
+    },
+    {
+      "id": "pswitch_travel_downstream_to_acorn_heights",
+      "legacyId": "pswitch_375"
+    },
+    {
+      "id": "pswitch_chase_the_train_and_follow_the_tracks",
+      "legacyId": "pswitch_376"
+    },
+    {
+      "id": "pswitch_collect_blue_coins_around_the_control_tower",
+      "legacyId": "pswitch_377"
+    },
+    {
+      "id": "pswitch_collect_the_blue_coins_of_the_great_staircase",
+      "legacyId": "pswitch_378"
+    },
+    {
+      "id": "pswitch_evade_the_spikes_attacks_and_reach_the_goal",
+      "legacyId": "pswitch_379"
+    },
+    {
+      "id": "pswitch_gather_the_blue_coins_around_the_control_tower",
+      "legacyId": "pswitch_380"
+    },
+    {
+      "id": "pswitch_go_on_a_wilderness_adventure_and_reach_the_goal",
+      "legacyId": "pswitch_381"
+    },
+    {
+      "id": "pswitch_grab_blue_coins_on_the_way_to_dandelion_depths",
+      "legacyId": "pswitch_382"
+    },
+    {
+      "id": "pswitch_hop_from_line_to_line_to_collect_the_blue_coins",
+      "legacyId": "pswitch_383"
+    },
+    {
+      "id": "pswitch_jump_jump_jump_your_way_through_mario_circuit",
+      "legacyId": "pswitch_384"
+    },
+    {
+      "id": "pswitch_launch_off_the_quarter_pipe_and_get_massive_air",
+      "legacyId": "pswitch_385"
+    },
+    {
+      "id": "pswitch_lead_the_way_ivy_piranha_plants",
+      "legacyId": "pswitch_386"
+    },
+    {
+      "id": "pswitch_masterfully_weave_and_wall_ride_past_traffic",
+      "legacyId": "pswitch_387"
+    },
+    {
+      "id": "pswitch_power_upstream_with_the_might_of_the_stars",
+      "legacyId": "pswitch_388"
+    },
+    {
+      "id": "pswitch_practice_acrobatics_and_make_a_tricky_landing",
+      "legacyId": "pswitch_389"
+    },
+    {
+      "id": "pswitch_race_on_a_wild_route_through_the_woodlands",
+      "legacyId": "pswitch_390"
+    },
+    {
+      "id": "pswitch_ride_the_rope_and_soar_to_the_goal",
+      "legacyId": "pswitch_391"
+    },
+    {
+      "id": "pswitch_say_hi_to_the_mario_statue_as_you_soar_by",
+      "legacyId": "pswitch_392"
+    },
+    {
+      "id": "pswitch_test_yourself_in_a_tough_time_trial_challenge",
+      "legacyId": "pswitch_393"
+    },
+    {
+      "id": "pswitch_weave_through_traffic_and_chargin_chucks",
+      "legacyId": "pswitch_394"
+    }
+  ],
+  "source": "tools/seedgen/manual/legacy_p_switch_ids.yaml"
+}

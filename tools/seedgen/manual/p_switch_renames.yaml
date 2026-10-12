@@ -1,0 +1,5 @@
+# Missioni dei Pulsanti P rinominate sul wiki dopo che il loro ID è stato fissato (fase P1).
+# L'ID viene dal nome originale (`pswitch_` + slug): se il wiki corregge un nome, l'ID non deve cambiare,
+# o le spunte salvate resterebbero su un ID che non esiste più. Qui il nome nuovo punta a quello originale.
+# nome attuale su mariowiki : nome da cui è nato l'ID
+{}

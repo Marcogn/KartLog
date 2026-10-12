@@ -152,7 +152,7 @@ EventStop(eventId: FK, position: Int, courseId: FK)         // nel JSON è l'arr
 
 Le condizioni della modalità specchio (`mirror_mode.json`) e l'immagine della mappa (`map.json`) si leggono dagli asset, senza tabella. Room v8: `food_group_courses` (fino alla v7) è sostituita dagli stand (`MIGRATION_7_8`).
 
-Stato utente (mai toccato dal reseed):
+Stato utente (il reseed non lo cancella; rimappa solo i vecchi ID dei Pulsanti P, fase P1):
 
 ```
 OwnedOutfit(outfitId PK)
@@ -166,7 +166,7 @@ BestResult(eventId, cc, rank: BRONZE|SILVER|GOLD|GOLD_1_STAR|GOLD_2_STARS|GOLD_3
     // tiene il livello più alto per (evento, cilindrata) con 1° -> oro + stelle, 2° -> argento, 3° -> bronzo.
 ```
 
-Il reseed usa upsert sui dati statici e **non** cancella lo stato utente. Gli ID seed sono stringhe stabili (slug), mai autoincrement.
+Il reseed usa upsert sui dati statici e **non** cancella lo stato utente; prima di registrare il nuovo `seedVersion` porta sui nuovi ID i Pulsanti P salvati con gli ID posizionali (`p_switch_legacy_ids.json`, §5.1). Gli ID seed sono stringhe stabili (slug), mai autoincrement né posizione nella pagina.
 
 ---
 
@@ -202,7 +202,8 @@ In `seed/` alla root del repository (versionati, **già presenti**), copiati neg
 | `peach_medallions.json` | `id`, `index`, `x`, `y`, `hint`, `youtubeId` (mkworld-checklist) | 200 |
 | `question_panels.json` | come `peach_medallions.json` | 150 |
 | `map.json` | un elemento: `imageUrl`, `width`, `height` dell'immagine della mappa | 1 |
-| `p_switches.json` | `id`, `index`, `regionId`, `courseId`, `areaId`, `name`; `x`, `y`, `hint`, `youtubeId` da mkworld-checklist | 394 |
+| `p_switches.json` | `id` (`pswitch_` + slug del nome della missione, dal seedVersion 11), `index` (posizione nella pagina), `regionId`, `courseId`, `areaId`, `name`; `x`, `y`, `hint`, `youtubeId` da mkworld-checklist | 394 |
+| `p_switch_legacy_ids.json` | `legacyId` (ID posizionale `pswitch_<indice>` fino al seedVersion 10), `id` (ID nuovo): l'app porta sui nuovi ID i Pulsanti P salvati (al reseed) e quelli dei backup vecchi (all'import) | 394 |
 | `meta.json` | `seedVersion`, `gameVersion`, `extractedOn`, `origin`, `warnings`, `license`, `sources` (titolo, URL, `revid`) | — |
 
 `meta.json.origin` vale `api` (estrazione via script); `manual-transcription` era il seed iniziale, trascritto a mano prima della fase 2.

@@ -35,6 +35,10 @@ class SeedAssetLoader @Inject constructor(@ApplicationContext private val contex
     /** Immagine della mappa dei collezionabili (null con un seed senza mkworld-checklist). */
     fun readMapImage(): MapImageDto? = readItems<MapImageDto>("map.json").firstOrNull()
 
+    /** Vecchio ID posizionale -> ID stabile dei Pulsanti P (vuoto con un seed che non li ha). */
+    fun readPSwitchLegacyIds(): Map<String, String> =
+        readItems<PSwitchLegacyIdDto>("p_switch_legacy_ids.json").associate { it.legacyId to it.id }
+
     fun readMeta(): SeedMetaDto? = readText("meta.json")?.let { json.decodeFromString(it) }
 
     /**

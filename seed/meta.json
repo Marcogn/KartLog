@@ -1,5 +1,5 @@
 {
-  "extractedOn": "2026-10-05",
+  "extractedOn": "2026-10-12",
   "gameVersion": "1.8.0",
   "license": {
     "attribution": "Dati di gioco tratti da Super Mario Wiki (mariowiki.com) e Super Mario Wiki italiana (mariowiki.it)",
@@ -8,7 +8,7 @@
   },
   "note": "",
   "origin": "api",
-  "seedVersion": 10,
+  "seedVersion": 11,
   "sources": [
     {
       "revid": 5455370,
@@ -21,12 +21,12 @@
       "url": "https://www.mariowiki.com/List_of_Yoshi's_locations"
     },
     {
-      "revid": 5472356,
+      "revid": 5514472,
       "title": "List of Mario Kart World missions",
       "url": "https://www.mariowiki.com/List_of_Mario_Kart_World_missions"
     },
     {
-      "revid": 5507542,
+      "revid": 5513200,
       "title": "Template:Mario Kart World",
       "url": "https://www.mariowiki.com/Template:Mario_Kart_World"
     },
@@ -81,7 +81,7 @@
       "url": "https://www.mariowiki.com/Boomerang_Rally_(rally)"
     },
     {
-      "revid": 5492298,
+      "revid": 5514737,
       "title": "Propeller Rally",
       "url": "https://www.mariowiki.com/Propeller_Rally"
     },
@@ -101,7 +101,7 @@
       "url": "https://www.mariowiki.it/Lista_delle_missioni_di_Mario_Kart_World"
     },
     {
-      "revid": 5509107,
+      "revid": 5514814,
       "title": "Mario Kart World",
       "url": "https://www.mariowiki.com/Mario_Kart_World"
     },

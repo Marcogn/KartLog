@@ -49,9 +49,11 @@ def _without_name_it(seed: dict) -> dict:
 
 def test_versioned_seed_matches_golden(golden_seed):
     # I pulsanti P non sono nella trascrizione golden (arrivano solo con l'estrazione via API,
-    # vedi SPEC §5.3 "Stato"): si escludono dal confronto, si verificano solo con validate().
-    versioned = {k: v for k, v in _without_name_it(read_seed(SEED_DIR)).items() if k != "p_switches.json"}
-    golden = {k: v for k, v in _without_name_it(golden_seed).items() if k != "p_switches.json"}
+    # vedi SPEC §5.3 "Stato"): si escludono dal confronto, con la tabella dei loro vecchi ID (fase P1),
+    # e si verificano solo con validate().
+    p_switch_files = ("p_switches.json", "p_switch_legacy_ids.json")
+    versioned = {k: v for k, v in _without_name_it(read_seed(SEED_DIR)).items() if k not in p_switch_files}
+    golden = {k: v for k, v in _without_name_it(golden_seed).items() if k not in p_switch_files}
     assert diff(versioned, golden) == []
 
 
@@ -249,3 +251,56 @@ def test_seed_has_no_non_breaking_spaces(golden_seed):
     # Lilita One non ha U+00A0 (verificato con fontTools): nel seed non deve arrivare.
     for seed in (golden_seed, read_seed(SEED_DIR)):
         assert not [t for t in _strings(seed) if "\xa0" in t]
+
+
+# --- ID stabili dei Pulsanti P (fase P1) ---------------------------------------------------------
+
+def test_p_switch_ids_come_from_the_name(cfg):
+    # Fissa anche slugify: se cambiasse, gli ID di seed/ (già sui telefoni) non corrisponderebbero più.
+    from seedgen.build import p_switch_id
+    for p in read_seed(SEED_DIR)["p_switches.json"]["items"]:
+        assert p["id"] == p_switch_id(p["name"], cfg)
+
+
+def test_every_legacy_p_switch_id_maps_to_the_same_mission(cfg):
+    seed = read_seed(SEED_DIR)
+    name_of = {p["id"]: p["name"] for p in seed["p_switches.json"]["items"]}
+    legacy = {x["legacyId"]: x["id"] for x in seed["p_switch_legacy_ids.json"]["items"]}
+    # 394 = i Pulsanti P del seed v10 congelati, non expected_counts (che può crescere col gioco).
+    assert set(legacy) == set(cfg.legacy_p_switch_ids) == {f"pswitch_{i:03d}" for i in range(1, 395)}
+    assert all(name_of[new] == cfg.legacy_p_switch_ids[old] for old, new in legacy.items())
+
+
+def test_legacy_mission_missing_from_the_wiki_is_caught(cfg):
+    seed = read_seed(SEED_DIR)
+    seed["p_switch_legacy_ids.json"]["items"] = seed["p_switch_legacy_ids.json"]["items"][1:]
+    with pytest.raises(ValidationError, match="pswitch_001"):
+        validate(seed, cfg)
+
+
+def test_p_switch_id_not_matching_its_name_is_caught(cfg):
+    seed = read_seed(SEED_DIR)
+    seed["p_switches.json"]["items"][0]["id"] = "pswitch_001"
+    with pytest.raises(ValidationError, match="ID diverso da quello del nome"):
+        validate(seed, cfg)
+
+
+def test_legacy_id_pointing_to_another_mission_is_caught(cfg):
+    seed = read_seed(SEED_DIR)
+    items = seed["p_switch_legacy_ids.json"]["items"]
+    items[0]["id"], items[1]["id"] = items[1]["id"], items[0]["id"]
+    with pytest.raises(ValidationError, match="missione sbagliata"):
+        validate(seed, cfg)
+
+
+def test_renamed_mission_keeps_its_id(cfg):
+    import dataclasses
+    from seedgen.build import p_switch_id
+    seed = read_seed(SEED_DIR)
+    mission = seed["p_switches.json"]["items"][0]
+    original = mission["name"]
+    mission["name"] = original + " (corretto)"
+    renamed = dataclasses.replace(cfg, p_switch_renames={mission["name"]: original})
+    assert p_switch_id(mission["name"], renamed) == mission["id"]
+    validate(seed, renamed)
+

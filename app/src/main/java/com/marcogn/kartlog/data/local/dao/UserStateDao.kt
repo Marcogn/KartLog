@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import com.marcogn.kartlog.data.local.entity.ActivatedQuestionPanelEntity
 import com.marcogn.kartlog.data.local.entity.BestResultEntity
 import com.marcogn.kartlog.data.local.entity.CharacterUnlockEntity
@@ -77,6 +78,27 @@ interface UserStateDao {
 
     @Query("SELECT COUNT(*) FROM completed_p_switches")
     fun countCompletedPSwitches(): Flow<Int>
+
+    @Query("UPDATE OR IGNORE completed_p_switches SET pSwitchId = :newId WHERE pSwitchId = :oldId")
+    suspend fun renamePSwitch(oldId: String, newId: String)
+
+    @Query("SELECT pSwitchId FROM completed_p_switches")
+    suspend fun completedPSwitchIds(): List<String>
+
+    /**
+     * Porta sugli ID nuovi i Pulsanti P segnati con un ID vecchio (fase P1, `p_switch_legacy_ids.json`).
+     * Idempotente: un ID già nuovo non è tra le chiavi; se il nuovo c'è già, `OR IGNORE` lascia la riga
+     * vecchia, che poi si cancella.
+     */
+    @Transaction
+    suspend fun remapPSwitches(legacyToNew: Map<String, String>) {
+        // Solo le righe che ci sono davvero: di solito poche, mai le 394 voci della tabella.
+        completedPSwitchIds().forEach { id ->
+            val newId = legacyToNew[id] ?: return@forEach
+            renamePSwitch(id, newId)
+            markPSwitchNotCompleted(id)
+        }
+    }
 
     /** "Segna tutti" di una regione (SPEC §2.4). */
     @Query(
