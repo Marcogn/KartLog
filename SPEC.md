@@ -10,7 +10,7 @@ Tracker Android offline per i collectibles di Mario Kart World: outfit (skin), P
 
 1. **Non inventare mai dati di gioco.** Personaggi, outfit, cibi, cup, rally, percorsi, medaglie e P Switch arrivano **solo** dai file seed JSON (§5), generati da `tools/seedgen`. Non modificare `seed/` a mano. Se un dato manca, fermati e chiedi all'autore: non usare valori plausibili al suo posto.
 2. **Nessun asset Nintendo nel repository**: niente render, loghi, font o screenshot, né nel repository né nell'APK. Le immagini di personaggi, outfit ed eventi si scaricano **a runtime** dal CDN di Super Mario Wiki (URL `imageUrl` nel seed, estratti da seedgen dalla pagina "Mario Kart World"); finché non ci sono si vede un placeholder con le iniziali. Decisione dell'autore del 26/09/2026, vedi `docs/decisioni.md`.
-3. **Offline tranne le immagini**: il permesso INTERNET serve solo a scaricare le immagini del punto 2; nessuna analytics, nessun altro traffico, e l'app funziona interamente anche senza rete. I dati di gioco si scaricano **solo a build time**, nello script di estrazione dati (§5).
+3. **Offline tranne le immagini e gli aggiornamenti**: il permesso INTERNET serve solo a scaricare le immagini del punto 2 e a controllare/scaricare le release di questo repository su GitHub (`api.github.com`, §4.1; si spegne con la frequenza "Mai"); nessuna analytics, nessun altro traffico, e l'app funziona interamente anche senza rete. I dati di gioco si scaricano **solo a build time**, nello script di estrazione dati (§5).
 4. Lavora per fasi (`docs/roadmap.md`). Alla fine di ogni fase il progetto deve compilare e i test devono passare. Le scelte non ovvie e il loro perché sono in `docs/decisioni.md`.
 
 ---
@@ -172,6 +172,12 @@ Il reseed usa upsert sui dati statici e **non** cancella lo stato utente. Gli ID
 
 ## 4. Persistenza extra
 - Export/import JSON dello **stato utente** (non dei seed) tramite Storage Access Framework, per backup manuale.
+
+### 4.1 Aggiornamenti dall'app e sezione Info (fase A1)
+- **Controllo**: solo all'avvio (una volta per processo) e mai nelle build debug (firmate con la chiave di debug, una release non si installa sopra); "Controlla aggiornamenti" in Info lo fa sempre, anche con "Mai". Sorgente: `GET https://api.github.com/repos/Marcogn/KartLog/releases/latest`, senza token (limite 60 richieste/ora per IP). Frequenza (Impostazioni, `KartDropdown`): Mai / A ogni avvio / Ogni giorno / Ogni settimana, **predefinita ogni settimana**; `UpdatePreferences` (SharedPreferences `update_prefs`, come il pilota) tiene frequenza e `lastCheckAt`, scritto solo se GitHub ha risposto.
+- **Dialogo** (`UpdateDialogHost` sopra il grafo, pilotato da `UpdateManager.state`; `KartPopup`): versione nuova e installata, titoli della release (i grassetti del CHANGELOG, `release.yml`), "Changelog completo" (apre GitHub), **Scarica** / **Non ora** ("Non ora" chiude e basta); avanzamento con **Annulla**; **Installa** esplicito a download e verifica finiti; errori col motivo.
+- **Verifiche prima dell'installazione**: asset unico `.apk` (c'è anche `KartLog-x.y.z-mapping.txt`), dimensione e SHA-256 contro il `digest` dell'asset, stesso pacchetto, `versionCode` più alto, stesso certificato di firma; poi sessione `PackageInstaller` con conferma di sistema (`REQUEST_INSTALL_PACKAGES`, "installa app sconosciute"). Niente installazione silenziosa, niente pre-release, niente controlli in background.
+- **Info** (fondo di Impostazioni): nome, `VERSION_NAME` (non il version code), "Controlla aggiornamenti" col risultato, la nota che l'app si collega a GitHub solo per questo, "Fatto con il ❤️ da Marcogn" / "Made with ❤️ from Marcogn", link al repository, licenza MIT, poi le attribuzioni di §5.5.
 
 ---
 
@@ -380,7 +386,7 @@ I criteri 3–6 decidono l'ordine tra eventi con stesso score e stesso total.
 ## 7. Fuori scope v1
 - Sticker (la mappa e i ? Panels sono arrivati dopo la 1.0, §2.4)
 - Stato di sblocco di cup e rally (es. Special Cup, rally aggiuntivi)
-- Qualsiasi connessione di rete **nell'app** oltre al download delle immagini, mappa compresa (§0, punto 2)
+- Qualsiasi connessione di rete **nell'app** oltre al download delle immagini, mappa compresa (§0, punto 2), e al controllo degli aggiornamenti (§4.1)
 
 ---
 
@@ -390,7 +396,7 @@ Il roadmap originale è chiuso; alcuni commenti nel codice citano ancora queste 
 1. Scaffold · 2. Verifica di seedgen sulle pagine reali · 3. Seed nell'app e build (`generateSeed`, reseed, validazione) · 4. Personaggi (allora "Skin") · 5. Monete Peach e Pulsanti P · 6. Consigliami · 7. Risultati · 8. Backup.
 
 ## 9. Criteri di accettazione
-- L'app parte e funziona offline; l'unico uso della rete è il download delle immagini.
+- L'app parte e funziona offline; gli unici usi della rete sono il download delle immagini e il controllo degli aggiornamenti (§4.1).
 - Spuntare l'ultimo outfit di un personaggio lo sposta subito in fondo alla griglia e aggiorna il contatore in Home.
 - Consigliami si aggiorna in tempo reale quando cambia lo stato degli outfit.
 - Un aggiornamento dei seed non perde lo stato utente (test di migrazione).

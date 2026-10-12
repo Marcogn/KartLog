@@ -1,0 +1,31 @@
+{
+  "url": "https://api.github.com/repos/Marcogn/KartLog/releases/403853931",
+  "assets_url": "https://api.github.com/repos/Marcogn/KartLog/releases/403853931/assets",
+  "html_url": "https://github.com/Marcogn/KartLog/releases/tag/v1.2.0",
+  "id": 403853931,
+  "tag_name": "v1.2.0",
+  "target_commitish": "main",
+  "name": "KartLog v1.2.0",
+  "draft": false,
+  "prerelease": false,
+  "immutable": false,
+  "created_at": "2026-10-05T15:08:49Z",
+  "published_at": "2026-10-05T15:14:28Z",
+  "assets": [
+    {
+      "id": 612912416,
+      "url": "https://api.github.com/repos/Marcogn/KartLog/releases/assets/612912416",
+      "name": "KartLog-1.2.0.apk",
+      "label": "",
+      "state": "uploaded",
+      "content_type": "application/vnd.android.package-archive",
+      "size": 16311720,
+      "download_count": 5,
+      "created_at": "2026-10-05T15:14:25Z",
+      "updated_at": "2026-10-05T15:14:26Z",
+      "browser_download_url": "https://github.com/Marcogn/KartLog/releases/download/v1.2.0/KartLog-1.2.0.apk",
+      "digest": null
+    }
+  ],
+  "body": null
+}

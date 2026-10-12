@@ -144,11 +144,24 @@ APK → Run workflow) o di una release: è la build di release firmata sempre
 con la stessa chiave, quindi si installa sopra l'app già presente senza
 perdere i dati. La CI non carica più APK; dettagli in [`docs/ci.md`](docs/ci.md).
 
+## Aggiornamenti
+
+All'avvio (al massimo una volta per avvio, e mai nelle build debug) l'app guarda l'ultima release di
+questo repository su GitHub; se è più nuova, mostra le novità e chiede se scaricarla, poi chiede di
+installarla con il programma di installazione di sistema (alla prima volta Android chiede di
+abilitare "installa app sconosciute" per KartLog; l'installazione è sempre confermata da te). L'APK
+è verificato (SHA-256, stesso pacchetto, versione più alta, stessa firma) prima di arrivare
+all'installatore. In Impostazioni la frequenza è Mai / A ogni avvio / Ogni giorno / Ogni settimana
+(predefinita: ogni settimana); "Mai" non fa nessuna richiesta a GitHub, e in Info "Controlla
+aggiornamenti" funziona comunque. Il codice è copiato da
+[ThePatientGamerHelper](https://github.com/Marcogn/ThePatientGamerHelper) (`docs/decisioni.md`).
+
 ## Privacy
 
 Nessuna analytics, nessun account. Il permesso INTERNET serve **solo** a
 scaricare le immagini (vedi [Immagini](#immagini)) dal CDN di Super Mario
-Wiki: nessun altro dato esce dal dispositivo, e tutto il resto dell'app
+Wiki e a controllare gli aggiornamenti (vedi [Aggiornamenti](#aggiornamenti)):
+nessun altro dato esce dal dispositivo, e tutto il resto dell'app
 funziona anche offline. A build time la rete serve anche allo script
 `tools/seedgen`, che rigenera i dati di gioco dal wiki.
 
