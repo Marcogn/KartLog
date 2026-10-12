@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- INTERNET serve SOLO a scaricare le immagini di personaggi, outfit ed eventi dal CDN di
-         Super Mario Wiki (URL in seed/, estratti da tools/seedgen): non sono nel repository né
-         nell'APK. Tutto il resto dell'app resta offline e funziona anche senza rete (SPEC §0.3):
-         senza connessione si vedono i segnaposto con le iniziali. -->
+    <!-- INTERNET serve a due cose soltanto: scaricare le immagini di personaggi, outfit ed eventi
+         dal CDN di Super Mario Wiki (URL in seed/, estratti da tools/seedgen: non sono nel repository
+         né nell'APK) e controllare/scaricare gli aggiornamenti dalle release GitHub di questo
+         repository (api.github.com, data/update). Tutto il resto dell'app resta offline e funziona
+         anche senza rete (SPEC §0.3): senza connessione si vedono i segnaposto con le iniziali. -->
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Passa l'APK dell'aggiornamento scaricato al programma di installazione di sistema (sessione
+         PackageInstaller). L'utente abilita "installa app sconosciute" per KartLog e conferma ogni
+         installazione. -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
         android:name=".KartLogApplication"
@@ -27,6 +33,11 @@
                 android:name="autoStoreLocales"
                 android:value="true" />
         </service>
+
+        <!-- Stato della sessione PackageInstaller (PendingIntent esplicito di ApkInstaller). -->
+        <receiver
+            android:name=".data.update.UpdateInstallReceiver"
+            android:exported="false" />
 
         <activity
             android:name=".MainActivity"

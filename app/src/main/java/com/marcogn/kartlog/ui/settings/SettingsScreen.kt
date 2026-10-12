@@ -21,6 +21,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.RadioButton
@@ -45,13 +46,24 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.marcogn.kartlog.BuildConfig
 import com.marcogn.kartlog.R
 import com.marcogn.kartlog.domain.model.ThemeMode
+import com.marcogn.kartlog.ui.common.KartDropdown
 import com.marcogn.kartlog.ui.common.KartTitle
 import com.marcogn.kartlog.ui.common.KartTopBar
 import com.marcogn.kartlog.ui.common.kartSky
 import com.marcogn.kartlog.ui.theme.ThemeViewModel
 import com.marcogn.kartlog.ui.theme.isKartDarkTheme
+import com.marcogn.kartlog.ui.update.UpdateCheckViewModel
+import com.marcogn.kartlog.ui.update.UpdateViewModel
+import com.marcogn.kartlog.ui.update.labelRes
+import com.marcogn.kartlog.ui.update.toMessage
+import com.marcogn.kartlog.domain.update.UpdateFrequency
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.foundation.layout.size
+
+private const val GITHUB_URL = "https://github.com/${BuildConfig.UPDATE_GITHUB_OWNER}/${BuildConfig.UPDATE_GITHUB_REPO}"
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -59,8 +71,12 @@ fun SettingsScreen(
     onMenuClick: () -> Unit,
     viewModel: SettingsViewModel = hiltViewModel(),
     themeViewModel: ThemeViewModel = hiltViewModel(),
+    updateViewModel: UpdateViewModel = hiltViewModel(),
+    checkViewModel: UpdateCheckViewModel = hiltViewModel(),
 ) {
     val themeMode by themeViewModel.themeMode.collectAsState()
+    val updateFrequency by updateViewModel.frequency.collectAsState()
+    val checkState by checkViewModel.uiState.collectAsState()
     val context = LocalContext.current
     val snackbarHostState = remember { SnackbarHostState() }
 
@@ -98,6 +114,17 @@ fun SettingsScreen(
 
             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
+            Text(stringResource(R.string.settings_update_frequency_label), style = MaterialTheme.typography.titleMedium)
+            KartDropdown(
+                options = UpdateFrequency.entries,
+                selected = updateFrequency,
+                label = { stringResource(it.labelRes()) },
+                onSelected = updateViewModel::onFrequencySelected,
+                modifier = Modifier.fillMaxWidth(),
+            )
+
+            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+
             Text(stringResource(R.string.settings_backup_section), style = MaterialTheme.typography.titleMedium)
             Button(onClick = { exportLauncher.launch("kartlog-backup.json") }, modifier = Modifier.fillMaxWidth()) {
                 Text(stringResource(R.string.settings_export_backup))
@@ -109,6 +136,25 @@ fun SettingsScreen(
             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
             Text(stringResource(R.string.settings_info_section), style = MaterialTheme.typography.titleMedium)
+            Text(stringResource(R.string.app_name), style = MaterialTheme.typography.headlineSmall)
+            Text(stringResource(R.string.settings_about_version, BuildConfig.VERSION_NAME), style = MaterialTheme.typography.bodyLarge)
+            Button(onClick = checkViewModel::onCheckNow, enabled = !checkState.isChecking, modifier = Modifier.fillMaxWidth()) {
+                if (checkState.isChecking) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.padding(end = 8.dp).size(18.dp),
+                        strokeWidth = 2.dp,
+                        color = LocalContentColor.current,
+                    )
+                }
+                Text(stringResource(R.string.settings_about_check_updates))
+            }
+            checkState.result?.let { Text(it.toMessage(context), style = MaterialTheme.typography.bodyMedium) }
+            Text(stringResource(R.string.settings_about_network_note), style = MaterialTheme.typography.bodySmall)
+            Text(stringResource(R.string.settings_about_made_with_love), style = MaterialTheme.typography.titleMedium)
+            OutlinedButton(onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, GITHUB_URL.toUri())) }, modifier = Modifier.fillMaxWidth()) {
+                Text(stringResource(R.string.settings_about_github))
+            }
+            Text(stringResource(R.string.settings_about_license), style = MaterialTheme.typography.bodyMedium)
             Text(stringResource(R.string.settings_images_title), style = MaterialTheme.typography.titleSmall)
             Text(stringResource(R.string.settings_images_disclaimer), style = MaterialTheme.typography.bodySmall)
             Text(stringResource(R.string.settings_map_credit), style = MaterialTheme.typography.bodySmall)

@@ -21,6 +21,10 @@ android {
         versionCode = 12
         versionName = "1.2.0"
 
+        // Controllo aggiornamenti (data/update/GitHubReleaseClient): repository delle release.
+        buildConfigField("String", "UPDATE_GITHUB_OWNER", "\"Marcogn\"")
+        buildConfigField("String", "UPDATE_GITHUB_REPO", "\"KartLog\"")
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -67,6 +71,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
     packaging {

@@ -6,6 +6,13 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [Unreleased]
 
+- **Aggiornamenti dall'app.** All'avvio KartLog controlla le release di GitHub; se ce n'è una nuova mostra le novità, chiede se scaricarla e poi di installarla con la conferma di sistema.
+  - Nuovo dialogo con la grafica del gioco: titoli delle novità, "Changelog completo", Scarica / Non ora, avanzamento con Annulla e il motivo in caso di errore.
+  - L'APK è verificato prima dell'installazione (SHA-256, stesso pacchetto, versione più alta, stessa firma).
+  - Nuova impostazione "Controllo degli aggiornamenti": Mai / A ogni avvio / Ogni giorno / Ogni settimana (predefinita). Le build debug non controllano mai da sole.
+  - Nuovo permesso "installa app sconosciute" (`REQUEST_INSTALL_PACKAGES`), chiesto da Android solo quando installi un aggiornamento.
+- **Versione e crediti in Info.** La sezione Info di Impostazioni mostra la versione installata, "Controlla aggiornamenti" (anche con "Mai"), "Fatto con il ❤️ da Marcogn", il link al repository, la licenza MIT e la nota che l'app si collega a GitHub solo per gli aggiornamenti.
+
 ## [1.2.0] - 2026-10-05
 
 - **Risultati con la grafica del gioco.** Ogni evento è una tessera (arancio i Gran Premi, verde i

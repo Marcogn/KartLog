@@ -12,12 +12,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.marcogn.kartlog.data.update.UpdateManager
 import com.marcogn.kartlog.domain.model.AppLocale
 import com.marcogn.kartlog.domain.model.ThemeMode
 import com.marcogn.kartlog.ui.navigation.KartLogNavGraph
 import com.marcogn.kartlog.ui.theme.KartLogTheme
 import com.marcogn.kartlog.ui.theme.ThemeViewModel
+import com.marcogn.kartlog.ui.update.UpdateDialogHost
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /**
  * `AppCompatActivity` e non `ComponentActivity`: `AppCompatDelegate.setApplicationLocales()`
@@ -27,6 +30,9 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    @Inject lateinit var updateManager: UpdateManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // La configurazione dell'activity tiene già conto della lingua scelta nell'app (anche sotto
@@ -34,6 +40,12 @@ class MainActivity : AppCompatActivity() {
         // nomi di gioco localizzati (vedi AppLocale).
         AppLocale.update(resources.configuration.locales[0])
         enableEdgeToEdge()
+        // Controllo aggiornamenti all'avvio, al più una volta per processo (UpdateManager lo garantisce:
+        // rotazione e cambio lingua ricreano l'activity). Mai nelle build debug: sono firmate con la
+        // chiave di debug, una release non si installerebbe sopra. Lì resta "Controlla aggiornamenti".
+        if (!BuildConfig.DEBUG) {
+            updateManager.checkIfDue()
+        }
         setContent {
             KartLogApp()
         }
@@ -51,6 +63,7 @@ private fun KartLogApp(themeViewModel: ThemeViewModel = hiltViewModel()) {
     KartLogTheme(darkTheme = darkTheme) {
         Surface(modifier = Modifier.fillMaxSize()) {
             KartLogNavGraph()
+            UpdateDialogHost()
         }
     }
 }
