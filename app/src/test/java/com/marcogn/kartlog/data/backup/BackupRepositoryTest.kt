@@ -42,7 +42,7 @@ class BackupRepositoryTest {
         db = Room.inMemoryDatabaseBuilder(context, KartLogDatabase::class.java).allowMainThreadQueries().build()
         val seedRepository = SeedRepository(SeedAssetLoader(context), db.seedDao(), db.seedMetaDao(), db.userStateDao())
         runBlocking { seedRepository.reseedIfNeeded() }
-        repository = BackupRepository(db.backupDao(), context)
+        repository = BackupRepository(db.backupDao(), SeedAssetLoader(context), context)
     }
 
     @After
@@ -132,5 +132,20 @@ class BackupRepositoryTest {
 
         assertEquals(listOf("outfit-che-non-esiste-piu"), result.unknownIds["outfits"])
         assertEquals(0, db.userStateDao().countOwnedOutfits().first())
+    }
+
+    @Test
+    fun `un backup con i vecchi ID posizionali dei Pulsanti P si importa sui nuovi`() = runBlocking {
+        val legacy = SeedAssetLoader(ApplicationProvider.getApplicationContext()).readPSwitchLegacyIds()
+        val (oldId, newId) = legacy.entries.first()
+        // Lo stesso Pulsante P col vecchio e col nuovo ID (backup misto): una riga sola.
+        val payload = BackupPayload(exportedAt = 0L, completedPSwitchIds = listOf(oldId, newId))
+        val file = File.createTempFile("kartlog-backup-pswitch", ".json").also { tempFiles += it }
+        file.writeText(Json.encodeToString(BackupPayload.serializer(), payload))
+
+        val result = repository.import(Uri.fromFile(file))
+
+        assertEquals(listOf(newId), db.backupDao().completedPSwitches().map { it.pSwitchId })
+        assertEquals(null, result.unknownIds["pSwitches"])
     }
 }

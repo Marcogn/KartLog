@@ -43,7 +43,7 @@ def test_real_pages_match_golden_transcription(real_seed, cfg):
     # I pulsanti P non sono nella trascrizione: si verificano solo con validate() (394, regioni coerenti).
     # Nemmeno stand e varianti dei cibi (fase C1): si verificano nei test qui sotto.
     comparable = {k: v for k, v in real_seed.items()
-                  if k not in ("p_switches.json", "yoshi_stands.json", "food_variants.json")}
+                  if k not in ("p_switches.json", "p_switch_legacy_ids.json", "yoshi_stands.json", "food_variants.json")}
     changes = diff(golden, comparable)
     assert changes == [], "Parser e trascrizione divergono:\n" + "\n".join(changes)
 

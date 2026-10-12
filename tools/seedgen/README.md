@@ -31,6 +31,8 @@ Le pagine dei nomi in italiano e la pagina `Mario Kart World` si scaricano solo 
 | `aliases.yaml` | nome del wiki → slug stabile per personaggi e corsi; equivalenze da validare. Un nome sconosciuto fa fallire l'estrazione |
 | `expected_counts.yaml` | conteggi attesi e versione del gioco. Fonte di verità anche per i test Kotlin |
 | `manual/checklist_mission_names.yaml` | le 3 missioni scritte in modo diverso da mkworld-checklist e da mariowiki, verificate a mano |
+| `manual/legacy_p_switch_ids.yaml` | vecchi ID posizionali dei Pulsanti P (`pswitch_001`…`pswitch_394`, fino al seedVersion 10) → nome della missione, congelati da seed v10 con uno script. Diventano `seed/p_switch_legacy_ids.json`; una missione sparita dal wiki ferma l'estrazione. Non si modifica |
+| `manual/p_switch_renames.yaml` | missioni rinominate sul wiki dopo la fase P1: nome attuale → nome originale, da cui resta l'ID (vuoto finché non serve) |
 | `tests/golden/raw_manual_2026-09-25.yaml` | trascrizione manuale delle pagine, usata per generare il primo `seed/` e come controllo incrociato del parser |
 | `tests/fixtures/synthetic/` | HTML sintetici che riproducono la struttura delle pagine, per i test del parser |
 | `tests/fixtures/real/` | pagine reali salvate con `fetch-fixtures` (da creare, vedi sotto) |

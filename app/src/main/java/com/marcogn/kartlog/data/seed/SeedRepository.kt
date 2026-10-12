@@ -26,8 +26,9 @@ import javax.inject.Singleton
 
 /**
  * Reseed dei dati di gioco (SPEC §3): confronta il `seedVersion` degli asset con quello già
- * caricato in Room e, se diverso, sostituisce le tabelle seed **senza mai toccare lo stato
- * utente** (tabelle diverse, [SeedDao.replaceAll] non le include).
+ * caricato in Room e, se diverso, sostituisce le tabelle seed **senza perdere lo stato utente**
+ * (tabelle diverse, [SeedDao.replaceAll] non le include). L'unica scrittura sullo stato è la
+ * rimappatura dei vecchi ID dei Pulsanti P sui nuovi (fase P1, `p_switch_legacy_ids.json`).
  */
 @Singleton
 class SeedRepository @Inject constructor(
@@ -47,6 +48,10 @@ class SeedRepository @Inject constructor(
         val loadedVersion = seedMetaDao.getSeedVersion()
         if (loadedVersion != meta.seedVersion) {
             seedDao.replaceAll(buildSeedContent())
+            // Prima di registrare la versione: se il processo muore qui, il prossimo avvio rifà tutto
+            // (entrambi i passi sono idempotenti). Fase P1: dal seedVersion 11 gli ID dei Pulsanti P
+            // vengono dal nome, quelli posizionali salvati prima si portano sui nuovi.
+            userStateDao.remapPSwitches(assets.readPSwitchLegacyIds())
             seedMetaDao.setSeedVersion(SeedMetaEntity(seedVersion = meta.seedVersion))
         }
         userStateDao.ensureDefaultOutfitsOwned()

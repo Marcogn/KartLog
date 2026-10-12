@@ -27,6 +27,20 @@ def slugify(text: str) -> str:
     return re.sub(r"[^a-z0-9]+", "_", text.casefold()).strip("_")
 
 
+def p_switch_id(name: str, cfg: Config) -> str:
+    """ID stabile di un Pulsante P: il nome originale della missione su mariowiki (unico, verificato da
+    validate). Un nome corretto in seguito sul wiki tiene l'ID di prima (manual/p_switch_renames.yaml)."""
+    return "pswitch_" + slugify(cfg.p_switch_renames.get(name, name))
+
+
+def _legacy_p_switch_ids(p_switches: list[dict], cfg: Config) -> list[dict]:
+    """ID posizionali fino a seedVersion 10 -> ID nuovi, per nome originale (manual/legacy_p_switch_ids.yaml).
+    Solo i nomi presenti: quelli spariti dal wiki li segnala validate, che conosce i conteggi attesi."""
+    by_name = {cfg.p_switch_renames.get(p["name"], p["name"]): p["id"] for p in p_switches}
+    return [{"legacyId": old, "id": by_name[name]}
+            for old, name in sorted(cfg.legacy_p_switch_ids.items()) if name in by_name]
+
+
 def _page_url(cfg: Config, title: str) -> str:
     return cfg.sources["page_url_prefix"] + title.replace(" ", "_")
 
@@ -387,7 +401,9 @@ def build(
             cid, aid = cfg.courses.resolve(m.location), None
         else:
             cid, aid = None, cfg.areas.resolve(m.location, f"missione {m.name!r}")
-        p_switches.append({"id": f"pswitch_{i:03d}", "index": i, "regionId": rid,
+        # ID dal nome, non dalla posizione: una missione spostata nella pagina non deve cambiare l'ID di
+        # quelle dopo, a cui è legato lo stato dell'utente (completed_p_switches). docs/decisioni.md, fase P1.
+        p_switches.append({"id": p_switch_id(m.name, cfg), "index": i, "regionId": rid,
                            "courseId": cid, "areaId": aid, "name": m.name})
     if checklist and p_switches:
         # Stesse missioni di mariowiki, con posizione sulla mappa, istruzioni e video (seedgen/checklist.py).
@@ -442,6 +458,10 @@ def build(
         seed["p_switches.json"] = {"source": _page_url(cfg, pages["missions"]), "items": p_switches}
         if checklist:
             seed["p_switches.json"]["mapSource"] = checklist.source_url
+        seed["p_switch_legacy_ids.json"] = {
+            "source": "tools/seedgen/manual/legacy_p_switch_ids.yaml",
+            "items": _legacy_p_switch_ids(p_switches, cfg),
+        }
     if checklist:
         seed.update(_checklist_files(checklist))
     return normalize_spaces(seed)

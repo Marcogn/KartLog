@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.marcogn.kartlog.data.local.KartLogDatabase
+import com.marcogn.kartlog.data.local.entity.CompletedPSwitchEntity
 import com.marcogn.kartlog.data.local.entity.OwnedOutfitEntity
 import com.marcogn.kartlog.data.local.entity.SeedMetaEntity
 import kotlinx.coroutines.flow.first
@@ -62,5 +63,28 @@ class SeedRepositoryMigrationTest {
         repository.reseedIfNeeded()
 
         assertEquals(outfitsAfterFirstSeed, db.seedDao().countOutfits().first())
+    }
+
+    @Test
+    fun `al reseed i Pulsanti P segnati coi vecchi ID posizionali passano ai nuovi`() = runBlocking {
+        val legacy = SeedAssetLoader(ApplicationProvider.getApplicationContext()).readPSwitchLegacyIds()
+        assertTrue("il seed deve portare la tabella dei vecchi ID", legacy.isNotEmpty())
+        val (first, second) = legacy.entries.take(2)
+        // Installazione col seed precedente: due Pulsanti P segnati col vecchio ID, il secondo anche
+        // col nuovo (non deve risultare doppio).
+        db.seedMetaDao().setSeedVersion(SeedMetaEntity(seedVersion = 0))
+        db.userStateDao().markPSwitchCompleted(CompletedPSwitchEntity(first.key))
+        db.userStateDao().markPSwitchCompleted(CompletedPSwitchEntity(second.key))
+        db.userStateDao().markPSwitchCompleted(CompletedPSwitchEntity(second.value))
+
+        repository.reseedIfNeeded()
+
+        assertEquals(2, db.userStateDao().countCompletedPSwitches().first())
+        assertEquals(
+            setOf(first.value, second.value),
+            db.backupDao().completedPSwitches().map { it.pSwitchId }.toSet(),
+        )
+        // Ogni ID nuovo esiste davvero tra i Pulsanti P appena caricati.
+        assertTrue(db.backupDao().validPSwitchIds().containsAll(legacy.values))
     }
 }

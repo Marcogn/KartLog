@@ -103,6 +103,8 @@ class Config:
     region_of: dict[str, str]          # courseId / areaId -> regionId
     areas: AliasTable
     checklist_mission_names: dict[str, str]  # mkworld-checklist -> mariowiki, seedgen/checklist.py
+    legacy_p_switch_ids: dict[str, str]  # ID posizionale fino a seedVersion 10 -> nome della missione (congelato)
+    p_switch_renames: dict[str, str]     # nome attuale -> nome originale da cui è nato l'ID (fase P1)
     character_genders: dict[str, str]  # characterId -> "M"/"F", solo per seedgen/i18n.py
     food_names_it: dict[str, str]      # nome inglese del cibo -> traduzione NON ufficiale
     mirror_mode_it: list[dict]         # [{en, it}]: condizioni della modalità specchio, traduzione NON ufficiale
@@ -158,6 +160,8 @@ class Config:
             region_of=region_of,
             areas=AliasTable("Luogo", aliases.get("areas", {})),
             checklist_mission_names=_load_yaml(tool_dir / "manual" / "checklist_mission_names.yaml"),
+            legacy_p_switch_ids=_load_yaml(tool_dir / "manual" / "legacy_p_switch_ids.yaml"),
+            p_switch_renames=_load_yaml(tool_dir / "manual" / "p_switch_renames.yaml") or {},
             character_genders=_load_yaml(tool_dir / "manual" / "character_genders.yaml"),
             food_names_it=_load_yaml(tool_dir / "manual" / "food_names_it.yaml"),
             mirror_mode_it=_load_list(tool_dir / "manual" / "mirror_mode_it.yaml"),

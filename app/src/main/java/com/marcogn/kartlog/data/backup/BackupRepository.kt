@@ -9,6 +9,7 @@ import com.marcogn.kartlog.data.local.entity.CharacterUnlockEntity
 import com.marcogn.kartlog.data.local.entity.CollectedMedallionEntity
 import com.marcogn.kartlog.data.local.entity.CompletedPSwitchEntity
 import com.marcogn.kartlog.data.local.entity.OwnedOutfitEntity
+import com.marcogn.kartlog.data.seed.SeedAssetLoader
 import com.marcogn.kartlog.domain.model.Cc
 import com.marcogn.kartlog.domain.model.TrophyRank
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -19,6 +20,7 @@ import kotlinx.serialization.json.Json
 /** Export/import dello stato utente tramite Storage Access Framework (SPEC §4). */
 class BackupRepository @Inject constructor(
     private val dao: BackupDao,
+    private val assets: SeedAssetLoader,
     @ApplicationContext private val context: Context,
 ) {
     // encodeDefaults: `backupVersion` va scritto anche quando coincide col default, altrimenti il file non lo porta.
@@ -56,7 +58,12 @@ class BackupRepository @Inject constructor(
         val (validOutfits, unknownOutfits) = payload.ownedOutfitIds.partition { it in validOutfitIds }
         val (validUnlocks, unknownUnlocks) = payload.characterUnlocks.partition { it.characterId in validCharacterIds }
         val (validMedallions, unknownMedallions) = payload.collectedMedallionIds.partition { it in validMedallionIds }
-        val (validPSwitches, unknownPSwitches) = payload.completedPSwitchIds.partition { it in validPSwitchIds }
+        // Un backup fatto prima del seedVersion 11 ha gli ID posizionali dei Pulsanti P (fase P1).
+        val legacyPSwitchIds = assets.readPSwitchLegacyIds()
+        val (validPSwitches, unknownPSwitches) = payload.completedPSwitchIds
+            .map { legacyPSwitchIds[it] ?: it }
+            .distinct()
+            .partition { it in validPSwitchIds }
         val (validResults, unknownResults) = bestResultsOf(payload).partition { it.eventId in validEventIds }
         // Le monete di un backup v1/v2 (posti anonimi per bioma, prima di MIGRATION_6_7) non esistono più:
         // finiscono tra gli sconosciuti, come ogni altro ID che il seed corrente non ha.

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict
 
+from .build import p_switch_id
 from .config import Config
 from .errors import ValidationError
 
@@ -150,6 +151,23 @@ def validate(seed: dict, cfg: Config) -> None:
             check(expected_region is not None, f"{m['id']} ({m['name']}): luogo sconosciuto {place}")
             check(m["regionId"] == expected_region,
                   f"{m['id']} ({m['name']}): elencato in {m['regionId']} ma {place} è in {expected_region}")
+            check(m["id"] == p_switch_id(m["name"], cfg), f"{m['id']}: ID diverso da quello del nome {m['name']!r}")
+        dup = [k for k, n in Counter(m["id"] for m in ps).items() if n > 1]
+        check(not dup, f"pulsanti P: ID duplicati (nomi uguali a meno della punteggiatura?) {dup}")
+
+        # Vecchi ID posizionali -> nuovi (fase P1): tutti, verso Pulsanti P esistenti, o lo stato salvato
+        # e i backup vecchi perderebbero spunte in silenzio.
+        legacy = _items(seed, "p_switch_legacy_ids.json") if "p_switch_legacy_ids.json" in seed else []
+        mapped = {x["legacyId"] for x in legacy}
+        missing = {old: name for old, name in cfg.legacy_p_switch_ids.items() if old not in mapped}
+        check(not missing, f"pulsanti P: {len(missing)} missioni del vecchio seed non più sul wiki (se rinominate, "
+                           f"nome nuovo -> nome originale in manual/p_switch_renames.yaml): "
+                           f"{dict(list(missing.items())[:10])}")
+        # Ogni vecchio ID va sulla missione col nome congelato per lui, non su una qualsiasi esistente.
+        original_name = {m["id"]: cfg.p_switch_renames.get(m["name"], m["name"]) for m in ps}
+        wrong = [x["legacyId"] for x in legacy if original_name.get(x["id"]) != cfg.legacy_p_switch_ids.get(x["legacyId"])]
+        check(not wrong, f"p_switch_legacy_ids.json: vecchi ID verso la missione sbagliata o inesistente: {wrong[:10]}")
+        check(len(mapped) == len(legacy), "p_switch_legacy_ids.json: ID vecchi duplicati")
 
     # --- Piloti (anche senza outfit) e stato iniziale di sblocco ---------------------------------
     check(len(characters) == exp["drivers"], f"piloti: {len(characters)}, attesi {exp['drivers']}")
