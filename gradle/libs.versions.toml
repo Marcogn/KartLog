@@ -2,7 +2,7 @@
 # Ultime versioni stabili al 2026-10-04, lette dai repository Maven (stesso insieme di PdfToolkit,
 # docs/decisioni.md); le librerie di terze parti restano nella loro major.
 agp = "9.4.1"
-kotlin = "2.4.20"
+kotlin = "2.4.21"
 ksp = "2.3.12"
 coreKtx = "1.19.1"
 lifecycle = "2.11.0"
