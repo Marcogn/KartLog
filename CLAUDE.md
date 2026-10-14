@@ -28,8 +28,8 @@ Quando l'autore scrive "vai avanti con la prossima fase" (o simile):
 3. Esegui **solo** quella fase. Ciò che appartiene a una fase successiva va annotato in Stato attuale, non implementato.
 4. Chiudi con i punti "Fatto quando" della fase e quelli comuni in fondo a `docs/roadmap.md`. Una fase Opus scrive un **handoff** (max 15 righe) in Stato attuale per la successiva; ogni fase finisce elencando i **controlli a schermo** (qui non c'è emulatore).
 5. Non iniziare la fase successiva nella stessa sessione, a meno che l'autore non lo chieda.
-6. **Revisione prima di ogni PR** (`self-review`, imposta da `.claude/hooks/review-gate.sh`: una sessione che ha committato codice non può chiudersi né aprire la PR finché il diff non è revisionato). Bug e idee fuori scopo diventano issue su GitHub, non note qui (`docs/claude.md`, «Issues»).
-7. **Nomi** (`docs/claude.md`, «Names»): a inizio sessione dai un titolo con `set_session_title` (`KartLog <cosa>`); i branch che crei tu si chiamano `<tipo>/<cosa-e-dove>`.
+6. **Revisione prima di ogni PR**: `self-review`, imposta da `.claude/hooks/review-gate.sh` (ferma la chiusura della sessione una volta e blocca la PR finché il diff non è revisionato). Lavoro di fasi successive → Stato attuale; bug e idee fuori scopo → issue GitHub (`docs/claude.md`).
+7. **Nomi** (`docs/claude.md`): titolo di sessione con `set_session_title` (`KartLog <cosa>`); branch creati da te `<tipo>/<cosa-e-dove>`.
 
 ## Comandi
 ```bash
