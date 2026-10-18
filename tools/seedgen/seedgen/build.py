@@ -402,7 +402,7 @@ def build(
         else:
             cid, aid = None, cfg.areas.resolve(m.location, f"missione {m.name!r}")
         # ID dal nome, non dalla posizione: una missione spostata nella pagina non deve cambiare l'ID di
-        # quelle dopo, a cui è legato lo stato dell'utente (completed_p_switches). docs/decisioni.md, fase P1.
+        # quelle dopo, a cui è legato lo stato dell'utente (completed_p_switches). docs/decisions.md, fase P1.
         p_switches.append({"id": p_switch_id(m.name, cfg), "index": i, "regionId": rid,
                            "courseId": cid, "areaId": aid, "name": m.name})
     if checklist and p_switches:

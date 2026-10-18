@@ -142,7 +142,7 @@ def cmd_accept(args, cfg: Config) -> int:
     write_seed({"meta.json": new["meta.json"]}, seed_dir)
     revs = ", ".join(s["title"] + (f"@{s['revid']}" if s.get("revid") else "") for s in new["meta.json"]["sources"])
     # Riga pronta per il CHANGELOG: il task Gradle la inserisce nel formato del progetto.
-    print(f"Dati di gioco aggiornati da Super Mario Wiki e mkworld-checklist (seedVersion {new['meta.json']['seedVersion']}; {revs})")
+    print(f"Game data updated from Super Mario Wiki and mkworld-checklist (seedVersion {new['meta.json']['seedVersion']}; {revs})")
     return EXIT_OK
 
 

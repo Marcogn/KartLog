@@ -13,7 +13,7 @@ private const val PREFS_NAME = "update_prefs"
 private const val KEY_FREQUENCY = "frequency"
 private const val KEY_LAST_CHECK_AT = "last_check_at"
 
-/** Update check settings — plain SharedPreferences, two values don't need DataStore (docs/decisioni.md, fase A1). */
+/** Update check settings — plain SharedPreferences, two values don't need DataStore (docs/decisions.md, fase A1). */
 @Singleton
 class UpdatePreferences @Inject constructor(@ApplicationContext context: Context) {
     private val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)

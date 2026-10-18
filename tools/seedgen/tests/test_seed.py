@@ -2,6 +2,7 @@
 e la validazione intercetta davvero gli errori."""
 
 import copy
+import re
 
 import pytest
 
@@ -183,6 +184,18 @@ def test_accept_bumps_version(golden_seed, tmp_path):
     after = read_seed(base)
     assert after["meta.json"]["seedVersion"] == golden_seed["meta.json"]["seedVersion"] + 1
     assert all(after.get(f) == new.get(f) for f in COMPARED_FILES)
+
+
+def test_accept_prints_changelog_line(golden_seed, tmp_path, capsys):
+    # app/build.gradle.kts (prependChangelogEntry) parses this exact shape: "<prefix> (seedVersion N; <revs>)".
+    base, cand = tmp_path / "seed", tmp_path / "cand"
+    write_seed(golden_seed, base)
+    write_seed(golden_seed, cand)
+    assert main(["accept", "--seed", str(base), "--candidate", str(cand)]) == EXIT_OK
+    line = capsys.readouterr().out.strip().splitlines()[-1]
+    version = golden_seed["meta.json"]["seedVersion"]
+    assert line.startswith("Game data updated from Super Mario Wiki and mkworld-checklist ")
+    assert re.fullmatch(rf"Game data updated from .+ \(seedVersion {version}; .+\)", line)
 
 
 # --- Stand nel build (seedgen/build.py, _stands) ---------------------------------------------------
