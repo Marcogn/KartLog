@@ -18,8 +18,8 @@ android {
         applicationId = "com.marcogn.kartlog"
         minSdk = 26
         targetSdk = 36
-        versionCode = 13
-        versionName = "1.2.1"
+        versionCode = 14
+        versionName = "1.3.0"
 
         // Controllo aggiornamenti (data/update/GitHubReleaseClient): repository delle release.
         buildConfigField("String", "UPDATE_GITHUB_OWNER", "\"Marcogn\"")

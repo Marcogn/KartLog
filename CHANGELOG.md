@@ -7,6 +7,8 @@ UI texts are quoted as they appear in the app (Italian is the default language).
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-10-18
+
 - **Repository documentation and changelog in English.** README, specification, project decisions and this changelog are now in English (the app itself stays Italian by default, with English available). The news titles shown by the update dialog will therefore be in English.
 
 ## [1.2.1] - 2026-10-12
