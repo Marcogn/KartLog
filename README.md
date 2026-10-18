@@ -4,231 +4,232 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![minSdk 26](https://img.shields.io/badge/minSdk-26-brightgreen.svg)](app/build.gradle.kts)
 
-Tracker Android per i collectibles di Mario Kart World: skin
-(outfit) dei personaggi, Monete Peach e Pulsanti P, con un modulo
-"Consigliami" che suggerisce quale Gran Premio o Knockout Tour correre — e
-con quale personaggio — per sbloccare più outfit mancanti.
+Android tracker for the Mario Kart World collectibles: character skins
+(outfits), Peach Medallions and P Switches, with a "Consigliami" module
+that suggests which Grand Prix or Knockout Tour to race — and with which
+character — to unlock more missing outfits.
 
-> Nome di lavoro "KartLog": nessun asset, nome o logo Nintendo compare nel
-> repository, nel package o nell'icona (vedi [`SPEC.md`](SPEC.md) §0). Le immagini di
-> gioco si scaricano a runtime, vedi [Immagini](#immagini).
+> Working name "KartLog": no Nintendo asset, name or logo appears in the
+> repository, the package or the icon (see [`SPEC.md`](SPEC.md) §0). Game
+> images are downloaded at runtime, see [Images](#images).
+>
+> The app's UI is Italian (default) and English; the repository documentation is in English.
 
-## Perché
+## Why
 
-Gli outfit di Mario Kart World si sbloccano dando da mangiare ai
-personaggi cibi trovati sui percorsi, in combinazioni che il gioco non
-spiega mai in un unico posto: KartLog le raccoglie da Super Mario Wiki e
-le trasforma in un tracker con contatori di completamento, checklist per
-Monete Peach e Pulsanti P, e un suggerimento su quale evento correre (e
-con chi) per avvicinarsi il più possibile alla collezione completa.
+Mario Kart World outfits are unlocked by feeding the characters foods
+found on the courses, in combinations the game never explains in a single
+place: KartLog collects them from Super Mario Wiki and turns them into a
+tracker with completion counters, checklists for Peach Medallions and
+P Switches, and a suggestion of which event to race (and with whom) to get
+as close as possible to the complete collection.
 
-## Stato del progetto
+## Project status
 
-L'app è usabile e pubblicata (vedi [`CHANGELOG.md`](CHANGELOG.md)). Il
-lavoro in corso è in [`docs/roadmap.md`](docs/roadmap.md): revisione della
-grafica di Consigliami.
+The app is usable and published (see [`CHANGELOG.md`](CHANGELOG.md)). The
+work in progress is in [`docs/roadmap.md`](docs/roadmap.md).
 
-## Funzionalità
+## Features
 
-Dalla specifica completa ([`SPEC.md`](SPEC.md)):
+From the full specification ([`SPEC.md`](SPEC.md)):
 
-- **Personaggi**: tutti i 50 piloti, con contatore ottenuti/totali degli
-  outfit per i 24 che ne hanno; per ciascuno, checklist degli outfit
-  con i gruppi di cibo che li sbloccano e uno switch per lo stato di
-  sblocco. I piloti senza outfit si segnano come sbloccati con un tap.
-- **Cibi**: sottosezione di Personaggi; per ogni cibo le varianti, dove
-  trovarlo (stand Yoshi's sui percorsi e sulle strade) e gli outfit che
-  sblocca per personaggio.
-- **Monete Peach**: le 200 monete una per una, con le istruzioni per
-  trovarle e il tasto per vederle sulla mappa.
-- **Pulsanti P**: checklist per bioma e percorso, con ricerca e
-  "segna tutti".
-- **Pannelli "?"**: i 150 pannelli uno per uno, come le Monete Peach.
-  Nel menu laterale le tre liste stanno sotto "Collezionabili".
-- **Mappa**: Monete Peach, Pulsanti P e pannelli "?" sulla mappa del
-  mondo, con zoom, filtri per tipo e per "fatti", istruzioni e video.
-  Si apre dal menu o dal pulsantone rosso di Monete Peach e Pulsanti P.
-- **Consigliami**: classifica dei Gran Premi/Knockout Tour da correre in
-  base agli outfit ancora mancanti, con personaggio consigliato, le due
-  alternative successive e i cibi che potrebbero esserci: gli stand
-  Yoshi's sono nell'area dei percorsi, non per forza sul tracciato di
-  gara, quindi ogni consiglio è una possibilità ("occhi aperti").
-- **Risultati**: schermata dedicata, raggiungibile dalla Home, dove si
-  registra il miglior trofeo (bronzo … oro ★★★) di ogni Gran Premio e
-  Knockout Tour per cilindrata; peso opzionale nel punteggio di
-  Consigliami.
-- **Backup**: export/import JSON dello stato utente (non dei dati di
-  gioco) tramite Storage Access Framework, dalla schermata Impostazioni.
-- **Impostazioni**: tema (sistema/chiaro/scuro) e lingua dell'app
-  (sistema/italiano/inglese).
+- **Personaggi** (characters): all 50 drivers, with an obtained/total outfit
+  counter for the 24 that have them; for each one, a checklist of the outfits
+  with the food groups that unlock them and a switch for the unlock state.
+  Drivers without outfits are marked as unlocked with a tap.
+- **Cibi** (foods): sub-section of Personaggi; for each food, the variants,
+  where to find it (Yoshi's stands on courses and on roads) and the outfits it
+  unlocks per character.
+- **Monete Peach** (Peach Medallions): the 200 coins one by one, with the
+  instructions to find them and a button to see them on the map.
+- **Pulsanti P** (P Switches): checklist by biome and course, with search and
+  "segna tutti" (mark all).
+- **Pannelli "?"** ("?" panels): the 150 panels one by one, like the Peach
+  Medallions. In the side menu the three lists are under "Collezionabili".
+- **Mappa** (map): Peach Medallions, P Switches and "?" panels on the world
+  map, with zoom, filters by type and by "done", instructions and videos.
+  It opens from the menu or from the big red button of Monete Peach and
+  Pulsanti P.
+- **Consigliami**: ranking of the Grand Prix/Knockout Tours to race based on
+  the outfits still missing, with the recommended character, the next two
+  alternatives and the foods that might be there: the Yoshi's stands are in
+  the courses' area, not necessarily on the race track, so every piece of
+  advice is a possibility ("occhi aperti", keep your eyes open).
+- **Risultati** (results): dedicated screen, reachable from Home, where the
+  best trophy (bronze … gold ★★★) of each Grand Prix and Knockout Tour is
+  recorded per engine class; optional weight in Consigliami's score.
+- **Backup**: JSON export/import of the user state (not of the game data)
+  through the Storage Access Framework, from the Impostazioni (settings) screen.
+- **Impostazioni**: theme (system/light/dark) and app language
+  (system/Italian/English).
 
-## Dati di gioco
+## Game data
 
-I dati di gioco (personaggi, outfit, cibi, percorsi, eventi, Pulsanti P)
-vengono da **Super Mario Wiki** (mariowiki.com),
-contenuti testuali in licenza **CC BY-SA 4.0**, estratti dallo script in
-[`tools/seedgen/`](tools/seedgen/README.md) e versionati in
-[`seed/`](seed/README.md). Nessun dato è inventato: dettagli su fonti,
-regole di estrazione e attribuzione in [`SPEC.md`](SPEC.md) §5.
+The game data (characters, outfits, foods, courses, events, P Switches)
+comes from **Super Mario Wiki** (mariowiki.com), text content under the
+**CC BY-SA 4.0** license, extracted by the script in
+[`tools/seedgen/`](tools/seedgen/README.md) and versioned in
+[`seed/`](seed/README.md). No data is invented: details on sources,
+extraction rules and attribution in [`SPEC.md`](SPEC.md) §5.
 
-I nomi italiani vengono da mariowiki.com e, per quello che lì manca
-(piloti senza outfit, biomi, Gran Premi e Knockout Tour), dalla
-[**Super Mario Wiki italiana**](https://www.mariowiki.it) (anch'essa
-CC BY-SA 4.0). Due eccezioni: le missioni dei Pulsanti P restano in
-inglese (la lista italiana è incompleta), e i nomi italiani dei **cibi**
-sono una **traduzione non ufficiale** fatta a mano, perché nessuna fonte
-li riporta. Lo stesso vale per le **condizioni della modalità specchio** in
-italiano: tradotte a mano dal testo di mariowiki.com, perché quello della
-wiki italiana è meno aggiornato, e per i **luoghi e i tipi di locale degli
-stand Yoshi's** (pagina "List of Yoshi's locations"). I criteri di sblocco dei piloti vengono
-invece dalle due wiki, ciascuno nella sua lingua.
+The Italian names come from mariowiki.com and, for what is missing there
+(drivers without outfits, biomes, Grand Prix and Knockout Tours), from the
+[**Italian Super Mario Wiki**](https://www.mariowiki.it) (also
+CC BY-SA 4.0). Two exceptions: the P Switch missions stay in English (the
+Italian list is incomplete), and the Italian names of the **foods** are an
+**unofficial translation** made by hand, because no source reports them. The
+same goes for the Italian **mirror mode conditions**: translated by hand from
+the mariowiki.com text, because the Italian wiki's is less up to date, and for
+the **places and venue types of the Yoshi's stands** ("List of Yoshi's
+locations" page). The drivers' unlock criteria come instead from the two
+wikis, each in its own language.
 
-## Mappa dei collezionabili
+## Collectibles map
 
-La mappa, le posizioni di Monete Peach, Pulsanti P e pannelli "?", le
-istruzioni per trovarli (solo in inglese) e i video vengono dal progetto
+The map, the positions of Peach Medallions, P Switches and "?" panels, the
+instructions to find them (English only) and the videos come from the
 [**mkworld-checklist**](https://github.com/BamisWasTaken/mkworld-checklist)
-di BamisWasTaken, che pubblica [mktools.io](https://www.mktools.io).
-Grazie! `tools/seedgen` legge i suoi dati a un commit fissato
-(`sources.yaml`) e li abbina alle missioni di mariowiki; l'immagine della
-mappa non è nel repository né nell'APK, l'app la scarica a runtime come
-le immagini del wiki.
+project by BamisWasTaken, which publishes [mktools.io](https://www.mktools.io).
+Thank you! `tools/seedgen` reads its data at a pinned commit
+(`sources.yaml`) and matches it with the mariowiki missions; the map image
+is not in the repository nor in the APK, the app downloads it at runtime like
+the wiki images.
 
-## Immagini
+## Images
 
-Le immagini di personaggi, outfit, Gran Premi e Knockout Tour vengono da
+The images of characters, outfits, Grand Prix and Knockout Tours come from
 [**Super Mario Wiki**](https://www.mariowiki.com/Mario_Kart_World)
-(pagina "Mario Kart World"), quelle dei cibi dalla pagina
-[Dash Food](https://www.mariowiki.com/Dash_Food), servite dal suo CDN
+("Mario Kart World" page), those of the foods from the
+[Dash Food](https://www.mariowiki.com/Dash_Food) page, served by its CDN
 `mario.wiki.gallery`.
 
-- **Non sono nel repository né nell'APK.** `tools/seedgen` ne registra
-  solo l'URL in `seed/` (`imageUrl`); l'app le scarica all'avvio e le
-  tiene nella propria cache. Senza rete e senza cache si vedono i
-  segnaposto con le iniziali.
-- **Non sono coperte dalla licenza CC BY-SA** del testo del wiki: sono
-  screenshot e artwork di Mario Kart World. Mario Kart World, i suoi
-  personaggi e le relative immagini sono © Nintendo.
-- Grazie a Super Mario Wiki e ai suoi contributori, che le hanno raccolte
-  e caricate.
+- **They are not in the repository nor in the APK.** `tools/seedgen` records
+  only the URL in `seed/` (`imageUrl`); the app downloads them at startup and
+  keeps them in its own cache. Without network and without cache the
+  placeholders with initials are shown.
+- **They are not covered by the CC BY-SA license** of the wiki text: they are
+  screenshots and artwork of Mario Kart World. Mario Kart World, its
+  characters and the related images are © Nintendo.
+- Thanks to Super Mario Wiki and its contributors, who collected and
+  uploaded them.
 
-La grafica dell'interfaccia (banner, pista in fondo alla Home, logo e
-icone della Home) viene da un mockup dell'autore; le icone della Home
-richiamano oggetti di gioco e verranno sostituite. Font dei titoli:
-[Lilita One](https://fonts.google.com/specimen/Lilita+One) di Juan
-Montoreano, SIL Open Font License 1.1 (testo in
+The interface graphics (banner, track at the bottom of Home, logo and Home
+icons) come from a mockup by the author; the Home icons recall game objects
+and will be replaced. Title font:
+[Lilita One](https://fonts.google.com/specimen/Lilita+One) by Juan
+Montoreano, SIL Open Font License 1.1 (text in
 `app/src/main/assets/licenses/`).
 
-KartLog è un progetto amatoriale e gratuito, **non affiliato né approvato
-da Nintendo**. Lo stesso avviso è nell'app, in Impostazioni / Info.
+KartLog is an amateur, free project, **not affiliated with or endorsed by
+Nintendo**. The same notice is in the app, in Impostazioni / Info.
 
-## Come compilare
+## How to build
 
 ```bash
-./gradlew assembleDebug       # APK debug: nessuna rete, nessun Python
-./gradlew testDebugUnitTest   # test unitari JVM
+./gradlew assembleDebug       # debug APK: no network, no Python
+./gradlew testDebugUnitTest   # JVM unit tests
 ./gradlew lint                # Android Lint
 ```
 
-Il build **debug** usa solo i JSON già versionati in `seed/`. Il build
-**release** esegue in più `tools/seedgen` per rigenerare e validare i dati
-dal wiki (vedi `SPEC.md` §5.4) — richiede Python 3 e, salvo `-PofflineSeed`,
-accesso di rete a mariowiki.com.
+The **debug** build uses only the JSON already versioned in `seed/`. The
+**release** build also runs `tools/seedgen` to regenerate and validate the data
+from the wiki (see `SPEC.md` §5.4) — it requires Python 3 and, unless
+`-PofflineSeed`, network access to mariowiki.com.
 
-Richiede JDK 17 o successivo, l'Android SDK (`compileSdk 37`) e accesso di rete
-al repository Maven di Google. Gradle 9.8 e AGP 9.4 (vedi
-[`docs/decisions.md`](docs/decisions.md), sezione "Toolchain").
+Requires JDK 17 or later, the Android SDK (`compileSdk 37`) and network access
+to Google's Maven repository. Gradle 9.8 and AGP 9.4 (see
+[`docs/decisions.md`](docs/decisions.md), "Toolchain" section).
 
-**Quale APK installare:** quello del workflow *Build APK* (Actions → Build
-APK → Run workflow) o di una release: è la build di release firmata sempre
-con la stessa chiave, quindi si installa sopra l'app già presente senza
-perdere i dati. La CI non carica più APK; dettagli in [`docs/ci.md`](docs/ci.md).
+**Which APK to install:** the one from the *Build APK* workflow (Actions →
+Build APK → Run workflow) or from a release: it is the release build, always
+signed with the same key, so it installs over the app already present without
+losing data. CI no longer uploads APKs; details in [`docs/ci.md`](docs/ci.md).
 
-## Aggiornamenti
+## Updates
 
-All'avvio (al massimo una volta per avvio, e mai nelle build debug) l'app guarda l'ultima release di
-questo repository su GitHub; se è più nuova, mostra le novità e chiede se scaricarla, poi chiede di
-installarla con il programma di installazione di sistema (alla prima volta Android chiede di
-abilitare "installa app sconosciute" per KartLog; l'installazione è sempre confermata da te). L'APK
-è verificato (SHA-256, stesso pacchetto, versione più alta, stessa firma) prima di arrivare
-all'installatore. In Impostazioni la frequenza è Mai / A ogni avvio / Ogni giorno / Ogni settimana
-(predefinita: ogni settimana); "Mai" non fa nessuna richiesta a GitHub, e in Info "Controlla
-aggiornamenti" funziona comunque. Il codice è copiato da
+At startup (at most once per launch, and never in debug builds) the app looks
+at the latest release of this repository on GitHub; if it is newer, it shows
+what's new and asks whether to download it, then asks to install it with the
+system installer (the first time Android asks to enable "install unknown apps"
+for KartLog; the installation is always confirmed by you). The APK is verified
+(SHA-256, same package, higher version, same signature) before reaching the
+installer. In Impostazioni the frequency is Mai / A ogni avvio / Ogni giorno /
+Ogni settimana (never / every launch / daily / weekly; default: weekly);
+"Mai" makes no request to GitHub, and in Info "Controlla aggiornamenti" (check
+for updates) works anyway. The code is copied from
 [ThePatientGamerHelper](https://github.com/Marcogn/ThePatientGamerHelper) (`docs/decisions.md`).
 
 ## Privacy
 
-Nessuna analytics, nessun account. Il permesso INTERNET serve **solo** a
-scaricare le immagini (vedi [Immagini](#immagini)) dal CDN di Super Mario
-Wiki e a controllare gli aggiornamenti (vedi [Aggiornamenti](#aggiornamenti)):
-nessun altro dato esce dal dispositivo, e tutto il resto dell'app
-funziona anche offline. A build time la rete serve anche allo script
-`tools/seedgen`, che rigenera i dati di gioco dal wiki.
+No analytics, no account. The INTERNET permission is used **only** to
+download the images (see [Images](#images)) from the Super Mario Wiki CDN and
+to check for updates (see [Updates](#updates)): no other data leaves the
+device, and everything else in the app works offline too. At build time the
+network is also used by the `tools/seedgen` script, which regenerates the game
+data from the wiki.
 
-## Stack tecnico
+## Tech stack
 
-Kotlin e Jetpack Compose con Material 3, stessa architettura di
-riferimento di [ThePatientGamerHelper](https://github.com/Marcogn/ThePatientGamerHelper)
-(vedi [`docs/decisions.md`](docs/decisions.md), sezione "Toolchain",
-per il dettaglio dell'allineamento):
+Kotlin and Jetpack Compose with Material 3, same reference architecture as
+[ThePatientGamerHelper](https://github.com/Marcogn/ThePatientGamerHelper)
+(see [`docs/decisions.md`](docs/decisions.md), "Toolchain" section, for the
+details of the alignment):
 
-- **Room** come fonte di verità per i dati seed e lo stato utente
-- **Hilt** per la dependency injection
-- **Navigation Compose** con rotte type-safe (`kotlinx.serialization`)
-- **ViewModel + StateFlow**, flusso dati unidirezionale
+- **Room** as the source of truth for the seed data and the user state
+- **Hilt** for dependency injection
+- **Navigation Compose** with type-safe routes (`kotlinx.serialization`)
+- **ViewModel + StateFlow**, unidirectional data flow
 - `minSdk 26`, `targetSdk 36`, `compileSdk 37`
 
-## Struttura del progetto
+## Project structure
 
 ```
-SPEC.md                  specifica funzionale e tecnica completa
-CLAUDE.md                guida operativa per chi (o cosa) sviluppa il progetto
-docs/                    roadmap, decisioni di progetto, CI
-seed/                    JSON dei dati di gioco (CC BY-SA 4.0), generati
-tools/seedgen/           script Python che genera seed/ da Super Mario Wiki
+SPEC.md                  complete functional and technical specification
+CLAUDE.md                operating guide for whoever (or whatever) develops the project
+docs/                    roadmap, project decisions, CI
+seed/                    game data JSON (CC BY-SA 4.0), generated
+tools/seedgen/           Python script that generates seed/ from Super Mario Wiki
 app/src/main/java/com/marcogn/kartlog/
-├── ui/                  schermate Compose (home, skin, medaglioni, pulsanti P,
-│                        consigliami, impostazioni) + tema + navigazione
-├── data/                Room (entity/dao), DTO e repository del seed (fase 3)
-└── domain/              modelli puri e l'algoritmo di Consigliami (fase 6), nessuna dipendenza Android
+├── ui/                  Compose screens (home, skin, medallions, P switches,
+│                        consigliami, settings) + theme + navigation
+├── data/                Room (entity/dao), DTOs and seed repository (phase 3)
+└── domain/              pure models and the Consigliami algorithm (phase 6), no Android dependency
 ```
 
-## Documentazione
+## Documentation
 
-- [`CHANGELOG.md`](CHANGELOG.md) — cosa è cambiato in ogni release
-- [`SPEC.md`](SPEC.md) — specifica funzionale e tecnica dell'app
-- [`docs/roadmap.md`](docs/roadmap.md) — le prossime fasi di lavoro
-- [`docs/decisions.md`](docs/decisions.md) — le scelte di progetto e il
-  loro perché (fonti dei dati, grafica, toolchain, allineamento a
+- [`CHANGELOG.md`](CHANGELOG.md) — what changed in each release
+- [`SPEC.md`](SPEC.md) — functional and technical specification of the app
+- [`docs/roadmap.md`](docs/roadmap.md) — the next work phases
+- [`docs/decisions.md`](docs/decisions.md) — the project choices and their
+  reasons (data sources, graphics, toolchain, alignment with
   ThePatientGamerHelper)
-- [`docs/ci.md`](docs/ci.md) — i workflow di GitHub Actions (CI, Build
-  APK, Release, pulizia delle esecuzioni), condivisi con gli altri progetti
-  Android dell'autore (in inglese, come il file di riferimento)
-- [`docs/claude.md`](docs/claude.md) — come è impostato Claude Code (skill,
-  agente revisore, hook), dal kit condiviso con gli altri progetti Android
-- [`CLAUDE.md`](CLAUDE.md) — regole operative, comandi e stato per chi
-  sviluppa il progetto
-- [`tools/seedgen/README.md`](tools/seedgen/README.md) — uso dello script
-  di estrazione dati
-- [`seed/README.md`](seed/README.md) — formato dei file seed
+- [`docs/ci.md`](docs/ci.md) — the GitHub Actions workflows (CI, Build
+  APK, Release, run cleanup), shared with the author's other Android projects
+- [`docs/claude.md`](docs/claude.md) — how Claude Code is set up (skills,
+  reviewer agent, hooks), from the kit shared with the other Android projects
+- [`CLAUDE.md`](CLAUDE.md) — operating rules, commands and status for whoever
+  develops the project
+- [`tools/seedgen/README.md`](tools/seedgen/README.md) — usage of the data
+  extraction script
+- [`seed/README.md`](seed/README.md) — format of the seed files
 
 ## Contributing
 
-Progetto personale a uso singolo utente: nessuna roadmap pubblica aperta a
-proposte. Segnalazioni di bug e piccole PR di fix mirati sono benvenute —
-apri una issue prima di lavorare su qualcosa di sostanziale. Per
-segnalare una vulnerabilità di sicurezza vedi [`SECURITY.md`](SECURITY.md)
-invece di aprire una issue pubblica.
+Personal single-user project: no public roadmap open to proposals. Bug
+reports and small, targeted fix PRs are welcome — open an issue before
+working on anything substantial. To report a security vulnerability see
+[`SECURITY.md`](SECURITY.md) instead of opening a public issue.
 
 ## About this project
 
-KartLog è un progetto indipendente sviluppato da marcogn in stretta
-collaborazione con Claude, l'assistente di programmazione AI di
-Anthropic — Claude scrive e revisiona gran parte del codice, sotto
-supervisione e design umano diretti a ogni passo.
+KartLog is an independent project developed by marcogn in close
+collaboration with Claude, Anthropic's AI coding assistant — Claude writes and
+reviews much of the code, under direct human supervision and design at every
+step.
 
 ## License
 
-MIT, vedi [`LICENSE`](LICENSE). I dati in `seed/` restano sotto la
-licenza CC BY-SA 4.0 di Super Mario Wiki (vedi [`seed/LICENSE`](seed/LICENSE)),
-separata dalla licenza del codice.
+MIT, see [`LICENSE`](LICENSE). The data in `seed/` remains under Super Mario
+Wiki's CC BY-SA 4.0 license (see [`seed/LICENSE`](seed/LICENSE)), separate from
+the code license.

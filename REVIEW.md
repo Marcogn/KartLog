@@ -17,7 +17,7 @@ Full rules in `CLAUDE.md`, choices and reasons in `docs/decisions.md`. Here only
 - **Graphics**: new screens use the `Kart*` components (`ui/common/KartChrome.kt`, `Modifier.kartSky`); never `FilterChip`; never `BoxWithConstraints`/`SubcomposeLayout` where the parent asks for intrinsic measurements. Grey = you are missing it, coloured = you have it.
 - **Navigation**: every `navigate()`/`popBackStack()` goes through the `lifecycleIsResumed()` guard; `@Serializable` routes in `Destination`.
 - **Characters**: the 32 `starter` drivers are always unlocked in queries (`SkinDao`, `ConsigliamiDao`); the default outfit is always in `owned_outfits`.
-- **Documents**: CHANGELOG `[Unreleased]` for every visible change (`- **Summary.** detail`); `CLAUDE.md` "Stato attuale" and `docs/decisions.md` updated if the change makes them false.
+- **Documents**: CHANGELOG `[Unreleased]` for every visible change (`- **Summary.** detail`); `CLAUDE.md` "Current status" and `docs/decisions.md` updated if the change makes them false.
 
 ## Verification threshold
 A claim about behaviour cites `file:line`. A rule is violated only if the line is given. On-screen verification: there is no emulator here, the author does it.
