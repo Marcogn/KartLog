@@ -11,7 +11,7 @@ plugins {
 android {
     namespace = "com.marcogn.kartlog"
     // Il massimo supportato da AGP 9.4. targetSdk resta 36: alzarlo cambia il comportamento a
-    // runtime (Android 17) e va provato prima su un dispositivo (docs/decisioni.md, "Toolchain").
+    // runtime (Android 17) e va provato prima su un dispositivo (docs/decisions.md, "Toolchain").
     compileSdk = 37
 
     defaultConfig {
