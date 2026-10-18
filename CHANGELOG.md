@@ -1,100 +1,103 @@
 # Changelog
 
-Tutte le modifiche rilevanti a KartLog sono documentate in questo file.
-Il formato ricalca liberamente [Keep a Changelog](https://keepachangelog.com/en/1.1.0/);
-il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
+All notable changes to KartLog are documented in this file.
+The format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/);
+versioning follows the app's `versionName` in `app/build.gradle.kts`.
+UI texts are quoted as they appear in the app (Italian is the default language).
 
 ## [Unreleased]
 
+- **Repository documentation and changelog in English.** README, specification, project decisions and this changelog are now in English (the app itself stays Italian by default, with English available). The news titles shown by the update dialog will therefore be in English.
+
 ## [1.2.1] - 2026-10-12
 
-- **Dati di gioco aggiornati da Super Mario Wiki e mkworld-checklist (seedVersion 11).** Dash Food@5455370, List of Yoshi's locations@5263331, List of Mario Kart World missions@5514472, Template:Mario Kart World@5513200, Golden Rally@5489159, Ice Rally@5479135, Moon Rally@5479138, Spiny Rally@5479139, Cherry Rally@5507581, Acorn Rally@5479142, Cloud Rally@5479143, Heart Rally@5479144, Drill Rally@5507592, Boomerang Rally (rally)@5507540, Propeller Rally@5514737, Turnip Rally@5488553, Mario Kart World@698015, Lista delle missioni di Mario Kart World@686389, Mario Kart World@5514814, mkworld-checklist@ee86055
-- **Pulsanti P spuntati al sicuro dai cambi del wiki.** Ogni Pulsante P ora è identificato dal nome della missione, non dalla posizione nella lista del wiki: lo spostamento di una missione ("Gather the blue coins around the control tower!", ora a Peach Stadium) avrebbe fatto slittare le spunte di 97 missioni. Le spunte già salvate e i backup fatti prima vengono portati sui nuovi ID senza perdere nulla.
-- **Aggiornamenti dall'app.** All'avvio KartLog controlla le release di GitHub; se ce n'è una nuova mostra le novità, chiede se scaricarla e poi di installarla con la conferma di sistema.
-  - Nuovo dialogo con la grafica del gioco: titoli delle novità, "Changelog completo", Scarica / Non ora, avanzamento con Annulla e il motivo in caso di errore.
-  - L'APK è verificato prima dell'installazione (SHA-256, stesso pacchetto, versione più alta, stessa firma).
-  - Nuova impostazione "Controllo degli aggiornamenti": Mai / A ogni avvio / Ogni giorno / Ogni settimana (predefinita). Le build debug non controllano mai da sole.
-  - Nuovo permesso "installa app sconosciute" (`REQUEST_INSTALL_PACKAGES`), chiesto da Android solo quando installi un aggiornamento.
-- **Versione e crediti in Info.** La sezione Info di Impostazioni mostra la versione installata, "Controlla aggiornamenti" (anche con "Mai"), "Fatto con il ❤️ da Marcogn", il link al repository, la licenza MIT e la nota che l'app si collega a GitHub solo per gli aggiornamenti.
+- **Game data updated from Super Mario Wiki and mkworld-checklist (seedVersion 11).** Dash Food@5455370, List of Yoshi's locations@5263331, List of Mario Kart World missions@5514472, Template:Mario Kart World@5513200, Golden Rally@5489159, Ice Rally@5479135, Moon Rally@5479138, Spiny Rally@5479139, Cherry Rally@5507581, Acorn Rally@5479142, Cloud Rally@5479143, Heart Rally@5479144, Drill Rally@5507592, Boomerang Rally (rally)@5507540, Propeller Rally@5514737, Turnip Rally@5488553, Mario Kart World@698015, Lista delle missioni di Mario Kart World@686389, Mario Kart World@5514814, mkworld-checklist@ee86055
+- **Ticked P switches safe from wiki changes.** Each P switch is now identified by its mission name, not by its position in the wiki list: the move of one mission ("Gather the blue coins around the control tower!", now at Peach Stadium) would have shifted the ticks of 97 missions. Ticks already saved and backups made before are carried over to the new IDs without losing anything.
+- **In-app updates.** At startup KartLog checks GitHub releases; if there is a new one it shows what's new, asks whether to download it and then to install it with the system confirmation.
+  - New dialog in the game's style: titles of the news, "Changelog completo", Scarica / Non ora, progress with Annulla and the reason in case of error.
+  - The APK is verified before installation (SHA-256, same package, higher version, same signature).
+  - New setting "Controllo degli aggiornamenti": Mai / A ogni avvio / Ogni giorno / Ogni settimana (default). Debug builds never check on their own.
+  - New "install unknown apps" permission (`REQUEST_INSTALL_PACKAGES`), asked by Android only when you install an update.
+- **Version and credits in Info.** The Info section of Impostazioni shows the installed version, "Controlla aggiornamenti" (even with "Mai"), "Fatto con il ❤️ da Marcogn", the link to the repository, the MIT license and the note that the app connects to GitHub only for updates.
 
 ## [1.2.0] - 2026-10-05
 
-- **Risultati con la grafica del gioco.** Ogni evento è una tessera (arancio i Gran Premi, verde i
-  Knockout Tour) con icona dal contorno nero, nome e il trofeo in una pillola (grigia se non ce
-  l'hai, gialla se l'hai); la scelta del trofeo è un popup del gioco con un pulsante per trofeo e
+- **Risultati with the game's graphics.** Each event is a tile (orange for Grand Prix, green for
+  Knockout Tour) with a black-outlined icon, name and the trophy in a pill (grey if you don't have
+  it, yellow if you do); the trophy choice is a game-style popup with one button per trophy and
   "Nessun trofeo".
-- **Dal cibo dell'outfit alla sezione Cibi.** Nel dettaglio di un personaggio ogni cibo sotto un
-  outfit è sottolineato e toccabile: apre quel cibo in Cibi (il gesto indietro torna al personaggio).
-  Il tocco sul resto della polaroid continua a spuntare l'outfit.
-- **Corretto il "?" di "Rovine del blocco ?".** Il nome italiano aveva uno spazio non separabile che
-  il font dell'app non disegna: seedgen ora lo trasforma in spazio normale (dati di gioco aggiornati,
-  seedVersion 10; nessun cambio ai dati di gioco veri).
-- **Consigliami con la grafica del gioco.** Le card degli eventi sono tessere colorate (arancio i Gran
-  Premi, verde i Knockout Tour) con icona, posizione, personaggio consigliato e cibi possibili; filtri,
-  switch e peso dei risultati stanno in una tessera blu e l'avviso sugli stand è dietro la "i".
-  Icone degli eventi e avatar con il contorno nero.
-- **Classifica di Consigliami numerata 1, 2, 3.** Niente più numeri condivisi a pari merito (1, 1, 3)
-  né card che raggruppano gli eventi: ogni evento ha la sua card e il suo numero.
-- **Tolto "Solo utili".** Gli eventi in cui non si può sbloccare nessun outfit non compaiono mai,
-  anche con "Pesa i risultati" attivo (prima lì restavano in lista).
-- **Dettaglio dell'evento rifatto.** Una tessera per personaggio con una riga per outfit e il cibo
-  che serve accanto ("Vespone – Barbecue"), con i percorsi dell'evento dove potrebbe esserci lo
-  stand; toccando il cibo si apre nella sezione Cibi. Migliori trofei in una tessera in fondo.
-- **Nuova sezione Cibi.** Sottovoce di Personaggi nel drawer: una tessera per cibo con quanti outfit ti
-  mancano; toccandola vedi le varianti, dove trovarlo (sui percorsi e sulle strade, il sushi diviso per
-  variante) e gli outfit che sblocca per ogni personaggio, grigi se non li hai. Luoghi e nomi italiani
-  sono una traduzione non ufficiale; gli stand dei percorsi sono nell'area, non per forza sul tracciato.
-  I personaggi a cui l'outfit manca vengono per primi.
-- **Consigliami parla di possibilità.** Gli stand Yoshi's di un percorso sono nell'area del
-  percorso, non per forza sul tracciato di gara: ora i consigli dicono "fino a +N outfit" e
-  "potrebbero esserci (occhi aperti)", con un avviso in cima al dettaglio e il promemoria che il
-  cambio d'abito si può disattivare nella scelta del veicolo.
-- **Tolto "Includi cibi nei dintorni".** I cibi di un evento vengono solo dagli stand dei suoi
-  percorsi; gli stand sulle strade tra i percorsi arriveranno nella sezione Cibi.
-- **Tutti gli stand Yoshi's e i cibi uno per uno nei dati (seedVersion 9).** 109 stand (70 nell'area
-  dei percorsi, 39 sulle strade) con luogo in inglese e italiano (traduzione non ufficiale) e i 60
-  cibi della pagina Dash Food con livello di boost e immagine, scaricata a runtime come le altre.
-  Database aggiornato senza perdere nulla dei dati dell'utente.
+- **From the outfit's food to the Cibi section.** In a character's detail every food under an
+  outfit is underlined and tappable: it opens that food in Cibi (the back gesture returns to the
+  character). Tapping the rest of the polaroid still ticks the outfit.
+- **Fixed the "?" of "Rovine del blocco ?".** The Italian name had a non-breaking space that the
+  app font doesn't draw: seedgen now turns it into a normal space (game data updated,
+  seedVersion 10; no change to the real game data).
+- **Consigliami with the game's graphics.** The event cards are coloured tiles (orange for Grand
+  Prix, green for Knockout Tour) with icon, position, recommended character and possible foods;
+  filters, switch and results weight are in a blue tile and the warning about the stands is behind
+  the "i". Event icons and avatars with a black outline.
+- **Consigliami ranking numbered 1, 2, 3.** No more shared numbers for ties (1, 1, 3) nor cards
+  grouping events: each event has its own card and its own number.
+- **Removed "Solo utili".** Events where no outfit can be unlocked never appear, even with
+  "Pesa i risultati" on (before, they stayed in the list there).
+- **Event detail redone.** One tile per character with a row per outfit and the needed food next
+  to it ("Vespone – Barbecue"), with the event's courses where the stand might be; tapping the food
+  opens it in the Cibi section. Best trophies in a tile at the bottom.
+- **New Cibi section.** Sub-item of Personaggi in the drawer: one tile per food with how many
+  outfits you are missing; tapping it shows the variants, where to find it (on courses and on
+  roads, sushi split by variant) and the outfits it unlocks for each character, grey if you don't
+  have them. Places and Italian names are an unofficial translation; the stands on courses are in
+  the area, not necessarily on the track. Characters who are missing the outfit come first.
+- **Consigliami speaks of possibilities.** The Yoshi's stands of a course are in the course's
+  area, not necessarily on the race track: the advice now says "fino a +N outfit" and "potrebbero
+  esserci (occhi aperti)", with a warning at the top of the detail and the reminder that the outfit
+  change can be switched off in the vehicle selection.
+- **Removed "Includi cibi nei dintorni".** The foods of an event come only from the stands of its
+  courses; the stands on the roads between courses will arrive in the Cibi section.
+- **All Yoshi's stands and the foods one by one in the data (seedVersion 9).** 109 stands (70 in the
+  courses' area, 39 on roads) with place in English and Italian (unofficial translation) and the 60
+  foods of the Dash Food page with boost level and image, downloaded at runtime like the others.
+  Database updated without losing anything of the user's data.
 
 ## [1.1.2] - 2026-10-04
 
-- **Gesto indietro di nuovo con lo scorrimento laterale.** Dalla 1.1.1, tornando indietro la
-  schermata si rimpiccioliva e spariva: l'animazione predefinita del gesto indietro predittivo di
-  Navigation 2.10. Ora il gesto usa la stessa animazione del tasto indietro, come nella 1.1.0.
+- **Back gesture with the sideways slide again.** Since 1.1.1, going back made the screen shrink
+  and disappear: the default animation of Navigation 2.10's predictive back gesture. Now the
+  gesture uses the same animation as the back button, as in 1.1.0.
 
 ## [1.1.1] - 2026-10-04
 
-- **Fonte del Boomerang Rally aggiornata (seedVersion 8).** Il 03/10/2026 mariowiki ha rinominato la
-  pagina "Boomerang Rally (Mario Kart World)" in "Boomerang Rally (rally)" e la build di release si
-  fermava; dati di gioco invariati, cambiano solo il titolo della fonte e le revisioni registrate.
-- **Librerie e strumenti di build aggiornati.** Gradle 9.8, Android Gradle
+- **Boomerang Rally source updated (seedVersion 8).** On 03/10/2026 mariowiki renamed the page
+  "Boomerang Rally (Mario Kart World)" to "Boomerang Rally (rally)" and the release build
+  stopped; game data unchanged, only the source title and the recorded revisions change.
+- **Libraries and build tools updated.** Gradle 9.8, Android Gradle
   Plugin 9.4, Kotlin 2.4, Compose BOM 2026.09, Room 2.8, Hilt 2.60, Coil 3.6
-  e le altre librerie AndroidX alle ultime versioni stabili; nessuna
-  funzione cambia (dettagli in `docs/decisions.md`, sezione "Toolchain").
-- **Workflow di GitHub Actions condivisi con gli altri progetti.** La CI ora
-  verifica anche la build di release e non carica più l'APK debug (andava
-  disinstallata l'app per provarlo); l'APK da provare è quello di *Build
-  APK*, che ora controlla la firma, come la release (`docs/ci.md`).
+  and the other AndroidX libraries to the latest stable versions; no
+  feature changes (details in `docs/decisions.md`, "Toolchain" section).
+- **GitHub Actions workflows shared with the other projects.** CI now
+  also checks the release build and no longer uploads the debug APK (the app had to be
+  uninstalled to try it); the APK to try is the one from *Build
+  APK*, which now checks the signature, like the release (`docs/ci.md`).
 
 ## [1.1.0] - 2026-09-29
 
-- **Mappa dei collezionabili.** Nuova schermata "Mappa" (menu laterale, e
-  pulsantone rosso in Monete Peach e Pulsanti P) con le posizioni di
-  Monete Peach, Pulsanti P e pannelli "?": zoom, filtri per tipo e per
-  "fatti", popup con istruzioni (in inglese), spunta e video YouTube.
-  Dati e mappa dal progetto mkworld-checklist (mktools.io) di
-  BamisWasTaken; l'immagine si scarica a runtime.
-- **Monete Peach una per una.** Le 200 monete diventano punti sulla mappa
-  con le loro istruzioni, al posto del contatore per bioma. I conteggi
-  segnati prima non si possono convertire: un avviso lo spiega.
-- **Home rivista.** Personaggi e Risultati, Pulsanti P e Mappa del mondo,
-  Consigliami sotto; Monete Peach resta nel menu. Il contatore di
-  Risultati conta i trofei per cilindrata (x/80), non più gli eventi.
-- **Pannelli "?".** I 150 pannelli sulla mappa e in una pagina dedicata,
-  uno per uno con le istruzioni come le Monete Peach; inclusi nel backup.
-- **Menu con i Collezionabili.** Monete Peach, Pulsanti P e Pannelli ?
-  raggruppati sotto "Collezionabili", come voci più piccole sempre
-  visibili.
+- **Collectibles map.** New "Mappa" screen (side menu, and big red
+  button in Monete Peach and Pulsanti P) with the positions of
+  Peach Medallions, P switches and "?" panels: zoom, filters by type and by
+  "done", popup with instructions (in English), tick and YouTube video.
+  Data and map from BamisWasTaken's mkworld-checklist (mktools.io)
+  project; the image is downloaded at runtime.
+- **Peach Medallions one by one.** The 200 coins become points on the map
+  with their instructions, instead of the per-biome counter. The counts
+  saved before cannot be converted: a notice explains it.
+- **Home revised.** Personaggi and Risultati, Pulsanti P and World map,
+  Consigliami below; Monete Peach stays in the menu. The Risultati
+  counter counts trophies per engine class (x/80), no longer the events.
+- **"?" panels.** The 150 panels on the map and in a dedicated page,
+  one by one with instructions like the Peach Medallions; included in the backup.
+- **Menu with the Collezionabili.** Monete Peach, Pulsanti P and Pannelli ?
+  grouped under "Collezionabili", as smaller, always
+  visible entries.
 
 ## [1.0.0] - 2026-09-27
 
@@ -102,36 +105,36 @@ il versionamento segue il `versionName` dell'app in `app/build.gradle.kts`.
 
 ## [0.1.x] - beta
 
-Le versioni di prova dalla 0.1.1 alla 0.1.7 (25–27/09/2026), riunite in
-una sola voce. Cosa contiene l'app alla fine della beta:
+The test versions from 0.1.1 to 0.1.7 (25–27/09/2026), merged into
+a single entry. What the app contains at the end of the beta:
 
-- **Personaggi.** Tutti i 50 piloti, con le immagini di Super Mario Wiki
-  in card a polaroid del colore del personaggio. I 24 con outfit hanno
-  la pagina degli outfit, con i cibi che li sbloccano. I 32 piloti di
-  base sono sempre sbloccati; per i 18 da sbloccare un popup mostra il
-  criterio dal wiki e l'interruttore per segnarli. Grigio se ti manca,
-  colorato se ce l'hai. Filtro Tutti/Incompleti e ordinamento per
-  roster, alfabetico o completamento.
-- **Monete Peach e Pulsanti P.** Monete Peach con un contatore − / + per
-  bioma; i 394 Pulsanti P divisi per regione e percorso, con ricerca e
+- **Personaggi.** All 50 drivers, with Super Mario Wiki images
+  in polaroid cards in the character's colour. The 24 with outfits have
+  the outfits page, with the foods that unlock them. The 32 starter drivers are always
+  unlocked; for the 18 to unlock a popup shows the
+  criterion from the wiki and the switch to mark them. Grey if you are missing it,
+  coloured if you have it. Tutti/Incompleti filter and ordering by
+  roster, alphabetical or completion.
+- **Peach Medallions and P switches.** Peach Medallions with a − / + counter per
+  biome; the 394 P switches split by region and course, with search and
   "segna tutti".
-- **Consigliami.** Quale Gran Premio o Knockout Tour correre, e con chi,
-  per sbloccare più outfit, con i cibi sul percorso o nei dintorni e,
-  a scelta, il peso dei risultati già ottenuti.
-- **Risultati.** Il miglior trofeo (bronzo … oro ★★★) per ogni evento e
-  cilindrata, a schede; una "i" sulla scheda Mirror spiega come
-  sbloccare la modalità specchio.
-- **Grafica da gioco.** Banner con cielo e pista, tessere colorate in
-  Home, cielo con nuvole dietro ogni schermata (notturno nel tema
-  scuro), menu laterale rosso, pulsantoni rossi, popup a quadri, font
-  Lilita One.
-- **Italiano e inglese.** Nomi ufficiali in italiano da mariowiki.com e
-  mariowiki.it; nomi dei cibi e condizioni della modalità specchio in
-  italiano sono una traduzione non ufficiale. Le missioni dei Pulsanti P
-  restano in inglese. Tema e lingua si scelgono in Impostazioni.
-- **Backup.** Esportazione e importazione dello stato in JSON da
-  Impostazioni, con l'attribuzione dei dati (CC BY-SA 4.0, Super Mario
+- **Consigliami.** Which Grand Prix or Knockout Tour to race, and with whom,
+  to unlock more outfits, with the foods on the course or nearby and,
+  optionally, the weight of the results already obtained.
+- **Risultati.** The best trophy (bronze … gold ★★★) for each event and
+  engine class, in tabs; an "i" on the Mirror tab explains how to
+  unlock mirror mode.
+- **Game-style graphics.** Banner with sky and track, coloured tiles on
+  Home, sky with clouds behind every screen (night in the dark
+  theme), red side menu, big red buttons, checkered popups, Lilita One
+  font.
+- **Italian and English.** Official Italian names from mariowiki.com and
+  mariowiki.it; food names and mirror mode conditions in
+  Italian are an unofficial translation. The P switch missions
+  stay in English. Theme and language are chosen in Impostazioni.
+- **Backup.** Export and import of the state as JSON from
+  Impostazioni, with the data attribution (CC BY-SA 4.0, Super Mario
   Wiki).
-- **Dati di gioco da Super Mario Wiki (seedVersion 6).** Estratti da
-  `tools/seedgen` e verificati a ogni build di release. Le immagini si
-  scaricano a runtime e non sono incluse nell'app.
+- **Game data from Super Mario Wiki (seedVersion 6).** Extracted by
+  `tools/seedgen` and verified at every release build. Images are
+  downloaded at runtime and are not included in the app.
