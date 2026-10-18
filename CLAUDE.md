@@ -9,7 +9,7 @@ Questo file contiene regole, protocollo, comandi, convenzioni e stato. Non ripet
 | `docs/roadmap.md` | Le prossime fasi, con modello assegnato, scope e "Fatto quando" |
 | `docs/decisioni.md` | Ogni scelta non ovvia e il suo perché, per argomento. **Leggila prima di cambiare dati, fonti o grafica** |
 | `docs/ci.md` | I workflow di GitHub Actions: caller brevi dei workflow riusabili del kit (condivisi con gli altri progetti Android dell'autore) |
-| `docs/claude.md`, `.claude/` | Come è impostato Claude Code (skill, agente revisore, hook per l'SDK), dal kit [claude-skill-android-kit](https://github.com/Marcogn/claude-skill-android-kit); `REVIEW.md` = cosa controllare sempre in una revisione |
+| `docs/claude.md`, `.claude/` | Come è impostato Claude Code (skill, agente revisore, hook per SDK, revisione e nomi dei branch), dal kit [claude-skill-android-kit](https://github.com/Marcogn/claude-skill-android-kit); `REVIEW.md` = cosa controllare sempre in una revisione |
 | `tools/seedgen/README.md` | Uso dello script che genera `seed/` |
 
 ## Regole non negoziabili
