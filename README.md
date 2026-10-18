@@ -137,7 +137,7 @@ accesso di rete a mariowiki.com.
 
 Richiede JDK 17 o successivo, l'Android SDK (`compileSdk 37`) e accesso di rete
 al repository Maven di Google. Gradle 9.8 e AGP 9.4 (vedi
-[`docs/decisioni.md`](docs/decisioni.md), sezione "Toolchain").
+[`docs/decisions.md`](docs/decisions.md), sezione "Toolchain").
 
 **Quale APK installare:** quello del workflow *Build APK* (Actions → Build
 APK → Run workflow) o di una release: è la build di release firmata sempre
@@ -154,7 +154,7 @@ abilitare "installa app sconosciute" per KartLog; l'installazione è sempre conf
 all'installatore. In Impostazioni la frequenza è Mai / A ogni avvio / Ogni giorno / Ogni settimana
 (predefinita: ogni settimana); "Mai" non fa nessuna richiesta a GitHub, e in Info "Controlla
 aggiornamenti" funziona comunque. Il codice è copiato da
-[ThePatientGamerHelper](https://github.com/Marcogn/ThePatientGamerHelper) (`docs/decisioni.md`).
+[ThePatientGamerHelper](https://github.com/Marcogn/ThePatientGamerHelper) (`docs/decisions.md`).
 
 ## Privacy
 
@@ -169,7 +169,7 @@ funziona anche offline. A build time la rete serve anche allo script
 
 Kotlin e Jetpack Compose con Material 3, stessa architettura di
 riferimento di [ThePatientGamerHelper](https://github.com/Marcogn/ThePatientGamerHelper)
-(vedi [`docs/decisioni.md`](docs/decisioni.md), sezione "Toolchain",
+(vedi [`docs/decisions.md`](docs/decisions.md), sezione "Toolchain",
 per il dettaglio dell'allineamento):
 
 - **Room** come fonte di verità per i dati seed e lo stato utente
@@ -198,7 +198,7 @@ app/src/main/java/com/marcogn/kartlog/
 - [`CHANGELOG.md`](CHANGELOG.md) — cosa è cambiato in ogni release
 - [`SPEC.md`](SPEC.md) — specifica funzionale e tecnica dell'app
 - [`docs/roadmap.md`](docs/roadmap.md) — le prossime fasi di lavoro
-- [`docs/decisioni.md`](docs/decisioni.md) — le scelte di progetto e il
+- [`docs/decisions.md`](docs/decisions.md) — le scelte di progetto e il
   loro perché (fonti dei dati, grafica, toolchain, allineamento a
   ThePatientGamerHelper)
 - [`docs/ci.md`](docs/ci.md) — i workflow di GitHub Actions (CI, Build
