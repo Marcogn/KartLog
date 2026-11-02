@@ -20,9 +20,9 @@ espresso = "3.7.0"
 robolectric = "4.17"
 # Ultima 3.x (stessa major della 3.0.4 di prima; il vincolo su Kotlin 2.1 non vale più con Kotlin 2.4).
 coil = "3.6.3"
-palette = "1.0.0"
+palette = "1.1.0"
 # Selettore lingua e tema, come ThePatientGamerHelper (docs/decisions.md); versioni aggiornate.
-datastorePreferences = "1.2.1"
+datastorePreferences = "1.3.0"
 appcompat = "1.8.0"
 
 [libraries]
